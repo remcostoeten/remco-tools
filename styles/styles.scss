@@ -1,7 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
+// utils
+@import  'utils/animations';
+
+//  variables
+@import 'variables/variables';
+
+// utilities
+@import 'utils/mixins';
+@import 'utils/animations';
+
+// core
+@import 'core/body';
+@import 'core/theme';
+@import 'core/typography';
+
+// components
+// @import 'components/';
+// @import 'components/';
+// @import 'components/';
+// @import 'components/';
+// @import 'components/';
+// @import 'components/';
+// @import 'components/';
+// @import 'components/';
+// @import 'components/';
+// @import 'components/';
+// @import 'components/';
+// @import 'components/';
+// @import 'components/';
+
 @layer base {
   :root {
     --background: 0 0% 100%;
