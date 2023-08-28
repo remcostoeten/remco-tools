@@ -5,20 +5,10 @@ import { useRouter } from "next/navigation"
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
 import { PopoverProps } from "@radix-ui/react-popover"
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/registry/new-york/ui/button"
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-} from "@/registry/new-york/ui/command"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/registry/new-york/ui/popover"
+import { cn } from '@/utils/lib';
+import { Button } from '@ui/button';
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from '@ui/command';
+import { Popover, PopoverContent, PopoverTrigger } from '@ui/popover';
 
 import { Preset } from "../data/presets"
 

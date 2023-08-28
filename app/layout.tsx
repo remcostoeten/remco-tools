@@ -1,7 +1,9 @@
 import '@/styles/styles.scss';
-import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { siteConfig } from '@/utils/site';
+import { Toaster } from '@/components/ui/toaster';
+import { Analytics } from '@vercel/analytics/react';
+import { ThemeProvider } from '@/components/theme-provider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -34,11 +36,17 @@ export const metadata = {
         },
     ],
 };
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+
+export default function RootLayout({ children }: RootLayoutProps) {
     return (
-        <html lang="en">
-            <body className={inter.className}>
-                <main className="bg-slate-600">{children}</main>
+        <html lang="en" suppressHydrationWarning>
+            <head />
+            <body className="font-sans antialiased">
+                <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+                    <main className="page-wrapper__inner ">{children}</main>
+                    <Analytics />
+                    <Toaster />
+                </ThemeProvider>
             </body>
         </html>
     );

@@ -1,4 +1,4 @@
-import { SiteConfig } from "@/lib/types";
+import { SiteConfig } from "./types";
 
 interface Links {
   gitlab?: string;

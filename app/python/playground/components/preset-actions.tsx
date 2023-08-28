@@ -4,33 +4,13 @@ import * as React from "react"
 import { Dialog } from "@radix-ui/react-dialog"
 import { DotsHorizontalIcon } from "@radix-ui/react-icons"
 
-import {
-  AlertDialog,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/registry/new-york/ui/alert-dialog"
-import { Button } from "@/registry/new-york/ui/button"
-import {
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/registry/new-york/ui/dialog"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/registry/new-york/ui/dropdown-menu"
-import { Label } from "@/registry/new-york/ui/label"
-import { Switch } from "@/registry/new-york/ui/switch"
-import { toast } from "@/registry/new-york/ui/use-toast"
+import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@ui/alert-dialog';
+import { Button } from '@ui/button';
+import { DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@ui/dialog';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@ui/dropdown-menu';
+import { Label } from '@ui/label';
+import { Switch } from '@ui/switch';
+import { toast } from '@ui/use-toast';
 
 export function PresetActions() {
   const [open, setIsOpen] = React.useState(false)

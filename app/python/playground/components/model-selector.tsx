@@ -4,28 +4,13 @@ import * as React from "react"
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
 import { PopoverProps } from "@radix-ui/react-popover"
 
-import { cn } from "@/lib/utils"
-import { useMutationObserver } from "@/hooks/use-mutation-observer"
-import { Button } from "@/registry/new-york/ui/button"
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/registry/new-york/ui/command"
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/registry/new-york/ui/hover-card"
-import { Label } from "@/registry/new-york/ui/label"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/registry/new-york/ui/popover"
+import { cn } from '@/utils/lib';
+import { useMutationObserver } from '@/hooks/use-mutation-observer';
+import { Button } from '@ui/button';
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@ui/command';
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '@ui/hover-card';
+import { Label } from '@ui/label';
+import { Popover, PopoverContent, PopoverTrigger } from '@ui/popover';
 
 import { Model, ModelType } from "../data/models"
 
