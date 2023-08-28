@@ -1,0 +1,9 @@
+{
+    "short_name": "remcostoeten",
+    "name": "Remcostoeten portfolio and productivity tools site.",
+    "start_url": "/",
+    "background_color": "#000",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#ff7597"
+}
