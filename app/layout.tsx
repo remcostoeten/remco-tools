@@ -5,6 +5,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { Analytics } from '@vercel/analytics/react';
 import { ThemeProvider } from '@/components/theme-provider';
 import { LayoutProps } from '@/utils/types';
+import FancyHeader from './fancy-hamburger-header/header';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
@@ -43,7 +44,7 @@ export default function RootLayout({ children }: LayoutProps) {
             <head />
             <body className="font-sans antialiased">
                 <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-                    <main className="page-wrapper__inner ">{children}</main>
+                    <FancyHeader /> <main className="page-wrapper__inner ">{children}</main>
                     <Analytics />
                     <Toaster />
                 </ThemeProvider>
