@@ -4,7 +4,7 @@ import { siteConfig } from '@/utils/site';
 import { Toaster } from '@/components/ui/toaster';
 import { Analytics } from '@vercel/analytics/react';
 import { ThemeProvider } from '@/components/theme-provider';
-
+import { LayoutProps } from '@/utils/types';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
@@ -37,7 +37,7 @@ export const metadata = {
     ],
 };
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({ children }: LayoutProps) {
     return (
         <html lang="en" suppressHydrationWarning>
             <head />

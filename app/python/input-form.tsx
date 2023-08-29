@@ -8,7 +8,7 @@ const InputForm = () => {
     const [file, setFile] = useState('');
     const [removeStrings, setRemoveStrings] = useState(false);
 
-    const handleSubmit = (event) => {
+    const handleSubmit = (event: { preventDefault: () => void }) => {
         event.preventDefault();
         const script = generatePythonScript(string1, string2, file, removeStrings);
         console.log(script);
