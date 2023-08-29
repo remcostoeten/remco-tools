@@ -1,8 +1,8 @@
 export const types = ["GPT-3", "Codex"] as const;
 
-export type ModelType = (typeof types)[number];
+export type ActionType = (typeof types)[number];
 
-export interface Model<Type = string> {
+export interface Action<Type = string> {
   id: string;
   name?: string;
   description?: string;
@@ -10,7 +10,7 @@ export interface Model<Type = string> {
   type?: Type;
 }
 
-export const models: Model<ModelType>[] = [
+export const Actions: Action<ActionType>[] = [
   {
     id: "c305f976-8e38-42b1-9fb7-d21b2e34f0da",
     name: "Replace string with string",

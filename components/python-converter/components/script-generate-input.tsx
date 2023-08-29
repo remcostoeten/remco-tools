@@ -1,7 +1,7 @@
 import { Button } from '@ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@ui/dialog';
 
-export function CodeViewer() {
+export function ScriptInput() {
     return (
         <Dialog>
             <DialogTrigger asChild>
@@ -12,9 +12,9 @@ export function CodeViewer() {
                     <DialogTitle>View code</DialogTitle>
                     <DialogDescription>You can use the following code to start integrating your current prompt and settings into your application.</DialogDescription>
                 </DialogHeader>
-                <div className="grid gap-4">
+                <div className="h-full min-h-[300px] lg:min-h-[700px] xl:min-h-[700px]">
                     <div className="rounded-md bg-black p-6">
-                        <pre>
+                        {/* <pre>
                             <code className="grid gap-1 text-sm text-muted-foreground [&_span]:h-4">
                                 <span>
                                     <span className="text-sky-300">import</span> os
@@ -22,6 +22,7 @@ export function CodeViewer() {
                                 <span>
                                     <span className="text-sky-300">import</span> openai
                                 </span>
+                                import {ScriptInput} from '@/components/python-converter/components/script-generate-input';
                                 <span />
                                 <span>
                                     openai.api_key = os.getenv(
@@ -60,7 +61,7 @@ export function CodeViewer() {
                                 </span>
                                 <span>)</span>
                             </code>
-                        </pre>
+                        </pre> */}
                     </div>
                     <div>
                         <p className="text-sm text-muted-foreground">Your API Key can be found here. You should use environment variables or a secret management tool to expose your key to your applications.</p>

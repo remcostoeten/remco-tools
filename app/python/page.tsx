@@ -9,20 +9,22 @@ import { Separator } from '@ui/separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@ui/tabs';
 import { Textarea } from '@ui/textarea';
 
-import { CodeViewer } from '../../components/playground/components/code-viewer';
+import { ScriptInput } from '@/components/python-converter/components/script-generate-input';
 import { MaxLengthSelector } from '../../components/playground/components/maxlength-selector';
-import { ModelSelector } from '../../components/playground/components/model-selector';
 import { PresetActions } from '../../components/playground/components/preset-actions';
 import { PresetSave } from '../../components/playground/components/preset-save';
 import { PresetSelector } from '../../components/playground/components/preset-selector';
 import { PresetShare } from '../../components/playground/components/preset-share';
 import { TemperatureSelector } from '../../components/playground/components/temperature-selector';
 import { TopPSelector } from '../../components/playground/components/top-p-selector';
-import { models, types } from '../../components/playground/data/models';
 import { presets } from '../../components/playground/data/presets';
 import EditIcon from '@/components/icons/edit-icon';
 import CompleteIcon from '@/components/icons/complete-icon';
 import InsertIcon from '@/components/icons/insert-icon';
+import { Actionselector } from '@/components/python-converter/components/action-selector';
+import { types } from '../../components/playground/data/models';
+import { Actions } from '../../components/python-converter/data/actions';
+import PythonScriptGenerator from './components/python-script-generator';
 
 export const metadata: Metadata = {
     title: 'Playground',
@@ -38,20 +40,19 @@ export default function PlaygroundPage() {
             </div>
             <div className="hidden h-full flex-col md:flex">
                 <div className="container flex flex-col items-start justify-between space-y-2 py-4 sm:flex-row sm:items-center sm:space-y-0 md:h-16">
-                    {/* snake emoji */}
                     <h2 className="text-lg font-semibold">Generate your python script 🐍</h2>
                     <div className="ml-auto flex w-full space-x-2 sm:justify-end">
                         <PresetSelector presets={presets} />
                         <PresetSave />
                         <div className="hidden space-x-2 md:flex">
-                            <CodeViewer />
+                            <ScriptInput />
                             <PresetShare />
                         </div>
                         <PresetActions />
                     </div>
                 </div>
                 <Separator />
-                <Tabs defaultValue="complete" className="flex-1">
+                <Tabs defaultValue="insert" className="flex-1">
                     <div className="container h-full py-6">
                         <div className="grid h-full items-stretch gap-6 md:grid-cols-[1fr_200px]">
                             <div className="hidden flex-col space-y-4 sm:flex md:order-2">
@@ -65,7 +66,11 @@ export default function PlaygroundPage() {
                                         </HoverCardContent>
                                     </HoverCard>
                                     <TabsList className="grid grid-cols-3">
-                                        <TabsTrigger value="complete">
+                                        <TabsTrigger value="insert" disabled>
+                                            <span className="sr-only">Edit</span>
+                                            <EditIcon />
+                                        </TabsTrigger>
+                                        <TabsTrigger value="complete" disabled>
                                             <span className="sr-only">Complete</span>
                                             <CompleteIcon />
                                         </TabsTrigger>
@@ -73,13 +78,9 @@ export default function PlaygroundPage() {
                                             <span className="sr-only">Insert</span>
                                             <InsertIcon />
                                         </TabsTrigger>
-                                        <TabsTrigger value="edit">
-                                            <span className="sr-only">Edit</span>
-                                            <EditIcon />
-                                        </TabsTrigger>
                                     </TabsList>
                                 </div>
-                                <ModelSelector types={types} models={models} />
+                                <Actionselector types={types} Actions={Actions} />
                                 <TemperatureSelector defaultValue={[0.56]} />
                                 <MaxLengthSelector defaultValue={[256]} />
                                 <TopPSelector defaultValue={[0.9]} />
@@ -98,10 +99,11 @@ export default function PlaygroundPage() {
                                     </div>
                                 </TabsContent>
                                 <TabsContent value="insert" className="mt-0 border-0 p-0">
-                                    <div className="flex flex-col space-y-4">
+                                    <div className="flex flex-col space-y-4 border p-4">
                                         <div className="grid h-full grid-rows-2 gap-6 lg:grid-cols-2 lg:grid-rows-1">
-                                            <Textarea placeholder="We're writing to [inset]. Congrats from OpenAI!" className="h-full min-h-[300px] lg:min-h-[700px] xl:min-h-[700px]" />
-                                            <div className="rounded-md border bg-muted"></div>
+                                            <PythonScriptGenerator />
+                                            {/* <Textarea placeholder="We're writing to [inset]. Congrats from OpenAI!" className="h-full min-h-[300px] lg:min-h-[700px] xl:min-h-[700px]" /> */}
+                                            {/* <div className="rounded-md border bg-muted"></div> */}
                                         </div>
                                         <div className="flex items-center space-x-2">
                                             <Button>Submit</Button>

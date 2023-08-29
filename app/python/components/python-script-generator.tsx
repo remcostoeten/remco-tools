@@ -1,8 +1,11 @@
-import { useState } from 'react';
+'use client';
+import React, { useState } from 'react';
 import { readFile, writeFile, readdir, stat } from 'fs/promises';
 import path from 'path';
 import InputWithLabel, { CheckboxWithLabel } from '@/components/InputWithElement';
 import { Button } from '@/components/ui/ui-imports';
+import { toast } from '@/components/ui/use-toast';
+import FormOptions from './cards/card-form';
 
 const PythonScriptGenerator = () => {
     const [string1, setString1] = useState('');
@@ -12,53 +15,54 @@ const PythonScriptGenerator = () => {
 
     const handleGenerateScript = async () => {
         try {
-            const files = await readdir('.');
+            const response = await fetch('/utils/generate-python-script', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    string1,
+                    string2,
+                    file,
+                    exclude,
+                }),
+            });
 
-            // Filter out the file to exclude if specified
-            const filteredFiles = exclude ? files.filter((f) => f !== file) : files;
-
-            // Loop through the files and perform search & replace or removal
-            for (const file of filteredFiles) {
-                const filePath = path.join(process.cwd(), file);
-                const fileStat = await stat(filePath);
-
-                if (fileStat.isDirectory()) {
-                    // Skip directories
-                    continue;
-                }
-
-                // Read the file contents
-                let content = await readFile(filePath, 'utf-8');
-
-                if (content.includes(string1)) {
-                    if (exclude) {
-                        // Remove string1 and string2 from the file
-                        content = content.replace(new RegExp(string1, 'g'), '');
-                        content = content.replace(new RegExp(string2, 'g'), '');
-                    } else {
-                        // Replace string1 with string2 in the file
-                        content = content.replace(new RegExp(string1, 'g'), string2);
-                    }
-
-                    // Write the modified content back to the file
-                    await writeFile(filePath, content, 'utf-8');
-                }
-            }
-
-            console.log('Python script generation completed.');
+            const result = await response.text();
+            toast({
+                title: result,
+            });
+            console.log(result);
         } catch (error) {
+            toast({
+                title: 'An error occurred during Python script generation' + error,
+            });
             console.error('An error occurred during Python script generation:', error);
         }
     };
 
+    const handleChangeString1 = (e: { target: { value: React.SetStateAction<string> } }) => {
+        setString1(e.target.value);
+    };
+
+    const handleChangeString2 = (e: { target: { value: React.SetStateAction<string> } }) => {
+        setString2(e.target.value);
+    };
+
+    const handleChangeFile = (e: { target: { value: React.SetStateAction<string> } }) => {
+        setFile(e.target.value);
+    };
+
+    const handleChangeExclude = (e: { target: { checked: boolean | ((prevState: boolean) => boolean) } }) => {
+        setExclude(e.target.checked);
+    };
+
     return (
-        <>
-            <InputWithLabel value={string1} onChange={(e) => setString1(e.target.value)} />
-            <InputWithLabel value={string2} onChange={(e) => setString2(e.target.value)} />
-            <InputWithLabel value={file} onChange={(e) => setFile(e.target.value)} />
-            <CheckboxWithLabel checked={exclude} onChange={(e) => setExclude(e.target.checked)} />
+        <div className="ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 mt-0 border-0 p-0">
+            <FormOptions cardTitle="Payment Method" label1="String one" label2="String two" label3="Filename to ignore" value={string1} value2={string2} value3={file} onChange={handleChangeString1} onChange2={handleChangeString2} onChange3={handleChangeFile} />
+            <CheckboxWithLabel checked={exclude} onChange={handleChangeExclude} />
             <Button onClick={handleGenerateScript}>Generate Python Script</Button>
-        </>
+        </div>
     );
 };
 
