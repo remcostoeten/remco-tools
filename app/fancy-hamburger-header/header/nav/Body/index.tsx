@@ -27,7 +27,7 @@ function Body({ links, selectedLink = { isActive: false, index: -1 }, setSelecte
             {links.map((link, index) => {
                 const { title, href } = link;
                 return (
-                    <Link key={`l_${index}`} onClick={changeRoute} href={href}>
+                    <Link key={`l_${index}`} href={href}>
                         <motion.p
                             onMouseOver={() => {
                                 setSelectedLink({ isActive: true, index });
