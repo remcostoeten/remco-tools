@@ -61,34 +61,25 @@ export default function NotFound() {
     return null
   }
   return (
-    <div className="error-wrapper">
-      <div className="flex items-center p-8 flex-end space-x-2 justify-between">
-        <motion.a
-          whileHover={{ scale: 1.04, transition: { duration: 0.6 } }}
-          transition={{ delay: 0.2, duration: 0.5, ease: "easeInOut" }}
-          className="text-sm flex gap-2 items-center align-middle font-medium"
-          href="/"
-        >
-          <ArrowTopLeftIcon width={25} height={25} />
-          <span>Return back to home</span>
-        </motion.a>
-        <div className="flex items-center p-8 flex-end space-x-2 justify-between content-center">
-          <Label htmlFor="song" className="flex flex-col space-y-1">
-            <span className="font-2xl font-semibold">Switch song</span>
-          </Label>
-          <Switch id="song" onClick={(e) => switchSong()} />
-        </div>
+      <div className="error-wrapper">
+          <div className="flex items-center p-8 flex-end space-x-2 pt-[100px] justify-between">
+              <motion.a whileHover={{ scale: 1.04, transition: { duration: 0.6 } }} transition={{ delay: 0.2, duration: 0.5, ease: 'easeInOut' }} className="text-sm flex gap-2 items-center align-middle font-medium" href="/">
+                  <ArrowTopLeftIcon width={25} height={25} />
+                  <span>Return back to home</span>
+              </motion.a>
+              <div className="flex items-center p-8 flex-end space-x-2 justify-between content-center">
+                  <Label htmlFor="song" className="flex flex-col space-y-1">
+                      <span className="font-2xl font-semibold">Switch song</span>
+                  </Label>
+                  <Switch id="song" onClick={(e) => switchSong()} />
+              </div>
+          </div>
+          <div className="error font-[80px]">404</div>
+          <br />
+          <br />
+          <span className="info font-[40px]">File not found</span>
+          <img src="http://images2.layoutsparks.com/1/160030/too-much-tv-static.gif" className="static" /> <audio ref={elevatorRef} src="/music.mp3" loop autoPlay />
+          <audio ref={abbaRef} src="/abba.mp3" loop />
       </div>
-      <div className="error font-[80px]">404</div>
-      <br />
-      <br />
-      <span className="info font-[40px]">File not found</span>
-      <img
-        src="http://images2.layoutsparks.com/1/160030/too-much-tv-static.gif"
-        className="static"
-      />{" "}
-      <audio ref={elevatorRef} src="/music.mp3" loop autoPlay />
-      <audio ref={abbaRef} src="/abba.mp3" loop />
-    </div>
-  )
+  );
 }
