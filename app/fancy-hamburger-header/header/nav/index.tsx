@@ -17,7 +17,8 @@ export default function Index() {
                     <Body links={navigationRoutes.links} selectedLink={selectedLink} setSelectedLink={setSelectedLink} />
                     <Footer />
                 </div>
-                <Image src={navigationRoutes.links[selectedLink.index].src} isActive={selectedLink.isActive} />
+                {/* @ts-ignore */}
+                {navigationRoutes.links[selectedLink.index]?.src ? <Image src={navigationRoutes.links[selectedLink.index].src} isActive={selectedLink.isActive} /> : null}
             </div>
         </motion.div>
     );

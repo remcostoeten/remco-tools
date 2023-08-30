@@ -1,5 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+*test_directory/*
+
 # dependencies
 /node_modules
 /.pnp
@@ -37,3 +39,6 @@ next-env.d.ts
 *env*
 
 *swp*
+utils/test_directory/*
+utils/test_directory/subdir1/file2.scss
+utils/test_directory/file1.scss

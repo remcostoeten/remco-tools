@@ -35,7 +35,6 @@ import { useContext } from 'react';
 // };
 
 export default function PlaygroundPage() {
-    const { pythonScript } = useContext(ScriptContext);
     return (
         <>
             <div className="md:hidden">

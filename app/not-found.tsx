@@ -1,18 +1,24 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
 import { ArrowTopLeftIcon } from '@radix-ui/react-icons';
 import { motion } from 'framer-motion';
-import router from 'next/navigation';
-
-import { Label } from '@/components/ui/label';
-import { Switch } from '@/components/ui/switch';
+import { useRouter } from 'next/navigation';
 import { toast } from '@/components/ui/use-toast';
+import notFoundProps from './not-found';
+import { Label } from '@radix-ui/react-label';
+import { Switch } from '@radix-ui/react-switch';
+import { useState, useRef, useEffect } from 'react';
 
-export default function NotFound() {
+type NotFoundProps = {
+    play?: any;
+    pause?: any;
+};
+
+export default function NotFound({}: NotFoundProps) {
+    // Corrected function name and parameter type
     const [showError, setShowError] = useState(true);
     const [playAbba, setPlayAbba] = useState(false);
-    const elevatorRef = useRef();
-    const abbaRef = useRef();
+    const elevatorRef = useRef<HTMLAudioElement | null>(null);
+    const abbaRef = useRef<HTMLAudioElement | null>(null);
 
     useEffect(() => {
         setTimeout(() => {
@@ -44,7 +50,7 @@ export default function NotFound() {
     useEffect(() => {
         const timer = setTimeout(() => {
             setShowError(false);
-            router.push('/');
+            window.location.href = '/'; // Perform client-side redirection
         }, 30000);
 
         return () => clearTimeout(timer);

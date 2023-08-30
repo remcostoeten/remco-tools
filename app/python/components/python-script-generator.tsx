@@ -2,38 +2,40 @@
 
 import { CheckboxWithLabel } from '@/components/InputWithElement';
 import { Button } from '@/components/ui/ui-imports';
-import { useState } from 'react';
-import FormOptions from './cards/card-form';
-import { useContext } from 'react';
-import ScriptContext from '@/context/ScriptContext';
 import { toast } from '@/components/ui/use-toast';
+import ScriptContext from '@/context/ScriptContext';
 import { CounterClockwiseClockIcon } from '@radix-ui/react-icons';
 import { TabsContent } from '@radix-ui/react-tabs';
+import React, { useContext, useState } from 'react';
+import FormOptions from './cards/card-form';
 
 export default function generatePythonScript() {
     const [string1, setString1] = useState('');
     const [string2, setString2] = useState('');
     const [file, setFile] = useState('');
     const [exclude, setExclude] = useState(false);
-    const [newScript, setNewScript] = useState('');
-    const { pythonScript, setPythonScript } = useContext(ScriptContext);
+    const { setPythonScript } = useContext(ScriptContext);
+    const [toggleScript, setToggleScript] = useState(false);
 
     const handleGenerateScript = () => {
         const newScript = `
             import os
             import { generatePythonScript } from '@/utils/generatePythonScript';
-def replace_in_file(file_path, old_string, new_string):
+            
+            def replace_in_file(file_path, old_string, new_string):
                 with open(file_path, 'r') as file:
                     filedata = file.read()
                 new_filedata = filedata.replace(old_string, new_string)
                 with open(file_path, 'w') as file:
                     file.write(new_filedata)
+            
             def replace_in_directory(directory_path, old_string, new_string):
                 for root, _, files in os.walk(directory_path):
                     for file_name in files:
                         if file_name.endswith('.txt'):  # Adjust the file extension as needed
                             file_path = os.path.join(root, file_name)
                             replace_in_file(file_path, old_string, new_string)
+            
             if __name__ == '__main__':
                 target_directory = '.'  # Current directory
                 old_string = '${string1}'
@@ -45,23 +47,90 @@ def replace_in_file(file_path, old_string, new_string):
         toast({
             title: 'Python script generation completed.',
         });
-        console.log('newScript', newScript);
     };
 
-    const handleChangeString1 = (e) => {
+    const handleChangeString1 = (e: { target: { value: React.SetStateAction<string> } }) => {
         setString1(e.target.value);
     };
 
-    const handleChangeString2 = (e) => {
+    const handleChangeString2 = (e: { target: { value: React.SetStateAction<string> } }) => {
         setString2(e.target.value);
     };
 
-    const handleChangeFile = (e) => {
+    const handleChangeFile = (e: { target: { value: React.SetStateAction<string> } }) => {
         setFile(e.target.value);
     };
 
-    const handleChangeExclude = (e) => {
+    const handleChangeExclude = (e: { target: { checked: boolean | ((prevState: boolean) => boolean) } }) => {
         setExclude(e.target.checked);
+    };
+
+    const generateScript = () => {
+        let newScript = '';
+
+        if (toggleScript) {
+            newScript = `
+                import os
+    
+                def process_scss_file(file_path):
+                    with open(file_path, 'r') as f:
+                        content = f.read()
+                    
+                    modified_content = content.replace("tstringone", "")
+                    
+                    with open(file_path, 'w') as f:
+                        f.write(modified_content)
+                
+                def search_and_process(directory):
+                    for root, _, files in os.walk(directory):
+                        for file_name in files:
+                            if file_name.endswith('.scss'):
+                                file_path = os.path.join(root, file_name)
+                                process_scss_file(file_path)
+                
+                def main():
+                    current_directory = os.getcwd()
+                    search_and_process(current_directory)
+                    print("Search and removal complete.")
+                if __name__ == "__main__":
+                    main()
+            `;
+        } else {
+            newScript = `
+                import os
+                import { generatePythonScript } from '@/utils/generatePythonScript';
+                
+                def replace_in_file(file_path, old_string, new_string):
+                    with open(file_path, 'r') as file:
+                        filedata = file.read()
+                    new_filedata = filedata.replace(old_string, new_string)
+                    with open(file_path, 'w') as file:
+                        file.write(new_filedata)
+                
+                def replace_in_directory(directory_path, old_string, new_string):
+                    for root, _, files in os.walk(directory_path):
+                        for file_name in files:
+                            if file_name.endswith('.txt'):  # Adjust the file extension as needed
+                                file_path = os.path.join(root, file_name)
+                                replace_in_file(file_path, old_string, new_string)
+                
+                if __name__ == '__main__':
+                    target_directory = '.'  # Current directory
+                    old_string = '${string1}'
+                    new_string = '${string2}'
+                    replace_in_directory(target_directory, old_string, new_string)
+                    print(f'Replacement complete in {target_directory} directory.')
+            `;
+        }
+
+        setPythonScript(newScript);
+        toast({
+            title: 'Script generation completed.',
+        });
+    };
+
+    const handleToggle = () => {
+        setToggleScript(!toggleScript);
     };
 
     return (
@@ -74,8 +143,16 @@ def replace_in_file(file_path, old_string, new_string):
                         <Button onClick={handleGenerateScript} className="w-full">
                             Generate Python Script
                         </Button>
-                    </div>{' '}
-                    <pre>{pythonScript}</pre>
+                    </div>
+                    {/* <pre>{pythonScript}</pre> */}
+                </div>
+                <div className="flex items-center space-x-2">
+                    <Button onClick={generateScript} className="w-full">
+                        Generate Script
+                    </Button>
+                    <Button onClick={handleToggle} variant="secondary">
+                        Toggle Script
+                    </Button>
                 </div>
                 <div className="flex items-center space-x-2">
                     <Button>Submit</Button>

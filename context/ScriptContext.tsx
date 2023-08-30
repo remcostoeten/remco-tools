@@ -1,8 +1,13 @@
 import { createContext } from 'react';
 
-const ScriptContext = createContext({
-    script: '',
-    setPythonScript: (_script: string) => {},
+type ScriptContextType = {
+    pythonScript: string; // Add this line
+    setPythonScript: React.Dispatch<React.SetStateAction<string>>;
+};
+
+const ScriptContext = createContext<ScriptContextType>({
+    pythonScript: '', // Provide an initial value
+    setPythonScript: () => {},
 });
 
 export default ScriptContext;
