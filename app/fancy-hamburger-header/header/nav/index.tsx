@@ -1,0 +1,24 @@
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import styles from './style.module.scss';
+import { height } from '../anim';
+import Body from './Body';
+import Footer from './Footer';
+import Image from './Image';
+import { navigationRoutes } from '@/config/navigation-routes';
+
+export default function Index() {
+    const [selectedLink, setSelectedLink] = useState({ isActive: false, index: 0 });
+
+    return (
+        <motion.div variants={height} initial="initial" animate="enter" exit="exit" className="overflow-hidden bg-black">
+            <div className={styles.wrapper}>
+                <div className={styles.container}>
+                    <Body links={navigationRoutes.links} selectedLink={selectedLink} setSelectedLink={setSelectedLink} />
+                    <Footer />
+                </div>
+                <Image src={navigationRoutes.links[selectedLink.index].src} isActive={selectedLink.isActive} />
+            </div>
+        </motion.div>
+    );
+}

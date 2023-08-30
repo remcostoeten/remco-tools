@@ -1,5 +1,5 @@
 export const navigationRoutes = {
-  mainNav: [
+  links: [
     {
       title: "Dashboard",
       href: "/dashboard",
