@@ -1,6 +1,6 @@
-import { Metadata } from 'next';
-import Image from 'next/image';
+'use client';
 import { CounterClockwiseClockIcon } from '@radix-ui/react-icons';
+import Image from 'next/image';
 
 import { Button } from '@ui/button';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@ui/hover-card';
@@ -9,7 +9,12 @@ import { Separator } from '@ui/separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@ui/tabs';
 import { Textarea } from '@ui/textarea';
 
+import CompleteIcon from '@/components/icons/complete-icon';
+import EditIcon from '@/components/icons/edit-icon';
+import InsertIcon from '@/components/icons/insert-icon';
+import { Actionselector } from '@/components/python-converter/components/action-selector';
 import { ScriptInput } from '@/components/python-converter/components/script-generate-input';
+import { useState } from 'react';
 import { MaxLengthSelector } from '../../components/playground/components/maxlength-selector';
 import { PresetActions } from '../../components/playground/components/preset-actions';
 import { PresetSave } from '../../components/playground/components/preset-save';
@@ -17,21 +22,20 @@ import { PresetSelector } from '../../components/playground/components/preset-se
 import { PresetShare } from '../../components/playground/components/preset-share';
 import { TemperatureSelector } from '../../components/playground/components/temperature-selector';
 import { TopPSelector } from '../../components/playground/components/top-p-selector';
-import { presets } from '../../components/playground/data/presets';
-import EditIcon from '@/components/icons/edit-icon';
-import CompleteIcon from '@/components/icons/complete-icon';
-import InsertIcon from '@/components/icons/insert-icon';
-import { Actionselector } from '@/components/python-converter/components/action-selector';
 import { types } from '../../components/playground/data/models';
+import { presets } from '../../components/playground/data/presets';
 import { Actions } from '../../components/python-converter/data/actions';
 import PythonScriptGenerator from './components/python-script-generator';
+import ScriptContext from '@/context/ScriptContext';
+import { useContext } from 'react';
 
-export const metadata: Metadata = {
-    title: 'Playground',
-    description: 'The OpenAI Playground built using the components.',
-};
+// export const metadata: Metadata = {
+//     title: 'Playground',
+//     description: 'The OpenAI Playground built using the components.',
+// };
 
 export default function PlaygroundPage() {
+    const { pythonScript } = useContext(ScriptContext);
     return (
         <>
             <div className="md:hidden">
@@ -53,7 +57,7 @@ export default function PlaygroundPage() {
                 </div>
                 <Separator />
                 <Tabs defaultValue="insert" className="flex-1">
-                    <div className="container h-full py-6">
+                    <div className="bg-stone-950 my-8 container h-full py-6">
                         <div className="grid h-full items-stretch gap-6 md:grid-cols-[1fr_200px]">
                             <div className="hidden flex-col space-y-4 sm:flex md:order-2">
                                 <div className="grid gap-2">
@@ -98,22 +102,7 @@ export default function PlaygroundPage() {
                                         </div>
                                     </div>
                                 </TabsContent>
-                                <TabsContent value="insert" className="mt-0 border-0 p-0">
-                                    <div className="flex flex-col space-y-4 border p-4">
-                                        <div className="grid h-full grid-rows-2 gap-6 lg:grid-cols-2 lg:grid-rows-1">
-                                            <PythonScriptGenerator />
-                                            {/* <Textarea placeholder="We're writing to [inset]. Congrats from OpenAI!" className="h-full min-h-[300px] lg:min-h-[700px] xl:min-h-[700px]" /> */}
-                                            {/* <div className="rounded-md border bg-muted"></div> */}
-                                        </div>
-                                        <div className="flex items-center space-x-2">
-                                            <Button>Submit</Button>
-                                            <Button variant="secondary">
-                                                <span className="sr-only">Show history</span>
-                                                <CounterClockwiseClockIcon className="h-4 w-4" />
-                                            </Button>
-                                        </div>
-                                    </div>
-                                </TabsContent>
+                                <PythonScriptGenerator />
                                 <TabsContent value="edit" className="mt-0 border-0 p-0">
                                     <div className="flex flex-col space-y-4">
                                         <div className="grid h-full gap-6 lg:grid-cols-2">

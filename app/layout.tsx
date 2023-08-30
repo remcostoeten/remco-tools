@@ -43,11 +43,11 @@ export default function RootLayout({ children }: LayoutProps) {
         <html lang="en" suppressHydrationWarning>
             <head />
             <body className="font-sans antialiased">
-                <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-                    <FancyHeader /> <main className="page-wrapper__inner ">{children}</main>
-                    <Analytics />
-                    <Toaster />
-                </ThemeProvider>
+                {/* <ThemeProvider attribute="class" defaultTheme="system" enableSystem> */}
+                <FancyHeader /> <main className="page-wrapper__inner ">{children}</main>
+                <Analytics />
+                <Toaster />
+                {/* </ThemeProvider> */}
             </body>
         </html>
     );
