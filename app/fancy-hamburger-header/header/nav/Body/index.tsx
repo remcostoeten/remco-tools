@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import styles from './style.module.scss';
 import { blur, translate } from '../../anim';
-import { navigationRoutes } from '@/config/navigation-routes';
 
 interface BodyProps {
     links: { title: string; href: string }[];
@@ -28,7 +27,7 @@ function Body({ links, selectedLink = { isActive: false, index: -1 }, setSelecte
             {links.map((link, index) => {
                 const { title, href } = link;
                 return (
-                    <Link key={`l_${index}`} href={href}>
+                    <Link key={`l_${index}`} onClick={changeRoute} href={href}>
                         <motion.p
                             onMouseOver={() => {
                                 setSelectedLink({ isActive: true, index });

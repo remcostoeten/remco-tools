@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+'use client';
+import { useState } from 'react';
 import styles from './style.module.scss';
-import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
 import { opacity, background } from './anim';
-import Nav from './nav';
-import HamburgerRing from '../../../components/icons/HamburgerRing';
-import RemcoLogoIcon from '@/components/icons/remcostoeten-logo-icon';
-export default function Index() {
-    const [isActive, setIsActive] = useState(false);
 
+interface NavProps {
+  handleCloseMenu: () => void;
+}
+
+export default function Nav({}): NavProps) {
+    const [isActive, setIsActive] = useState(false);
+    const handleCloseMenu = () => {
+      setIsActive(false);
+  };
     return (
       <div className={styles.header}>
           <div id="hamburger" className={`hamburglar ${open ? 'is-open' : 'is-closed'}`}>
@@ -20,7 +23,6 @@ export default function Index() {
       </div>
     </div>
 
-    {/* svg ring container */}
 <HamburgerRing/>
     <div className="path-burger">
       <div className="animate-path">
@@ -50,7 +52,7 @@ export default function Index() {
           </div>
           <motion.div variants={background} initial="initial" animate={isActive ? "open" : "closed"} className={styles.background}></motion.div>
           <AnimatePresence mode="wait">
-              {isActive && <Nav/>}
+          {isActive && <Nav handleCloseMenu={handleCloseMenu} as any />}
           </AnimatePresence>
       </div>
   )
