@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@ui/input';
 import { Label } from '@ui/label';
-import { RadioGroup } from '@ui/radio-group';
+import { RadioGroup, RadioGroupItem } from '@ui/radio-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@ui/select';
 import RadioGroupOption from './radio-group-item';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -17,15 +17,19 @@ interface FormOptionsProps {
     value?: any;
     value2?: string;
     value3?: string;
+    // disabled1?: boolean;
+    // disabled2?: boolean;
+    // disabled3?: boolean;
+
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onChange2?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onChange3?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const FormOptions: React.FC<FormOptionsProps> = ({ label1, label2, label3, cardTitle, cardContent, value, value2, value3, onChange2, onChange3, onChange }) => {
+const FormOptions: React.FC<FormOptionsProps> = ({ label1, label2, label3, cardTitle, cardContent, value, value2, value3, disabled1, disabled2, disabled3, onChange2, onChange3, onChange }) => {
     const options = [
         { value: 'str', id: 'str', icon: undefined, label: 'Str replace' },
-        { value: 'rm', id: 'rm', icon: undefined, label: 'Rm string' },
+        { value: 'rm', id: 'rm', disabled1, icon: undefined, label: 'Rm string' },
         { value: 'tba', id: 'tba', icon: undefined, label: 'TBA' },
     ];
 
@@ -37,9 +41,8 @@ const FormOptions: React.FC<FormOptionsProps> = ({ label1, label2, label3, cardT
             </CardHeader>
             <CardContent className="grid gap-6">
                 <RadioGroup defaultValue="card" className="grid grid-cols-3 gap-4">
-                    {options.map((option) => (
-                        <RadioGroupOption key={option.id} value={option.value} id={option.id} icon={option.icon} label={option.label} />
-                    ))}
+                    <RadioGroupItem value={value} className="peer sr-only" />
+                    <Label className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary">Str replace</Label>
                 </RadioGroup>
                 <div className="grid gap-2">
                     <InputWithLabel label={label1} value={value} onChange={onChange} />

@@ -15,7 +15,7 @@ export default function Nav({}): NavProps) {
     return (
       <div className={styles.header}>
           <div id="hamburger" className={`hamburglar ${open ? 'is-open' : 'is-closed'}`}>
-    <div className="burger-icon">
+    <div className="burgerr-icon">
       <div className="burger-container">
         <span className="burger-bun-top"></span>
         <span className="burger-filling"></span>
@@ -30,7 +30,6 @@ export default function Nav({}): NavProps) {
       </div>
     </div>
   </div>
-          <div className={styles.bar}>
               <Link href="/"><RemcoLogoIcon/>
               <div onClick={() => {setIsActive(!isActive)}} className={styles.el}>
                   <div className={`${styles.burger} ${isActive ? styles.burgerActive : ""}`}></div>
@@ -49,11 +48,7 @@ export default function Nav({}): NavProps) {
                     <HamburgerRing/>
                   </div>
               </motion.div>
-          </div>
-          <motion.div variants={background} initial="initial" animate={isActive ? "open" : "closed"} className={styles.background}></motion.div>
-          <AnimatePresence mode="wait">
-          {isActive && <Nav handleCloseMenu={handleCloseMenu} as any />}
-          </AnimatePresence>
-      </div>
+              </div>
+              </div>
   )
 }

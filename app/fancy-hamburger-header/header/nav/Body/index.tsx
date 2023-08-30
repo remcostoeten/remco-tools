@@ -10,6 +10,14 @@ interface BodyProps {
 }
 
 function Body({ links, selectedLink = { isActive: false, index: -1 }, setSelectedLink }: BodyProps) {
+    const setIsActive = () => {
+        setSelectedLink({ isActive: !selectedLink.isActive, index: selectedLink.index });
+    };
+
+    const closeMenuOnClick = () => {
+        setSelectedLink({ isActive: false, index: selectedLink.index });
+    };
+
     const getChars = (word: string) => {
         let chars: JSX.Element[] = [];
         word.split('').forEach((char, i) => {
@@ -35,6 +43,7 @@ function Body({ links, selectedLink = { isActive: false, index: -1 }, setSelecte
                             onMouseLeave={() => {
                                 setSelectedLink({ isActive: false, index });
                             }}
+                            onClick={closeMenuOnClick}
                             variants={blur}
                             animate={selectedLink.isActive && selectedLink.index !== index ? 'open' : 'closed'}
                         >
