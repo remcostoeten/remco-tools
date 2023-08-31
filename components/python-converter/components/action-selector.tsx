@@ -1,17 +1,17 @@
 'use client';
 
-import * as React from 'react';
 import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons';
 import { PopoverProps } from '@radix-ui/react-popover';
+import * as React from 'react';
 
-import { cn } from '@/utils/lib';
 import { useMutationObserver } from '@/hooks/use-mutation-observer';
+import { cn } from '@/utils/lib';
 import { Button } from '@ui/button';
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@ui/command';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@ui/hover-card';
 import { Label } from '@ui/label';
 import { Popover, PopoverContent, PopoverTrigger } from '@ui/popover';
-import { ActionType } from '../data/actions';
+import { Action, ActionType } from '../data/actions';
 
 interface ActionselectorProps extends PopoverProps {
     types: readonly ActionType[];
