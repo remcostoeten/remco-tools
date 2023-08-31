@@ -16,6 +16,7 @@ export default function generatePythonScript() {
     const [exclude, setExclude] = useState(false);
     const { setPythonScript } = useContext(ScriptContext);
     const [toggleScript, setToggleScript] = useState(false);
+    let [newScript, setNewScript] = useState('');
 
     const handleGenerateScript = () => {
         const newScript = `
@@ -43,6 +44,7 @@ export default function generatePythonScript() {
                 replace_in_directory(target_directory, old_string, new_string)
                 print(f'Replacement complete in {target_directory} directory.')
         `;
+        setNewScript(newScript);
         setPythonScript(newScript);
         toast({
             title: 'Python script generation completed.',
@@ -65,70 +67,6 @@ export default function generatePythonScript() {
         setExclude(e.target.checked);
     };
 
-    const generateScript = () => {
-        let newScript = '';
-
-        if (toggleScript) {
-            newScript = `
-                import os
-    
-                def process_scss_file(file_path):
-                    with open(file_path, 'r') as f:
-                        content = f.read()
-                    
-                    modified_content = content.replace("tstringone", "")
-                    
-                    with open(file_path, 'w') as f:
-                        f.write(modified_content)
-                
-                def search_and_process(directory):
-                    for root, _, files in os.walk(directory):
-                        for file_name in files:
-                            if file_name.endswith('.scss'):
-                                file_path = os.path.join(root, file_name)
-                                process_scss_file(file_path)
-                
-                def main():
-                    current_directory = os.getcwd()
-                    search_and_process(current_directory)
-                    print("Search and removal complete.")
-                if __name__ == "__main__":
-                    main()
-            `;
-        } else {
-            newScript = `
-                import os
-                import { generatePythonScript } from '@/utils/generatePythonScript';
-                
-                def replace_in_file(file_path, old_string, new_string):
-                    with open(file_path, 'r') as file:
-                        filedata = file.read()
-                    new_filedata = filedata.replace(old_string, new_string)
-                    with open(file_path, 'w') as file:
-                        file.write(new_filedata)
-                
-                def replace_in_directory(directory_path, old_string, new_string):
-                    for root, _, files in os.walk(directory_path):
-                        for file_name in files:
-                            if file_name.endswith('.txt'):  # Adjust the file extension as needed
-                                file_path = os.path.join(root, file_name)
-                                replace_in_file(file_path, old_string, new_string)
-                
-                if __name__ == '__main__':
-                    target_directory = '.'  # Current directory
-                    old_string = '${string1}'
-                    new_string = '${string2}'
-                    replace_in_directory(target_directory, old_string, new_string)
-                    print(f'Replacement complete in {target_directory} directory.')
-            `;
-        }
-
-        setPythonScript(newScript);
-        toast({
-            title: 'Script generation completed.',
-        });
-    };
-
     const handleToggle = () => {
         setToggleScript(!toggleScript);
     };
@@ -144,10 +82,10 @@ export default function generatePythonScript() {
                             Generate Python Script
                         </Button>
                     </div>
-                    {/* <pre>{pythonScript}</pre> */}
+                    <pre id="highlight-area">{newScript}</pre>
                 </div>
                 <div className="flex items-center space-x-2">
-                    <Button onClick={generateScript} className="w-full">
+                    <Button onClick={handleGenerateScript} className="w-full">
                         Generate Script
                     </Button>
                     <Button onClick={handleToggle} variant="secondary">

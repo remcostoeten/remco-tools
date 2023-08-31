@@ -27,7 +27,13 @@
       ],
       "@ui/*": [
         "./components/ui/*"
-      ]
+      ],
+      "@s/*": [
+        "./styles/*"
+      ],
+      "@sm/*": [
+        "./styles/module/*"
+      ],
     }
   },
   "include": [
@@ -36,6 +42,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/fancy-hamburger-header/header/anim.js"
-  ],
+,
+"components/core/BackgroundVariantTwo.tsx"
+],
   "exclude": ["node_modules"]
 }

@@ -12,7 +12,6 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from '@ui/hover-card';
 import { Label } from '@ui/label';
 import { Popover, PopoverContent, PopoverTrigger } from '@ui/popover';
 
-import { Action, Actions, ActionType } from '../data/actions';
 interface ActionselectorProps extends PopoverProps {
     types: readonly ActionType[];
     Actions: any;
@@ -65,13 +64,13 @@ export function Actionselector({ Actions, types, ...props }: ActionselectorProps
                                             <ActionsItem
                                                 key={Actions.id}
                                                 // @ts-ignore
-                                                Actions={Action}
                                                 isSelected={selectedActions?.id === Actions.id}
                                                 onPeek={(Actions) => setPeekedActions(Actions)}
                                                 onSelect={() => {
                                                     setSelectedActions(Actions);
                                                     setOpen(false);
                                                 }}
+                                                Actions={undefined}
                                             />
                                         ))}
                                     </CommandGroup>

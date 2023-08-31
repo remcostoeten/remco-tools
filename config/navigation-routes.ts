@@ -13,6 +13,10 @@ export const navigationRoutes = {
       href: "/playground",
     },
     {
+      title: "Backgrounds",
+      href: "/background",
+    }
+    /*{
       title: "HTML to JSX",
       href: "/html-to-jsx",
     },
@@ -42,5 +46,6 @@ export const navigationRoutes = {
        label: "WiP",
       href: "/docs/docs",
     }
+    */
   ],
 }

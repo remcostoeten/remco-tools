@@ -1,6 +1,4 @@
-'use client';
 import { CounterClockwiseClockIcon } from '@radix-ui/react-icons';
-import Image from 'next/image';
 
 import { Button } from '@ui/button';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@ui/hover-card';
@@ -14,7 +12,6 @@ import EditIcon from '@/components/icons/edit-icon';
 import InsertIcon from '@/components/icons/insert-icon';
 import { Actionselector } from '@/components/python-converter/components/action-selector';
 import { ScriptInput } from '@/components/python-converter/components/script-generate-input';
-import { useState } from 'react';
 import { MaxLengthSelector } from '../../components/playground/components/maxlength-selector';
 import { PresetActions } from '../../components/playground/components/preset-actions';
 import { PresetSave } from '../../components/playground/components/preset-save';
@@ -26,22 +23,11 @@ import { types } from '../../components/playground/data/models';
 import { presets } from '../../components/playground/data/presets';
 import { Actions } from '../../components/python-converter/data/actions';
 import PythonScriptGenerator from './components/python-script-generator';
-import ScriptContext from '@/context/ScriptContext';
-import { useContext } from 'react';
 
-// export const metadata: Metadata = {
-//     title: 'Playground',
-//     description: 'The OpenAI Playground built using the components.',
-// };
-
-export default function PlaygroundPage() {
+export default function pythonScriptPlayground() {
     return (
         <>
-            <div className="md:hidden">
-                <Image src="/examples/playground-light.png" width={1280} height={916} alt="Playground" className="block dark:hidden" />
-                <Image src="/examples/playground-dark.png" width={1280} height={916} alt="Playground" className="hidden dark:block" />
-            </div>
-            <div className="hidden h-full flex-col md:flex">
+            <div className="h-full flex-col md:flex">
                 <div className="container flex flex-col items-start justify-between space-y-2 py-4 sm:flex-row sm:items-center sm:space-y-0 md:h-16">
                     <h2 className="text-lg font-semibold">Generate your python script 🐍</h2>
                     <div className="ml-auto flex w-full space-x-2 sm:justify-end">
