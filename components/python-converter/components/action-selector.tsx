@@ -11,6 +11,7 @@ import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, Command
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@ui/hover-card';
 import { Label } from '@ui/label';
 import { Popover, PopoverContent, PopoverTrigger } from '@ui/popover';
+import { ActionType } from '../data/actions';
 
 interface ActionselectorProps extends PopoverProps {
     types: readonly ActionType[];

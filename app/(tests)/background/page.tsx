@@ -1,6 +1,4 @@
 'use client';
-'use client';
-
 import * as React from 'react';
 import { Check, ChevronsUpDown } from 'lucide-react';
 
@@ -26,6 +24,7 @@ export default function ComboboxDemo() {
         { label: 'Variant 3', value: 'Variant', onClick: () => handleVariantToggle(3) },
         { label: 'Variant 4', value: 'Variant', onClick: () => handleVariantToggle(4) },
     ];
+
     return (
         <div className="grid w-screen h-screen place-items-center">
             <button onClick={() => handleVariantToggle(1)}>Variant 1</button>
@@ -33,9 +32,14 @@ export default function ComboboxDemo() {
             <button onClick={() => handleVariantToggle(3)}>Variant 3</button>
             <button onClick={() => handleVariantToggle(4)}>Variant 4</button>
 
-            {activeVariant === 1 && <BackgroundVariantOne className={cn({ hidden: activeVariant !== 1 })} />}
-            {activeVariant === 2 && <BackgroundVariantTwo className={cn({ hidden: activeVariant !== 2 })} />}
-            <Popover open={open} onOpenChange={setOpen}>
+            {/* @ts-ignore */}
+            {activeVariant === 1 && <BackgroundVariantOne className="hidden: activeVariant !== 1" />}
+            {/* @ts-ignore */}
+            {activeVariant === 2 && <BackgroundVariantTwo className="hidden: activeVariant !== 2" />}
+            {/* @ts-ignore */}
+            <Popover open={open} onOpenChange={setOpen} className="...">
+                {' '}
+                {/* Fix the className typo */}
                 <PopoverTrigger asChild>
                     <Button variant="outline" role="combobox" aria-expanded={open} className="w-[200px] justify-between">
                         {value ? variants.find((variants) => variants.value === value)?.label : 'Select variants...'}

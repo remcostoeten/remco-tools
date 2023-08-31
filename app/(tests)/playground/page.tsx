@@ -9,20 +9,20 @@ import { Separator } from '@ui/separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@ui/tabs';
 import { Textarea } from '@ui/textarea';
 
-import { CodeViewer } from '../../components/playground/components/code-viewer';
-import { MaxLengthSelector } from '../../components/playground/components/maxlength-selector';
-import { ModelSelector } from '../../components/playground/components/model-selector';
-import { PresetActions } from '../../components/playground/components/preset-actions';
-import { PresetSave } from '../../components/playground/components/preset-save';
-import { PresetSelector } from '../../components/playground/components/preset-selector';
-import { PresetShare } from '../../components/playground/components/preset-share';
-import { TemperatureSelector } from '../../components/playground/components/temperature-selector';
-import { TopPSelector } from '../../components/playground/components/top-p-selector';
-import { models, types } from '../../components/playground/data/models';
-import { presets } from '../../components/playground/data/presets';
-import EditIcon from '@/components/icons/edit-icon';
-import CompleteIcon from '@/components/icons/complete-icon';
-import InsertIcon from '@/components/icons/insert-icon';
+import { CodeViewer } from '@c/playground/components/code-viewer';
+import { MaxLengthSelector } from '@c/playground/components/maxlength-selector';
+import { ModelSelector } from '@c/playground/components/model-selector';
+import { PresetActions } from '@c/playground/components/preset-actions';
+import { PresetSave } from '@c/playground/components/preset-save';
+import { PresetSelector } from '@c/playground/components/preset-selector';
+import { PresetShare } from '@c/playground/components/preset-share';
+import { TemperatureSelector } from '@c/playground/components/temperature-selector';
+import { TopPSelector } from '@c/playground/components/top-p-selector';
+import { models, types } from '@c/playground/data/models';
+import { presets } from '@c/playground/data/presets';
+import EditIcon from '@c/icons/edit-icon';
+import CompleteIcon from '@c/icons/complete-icon';
+import InsertIcon from '@c/icons/insert-icon';
 
 export const metadata: Metadata = {
     title: 'Playground',
