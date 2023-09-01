@@ -15,19 +15,9 @@ export default function FancyHeader() {
             setIsActive(!isActive);
         }} className={`${styles.header} ${isActive ? 'is-open' : 'is-closed'}`}>
             <div className={styles.bar}>
-            <div
-                    onClick={() => {
-                        setIsActive(!isActive);
-                    }}
-                    className={styles.el}
-                    // <div className={`menu__item--doner ${isActive ? 'open' : 'closed'}`} tabIndex={2}>
-
-                >
                 <Link href="/">
                     <RemcoLogoIcon />
                 </Link>
-                </div>
-
                 <motion.div variants={opacity} animate={!isActive ? 'open' : 'closed'} className={styles.shopContainer}>
                     <p className={styles.shop}>Shop</p>
                     <div className={styles.el}></div>
@@ -37,10 +27,9 @@ export default function FancyHeader() {
                         setIsActive(!isActive);
                     }}
                     className={styles.el}
-                    // <div className={`menu__item--doner ${isActive ? 'open' : 'closed'}`} tabIndex={2}>
-
                 >
-                 
+                    <div className={`${styles.burger} ${isActive ? styles.burgerActive : ''}`}></div>
+                </div>
             </div>
             <motion.div variants={background} initial="initial" animate={isActive ? 'open' : 'closed'} className={styles.background}></motion.div>
             <AnimatePresence mode="wait">{isActive && <Nav />}</AnimatePresence>
