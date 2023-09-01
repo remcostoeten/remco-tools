@@ -5,7 +5,8 @@
     position: fixed;
     width: 100%;
     box-sizing: border-box;
-    padding: 10px;
+    padding: 10px  10px 100px 10px;
+    margin-bottom: 100px;
 
     .background{
         background-color: black;
@@ -32,7 +33,7 @@
 
         a{
             text-decoration: none;
-            color: black;
+            color: $black;
             position: absolute;
             left: 0;
         }
