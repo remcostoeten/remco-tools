@@ -20,9 +20,7 @@ export default function Nav(props: NavProps) {
     return (
         <div className={styles.header}>
             <div id="hamburger" className={`hamburglar ${!isActive ? 'is-open' : 'is-closed'}`}></div>
-            <Link href="/">
-                <RemcoLogoIcon />
-            </Link>
+       
             <div onClick={() => setIsActive(!isActive)} className={styles.el}>
                 <div className={`${styles.burger} ${isActive ? styles.burgerActive : ''}`} />
                 <div className={styles.label}>

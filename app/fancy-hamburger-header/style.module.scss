@@ -1,12 +1,12 @@
 @import '../../styles/variables/variables.scss';
 
 .header{
-    position: fixed;
     width: 100%;
     box-sizing: border-box;
     padding: 10px 40px;
-    margin: -30px  0 20px;
-
+    display: flex;
+    justify-content: flex-end;
+    
     .background{
         background-color: $black;
         height: 100%;

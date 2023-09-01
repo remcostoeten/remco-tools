@@ -1,9 +1,17 @@
 body {
     background-color: $black;
     color: $white ;
+    margin: 0 auto;
 }
 
-
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: $container-width;
+    margin: 0 auto;
+    padding: 0 $spacing-xl;
+}
 
 .logo {
     transform: translateX(20px);

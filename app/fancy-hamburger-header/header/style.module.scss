@@ -1,12 +1,15 @@
 @import '../../styles/utils/variables';
         
 .header {
-    background-color: $white;
-    position: fixed;
-    width: 100%;
     box-sizing: border-box;
-    padding: 10px  10px 100px 10px;
+    background-color: red;
     margin-bottom: 100px;
+    left: 0 ;
+    top: 0;
+
+    .logo {
+        position: relative;
+    }
 
     .background{
         background-color: $black;
@@ -27,7 +30,7 @@
         position: relative;
 
         p{
-             color: $white;
+             color: #f1f1ef;
             margin: 0px;
         }
 

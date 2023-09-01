@@ -1,12 +1,16 @@
 import '@/styles/styles.scss';
-import { Inter } from 'next/font/google';
+import { Roboto_Condensed } from 'next/font/google';
 import { siteConfig } from '@/utils/site';
 import { Toaster } from '@/components/ui/toaster';
 import { Analytics } from '@vercel/analytics/react';
 import { ThemeProvider } from '@/components/theme-provider';
 import FancyHeader from './fancy-hamburger-header/header';
 import { ReactNode } from 'react';
-const inter = Inter({ subsets: ['latin'] });
+const inter = {
+    font: 'Roboto Condensed',
+    subsets: ['latin'],
+    weights: ['300', '600', '800'],
+};
 
 export const metadata = {
     title: {
@@ -45,13 +49,18 @@ export default function RootLayout({ children }: LayoutProps) {
     return (
         <html lang="en" suppressHydrationWarning>
             <head />
-            <body className="font-sans antialiased">
+            <body className="roboto font-sans antialiased">
                 {/* <ThemeProvider attribute="class" defaultTheme="system" enableSystem> */}
-                <FancyHeader /> <main className="page-wrapper__inner ">{children}</main>
+                <div className="container">
+                <FancyHeader />
+                     <main className="page-wrapper__inner ">
+                         {children}
+                     </main>
                 <Analytics />
                 <Toaster />
-                {/* </ThemeProvider> */}
+                {/* </ThemeProvider> */}</div>
             </body>
         </html>
     );
 }
+              
