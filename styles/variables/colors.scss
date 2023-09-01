@@ -1,2 +1,10 @@
 $color-primary: pink;
 $color-secondary: blue;
+
+$black: #333; 
+$white: #eee; 
+
+@apply {
+.bg-black {
+    to-background: $black;
+}}
