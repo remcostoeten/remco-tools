@@ -1,10 +1,9 @@
 $color-primary: pink;
 $color-secondary: blue;
 
-$black: #333; 
+$black: #111; 
 $white: #eee; 
 
-@apply {
-.bg-black {
-    to-background: $black;
-}}
+.black {
+    background-color: $black;
+}

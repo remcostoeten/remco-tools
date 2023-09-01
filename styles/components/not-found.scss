@@ -24,6 +24,7 @@
     position: absolute;
     top: 0;
     bottom: 0;
+    color: $white;
     left: -60px;
     right: 0;
     animation: noise 2s linear infinite;
@@ -65,6 +66,7 @@
     bottom: 0;
     left: 0;
     right: 0;
+    color: $white;
     animation: noise-3 1s linear infinite;
 }
 
@@ -84,7 +86,6 @@
     left: 0;
     right: 0;
     opacity: 0;
-    color: red;
     animation: noise-2 0.2s linear infinite;
 }
 

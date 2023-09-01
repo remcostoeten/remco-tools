@@ -15,6 +15,10 @@ export const navigationRoutes = {
     {
       title: "Backgrounds",
       href: "/background",
+    },
+    {
+      title: "custom 404 ",
+      href: "/thisroutedoesnotexistquitelongisntit?",
     }
     /*{
       title: "HTML to JSX",

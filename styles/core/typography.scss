@@ -1,0 +1,17 @@
+h1 {
+    width: 100%;
+    margin: 0 auto 1.5em;
+    font-size: 30px;
+    text-align: center;
+    color: $white;
+    font-weight: 700;
+
+    small {
+      text-transform: none;
+      display: block;
+      margin: 20px 0;
+      font: 400 20px ;
+      color: $white;
+    }
+  }
+  

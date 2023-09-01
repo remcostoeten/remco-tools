@@ -13,7 +13,7 @@ export function CodeViewer() {
                     <DialogDescription>You can use the following code to start integrating your current prompt and settings into your application.</DialogDescription>
                 </DialogHeader>
                 <div className="grid gap-4">
-                    <div className="rounded-md bg-black p-6">
+                    <div className="rounded-md black p-6">
                         <pre>
                             <code className="grid gap-1 text-sm text-muted-foreground [&_span]:h-4">
                                 <span>
