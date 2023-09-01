@@ -53,11 +53,11 @@ const FormOptions: React.FC<FormOptionsProps> = ({
                 <RadioGroup defaultValue="option-one">
                     <div className="flex items-center space-x-2">
                         <RadioGroupItem value="option-one" id="option-one" />
-                        <Label htmlFor="option-one">Str replace One</Label>
+                        <Label className="text-white" htmlFor="option-one">Str replace One</Label>
                     </div>
                     <div className="flex items-center space-x-2">
                         <RadioGroupItem value="option-two" id="option-two" />
-                        <Label htmlFor="option-two">Option Two</Label>
+                        <Label className="text-white" htmlFor="option-two">Option Two</Label>
                     </div>
                 </RadioGroup>
                 <div className="grid gap-2">
