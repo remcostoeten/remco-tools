@@ -11,7 +11,9 @@ export default function FancyHeader() {
     const [isActive, setIsActive] = useState(false);
 
     return (
-        <div className={`${styles.header} ${isActive ? 'is-open' : 'is-closed'}`}>
+        <div   onClick={() => {
+            setIsActive(!isActive);
+        }} className={`${styles.header} ${isActive ? 'is-open' : 'is-closed'}`}>
             <div className={styles.bar}>
                 <Link href="/">
                     <RemcoLogoIcon />
