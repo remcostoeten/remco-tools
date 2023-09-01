@@ -1,3 +1,4 @@
+//  @ts-nocheck
 "use client "
 
 import React, { useState } from "react"
@@ -5,10 +6,8 @@ import { PlusIcon } from "@radix-ui/react-icons"
 import { motion } from "framer-motion"
 
 import { Input } from "@/components/ui/input"
-// Make sure to import Input and other necessary components
 import { Switch } from "@/components/ui/switch"
 
-// Import other components as needed
 
 const PropsEditor = ({
   removeProp,

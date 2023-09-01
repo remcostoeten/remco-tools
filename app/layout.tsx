@@ -4,8 +4,8 @@ import { siteConfig } from '@/utils/site';
 import { Toaster } from '@/components/ui/toaster';
 import { Analytics } from '@vercel/analytics/react';
 import { ThemeProvider } from '@/components/theme-provider';
-import { LayoutProps } from '@/utils/types';
 import FancyHeader from './fancy-hamburger-header/header';
+import { ReactNode } from 'react';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
@@ -37,6 +37,9 @@ export const metadata = {
         },
     ],
 };
+
+interface LayoutProps {    children: ReactNode;
+}
 
 export default function RootLayout({ children }: LayoutProps) {
     return (

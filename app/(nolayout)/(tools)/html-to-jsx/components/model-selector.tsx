@@ -1,15 +1,15 @@
+// @ts-nocheck
 "use client"
-
-import { useContext, useState } from "react"
-import { Collapsible, CollapsibleContent } from "@radix-ui/react-collapsible"
-import { AnimatePresence, motion } from "framer-motion"
 
 import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
-
+import { Collapsible, CollapsibleContent } from "@radix-ui/react-collapsible"
+import { AnimatePresence, motion } from "framer-motion"
+import { useContext, useState } from "react"
 import { AppContext } from "../AppContext"
 
-function ModelSelector({ models, types, ...props }) {
+
+function ModelSelector({ models, types }) {
   const [open, setOpen] = useState(false)
   const [selectedModel, setSelectedModel] = useState(models[0])
   const [peekedModel, setPeekedModel] = useState(models[0])

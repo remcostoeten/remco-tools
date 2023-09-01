@@ -3,8 +3,10 @@ import CustomStatusBadge from "@/components/core/StatusBadge"
 import {
   PageHeader,
   PageHeaderDescription
-} from "@/components/ui-dashboard/page-nav"
+} from "@/components/ui/page-nav"
 import Typewriter from "./components/alternating-text"
+import { ReactNode } from 'react'
+import { LayoutProps } from '@/utils/types'
 
 const metadata = {
   title: {
@@ -35,7 +37,7 @@ const metadata = {
   manifest: "https://remcostoeten.nl/site.webmanifest",
 }
 
-export default function ConverterLayout({ children }) {
+export default function ConverterLayout({ children } : LayoutProps) {
   return (
     <>
       <Head>

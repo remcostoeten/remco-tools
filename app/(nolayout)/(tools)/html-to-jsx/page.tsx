@@ -12,7 +12,7 @@ import { Tabs, TabsContent } from "@/components/ui/tabs"
 import { Textarea } from "@/components/ui/textarea"
 
 import { AppContext } from "./AppContext"
-import PropsEditor from "./components/ props-editor"
+import PropsEditor from "./components/props-editor"
 import { CodeViewer } from "./components/code-viewer"
 import { MaxLengthSelector } from "./components/maxlength-selector"
 import ModelSelector from "./components/model-selector"

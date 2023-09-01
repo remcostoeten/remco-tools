@@ -1,3 +1,14 @@
+export interface Task {
+  id: string;
+  title: string;
+  label: string;
+  priority: string;
+  task: string;
+  description: string;
+  createdAt: string;  
+     status: string;
+}
+
 export interface SiteConfig {
   name: string;
   description: string;
@@ -20,3 +31,5 @@ export interface SiteConfig {
   export type LayoutProps = {
     children: React.ReactNode
   }
+
+  

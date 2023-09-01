@@ -10,6 +10,7 @@ type MapDisplayProps = {
 const MapDisplay: React.FC<MapDisplayProps> = ({ latitude, longitude }) => {
   return (
     <div className='w-full h-[40vh] rounded-md shadow-lg'>
+   {/* @ts-ignore */}
     <MapContainer center={[latitude, longitude]} zoom={13} style={{ height: "100%", width: "100%" }}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
