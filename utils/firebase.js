@@ -8,6 +8,7 @@ import { getFirestore } from 'firebase/firestore';
 import { updateProfile } from 'firebase/auth';
 
 const firebaseConfig = {
+<<<<<<< HEAD
 	apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
 	authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
 	projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
@@ -15,6 +16,10 @@ const firebaseConfig = {
 	messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
 	appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 }
+=======
+	authDomain: 'notes-e3c78.f
+	projectId: 
+>>>>>>> origin/feature/firebase
 
 const signInWithGoogle = () => {
 	const auth = getAuth();

@@ -1,7 +1,7 @@
 @import '../../styles/utils/variables';
         
-.header{
-    background-color: #f4f0ea;
+.header {
+    background-color: $white;
     position: fixed;
     width: 100%;
     box-sizing: border-box;
@@ -9,7 +9,7 @@
     margin-bottom: 100px;
 
     .background{
-        background-color: black;
+        background-color: $black;
         opacity: 0.5;
         height: 100%;
         width: 100%;
@@ -27,7 +27,7 @@
         position: relative;
 
         p{
-             color: #f1f1ef;
+             color: $white;
             margin: 0px;
         }
 
