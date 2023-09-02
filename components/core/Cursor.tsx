@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import GreenCursor from "../icons/Cursor/GreenCursor";
 import PinkCursor from "../icons/Cursor/PinkCursor";
 
+// ... (import statements and other code)
+
 const CustomCursor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
@@ -52,13 +54,13 @@ const CustomCursor = () => {
 
   return (
     <motion.div
-      initial={{ x: 0, y: 0, scale: 1 }}
+      initial={{ x: -100, y: 0, scale: 1 }}
       animate={{
-        x: position.x - -75,
-        y: position.y - -10,
-        scale: isHovered ? 2 : 1,
+        x: position.x - 0,
+        y: position.y  -30,
+        scale: isHovered ? 1.5 : 1,
       }}
-      transition={{ type: "tween", ease: "backOut", duration: 0.1 }}
+      transition={{ type: "tween",  duration: 0  }}
       style={{
         position: "fixed",
         top: 0,

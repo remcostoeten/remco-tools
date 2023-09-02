@@ -14,8 +14,18 @@ body {
         font-weight: 300;
         color: $white;
     }
-}
+    .cursor {
+        transition: 500ms ease-in-out opacity;
+        display: none;
+        scale: 0;
+    }
 
-*{
-    cursor: none;
+
+    &:hover {
+        .cursor  {
+            scale: 1;
+            transition: 500ms ease-in-out opacity;
+            display: block;
+        }
+    }
 }

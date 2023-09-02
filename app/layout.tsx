@@ -3,6 +3,7 @@ import { Roboto_Condensed } from 'next/font/google';
 import { siteConfig } from '@/utils/site';
 import { Toaster } from '@/components/ui/toaster';
 import { Analytics } from '@vercel/analytics/react';
+import { ThemeProvider } from '@/components/theme-provider';
 import FancyHeader from './fancy-hamburger-header/header';
 import { ReactNode } from 'react';
 import Cursor from '@/components/core/Cursor';
@@ -53,16 +54,16 @@ export default function RootLayout({ children }: LayoutProps) {
         <html lang="en" suppressHydrationWarning>
             <head />
             <body className="roboto font-sans antialiased">
-                <Cursor />
-                <CursorBlock/>
                 {/* <ThemeProvider attribute="class" defaultTheme="system" enableSystem> */}
                 <div className="container">
-                    <FancyHeader />
+                <FancyHeader />
                     <main className="page-wrapper__inner ">{children}</main>
+                <CursorBlock/>
                     <Analytics />
                     <Toaster />
                     {/* </ThemeProvider> */}
                 </div>
+                <Cursor />
             </body>
         </html>
     );
