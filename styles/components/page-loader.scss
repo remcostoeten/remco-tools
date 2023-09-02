@@ -1,107 +1,53 @@
-@import 'https://fonts.googleapis.com/css?family=Playfair+Display:400,700i,900i';
-
-$green: #7ceaa4;
-$purple: #3b3d54;
-
-*{
-  box-sizing: border-box;
+.spinner {
+	min-height: 275px;
 }
 
-.wrap{
-	perspective-origin: 50% 50%;
+.spinner h3 {
+	position: relative;
 }
 
-.page{
-	margin: 3%;
-	max-width:600px;
-	margin-left:auto;
-	margin-right: auto;
-	padding: 30px;
-	border-radius: 3px;
-	text-align:center;
-	font-size: 1.4vw;
-	h2{
-		font-weight: bold;
-		font-size: 6.5vw;
-		font-weight: 900;
-		font-style: italic;
-		color:#dad8ec;
+.spinner h3:after {
+	content: "";
+	box-sizing: border-box;
+	position: absolute;
+	top: 150px;
+	left: 50%;
+	width: 40px;
+	height: 40px;
+	margin-top: -20px;
+	margin-left: -20px;
+	border-radius: 50%;
+	border: 4px solid #b1b1b2;
+	border-top-color: #323e48;
+	-webkit-animation: spinner 1s linear infinite;
+	animation: spinner 1s linear infinite;
+}
+
+@-webkit-keyframes spinner {
+	to {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
 	}
 }
 
-.svg{
-	stroke:$green;
-	position:absolute;
-	bottom: -100vh;
-	transform-style: preserve-3d;
-}
-
-$total: 10;
-@for $i from 1 through $total {
-	$scale:random(2) - .4;
-	
-	.svg:nth-child(#{$i}){
-		left:random(120) * 1% - 20;
-		animation: raise#{$i} 6 + random(15) +s linear infinite;
-		animation-delay:random(5) - 5 + s;
-		transform: scale(.3 * $i - .6) rotate(random(360) + deg);
-		z-index: $i - 7;
-		filter: blur($i - 6 + px);
-
-	  @keyframes raise#{$i} {
-		  to{
-			 bottom:150vh;
-			 transform: scale(.3 * $i - .6) rotate(random(360) + deg);
-			}
-		}
+@keyframes spinner {
+	to {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
 	}
 }
-// .page-loader {
-// }
 
-// .jumping-dots-loader {
-//     width: 100px;
-//     height: 100px;
-//     border-radius: 100%;
-//     position: relative;
-//     margin: 0 auto;
-// }
-
-// .jumping-dots-loader span {
-//     display: inline-block;
-//     width: 20px;
-//     height: 20px;
-//     border-radius: 100%;
-//     background-color: rgba(241, 83, 110, 0.8);
-//     margin: 35px 5px;
-// }
-
-// .jumping-dots-loader span:nth-child(1) {
-//     animation: bounce 1s ease-in-out infinite;
-// }
-
-// .jumping-dots-loader span:nth-child(2) {
-//     animation: bounce 1s ease-in-out 0.33s infinite;
-// }
-
-// .jumping-dots-loader span:nth-child(3) {
-//     animation: bounce 1s ease-in-out 0.66s infinite;
-// }
-
-// @keyframes bounce {
-//     0%,
-//     75%,
-//     100% {
-//         -webkit-transform: translateY(0);
-//         -ms-transform: translateY(0);
-//         -o-transform: translateY(0);
-//         transform: translateY(0);
-//     }
-
-//     25% {
-//         -webkit-transform: translateY(-20px);
-//         -ms-transform: translateY(-20px);
-//         -o-transform: translateY(-20px);
-//         transform: translateY(-20px);
-//     }
-// }
+/* from MDN - https://developer.mozilla.org/ */
+.visually-hidden {
+	clip: rect(1px, 1px, 1px, 1px) !important;
+	border: 0 !important;
+	-webkit-clip-path: inset(50%) !important;
+	clip-path: inset(50%) !important;
+	height: 1px !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	padding: 0 !important;
+	position: absolute !important;
+	white-space: nowrap !important;
+	width: 1px !important;
+}

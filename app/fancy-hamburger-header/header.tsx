@@ -13,7 +13,6 @@ export default function FancyHeader() {
 
   return (
     <>
-      <Header />
       <div
         onClick={() => {
           setIsActive(!isActive);

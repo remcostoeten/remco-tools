@@ -12,16 +12,16 @@ export const links = [
     hash: "#home",
   },
   {
-    name: "About",
-    hash: "#about",
+    name: "HTML to JSX",
+    hash: "html-to-jsx",
   },
   {
-    name: "Projects",
-    hash: "#projects",
+    name: "Geolocation",
+    hash: "geolocation",
   },
   {
-    name: "Skills",
-    hash: "#skills",
+    name: "Todo",
+    hash: "todo",
   },
   {
     name: "Experience",

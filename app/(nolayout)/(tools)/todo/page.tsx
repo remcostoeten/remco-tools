@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 async function getTasks() {
-	const querySnapshot = await getDocs(collection(db, 'notes'));
+	const querySnapshot = await getDocs(collection(db, 'vapes'));
 	const tasks = [];
 	querySnapshot.forEach((doc) => {
 		const taskData = doc.data() as any;
