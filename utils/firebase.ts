@@ -9,9 +9,8 @@ import {
 } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import { FC, useState } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { toast } from '@/components/ui/use-toast';
-import { Sign } from 'crypto';
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -26,14 +25,11 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore(app);
 
-const SignInWithGoogle: FC = () => {
-  const [isGoogleLoading, setIsGoogleLoading] = useState(false);
+const SignInWithGoogle = () => {
   const router = useRouter();
 
   const signInWithGoogle = () => {
     const provider = new GoogleAuthProvider();
-
-    setIsGoogleLoading(true);
 
     signInWithPopup(auth, provider)
       .then((userCredential) => {
@@ -56,12 +52,8 @@ const SignInWithGoogle: FC = () => {
           variant: 'destructive',
         });
       })
-      .finally(() => {
-        setIsGoogleLoading(false);
-      });
   };
 
-  return <button onClick={signInWithGoogle} disabled={isGoogleLoading}>Sign In with Google</button>;
 };
 
 export default SignInWithGoogle;

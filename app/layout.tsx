@@ -3,11 +3,9 @@ import { Roboto_Condensed } from 'next/font/google';
 import { siteConfig } from '@/utils/site';
 import { Toaster } from '@/components/ui/toaster';
 import { Analytics } from '@vercel/analytics/react';
-import { ThemeProvider } from '@/components/theme-provider';
 import FancyHeader from './fancy-hamburger-header/header';
 import { ReactNode } from 'react';
 import Cursor from '@/components/core/Cursor';
-import { useMouseHover } from '@/hooks/useMouseHover';
 import CursorBlock from '@/components/CursorBlock';
 const inter = {
     font: 'Roboto Condensed',
