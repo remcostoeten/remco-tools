@@ -73,6 +73,8 @@
     "react-day-picker": "^8.8.1",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.45.4",
+    "react-icons": "^4.10.1",
+    "react-intersection-observer": "^9.5.2",
     "react-leaflet": "^4.2.1",
     "react-markdown": "^8.0.7",
     "react-quill": "^2.0.0",
@@ -87,7 +89,6 @@
     "typed.js": "^2.0.16",
     "unist-util-visit": "^5.0.0",
     "vaul": "^0.1.2",
-    "react-icons": "^4.10.1",
     "zod": "^3.22.1"
   },
   "devDependencies": {
