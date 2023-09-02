@@ -1,43 +1,94 @@
-'use client';
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { useMouseHover } from '@/hooks/useMouseHover';
+"use client";
+// components/CustomCursor.tsx
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
-function Cursor() {
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-    const { cursorVariant, textEnter, textLeave } = useMouseHover();
+const CustomCursor = () => {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
 
-    useEffect(() => {
-        const mouseMove = (e: MouseEvent) => {
-            setMousePosition({
-                x: e.clientX,
-                y: e.clientY,
-            });
-        };
-
-        window.addEventListener('mousemove', mouseMove);
-
-        return () => {
-            window.removeEventListener('mousemove', mouseMove);
-        };
-    }, []);
-
-    const variants = {
-        default: {
-            x: mousePosition.x - 16,
-            y: mousePosition.y - 16,
-        },
-        text: {
-            height: 150,
-            width: 150,
-            x: mousePosition.x - 75,
-            y: mousePosition.y - 75,
-            backgroundColor: 'yellow',
-            mixBlendMode: 'difference',
-        },
+  useEffect(() => {
+    const handleMouseMove = (event: MouseEvent) => {
+      setPosition({ x: event.clientX, y: event.clientY });
     };
 
-    return <motion.div className="cursor" variants={variants} animate={cursorVariant} />;
-}
+    const handleMouseEnter = (event: Event) => {
+      const target = event.target as HTMLElement;
+      if (target && target.closest("[data-cursor-hover]")) {
+        setIsHovered(true);
+      }
+    };
 
-export default Cursor;
+    const handleMouseLeave = (event: Event) => {
+      const target = event.target as HTMLElement;
+      if (target && !target.closest("[data-cursor-hover]")) {
+        setIsHovered(false);
+      }
+    };
+
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseover", handleMouseEnter);
+    document.addEventListener("mouseout", handleMouseLeave);
+
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseover", handleMouseEnter);
+      document.removeEventListener("mouseout", handleMouseLeave);
+    };
+  }, []);
+
+  return (
+    <motion.div
+    initial={{ x: 0, y: 0, scale: 1 }}
+    animate={{
+      x: position.x,
+      y: position.y,
+      scale: isHovered ? 2 : 1,
+    }}
+    transition={{ ease: "linear", duration: 0.15 }}
+    style={{
+      position: "fixed",
+      top: 0,
+      left: 0,
+      zIndex: 9999,
+      pointerEvents: "none",
+    }}
+  >
+
+<svg width="378" height="126" viewBox="0 0 378 126" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d_2_646)">
+<path d="M22.5 51L15 12L48 31.5L31.5 36L22.5 51Z" fill="#1BC47D"/>
+<path d="M15.7631 10.7086L12.8987 9.01599L13.527 12.2833L21.027 51.2832L21.7679 55.1358L23.7863 51.7716L32.4762 37.2885L48.3948 32.9472L51.8178 32.0136L48.7632 30.2085L15.7631 10.7086Z" stroke="white" stroke-linecap="square"/>
+</g>
+<g filter="url(#filter1_d_2_646)">
+<path d="M363 60H66C64.3431 60 63 61.3431 63 63V108C63 109.657 64.3431 111 66 111H363C364.657 111 366 109.657 366 108V63C366 61.3431 364.657 60 363 60Z" fill="#1BC47D"/>
+<path d="M79.0321 96H88.2313C93.8095 96 96.3289 93.2226 96.3289 89.5431C96.3289 85.8282 93.7276 83.7306 91.3486 83.6016V83.3673C93.5518 82.8048 95.3914 81.3048 95.3914 78.3048C95.3914 74.754 92.9305 72 87.8212 72H79.0321V96ZM82.6534 92.8944V85.2069H88.0087C90.9151 85.2069 92.7313 87.0819 92.7313 89.3673C92.7313 91.3827 91.3603 92.8944 87.8797 92.8944H82.6534ZM82.6534 82.3827V75.0819H87.5986C90.4696 75.0819 91.8409 76.5936 91.8409 78.5859C91.8409 80.9061 89.9422 82.3827 87.5047 82.3827H82.6534ZM100.673 96H104.177V85.0077C104.177 82.6524 105.993 80.9532 108.477 80.9532C109.204 80.9532 110.024 81.0819 110.306 81.1641V77.8125C109.954 77.7657 109.262 77.7306 108.817 77.7306C106.708 77.7306 104.903 78.9258 104.247 80.8593H104.059V78H100.673V96ZM125.07 88.5351C125.082 91.5936 122.808 93.0468 120.839 93.0468C118.672 93.0468 117.172 91.4766 117.172 89.0274V78H113.668V89.4492C113.668 93.9141 116.117 96.2343 119.574 96.2343C122.281 96.2343 124.121 94.8048 124.953 92.8827H125.14V96H128.586V78H125.07V88.5351ZM141.206 96.3633C145.46 96.3633 148.214 93.8085 148.6 90.3048H145.19C144.745 92.25 143.233 93.3984 141.229 93.3984C138.264 93.3984 136.354 90.9258 136.354 87C136.354 83.1444 138.299 80.7186 141.229 80.7186C143.456 80.7186 144.815 82.125 145.19 83.8125H148.6C148.225 80.1798 145.26 77.7657 141.17 77.7657C136.096 77.7657 132.815 81.5859 132.815 87.0819C132.815 92.5077 135.979 96.3633 141.206 96.3633ZM160.435 96.3633C164.361 96.3633 167.138 94.4298 167.935 91.5L164.619 90.9024C163.986 92.6016 162.462 93.4686 160.47 93.4686C157.47 93.4686 155.455 91.5234 155.361 88.0548H168.158V86.8125C168.158 80.3085 164.267 77.7657 160.189 77.7657C155.174 77.7657 151.869 81.5859 151.869 87.1173C151.869 92.7069 155.126 96.3633 160.435 96.3633ZM155.373 85.4298C155.513 82.875 157.365 80.6601 160.212 80.6601C162.931 80.6601 164.712 82.6758 164.724 85.4298H155.373ZM180.536 75.1173H188.013V96H191.622V75.1173H199.111V72H180.536V75.1173ZM208.236 96.3633C213.31 96.3633 216.626 92.6484 216.626 87.0819C216.626 81.4806 213.31 77.7657 208.236 77.7657C203.162 77.7657 199.845 81.4806 199.845 87.0819C199.845 92.6484 203.162 96.3633 208.236 96.3633ZM208.247 93.4218C204.931 93.4218 203.384 90.5274 203.384 87.0702C203.384 83.625 204.931 80.6952 208.247 80.6952C211.54 80.6952 213.087 83.625 213.087 87.0702C213.087 90.5274 211.54 93.4218 208.247 93.4218ZM228.414 103.125C232.996 103.125 236.535 101.027 236.535 96.3984V78H233.102V80.9181H232.844C232.223 79.8048 230.981 77.7657 227.629 77.7657C223.281 77.7657 220.082 81.1992 220.082 86.9298C220.082 92.6718 223.352 95.7306 227.606 95.7306C230.91 95.7306 232.188 93.8673 232.82 92.7186H233.043V96.2577C233.043 99.0819 231.11 100.301 228.449 100.301C225.531 100.301 224.395 98.8359 223.774 97.8048L220.762 99.0468C221.711 101.25 224.114 103.125 228.414 103.125ZM228.379 92.8242C225.25 92.8242 223.621 90.4218 223.621 86.8827C223.621 83.4258 225.215 80.7423 228.379 80.7423C231.438 80.7423 233.078 83.2383 233.078 86.8827C233.078 90.5976 231.403 92.8242 228.379 92.8242ZM245.069 85.3125C245.069 82.4415 246.826 80.8008 249.264 80.8008C251.643 80.8008 253.084 82.3593 253.084 84.9726V96H256.588V84.5508C256.588 80.0976 254.139 77.7657 250.459 77.7657C247.752 77.7657 245.983 79.0194 245.15 80.9298H244.928V78H241.565V96H245.069V85.3125ZM266.855 96.3984C269.832 96.3984 271.508 94.8867 272.176 93.5391H272.316V96H275.738V84.0468C275.738 78.8085 271.613 77.7657 268.754 77.7657C265.496 77.7657 262.496 79.0782 261.324 82.3593L264.617 83.1093C265.133 81.8319 266.445 80.6016 268.801 80.6016C271.063 80.6016 272.223 81.7851 272.223 83.8242V83.9061C272.223 85.1835 270.91 85.1601 267.676 85.5351C264.266 85.9335 260.774 86.8242 260.774 90.9141C260.774 94.4532 263.434 96.3984 266.855 96.3984ZM267.617 93.5859C265.637 93.5859 264.207 92.6952 264.207 90.9609C264.207 89.0859 265.871 88.4181 267.899 88.1484C269.035 87.996 271.73 87.6915 272.234 87.1875V89.5077C272.234 91.6407 270.535 93.5859 267.617 93.5859ZM280.36 96H294.809V92.9532H285.107V92.7891L294.482 80.5548V78H280.677V81.0468H290.11V81.2109L280.36 93.5976V96ZM298.898 96H313.347V92.9532H303.645V92.7891L313.02 80.5548V78H299.215V81.0468H308.649V81.2109L298.898 93.5976V96ZM317.811 96H321.315V78H317.811V96ZM319.581 75.2226C320.787 75.2226 321.795 74.2851 321.795 73.1367C321.795 71.9883 320.787 71.0391 319.581 71.0391C318.363 71.0391 317.367 71.9883 317.367 73.1367C317.367 74.2851 318.363 75.2226 319.581 75.2226ZM329.862 85.3125C329.862 82.4415 331.62 80.8008 334.059 80.8008C336.438 80.8008 337.878 82.3593 337.878 84.9726V96H341.382V84.5508C341.382 80.0976 338.934 77.7657 335.253 77.7657C332.547 77.7657 330.777 79.0194 329.946 80.9298H329.724V78H326.358V96H329.862V85.3125ZM346.413 96H349.917V78H346.413V96ZM348.183 75.2226C349.389 75.2226 350.397 74.2851 350.397 73.1367C350.397 71.9883 349.389 71.0391 348.183 71.0391C346.962 71.0391 345.966 71.9883 345.966 73.1367C345.966 74.2851 346.962 75.2226 348.183 75.2226Z" fill="white"/>
+</g>
+<defs>
+<filter id="filter0_d_2_646" x="9.19824" y="6.0213" width="46.8921" height="54.4931" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="1"/>
+<feGaussianBlur stdDeviation="1.5"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2_646"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2_646" result="shape"/>
+</filter>
+<filter id="filter1_d_2_646" x="59" y="57" width="311" height="59" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="1"/>
+<feGaussianBlur stdDeviation="2"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.16 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2_646"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2_646" result="shape"/>
+</filter>
+</defs>
+</svg>
+
+
+  </motion.div>
+  );
+};
+
+export default CustomCursor;

@@ -3,7 +3,7 @@ body {
     flex-wrap: wrap;
     max-width: 1200px;
     margin-top: 80px;
-
+    
     p{
         margin: 0px;
         display: flex;
@@ -14,4 +14,8 @@ body {
         font-weight: 300;
         color: $white;
     }
+}
+
+*{
+    cursor: none;
 }

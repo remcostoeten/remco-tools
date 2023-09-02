@@ -7,6 +7,8 @@ import { ThemeProvider } from '@/components/theme-provider';
 import FancyHeader from './fancy-hamburger-header/header';
 import { ReactNode } from 'react';
 import Cursor from '@/components/core/Cursor';
+import { useMouseHover } from '@/hooks/useMouseHover';
+import CursorBlock from '@/components/CursorBlock';
 const inter = {
     font: 'Roboto Condensed',
     subsets: ['latin'],
@@ -48,15 +50,13 @@ interface LayoutProps {
 }
 
 export default function RootLayout({ children }: LayoutProps) {
-    return (
+ 
+ return (
         <html lang="en" suppressHydrationWarning>
             <head />
             <body className="roboto font-sans antialiased">
                 <Cursor />
-                <div className="App">
-            <h1 onMouseEnter={textEnter} onMouseLeave={textLeave} className="title">
-                Hello World
-            </h1>
+                <CursorBlock/>
                 {/* <ThemeProvider attribute="class" defaultTheme="system" enableSystem> */}
                 <div className="container">
                     <FancyHeader />
