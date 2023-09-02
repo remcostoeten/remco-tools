@@ -35,6 +35,7 @@ export default function generatePythonScript() {
     const { setPythonScript } = useContext(ScriptContext);
     const [toggleScript, setToggleScript] = useState(false);
     const [selectedOption, setSelectedOption] = useState("option-one");
+    let [newScriptForOptionTwo, setnewScriptForOptionTwo] = useState('');
     let [newScript, setNewScript] = useState('');
 
     const handleGenerateScript = () => {

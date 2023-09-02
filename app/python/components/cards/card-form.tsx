@@ -13,6 +13,8 @@ interface FormOptionsProps {
     cardContent?: string;
     label1?: string;
     label2?: string;
+    selectedOption?: string;
+    onOptionChange?: (value: string) => void;
     label3?: string;
     value?: any;
     value2?: string;
