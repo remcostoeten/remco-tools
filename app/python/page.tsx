@@ -42,7 +42,7 @@ export default function pythonScriptPlayground() {
                 </div>
                 <Separator />
                 <Tabs defaultValue="insert" className="flex-1">
-                    <div className="bg-stone-950 my-8 container h-full py-6">
+                    <div className="black my-8 container h-full py-6">
                         <div className="grid h-full items-stretch gap-6 md:grid-cols-[1fr_200px]">
                             <div className="hidden flex-col space-y-4 sm:flex md:order-2">
                                 <div className="grid gap-2">

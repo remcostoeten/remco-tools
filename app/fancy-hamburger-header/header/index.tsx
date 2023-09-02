@@ -6,11 +6,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { opacity, background } from './anim';
 import RemcoLogoIcon from '@/components/icons/remcostoeten-logo-icon';
 import Nav from './nav';
+import Header from '@/components/core/header/Header';
 
 export default function FancyHeader() {
     const [isActive, setIsActive] = useState(false);
 
     return (
+        <>
         <div   onClick={() => {
             setIsActive(!isActive);
         }} className={`${styles.header} ${isActive ? 'is-open' : 'is-closed'}`}>
@@ -40,6 +42,6 @@ export default function FancyHeader() {
             </div>
             <motion.div variants={background} initial="initial" animate={isActive ? 'open' : 'closed'} className={styles.background}></motion.div>
             <AnimatePresence mode="wait">{isActive && <Nav />}</AnimatePresence>
-        </div>
+        </div></>
     );
 }

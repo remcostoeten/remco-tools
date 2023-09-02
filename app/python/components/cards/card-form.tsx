@@ -35,7 +35,9 @@ const FormOptions: React.FC<FormOptionsProps> = ({
     onChange,
     onChange2,
     onChange3,
-    handleGenerateScript, // Destructure the new prop
+    handleGenerateScript,
+    selectedOption,
+    onOptionChange,
 }) => {
     const options = [
         { value: 'str', id: 'str', icon: undefined, label: 'Str replace' },
@@ -50,7 +52,7 @@ const FormOptions: React.FC<FormOptionsProps> = ({
                 <CardDescription>{cardContent}</CardDescription>
             </CardHeader>
             <CardContent className="grid gap-6">
-                <RadioGroup defaultValue="option-one">
+            <RadioGroup defaultValue="option-one" value={selectedOption} onValueChange={onOptionChange}>
                     <div className="flex items-center space-x-2">
                         <RadioGroupItem value="option-one" id="option-one" />
                         <Label className="text-white" htmlFor="option-one">Str replace One</Label>
@@ -70,10 +72,6 @@ const FormOptions: React.FC<FormOptionsProps> = ({
                     <InputWithLabel label={label3} value={value3} onChange={onChange3} />
                 </div>
             </CardContent>
-            <CardFooter>
-                {/* Attach the handleGenerateScript function to the button's onClick event */}
-                <Button onClick={handleGenerateScript}>Generate Python Script</Button>
-            </CardFooter>
         </Card>
     );
 };
