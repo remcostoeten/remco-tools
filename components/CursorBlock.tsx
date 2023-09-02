@@ -7,7 +7,7 @@ export default function CursorBlock() {
       <h1 className="text-4xl" data-cursor-hover>
         Welcome to the Custom Cursor App
       </h1>
-      <p className="mt-4" data-cursor-hover>
+      <p className="mt-4" data-cursor-hover-alternative>
         Hover over this text to see the cursor increase in size.
       </p>
       <button
@@ -16,6 +16,8 @@ export default function CursorBlock() {
       >
         Hover me
       </button>
+
+
     </header>
   </div>  )
 }
