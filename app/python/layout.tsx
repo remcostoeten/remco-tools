@@ -7,7 +7,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     const [pythonScript, setPythonScript] = useState('');
     return (
         <ScriptContext.Provider value={{ pythonScript, setPythonScript }}>
-            <section>
+            <section >
                 <nav></nav>
                 {children}
             </section>

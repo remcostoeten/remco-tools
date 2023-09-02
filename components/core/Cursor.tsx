@@ -58,7 +58,7 @@ const CustomCursor = () => {
       animate={{
         x: position.x - 0,
         y: position.y  -30,
-        scale: isHovered ? 1.5 : 1,
+        scale: isHovered ? 2.5 : 1,
       }}
       transition={{ type: "tween",  duration: 0  }}
       style={{
