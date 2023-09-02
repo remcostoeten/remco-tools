@@ -87,6 +87,7 @@
     "typed.js": "^2.0.16",
     "unist-util-visit": "^5.0.0",
     "vaul": "^0.1.2",
+    "react-icons": "^4.10.1",
     "zod": "^3.22.1"
   },
   "devDependencies": {
