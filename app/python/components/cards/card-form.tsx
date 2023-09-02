@@ -1,12 +1,25 @@
+import InputWithLabel from '../../../../components/InputWithElement';
+import RadioGroupOption from './radio-group-item';
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle
+    } from '@/components/ui/card';
 import { Input } from '@ui/input';
 import { Label } from '@ui/label';
 import { RadioGroup, RadioGroupItem } from '@ui/radio-group';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@ui/select';
-import RadioGroupOption from './radio-group-item';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import InputWithLabel from '../../../../components/InputWithElement';
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue
+    } from '@ui/select';
 
 interface FormOptionsProps {
     cardTitle: string;

@@ -1,12 +1,14 @@
+'use client';
+
 import { createContext } from 'react';
 
 type ScriptContextType = {
-    pythonScript: string; // Add this line
+    pythonScript: string;
     setPythonScript: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const ScriptContext = createContext<ScriptContextType>({
-    pythonScript: '', // Provide an initial value
+    pythonScript: '', 
     setPythonScript: () => {},
 });
 
