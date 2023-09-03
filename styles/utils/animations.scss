@@ -165,3 +165,21 @@
     100% { transform: rotate( 0.0deg) }
   }
   
+//   Gradient background
+
+@keyframes gradient {
+0% {
+    background-position: 0% 50%;
+}
+50% {
+    background-position: 100% 50%;
+}
+100% {
+    background-position: 0% 50%;
+}
+}
+
+  
+  .motion-div {
+    animation: gradient 15s ease infinite;
+}

@@ -8,7 +8,7 @@ const ParallaxDiv: React.FC = () => {
   useEffect(() => {
     const updateScroll = () => {
       const scrollPosition = window.scrollY;
-      controls.start({ y: scrollPosition / 2 });
+      controls.start({ y: scrollPosition / 5 });
     };
 
     window.addEventListener('scroll', updateScroll);
@@ -18,9 +18,10 @@ const ParallaxDiv: React.FC = () => {
 
   return (
     <motion.div
-      className="bg-[#fbe2e3] fixed top-[-6rem] -z-10 right-[11rem] h-[31.25rem] w-[31.25rem] rounded-full blur-[10rem] sm:w-[68.75rem] dark:bg-[#946263]"
-      animate={controls}
-    ></motion.div>
+    className="motion-div bg-[#fbe2e3] fixed top-[-6rem] -z-10 right-[11rem] h-[31.25rem] w-[31.25rem] rounded-full blur-[10rem] sm:w-[68.75rem] dark:bg-[#946263]"
+    animate={controls}
+  ></motion.div>
+  
   );
 };
 
