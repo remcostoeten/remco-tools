@@ -4,19 +4,15 @@ import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { BsArrowRight, BsLinkedin } from "react-icons/bs";
+import { BsArrowRight } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
-import { FaGithubSquare } from "react-icons/fa";
-import { useSectionInView } from "@/hooks/useSectionInview";
 import { useActiveSectionContext } from "@/context/active-section-contex";
-import AnimatedTextWord from "../../../../components/AnimateTextWord";
 
 export default function Intro() {
   const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
 
   return (
     <section
-      ref={ref}
       id="home"
       className="mb-28 mx-auto max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]"
     >
@@ -62,14 +58,10 @@ export default function Intro() {
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <AnimatedTextCharacter>
-          <span className="font-bold">I'm Remco.</span>
-        </AnimatedTextCharacter>
-        <AnimatedTextCharacter>
-          I'm a <span className="font-bold">front-end developer</span> with{" "}
-          <span className="font-bold">~7 years</span> of experience. I enjoy
-          building things, <span className="italic">with code</span>.
-        </AnimatedTextCharacter>
+        <span className="font-bold">Hello I'm Remco </span> I'm a{" "}
+        <span className="font-bold">front-end developer</span> with{" "}
+        <span className="font-bold">~7 years</span> of experience. I enjoy
+        building things, <span className="italic">with scode</span>.
       </motion.h1>
 
       <motion.div

@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 const useHandleMouseMove = (className: string) => {
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
+     /// @ts-ignore
       for (const card of document.getElementsByClassName(className)) {
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;

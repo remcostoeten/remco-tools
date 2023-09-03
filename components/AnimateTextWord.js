@@ -4,7 +4,6 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const AnimatedTextCharacter = ({ children }) => {
-  // Variants for Container
   const container = {
     hidden: { opacity: 0 },
     visible: (i = 1) => ({
@@ -13,7 +12,6 @@ const AnimatedTextCharacter = ({ children }) => {
     }),
   };
 
-  // Variants for each letter
   const child = {
     visible: {
       opacity: 1,
