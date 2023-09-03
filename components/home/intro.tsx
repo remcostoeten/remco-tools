@@ -7,9 +7,11 @@ import Link from "next/link";
 import { BsArrowRight } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
 import { useActiveSectionContext } from "@/context/active-section-contex";
+import useHandleMouseMove from "@/hooks/useHoverMouse";
 
 export default function Intro() {
   const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
+  useHandleMouseMove('hover-effect');
 
   return (
     <section
@@ -61,7 +63,7 @@ export default function Intro() {
         <span className="font-bold">Hello I'm Remco </span> I'm a{" "}
         <span className="font-bold">front-end developer</span> with{" "}
         <span className="font-bold">~7 years</span> of experience. I enjoy
-        building things, <span className="italic">with scode</span>.
+        building things, <span className="italic">with code</span>.
       </motion.h1>
 
       <motion.div
@@ -74,7 +76,7 @@ export default function Intro() {
       >
         <Link
           href="#contact"
-          className="group bg-black text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 transition"
+          className="group  hover-effect bg-black text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 transition"
           data-cursor-hover
           onClick={() => {
             setActiveSection("Contact");
@@ -87,7 +89,7 @@ export default function Intro() {
 
         <Link
           data-cursor-hover
-          className="group bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition cursor-pointer border  dark:bg-black "
+          className="group hover-effect bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition cursor-pointer border  dark:bg-black "
           href="/CV.pdf"
           download
         >
@@ -97,7 +99,7 @@ export default function Intro() {
 
         <Link
           data-cursor-hover
-          className="bg-white p-4 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-black border dark:text-white/60"
+          className="bg-white  p-4 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-black border dark:text-white/60"
           href="https://www.linkedin.com/in/remco-stoeten/"
           target="_blank"
         >
@@ -114,7 +116,7 @@ export default function Intro() {
 
         <Link
           data-cursor-hover
-          className="bg-white p-4 text-gray-700 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition cursor-pointer dark:bg-black border dark:text-white/60"
+          className="bg-white hover-effect p-4 text-gray-700 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition cursor-pointer dark:bg-black border dark:text-white/60"
           href="https://github.com/remcostoeten"
           target="_blank"
         >

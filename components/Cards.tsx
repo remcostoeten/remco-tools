@@ -3,10 +3,9 @@ import React from 'react';
 import useHandleMouseMove from '@/hooks/useHoverMouse';
 
 export default function Cards() {
-  useHandleMouseMove('card');
+  useHandleMouseMove(' ');
 
   return (
-    <div id="cards">
       <div className="card">
         <div className="card-content">
           <div className="card-image">
@@ -22,7 +21,6 @@ export default function Cards() {
             </div>
           </div>
         </div>
-      </div>
 
       {/* Add more card elements here */}
     </div>
