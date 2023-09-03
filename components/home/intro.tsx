@@ -10,10 +10,8 @@ import { FaGithubSquare } from "react-icons/fa";
 import { useSectionInView } from "@/hooks/useSectionInview";
 import { useActiveSectionContext } from "@/context/active-section-contex";
 import AnimatedTextWord from "../../../../components/AnimateTextWord";
-import AnimatedTextCharacter from "../../../../components/AnimateTextWord";
 
 export default function Intro() {
-  const { ref } = useSectionInView("Home", 0.5);
   const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
 
   return (

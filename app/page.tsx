@@ -1,6 +1,7 @@
 import SectionDivider from "@/components/divider";
-import About from "./python/components/home/about";
-import Intro from "./python/components/home/intro";
+import About from "../components/home/about";
+import Intro from "../components/home/intro";
+import Cards from "@c/Cards"
 
 export default function Home() {
   return (
@@ -8,6 +9,8 @@ export default function Home() {
         <Intro />
         <SectionDivider/>
         <About/>
+        <SectionDivider/>
+        <Cards/>
     </>
   );
 }
