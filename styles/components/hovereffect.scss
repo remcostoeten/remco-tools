@@ -19,9 +19,6 @@
     top: 0px;
     transition: opacity 500ms;
     width: 100%;
-  }
-  
-  .hover-effect::before {
     background: radial-gradient(
       800px circle at var(--mouse-x) var(--mouse-y), 
       rgba(255, 255, 255, 0.1),

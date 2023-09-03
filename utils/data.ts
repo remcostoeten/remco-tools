@@ -12,7 +12,7 @@ export const links = [
     hash: "#home",
   },
   {
-    name: "HTML to JSX",
+    name: "HTML to (T/J)SX",
     hash: "html-to-jsx",
   },
   {
@@ -62,24 +62,25 @@ export const experiencesData = [
 
 export const projectsData = [
   {
-    title: "CorpComment",
+    title: "HTML to (T/J)SX Converter / FC ",
     description:
-      "I worked as a full-stack developer on this startup project for 2 years. Users can give public feedback to companies.",
-    tags: ["React", "Next.js", "MongoDB", "Tailwind", "Prisma"],
+      "A live HTML to JSX/TSX converter which also allows to convert raw HTML to a fully functionng component with or without props. ",
+    tags: ["TypeScript", "Next.js", "TailwindCSS", "Monaco editor", "ShadCNui"],
     imageUrl: corpcommentImg,
   },
   {
-    title: "rmtDev",
+    title: "Geolocation app",
     description:
-      "Job board for remote developer jobs. I was the front-end developer. It has features like filtering, sorting and pagination.",
-    tags: ["React", "TypeScript", "Next.js", "Tailwind", "Redux"],
+      "Convert any address whether it's a  address, city or postalcode. Also reversesearch location, save locations and more",
+    tags: ["WiP","NextJS", "TypeScript", "Localtorage", "Tailwind", "Googleservices", "ShadCNui"],
+    
     imageUrl: rmtdevImg,
   },
   {
-    title: "Word Analytics",
+    title: "Kanban Board",
     description:
-      "A public web app for quick analytics on text. It shows word count, character count and social media post limits.",
-    tags: ["React", "Next.js", "SQL", "Tailwind", "Framer"],
+      "A kanban board with user authentication and actual drag and drop functionallity like Jira or any other PM service..",
+    tags: ["Firebase", "TypeScript", "NextJS", "TailwindCSS"],
     imageUrl: wordanalyticsImg,
   },
 ] as const;
