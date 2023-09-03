@@ -61,7 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
                 <ThemeContextProvider>
                     <ActiveSectionContextProvider>
-                        <div className="mx-auto  w-[1280px] container">
+                        <div className="mx-auto container">
                             <ToggleTheme />
                             <FancyHeader />
                             <Header />
