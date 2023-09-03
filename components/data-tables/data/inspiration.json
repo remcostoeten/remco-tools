@@ -15,6 +15,13 @@
             },
             {
                 "projectType": "Portfolio",
+                "colors":"dark",
+                "colorScheme":"dark",
+                "style":"minimal",
+                "url":"https://chronark.com/projects",
+            },
+            {
+                "projectType": "Portfolio",
                 "colors": ["black", "white", "grey"],
                 "colorScheme": "dark",
                 "style": ["minimalistic", "Awwwards style"],
