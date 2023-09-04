@@ -11,7 +11,6 @@ import useHandleMouseMove from "@/hooks/useHoverMouse";
 
 export default function Intro() {
   const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
-  useHandleMouseMove('hover-effect');
 
   return (
     <section

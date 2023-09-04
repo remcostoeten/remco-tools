@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import SectionHeading from "@c/section-heading";
+import Heading from "@c/section-heading";
 import { motion } from "framer-motion";
 import Link from 'next/link';
 export default function About() {
@@ -13,7 +13,7 @@ export default function About() {
       transition={{ delay: 0.175 }}
       id="about"
     >
-      <SectionHeading>About me</SectionHeading>
+      <Heading>About me</Heading>
       <p className="mb-3">
         I am Remco Stoeten, 26, from Lemmer, Netherlands. I hold a graphic
         design degree and have over five years of experience in frontend

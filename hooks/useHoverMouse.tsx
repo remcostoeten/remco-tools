@@ -1,26 +1,25 @@
 'use client';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
-const useHandleMouseMove = (className: string) => {
+const useMousePosition = () => {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-     /// @ts-ignore
-      for (const card of document.getElementsByClassName(className)) {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        (card as HTMLElement).style.setProperty('--mouse-x', `${x}px`);
-        (card as HTMLElement).style.setProperty('--mouse-y', `${y}px`);
-      }
+    const handleMouseMove = (event: MouseEvent) => {
+      setPosition({
+        x: event.clientX,
+        y: event.clientY
+      });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mousemove', handleMouseMove);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [className]);
+  }, []);
+
+  return position;
 };
 
-export default useHandleMouseMove;
+export default useMousePosition;

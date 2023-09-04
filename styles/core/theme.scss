@@ -17,11 +17,7 @@ input,
     border-color: darken($color: $white, $amount: 80) !important;
 }
 
-* {
-    cursor: none;
-}
-
-.page-wrapper {
-    &__inner {
-    }
+.is-open {
+    z-index: 99999999;
+    padding: 50px 70px;
 }

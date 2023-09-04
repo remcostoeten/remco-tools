@@ -2,7 +2,6 @@
         
 .header {
     box-sizing: border-box;
-    background-color: red;
     margin-bottom: 100px;
     left: 0 ;
     top: 0;
@@ -52,7 +51,7 @@
             }
         }
 
-        .el{
+        .el  {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -97,7 +96,6 @@
             }
     
             .burgerActive{
-                
                 &::after{
                     transform: rotate(45deg);
                     top: -1px;

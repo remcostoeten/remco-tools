@@ -3,7 +3,7 @@ import React from 'react';
 import useHandleMouseMove from '@/hooks/useHoverMouse';
 
 export default function Cards() {
-  useHandleMouseMove(' ');
+  useHandleMouseMove();
 
   return (
       <div className="card">
@@ -21,8 +21,6 @@ export default function Cards() {
             </div>
           </div>
         </div>
-
-      {/* Add more card elements here */}
     </div>
   );
 }

@@ -10,6 +10,7 @@ import Header from "@/components/core/header/Header";
 import ThemeContextProvider from "@/context/theme-context";
 import ToggleTheme from "@/components/ToggleTheme";
 import ParallaxDiv from "@/components/ParallaxBackground";
+import Trailer from "@/components/Trailer";
 
 const inter = {
   font: "Roboto Condensed",
@@ -53,10 +54,6 @@ export const metadata = {
   ],
 };
 
-interface LayoutProps {
-  children: ReactNode;
-}
-
 export default function RootLayout({
   children,
 }: {
@@ -71,6 +68,7 @@ export default function RootLayout({
        <ParallaxDiv/>
         <ThemeContextProvider>
           <ActiveSectionContextProvider>
+            <Trailer/>
             <ToggleTheme />
             <FancyHeader />
             <Header />{" "}
@@ -79,7 +77,7 @@ export default function RootLayout({
             </div>
             <Analytics />
             <Toaster />
-            <Cursor />
+            {/* <Cursor /> */}
           </ActiveSectionContextProvider>
         </ThemeContextProvider>
       </body>
