@@ -19,7 +19,12 @@ module.exports = {
       borderColor: {
         shadow: "#373737",
       },
+      textColor: {
+        offwhite: "FAF9F6",
+        black: "#111",
+      },
       colors: {
+        offwhite: "FAF9F6",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

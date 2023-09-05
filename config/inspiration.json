@@ -1,0 +1,122 @@
+[
+    {
+        "name": "Dribble",
+        "projects": [
+            {
+                "projectType": "Agency landing",
+                "colors": ["black", "armygreen"],
+                "colorScheme": "dark",
+                "style": ["minimalistic", "rounded blocks"],
+                "url": "https://dribbble.com/shots/20971182-Creative-Ai-Website-UI/",
+                "preview": null,
+                "hasMobileDevice": null,
+                "animations": null,
+                "componentInspiration": null
+            },
+            {
+                "projectType": "SaaS landing",
+                "colors": ["blue", "green", "dark"],
+                "colorScheme": "dark",
+                "style": ["minimalistic", "rounded blocks"],
+                "url": "https://preview.studio.site/live/YPqreA5LO5",                
+                "preview": "live preview",
+                "hasMobileDevice": null,
+                "animations": null,
+                "componentInspiration": null
+            },
+            {
+                "projectType": "Landing",
+                "colors": ["rainbow", "dark", "black"],
+                "colorScheme": "dark",
+                "style": ["minimalistic", "rounded blocks"],
+                "url": "https://dribbble.com/shots/20971182-Creative-Ai-Website-UI/",
+                "preview": null,
+                "hasMobileDevice": null,
+                "animations": null,
+                "componentInspiration": null
+            },
+            {
+                "projectType": "Portfolio",
+                "colors":"dark",
+                "colorScheme":"dark",
+                "style":"minimal",
+                "url":"https://chronark.com/projects",
+                "preview":null,
+                "hasMobileDevice":null,
+                "animations":null,
+                "componentInspiration":null
+            },
+            {
+                "projectType": "Portfolio",
+                "colors": ["black", "white", "grey"],
+                "colorScheme": "dark",
+                "style": ["minimalistic", "Awwwards style"],
+                "url": "https://dribbble.com/shots/22240691-Infinite-Creative-Agency-Website",
+                "preview": null,
+                "hasMobileDevice": null,
+                "animations": null,
+                "componentInspiration": null
+            },
+            {
+                "projectType": "SaaS landing",
+                "colors": ["white", "blue", "pink"],
+                "colorScheme": "light",
+                "style": ["minimalistic", "rounded blocks"],
+                "url": "https://dribbble.com/shots/20971182-Creative-Ai-Website-UI/",
+                "preview": null,
+                "hasMobileDevice": null,
+                "animations": null,
+                "componentInspiration": null
+            },
+            {
+                "projectType": "dashboard",
+                "colors": [],
+                "colorScheme": "dark",
+                "style": [],
+                "url": "https://smartvaults.extej.com/",
+                "preview": "live preview",
+                "hasMobileDevice": null,
+                "animations": null,
+                "componentInspiration": null
+            },
+            {
+                "projectType": "Dashboard / portfolio combi",
+                "colors": ["white", "orange"],
+                "colorScheme": "light",
+                "style": [],
+                "url": "https://www.postman.com/",
+                "preview": "live",
+                "hasMobileDevice": true,
+                "animations": null,
+                "componentInspiration": null
+            },
+            {
+                "projectType": "Dashboard",
+                "colors": ["white", "orange", "green"],
+                "colorScheme": "light",
+                "style": ["minimalistic", "rounded blocks"],
+                "url": "https://dribbble.com/shots/21434301-Project-Management-Tool-design",
+                "preview": null,
+                "hasMobileDevice": null,
+                "animations": null,
+                "componentInspiration": null
+            }
+        ]
+    },
+    {
+        "name": "Airtable API",
+        "projects": [
+            {
+                "projectType": "SaaS site",
+                "colors": ["white", "blue"],
+                "colorScheme": null,
+                "style": [],
+                "url": "https://www.airtable.com/",
+                "preview": null,
+                "hasMobileDevice": null,
+                "animations": "true",
+                "componentInspiration": "Carousel"
+            }
+        ]
+    }
+]

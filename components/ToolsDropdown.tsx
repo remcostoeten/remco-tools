@@ -1,5 +1,3 @@
-"use client"
-
 import * as React from "react"
 import Link from "next/link"
 
@@ -11,54 +9,42 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { cn } from "@/lib/utils"
+import RemcoLogoIcon from "./icons/remcostoeten-logo-icon"
 
 const components: { title: string; href: string; description: string }[] = [
   {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
+    title: "HTML to J/TSX Converter",
+    href: "/html-to-jsx",
     description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
+      "Converts any HTML to JSX with the option to generate a fully functioning functional component, with or without props.",
   },
   {
-    title: "Hover Card",
-    href: "/docs/primitives/hover-card",
+    title: "Geolocation",
+    href: "/geolocation",
     description:
-      "For sighted users to preview content available behind a link.",
+      "An app that allows you to find the longitude and latitude which pairs to an address. Save the address, reverse search them, show them on the map.",
   },
   {
-    title: "Progress",
-    href: "/docs/primitives/progress",
+    title: "Expenses Tracker",
+    href: "/income",
     description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+      "Write some description here.",
   },
   {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
+    title: "Python Script Generator",
+    href: "/python",
     description: "Visually or semantically separates content.",
-  },
-  {
-    title: "Tabs",
-    href: "/docs/primitives/tabs",
-    description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-  },
-  {
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
   },
 ]
 
-export function NavigationMenuDemo() {
+export function ToolsDropdown() {
   return (
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="trigger">Productivity tools</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
@@ -67,17 +53,25 @@ export function NavigationMenuDemo() {
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                     href="/"
                   >
-                    <Icons.logo className="h-6 w-6" />
+                    <RemcoLogoIcon/>
                     <div className="mb-2 mt-4 text-lg font-medium">
-                      shadcn/ui
+                      Some tools I built
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
-                      Beautifully designed components built with Radix UI and
-                      Tailwind CSS.
+                      Initially to practice my skills, but ended up building tools which I use quite often and wanted to self-host, and share with others.
                     </p>
                   </a>
                 </NavigationMenuLink>
               </li>
+              {components.map((component) => (
+                <ListItem
+                  key={component.href}
+                  href={component.href}
+                  title={component.title}
+                >
+                  {component.description}
+                </ListItem>
+              ))}
               <ListItem href="/docs" title="Introduction">
                 Re-usable components built using Radix UI and Tailwind CSS.
               </ListItem>
@@ -89,29 +83,6 @@ export function NavigationMenuDemo() {
               </ListItem>
             </ul>
           </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Components</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-              {components.map((component) => (
-                <ListItem
-                  key={component.title}
-                  title={component.title}
-                  href={component.href}
-                >
-                  {component.description}
-                </ListItem>
-              ))}
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Documentation
-            </NavigationMenuLink>
-          </Link>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>

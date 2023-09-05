@@ -7,14 +7,14 @@ import Link from 'next/link';
 export default function About() {
   return (
     <motion.section
-      className="mb-28 max-w-[45rem] text-center leading-8 sm:mb-40 scroll-mt-28"
+      className="mb-28 max-w-[45rem] text-center leading-8 sm:mb-40 scroll-mt-28 font-barlow-condensed  font-medium text-xl"
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.175 }}
       id="about"
     >
       <Heading>About me</Heading>
-      <p className="mb-3">
+      <p className="mb-3  ">
         I am Remco Stoeten, 26, from Lemmer, Netherlands. I hold a graphic
         design degree and have over five years of experience in frontend
         development, specifically in custom 🤮Magento 2🤢 webshops.</p><p className="mb-3"> After working at{" "}
