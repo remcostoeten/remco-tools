@@ -7,7 +7,6 @@ import Link from "next/link";
 import { BsArrowRight } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
 import { useActiveSectionContext } from "@/context/active-section-contex";
-import useHandleMouseMove from "@/hooks/useHoverMouse";
 
 export default function Intro() {
   const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();

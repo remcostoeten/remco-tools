@@ -13,12 +13,9 @@ import ParallaxDiv from "@/components/ParallaxBackground";
 import Trailer from "@/components/Trailer";
 import { seoKeywords } from "@/config/keywords";
 import PageLoader from "@/components/core/PageLoader";
+import { Inter } from 'next/font/google'
 
-const inter = {
-  font: "Roboto Condensed",
-  subsets: ["latin"],
-  weights: ["300", "600", "800"],
-};
+const inter = Inter({ subsets: ['latin'] })
 
 
 export const metadata = {
@@ -72,6 +69,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
+    
     <html lang="en" className="!scroll-smooth">
       <body
         // @ts-ignore

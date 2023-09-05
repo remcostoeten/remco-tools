@@ -46,7 +46,7 @@ const ParallaxDiv: React.FC = () => {
 
   return (
     <motion.div
-      className="motion-div bg-[#fbe2e3] fixed top-[-6rem] -z-10 right-[11rem] h-screen w-screen rounded-full blur-[10rem] sm:w-[68.75rem] dark:bg-[#1e0d26]"
+      className="motion-div bg-[#1a1818] fixed top-[-6rem] -z-10 right-[11rem] h-screen w-screen rounded-full blur-[10rem] sm:w-[68.75rem] dark:bg-[#100714]"
       style={{ ...gradientStyle, ...skewStyle }}
       animate={controls}
     ></motion.div>
