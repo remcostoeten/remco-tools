@@ -12,6 +12,7 @@ import ToggleTheme from "@/components/ToggleTheme";
 import ParallaxDiv from "@/components/ParallaxBackground";
 import Trailer from "@/components/Trailer";
 import { seoKeywords } from "@/config/keywords";
+import PageLoader from "@/components/core/PageLoader";
 
 const inter = {
   font: "Roboto Condensed",
@@ -83,7 +84,9 @@ export default function RootLayout({
             <ToggleTheme />
             <FancyHeader />
             <Header />{" "}
+
             <div className="mx-auto container">
+              <PageLoader/>
               <main className="page-wrapper__inner flex flex-col items-center px-4 ">{children}</main>
             </div>
             <Analytics />
