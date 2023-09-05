@@ -7,6 +7,7 @@ import Link from 'next/link';
 import clsx from 'clsx';
 import { useActiveSectionContext } from '@/context/active-section-contex';
 import { DropdownMenu } from '@radix-ui/react-dropdown-menu';
+import { NavigationMenuDemo } from '@/components/dropdownmenu';
 
 export default function Header() {
     const { activeSection, setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
@@ -47,6 +48,7 @@ export default function Header() {
                         </motion.li>
                     ))}
                 </ul>
+                <NavigationMenuDemo/>
             </nav>
         </header>
     );

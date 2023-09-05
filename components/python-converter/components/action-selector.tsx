@@ -6,7 +6,7 @@ import { PopoverProps } from '@radix-ui/react-popover';
 import * as React from 'react';
 
 import { useMutationObserver } from '@/hooks/use-mutation-observer';
-import { cn } from '@/utils/lib';
+import { cn } from '@/lib/utils';
 import { Button } from '@ui/button';
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@ui/command';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@ui/hover-card';

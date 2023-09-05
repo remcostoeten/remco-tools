@@ -11,6 +11,7 @@ import ThemeContextProvider from "@/context/theme-context";
 import ToggleTheme from "@/components/ToggleTheme";
 import ParallaxDiv from "@/components/ParallaxBackground";
 import Trailer from "@/components/Trailer";
+import { seoKeywords } from "@/config/keywords";
 
 const inter = {
   font: "Roboto Condensed",
@@ -18,29 +19,39 @@ const inter = {
   weights: ["300", "600", "800"],
 };
 
+
 export const metadata = {
   title: {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  keywords: [
-    "Next.js",
-    "React",
-    "Tailwind CSS",
-    "Server Components",
-    "Radix UI",
-  ],
-  manifest: `${siteConfig.url}/site.webmanifest`,
-  themeColor: [{ media: "(prefers-color-scheme: dark)", color: "black" }],
+  keywords: seoKeywords,
+  author: "Remco Stoeten", 
+  image: `${siteConfig.url}/images/cover.jpg`, 
+  url: siteConfig.url, 
+  type: "Portfolio site and SaaS", 
+
   openGraph: {
+    // @ts-ignore
     type: "website",
-    locale: "nl_NL",
     url: siteConfig.url,
     title: siteConfig.name,
     description: siteConfig.description,
-    siteName: siteConfig.name,
+    site_name: siteConfig.name,
+    image: {
+      url: `${siteConfig.url}/images/og-image.jpg`,
+      alt: "Your Site's Open Graph Image",
+    },
+    profile: {
+      username: "remco-stoeten",
+    },
   },
+
+  linkedinProfile: "https://www.linkedin.com/in/remco-stoeten/",
+  githubProfile: "https://github.com/remcostoeten",
+  gitlabProfile: "https://gitlab.com/remcostoeten",
+
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon-16x16.png",
@@ -48,7 +59,7 @@ export const metadata = {
   },
   authors: [
     {
-      name: "remcostoeten",
+      name: "Remco Stoeten",
       url: "https://remcostoeten.com",
     },
   ],
