@@ -14,10 +14,19 @@ type ThemeContextType = {
 
 const ThemeContext = createContext<ThemeContextType | null>(null);
 
-export default function ThemeContextProvider({ children }: ThemeContextProviderProps) {
+export default function ThemeContextProvider({
+    children,
+}: ThemeContextProviderProps) {
     const [theme, setTheme] = useState<Theme>('dark');
 
     const toggleTheme = () => {
+        document.documentElement.classList.add('theme-transitioning');
+
+        setTimeout(() => {
+            // Remove the transitioning class after the animation completes
+            document.documentElement.classList.remove('theme-transitioning');
+        }, 1000); // Match this with your CSS transition time
+
         if (theme === 'light') {
             setTheme('dark');
             window.localStorage.setItem('theme', 'dark');
@@ -45,13 +54,17 @@ export default function ThemeContextProvider({ children }: ThemeContextProviderP
     }, []);
 
     return (
-        <ThemeContext.Provider
-            value={{
-                theme,
-                toggleTheme,
-            }}>
-            {children}
-        </ThemeContext.Provider>
+        <>
+            <div id='theme-transition-overlay'></div>
+            <ThemeContext.Provider
+                value={{
+                    theme,
+                    toggleTheme,
+                }}
+            >
+                {children}
+            </ThemeContext.Provider>
+        </>
     );
 }
 

@@ -75,7 +75,7 @@ export default function Intro() {
       >
         <Link
           href="#contact"
-          className="group  hover-effect bg-black text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 transition"
+          className="group border-shadow border hover-effect bg-white  dark:bg-black dark: text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 transition"
           data-cursor-hover
           onClick={() => {
             setActiveSection("Contact");
@@ -88,7 +88,7 @@ export default function Intro() {
 
         <Link
           data-cursor-hover
-          className="group hover-effect bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition cursor-pointer border  dark:bg-black "
+          className="group border-shadow border hover-effect bg-white  dark:bg-black dark: text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 transition"
           href="/CV.pdf"
           download
         >
@@ -98,7 +98,7 @@ export default function Intro() {
 
         <Link
           data-cursor-hover
-          className="bg-white  p-4 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-black border dark:text-white/60"
+          className="black light:border-zinc-800 p-4 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-black border border-shadow border dark:text-white/60"
           href="https://www.linkedin.com/in/remco-stoeten/"
           target="_blank"
         >
@@ -115,7 +115,7 @@ export default function Intro() {
 
         <Link
           data-cursor-hover
-          className="bg-white hover-effect p-4 text-gray-700 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition cursor-pointer dark:bg-black border dark:text-white/60"
+          className="black hover-effect p-4 text-gray-700 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition cursor-pointer dark:bg-black border dark:text-white/60"
           href="https://github.com/remcostoeten"
           target="_blank"
         >
