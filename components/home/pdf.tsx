@@ -24,7 +24,8 @@ export default function DownloadCV() {
                             className='group border-shadow border hover-effect bg-offwhite hover:text-white dark:bg-black dark:text-offwhite px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 transition'
                             onClick={openPdf}
                         >
-                            Open Drawer
+                            Download CV
+                        <HiDownload/>
                         </button>
                     </Drawer.Trigger>
                     <Drawer.Portal>

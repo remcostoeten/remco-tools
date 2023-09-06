@@ -59,7 +59,7 @@ export function DataTable<TData, TValue>({
       })) as Task[]
       setData(tasksData as unknown as TData[])
     })
-  }
+  } 
 
   useEffect(() => {
     fetchTasks()
