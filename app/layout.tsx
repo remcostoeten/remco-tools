@@ -84,7 +84,6 @@ export default function RootLayout({
             <Header />{" "}
 
             <div className="mx-auto container">
-              <PageLoader/>
               <main className="page-wrapper__inner flex flex-col items-center px-4 ">{children}</main>
             </div>
             <Analytics />
