@@ -19,7 +19,6 @@ import {
 } from '@/components/ui/dropdown-menu';
 
 import { labels } from './data/data';
-import { taskSchema } from './data/schema';
 
 interface DataTableRowActionsProps<TData> {
     row: Row<TData>;
@@ -44,6 +43,7 @@ export function DataTableRowActions<TData>({ row }: DataTableRowActionsProps<TDa
                 <DropdownMenuSub>
                     <DropdownMenuSubTrigger>Labels</DropdownMenuSubTrigger>
                     <DropdownMenuSubContent>
+                        {/* @ts-ignore */}
                         <DropdownMenuRadioGroup value={task.label}>
                             {labels.map((label) => (
                                 <DropdownMenuRadioItem key={label.value} value={label.value}>

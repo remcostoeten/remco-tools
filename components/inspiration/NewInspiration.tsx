@@ -11,7 +11,7 @@ import { Button } from '../ui/button';
 import { Textarea } from '../ui/textarea';
 import { motion } from 'framer-motion';
 
-interface NewTaskProps {
+interface newInspirationProps {
     content?: string;
     id: string;
     userId: string;
@@ -24,9 +24,9 @@ const initialThoughtState = {
     sort: '',
 };
 
-export function NewThought({ content }: NewTaskProps) {
+export function newInspiration({ content }: newInspiration) {
     const [open, setOpen] = useState(false);
-    const [task, setTask] = useState(initialThoughtState);
+    const [Inspiration, setInspiration] = useState(initialThoughtState);
     const [date, setDate] = useState<Date | null>(null);
     const [loading, setLoading] = useState(false);
     const [sort, setSort] = useState<string>('');
@@ -64,7 +64,7 @@ export function NewThought({ content }: NewTaskProps) {
             }
 
             const newThought = {
-                ...task,
+                ...Inspiration,
                 userId: currentUser.uid,
                 createdAt: serverTimestamp(),
                 selectedDate: date,
@@ -77,7 +77,7 @@ export function NewThought({ content }: NewTaskProps) {
             // @ts-ignore
             newThought.id = docRef.id;
 
-            setTask(initialThoughtState);
+            setInspiration(initialThoughtState);
             setDate(null);
             setDescription('');
             setPriority([]);
@@ -120,9 +120,9 @@ export function NewThought({ content }: NewTaskProps) {
                     type='text'
                     className='wysiwyg-input'
                     placeholder='Title'
-                    value={task.title}
+                    value={Inspiration.title}
                     onChange={(e) =>
-                        setTask({ ...task, title: e.target.value })
+                        setInspiration({ ...Inspiration, title: e.target.value })
                     }
                 />
             </motion.div>
@@ -137,9 +137,9 @@ export function NewThought({ content }: NewTaskProps) {
                     type='text'
                     className='wysiwyg-input'
                     placeholder='Sort'
-                    value={task.sort}
+                    value={Inspiration.sort}
                     onChange={(e) =>
-                        setTask({ ...task, sort: e.target.value })
+                        setInspiration({ ...Inspiration, sort: e.target.value })
                     }
                 />
             </motion.div>

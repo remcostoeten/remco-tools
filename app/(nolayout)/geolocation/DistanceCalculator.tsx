@@ -36,7 +36,6 @@ const DistanceCalculator = () => {
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     const distance = R * c;
   
-    // Update the distance state
     setDistance(distance);
   };
   
@@ -55,7 +54,7 @@ const DistanceCalculator = () => {
           onChange={(e) => setLatitude1(e.target.value)}
         />
       </div>
-      <div>
+      <div className="flex flex-col gap-2">
         <Label>Location 1 Longitude:</Label>
         <Input
           type="text"

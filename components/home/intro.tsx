@@ -91,7 +91,7 @@ export default function Intro() {
 
                 <Link
                     data-cursor-hover
-                    className='dark:black bg-offwhite light:border-zinc-800 p-4 text-gray-700 hover:text-gray-800 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-black border border-shadow border dark:text-offwhite/60'
+                    className='dark:black bg-offwhite light:border-zinc-800 p-4 text-gray-700 hover:text-gray-800 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-black border                                  border-shadow border dark:text-offwhite/60'
                     href='https://www.linkedin.com/in/remco-stoeten/'
                     target='_blank'
                 >
