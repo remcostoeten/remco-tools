@@ -14,6 +14,7 @@ import Trailer from "@/components/Trailer";
 import { seoKeywords } from "@/config/keywords";
 import PageLoader from "@/components/core/PageLoader";
 import { Inter } from 'next/font/google'
+import GlowEffect from "@/components/ParallaxBackground";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -72,17 +73,15 @@ export default function RootLayout({
     
     <html lang="en" className="!scroll-smooth">
       <body
-        // @ts-ignore
         className={`${inter.className} bg-gray-50 text-gray-950 relative pt-28 sm:pt-36 dark:bg-black dark:text-gray-50 dark:text-opacity-90`}
       >
+            {/* <GlowEffect/> */}
        <ParallaxDiv/>
         <ThemeContextProvider>
           <ActiveSectionContextProvider>
-            <Trailer/>
             <ToggleTheme />
             <FancyHeader />
-            <Header />{" "}
-
+            <Header />
             <div className="mx-auto container">
               <main className="page-wrapper__inner flex flex-col items-center px-4 ">{children}</main>
             </div>

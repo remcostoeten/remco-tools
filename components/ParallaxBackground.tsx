@@ -1,43 +1,36 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import { useEffect } from 'react';
 
-const ParallaxDiv: React.FC = () => {
-  const controls = useAnimation();
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e) => {
-    setMousePosition({ x: e.clientX, y: e.clientY });
-  };
-
+const GlowEffect: React.FC = () => {
   useEffect(() => {
-    const updateScroll = () => {
-      const scrollPosition = window.scrollY;
-      controls.start({ y: scrollPosition / 25 });
+    const blob = document.getElementById('blob');
+
+    const handlePointerMove = (event: PointerEvent) => {
+      const { clientX, clientY } = event;
+
+      blob?.animate(
+        {
+          left: `${clientX}px`,
+          top: `${clientY}px`,
+        },
+        { duration: 3000, fill: 'forwards' }
+      );
     };
 
-    window.addEventListener('scroll', updateScroll);
-    window.addEventListener('mousemove', handleMouseMove);
+    window.onpointermove = handlePointerMove;
 
     return () => {
-      window.removeEventListener('scroll', updateScroll);
-      window.removeEventListener('mousemove', handleMouseMove);
+      // Cleanup function to remove the event listener when the component unmounts
+      window.onpointermove = null;
     };
-  }, [controls]);
-
-  const gradientStyle = {
-    backgroundImage: `linear-gradient(at ${mousePosition.x}px ${mousePosition.y}px, rgba(0, 0, 0, 0.4), transparent)`,
-    backgroundSize: 'cover',
-    backgroundAttachment: 'fixed',
-  };
+  }, []);
 
   return (
-    <motion.div
-      className="motion-div bg-[#fbe2e3] fixed top-[-6rem] -z-10 right-[11rem] h-screen w-screen rounded-full blur-[10rem]  dark:bg-[#644343]"
-      style={gradientStyle}
-      animate={controls}
-    ></motion.div>
+    <div>
+      <div id="blob"></div>
+      <div id="blur"></div>
+    </div>
   );
 };
 
-export default ParallaxDiv;
+export default GlowEffect;
