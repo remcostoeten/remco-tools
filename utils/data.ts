@@ -13,14 +13,14 @@ export const links = [
   },
   {
     name: "About me",
-    hash: "html-to-jsx",
+    hash: "#about",
   },
   {
-    name: "Projects",
+    name: "#projects",
     hash: "geolocation",
   },
   {
-    name: "Experience",
+    name: "#experience",
     hash: "todo",
   },
   {
