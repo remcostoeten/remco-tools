@@ -31,28 +31,36 @@ export const links = [
 
 export const experiencesData = [
   {
-    title: "Graduated bootcamp",
-    location: "Miami, FL",
+    title: "Graphic Design",
+    location: "ROC Friese Poort, Sneek",
     description:
-      "I graduated after 6 months of studying. I immediately found a job as a front-end developer.",
+      "I graduated with a Graphic design degree after 4 years of studying. I immediately found a job as a front-end developer at the end of the term.",  // Corrected phrasing
     icon: React.createElement(LuGraduationCap),
     date: "2019",
   },
   {
-    title: "Front-End Developer",
-    location: "Orlando, FL",
+    title: "Tickles Digital Agency", // Removed extra space
+    location: "Lemmer, Joure, the Netherlands",
     description:
-      "I worked as a front-end developer for 2 years in 1 job and 1 year in another job. I also upskilled to the full stack.",
+      "I worked as a front-end developer, we exclusively made custom design Magento 2 webshops in all sectors across B2B and B2C.", // Fixed typos
     icon: React.createElement(CgWorkAlt),
-    date: "2019 - 2021",
+    date: "2017 - 2022",
   },
   {
-    title: "Full-Stack Developer",
-    location: "Houston, TX",
+    title: "Lasaulec B.V. / Distil",
+    location: "Remote / Heerenveen, the Netherlands",
     description:
-      "I'm now a full-stack developer working as a freelancer. My stack includes React, Next.js, TypeScript, Tailwind, Prisma and MongoDB. I'm open to full-time opportunities.",
+      "I joined the software team as the only front-end developer and in my time there I refactored the entire front-end of the main corporate webshop which was written in .NET/ASP, SCSS (BEM) and Javascript (vanilla + knockoutJS).",  // Fixed typos
     icon: React.createElement(FaReact),
-    date: "2021 - present",
+    date: "2022 - 2023",
+  },
+  {
+    title: "Pleio",
+    location: "Remote",
+    description:
+      "A company which operates for the government primarily and is fully open source. I am working on some non-frameworks projects with a Django (python) back-end and a SaaS application with a React front-end.",  // Fixed typo and clarified SaaS description
+    icon: React.createElement(FaReact),
+    date: "2023 - present",
   },
 ] as const;
 

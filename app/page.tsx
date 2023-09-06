@@ -4,6 +4,7 @@ import Intro from '../components/home/intro';
 import Projects from '@/components/home/projects';
 import { projectsData } from '@/utils/data';
 import TrailerComponent from '@/components/Trailer';
+import Experience from '@/components/experience';
 export default function Home() {
     return (
         <>
@@ -11,17 +12,8 @@ export default function Home() {
             <Intro />
             <SectionDivider />
             <About />
-            <SectionDivider />
-            {projectsData.map((project, index) => (
-                // @ts-ignore
-                <Projects
-                    key={index}
-                    title={project.title}
-                    description={project.description}
-                    tags={project.tags}
-                    imageUrl={project.imageUrl}
-                />
-            ))}
-        </>
+            <SectionDivider />            
+            <Experience />
+         </>
     );
 }
