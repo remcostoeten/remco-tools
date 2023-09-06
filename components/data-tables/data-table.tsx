@@ -51,7 +51,7 @@ export function DataTable<TData, TValue>({
   const [data, setData] = React.useState<TData[]>([])
 
   const fetchTasks = () => {
-    const taskCollection = collection(db, "tasks")
+    const taskCollection = collection(db, "todos")
     onSnapshot(taskCollection, (snapshot) => {
       const tasksData = snapshot.docs.map((doc) => ({
         id: doc.id,

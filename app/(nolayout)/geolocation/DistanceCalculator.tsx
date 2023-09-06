@@ -1,3 +1,5 @@
+import { Badge } from "@/components/ui/badge";
+import { Button, Input, Label } from "@/components/ui/ui-imports";
 import React, { useState } from "react";
 
 interface DistanceCalculatorProps {
@@ -43,46 +45,46 @@ const DistanceCalculator = () => {
   };
 
   return (
-       <div>
+       <>
       <h2>Distance Calculator</h2>
-      <div>
-        <label>Location 1 Latitude:</label>
-        <input
+      <div className="flex flex-col gap-2">
+        <Label>Location 1 Latitude:</Label>
+        <Input
           type="text"
           value={latitude1}
           onChange={(e) => setLatitude1(e.target.value)}
         />
       </div>
       <div>
-        <label>Location 1 Longitude:</label>
-        <input
+        <Label>Location 1 Longitude:</Label>
+        <Input
           type="text"
           value={longitude1}
           onChange={(e) => setLongitude1(e.target.value)}
         />
       </div>
-      <div>
-        <label>Location 2 Latitude:</label>
-        <input
+      <div className="flex flex-col gap-2">
+        <Label>Location 2 Latitude:</Label>
+        <Input
           type="text"
           value={latitude2}
           onChange={(e) => setLatitude2(e.target.value)}
         />
       </div>
-      <div>
-        <label>Location 2 Longitude:</label>
-        <input
+      <div className="flex flex-col gap-2">
+        <Label>Location 2 Longitude:</Label>
+        <Input
           type="text"
           value={longitude2}
           onChange={(e) => setLongitude2(e.target.value)}
         />
       </div>
-      <button onClick={calculateDistance}>Calculate Distance</button>
+      <Button onClick={calculateDistance}>Calculate Distance</Button>
       <div>
-        <label>Distance:</label>
-        <span>{distance}</span>
+        <Label>Distance:</Label>
+        <Badge>{distance}</Badge>
       </div>
-    </div>
+    </>
   );
 };
 
