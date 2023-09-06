@@ -21,6 +21,7 @@ import { Icons } from "@/components/icons"
 import { GlowButton } from '@/components/buttons/CustomButtons';
 import { auth } from "@/utils/firebase"
 import RemcoLogoIcon from "@/components/icons/remcostoeten-logo-icon"
+import { Button } from "@/components/ui/button"
 
 export default function LoginPage() {
   const [email, setEmail] = useState("")
@@ -69,7 +70,7 @@ export default function LoginPage() {
           description: `Welcome, ${user.displayName}!`,
         })
 
-        router.push("/dashboard")
+        router.push("/")
       })
       .catch((error) => {
         console.error(error)
@@ -188,7 +189,6 @@ export default function LoginPage() {
             <button className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background bg-primary text-primary-foreground hover:bg-primary/90 h-10 py-2 px-4" disabled={isLoading}>
               {isLoading ? (
                 <>
-                  <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                   Signing In...
                 </>
               ) : (
@@ -209,7 +209,7 @@ export default function LoginPage() {
             </span>
           </div>
         </div>
-        <GlowButton
+        <Button
           text=" Google"
           className="w-full text-center mx-auto flex justify-center"
           onClick={signInWithGoogle}
@@ -217,7 +217,6 @@ export default function LoginPage() {
         >
           {isGoogleLoading ? (
             <>
-              <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
               Signing In...
             </>
           ) : (
@@ -226,7 +225,7 @@ export default function LoginPage() {
 google              </div>
             </>
           )}
-        </GlowButton>
+        </Button>
 
         <p className="px-8 text-center text-sm text-muted-foreground mx-auto">
           <Link

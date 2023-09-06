@@ -28,6 +28,10 @@ export const links = [
         hash: 'tasks',
     },
     {
+        name: 'Inspiration',
+        hash: 'inspiration',
+    },
+    {
         name: 'Contact',
         hash: '#contact',
     },

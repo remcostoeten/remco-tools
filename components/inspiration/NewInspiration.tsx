@@ -11,30 +11,52 @@ import { Button } from '../ui/button';
 import { Textarea } from '../ui/textarea';
 import { motion } from 'framer-motion';
 
-interface newInspirationProps {
+interface NewInspirationProps {
     content?: string;
     id: string;
     userId: string;
 }
 
-const initialThoughtState = {
-    title: '',
-    description: '',
-    subject: '',
-    sort: '',
+const initialProjectState = {
+    projectType: '',
+    colors: [],
+    colorScheme: '',
+    style: [],
+    url: '',
+    preview: null,
+    hasMobileDevice: null,
+    animations: null,
+    componentInspiration: null,
 };
 
-export function newInspiration({ content }: newInspiration) {
+const initialThoughtState = {
+    name: '',
+    projects: [initialProjectState],
+};
+export function NewInspiration({ content }: newInspirationProps) {
     const [open, setOpen] = useState(false);
-    const [Inspiration, setInspiration] = useState(initialThoughtState);
     const [date, setDate] = useState<Date | null>(null);
     const [loading, setLoading] = useState(false);
     const [sort, setSort] = useState<string>('');
     const [description, setDescription] = useState<string>('');
     const user = auth?.currentUser;
-    const [markdownContent, setMarkdownContent] = useState('');
     const [priority, setPriority] = useState<string[]>([]);
-
+    const [Inspiration, setInspiration] = useState({
+        name: '',
+        projects: [
+            {
+                projectType: '',
+                colors: [],
+                colorScheme: '',
+                style: [],
+                url: '',
+                preview: null,
+                hasMobileDevice: null,
+                animations: null,
+                componentInspiration: null,
+            },
+        ],
+    });
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
             if (user) {
@@ -44,6 +66,12 @@ export function newInspiration({ content }: newInspiration) {
         });
         return () => unsubscribe();
     }, []);
+
+    const handleProjectChange = (key, value, projectIndex) => {
+        const newProjects = [...Inspiration.projects];
+        newProjects[projectIndex][key] = value;
+        setInspiration({ ...Inspiration, projects: newProjects });
+    };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -65,7 +93,7 @@ export function newInspiration({ content }: newInspiration) {
 
             const newThought = {
                 ...Inspiration,
-                userId: currentUser.uid,
+                userId: user?.uid,
                 createdAt: serverTimestamp(),
                 selectedDate: date,
                 description,
@@ -73,7 +101,10 @@ export function newInspiration({ content }: newInspiration) {
                 sort,
             };
 
-            const docRef = await addDoc(collection(db, 'todos'), newThought);
+            const docRef = await addDoc(
+                collection(db, 'inspiration'),
+                newThought
+            );
             // @ts-ignore
             newThought.id = docRef.id;
 
@@ -81,13 +112,16 @@ export function newInspiration({ content }: newInspiration) {
             setDate(null);
             setDescription('');
             setPriority([]);
-            setMarkdownContent('');
             setSort('');
 
             toast({
                 title: 'Thought created successfully.',
                 description: `with title ${newThought.title}`,
             });
+
+            // Convert newThought to JSON
+            const jsonThought = JSON.stringify(newThought, null, 2);
+            console.log(jsonThought); // You can post this JSON to your desired endpoint
         } catch (error) {
             toast({
                 title: 'Something went wrong.',
@@ -108,83 +142,104 @@ export function newInspiration({ content }: newInspiration) {
             className='flex flex-col gap-2 py-6'
             onSubmit={handleSubmit}
         >
+            <Input
+                type='text'
+                placeholder='Name'
+                value={Inspiration.name}
+                onChange={(e) =>
+                    setInspiration({ ...Inspiration, name: e.target.value })
+                }
+            />
+
+            {Inspiration.projects.map((project, projectIndex) => (
+                <div key={projectIndex}>
+                    <h2>Project {projectIndex + 1} Details</h2>
+
+                    <Input
+                        type='text'
+                        placeholder='Project Type'
+                        value={project.projectType}
+                        onChange={(e) =>
+                            handleProjectChange(
+                                'projectType',
+                                e.target.value,
+                                projectIndex
+                            )
+                        }
+                    />
+
+                    <Textarea
+                        placeholder='Colors (comma-separated)'
+                        value={project.colors.join(', ')}
+                        onChange={(e) =>
+                            handleProjectChange(
+                                'colors',
+                                e.target.value
+                                    .split(',')
+                                    .map((str) => str.trim()),
+                                projectIndex
+                            )
+                        }
+                    />
+
+                    <Input
+                        type='text'
+                        placeholder='Color Scheme'
+                        value={project.colorScheme}
+                        onChange={(e) =>
+                            handleProjectChange(
+                                'colorScheme',
+                                e.target.value,
+                                projectIndex
+                            )
+                        }
+                    />
+
+                    <Textarea
+                        placeholder='Style (comma-separated)'
+                        value={project.style.join(', ')}
+                        onChange={(e) =>
+                            handleProjectChange(
+                                'style',
+                                e.target.value
+                                    .split(',')
+                                    .map((str) => str.trim()),
+                                projectIndex
+                            )
+                        }
+                    />
+
+                    <Input
+                        type='text'
+                        placeholder='URL'
+                        value={project.url}
+                        onChange={(e) =>
+                            handleProjectChange(
+                                'url',
+                                e.target.value,
+                                projectIndex
+                            )
+                        }
+                    />
+
+                    {/* Add fields for preview, hasMobileDevice, animations, and componentInspiration similarly */}
+                </div>
+            ))}
+
+            {/* Submit button */}
             <motion.div
                 initial={{ opacity: 0, scale: 0.5, y: 10 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, y: 10 }}
-                transition={{
-                    duration: 0.4,
-                }}
-            >
-                <Input
-                    type='text'
-                    className='wysiwyg-input'
-                    placeholder='Title'
-                    value={Inspiration.title}
-                    onChange={(e) =>
-                        setInspiration({ ...Inspiration, title: e.target.value })
-                    }
-                />
-            </motion.div>
-            <motion.div
-                initial={{ opacity: 0, scale: 0.5, y: 10 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{
-                    duration: 0.6,
-                }}
-            >
-                <Input
-                    type='text'
-                    className='wysiwyg-input'
-                    placeholder='Sort'
-                    value={Inspiration.sort}
-                    onChange={(e) =>
-                        setInspiration({ ...Inspiration, sort: e.target.value })
-                    }
-                />
-            </motion.div>
-            <motion.div
-                initial={{ opacity: 0, scale: 0.5, y: 10 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{
-                    duration: 0.8,
-                }}
-            >
-                <Input
-                    type='text'
-                    placeholder='Priority'
-                    value={priority.join(', ')}
-                    onChange={(e) => setPriority([e.target.value])}
-                />
-            </motion.div>
-            <motion.div
-                initial={{ opacity: 0, scale: 0.5, y: 10 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{
-                    duration: 1,
-                }}
-            >
-                <Textarea
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                />
-            </motion.div>
-            <motion.div
-                initial={{ opacity: 0, scale: 0.5, y: 10 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{
-                    duration: 1.2,
-                }}
+                transition={{ duration: 1.2 }}
             >
                 <div className='flex items-center gap-2'>
                     <div className='cursor-hover'>
-                        <Button>New post</Button>
+                        <Button>Submit</Button>
                     </div>
                 </div>
             </motion.div>
         </motion.form>
     );
-
     return (
         <>
             <Drawer.Root shouldScaleBackground>

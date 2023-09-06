@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { toast } from "@/components/ui/use-toast"
+import { signUp } from "@/utils/firebase"
 
 export default function RegisterPage() {
   const [name, setName] = useState("")
@@ -31,7 +32,7 @@ export default function RegisterPage() {
     })
 
     console.log(result)
-    return router.push("/dashboard")
+    return router.push("/")
   }
 
   return (
