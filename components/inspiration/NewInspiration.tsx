@@ -14,6 +14,7 @@ import { motion } from 'framer-motion';
 interface NewInspirationProps {
     content?: string;
     id: string;
+    title: string;
     userId: string;
 }
 
@@ -33,7 +34,7 @@ const initialThoughtState = {
     name: '',
     projects: [initialProjectState],
 };
-export function NewInspiration({ content }: newInspirationProps) {
+export function NewInspiration({ content }: NewInspirationProps) {
     const [open, setOpen] = useState(false);
     const [date, setDate] = useState<Date | null>(null);
     const [loading, setLoading] = useState(false);
@@ -91,7 +92,7 @@ export function NewInspiration({ content }: newInspirationProps) {
                 throw new Error('Failed to get the user details');
             }
 
-            const newThought = {
+            const newInspiration = {
                 ...Inspiration,
                 userId: user?.uid,
                 createdAt: serverTimestamp(),
@@ -103,10 +104,10 @@ export function NewInspiration({ content }: newInspirationProps) {
 
             const docRef = await addDoc(
                 collection(db, 'inspiration'),
-                newThought
+                newInspiration
             );
             // @ts-ignore
-            newThought.id = docRef.id;
+            newInspiration.id = docRef.id;
 
             setInspiration(initialThoughtState);
             setDate(null);
@@ -116,11 +117,12 @@ export function NewInspiration({ content }: newInspirationProps) {
 
             toast({
                 title: 'Thought created successfully.',
-                description: `with title ${newThought.title}`,
+                // @ts-ignore
+                description: `with title ${newInspiration.title}`,
             });
 
-            // Convert newThought to JSON
-            const jsonThought = JSON.stringify(newThought, null, 2);
+            // Convert newInspiration to JSON
+            const jsonThought = JSON.stringify(newInspiration, null, 2);
             console.log(jsonThought); // You can post this JSON to your desired endpoint
         } catch (error) {
             toast({

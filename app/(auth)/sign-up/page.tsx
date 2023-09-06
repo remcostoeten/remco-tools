@@ -210,7 +210,7 @@ export default function LoginPage() {
           </div>
         </div>
         <Button
-          text=" Google"
+          title=" Google"
           className="w-full text-center mx-auto flex justify-center"
           onClick={signInWithGoogle}
           disabled={isLoading || isGoogleLoading}

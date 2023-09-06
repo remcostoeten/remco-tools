@@ -11,7 +11,7 @@ import { DataTableColumnHeader } from "./data-table-column-header"
 import React from "react"
 import { DataTableRowActions } from "./data-table-row-actions";
 
-export const columns: ColumnDef<Task>[] = [
+export const DisplayTasks: ColumnDef<Task>[] = [
   {
     id: "createdAT",
     header: ({ table }) => (
