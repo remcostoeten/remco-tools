@@ -26,12 +26,14 @@
     position: absolute;
     left: 50%;
     top: 50%;
+    position: fixed;
     translate: -50% -50%;
     border-radius: 50%;
-    background: linear-gradient(to right, aquamarine, mediumpurple);
+    background: linear-gradient(to right, rgba(102, 38, 109, 0.803), rgb(186, 59, 218));
     animation: rotate 20s infinite;
     opacity: 0.2;
     z-index: -2;
+    transition: 500ms ease all;
   }
   
   #blur {
