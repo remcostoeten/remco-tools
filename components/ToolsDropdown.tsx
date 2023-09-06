@@ -72,8 +72,8 @@ export function ToolsDropdown() {
                   {component.description}
                 </ListItem>
               ))}
-              <ListItem href="/docs" title="Introduction">
-                Re-usable components built using Radix UI and Tailwind CSS.
+              <ListItem href="/playground" title="Playground">
+                A code style playground UI used for the HTML converter and Python script generator.
               </ListItem>
               <ListItem href="/docs/installation" title="Installation">
                 How to install dependencies and structure your app.

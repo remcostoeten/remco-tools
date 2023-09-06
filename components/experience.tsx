@@ -11,7 +11,7 @@ import { useSectionInView } from "@/hooks/useSectionInview";
 import { experiencesData } from "@/utils/data";
 
 export default function Experience() {
-  const { ref } = useSectionInView("Experience");
+  const { ref } = useSectionInView("#experience");
   const { theme } = useTheme();
 
   return (
@@ -19,6 +19,7 @@ export default function Experience() {
       <SectionHeading children={undefined}>My experience</SectionHeading>
       <VerticalTimeline lineColor="">
         {experiencesData.map((item, index) => (
+            // @ts-ignore
           <React.Fragment key={index}>
             <VerticalTimelineElement
               contentStyle={{
@@ -49,6 +50,7 @@ export default function Experience() {
                 {item.description}
               </p>
             </VerticalTimelineElement>
+            {/* @ts-ignore */}
           </React.Fragment>
         ))}
       </VerticalTimeline>

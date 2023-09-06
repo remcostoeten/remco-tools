@@ -14,9 +14,13 @@ body:not(.table) {
 }
 
 .table {
-  .container {
-    all: unset;
-  }
+    .container {
+        all: unset;
+    }
+}
+
+.z-max {
+    z-index: 9999;
 }
 
 .logo {

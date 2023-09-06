@@ -24,25 +24,15 @@ import { presets } from '@c/playground/data/presets';
 import { Actions } from '@c/python-converter/data/actions';
 
 import PythonScriptGenerator from '@/app/python/components/python-script-generator';
+import Toolbar from '@/components/playground/components/toolbar';
 export default function pythonScriptPlayground() {
     return (
         <>
             <div className="h-full flex-col md:flex">
-                <div className="container flex flex-col items-start justify-between space-y-2 py-4 sm:flex-row sm:items-center sm:space-y-0 md:h-16">
-                    <h2 className="text-lg font-semibold">Generate your python script 🐍</h2>
-                    <div className="ml-auto flex w-full space-x-2 sm:justify-end">
-                        <PresetSelector presets={presets} />
-                        <PresetSave />
-                        <div className="hidden space-x-2 md:flex">
-                            <ScriptInput />
-                            <PresetShare />
-                        </div>
-                        <PresetActions />
-                    </div>
-                </div>
+               <Toolbar/>
                 <Separator />
                 <Tabs defaultValue="insert" className="flex-1">
-                    <div className="black my-8 container h-full py-6">
+                    <div className="black my-8 container h-full pt-8 pb-8 mt-8 py-6">
                         <div className="grid h-full items-stretch gap-6 md:grid-cols-[1fr_200px]">
                             <div className="hidden flex-col space-y-4 sm:flex md:order-2">
                                 <div className="grid gap-2">
