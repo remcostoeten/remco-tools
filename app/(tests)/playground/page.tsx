@@ -23,7 +23,7 @@ import { presets } from '@c/playground/data/presets';
 import EditIcon from '@c/icons/edit-icon';
 import CompleteIcon from '@c/icons/complete-icon';
 import InsertIcon from '@c/icons/insert-icon';
-
+import Toolbar from '@/components/playground/components/toolbar';
 export const metadata: Metadata = {
     title: 'Playground',
     description: 'The OpenAI Playground built using the components.',
