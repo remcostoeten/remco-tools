@@ -24,16 +24,17 @@ const initialProjectState = {
     colorScheme: '',
     style: [],
     url: '',
-    preview: null,
-    hasMobileDevice: null,
-    animations: null,
-    componentInspiration: null,
+    preview: '',
+    hasMobileDevice: false,
+    animations: '',
+    componentInspiration: '',
 };
 
 const initialThoughtState = {
     name: '',
     projects: [initialProjectState],
 };
+
 export function NewInspiration({ content }: NewInspirationProps) {
     const [open, setOpen] = useState(false);
     const [date, setDate] = useState<Date | null>(null);
@@ -135,7 +136,6 @@ export function NewInspiration({ content }: NewInspirationProps) {
             setOpen(false);
         }
     };
-
     const form = (
         <motion.form
             initial={{ opacity: 0, scale: 0.9, y: -10 }}
@@ -152,11 +152,11 @@ export function NewInspiration({ content }: NewInspirationProps) {
                     setInspiration({ ...Inspiration, name: e.target.value })
                 }
             />
-
+    
             {Inspiration.projects.map((project, projectIndex) => (
                 <div key={projectIndex}>
                     <h2>Project {projectIndex + 1} Details</h2>
-
+    
                     <Input
                         type='text'
                         placeholder='Project Type'
@@ -169,7 +169,7 @@ export function NewInspiration({ content }: NewInspirationProps) {
                             )
                         }
                     />
-
+    
                     <Textarea
                         placeholder='Colors (comma-separated)'
                         value={project.colors.join(', ')}
@@ -183,7 +183,7 @@ export function NewInspiration({ content }: NewInspirationProps) {
                             )
                         }
                     />
-
+    
                     <Input
                         type='text'
                         placeholder='Color Scheme'
@@ -196,7 +196,7 @@ export function NewInspiration({ content }: NewInspirationProps) {
                             )
                         }
                     />
-
+    
                     <Textarea
                         placeholder='Style (comma-separated)'
                         value={project.style.join(', ')}
@@ -210,38 +210,82 @@ export function NewInspiration({ content }: NewInspirationProps) {
                             )
                         }
                     />
-
+    
                     <Input
                         type='text'
                         placeholder='URL'
                         value={project.url}
                         onChange={(e) =>
+                            handleProjectChange('url', e.target.value, projectIndex)
+                        }
+                    />
+    
+                    <Input
+                        type='text'
+                        placeholder='Preview URL'
+                        value={project.preview}
+                        onChange={(e) =>
                             handleProjectChange(
-                                'url',
+                                'preview',
                                 e.target.value,
                                 projectIndex
                             )
                         }
                     />
-
-                    {/* Add fields for preview, hasMobileDevice, animations, and componentInspiration similarly */}
+    
+                    <div className="flex items-center">
+                        <Input
+                            type='checkbox'
+                            checked={project.hasMobileDevice}
+                            onChange={(e) =>
+                                handleProjectChange(
+                                    'hasMobileDevice',
+                                    e.target.checked,
+                                    projectIndex
+                                )
+                            }
+                        />
+                        <label>Has Mobile Device</label>
+                    </div>
+    
+                    <Textarea
+                        placeholder='Animations Description'
+                        value={project.animations}
+                        onChange={(e) =>
+                            handleProjectChange(
+                                'animations',
+                                e.target.value,
+                                projectIndex
+                            )
+                        }
+                    />
+    
+                    <Textarea
+                        placeholder='Component Inspiration'
+                        value={project.componentInspiration}
+                        onChange={(e) =>
+                            handleProjectChange(
+                                'componentInspiration',
+                                e.target.value,
+                                projectIndex
+                            )
+                        }
+                    />
                 </div>
             ))}
-
-            {/* Submit button */}
+    
             <motion.div
                 initial={{ opacity: 0, scale: 0.5, y: 10 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ duration: 1.2 }}
             >
                 <div className='flex items-center gap-2'>
-                    <div className='cursor-hover'>
-                        <Button>Submit</Button>
-                    </div>
+                    <Button type="submit">Submit</Button>
                 </div>
             </motion.div>
         </motion.form>
     );
+    
     return (
         <>
             <Drawer.Root shouldScaleBackground>

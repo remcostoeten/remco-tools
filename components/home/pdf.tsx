@@ -17,7 +17,6 @@ export default function DownloadCV() {
 
     return (
         <>
-            <div className='z-10'>
                 <Drawer.Root shouldScaleBackground>
                     <Drawer.Trigger asChild>
                         <button
@@ -69,7 +68,6 @@ export default function DownloadCV() {
                         </Drawer.Content>
                     </Drawer.Portal>
                 </Drawer.Root>
-            </div>{' '}
         </>
     );
 }

@@ -19,6 +19,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from '../ui/select';
+import { opacity } from '@/app/fancy-hamburger-header/anim';
 
 interface NewTaskProps {
     content?: string;
@@ -284,9 +285,9 @@ export function NewThought({ content }: NewTaskProps) {
         <>
             <Drawer.Root shouldScaleBackground>
                 <Drawer.Trigger asChild onClick={() => setOpen(true)}>
-                    <span>
-                        <PlusSquare className='font-2xl w-[40px]' />
-                    </span>
+                    <Button className="h-[32px]" variant='outline'> 
+                    <PlusSquare  color='white' className=' font-lg w-[20px]' />
+                    </Button>
                 </Drawer.Trigger>
                 <Drawer.Portal>
                     <Drawer.Overlay className='fixed inset-0 bg-black/40' />

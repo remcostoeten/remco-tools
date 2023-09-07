@@ -1,4 +1,4 @@
-'use client';
+'use client'
 import React, { useEffect, useState, createContext, useContext } from 'react';
 
 type Theme = 'light' | 'dark';
@@ -20,19 +20,12 @@ export default function ThemeContextProvider({
     const [theme, setTheme] = useState<Theme>('dark');
 
     const toggleTheme = () => {
-        if (theme === 'light') {
-            setTheme('dark');
-            window.localStorage.setItem('theme', 'dark');
-            document.documentElement.classList.add('dark');
-        } else {
-            setTheme('light');
-            window.localStorage.setItem('theme', 'light');
-            document.documentElement.classList.remove('dark');
-        }
+        // Toggle between light and dark themes
+        setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
     };
 
     useEffect(() => {
-        const localTheme = window.localStorage.getItem('dark') as Theme | null;
+        const localTheme = window.localStorage.getItem('theme') as Theme | null;
 
         if (localTheme) {
             setTheme(localTheme);
@@ -45,6 +38,11 @@ export default function ThemeContextProvider({
             document.documentElement.classList.add('dark');
         }
     }, []);
+
+    // Update the HTML class based on the current theme
+    useEffect(() => {
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+    }, [theme]);
 
     return (
         <>

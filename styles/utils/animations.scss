@@ -183,3 +183,26 @@
   .motion-div {
     animation: gradient 15s ease infinite;
 }
+
+.dutch {
+    background: linear-gradient(90deg, rgba(177, 35, 47, 0.476), white, rgba(37, 74, 143, 0.485));
+    background-size: 200% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent !important;
+    animation: dutchFlagGradient 25s ease-in-out infinite;
+  }
+
+  /* animation for dutch colors  overlay on text for homepage */
+  @keyframes dutchFlagGradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  

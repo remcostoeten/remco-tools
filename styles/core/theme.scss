@@ -81,17 +81,17 @@ input,
     }
 }
 
-.toggle {
-    z-index: 1;
-    &:checked {
-        & ~ .background {
-            --bg: white;
-        }
-        & ~ .title {
-            --color: white;
-        }
-    }
-}
+// .toggle {
+//     z-index: 1;
+//     &:checked {
+//         & ~ .background {
+//             --bg: $white;
+//         }
+//         & ~ .title {
+//             --color: $black;
+//         }
+//     }
+// }
 
 ul.group.flex.flex-1.list-none.items-center.justify-center.space-x-1 {
     button {
@@ -99,6 +99,13 @@ ul.group.flex.flex-1.list-none.items-center.justify-center.space-x-1 {
     }
 }
 
+html:not(.dark) {
+    .toggle {
+        color: $black;
+        scale: .75;
+        transform: translate(2px, 4px)
+    }
+}
 .dark {
     .toggle {
         color: $white;
