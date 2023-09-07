@@ -37,7 +37,7 @@ export default function SecondaryDropdown() {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Todos</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid gap-3 p-4 w-[400px] md:grid-cols-1  ">
+            <ul className="grid gap-3 p-4 w-max md:grid-cols-1  ">
               {components.map((component) => (
                 <ListItem
                   key={component.title}

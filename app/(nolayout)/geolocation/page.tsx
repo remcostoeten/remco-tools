@@ -4,73 +4,84 @@ import { Input } from '@/components/ui/input';
 import { toast } from '@/components/ui/use-toast';
 import AddressesList from './components/AddressesList';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import { auth, db } from '@/utils/firebase';
-import { doc, setDoc } from 'firebase/firestore';
+import { db } from '@/utils/firebase';
+import { addDoc, collection, doc, getDocs } from 'firebase/firestore';
 import DistanceCalculator from './DistanceCalculator';
 import MapDisplay from './components/google-long-lat-map';
+import { Form } from '@/components/ui/form';
+import { Button } from '@/components/ui/button';
 
 interface Location {
-	name: string;
-	latitude: string;
-	longitude: string;
+    name: string;
+    latitude: string;
+    longitude: string;
 }
 
 const AddressConverter: React.FC = () => {
-	const [latitude, setLatitude] = useState<string>('');
-	const [longitude, setLongitude] = useState<string>('');
-	const [address, setAddress] = useState<string>('');
-	const [locations, setLocations] = useState<Location[]>([]);
-	const [showLocations, setShowLocations] = useState<boolean>(false);
-	const [showMap, setShowMap] = useState<boolean>(false);
+    const [latitude, setLatitude] = useState<string>('');
+    const [longitude, setLongitude] = useState<string>('');
+    const [address, setAddress] = useState<string>('');
+    const [locations, setLocations] = useState<Location[]>([]);
+    const [showLocations, setShowLocations] = useState<boolean>(false);
+    const [showMap, setShowMap] = useState<boolean>(false);
+    const [password, setPassword] = useState('');
+    const [auth, setAuth] = useState(false);  
 
-	const convertToLatLong = () => {
-		const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY_NEW;
-		const endpoint = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
-			address,
-		)}&key=${apiKey}`;
-		fetch(endpoint)
-			.then((response) => response.json())
-			.then((data) => {
-				if (data.status === 'OK') {
-					const location = data.results[0].geometry.location;
-					setLatitude(location.lat.toString());
-					setLongitude(location.lng.toString());
-					toast({
-						title: `Found location: ${location.lat.toString()}, ${location.lng.toString()}`,
-					});
-				} else {
-					toast({ title: 'Could not find location' });
-				}
-			})
-			.catch((error) => {
-				console.error('An error occurred:', error);
-				toast({ title: 'An error occurred.' });
-			});
-	};
+    const handlePasswordSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (password === process.env.NEXT_PUBLIC_ADMIN_PASSSWORD){
+            setAuth(true);
+        } else {
+            toast({ title: 'Incorrect password' });
+        }
+    };
+    const convertToLatLong = () => {
+        const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY_NEW;
+        const endpoint = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
+            address
+        )}&key=${apiKey}`;
+        fetch(endpoint)
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.status === 'OK') {
+                    const location = data.results[0].geometry.location;
+                    setLatitude(location.lat.toString());
+                    setLongitude(location.lng.toString());
+                    toast({
+                        title: `Found location: ${location.lat.toString()}, ${location.lng.toString()}`,
+                    });
+                } else {
+                    toast({ title: 'Could not find location' });
+                }
+            })
+            .catch((error) => {
+                console.error('An error occurred:', error);
+                toast({ title: 'An error occurred.' });
+            });
+    };
 
-	const saveLocation = async () => {
-		const location: Location = {
-			name: address,
-			latitude,
-			longitude,
-		};
-		const updatedLocations = [...locations, location];
-		setLocations(updatedLocations);
-		localStorage.setItem('locations', JSON.stringify(updatedLocations));
-		setLatitude('');
-		setLongitude('');
-		setAddress('');
-		setShowLocations(true);
-		setShowMap(true);
+    const saveLocation = async () => {
+        const location: Location = {
+            name: address,
+            latitude,
+            longitude,
+        };
 
-		if (auth.currentUser) {
-			const userId = auth.currentUser.uid;
-			await setDoc(doc(db, 'locations', userId), location);
-		} else {
-			console.error('No user is signed in.');
-		}
-	};
+        // Add the location to Firestore
+        try {
+            const locationsCollection = collection(db, 'locations');
+            await addDoc(locationsCollection, location);
+            toast({ title: 'Location saved successfully.' });
+        } catch (error) {
+            console.error('Error saving location:', error);
+            toast({ title: 'An error occurred while saving the location.' });
+        }
 
+        const updatedLocations = [...locations, location];
+        setLocations(updatedLocations);
+        setShowLocations(true);
+        setShowMap(true);
+    };
 	const copyToClipboard = (type: 'latitude' | 'longitude') => {
 		const value = type === 'latitude' ? latitude : longitude;
 		if (value) {
@@ -78,20 +89,23 @@ const AddressConverter: React.FC = () => {
 			alert('Copied to clipboard!');
 		}
 	};
+    useEffect(() => {
+        const fetchLocations = async () => {
+            try {
+                const locationsCollection = collection(db, 'locations');
+                const querySnapshot = await getDocs(locationsCollection);
+                const fetchedLocations: Location[] = [];
+                querySnapshot.forEach((doc) => {
+                    fetchedLocations.push(doc.data() as Location);
+                });
+                setLocations(fetchedLocations);
+            } catch (error) {
+                console.error('Error fetching locations:', error);
+            }
+        };
 
-	useEffect(() => {
-		const storedLocations = JSON.parse(
-			localStorage.getItem('locations') || '[]',
-		);
-		setLocations(storedLocations);
-	}, []);
-
-	const clearStorage = () => {
-		localStorage.clear();
-		setLocations([]);
-		setShowLocations(false);
-		setShowMap(false);
-	};
+        fetchLocations();
+    }, []);
 
 	return (
 		<div className='flex flex-col'>
@@ -114,12 +128,14 @@ const AddressConverter: React.FC = () => {
 						<span className='flex w-full justify-between'>
 							<span
 								className='text-xs text-muted-foreground'
-								onClick={convertToLatLong}>
+								onClick={convertToLatLong}
+							>
 								Get Lat/Long
 							</span>
 							<span
 								className=' flex w-full justify-end mt-2 text-xs text-muted-foreground'
-								onClick={saveLocation}>
+								onClick={saveLocation}
+							>
 								Save location
 							</span>
 						</span>
@@ -140,7 +156,8 @@ const AddressConverter: React.FC = () => {
 						/>
 						<span
 							className=' flex w-full justify-end mt-2 text-xs text-muted-foreground'
-							onClick={() => copyToClipboard('latitude')}>
+							onClick={() => copyToClipboard('latitude')}
+						>
 							Copy
 						</span>
 					</CardContent>
@@ -160,7 +177,8 @@ const AddressConverter: React.FC = () => {
 						/>
 						<span
 							className='text-xs text-muted-foreground'
-							onClick={() => copyToClipboard('longitude')}>
+							onClick={() => copyToClipboard('longitude')}
+						>
 							Copy
 						</span>
 					</CardContent>
@@ -172,21 +190,41 @@ const AddressConverter: React.FC = () => {
 						</CardTitle>
 					</CardHeader>
 					<CardContent>
-						{showLocations && (
-							<AddressesList
-								locations={locations}
-								onSelect={(selectedLocation) => {
-									setLatitude(selectedLocation.latitude);
-									setLongitude(selectedLocation.longitude);
-									setAddress(selectedLocation.name);
-								}}
-							/>
+						{!auth && (
+							<div>
+								<p>
+									You need to enter the correct password to
+									access this feature.
+								</p>
+								{/* You can also render a password input and submit button here */}
+								<form onSubmit={handlePasswordSubmit}>
+									<Input
+										type='password'
+										value={password}
+										onChange={(e) =>
+											setPassword(e.target.value)
+										}
+										placeholder='Enter password'
+									/>	
+									<Button type='submit'>Submit</ Button>
+								</form>
+							</div>
 						)}
-						<span
-							className='text-xs text-muted-foreground'
-							onClick={clearStorage}>
-							Clear storage
-						</span>
+						{showLocations && auth && (
+							<div>
+								<AddressesList
+									locations={locations}
+									onSelect={(selectedLocation) => {
+										setLatitude(selectedLocation.latitude);
+										setLongitude(
+											selectedLocation.longitude
+										);
+										setAddress(selectedLocation.name);
+									}}
+								/>
+							</div>
+						)}
+						{/* Other content */}
 					</CardContent>
 				</Card>
 			</div>
@@ -202,6 +240,7 @@ const AddressConverter: React.FC = () => {
 			{latitude && longitude && <DistanceCalculator />}
 		</div>
 	);
+	
 };
 
 export default AddressConverter;
