@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useRef, useState } from "react";
-import GreenCursor from "./icons/Cursor/GreenCursor";
+import GreenCursor from "./core/icons/Cursor/GreenCursor";
 
 const Trailer: React.FC = () => {
   const trailer = useRef<HTMLDivElement>(null);

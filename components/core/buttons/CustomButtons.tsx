@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-import { Button, buttonVariants } from "../ui/button"
+import { Button, buttonVariants } from "../../ui/button"
 
 interface ButtonProps {
   text: string

@@ -6,8 +6,7 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from '@/components/ui/command';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import BackgroundVariantOne from '@/components/core/BackgroundVariantOne';
-import BackgroundVariantTwo from '@/components/core/BackgroundVariantTwo';
+import BackgroundVariantOne from '@/components/misc/BackgroundVariantOne';
 
 export default function ComboboxDemo() {
     const [open, setOpen] = React.useState(false);

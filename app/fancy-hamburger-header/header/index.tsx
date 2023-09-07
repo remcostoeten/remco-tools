@@ -4,7 +4,7 @@ import styles from './style.module.scss';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { opacity, background } from './anim';
-import RemcoLogoIcon from '@/components/icons/remcostoeten-logo-icon';
+import RemcoLogoIcon from '@/components/core/icons/remcostoeten-logo-icon';
 import Nav from './nav';
 import Header from '@/components/core/header/Header';
 

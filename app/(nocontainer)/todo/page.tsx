@@ -5,7 +5,7 @@ import { z } from 'zod';
 import { db } from '@/utils/firebase';
 import { DataTable } from '@/components/data-tables/data-table';
 import { taskSchema } from '@/components/data-tables/data/schema';
-import { columns } from '@/components/inspiration/DisplayInspiration';
+import { columns } from '@/components/core/tools/playground/inspiration/DisplayInspiration';
 
 export const metadata: Metadata = {
 	title: 'Tasks',

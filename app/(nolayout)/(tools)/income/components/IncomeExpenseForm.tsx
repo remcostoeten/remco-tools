@@ -14,7 +14,7 @@ import React, { useEffect, useState } from 'react';
 import {
 	BorderButton,
 	RoundedGlowButton,
-} from '@/components/buttons/CustomButtons';
+} from '@/components/core/buttons/CustomButtons';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { toast } from '@/components/ui/use-toast';

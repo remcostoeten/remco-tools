@@ -4,17 +4,13 @@ import { Toaster } from "@/components/ui/toaster";
 import { Analytics } from "@vercel/analytics/react";
 import FancyHeader from "./fancy-hamburger-header/header";
 import { ReactNode } from "react";
-import Cursor from "@/components/core/Cursor";
 import ActiveSectionContextProvider from "@/context/active-section-contex";
 import Header from "@/components/core/header/Header";
 import ThemeContextProvider from "@/context/theme-context";
-import ToggleTheme from "@/components/ToggleTheme";
+import ToggleTheme from "@/components/core/ToggleTheme";
 import ParallaxDiv from "@/components/ParallaxBackground";
-import Trailer from "@/components/Trailer";
 import { seoKeywords } from "@/config/keywords";
-import PageLoader from "@/components/core/PageLoader";
 import { Inter } from 'next/font/google'
-import GlowEffect from "@/components/ParallaxBackground";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -75,7 +71,6 @@ export default function RootLayout({
       <body
         className={`${inter.className} bg-gray-50 text-gray-950 relative pt-28 sm:pt-36 dark:bg-black dark:text-gray-50 dark:text-opacity-90`}
       >
-            {/* <GlowEffect/> */}
        <ParallaxDiv/>
         <ThemeContextProvider>
           <ActiveSectionContextProvider>

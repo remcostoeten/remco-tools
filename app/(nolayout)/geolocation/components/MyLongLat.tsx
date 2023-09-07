@@ -1,5 +1,5 @@
 import CustomStatusBadge from '@/components/core/StatusBadge';
-import { WeakGlowButton } from '@/components/buttons/CustomButtons';
+import { WeakGlowButton } from '@/components/core/buttons/CustomButtons';
 import { useUserLocation } from '@/utils/useUserLocation';
 
 const MyLongLat: React.FC = () => {

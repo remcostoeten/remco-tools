@@ -11,7 +11,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
 import { cn } from "@/lib/utils"
-import RemcoLogoIcon from "./icons/remcostoeten-logo-icon"
+import RemcoLogoIcon from "../icons/remcostoeten-logo-icon"
 
 const components: { title: string; href: string; description: string }[] = [
   {

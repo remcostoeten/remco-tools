@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import GreenCursor from "../icons/Cursor/GreenCursor";
-import PinkCursor from "../icons/Cursor/PinkCursor";
+import GreenCursor from "./icons/Cursor/GreenCursor";
+import PinkCursor from "./icons/Cursor/PinkCursor";
 
 // ... (import statements and other code)
 

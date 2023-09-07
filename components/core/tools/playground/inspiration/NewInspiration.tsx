@@ -6,9 +6,9 @@ import { Drawer } from 'vaul';
 import { PlusSquare } from 'lucide-react';
 import { getAuth, signInAnonymously } from 'firebase/auth';
 import { auth, auth as firebaseAuth, db } from '@/utils/firebase';
-import { Input } from '../ui/input';
-import { Button } from '../ui/button';
-import { Textarea } from '../ui/textarea';
+import { Input } from '../../../../ui/input';
+import { Button } from '../../../../ui/button';
+import { Textarea } from '../../../../ui/textarea';
 import { motion } from 'framer-motion';
 
 interface NewInspirationProps {

@@ -9,21 +9,21 @@ import { Separator } from '@ui/separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@ui/tabs';
 import { Textarea } from '@ui/textarea';
 
-import { CodeViewer } from '@c/playground/components/code-viewer';
-import { MaxLengthSelector } from '@c/playground/components/maxlength-selector';
-import { ModelSelector } from '@c/playground/components/model-selector';
-import { PresetActions } from '@c/playground/components/preset-actions';
-import { PresetSave } from '@c/playground/components/preset-save';
-import { PresetSelector } from '@c/playground/components/preset-selector';
-import { PresetShare } from '@c/playground/components/preset-share';
-import { TemperatureSelector } from '@c/playground/components/temperature-selector';
-import { TopPSelector } from '@c/playground/components/top-p-selector';
-import { models, types } from '@c/playground/data/models';
-import { presets } from '@c/playground/data/presets';
-import EditIcon from '@c/icons/edit-icon';
-import CompleteIcon from '@c/icons/complete-icon';
-import InsertIcon from '@c/icons/insert-icon';
-import Toolbar from '@/components/playground/components/toolbar';
+import { CodeViewer } from '@/components/core/tools/playground/components/code-viewer';
+import { MaxLengthSelector } from '@/components/core/tools/playground/components/maxlength-selector';
+import { ModelSelector } from '@/components/core/tools/playground/components/model-selector';
+import { PresetActions } from '@/components/core/tools/playground/components/preset-actions';
+import { PresetSave } from '@/components/core/tools/playground/components/preset-save';
+import { PresetSelector } from '@/components/core/tools/playground/components/preset-selector';
+import { PresetShare } from '@/components/core/tools/playground/components/preset-share';
+import { TemperatureSelector } from '@/components/core/tools/playground/components/temperature-selector';
+import { TopPSelector } from '@/components/core/tools/playground/components/top-p-selector';
+import { models, types } from '@/components/core/tools/playground/data/models';
+import { presets } from '@/components/core/tools/playground/data/presets';
+import EditIcon from '@/components/core/icons/edit-icon';
+import CompleteIcon from '@/components/core/icons/complete-icon';
+import InsertIcon from '@/components/core/icons/insert-icon';
+import Toolbar from '@/components/core/tools/playground/components/toolbar';
 export const metadata: Metadata = {
     title: 'Playground',
     description: 'The OpenAI Playground built using the components.',

@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from '@sm/BackgroundVariantTwo.module.scss';
 export default function BackgroundVariantTwo() {
     return (
         <>

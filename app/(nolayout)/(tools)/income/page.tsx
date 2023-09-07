@@ -5,7 +5,7 @@ import { collection, onSnapshot } from 'firebase/firestore';
 
 import { db } from '@/utils/firebase';
 
-import { RoundedGlowButton } from '@/components/buttons/CustomButtons';
+import { RoundedGlowButton } from '@/components/core/buttons/CustomButtons';
 import { Input } from '@/components/ui/input';
 import { usePasswordProtection } from '@/utils/usePasswordProtection';
 import React from 'react';

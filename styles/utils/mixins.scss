@@ -1,0 +1,52 @@
+// Generic setup for media queries.
+// Designer will give all the exact breakpoints soon which are used by the entrire belastingdienst.
+
+$screen-zero:   0;
+$screen-xxs:    320px;
+$screen-xs:     480px;
+$screen-s:      640px;
+$screen-m:      768px;
+$screen-l:      1024px;
+$screen-xl:     1440px;
+$breakpoints: (
+    mobile:     $screen-xxs,
+    tablet:     $screen-m,
+    desktop:    $screen-l,
+);
+
+
+@mixin desktop {
+    @media (min-width: $screen-l) {
+        @content;
+    }
+}
+
+@mixin above-mobile {
+    @media (min-width: $screen-m) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: $screen-m) and (max-width: #{$screen-l - 1px}) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media (min-width: $screen-zero) and (max-width: $screen-m - 1px) {
+        @content;
+    }
+}
+
+@mixin mobile-s {
+    @media (min-width: $screen-zero) and (max-width: $screen-s - 1px) {
+        @content;
+    }
+}
+
+@mixin mobile-xs {
+    @media (min-width: $screen-zero) and (max-width: $screen-xs - 1px) {
+        @content;
+    }
+}

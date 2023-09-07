@@ -1,25 +1,28 @@
-.nav{
-   overflow: hidden;
+@import '../../../../styles/variables/colors.scss';
+@import '../../../../styles/utils/mixins.scss';
 
-   .wrapper{
+.nav {
+    overflow: hidden;
+
+    .wrapper {
         display: flex;
         gap: 50px;
         margin-bottom: 80px;
         z-index: 9999;
-        padding: 40px; 
-         background-color: #111;
+        padding: 40px;
+        background-color: $black;
     }
 
-    .container{
+    .container {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
     }
 }
 
-@media only screen and (min-width: 1000px) {
-    .nav{
-        .wrapper{
+@include above-mobile {
+    .nav {
+        .wrapper {
             margin-bottom: 0px;
             justify-content: space-between;
         }

@@ -1,26 +1,24 @@
 "use client";
 import React, { useState } from "react";
 import styles from "./style.module.scss";
-import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { opacity, background } from "./anim";
 import Nav from "./header/nav";
-import RemcoLogoIcon from "../../components/icons/remcostoeten-logo-icon";
-import Header from "@/components/core/header/Header";
 
 export default function FancyHeader() {
   const [isActive, setIsActive] = useState(false);
 
+  const handleToggle = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.preventDefault();
+    setIsActive(prev => !prev);
+  };
+
   return (
     <>
       <div
-        onClick={() => {
-          setIsActive(!isActive);
-        }}
         className={`${styles.header} ${isActive ? "is-open" : "is-closed"}`}
       >
         <div className={styles.bar}>
-       
           <motion.div
             variants={opacity}
             animate={!isActive ? "open" : "closed"}
@@ -29,18 +27,17 @@ export default function FancyHeader() {
             <p className={styles.shop}>Shop</p>
             <div className={styles.el}></div>
           </motion.div>
-          <div
-            onClick={() => {
-              setIsActive(!isActive);
-            }}
-            className={styles.el}
+
+          {/* Anchor style toggle */}
+          <a 
+            href="#" 
+            className={`btn--menu ${isActive ? 'actived' : ''}`} 
+            id="btn-menu" 
+            onClick={handleToggle}
           >
-            <div
-              className={`${styles.burger} ${
-                isActive ? styles.burgerActive : ""
-              }`}
-            ></div>
-          </div>
+            <span className="btn-mobile--menu-icon">Menu</span>
+          </a>
+
         </div>
         <motion.div
           variants={background}

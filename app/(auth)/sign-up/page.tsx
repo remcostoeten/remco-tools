@@ -18,9 +18,9 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { toast } from "@/components/ui/use-toast"
 import { Icons } from "@/components/icons"
-import { GlowButton } from '@/components/buttons/CustomButtons';
+import { GlowButton } from '@/components/core/buttons/CustomButtons';
 import { auth } from "@/utils/firebase"
-import RemcoLogoIcon from "@/components/icons/remcostoeten-logo-icon"
+import RemcoLogoIcon from "@/components/core/icons/remcostoeten-logo-icon"
 import { Button } from "@/components/ui/button"
 
 export default function LoginPage() {

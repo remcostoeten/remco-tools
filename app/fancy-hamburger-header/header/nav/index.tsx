@@ -11,7 +11,7 @@ export default function Index() {
     const [selectedLink, setSelectedLink] = useState({ isActive: false, index: 0 });
 
     return (
-        <motion.div variants={height} initial="initial" animate="enter" exit="exit" className="overflow-hidden black">
+        <motion.div variants={height} initial="initial" animate="enter" exit="exit" className="absolute p-8 left-0 top-0 overflow-hidden black">
             <div className={styles.wrapper}>
                 <div className={styles.container}>
                     <Body links={navigationRoutes.links} selectedLink={selectedLink} setSelectedLink={setSelectedLink} />

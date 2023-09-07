@@ -1,3 +1,6 @@
+@import '../../../../../styles/variables/colors.scss';
+@import '../../../../../styles/utils/mixins.scss';
+
 .footer{
     display: flex;
     align-items: flex-end;
@@ -16,12 +19,12 @@
 
     li{
         span{
-            color: #9f9689;
+            color: $grey;
         }
     }
 }
 
-@media only screen and (min-width: 1000px) {
+@include above-mobile {
     .footer{
         justify-content: space-between;
 

@@ -7,24 +7,24 @@ import { Separator } from '@ui/separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@ui/tabs';
 import { Textarea } from '@ui/textarea';
 
-import CompleteIcon from '@c/icons/complete-icon';
-import EditIcon from '@c/icons/edit-icon';
-import InsertIcon from '@c/icons/insert-icon';
-import { Actionselector } from '@c/python-converter/components/action-selector';
-import { ScriptInput } from '@c/python-converter/components/script-generate-input';
-import { MaxLengthSelector } from '@c/playground/components/maxlength-selector';
-import { PresetActions } from '@c/playground/components/preset-actions';
-import { PresetSave } from '@c/playground/components/preset-save';
-import { PresetSelector } from '@c/playground/components/preset-selector';
-import { PresetShare } from '@c/playground/components/preset-share';
-import { TemperatureSelector } from '@c/playground/components/temperature-selector';
-import { TopPSelector } from '@c/playground/components/top-p-selector';
-import { types } from '@c/playground/data/models';
-import { presets } from '@c/playground/data/presets';
-import { Actions } from '@c/python-converter/data/actions';
+import CompleteIcon from '@/components/core/icons/complete-icon';
+import EditIcon from '@/components/core/icons/edit-icon';
+import InsertIcon from '@/components/core/icons/insert-icon';
+import { Actionselector } from '@/components/core/tools/python-converter/components/action-selector';
+import { ScriptInput } from '@/components/core/tools/python-converter/components/script-generate-input';
+import { MaxLengthSelector } from '@/components/core/tools/playground/components/maxlength-selector';
+import { PresetActions } from '@/components/core/tools/playground/components/preset-actions';
+import { PresetSave } from '@/components/core/tools/playground/components/preset-save';
+import { PresetSelector } from '@/components/core/tools/playground/components/preset-selector';
+import { PresetShare } from '@/components/core/tools/playground/components/preset-share';
+import { TemperatureSelector } from '@/components/core/tools/playground/components/temperature-selector';
+import { TopPSelector } from '@/components/core/tools/playground/components/top-p-selector';
+import { types } from '@/components/core/tools/playground/data/models';
+import { presets } from '@/components/core/tools/playground/data/presets';
+import { Actions } from '@/components/core/tools/python-converter/data/actions';
 
 import PythonScriptGenerator from '@/app/python/components/python-script-generator';
-import Toolbar from '@/components/playground/components/toolbar';
+import Toolbar from '@/components/core/tools/playground/components/toolbar';
 export default function pythonScriptPlayground() {
     return (
         <>
