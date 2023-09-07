@@ -2,7 +2,6 @@
 
 import { ColumnDef } from "@tanstack/react-table"
 
-import { Badge } from "@/components/ui/badge"
 import { Checkbox } from "@/components/ui/checkbox"
 
 import { labels } from "./data/data"
@@ -150,7 +149,6 @@ export const DisplayTasks: ColumnDef<Task>[] = [
       <DataTableColumnHeader column={column} title="Description" />
     ),
     cell: ({ row }) => {
-      const label = labels.find((label) => label.value === row.original.label)
       return (
         <div className="flex space-x-2">
           <span className="max-w-[500px] truncate font-medium">

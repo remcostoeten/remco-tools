@@ -5,7 +5,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { BsArrowRight } from 'react-icons/bs';
-import { HiDownload } from 'react-icons/hi';
 import { useActiveSectionContext } from '@/context/active-section-contex';
 import DownloadCV from './pdf';
 
@@ -55,7 +54,7 @@ export default function Intro() {
             </div>
 
             <motion.h1
-                className='mb-10 mt-4 px-4 text-2xl font-medium !leading-[1.5] sm:text-4xl'
+                className='grow mb-10 mt-4 px-4 text-2xl font-medium !leading-[1.5] sm:text-4xl'
                 initial={{ opacity: 0, y: 100 }}
                 animate={{ opacity: 1, y: 0 }}
             >

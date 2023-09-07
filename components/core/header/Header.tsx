@@ -63,12 +63,14 @@ export default function Header() {
                                 {index === 3 && (
                                     <>
                                         <motion.li
+                                            data-type='video'
+                                            className='grow'
                                             initial={{ y: -100, opacity: 0 }}
                                             animate={{ y: 0, opacity: 1 }}
                                         >
                                             <ToolsDropdown />
                                         </motion.li>
-                                         <motion.li
+                                        <motion.li
                                             initial={{ y: -100, opacity: 0 }}
                                             animate={{ y: 0, opacity: 1 }}
                                         >
