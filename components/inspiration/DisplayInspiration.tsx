@@ -4,11 +4,11 @@ import { ColumnDef } from "@tanstack/react-table"
 
 import { Checkbox } from "@/components/ui/checkbox"
 
-import { labels } from "./data/data"
-import { Task } from "./data/schema"
-import { DataTableColumnHeader } from "./data-table-column-header"
 import React from "react"
-import { DataTableRowActions } from "./data-table-row-actions";
+import { DataTableColumnHeader } from "../data-tables/data-table-column-header";
+import { DataTableRowActions } from "../data-tables/data-table-row-actions";
+import { labels } from "../data-tables/data/data";
+import { Task } from "../data-tables/data/schema";
 
 export const columns: ColumnDef<Task>[] = [
   {

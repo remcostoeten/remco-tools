@@ -13,8 +13,8 @@ import { motion } from 'framer-motion';
 
 interface NewTaskProps {
     content?: string;
-    id: string;
-    userId: string;
+    id?: string;
+    userId?: string;
 }
 
 const initialThoughtState = {

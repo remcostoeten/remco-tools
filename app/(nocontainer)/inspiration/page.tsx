@@ -1,18 +1,12 @@
-import { promises as fs } from "fs"
-import path from "path"
 import { Metadata } from "next"
-import Image from "next/image"
-import { z } from "zod"
-import { columns } from "@/components/data-tables/columns"
 import { DataTable } from "@/components/data-tables/data-table"
-import { taskSchema } from "@/components/data-tables/data/schema"
 import { UserNav } from "@/components/data-tables/user-nav"
 import { DisplayTasks } from "@/components/data-tables/DisplayTasks"
 
 
 export const metadata: Metadata = {
   title: "Tasks",
-  description: "A task and issue tracker build using Tanstack Table.",
+  description: "A page with links to inspirational sites UX and design wise. All data is store in a database(Firestore).",
 }
 
 export default async function TaskPage() {

@@ -1,12 +1,11 @@
 import { Metadata } from 'next';
-import Image from 'next/image';
 import { collection, getDocs } from 'firebase/firestore';
 import { z } from 'zod';
 
 import { db } from '@/utils/firebase';
-import { columns } from '@/components/data-tables/columns';
 import { DataTable } from '@/components/data-tables/data-table';
 import { taskSchema } from '@/components/data-tables/data/schema';
+import { columns } from '@/components/inspiration/DisplayInspiration';
 
 export const metadata: Metadata = {
 	title: 'Tasks',

@@ -1,12 +1,7 @@
-import { promises as fs } from "fs"
-import path from "path"
 import { Metadata } from "next"
-import Image from "next/image"
-import { z } from "zod"
-import { columns } from "@/components/data-tables/columns"
 import { DataTable } from "@/components/data-tables/data-table"
-import { taskSchema } from "@/components/data-tables/data/schema"
 import { UserNav } from "@/components/data-tables/user-nav"
+import { DisplayTasks } from "@/components/data-tables/DisplayTasks"
 
 
 export const metadata: Metadata = {
@@ -29,7 +24,7 @@ export default async function TaskPage() {
             <UserNav />
           </div>
         </div>
-        <DataTable data={undefined} columns={columns} />
+        <DataTable data={undefined} columns={DisplayTasks} />
       </div>
     </>
   )
