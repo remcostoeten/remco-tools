@@ -113,19 +113,19 @@ export const skillsData = [
     'JavaScript',
     'TypeScript📚 ',
     'React',
-    'Vue'
-    'Photoshop'
-    'Figma'
-    'Vim/Neovim'
+    'Vue',
+    'Photoshop',
+    'Figma',
+    'Vim/Neovim',
     'Next.js ❤️',
     'Git',
     'Tailwind',
     'SQL + ORMS📚',
-    'Lua📚'
+    'Lua📚',
     'Python📚',
-    'Firebase'
-    'NoSQL'
-    'PHP 😬'
+    'Firebase',
+    'NoSQL',
+    'PHP 😬',
     'Django📚',
     'Framer Motion',
 ] as const;
