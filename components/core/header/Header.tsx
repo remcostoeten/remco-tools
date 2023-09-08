@@ -9,71 +9,50 @@ import SecondaryDropdown from '@/components/SecondaryDropdown';
 import { ToolsDropdown } from './ToolsDropdown';
 
 export default function Header() {
-    const { activeSection, setActiveSection, setTimeOfLastClick } =
-        useActiveSectionContext();
+    const { activeSection, setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
 
     return (
         <>
-            <header className='z-50 relative'>
+            <header className="z-50 relative">
                 <motion.div
-                    className='header   fixed top-0 left-1/2 h-[4.5rem] w-full rounded-none   bg-white bg-opacity-80 shadow-lg shadow-white/[0.06] backdrop-blur-[0.5rem] sm:top-6 sm:h-[3.25rem] sm:w-[52rem] sm:rounded-full dark:bg-black '
+                    className="header   fixed top-0 left-1/2 h-[4.5rem] w-full rounded-none   bg-white bg-opacity-80 shadow-lg shadow-white/[0.06] backdrop-blur-[0.5rem] sm:top-6 sm:h-[3.25rem] sm:w-57rem] sm:rounded-full dark:bg-black "
                     initial={{ y: -100, x: '-50%', opacity: 0 }}
-                    animate={{ y: 0, x: '-50%', opacity: 1 }}
-                ></motion.div>
+                    animate={{ y: 0, x: '-50%', opacity: 1 }}></motion.div>
 
-                <nav className='border-shadow  flex w fixed top-[0.15rem] left-1/2 h-12 -translate-x-1/2 py-2 sm:top-[1.7rem] sm:h-[initial] sm:py-0'>
-                    <ul className='flex w-[22rem] flex-wrap items-center justify-center gap-y-1 text-[0.9rem] font-medium text-gray-500 sm:w-max sm:flex-nowrap sm:gap-5'>
+                <nav className="border-shadow  flex w fixed top-[0.15rem] left-1/2 h-12 -translate-x-1/2 py-2 sm:top-[1.7rem] sm:h-[initial] sm:py-0">
+                    <ul className="flex w-[22rem] flex-wrap items-center justify-center gap-y-1 text-[0.9rem] font-medium text-gray-500 sm:w-max sm:flex-nowrap sm:gap-5">
                         {links.map((link, index) => (
                             <React.Fragment key={link.hash}>
-                                <motion.li
-                                    data-cursor-hover
-                                    className='h-3/4 flex items-center justify-center relative'
-                                    initial={{ y: -100, opacity: 0 }}
-                                    animate={{ y: 0, opacity: 1 }}
-                                >
+                                <motion.li data-cursor-hover className="h-3/4 flex items-center justify-center relative" initial={{ y: -100, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
                                     <Link
-                                        className={clsx(
-                                            'flex w-full items-center justify-center px-3 py-3 hover:text-gray-950 transition dark:text-gray-500 dark:hover:text-gray-300',
-                                            {
-                                                'text-gray-950 dark:text-gray-200':
-                                                    activeSection === link.name,
-                                            }
-                                        )}
+                                        className={clsx('flex w-full items-center justify-center px-3 py-3 hover:text-gray-950 transition dark:text-gray-500 dark:hover:text-gray-300', {
+                                            'text-gray-950 dark:text-gray-200': activeSection === link.name,
+                                        })}
                                         href={link.hash}
                                         onClick={() => {
                                             setActiveSection(link.name);
                                             setTimeOfLastClick(Date.now());
-                                        }}
-                                    >
+                                        }}>
                                         {link.name}
 
                                         {link.name === activeSection && (
                                             <motion.span
-                                                className='dark:bg-zinc-950 border rounded-full absolute inset-0 -z-10  dark:active-bg'
-                                                layoutId='activeSection'
+                                                className="dark:bg-zinc-950 border rounded-full absolute inset-0 -z-10  dark:active-bg"
+                                                layoutId="activeSection"
                                                 transition={{
                                                     type: 'spring',
                                                     stiffness: 380,
                                                     damping: 30,
-                                                }}
-                                            ></motion.span>
+                                                }}></motion.span>
                                         )}
                                     </Link>
                                 </motion.li>
                                 {index === 3 && (
                                     <>
-                                        <motion.li
-                                            data-type='video'
-                                            className='grow'
-                                            initial={{ y: -100, opacity: 0 }}
-                                            animate={{ y: 0, opacity: 1 }}
-                                        >
+                                        <motion.li data-type="video" className="grow" initial={{ y: -100, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
                                             <ToolsDropdown />
                                         </motion.li>
-                                        <motion.li
-                                            initial={{ y: -100, opacity: 0 }}
-                                            animate={{ y: 0, opacity: 1 }}
-                                        >
+                                        <motion.li initial={{ y: -100, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
                                             <SecondaryDropdown />
                                         </motion.li>
                                     </>

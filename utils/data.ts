@@ -1,6 +1,6 @@
 import React from 'react';
-import { CgWorkAlt } from 'react-icons/cg';
-import { FaReact } from 'react-icons/fa';
+import { CgCPlusPlus, CgWorkAlt } from 'react-icons/cg';
+import { FaJava, FaJsSquare, FaMagento, FaReact } from 'react-icons/fa';
 import { LuGraduationCap } from 'react-icons/lu';
 import corpcommentImg from '@/public/corpcomment.png';
 import rmtdevImg from '@/public/rmtdev.png';
@@ -40,14 +40,14 @@ export const experiencesData = [
         description:
             'I graduated with a Graphic design degree after 4 years of studying. I immediately found a job as a front-end developer at the end of the term.', // Corrected phrasing
         icon: React.createElement(LuGraduationCap),
-        date: '2019',
+        date: '2017',
     },
     {
         title: 'Tickles Digital Agency', 
         location: 'Lemmer, Joure, the Netherlands',
         description:
             'I worked as a front-end developer, we exclusively made custom design Magento 2 webshops in all sectors across B2B and B2C.', // Fixed typos
-        icon: React.createElement(CgWorkAlt),
+        icon: React.createElement(FaMagento),
         date: '2017 - 2022',
     },
     {
@@ -55,7 +55,7 @@ export const experiencesData = [
         location: 'Remote / Heerenveen, the Netherlands',
         description:
             'I joined the software team as the only front-end developer and in my time there I refactored the entire front-end of the main corporate webshop which was written in .NET/ASP, SCSS (BEM) and Javascript (vanilla + knockoutJS).', // Fixed typos
-        icon: React.createElement(FaReact),
+        icon: React.createElement(FaJsSquare),
         date: '2022 - 2023',
     },
     {
@@ -102,29 +102,30 @@ export const projectsData = [
         title: 'Kanban Board',
         description:
             'A kanban board with user authentication and actual drag and drop functionallity like Jira or any other PM service..',
-        tags: ['Firebase', 'TypeScript', 'NextJS', 'TailwindCSS'],
+        tags: ['Firebase','Firestore', 'TypeScript', 'NextJS', 'TailwindCSS'],
         imageUrl: wordanalyticsImg,
     },
 ] as const;
 
 export const skillsData = [
-    'HTML',
-    'CSS',
+    '(P),(CS),(blade/razor)....HTML',
+    '(S)CSS ❤️',
     'JavaScript',
-    'TypeScript',
+    'TypeScript📚 ',
     'React',
-    'Next.js',
-    'Node.js',
+    'Vue'
+    'Photoshop'
+    'Figma'
+    'Vim/Neovim'
+    'Next.js ❤️',
     'Git',
     'Tailwind',
-    'Prisma',
-    'MongoDB',
-    'Redux',
-    'GraphQL',
-    'Apollo',
-    'Express',
-    'PostgreSQL',
-    'Python',
-    'Django',
+    'SQL + ORMS📚',
+    'Lua📚'
+    'Python📚',
+    'Firebase'
+    'NoSQL'
+    'PHP 😬'
+    'Django📚',
     'Framer Motion',
 ] as const;
