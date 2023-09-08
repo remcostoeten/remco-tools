@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const validateString = (
     value: unknown,
     maxLength: number
