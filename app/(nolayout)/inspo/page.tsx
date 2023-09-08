@@ -21,6 +21,7 @@ type Project = {
   componentInspiration?: string | null;
 };
 
+// @ts-ignore
 const initialData: DataItem[] = data;
 const TableComponent: React.FC = () => {
   const [data, setData] = useState(initialData);
