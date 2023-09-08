@@ -3,6 +3,16 @@
         "name": "Dribble",
         "projects": [
             {
+                "projectType": "Cool site collection" ,
+                "animations": "null",
+                "preview": "null",
+                "hasMobileDevice": "null",
+                "componentInspiration": "null",
+                "colorScheme": "null",
+                "style": "null",
+                "url": "https://onepagelove.com/",
+            },
+            {
                 "projectType": "Agency landing",
                 "colors": ["black", "armygreen"],
                 "colorScheme": "dark",
