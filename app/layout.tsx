@@ -72,7 +72,7 @@ export default function RootLayout({
                 <ParallaxDiv />
                 <ThemeContextProvider>
                     <ActiveSectionContextProvider>
-                        <Trailer />
+                    <Trailer />
                         <ToggleTheme />
                         <FancyHeader />
                         <Header />

@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 'use client';
 
 import { AnimatePresence, motion } from 'framer-motion';
@@ -12,6 +14,7 @@ function ModelSelector({ models, types }) {
     const [selectedModel, setSelectedModel] = useState(models[0]);
     const [peekedModel, setPeekedModel] = useState(models[0]);
     const {
+   
         isTypescript,
         setIsTypescript,
         isClientComponent,

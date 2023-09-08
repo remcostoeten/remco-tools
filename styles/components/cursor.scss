@@ -21,7 +21,22 @@
   background-size: 105%;
   opacity: 0.8;
 }
-
+#trailerr {
+  height: 20px;
+  width: 20px;
+  background-color: white;
+  border-radius: 20px;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 10000;
+  pointer-events: none;
+  opacity: 0;
+  mix-blend-mode: difference;
+  transition: opacity 500ms ease;
+  display: grid;
+  place-items: center;
+}
 #trailer {
   height: 20px;
   width: 20px;
@@ -38,10 +53,26 @@
   display: grid;
   place-items: center;
 }
+#cursor {
+  height: 25px;
+  width: 75px;
+  background-color: white;
+  border-radius: 20px;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 10000;
+  pointer-events: none;
+  opacity: 0;
+                              transition: opacity 500ms ease;
+  display: grid;
+  place-items: center;
+}
 
  body {
   &:hover {
-    #trailer {
+    #trailer,
+    #trailerr {
       opacity: 1;
     }
   }

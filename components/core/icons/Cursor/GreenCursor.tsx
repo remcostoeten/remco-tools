@@ -5,7 +5,7 @@ export default function GreenCursor() {
     <> <svg
     width="25"
     height="75"
-    viewBox="0 0 75 25"
+   
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >

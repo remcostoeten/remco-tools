@@ -1,9 +1,9 @@
 import SectionDivider from "@/components/divider";
 import Experience from "@/components/experience";
 import About from "@/components/home/about";
+import Contact from "@/components/home/contact";
 import Intro from "@/components/home/intro";
 import Skills from "@/components/home/skills";
-import { Contact } from "lucide-react";
 
 export default function Home() {
   return (

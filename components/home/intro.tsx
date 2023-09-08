@@ -66,7 +66,7 @@ export default function Intro() {
             </motion.h1>
 
             <motion.div
-                className='flex flex-col sm:flex-row items-center justify-center gap-2 px-4 text-lg font-medium'
+                className='flex showAlternativeCursor flex-col sm:flex-row items-center justify-center gap-2 px-4 text-lg font-medium'
                 initial={{ opacity: 0, y: 100 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
@@ -90,7 +90,7 @@ export default function Intro() {
 
                 <Link
                     data-cursor-hover
-                    className='dark:black bg-offwhite light:border-zinc-800 p-4 text-gray-700 hover:text-gray-800 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-black border                                  border-shadow border dark:text-offwhite/60'
+                    className='mouse dark:black bg-offwhite light:border-zinc-800 p-4 text-gray-700 hover:text-gray-800 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-black border                                  border-shadow border dark:text-offwhite/60'
                     href='https://www.linkedin.com/in/remco-stoeten/'
                     target='_blank'
                 >
@@ -108,7 +108,7 @@ export default function Intro() {
 
                 <Link
                     data-cursor-hover
-                    className='dark:black bg-offwhite light:border-zinc-800 p-4 text-gray-700 hover:text-gray-800 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-black border border-shadow border dark:text-offwhite/60'
+                    className='mouse dark:black bg-offwhite light:border-zinc-800 p-4 text-gray-700 hover:text-gray-800 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-black border border-shadow border dark:text-offwhite/60'
                     href='https://github.com/remcostoeten'
                     target='_blank'
                 >

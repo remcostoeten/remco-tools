@@ -2,44 +2,132 @@
 import React, { useEffect, useRef } from 'react';
 
 export default function Trailer() {
-  const trailer = useRef(null);
-  const trailerIcon = useRef(null);
+    const trailer = useRef(null);
+    const customCursor = useRef(null); 
 
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      const interactable = e.target.closest(".grow");
-      const interacting = interactable !== null;
+    useEffect(() => {
+        const handleMouseMove = (e) => {
+            const interactable = e.target.closest('.grow');
+            const hide = e.target.closest('.showAlternativeCursor');
 
-      animateTrailer(e, interacting);
-      trailer.current.dataset.type = interacting ? interactable.dataset.type : "";
-    };
+            if (hide) {
+                trailer.current.style.display = 'none';
+                customCursor.current.style.display = 'block';
 
-    const animateTrailer = (e, interacting) => {
-      const x = e.clientX - trailer.current.offsetWidth / 2,
-            y = e.clientY - trailer.current.offsetHeight / 2;
+                // Position the custom cursor
+                customCursor.current.style.left = `${e.clientX}px`;
+                customCursor.current.style.top = `${e.clientY}px`;
+            } else {
+                trailer.current.style.display = 'block';
+                customCursor.current.style.display = 'none';
+            }
 
-      const keyframes = {
-        transform: `translate(${x}px, ${y}px) scale(${interacting ? 8 : 1})`
-      }
+            const interacting = interactable !== null;
 
-      trailer.current.animate(keyframes, {
-        duration: 800,
-        fill: "forwards"
-      });
-    }
+            animateTrailer(e, interacting);
+            trailer.current.dataset.type = interacting
+                ? interactable.dataset.type
+                : '';
+        };
 
-    window.addEventListener('mousemove', handleMouseMove);
+        const animateTrailer = (e, interacting) => {
+            const x = e.clientX - trailer.current.offsetWidth / 2,
+                y = e.clientY - trailer.current.offsetHeight / 2;
 
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    }
-  }, []);
+            const keyframes = {
+                transform: `translate(${x}px, ${y}px) scale(${
+                    interacting ? 8 : 1
+                })`,
+            };
 
-  return (
-    <div>
-      <div ref={trailer} id="trailer">
-        <i ref={trailerIcon} id="trailer-icon" className="fa-solid fa-arrow-up-right"></i>
-      </div>
-    </div>
-  );
+            trailer.current.animate(keyframes, {
+                duration: 800,
+                fill: 'forwards',
+            });
+        };
+
+        window.addEventListener('mousemove', handleMouseMove);
+
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+        };
+    }, []);
+
+    return (
+        <div className='z-[999]'>
+            <div ref={trailer} id='trailer'>
+              
+            </div>
+            <div
+               className='z-[999]' ref={customCursor}
+                id='custom-cursor'
+                style={{ 
+                    display: 'none',
+                    position: 'absolute', 
+                    pointerEvents: 'none', 
+                    top: 0, 
+                    left: 0
+                }}
+            >
+                     <svg
+                     className='z-[999]'    width='28'
+                    height='35'
+                    viewBox='0 0 48 55'
+                    fill='none'
+                    xmlns='http://www.w3.org/2000/svg'
+                >
+                    <g filter='url(#filter0_d_2_682)'>
+                        <path
+                            d='M13.5 45L6 6L39 25.5L22.5 30L13.5 45Z'
+                            fill='#EE46D3'
+                        />
+                        <path
+                            d='M6.76308 4.70864L3.89868 3.01601L4.527 6.28328L12.027 45.2832L12.7679 49.1358L14.7863 45.7716L23.4762 31.2885L39.3948 26.9472L42.8178 26.0136L39.7632 24.2085L6.76308 4.70864Z'
+                            stroke='white'
+                            stroke-linecap='square'
+                        />
+                    </g>
+                    <defs>
+                        <filter
+                            id='filter0_d_2_682'
+                            x='0.198242'
+                            y='0.0213318'
+                            width='46.8921'
+                            height='54.4931'
+                            filterUnits='userSpaceOnUse'
+                            color-interpolation-filters='sRGB'
+                        >
+                            <feFlood
+                                flood-opacity='0'
+                                result='BackgroundImageFix'
+                            />
+                            <feColorMatrix
+                                in='SourceAlpha'
+                                type='matrix'
+                                values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0'
+                                result='hardAlpha'
+                            />
+                            <feOffset dy='1' />
+                            <feGaussianBlur stdDeviation='1.5' />
+                            <feColorMatrix
+                                type='matrix'
+                                values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0'
+                            />
+                            <feBlend
+                                mode='normal'
+                                in2='BackgroundImageFix'
+                                result='effect1_dropShadow_2_682'
+                            />
+                            <feBlend
+                                mode='normal'
+                                in='SourceGraphic'
+                                in2='effect1_dropShadow_2_682'
+                                result='shape'
+                            />
+                        </filter>
+                    </defs>
+                </svg>  
+            </div>
+        </div>
+    );
 }
