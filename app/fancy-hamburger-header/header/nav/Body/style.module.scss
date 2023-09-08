@@ -1,9 +1,11 @@
+@import '../../../../../styles/utils/mixins.scss';
+
 .body{
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     margin-top: 40px;
 
-    a{
+    a {
         text-decoration: none;
         text-transform: uppercase;
     }
@@ -16,5 +18,8 @@
         padding-right: 2vw;
         padding-top: 10px;
         font-weight: 300;
+        @include above-mobile {
+            font-size: 2vw;
+        }
     }
 }

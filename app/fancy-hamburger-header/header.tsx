@@ -31,7 +31,7 @@ export default function FancyHeader() {
           {/* Anchor style toggle */}
           <a 
             href="#" 
-            className={`btn--menu ${isActive ? 'actived' : ''}`} 
+            className={`showAlternativeCursor btn--menu ${isActive ? 'actived' : ''}`} 
             id="btn-menu" 
             onClick={handleToggle}
           >

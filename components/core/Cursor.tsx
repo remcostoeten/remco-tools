@@ -1,27 +1,30 @@
 'use client';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Icons } from '../icons';
 
 export default function Trailer() {
     const trailer = useRef(null);
-    const customCursor = useRef(null); 
+    const customCursor = useRef(null);
+    const [hovered, setHovered] = useState(false);
 
     useEffect(() => {
         const handleMouseMove = (e) => {
-            const interactable = e.target.closest('.grow');
             const hide = e.target.closest('.showAlternativeCursor');
 
             if (hide) {
-                trailer.current.style.display = 'none';
-                customCursor.current.style.display = 'block';
+                setHovered(true);
+                trailer.current.style.opacity = 0;
+                customCursor.current.style.opacity = 1;
 
-                // Position the custom cursor
                 customCursor.current.style.left = `${e.clientX}px`;
                 customCursor.current.style.top = `${e.clientY}px`;
             } else {
-                trailer.current.style.display = 'block';
-                customCursor.current.style.display = 'none';
+                setHovered(false);
+                trailer.current.style.opacity = 1;
+                customCursor.current.style.opacity = 0;
             }
 
+            const interactable = e.target.closest('.grow');
             const interacting = interactable !== null;
 
             animateTrailer(e, interacting);
@@ -54,23 +57,24 @@ export default function Trailer() {
     }, []);
 
     return (
-        <div className='z-[999]'>
+        <div className='hidden md:block z-[999]'>
             <div ref={trailer} id='trailer'>
-              
+                {/* Your trailer content */}
             </div>
             <div
-               className='z-[999]' ref={customCursor}
+                className='z-[999]'
+                ref={customCursor}
                 id='custom-cursor'
-                style={{ 
-                    display: 'none',
-                    position: 'absolute', 
-                    pointerEvents: 'none', 
-                    top: 0, 
-                    left: 0
+                style={{
+                    position: 'absolute',
+                    pointerEvents: 'none',
+                    top: 0,
+                    left: 0,
                 }}
             >
-                     <svg
-                     className='z-[999]'    width='28'
+                <svg
+                    className='z-[999]'
+                    width='28'
                     height='35'
                     viewBox='0 0 48 55'
                     fill='none'
@@ -126,7 +130,7 @@ export default function Trailer() {
                             />
                         </filter>
                     </defs>
-                </svg>  
+                </svg>
             </div>
         </div>
     );

@@ -1,8 +1,34 @@
 export const navigationRoutes = {
   links: [
     {
-      title: "Dashboard",
-      href: "/dashboard",
+      title: "HTML to JSX",
+      href: "/html-to-jsx",
+
+    },
+    {
+      title: "Geolocation",
+      href: "/geolocation",
+    },
+    {
+      title: "Url extractor",
+      href: "https://vsc.remcostoeten.com/url",
+      target: "_blank",
+    },
+    {
+      title: "Todos",
+      href: "/todo"
+    },
+    { 
+      title: "Expenses",
+      href: "/income"
+    },
+    { 
+      title: "Thoughts",
+      href: "/thoughts"
+    },
+    {
+      title: "Docs",
+      href: "https://snippets.remcostoeten.com"
     },
     {
       title: "Python script generator",

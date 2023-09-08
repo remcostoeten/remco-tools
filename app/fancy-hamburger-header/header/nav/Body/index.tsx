@@ -40,6 +40,7 @@ function Body({ links, selectedLink = { isActive: false, index: -1 }, setSelecte
                             onMouseOver={() => {
                                 setSelectedLink({ isActive: true, index });
                             }}
+                            className="showAlternativeCursor"
                             onMouseLeave={() => {
                                 setSelectedLink({ isActive: false, index });
                             }}
