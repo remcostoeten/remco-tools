@@ -5,6 +5,8 @@ import { sendEmail } from '@/utils/sendEmail';
 import { motion } from 'framer-motion';
 import React from 'react';
 import SectionHeading from '../section-heading';
+import { Input } from '../ui/input';
+import { Textarea } from '../ui/textarea';
 import { toast } from '../ui/use-toast';
 import SubmitBtn from './submit-btn';
 
@@ -56,22 +58,23 @@ export default function Contact() {
                     });
                 }}
             >
-                <input
-                    className='h-14 px-4 rounded-lg borderBlack dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none'
-                    name='senderEmail'
-                    type='email'
-                    required
-                    maxLength={500}
-                    placeholder='Your email'
-                />
-                <textarea
-                    className='h-52 my-3 rounded-lg borderBlack p-4 dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none'
-                    name='message'
-                    placeholder='Your message'
-                    required
-                    maxLength={5000}
-                />
-                <SubmitBtn />
+                <div className='flex gap-2 flex-col`'>
+                    <Input
+                        name='senderEmail'
+                        type='email'
+                        required
+                        maxLength={500}
+                        placeholder='Your email'
+                    />
+                    <Textarea
+                        className='mb-4'
+                        name='message'
+                        placeholder='Your message'
+                        required
+                        maxLength={5000}
+                    />
+                    <SubmitBtn />
+                </div>
             </form>
         </motion.section>
     );

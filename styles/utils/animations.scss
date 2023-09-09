@@ -1,4 +1,4 @@
-@import './keyframes.scss' ;
+@import './keyframes.scss';
 // Start animation for glitch not-found effect.
 .static {
     width: 100%;
@@ -144,65 +144,107 @@
     }
 }
 
-// End animation for glitch not-found effect.               
+// End animation for glitch not-found effect.
 
 .wave {
-    animation-name: wave-animation;  /* Refers to the name of your @keyframes element below */
-    animation-duration: 2.5s;        /* Change to speed up or slow down */
-    animation-iteration-count: infinite;  /* Never stop waving :) */
-    transform-origin: 70% 70%;       /* Pivot around the bottom-left palm */
+    animation-name: wave-animation; /* Refers to the name of your @keyframes element below */
+    animation-duration: 2.5s; /* Change to speed up or slow down */
+    animation-iteration-count: infinite; /* Never stop waving :) */
+    transform-origin: 70% 70%; /* Pivot around the bottom-left palm */
     display: inline-block;
-  }
-  
-  @keyframes wave-animation {
-      0% { transform: rotate( 0.0deg) }
-     10% { transform: rotate(14.0deg) }  /* The following five values can be played with to make the waving more or less extreme */
-     20% { transform: rotate(-8.0deg) }
-     30% { transform: rotate(14.0deg) }
-     40% { transform: rotate(-4.0deg) }
-     50% { transform: rotate(10.0deg) }
-     60% { transform: rotate( 0.0deg) }  /* Reset for the last half to pause */
-    100% { transform: rotate( 0.0deg) }
-  }
-  
+}
+
+@keyframes wave-animation {
+    0% {
+        transform: rotate(0deg);
+    }
+    10% {
+        transform: rotate(14deg);
+    } /* The following five values can be played with to make the waving more or less extreme */
+    20% {
+        transform: rotate(-8deg);
+    }
+    30% {
+        transform: rotate(14deg);
+    }
+    40% {
+        transform: rotate(-4deg);
+    }
+    50% {
+        transform: rotate(10deg);
+    }
+    60% {
+        transform: rotate(0deg);
+    } /* Reset for the last half to pause */
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
 //   Gradient background
 
 @keyframes gradient {
-0% {
-    background-position: 0% 50%;
-}
-50% {
-    background-position: 100% 50%;
-}
-100% {
-    background-position: 0% 50%;
-}
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
-  
-  .motion-div {
+.motion-div {
     animation: gradient 15s ease infinite;
 }
 
 .dutch {
-    background: linear-gradient(90deg, rgba(177, 35, 47, 0.476), white, rgba(37, 74, 143, 0.485));
+    background: linear-gradient(
+        90deg,
+        rgba(177, 35, 47, 0.476),
+        white,
+        rgba(37, 74, 143, 0.485)
+    );
     background-size: 200% 100%;
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent !important;
     animation: dutchFlagGradient 25s ease-in-out infinite;
-  }
+}
 
-  /* animation for dutch colors  overlay on text for homepage */
-  @keyframes dutchFlagGradient {
+/* animation for dutch colors  overlay on text for homepage */
+@keyframes dutchFlagGradient {
     0% {
-      background-position: 0% 50%;
+        background-position: 0% 50%;
     }
     50% {
-      background-position: 100% 50%;
+        background-position: 100% 50%;
     }
     100% {
-      background-position: 0% 50%;
+        background-position: 0% 50%;
     }
-  }
-  
+}
+.rotating-emoji {
+    display: inline-block;
+    position: relative;
+}
+
+.fade-in-emoji {
+    opacity: 0;
+    animation: fade-in 2s ease-in-out infinite;
+
+    &.alternative {
+        animation-delay: 0.5s;
+    }
+}
+
+@keyframes fade-in {
+    0%,
+    100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
