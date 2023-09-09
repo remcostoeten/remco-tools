@@ -7,7 +7,7 @@ import {
   signInWithPopup,
   updateProfile,
 } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+import { collection, deleteDoc, doc, getFirestore } from 'firebase/firestore';
 import { FC, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { toast } from '@/components/ui/use-toast';
@@ -73,6 +73,27 @@ export const signUp = async (name: string, email: string, password: string) => {
   }
 
   return { result, error };
+};
+
+export const deleteItem = async (itemId: string) => {
+  try {
+    // Assuming you have a collection named 'tasks' in Firestore
+    const taskRef = doc(collection(db, 'tasks'), itemId);
+
+    // Delete the document from Firestore
+    await deleteDoc(taskRef);
+
+    // You can also update your local data source here, if needed
+    // For example, remove the item from your DisplayTasks array
+    // const updatedDisplayTasks = DisplayTasks.filter((task) => task.id !== itemId);
+    // Update your state or data source with the updatedDisplayTasks
+
+    // Add any additional logic you need after successful deletion
+    console.log(`Item with ID ${itemId} deleted successfully.`);
+  } catch (error) {
+    // Handle any errors that occur during deletion
+    console.error(`Error deleting item with ID ${itemId}:`, error);
+  }
 };
 
 export {

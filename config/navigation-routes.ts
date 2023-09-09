@@ -22,10 +22,6 @@ export const navigationRoutes = {
       title: "Expenses",
       href: "/income"
     },
-    { 
-      title: "Thoughts",
-      href: "/thoughts"
-    },
     {
       title: "Docs",
       href: "https://snippets.remcostoeten.com"
@@ -41,6 +37,14 @@ export const navigationRoutes = {
     {
       title: "Backgrounds",
       href: "/background",
+    },
+    {
+      title: "Buttons",
+      href: "ui-elements/buttons",
+    },
+    {
+      "title": "Login",
+      "href": "/sign-up" 
     },
     {
       title: "custom 404 ",
