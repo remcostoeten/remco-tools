@@ -78,6 +78,9 @@ export default function Trailer() {
                     height='35'
                     viewBox='0 0 48 55'
                     fill='none'
+                    style={{
+                        transform: 'translate(-20px, 55px)',
+                    }}
                     xmlns='http://www.w3.org/2000/svg'
                 >
                     <g filter='url(#filter0_d_2_682)'>

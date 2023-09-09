@@ -39,6 +39,10 @@ body:not(.table) {
     transform: translateX(20px);
 }
 
+.vertical-timeline-element-content-arrow {
+    display: none !important;
+}
+
 div,
 input,
 .border-btn {
