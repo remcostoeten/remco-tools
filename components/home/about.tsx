@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Heading from '@c/section-heading';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 export default function About() {
     const [isOpen, setIsOpen] = useState(false);
@@ -21,24 +22,41 @@ export default function About() {
     }, [isOpen]);
 
     return (
-        <section
+        <motion.section
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1}}
+            transition={{ duration: .5 }}
             className=' container mb-28 max-w-[45rem] text-center leading-8 sm:mb-40 scroll-mt-28 font-barlow-condensed font-medium text-xl'
             id='about'
         >
-            <p className='grow mb-3 text-left'>
+            <motion.p
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2 }}
+
+            
+            className='grow mb-3 text-left'>
                 Remco Stoeten, 26 years old, creative developer from the
                 Netherlands. I have a strong passion for CSS, complex UI's, and
                 micro interactions.
-            </p>
+            </motion.p>
 
-            <p className='mb-3 text-left'>
+            <motion.p className='mb-3 text-left'
+               initial={{ opacity: 0, y: 50 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ duration: 1.3 }}>
                 Currently I'm focusing on NextJS with Typescript & co. But I'm
                 also learning some Python & Lua, in the future I want to dive
                 into Go.
-            </p>
-            <p className='mb-3 text-left'>
+            </motion.p>
+            <motion.p 
+            
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.4}}
+            className='mb-3 text-left'>
                 I've studied graphic design and during my internship I got....
-            </p>
+            </motion.p>
 
             <div
                 className='content-wrapper'
@@ -117,6 +135,6 @@ export default function About() {
             >
                 {isOpen ? 'Read Less' : 'Read More'}
             </button>
-        </section>
+        </motion.section>
     );
 }
