@@ -29,7 +29,6 @@ export function PresetActions() {
           <DropdownMenuItem onSelect={() => setIsOpen(true)}>
             Content filter preferences
           </DropdownMenuItem>
-          <DropdownMenuSeparator />
           <DropdownMenuItem
             onSelect={() => setShowDeleteDialog(true)}
             className="text-red-600"

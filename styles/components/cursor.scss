@@ -12,42 +12,43 @@
     opacity: 0.8;
 }
 
-#trailer {
-    height: $cursorsize;
-    width: $cursorsize;
-    background-color: $white;
-    border-radius: 20px;
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    z-index: 10000;
-    pointer-events: none;
-    opacity: 0;
-    mix-blend-mode: difference;
-    transition: opacity, scale 500ms ease;
-    display: grid;
-    place-items: center;
-    scale: 1;
-}
+@include above-mobile {
+    #trailer {
+        height: $cursorsize;
+        width: $cursorsize;
+        background-color: $white;
+        border-radius: 20px;
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        z-index: 10000;
+        pointer-events: none;
+        opacity: 0;
+        mix-blend-mode: difference;
+        transition: opacity, scale 500ms ease;
+        display: grid;
+        place-items: center;
+        scale: 1;
+    }
 
-.showAlternativeCursor {
-    cursor: none;
-    
-    * {
+    .showAlternativeCursor {
         cursor: none;
+
+        * {
+            cursor: none;
+        }
+    }
+
+    #trailer {
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    #custom-cursor {
+        opacity: 1;
+        transition: opacity 0.5s ease-in-out;
     }
 }
-
-#trailer {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-  }
-  
-  #custom-cursor {
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
-  }
-  
 
 body {
     &:hover {

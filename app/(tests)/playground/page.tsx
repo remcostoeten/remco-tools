@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { CounterClockwiseClockIcon } from '@radix-ui/react-icons';
-
+import DummyAlert from "@c/misc/DummyAlert";
 import { Button } from '@ui/button';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@ui/hover-card';
 import { Label } from '@ui/label';
@@ -24,6 +24,7 @@ import EditIcon from '@/components/core/icons/edit-icon';
 import CompleteIcon from '@/components/core/icons/complete-icon';
 import InsertIcon from '@/components/core/icons/insert-icon';
 import Toolbar from '@/components/core/tools/playground/components/toolbar';
+
 export const metadata: Metadata = {
     title: 'Playground',
     description: 'The OpenAI Playground built using the components.',
@@ -44,7 +45,7 @@ export default function PlaygroundPage() {
                 <Separator />
                 <Tabs defaultValue="complete" className="flex-1">
                     <div className="container h-full py-6">
-                        <div className="grid h-full items-stretch gap-6 md:grid-cols-[1fr_200px]">
+                        <div className="grid h-full items-stretch gap-6 md:grid-cols-[1fr_200px] border-r-0">
                             <div className="hidden flex-col space-y-4 sm:flex md:order-2">
                                 <div className="grid gap-2">
                                     <HoverCard openDelay={200}>
@@ -71,6 +72,7 @@ export default function PlaygroundPage() {
                                     </TabsList>
                                 </div>
                                 <ModelSelector types={types} models={models} />
+                                <DummyAlert text="Thes sliders are UI dummys"/>
                                 <TemperatureSelector defaultValue={[0.56]} />
                                 <MaxLengthSelector defaultValue={[256]} />
                                 <TopPSelector defaultValue={[0.9]} />

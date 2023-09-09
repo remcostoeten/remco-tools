@@ -6,6 +6,7 @@ import { SliderProps } from "@radix-ui/react-slider"
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@ui/hover-card';
 import { Label } from '@ui/label';
 import { Slider } from '@ui/slider';
+import DummyAlert from "@/components/misc/DummyAlert";
 
 interface TemperatureSelectorProps {
   defaultValue: SliderProps["defaultValue"]
@@ -18,6 +19,7 @@ export function TemperatureSelector({
 
   return (
     <div className="grid gap-2 pt-2">
+      <DummyAlert text="These sliders are dummy components. They don't do anything." />
       <HoverCard openDelay={200}>
         <HoverCardTrigger asChild>
           <div className="grid gap-4">

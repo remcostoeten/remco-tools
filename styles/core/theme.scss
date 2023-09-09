@@ -43,11 +43,6 @@ body:not(.table) {
     display: none !important;
 }
 
-div,
-input,
-.border-btn {
-    border-color: darken($color: $white, $amount: 80) !important;
-}
 
 .is-open {
     z-index: 99999999;
@@ -129,9 +124,8 @@ html:not(.dark) {
     }
 }
 
-@include mobile {
     .mobile-flexer {
         display: flex;
         gap: 4;
     }
-}
+

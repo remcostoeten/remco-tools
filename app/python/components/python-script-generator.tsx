@@ -26,7 +26,6 @@ interface FormOptionsProps {
     onOptionChange: (option: string) => void;
 }
 
-
 export default function generatePythonScript() {
     const [string1, setString1] = useState('');
     const [string2, setString2] = useState('');
@@ -34,7 +33,7 @@ export default function generatePythonScript() {
     const [exclude, setExclude] = useState(false);
     const { setPythonScript } = useContext(ScriptContext);
     const [toggleScript, setToggleScript] = useState(false);
-    const [selectedOption, setSelectedOption] = useState("option-one");
+    const [selectedOption, setSelectedOption] = useState('option-one');
     let [newScriptForOptionTwo, setnewScriptForOptionTwo] = useState('');
     let [newScript, setNewScript] = useState('');
 
@@ -105,19 +104,27 @@ if __name__ == '__main__':
         });
     };
 
-    const handleChangeString1 = (e: { target: { value: React.SetStateAction<string> } }) => {
+    const handleChangeString1 = (e: {
+        target: { value: React.SetStateAction<string> };
+    }) => {
         setString1(e.target.value);
     };
 
-    const handleChangeString2 = (e: { target: { value: React.SetStateAction<string> } }) => {
+    const handleChangeString2 = (e: {
+        target: { value: React.SetStateAction<string> };
+    }) => {
         setString2(e.target.value);
     };
 
-    const handleChangeFile = (e: { target: { value: React.SetStateAction<string> } }) => {
+    const handleChangeFile = (e: {
+        target: { value: React.SetStateAction<string> };
+    }) => {
         setFile(e.target.value);
     };
 
-    const handleChangeExclude = (e: { target: { checked: boolean | ((prevState: boolean) => boolean) } }) => {
+    const handleChangeExclude = (e: {
+        target: { checked: boolean | ((prevState: boolean) => boolean) };
+    }) => {
         setExclude(e.target.checked);
     };
 
@@ -125,22 +132,20 @@ if __name__ == '__main__':
         setToggleScript(!toggleScript);
     };
 
-
-
     const handleOptionChange = (option) => {
         setSelectedOption(option);
     };
 
     return (
-        <TabsContent value="insert" className="mt-0 border-0 p-0">
-            <div className="flex flex-col space-y-4 border rounded-[4px] p-4">
-                <div className="grid h-full grid-rows-2 gap-6 lg:grid-cols-2 lg:grid-rows-1">
-                    <div className="ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 mt-0 border-0 p-0">
-        <FormOptions
-                            cardTitle="Payment Method"
-                            label1="String one"
-                            label2="String two"
-                            label3="Filename to ignore"
+        <TabsContent value='insert' className='mt-0 border-0 p-0'>
+            <div className='flex flex-col space-y-4 border rounded-[4px] p-4'>
+                <div className='grid h-full grid-rows-2 gap-6 lg:grid-cols-2 lg:grid-rows-1'>
+                    <div className='ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 mt-0 border-0 p-0'>
+                        <FormOptions
+                            cardTitle='Python Script Generator'
+                            label1='String one'
+                            label2='String two'
+                            label3='Filename to ignore'
                             value={string1}
                             value2={string2}
                             value3={file}
@@ -150,25 +155,38 @@ if __name__ == '__main__':
                             handleGenerateScript={handleGenerateScript}
                             selectedOption={selectedOption}
                             onOptionChange={handleOptionChange}
-                        />                        <CheckboxWithLabel checked={exclude} onChange={handleChangeExclude} />
-                       <div className="flex gap-4">
-                         <Button onClick={handleGenerateScript} className="w-full">
-                            Generate Python Script
-                        </Button>
-                        <Button className='border-btn' onClick={handleToggle} variant="secondary">
-                        Toggle Script
-                    </Button> 
+                        />{' '}
+                        <CheckboxWithLabel
+                            checked={exclude}
+                            onChange={handleChangeExclude}
+                        />
+                        <div className='flex gap-4'>
+                            <button
+                                onClick={handleGenerateScript}
+                                className='border p-2.5 bg-transparent rounded-xl w-max flex align-middle items-center gap-4 justify-center  text-offwhite  px-10 shadow-lg shadow-neutral-900 mt-2'
+                            >
+                                Generate Python Script
+                            </button>
+                            <Button
+                                className='border p-2.5 bg-transparent rounded-xl w-max flex align-middle items-center gap-4 justify-center  text-offwhite  px-10 shadow-lg shadow-neutral-900 mt-2'
+                                onClick={handleToggle}
+                                variant='secondary'
+                            >
+                                Toggle Script
+                            </Button>
+                        </div>
                     </div>
-                    </div>
-                    <pre id="highlight-area">{selectedOption === "option-one" ? newScript : newScriptForOptionTwo}</pre>
+                    <pre id='highlight-area'>
+                        {selectedOption === 'option-one'
+                            ? newScript
+                            : newScriptForOptionTwo}
+                    </pre>
                 </div>
-                <div className="flex items-center space-x-2">
-                
-                </div>
-                <div className="flex items-center space-x-2">
-                    <Button variant="secondary">
-                        <span className="sr-only">Show history</span>
-                        <CounterClockwiseClockIcon className="h-4 w-4" />
+                <div className='flex items-center space-x-2'></div>
+                <div className='flex items-center space-x-2'>
+                    <Button variant='secondary'>
+                        <span className='sr-only'>Show history</span>
+                        <CounterClockwiseClockIcon className='h-4 w-4' />
                     </Button>
                 </div>
             </div>

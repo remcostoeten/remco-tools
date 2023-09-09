@@ -58,18 +58,20 @@ export default function Contact() {
                     });
                 }}
             >
-                <div className='flex gap-2 flex-col`'>
+                <div className="flex gap-2 flex-col">
                     <Input
                         name='senderEmail'
                         type='email'
                         required
                         maxLength={500}
-                        placeholder='Your email'
+                        className='theme-background theme-background--inputs'
+                        placeholder='ronnypickering@gmail.com'
                     />
                     <Textarea
-                        className='mb-4'
+                        className='theme-background theme-background--inputs'
+                         
                         name='message'
-                        placeholder='Your message'
+                        placeholder='Your message goes here.'
                         required
                         maxLength={5000}
                     />

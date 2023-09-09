@@ -1,6 +1,6 @@
 @import '../../styles/variables/variables.scss';
 
-.header{
+.header {
     box-sizing: border-box;
     padding: 10px 40px;
     display: flex;
@@ -8,8 +8,8 @@
     position: fixed;
     top: 0;
     right: 0;
-    
-    .background{
+
+    .background {
         background-color: $black;
         height: 100%;
         width: 100%;
@@ -20,90 +20,90 @@
 
     .bar {
         display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1rem;
-    background-position: 50% 50%;
-    background-size: 1.1rem 1.1rem;
-    padding: 8px;
-    border-radius: 1.25rem;
-    overflow: hidden;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+        background-position: 50% 50%;
+        background-size: 1.1rem 1.1rem;
+        padding: 8px;
+        border-radius: 1.25rem;
+        overflow: hidden;
         z-index: 50;
 
-        p{
+        p {
             margin: 0px;
         }
 
-        a{
+        a {
             text-decoration: none;
             color: $white;
             position: absolute;
             right: 20px;
         }
 
-        .shopContainer{
+        .shopContainer {
             display: flex;
             gap: 30px;
             position: absolute;
             right: 0;
 
-            .shop{
+            .shop {
                 display: none;
             }
         }
 
-        .el{
+        .el {
             display: flex;
             align-items: flex-end;
             justify-content: flex-end;
             gap: 8px;
             cursor: pointer;
 
-            .label{
+            .label {
                 position: relative;
                 display: flex;
                 align-items: center;
             }
 
-            p{
-                &:nth-of-type(2){
+            p {
+                &:nth-of-type(2) {
                     position: absolute;
                     opacity: 0;
                 }
             }
 
-            .burger{
+            .burger {
                 width: 22.5px;
                 position: relative;
                 pointer-events: none;
-    
-                &::after, &::before{
-                    content: "";
+
+                &::after,
+                &::before {
+                    content: '';
                     height: 1px;
                     width: 100%;
-                    background-color:$white;
+                    background-color: $white;
                     position: relative;
                     display: block;
                     transition: all 1s cubic-bezier(0.76, 0, 0.24, 1);
                 }
-    
-                &::after{
+
+                &::after {
                     top: -4px;
                 }
-    
-                &::before{
+
+                &::before {
                     top: 4px;
                 }
             }
-    
-            .burgerActive{
-                
-                &::after{
+
+            .burgerActive {
+                &::after {
                     transform: rotate(45deg);
                     top: -1px;
                 }
-    
-                &::before{
+
+                &::before {
                     transform: rotate(-45deg);
                     top: 1px;
                 }
@@ -112,16 +112,15 @@
     }
 }
 
-
 @media only screen and (min-width: 600px) {
-    .header{
+    .header {
         padding: 20px;
 
-        .bar{
+        .bar {
             font-size: 15px;
         }
 
-        .shop{
+        .shop {
             display: block;
             cursor: pointer;
         }

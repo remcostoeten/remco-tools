@@ -100,6 +100,7 @@
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
     "@netlify/plugin-lighthouse": "^5.0.0",
+    "@svgr/webpack": "^8.1.0",
     "@tailwindcss/typography": "^0.5.9",
     "@types/node": "^18.17.6",
     "@types/react": "18.0.15",
