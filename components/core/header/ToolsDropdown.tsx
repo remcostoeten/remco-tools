@@ -75,8 +75,8 @@ export function ToolsDropdown() {
               <ListItem href="/playground" title="Playground">
                 A code style playground UI used for the HTML converter and Python script generator.
               </ListItem>
-              <ListItem href="/docs/installation" title="Installation">
-                How to install dependencies and structure your app.
+              <ListItem href="/ui-elements/buttons" title="Buttons">
+                An overview off various different buttons I've build.
               </ListItem>
               <ListItem href="/docs/primitives/typography" title="Typography">
                 Styles for headings, paragraphs, lists...etc

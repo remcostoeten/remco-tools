@@ -12,6 +12,19 @@ body:not(.table) {
     }
 }
 
+#about {
+    @extend .container;
+    max-width: 45rem !important;
+
+    a {
+        &:hover,
+        &:visited,
+        &:focus {
+            color: darken($white, 5%);
+        }
+    }
+}
+
 .table {
     .container {
         all: unset;
@@ -102,8 +115,8 @@ ul.group.flex.flex-1.list-none.items-center.justify-center.space-x-1 {
 html:not(.dark) {
     .toggle {
         color: $black;
-        scale: .75;
-        transform: translate(2px, 4px)
+        scale: 0.75;
+        transform: translate(2px, 4px);
     }
 }
 .dark {

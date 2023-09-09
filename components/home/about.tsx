@@ -1,93 +1,89 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Heading from '@c/section-heading';
-import { motion } from 'framer-motion';
 import Link from 'next/link';
+
 export default function About() {
+    const [isOpen, setIsOpen] = useState(false);
+
     return (
-        <motion.section
-            className='mb-28 max-w-[45rem] text-center leading-8 sm:mb-40 scroll-mt-28 font-barlow-condensed  font-medium text-xl'
-            initial={{ opacity: 0, y: 100 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.175 }}
+        <section
+            className='container mb-28 max-w-[45rem] text-center leading-8 sm:mb-40 scroll-mt-28 font-barlow-condensed font-medium text-xl'
             id='about'
         >
-            <motion.h1
-                className='grow mb-10 mt-4 px-4 text-2xl font-medium !leading-[1.5] sm:text-4xl'
-                initial={{ opacity: 0, y: 100 }}
-                animate={{ opacity: 1, y: 0 }}
+            <p className='mb-3 text-left'>
+                Remco Stoeten, 26 years old, creative developer from the
+                Netherlands. I have a strong passion for {''}
+                <Link
+                    href='https://github.com/remcostoeten/own-scss-structure'
+                    target='_blank'
+                className='underline'
+               >
+                    CSS
+                </Link>{' '}
+                {''}, complex UI's, and micro interactions.
+            </p>
+            <p className='mb-3 text-left'>
+                Currently I'm focusing on NextJS with Typescript & co. But I'm
+                also learning some Python & Lua, in the future I want to dive
+                into Go.
+            </p>
+
+            <div
+                style={{
+                    opacity: isOpen ? 1 : 0,
+                    height: isOpen ? '270px' : '0',
+                    overflow: 'hidden',
+                    transition: 'opacity 2.5s, height .7s',
+                }}
             >
-                <span className='font-bold'>Hello, my name is, </span>
-            </motion.h1>
-            <p className='mb-3  '>
-                R emco Stoeten, 26 y/o, from Lemmer, the Netherlands. I
-                graduated with a graphic degree and got my first job after my
-                internship where I stayed for five years building custom <div className="magent2">Magento</div>
-                2{' '}
-                <span className=' rotating-emoji'>
-                    <span className='absolute fade-in-emoji opacity-0 animate-fade-in'>
-                        🤮
-                    </span>
-                    <span className='absolute fade-in-emoji alternative opacity-0 animate-fade-in'>
-                        🤢
-                    </span>
-                </span>{' '}
-                such as{' '}
-                <Link
-                    className='underline'
-                    href='https://www.qhp.nl/'
-                    target='_blank'
-                >
-                    this
-                </Link>
-                or{' '}
-                <Link
-                    className='underline'
-                    href='https://vedder-vedder.com'
-                    target='_blank'
-                >
-                    this
-                </Link>{' '}
-                and have over five years of experience in frontend development,
-                specifically in custom Magento 2 webshops.
-            </p>
-            <p className='mb-3'>
-                After working at{' '}
-                <Link
-                    className='italic underline'
-                    href='https://tickles.nl'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                >
-                    an agency
-                </Link>{' '}
-                and then in-house at a multinational SaaS company, I joined{' '}
-                <Link
-                    className='underline'
-                    href='https://gitlab.com/pleio'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                >
-                    Pleio
-                </Link>
-                , which exclusively operates in non-profit, contributed to
-                projects like{' '}
-            </p>
-            <p className='mb-3'>
-                <Link
-                    className='underline'
-                    href='https://gitlab.com/pleio/dossier/'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                >
-                    FSV
-                </Link>
-                . I have a strong passion for complex interfaces and all-round
-                programming, always looking to learn new things and improve my
-                skills. Currently focusing on Typescript & co. Also some Python
-                and Lua on the side.
-            </p>
-        </motion.section>
+                <p className='mb-3 text-left'>
+                    I've studied graphic design and during my internship I got
+                    offered a job at an{' '}
+                    <Link
+                        className='underline hover:text-blue-800'
+                        href='https://tickles.nl'
+                        target='_blank'
+                    >
+                        agency
+                    </Link>{' '}
+                    where I build custom designed{' '}
+                    <span className='magento2'> Magento 2</span> webshops.
+                </p>
+                <p className='mb-3 text-left'>
+                    After five years I moved to an international wholesaler and
+                    SaaS provider where I rebuilt the FE off their webshop.
+                </p>
+                <p className='mb-3 text-left'>
+                    Currently I'm employed at
+                    {'   '}{' '}
+                    <Link
+                        className='underline hover:text-blue-800'
+                        target='_blank'
+                        href='https://gitlab.com/pleio'
+                    >
+                        Pleio
+                    </Link>{' '}
+                    which is fully open source. I work mostly on FSV, a
+                    government project which can be seen
+                    <Link
+                        className='underline hover:text-blue-800'
+                        href='https://gitlab.com/pleio/dossier'
+                        target='_blank'
+                    >
+                        here
+                    </Link>
+                    .
+                </p>
+            </div>
+
+            <button
+                onClick={() => setIsOpen(!isOpen)}
+                className='border p-2.5 bg-transparent rounded-full w-max text-offwhite  px-10 shadow-lg shadow-neutral-900 mt-2'
+            >
+                {isOpen ? 'Read Less' : 'Read More'}
+            </button>
+        </section>
     );
 }

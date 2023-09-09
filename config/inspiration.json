@@ -3,7 +3,28 @@
         "name": "Dribble",
         "projects": [
             {
-                "projectType": "Cool site collection" ,
+                "projectType": "AI landing",
+                "colors": ["black", "purple", "pink"],
+                "colorScheme": "dark",
+                "style": ["AI", "Futuristic", "Micro interactions"],
+                "url": "https://ai-tool-tailwind.preview.uideck.com/",
+                "preview": "live preview",
+                "hasMobileDevice": null,
+                "animations": "true",
+                "componentInspiration": null
+            },
+            {
+                "projectType": "SaaS Landing",
+                "colorScheme": "dark",
+                "preview": "live preview",
+                "hasMobileDevice": "true",
+                "animations": "true",
+                "componentInspiration": "footer",
+                "url": "https://az-vancouver.webflow.io/?gspk=OTA0NDY5&gsxid=McE7BpGxYkcE/",
+                "style": ["minimalistic", "rounded blocks"]
+            },
+            {
+                "projectType": "Cool site collection",
                 "animations": "null",
                 "preview": "null",
                 "hasMobileDevice": "null",
@@ -28,7 +49,7 @@
                 "colors": ["blue", "green", "dark"],
                 "colorScheme": "dark",
                 "style": ["minimalistic", "rounded blocks"],
-                "url": "https://preview.studio.site/live/YPqreA5LO5",                
+                "url": "https://preview.studio.site/live/YPqreA5LO5",
                 "preview": "live preview",
                 "hasMobileDevice": null,
                 "animations": null,
@@ -47,14 +68,14 @@
             },
             {
                 "projectType": "Portfolio",
-                "colors":"dark",
-                "colorScheme":"dark",
-                "style":"minimal",
-                "url":"https://chronark.com/projects",
-                "preview":null,
-                "hasMobileDevice":null,
-                "animations":null,
-                "componentInspiration":null
+                "colors": "dark",
+                "colorScheme": "dark",
+                "style": "minimal",
+                "url": "https://chronark.com/projects",
+                "preview": null,
+                "hasMobileDevice": null,
+                "animations": null,
+                "componentInspiration": null
             },
             {
                 "projectType": "Portfolio",
