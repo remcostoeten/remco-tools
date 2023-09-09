@@ -24,6 +24,27 @@
                 "style": ["minimalistic", "rounded blocks"]
             },
             {
+                "projectType": "?",
+                "colors": ["black", "white", "green"],
+                "animations": "true",
+                "componentInspiration": "parallax",
+                "url": "https://www.designship.co/?ref=onepagelove",
+                "preview": "live preview",
+                "hasMobileDevice": "true",
+                "colorScheme": "light",
+                "style": ["minimalistic", "rounded blocks"]
+            },
+            {
+                "projectType": "",
+                "colors": ["", ""],
+                "componentInspiration": "",
+                "url": "",
+                "preview": " ",
+                "hasMobileDevice": "",
+                "colorScheme": "",
+                "style": ["", " "]
+            },
+            {
                 "projectType": "Cool site collection",
                 "animations": "null",
                 "preview": "null",

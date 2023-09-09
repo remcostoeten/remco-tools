@@ -142,7 +142,9 @@ export default function About() {
                 onClick={() => setIsOpen(!isOpen)}
                 className='showAlternativeCursor mb-8 pt-4 border p-2.5 bg-transparent rounded-full w-max text-offwhite px-10 shadow-lg shadow-neutral-900 mt-2'
             >
-                {isOpen ? 'Read Less' : 'Read More'}
+                <span className='translate-y-4'>
+                    {isOpen ? 'Read Less' : 'Read More'}
+                </span>
             </button>
         </motion.section>
     );

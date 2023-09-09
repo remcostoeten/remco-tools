@@ -1,6 +1,12 @@
 import { IconProps } from '@radix-ui/react-icons/dist/types';
 
-type IconKeys = 'logo' | 'twitter' | 'pinkpointer' | 'gitHub' ; // add all the icon keys here
+type IconKeys =
+    | 'logo'
+    | 'twitter'
+    | 'pinkpointer'
+    | 'linkedin'
+    | 'mail'
+    | 'gitHub'; // add all the icon keys here
 
 type IconsType = {
     [key in IconKeys]: (props: any) => JSX.Element;
@@ -36,6 +42,41 @@ export const Icons = {
                 strokeLinejoin='round'
                 strokeWidth='16'
             />
+        </svg>
+    ),
+    mail: (props: IconsType) => (
+        <svg
+            fill='#000000'
+            height='800px'
+            width='800px'
+            version='1.1'
+            id='Layer_1'
+            xmlns='http://www.w3.org/2000/svg'
+            viewBox='0 0 491.52 491.52'
+        >
+            <g>
+                <g>
+                    <polygon points='0,96.693 0,394.808 194.5,245.771 		' />
+                </g>
+            </g>
+            <g>
+                <g>
+                    <polygon points='11.998,85.916 245.722,265.06 479.449,85.916 		' />
+                </g>
+            </g>
+            <g>
+                <g>
+                    <polygon points='296.946,245.77 491.52,394.864 491.52,96.639 		' />
+                </g>
+            </g>
+            <g>
+                <g>
+                    <path
+                        d='M283.933,255.777l-33.391,25.561c-1.421,1.087-3.12,1.633-4.819,1.633c-1.7,0-3.399-0.546-4.82-1.633l-33.386-25.561
+			L11.987,405.604h467.474L283.933,255.777z'
+                    />
+                </g>
+            </g>
         </svg>
     ),
     twitter: (props: IconsType) => (
@@ -131,6 +172,14 @@ export const Icons = {
                 d='M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.254-.93 4.778-4.005 7.201-9.138 7.201h-2.19a.563.563 0 0 0-.556.479l-1.187 7.527h-.506l-.24 1.516a.56.56 0 0 0 .554.647h3.882c.46 0 .85-.334.922-.788.06-.26.76-4.852.816-5.09a.932.932 0 0 1 .923-.788h.58c3.76 0 6.705-1.528 7.565-5.946.36-1.847.174-3.388-.777-4.471z'
                 fill='currentColor'
             />
+        </svg>
+    ),
+    linkedin: (props: IconsType) => (
+        <svg
+            xmlns='http://www.w3.org/2000/svg'
+            style={{ width: '100%', height: '100%' }}
+        >
+            <use href='#svg1297023845'></use>
         </svg>
     ),
     spinner: (props: IconsType) => (

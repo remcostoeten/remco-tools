@@ -1,0 +1,13 @@
+.footer {
+    .social {
+        transition: 500ms ease;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: none;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            text-align: left;
+            padding: 1.3rem 2rem;
+        }
+    }
+}

@@ -3,16 +3,18 @@ export const navigationRoutes = {
     {
       title: "HTML to JSX",
       href: "/html-to-jsx",
-
+      labels: ["WiP", "Tool"],
     },
     {
       title: "Geolocation",
       href: "/geolocation",
+      labels: ["WiP", "Tool"],
     },
     {
       title: "Url extractor",
       href: "https://vsc.remcostoeten.com/url",
       target: "_blank",
+      labels: ["Tool", "v0.9" ,"abbandoned"],
     },
     {
       title: "Todos",
@@ -20,7 +22,9 @@ export const navigationRoutes = {
     },
     { 
       title: "Expenses",
-      href: "/income"
+      href: "/income",
+      labels: ["WiP", "Tool"],
+
     },
     {
       title: "Docs",
@@ -29,6 +33,7 @@ export const navigationRoutes = {
     {
       title: "Python script generator",
       href: "/python",
+      labels: ["WiP", "Tool"],
     },
     {
       title: "Playground showcase",

@@ -142,19 +142,16 @@
       padding: 10px 0px;
     }
     
-    .card {
-      flex-shrink: 1;
-      width: calc(50% - 4px);
-    }
-  }
-  
-  @media(max-width: 500px) {
-    .card {
-      height: 180px;
-    }
-    
-    .card-image {
-      height: 80px;  
+    .card {padding: 64px;
+      display: flex;
+      overflow: hidden;
+      min-height: 548px;
+      background-size: contain;
+      background-position: bottom;
+      background-repeat: no-repeat;
+      background-color: #030c08;
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 40px;
     }
     
     .card-image > i {
@@ -232,4 +229,26 @@
   
   .link > span {
     color: white;
+  }
+
+
+  .img-block {
+  padding: 64px;
+    display: flex;
+    overflow: hidden;
+    min-height: 548px;
+    background-size: contain;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-color: #030c08;
+    border: 1px solid rgba(255,255,255,.06);
+    border-radius: 40px;
+  
+    background-image: url(https://ik.imagekit.io/tilesbio/tr:w-,q-100/images/landing/Music-bg.png);
+    opacity: 1;
+    transform: translateY(0px);
+  }
+
+  .rounded-block {
+    border-radius: 12px;
   }

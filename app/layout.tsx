@@ -9,11 +9,10 @@ import ThemeContextProvider from '@/context/theme-context';
 import ToggleTheme from '@/components/core/ToggleTheme';
 import ParallaxDiv from '@/components/ParallaxBackground';
 import { seoKeywords } from '@/config/keywords';
-import { Inter } from 'next/font/google';
+import { Inter , Manrope } from 'next/font/google';
 import Trailer from '@/components/core/Cursor';
-
 const inter = Inter({ subsets: ['latin'] });
-
+const rope = Manrope({ subsets: ['latin'] });
 export const metadata = {
     title: {
         default: siteConfig.name,

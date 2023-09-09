@@ -16,6 +16,12 @@ module.exports = {
       },
     },
     extend: {
+      borderRadius: {
+        block: "12px",
+      },
+      padding: {
+        "block": "40px",
+      },
       borderColor: {
         shadow: "#373737",
       },
