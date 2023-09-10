@@ -26,9 +26,9 @@ export default function Footer() {
             viewport={{
                 once: true,
             }}
-            className='flex w-full h-[475px] rounded-[18px]'
+            className='flex flex-col sm:flex-row w-full h-[475px] rounded-[18px]'
         >
-            <div className='w-7/12 padding-block h-full footer-grid__block l-round'>
+            <div className='w-full sm:w-7/12 padding-block h-full footer-grid__block l-round'>
                 <h3 className='text-3xl font-bold'>
                     <span className={rope.className}>
                         Get in contact,
@@ -40,7 +40,7 @@ export default function Footer() {
                 <Contact />
             </div>
 
-            <div className='r-round w-5/12 justify-between flex flex-col ml-[2rem]'>
+            <div className='w-full r-round sm:w-5/12 justify-between flex flex-col sm:ml-[2rem]'>
                 <div className='footer-grid__block mb-[2rem] rounded-[18px] h-full flex flex-col justify-between'>
                     <h3 className='text-3xl font-bold'>
                         <span className={rope.className}>
@@ -75,11 +75,11 @@ export default function Footer() {
                     </ul>
                 </div>
 
-                <div className='footer -mr-[1rem] flex h-[40%] justify-between'>
+                <div className='flex flex-col sm:flex-row w-full h-[475px] rounded-[18px] mb-32'>
                     <div className='card grid mr-[1rem] w-1/3 h-[100%] place-items-center footer-grid__block rounded-[18px]'>
                         <GithubIcon />
                     </div>
-                    <div className='card grid mr-[1rem] w-1/3 h-[100%] place-items-center footer-grid__block rounded-[18px]'>
+                    <div className='card grid sm:mr-[1rem] w-1/3 h-[100%] place-items-center footer-grid__block rounded-[18px]'>
                         <Link
                             href='https://www.linkedin.com/in/remco-stoeten'
                             target='_blank'
@@ -88,7 +88,7 @@ export default function Footer() {
                             <Linkedin />
                         </Link>
                     </div>
-                    <div className='card grid mr-[1rem] w-1/3 h-[100%] place-items-center footer-grid__block rounded-[18px]'>
+                    <div className='card grid sm:mr-[1rem] w-1/3 h-[100%] place-items-center footer-grid__block rounded-[18px]'>
                         <a href='mailto:remcostoeten@hotmail.com'>
                             <MailIcon />
                         </a>

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Heading from '@c/section-heading';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { Separator } from '../ui/separator';
 
 export default function About() {
     const [isOpen, setIsOpen] = useState(false);
@@ -22,11 +23,11 @@ export default function About() {
     }, [isOpen]);
 
     return (
-        <motion.section
+        <><motion.section
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className=' container mb-28 max-w-[45rem] text-center leading-8 sm:mb-40 scroll-mt-28 font-barlow-condensed font-medium text-xl'
+            className=' pb-40  container max-w-[45rem] text-center leading-8 sm:mb-40 scroll-mt-28 font-barlow-condensed font-medium text-xl'
             id='about'
         >
             <motion.p
@@ -64,7 +65,7 @@ export default function About() {
                 className='content-wrapper'
                 style={{
                     position: 'relative',
-                    boxShadow: !isOpen ? '0 -15px 15px -15px inset' : 'none',
+                    boxShadow: !isOpen ? '0 -15px 15px -15px inset' : 'none'
                 }}
             >
                 <div
@@ -72,7 +73,7 @@ export default function About() {
                         opacity: isOpen ? 1 : 0,
                         height: isOpen ? '200px' : '0',
                         overflow: 'hidden',
-                        transition: 'opacity 1s, height .7s',
+                        transition: 'opacity 1s, height .7s'
                     }}
                 >
                     <p className='mb-3 text-left'>
@@ -130,9 +131,8 @@ export default function About() {
                             filter: 'blur(50px)',
                             zIndex: 9999,
                             height: '150px',
-                            background:
-                                'linear-gradient(to bottom, transparent, black)',
-                            pointerEvents: 'none',
+                            background: 'linear-gradient(to bottom, transparent, black)',
+                            pointerEvents: 'none'
                         }}
                     ></div>
                 )}
@@ -147,5 +147,9 @@ export default function About() {
                 </span>
             </button>
         </motion.section>
+        
+        <div className="sm:hidden bg-gray-200 my-24 h-16 w-1 rounded-full dark:bg-opacity-10"></div>
+        
+        </>
     );
 }

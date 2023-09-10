@@ -9,7 +9,7 @@ import ThemeContextProvider from '@/context/theme-context';
 import ToggleTheme from '@/components/core/ToggleTheme';
 import ParallaxDiv from '@/components/ParallaxBackground';
 import { seoKeywords } from '@/config/keywords';
-import { Inter , Manrope } from 'next/font/google';
+import { Inter, Manrope } from 'next/font/google';
 import Trailer from '@/components/core/Cursor';
 const inter = Inter({ subsets: ['latin'] });
 const rope = Manrope({ subsets: ['latin'] });
@@ -71,12 +71,12 @@ export default function RootLayout({
                 <ParallaxDiv />
                 <ThemeContextProvider>
                     <ActiveSectionContextProvider>
-                    <Trailer />
+                        <Trailer />
                         <ToggleTheme />
                         <FancyHeader />
                         <Header />
-                        <main className='page-wrapper__inner flex flex-col items-center px-4 '>
-                            {children}
+                        <main className='page-wrapper__inner flex flex-col items-center '>
+                            <div className='container'>{children}</div>
                         </main>
                         <Analytics />
                         <Toaster />
