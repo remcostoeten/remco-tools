@@ -24,7 +24,7 @@ const components: { title: string; href: string; description: string }[] = [
   },
   {
     title: "Website todo list",
-    href: "/tasks",
+    href: "/todo",
     description:
       "A todo  list for myself..",
   },

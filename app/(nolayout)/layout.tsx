@@ -11,7 +11,7 @@ interface BasicLayoutProps {
 export default function BasicLayout({ children }: BasicLayoutProps) {
   return (
     <>
-      <div className="container relative flex flex-col">
+      <div className="container relative flex flex-col w-9/12">
         <section>{children}</section>
       </div>
     </>

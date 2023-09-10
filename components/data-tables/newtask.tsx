@@ -192,7 +192,7 @@ export function NewThought({ content }: NewTaskProps) {
             >
                 <Input
                     type='text'
-                    className='wysiwyg-input'
+                    className='theme-background--inputs'
                     placeholder='Title'
                     value={task.title}
                     onChange={(e) =>
@@ -209,7 +209,7 @@ export function NewThought({ content }: NewTaskProps) {
             >
                 <Input
                     type='text'
-                    className='wysiwyg-input'
+                    className='theme-background--inputs'
                     placeholder='Sort'
                     value={task.sort}
                     onChange={(e) => setTask({ ...task, sort: e.target.value })}
@@ -223,7 +223,7 @@ export function NewThought({ content }: NewTaskProps) {
                 }}
             >
                 <Select>
-                    <SelectTrigger className='w-[140px]'>
+                    <SelectTrigger className='theme-background--inputs w-[140px]'>
                         <SelectValue placeholder='Priority' />
                     </SelectTrigger>
                     <SelectContent>
@@ -250,6 +250,7 @@ export function NewThought({ content }: NewTaskProps) {
                     type='text'
                     placeholder='Priority'
                     value={priority.join(', ')}
+                    className='theme-background--inputs'
                     onChange={(e) => setPriority([e.target.value])}
                 />
             </motion.div>
@@ -262,6 +263,7 @@ export function NewThought({ content }: NewTaskProps) {
             >
                 <Textarea
                     value={description}
+                    className='theme-background--inputs min-h-[200px] mb-4'
                     onChange={(e) => setDescription(e.target.value)}
                 />
             </motion.div>
@@ -272,10 +274,13 @@ export function NewThought({ content }: NewTaskProps) {
                     duration: 1.2,
                 }}
             >
-                <div className='flex items-center gap-2'>
+                <div className='flex items-center gap-2 justify-between'>
                     <div className='cursor-hover'>
                         <Button>New post</Button>
                     </div>
+                    <Drawer.Trigger onClick={() => setOpen(false)}>
+                        <span>Close</span>
+                    </Drawer.Trigger>
                 </div>
             </motion.div>
         </motion.form>
@@ -285,8 +290,11 @@ export function NewThought({ content }: NewTaskProps) {
         <>
             <Drawer.Root shouldScaleBackground>
                 <Drawer.Trigger asChild onClick={() => setOpen(true)}>
-                    <Button className="h-[32px]" variant='outline'> 
-                    <PlusSquare  color='white' className=' font-lg w-[20px]' />
+                    <Button className='h-[32px]' variant='outline'>
+                        <PlusSquare
+                            color='white'
+                            className=' font-lg w-[20px]'
+                        />
                     </Button>
                 </Drawer.Trigger>
                 <Drawer.Portal>
@@ -298,9 +306,6 @@ export function NewThought({ content }: NewTaskProps) {
                                     Add whatever is on your mind.
                                 </Drawer.Title>
                                 {form}
-                                <Drawer.Trigger onClick={() => setOpen(false)}>
-                                    <span>Close</span>
-                                </Drawer.Trigger>
                             </div>
                         </div>
                     </Drawer.Content>

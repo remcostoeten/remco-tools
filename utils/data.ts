@@ -43,7 +43,7 @@ export const experiencesData = [
         date: '2017',
     },
     {
-        title: 'Tickles Digital Agency', 
+        title: 'Tickles Digital Agency',
         location: 'Lemmer, Joure, the Netherlands',
         description:
             'I worked as a front-end developer, we exclusively made custom design Magento 2 webshops in all sectors across B2B and B2C.', // Fixed typos
@@ -102,30 +102,36 @@ export const projectsData = [
         title: 'Kanban Board',
         description:
             'A kanban board with user authentication and actual drag and drop functionallity like Jira or any other PM service..',
-        tags: ['Firebase','Firestore', 'TypeScript', 'NextJS', 'TailwindCSS'],
+        tags: ['Firebase', 'Firestore', 'TypeScript', 'NextJS', 'TailwindCSS'],
         imageUrl: wordanalyticsImg,
     },
 ] as const;
 
 export const skillsData = [
-    '(P),(CS),(blade/razor)....HTML',
+    '(P),(CS),(blade/razor)..HTML',
     '(S)CSS ❤️',
     'JavaScript',
-    'TypeScript📚 ',
+    'TypeScript 📚 ',
     'React',
     'Vue',
     'Photoshop',
     'Figma',
-    'Vim/Neovim',
+    'Vue',
+    'Vim/Neovim ❤️',
     'Next.js ❤️',
     'Git',
     'Tailwind',
-    'SQL + ORMS📚',
-    'Lua📚',
+    'SQL 📚',
+    'Prisma & ORM`s 📚',
+    'Lua 📚',
+    'Magento',
+    'jQuery',
+    '(P)NPM',
+    'Yarn',
     'Python📚',
     'Firebase',
     'NoSQL',
-    'PHP 😬',
+    'PHP ',
     'Django📚',
     'Framer Motion',
 ] as const;

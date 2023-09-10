@@ -28,7 +28,7 @@
 
     export function DataTableRowActions<TData>({
         row,
-    }: DataTableRowActionsProps<TData>) {
+    }: DataTableRowActionsProps<TData extends string/>) {
         const task = row.original;
 
         const handleDelete = async () => {

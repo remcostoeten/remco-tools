@@ -29,7 +29,10 @@ export default function Skills() {
             ref={ref}
             className='mb-28 max-w-[53rem] scroll-mt-28 text-center sm:mb-40'
         >
-            <SectionHeading>My skills</SectionHeading>
+            <h2 className='text-3xl font-medium mb-8  leading-7 tracking-wider	 text-center'>
+                The tech stack I'm familiar with,<br/> or I'm currently occupied
+                with.
+            </h2>
             <ul className='flex flex-wrap justify-center gap-2 text-lg text-gray-800'>
                 {skillsData.map((skill, index) => (
                     <motion.li

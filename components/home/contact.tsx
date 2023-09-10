@@ -18,31 +18,9 @@ export default function Contact() {
             id='contact'
             ref={ref}
             className='mb-20 sm:mb-28 w-[min(100%,38rem)] text-center'
-            initial={{
-                opacity: 0,
-            }}
-            whileInView={{
-                opacity: 1,
-            }}
-            transition={{
-                duration: 1,
-            }}
-            viewport={{
-                once: true,
-            }}
         >
-            <SectionHeading>Contact me</SectionHeading>
-
-            <p className='text-gray-700 -mt-6 dark:text-white/80'>
-                Please contact me directly at{' '}
-                <a className='underline' href='mailto:remcostoeten@hotmail.com'>
-                    remcostoeten@hotmail.com{' '}
-                </a>{' '}
-                or through this form.
-            </p>
-
             <form
-                className='mt-10 flex flex-col dark:text-black'
+                className='mt-10 gap-4 flex flex-col dark:text-black'
                 // @ts-ignore
                 action={async (formData) => {
                     const { data, error } = await sendEmail(formData);
@@ -58,7 +36,6 @@ export default function Contact() {
                     });
                 }}
             >
-                <div className="flex gap-2 flex-col">
                     <Input
                         name='senderEmail'
                         type='email'
@@ -68,15 +45,14 @@ export default function Contact() {
                         placeholder='ronnypickering@gmail.com'
                     />
                     <Textarea
-                        className='theme-background theme-background--inputs'
-                         
+                        className='theme-background h-[400px] theme-background--inputs'
                         name='message'
+                        style={{ minHeight: '120px' }}
                         placeholder='Your message goes here.'
                         required
                         maxLength={5000}
                     />
                     <SubmitBtn />
-                </div>
             </form>
         </motion.section>
     );

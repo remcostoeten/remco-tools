@@ -4,7 +4,6 @@ import styles from './style.module.scss';
 import { height } from '../anim';
 import Body from './Body';
 import Footer from './Footer';
-import Image from './Image';
 import { navigationRoutes } from '@/config/navigation-routes';
 import { Badge } from '@/components/ui/badge';
 
@@ -31,10 +30,10 @@ export default function Index() {
                     />
                     <Footer />
                 </div>
+                {/* @ts-ignore */}
                 {navigationRoutes.links[selectedLink.index]?.src ? (
                     <>
                         <Badge>
-                            {/* Here we map through the labels and display them */}
                             {navigationRoutes.links[
                                 selectedLink.index
                             ].labels?.map((label, idx) => (
@@ -43,10 +42,6 @@ export default function Index() {
                                 </span>
                             ))}
                         </Badge>
-                        <Image
-                            src={navigationRoutes.links[selectedLink.index].src}
-                            isActive={selectedLink.isActive}
-                        />
                     </>
                 ) : null}
             </div>
