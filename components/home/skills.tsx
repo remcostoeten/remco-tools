@@ -3,8 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { motion, useAnimation, Variants } from 'framer-motion';
 import { useSectionInView } from '@/hooks/useSectionInview';
 import { skillsData } from '@/utils/data';
-import SectionHeading from '../section-heading';
-import AnimatedText from './animtext';
 
 const shuffleArray = (array) => {
     const shuffledArray = [...array];
@@ -50,7 +48,7 @@ export default function Skills() {
         initial: {},
         animate: {
             transition: {
-                staggerChildren: 0.03, 
+                staggerChildren: 0.02, 
             },
         },
     };
@@ -58,20 +56,20 @@ export default function Skills() {
     const letterVariants: Variants = {
         initial: {
             opacity: 0,
-            x: -20,
-            scale: .4,
-            y: 50,
+            x: -200,
+            scale: 0.4,
+            y: -40, 
             rotate: 10,
         },
         animate: {
             opacity: 1,
-            scale: 1,
-            x: 0,
-            y: 0,
-            rotate: 0,
+            scale: [0.4, 2, 0.4], 
+            y: [0, -10, 0], 
+            rotate: [10, 0, 10], 
             transition: {
-                type: 'easeOut',
+                type: 'spring', 
                 stiffness: 300,
+                damping: 100,
             },
         },
     };
@@ -88,7 +86,7 @@ export default function Skills() {
                 className='mb-28 max-w-[53rem] scroll-mt-28 text-center sm:mb-40'
             >
                 <motion.h2
-                    className='text-3xl font-medium mb-8  leading-7 tracking-wider	 text-center'
+                    className='text-3xl font-medium mb-8  leading-7 tracking-wider text-center'
                     variants={textVariants}
                     initial='initial'
                     whileInView='animate'
@@ -101,15 +99,7 @@ export default function Skills() {
                     ))}
                 </motion.h2>
 
-                <div className='sm:hidden mx-auto justify-center text-center flex '>
-                    <AnimatedText
-                        // @ts-ignore
-                        text='My techstack'
-                        className='inline mx-auto text-3xl font-medium mb-8  leading-7 tracking-wider text-center'
-                        threshold={150}
-                        mobileThreshold={150}
-                    />
-                </div>
+             
                 <ul className='flex flex-wrap justify-center gap-2 text-lg text-gray-800'>
                     {shuffledSkillsData.map((skill, index) => (
                         <motion.li

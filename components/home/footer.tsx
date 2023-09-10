@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
-import { GitHubLogoIcon, LinkedInLogoIcon } from '@radix-ui/react-icons';
 import { motion } from 'framer-motion';
+import { GitHubLogoIcon, LinkedInLogoIcon } from '@radix-ui/react-icons';
 import Link from 'next/link';
 import MailIcon from '../core/icons/Mail';
 import Contact from './contact';
@@ -17,19 +17,18 @@ export default function Footer() {
         <motion.div
             initial={{
                 opacity: 0,
+                y: 20, // Optional: You can add a vertical animation.
             }}
-            whileInView={{
+            animate={{
                 opacity: 1,
+                y: 0, // Optional: You can add a vertical animation.
             }}
             transition={{
                 duration: 1,
             }}
-            viewport={{
-                once: true,
-            }}
             className='flex mb-40 pb-40 flex-col sm:flex-row w-full h-[475px] rounded-[18px] mb-32'
         >
-            <div className='w-full sm:w-11/12 padding-block h-full footer-grid__block l-round'>
+            <div className="w-full sm:w-11/12 padding-block h-96 footer-grid__block l-round border-none">
                 <h3 className='grow text-3xl font-bold'>
                     <span className={rope.className}>
                         Get in contact,
@@ -85,7 +84,7 @@ export default function Footer() {
                         </li>
                     </ul>
                 </div>
-                <div className='footer mb-20 -mr-[1rem] flex h-[40%] justify-between'>
+                <div className='footer mb-20 sm:mb-0 -mr-[1rem] flex h-[40%] justify-between'>
                     <Link href="https://github.com/remcostoeten" target="_blank" className='card grid mr-[1rem] w-1/3 h-[100%] place-items-center footer-grid__block rounded-[18px]'>
                         <GithubIcon />
                     </Link>
