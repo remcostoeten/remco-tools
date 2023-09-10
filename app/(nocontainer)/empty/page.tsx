@@ -1,3 +1,4 @@
+'use client';
 import PageLoader from '@/components/core/PageLoader';
 import { Separator } from '@radix-ui/react-select';
 import { Loader2 } from 'lucide-react';
@@ -18,7 +19,6 @@ export default function Page() {
             flexShrink: 0,
             transform: 'none',
           }}
-          data-framer-component-type="RichTextContainer"
         >
           <p
             style={{
@@ -54,7 +54,6 @@ export default function Page() {
             flexShrink: 0,
             transform: 'none',
           }}
-          data-framer-component-type="RichTextContainer"
         >
           <p
             style={{
