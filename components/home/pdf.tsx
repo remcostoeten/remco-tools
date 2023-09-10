@@ -28,19 +28,20 @@ export default function DownloadCV() {
                     <Drawer.Content className='bg-zinc-100 flex flex-col rounded-t-[10px] h-[96%] mt-24 fixed bottom-0 left-0 right-0'>
                         <div className='relative p-4 bg-white rounded-t-[10px] flex-1'>
                             {isPdfOpen && (
-                                <div className='fixed flex flex-col gap-4 inset-0 flex z-max items-center justify-center'>
+                                <div className='fixed  flex-col gap-4 inset-0 flex z-max items-center justify-center'>
                                     <div className='fixed inset-0 bg-black opacity-75'></div>
-                                    <div className='flex  left-10 top-4 w-max justify-between gap-2 '>
-                                        <h2 className='text-left font-semibold p-4 z-max'>
+                                    <div className='flex  left-10 top-4 w-4/5 justify-between gap-2 '>
+                                        <h2 className='text-left font-semibold pl-4 pt-4 pr-4 z-max'>
                                             This CV is a little bit out dated
                                             without my current employee,
                                             <br></br> but it gives a clear
                                             indication.
                                         </h2>
-                                    </div>
-                                    <small className='absolute right-4 top-0 '>
+                                        <small className='absolute right-4 top-2 sm:top-12 opacity-25 '>
                                         Swipe to close, also on desktop :)
                                     </small>
+                                    </div>
+                         
                                     <div className='bg-white w-4/5 h-4/5 shadow-lg rounded-lg overflow-hidden relative'>
                                         <iframe
                                             title='PDF Viewer'

@@ -48,7 +48,7 @@
     ".next/types/**/*.ts",
     "app/fancy-hamburger-header/header/anim.js",
     "components/core/BackgroundVariantTwo.tsx"
-, "next.config.mjs"  ],
+, "next.config.mjs", "app/(nocontainer)/anim/page.js"  ],
   "exclude": [
     "node_modules"
   ]

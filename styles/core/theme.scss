@@ -58,6 +58,10 @@ body:not(.table) {
     transition-delay: background 333ms;
 }
 
+[vaul-drawer] {
+    z-index: 999;
+}
+
 // magic
 .toggle {
     --size: 2rem;
