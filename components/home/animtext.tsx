@@ -4,6 +4,7 @@ import { motion, useAnimation, Variants } from 'framer-motion';
 import { useSectionInView } from '@/hooks/useSectionInview';
 import { skillsData } from '@/utils/data';
 import SectionHeading from '../section-heading';
+import AnimatedText from './animtext';
 
 const Skills: React.FC = () => {
     const { ref } = useSectionInView('Skills');

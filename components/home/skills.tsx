@@ -1,25 +1,56 @@
 'use client';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, useAnimation, Variants } from 'framer-motion';
 import { useSectionInView } from '@/hooks/useSectionInview';
 import { skillsData } from '@/utils/data';
 import SectionHeading from '../section-heading';
+import AnimatedText from './animtext';
 
-const Skills: React.FC = () => {
+const shuffleArray = (array) => {
+    const shuffledArray = [...array];
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledArray[i], shuffledArray[j]] = [
+            shuffledArray[j],
+            shuffledArray[i],
+        ];
+    }
+    return shuffledArray;
+};
+
+const fadeInAnimationVariants = {
+    initial: {
+        opacity: 0,
+        y: 50,
+    },
+    animate: (index) => ({
+        opacity: 1,
+        y: 0,
+        transition: {
+            delay: 0.1 * index,
+            duration: 0.5,
+            ease: 'easeOut',
+        },
+    }),
+};
+
+export default function Skills() {
     const { ref } = useSectionInView('Skills');
+    const [shuffledSkillsData, setShuffledSkillsData] = useState([]);
     const headingAnimation = useAnimation();
 
     useEffect(() => {
         headingAnimation.start('animate');
     }, []);
 
-    const text = "The tech stack I'm familiar with,\n or I'm currently occupied with.";
+    const text =
+        "The tech stack I'm familiar with,\n or I'm currently occupied with.";
 
     const textVariants: Variants = {
         initial: {},
         animate: {
             transition: {
-                staggerChildren: 0.1, // Adjust the delay between letters
+                staggerChildren: 0.03, 
             },
         },
     };
@@ -27,74 +58,74 @@ const Skills: React.FC = () => {
     const letterVariants: Variants = {
         initial: {
             opacity: 0,
-            x: -20, // Start from the left
-            y: 20, // Start from the bottom
+            x: -20,
+            scale: .4,
+            y: 50,
+            rotate: 10,
         },
         animate: {
             opacity: 1,
-            x: 0, // End at the original position
-            y: 0, // End at the original position
+            scale: 1,
+            x: 0,
+            y: 0,
+            rotate: 0,
             transition: {
-                type: 'spring', // You can adjust the animation type and stiffness
-                stiffness: 100,
+                type: 'easeOut',
+                stiffness: 300,
             },
         },
     };
 
-    const fadeInAnimationVariants: Variants = {
-        initial: {
-            opacity: 0,
-            y: 100,
-        },
-        animate: (index: number) => ({
-            opacity: 1,
-            y: 0,
-            transition: {
-                delay: 0.05 * index,
-            },
-        }),
-    };
+    useEffect(() => {
+        setShuffledSkillsData(shuffleArray(skillsData));
+    }, [skillsData]);
 
     return (
-        <section
-            id='skills'
-            ref={ref}
-            className='mb-28 max-w-[53rem] scroll-mt-28 text-center sm:mb-40'
-        >
-            <motion.h2
-                className='text-3xl font-medium mb-8  leading-7 tracking-wider	 text-center'
-                variants={textVariants}
-                initial='initial'
-                animate='animate'
+        <>
+            <section
+                id='skills'
+                ref={ref}
+                className='mb-28 max-w-[53rem] scroll-mt-28 text-center sm:mb-40'
             >
-                {text.split('').map((letter, index) => (
-                    <motion.span
-                        key={index}
-                        variants={letterVariants}
-                    >
-                        {letter}
-                    </motion.span>
-                ))}
-            </motion.h2>
-            <ul className='flex flex-wrap justify-center gap-2 text-lg text-gray-800'>
-                {skillsData.map((skill, index) => (
-                    <motion.li
-                        className='bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80'
-                        key={index}
-                        variants={fadeInAnimationVariants}
-                        initial='initial'
-                        whileInView='animate'
-                        viewport={{
-                            once: true
-                        }}
-                        custom={index}
-                    >
-                        {skill}
-                    </motion.li>
-                ))}
-            </ul>
-        </section>
+                <motion.h2
+                    className='text-3xl font-medium mb-8  leading-7 tracking-wider	 text-center'
+                    variants={textVariants}
+                    initial='initial'
+                    whileInView='animate'
+                    animate=''
+                >
+                    {text.split('').map((letter, index) => (
+                        <motion.span key={index} variants={letterVariants}>
+                            {letter}
+                        </motion.span>
+                    ))}
+                </motion.h2>
+
+                <div className='sm:hidden mx-auto justify-center text-center flex '>
+                    <AnimatedText
+                        // @ts-ignore
+                        text='My techstack'
+                        className='inline mx-auto text-3xl font-medium mb-8  leading-7 tracking-wider text-center'
+                        threshold={150}
+                        mobileThreshold={150}
+                    />
+                </div>
+                <ul className='flex flex-wrap justify-center gap-2 text-lg text-gray-800'>
+                    {shuffledSkillsData.map((skill, index) => (
+                        <motion.li
+                            className='bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80'
+                            key={index}
+                            variants={fadeInAnimationVariants}
+                            initial='initial'
+                            animate='animate'
+                            custom={index}
+                        >
+                            {skill}
+                        </motion.li>
+                    ))}
+                </ul>
+            </section>
+            <div className='sm:hidden bg-gray-200 my-24 h-16 w-1 rounded-full dark:bg-opacity-10'></div>
+        </>
     );
 }
-
-export default Skills;

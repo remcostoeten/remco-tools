@@ -1,3 +1,6 @@
+import PageLoader from '@/components/core/PageLoader';
+import { Separator } from '@radix-ui/react-select';
+import { Loader2 } from 'lucide-react';
 import React from 'react';
 
 export default function Page() {
@@ -76,6 +79,11 @@ export default function Page() {
           </p>
         </div>
       </div>
+
+      <Separator/>
+
+              <Loader2/>
+              <PageLoader/> 
     </>
   );
 }
