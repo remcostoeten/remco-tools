@@ -27,7 +27,7 @@ module.exports = {
       },
       textColor: {
         offwhite: "FAF9F6",
-        black: "#1A1A1A",
+        black: "#151515",
       },
       colors: {
         offwhite: "FAF9F6",
@@ -41,7 +41,7 @@ module.exports = {
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: "#1A1A1A",
+          DEFAULT: "#151515",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
