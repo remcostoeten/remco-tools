@@ -27,7 +27,7 @@ export default function Intro() {
     return (
         <section
             id='home'
-            className=' mb-8 mx-auto max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]'
+            className='padding-y  mx-auto max-w-[50rem] text-center scroll-mt-[100rem]'
         >
             <div className='flex items-center justify-center'>
                 <div className='relative'>
@@ -67,7 +67,7 @@ export default function Intro() {
             </div>
 
             <motion.h1
-                className='grow mb-10 mt-4 px-4 text-2xl font-medium !leading-[1.5] sm:text-4xl'
+                className='grow text-2xl font-medium padding-y !leading-[1.5] sm:text-4xl'
                 initial={{ opacity: 0, y: 100 }}
                 animate={{ opacity: 1, scale: 1, y: scrollY * 0.03 }}  // Adjust the factor (0.3) to increase or decrease the parallax intensity
                 >
@@ -79,7 +79,7 @@ export default function Intro() {
                 .
             </motion.h1>
 
-            <div className='showAlternativeCursor w-full pb-8 pt-8 -translate-y-[20px] p-[100ox]'>
+            <div className='showAlternativeCursor w-full padding-y -translate-y-[20px]'>
                 <motion.div
                     className='flex   flex-col sm:flex-row items-center justify-center gap-2 px-4 text-lg font-medium'
                     initial={{ opacity: 0, y: 100 }}

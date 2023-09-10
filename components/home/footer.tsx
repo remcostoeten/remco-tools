@@ -27,7 +27,7 @@ export default function Footer() {
             viewport={{
                 once: true,
             }}
-            className='flex flex-col sm:flex-row w-full h-[475px] rounded-[18px] mb-32'
+            className='flex mb-40 pb-40 flex-col sm:flex-row w-full h-[475px] rounded-[18px] mb-32'
         >
             <div className='w-full sm:w-11/12 padding-block h-full footer-grid__block l-round'>
                 <h3 className='grow text-3xl font-bold'>
@@ -42,7 +42,7 @@ export default function Footer() {
             </div>
 
             <div className='w-full r-round sm:w-5/12 justify-between flex flex-col sm:ml-[2rem]'>
-                <div className='footer-grid__block mb-[2rem] rounded-[18px] h-full flex flex-col justify-between'>
+                <div className='footer-grid__block mb-[2rem] rounded-[18px] sm:h-full flex flex-col justify-between'>
                     <h3 className='text-3xl grow font-bold'>
                         <span className={rope.className}>
                             Before you go,
@@ -85,7 +85,7 @@ export default function Footer() {
                         </li>
                     </ul>
                 </div>
-                <div className='footer -mr-[1rem] flex h-[40%] justify-between'>
+                <div className='footer mb-20 -mr-[1rem] flex h-[40%] justify-between'>
                     <Link href="https://github.com/remcostoeten" target="_blank" className='card grid mr-[1rem] w-1/3 h-[100%] place-items-center footer-grid__block rounded-[18px]'>
                         <GithubIcon />
                     </Link>

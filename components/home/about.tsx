@@ -1,10 +1,8 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import Heading from '@c/section-heading';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Separator } from '../ui/separator';
 
 export default function About() {
     const [isOpen, setIsOpen] = useState(false);
@@ -27,7 +25,7 @@ export default function About() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className=' pb-40  container max-w-[45rem] text-center leading-8 sm:mb-40 scroll-mt-28 font-barlow-condensed font-medium text-xl'
+            className=' padding-y-xl   margin-y  container max-w-[45rem] text-center leading-8 scroll-mt-28 font-barlow-condensed font-medium text-xl'
             id='about'
         >
             <motion.p
@@ -55,7 +53,7 @@ export default function About() {
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.4 }}
-                className='mb-3 text-left'
+                className='mb-3 text-left pb-[32px]'
             >
                 I've studied graphic design, and during my internship I got{' '}
                 {isOpen ? null : '...'}
@@ -140,7 +138,7 @@ export default function About() {
 
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className='showAlternativeCursor mb-8 pt-4 border p-2.5 bg-transparent rounded-full w-max text-offwhite px-10 shadow-lg shadow-neutral-900 mt-2'
+                className='showAlternativeCursor margin-y margin-y border p-2.5 bg-transparent rounded-full w-max text-offwhite px-10 shadow-lg shadow-neutral-900 mt-2'
             >
                 <span className='translate-y-4'>
                     {isOpen ? 'Read Less' : 'Read More'}
