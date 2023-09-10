@@ -9,6 +9,7 @@ body:not(.table) {
         max-width: $container-width;
         margin: 0 auto;
         padding: 0 $spacing-xl;
+        align-items: center
     }
 }
 

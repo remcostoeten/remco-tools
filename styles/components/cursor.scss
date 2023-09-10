@@ -23,6 +23,7 @@
         z-index: 10000;
         pointer-events: none;
         opacity: 0;
+        z-index: 9999999999999999999;
         mix-blend-mode: difference;
         transition: opacity, scale 500ms ease;
         display: grid;

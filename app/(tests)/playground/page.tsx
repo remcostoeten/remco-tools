@@ -38,13 +38,13 @@ export default function PlaygroundPage() {
                 <Image src="/examples/playground-dark.png" width={1280} height={916} alt="Playground" className="hidden dark:block" />
             </div>
             <div className="hidden h-full flex-col md:flex">
-                <div className="container flex flex-col items-start justify-between space-y-2 py-4 sm:flex-row sm:items-center sm:space-y-0 md:h-16">
+                <div className="     flex flex-col items-start justify-between space-y-2 py-4 sm:flex-row sm:items-center sm:space-y-0 md:h-16">
                     <h2 className="text-lg font-semibold">Playground</h2>
            <Toolbar/>
                 </div>
                 <Separator />
                 <Tabs defaultValue="complete" className="flex-1">
-                    <div className="container h-full py-6">
+                    <div className=" h-full py-6">
                         <div className="grid h-full items-stretch gap-6 md:grid-cols-[1fr_200px] border-r-0">
                             <div className="hidden flex-col space-y-4 sm:flex md:order-2">
                                 <div className="grid gap-2">
