@@ -41,11 +41,11 @@ export default function Contact() {
                         type='email'
                         required
                         maxLength={500}
-                        className='theme-background theme-background--inputs'
+                        className='theme-background  text-slate-500 theme-background--inputs'
                         placeholder='ronnypickering@gmail.com'
                     />
                     <Textarea
-                        className='theme-background h-[400px] theme-background--inputs'
+                        className='theme-background text-slate-500  h-[400px] theme-background--inputs'
                         name='message'
                         style={{ minHeight: '120px' }}
                         placeholder='Your message goes here.'
