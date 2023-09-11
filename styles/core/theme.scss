@@ -3,6 +3,15 @@ body {
     overflow-x: hidden;
 }
 
+
+$expense-black: #ff181818;
+
+.bg-expense {
+      background-color: $expense-black;
+      padding: 64px;
+      border-radius: 16px;
+}
+
 body:not(.table) {
     .container {
         display: flex;

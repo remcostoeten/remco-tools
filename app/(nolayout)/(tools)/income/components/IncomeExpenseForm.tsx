@@ -243,6 +243,43 @@ const AddIncomeExpenseForm: React.FC = () => {
 
     return (
         <>
+            <div className='flex w-full flex-col  justify-between gap-4'>
+                <Card className=' bg-expense expense         '>
+                    <dl className='flex justify-between text-2xl font-bold'>
+                        <dd>
+                            <h2>Total Income:</h2>
+                        </dd>
+                        <dt className='font-normal'>€{totalIncome},-</dt>
+                    </dl>
+                    <dl className='flex justify-between text-2xl font-bold'>
+                        <dd>
+                            <h2>Total ex     pense:</h2>
+                        </dd>
+                        {isLoading ? (
+                            <Spinner />
+                        ) : (
+                            <dt className='font-normal'>€{totalExpense},-</dt>
+                        )}{' '}
+                    </dl>
+                    <dl className='flex justify-between text-2xl font-bold'>
+                        <dd>
+                            <h2>Net Worth:</h2>
+                        </dd>
+                        {isLoading ? (
+                            <Spinner />
+                        ) : (
+                            <dt className='font-normal'>€{netWorth},-</dt>
+                        )}
+                    </dl>
+                    <div className='mt-4 flex justify-end'>
+                        <RoundedGlowButton
+                            onClick={handleClearAll}
+                            text='Clear All'
+                        />
+                    </div>
+                </Card>
+            </div>
+
             <div className='flex flex-col gap-4'>
                 <div className='flex flex-col gap-4'>
                     <div className='flex gap-4'>
@@ -325,7 +362,7 @@ const AddIncomeExpenseForm: React.FC = () => {
                                                 Number(e.target.value)
                                             )
                                         }
-                                        className='mr-2 w-1/2 rounded-md border border-gray-300 p-2'
+                                        className='mr-2 w-1/2 rounded-md border  -300 p-2'
                                     />
                                     <Input
                                         type='text'
@@ -334,7 +371,7 @@ const AddIncomeExpenseForm: React.FC = () => {
                                             setSavingsName(e.target.value)
                                         }
                                         placeholder='Savings Name'
-                                        className='w-1/2 rounded-md border border-gray-300 p-2'
+                                        className='w-1/2 rounded-md border -300 p-2'
                                     />
                                 </div>
                                 <BorderButton
@@ -375,44 +412,6 @@ const AddIncomeExpenseForm: React.FC = () => {
                             ))}
                         </Card>
                     </div>
-                </div>
-                <div className='flex w-full flex-col  justify-between gap-4'>
-                    <Card className='card expense p-8 '>
-                        <dl className='flex justify-between text-2xl font-bold'>
-                            <dd>
-                                <h2>Total Income:</h2>
-                            </dd>
-                            <dt className='font-normal'>€{totalIncome},-</dt>
-                        </dl>
-                        <dl className='flex justify-between text-2xl font-bold'>
-                            <dd>
-                                <h2>Total expense:</h2>
-                            </dd>
-                            {isLoading ? (
-                                <Spinner />
-                            ) : (
-                                <dt className='font-normal'>
-                                    €{totalExpense},-
-                                </dt>
-                            )}{' '}
-                        </dl>
-                        <dl className='flex justify-between text-2xl font-bold'>
-                            <dd>
-                                <h2>Net Worth:</h2>
-                            </dd>
-                            {isLoading ? (
-                                <Spinner />
-                            ) : (
-                                <dt className='font-normal'>€{netWorth},-</dt>
-                            )}
-                        </dl>
-                        <div className='mt-4 flex justify-end'>
-                            <RoundedGlowButton
-                                onClick={handleClearAll}
-                                text='Clear All'
-                            />
-                        </div>
-                    </Card>
                 </div>
             </div>
         </>
