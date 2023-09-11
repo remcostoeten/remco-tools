@@ -4,13 +4,46 @@ import data from '@/config/inspiration.json';
 
 const InspirationTable: React.FC = () => {
     const [filter, setFilter] = useState('');
+    const [sortDirection, setSortDirection] = useState<'asc' | 'desc' | null>(
+        null
+    );
 
-    const filteredData = data.map((provider) => ({
+    const sortedData = [...data].map((provider) => {
+        return {
+            ...provider,
+            projects: [...provider.projects].sort((a, b) => {
+                if (sortDirection === 'asc') {
+                    return a.projectType.localeCompare(b.projectType);
+                } else if (sortDirection === 'desc') {
+                    return b.projectType.localeCompare(a.projectType);
+                }
+                return 0;
+            }),
+        };
+    });
+
+    const filteredData = sortedData.map((provider) => ({
         ...provider,
         projects: provider.projects.filter((project) =>
             project.projectType.includes(filter)
         ),
     }));
+
+    const toggleSortDirection = () => {
+        if (sortDirection === 'asc') {
+            setSortDirection('desc');
+        } else {
+            setSortDirection('asc');
+        }
+    };
+
+    const handleSort = () => {
+        if (sortDirection === 'asc') {
+            setSortDirection('desc');
+        } else {
+            setSortDirection('asc');
+        }
+    };
 
     return (
         <div className='p-4'>
@@ -21,9 +54,20 @@ const InspirationTable: React.FC = () => {
                     onChange={(e) => setFilter(e.target.value)}
                 />
                 <div className='overflow-x-auto'>
-                    <table className='min-w-full border bg-theme'>
+                    <table className='bg-theme min-w-full border'>
                         <thead>
                             <tr>
+                                <th
+                                    className='cursor-pointer border-b px-4 py-2'
+                                    onClick={toggleSortDirection}
+                                >
+                                    Project Type{' '}
+                                    {sortDirection === 'asc'
+                                        ? '↑'
+                                        : sortDirection === 'desc'
+                                        ? '↓'
+                                        : ''}
+                                </th>{' '}
                                 <th className='border-b px-4 py-2'>Name</th>
                                 <th className='border-b px-4 py-2'>
                                     Project Type
