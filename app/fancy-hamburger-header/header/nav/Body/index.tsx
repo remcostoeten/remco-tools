@@ -36,7 +36,7 @@ function Body({ links, selectedLink = { isActive: false, index: -1 }, setSelecte
                 const { title, href } = link;
                 return (
                     <Link key={`l_${index}`} href={href}>
-                        <motion.p
+                        <motion.p className="text-2xl font-medium"
                             onMouseOver={() => {
                                 setSelectedLink({ isActive: true, index });
                             }}

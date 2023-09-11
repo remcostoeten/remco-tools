@@ -1,14 +1,36 @@
 .footer {
+    .glow-icon {
+        box-shadow: 0 0 64px #6462ff;
+    }
     .social {
         transition: 500ms ease;
+
         &:hover {
             scale: 2;
-
+            box-shadow: 0 0 64px #6462ff;
             background: rgba(255, 255, 255, 0.05);
             box-shadow: none;
             border: 1px solid rgba(0, 0, 0, 0.05);
             text-align: left;
             padding: 1.3rem 2rem;
+        }
+    }
+
+    span {
+        display: flex;
+        flex-direction: row-reverse;
+        gap: 8px;
+
+        svg {
+            transition: 250ms cubic-bezier(0.23, 1, 0.32, 1) all;
+            padding-left: 0;    
+        }
+
+        &::hover {
+            svg {
+                transition: 250ms cubic-bezier(0.23, 1, 0.32, 1) all;
+                padding-left: 5px;
+            }
         }
     }
 
@@ -35,6 +57,7 @@
 
     $radius-big: 18px;
     $radius: 12px;
+
     .l-round {
         border-radius: $radius-big $radius $radius $radius-big;
     }
@@ -81,4 +104,16 @@
             fill: pink;
         }
     }
+}
+
+.col-block {
+    padding: 64px;
+    display: flex;
+    overflow: hidden;
+    background-size: contain;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-color: #030c08;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 40px;
 }

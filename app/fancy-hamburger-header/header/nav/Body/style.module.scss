@@ -18,8 +18,9 @@
         padding-right: 2vw;
         padding-top: 10px;
         font-weight: 300;
+
         @include above-mobile {
-            font-size: 2vw;
+            font-size: 3vw;
         }
     }
 }

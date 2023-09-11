@@ -1,3 +1,4 @@
+
 body {
     overflow-x: hidden;
 }
@@ -49,7 +50,7 @@ body:not(.table) {
     z-index: 99999999;
     padding: 50px 70px;
     left: 0;
-    background-color: #1a1a1a;
+    background-color: $black;
 }
 
 .theme-transitioning * {

@@ -1,7 +1,6 @@
 'use client';
 import React, { useEffect, useRef } from 'react';
 import { FaArrowUp, FaPlay } from 'react-icons/fa';
-
 export default function Home() {
   const trailer = useRef(null);
   const trailerIcon = useRef(null);
@@ -51,6 +50,7 @@ export default function Home() {
 
   return (
     <div>
+            <ModalTrigger txt='Click Me!' />;
       <div ref={trailer} id="trailer">
         <i ref={trailerIcon} id="trailer-icon" className="fa-solid fa-arrow-up-right"></i>
       </div>

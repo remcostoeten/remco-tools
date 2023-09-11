@@ -9,7 +9,7 @@ interface ExpandButtonProps {
 export default function Page() {
     return (
         <>
-            <div className='flex gap-4 flex-col'>
+            <div className='flex flex-col gap-4'>
                 <ExpandButton beforeContent='...'>Expand button</ExpandButton>
                 <ExpandButton beforeContent='+'>Another content</ExpandButton>
                 <ExpandButton
@@ -29,10 +29,9 @@ export default function Page() {
                     Click me!
                 </ExpandButton>
             </div>
-
             <div
                 _ngcontent-ocq-c31=''
-                className='block ft-music scroll-animation'
+                className='ft-music scroll-animation block'
                 style={{
                     backgroundImage: 'url(&quot',
                     // @ts-ignore

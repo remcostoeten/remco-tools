@@ -19,7 +19,7 @@ export default function Index() {
             initial='initial'
             animate='enter'
             exit='exit'
-            className='absolute p-8 left-0 top-0 overflow-hidden black'
+            className='w-full absolute p-8 left-0 top-0 overflow-hidden black'
         >
             <div className={styles.wrapper}>
                 <div className={styles.container}>

@@ -12,7 +12,6 @@
     ul{
         width: 50%;
         margin-top: 10px;
-        overflow: hidden;
         list-style-type: none;
         padding: 0;
     }
@@ -20,6 +19,7 @@
     li{
         span{
             color: $grey;
+            font-size: 18px;
         }
     }
 }
