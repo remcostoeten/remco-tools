@@ -362,7 +362,7 @@ const AddIncomeExpenseForm: React.FC = () => {
                                                 Number(e.target.value)
                                             )
                                         }
-                                        className='mr-2 w-1/2 rounded-md border  -300 p-2'
+                                        className='mr-2 w-1/2 rounded-md border -300 p-2'
                                     />
                                     <Input
                                         type='text'
