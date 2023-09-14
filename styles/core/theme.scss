@@ -1,15 +1,13 @@
-
 body {
     overflow-x: hidden;
 }
 
-
 $expense-black: #ff181818;
 
 .bg-expense {
-      background-color: $expense-black;
-      padding: 64px;
-      border-radius: 16px;
+    background-color: $expense-black;
+    padding: 64px;
+    border-radius: 16px;
 }
 
 body:not(.table) {
@@ -19,16 +17,33 @@ body:not(.table) {
         max-width: $container-width;
         margin: 0 auto;
         padding: 0 $spacing-xl;
-        align-items: center
+        align-items: center;
     }
 }
 
 .inspiration-table {
+    font-weight: 600;
+    thead {
+        padding: $spacing;
+        margin: $spacing;
+        height: 60px;
+    }
     tr {
+        padding: $spacing;
+        border: 1px solid rgba($color: #fff, $alpha: 0.2);
+        td {
+            padding: $spacing;
+        }
+
         &:nth-child(odd) {
-            background-color: rgba($color: #000000, $alpha: .9);
+            background-color: rgba($color: #000000, $alpha: 0.9);
             border-color: $white;
-         }
+        }
+
+        &:nth-child(even) {
+            background-color: rgba($color: #fff, $alpha: 0.05);
+            border-color: $white;
+        }
     }
 }
 
@@ -62,7 +77,6 @@ body:not(.table) {
 .vertical-timeline-element-content-arrow {
     display: none !important;
 }
-
 
 .is-open {
     z-index: 99999999;
@@ -165,8 +179,6 @@ body:not(.table) {
     margin: 0 $spacing-xl * 3;
 }
 
-
-
 // .toggle {
 //     z-index: 1;
 //     &:checked {
@@ -198,8 +210,7 @@ html:not(.dark) {
     }
 }
 
-    .mobile-flexer {
-        display: flex;
-        gap: 4;
-    }
-
+.mobile-flexer {
+    display: flex;
+    gap: 4;
+}

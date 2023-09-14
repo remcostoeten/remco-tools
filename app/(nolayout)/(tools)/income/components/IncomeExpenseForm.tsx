@@ -19,6 +19,7 @@ import { toast } from '@/components/ui/use-toast';
 import { auth, db } from '@/utils/firebase';
 
 import Spinner from '@/components/core/Spinner';
+import IncomeNotAuthenticated from './IncomeNotAutthenticated';
 
 interface Expense {
     id: string;
@@ -40,6 +41,7 @@ const AddIncomeExpenseForm: React.FC = () => {
     const [netWorth, setNetWorth] = useState<number>(0);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const user = auth?.currentUser;
+
     const [expenses, setExpenses] = useState([
         { id: 1, name: 'Dinner', amount: 50, category: 'Food' },
     ]);
@@ -244,39 +246,51 @@ const AddIncomeExpenseForm: React.FC = () => {
     return (
         <>
             <div className='flex w-full flex-col  justify-between gap-4'>
-                <Card className=' bg-expense expense         '>
-                    <dl className='flex justify-between text-2xl font-bold'>
-                        <dd>
-                            <h2>Total Income:</h2>
-                        </dd>
-                        <dt className='font-normal'>€{totalIncome},-</dt>
-                    </dl>
-                    <dl className='flex justify-between text-2xl font-bold'>
-                        <dd>
-                            <h2>Total ex     pense:</h2>
-                        </dd>
-                        {isLoading ? (
-                            <Spinner />
-                        ) : (
-                            <dt className='font-normal'>€{totalExpense},-</dt>
-                        )}{' '}
-                    </dl>
-                    <dl className='flex justify-between text-2xl font-bold'>
-                        <dd>
-                            <h2>Net Worth:</h2>
-                        </dd>
-                        {isLoading ? (
-                            <Spinner />
-                        ) : (
-                            <dt className='font-normal'>€{netWorth},-</dt>
-                        )}
-                    </dl>
-                    <div className='mt-4 flex justify-end'>
-                        <RoundedGlowButton
-                            onClick={handleClearAll}
-                            text='Clear All'
-                        />
-                    </div>
+                <Card className=' expense bg-expense'>
+                    {user ? (
+                        <>
+                            <dl className='flex justify-between text-2xl font-bold'>
+                                <dd>
+                                    <h2>Total Income:</h2>
+                                </dd>
+                                <dt className='font-normal'>
+                                    €{totalIncome},-
+                                </dt>
+                            </dl>
+                            <dl className='flex justify-between text-2xl font-bold'>
+                                <dd>
+                                    <h2>Total expense:</h2>
+                                </dd>
+                                {isLoading ? (
+                                    <Spinner />
+                                ) : (
+                                    <dt className='font-normal'>
+                                        €{totalExpense},-
+                                    </dt>
+                                )}{' '}
+                            </dl>
+                            <dl className='flex justify-between text-2xl font-bold'>
+                                <dd>
+                                    <h2>Net Worth:</h2>
+                                </dd>
+                                {isLoading ? (
+                                    <Spinner />
+                                ) : (
+                                    <dt className='font-normal'>
+                                        €{netWorth},-
+                                    </dt>
+                                )}
+                            </dl>
+                            <div className='mt-4 flex justify-end'>
+                                <RoundedGlowButton
+                                    onClick={handleClearAll}
+                                    text='Clear All'
+                                />
+                            </div>
+                        </>
+                    ) : (
+                        <IncomeNotAuthenticated totalIncome={0} totalExpense={0} netWorth={0} expenses={[]} incomes={[]} />
+                    )}
                 </Card>
             </div>
 
@@ -298,7 +312,7 @@ const AddIncomeExpenseForm: React.FC = () => {
                                 />
                                 <Input
                                     type='text'
-                                    value={incomeName}
+                                    value={incomeName}                                     
                                     onChange={(e) =>
                                         setIncomeName(e.target.value)
                                     }
@@ -362,7 +376,7 @@ const AddIncomeExpenseForm: React.FC = () => {
                                                 Number(e.target.value)
                                             )
                                         }
-                                        className='mr-2 w-1/2 rounded-md border -300 p-2'
+                                        className='-300 mr-2 w-1/2 rounded-md border p-2'
                                     />
                                     <Input
                                         type='text'
@@ -371,7 +385,7 @@ const AddIncomeExpenseForm: React.FC = () => {
                                             setSavingsName(e.target.value)
                                         }
                                         placeholder='Savings Name'
-                                        className='w-1/2 rounded-md border -300 p-2'
+                                        className='-300 w-1/2 rounded-md border p-2'
                                     />
                                 </div>
                                 <BorderButton
@@ -393,7 +407,7 @@ const AddIncomeExpenseForm: React.FC = () => {
                                 >
                                     <dd>Name: {expense.name}</dd>
                                     <Label>{expense.category}</Label>
-                                    <dt>Amount: €{expenseAmount},-</dt>
+                                    <dt>Amount: €{expense.expenseAmount},-</dt>
                                 </dl>
                             ))}
                         </Card>
@@ -407,7 +421,7 @@ const AddIncomeExpenseForm: React.FC = () => {
                                     key={income.id}
                                 >
                                     <dd>Name: {income.name}</dd>
-                                    <dt>Amount: €{incomeAmount},-</dt>
+                                    <dt>Amount: €{income.incomeAmount},-</dt>
                                 </dl>
                             ))}
                         </Card>

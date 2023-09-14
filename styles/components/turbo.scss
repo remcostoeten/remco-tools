@@ -1,0 +1,43 @@
+.turborepoCardBg {
+    background: #fff;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.03),0 2px 4px rgba(0,0,0,.05),0 12px 24px rgba(0,0,0,.05)
+}
+
+.dark .turborepoCardBg {
+    background: #000;
+    border: 1px solid hsla(0,0%,100%,.1);
+    box-shadow: 0 20px 48px rgba(0,0,0,.2)
+}
+
+.turbopackCardBg {
+    background: #fff;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.03),0 2px 4px rgba(0,0,0,.05),0 12px 24px rgba(0,0,0,.05)
+}
+
+.dark .turbopackCardBg {
+    background: rgba(0,0,0,.8);
+    background: #000;
+    border: 1px solid hsla(0,0%,100%,.1);
+    box-shadow: 0 20px 48px rgba(0,0,0,.2)
+}
+
+.list,.list:focus,.list:focus-visible {
+    outline: none!important;
+    box-shadow: none!important
+}
+
+.border-animation {
+    content: "";
+    position: absolute;
+    top: var(--border-size);
+    right: var(--border-size);
+    bottom: var(--border-size);
+    left: var(--border-size);
+    padding: var(--border-size);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: -1;
+    border-radius: calc(var(--border-radius) + var(--border-size));
+}
