@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import map from '@/public/map.svg';
+import Image from 'next/image'
+import map from '@/public/map.svg'
 
 // Forward properties from `middleware.ts`
 // When support for configuring gSSP to use Edge Functions lands,

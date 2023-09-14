@@ -39,7 +39,8 @@
       "dom",
       "dom.iterable",
       "esnext"
-    ]
+    ],
+    "strictNullChecks": true
   },
   "include": [
     "next-env.d.ts",
@@ -47,8 +48,10 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/fancy-hamburger-header/header/anim.js",
-    "components/core/BackgroundVariantTwo.tsx"
-, "next.config.mjs", "app/(nocontainer)/inspiration/page.js"  ],
+    "components/core/BackgroundVariantTwo.tsx",
+    "next.config.mjs",
+    "app/(nocontainer)/inspiration/page.js"
+  ],
   "exclude": [
     "node_modules"
   ]

@@ -1,29 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server'
-import countries from '@/utils/countries.json'
+import counties from 'utils/i18n.json'
 
-export const config = {
-  matcher: '/',
-}
+export function middleware(request: NextRequest) {
+  const geo = request.geo
+  const countryData = counties[geo.country]
 
-export async function middleware(req: NextRequest) {
-  const { nextUrl: url, geo } = req
-  const country = geo.country || 'US'
-  const city = geo.city || 'San Francisco'
-  const region = geo.region || 'CA'
+  const response = NextResponse.rewrite('/')
 
-  const countryInfo = countries.find((x) => x.cca2 === country)
+  response.headers.set('x-vercel-ip-city', geo.city)
+  response.headers.set('x-vercel-ip-country', geo.country)
+  response.headers.set('x-vercel-ip-country-region', geo.region)
 
-  const currencyCode = Object.keys(countryInfo.currencies)[0]
-  const currency = countryInfo.currencies[currencyCode]
-  const languages = Object.values(countryInfo.languages).join(', ')
+  if (countryData) {
+    response.headers.set('x-vercel-ip-currency', countryData.currency)
+    response.headers.set('x-vercel-ip-languages', countryData.languages.join(', '))
+  }
 
-  url.searchParams.set('country', country)
-  url.searchParams.set('city', city)
-  url.searchParams.set('region', region)
-  url.searchParams.set('currencyCode', currencyCode)
-  url.searchParams.set('currencySymbol', currency.symbol)
-  url.searchParams.set('name', currency.name)
-  url.searchParams.set('languages', languages)
-
-  return NextResponse.rewrite(url)
+  return response
 }
