@@ -36,17 +36,17 @@ const initialThoughtState = {
     category: '',
 };
 
-export function NewThought({ content }: NewTaskProps) {
+export async function NewThought({ content }: NewTaskProps) {
     const [open, setOpen] = useState(false);
     const [task, setTask] = useState(initialThoughtState);
     const [date, setDate] = useState<Date | null>(null);
     const [loading, setLoading] = useState(false);
     const [sort, setSort] = useState<string>('');
-    const [category, setCategory] = useState<string>('');
     const [description, setDescription] = useState<string>('');
     const user = auth?.currentUser;
     const [markdownContent, setMarkdownContent] = useState('');
     const [priority, setPriority] = useState<string[]>([]);
+    const [category, setCategory] = useState<string[]>([]);
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -87,6 +87,7 @@ export function NewThought({ content }: NewTaskProps) {
                 category,
             };
 
+            // Use the addDoc function to post data to the Firestore collection
             const docRef = await addDoc(collection(db, 'todos'), newThought);
 
             // @ts-ignore
@@ -96,8 +97,8 @@ export function NewThought({ content }: NewTaskProps) {
             setDate(null);
             setDescription('');
             setPriority([]);
+            setCategory([]);
             setMarkdownContent('');
-            setCategory('');
 
             toast({
                 title: 'Thought created successfully.',
@@ -223,7 +224,12 @@ export function NewThought({ content }: NewTaskProps) {
                                 <SelectItem
                                     key={option.value}
                                     value={option.value}
-                                    onClick={() => setCategory(option.value)}
+                                    onChange={(e) =>
+                                        setCategory({
+                                            ...task,
+                                            category: e.target.value,
+                                        })
+                                    }
                                 >
                                     <SelectLabel>{option.label}</SelectLabel>
                                 </SelectItem>
@@ -272,7 +278,7 @@ export function NewThought({ content }: NewTaskProps) {
             >
                 <Textarea
                     value={description}
-                    className='theme-background--inputs mb-4 min-h-[200px]'
+                    className='theme-background--inputs min-h-[200px] mb-4'
                     onChange={(e) => setDescription(e.target.value)}
                 />
             </motion.div>
@@ -283,7 +289,7 @@ export function NewThought({ content }: NewTaskProps) {
                     duration: 1.2,
                 }}
             >
-                <div className='flex items-center justify-between gap-2'>
+                <div className='flex items-center gap-2 justify-between'>
                     <div className='cursor-hover'>
                         <Button>New post</Button>
                     </div>
@@ -308,10 +314,10 @@ export function NewThought({ content }: NewTaskProps) {
                 </Drawer.Trigger>
                 <Drawer.Portal>
                     <Drawer.Overlay className='fixed inset-0 bg-black/40' />
-                    <Drawer.Content className='fixed bottom-0 left-0 right-0 mt-24 flex h-[75vh] flex-col rounded-2xl rounded-t-[10px] bg-[#0a0a0a] p-12 shadow-lg'>
-                        <div className='[text-[#5D5C63] font-notes] flex-1 rounded-t-[10px] p-4'>
+                    <Drawer.Content className='fixed bottom-0 shadow-lg bg-[#0a0a0a] p-12 left-0 right-0 mt-24 flex h-[75vh] flex-col rounded-t-[10px] rounded-2xl'>
+                        <div className='flex-1 rounded-t-[10px] [text-[#5D5C63] font-notes] p-4'>
                             <div className='mx-auto w-4/12'>
-                                <Drawer.Title className='mb-4 font-serif text-4xl font-medium'>
+                                <Drawer.Title className='mb-4 font-medium text-4xl font-serif'>
                                     Add whatever is on your mind.
                                 </Drawer.Title>
                                 {form}

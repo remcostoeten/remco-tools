@@ -46,24 +46,6 @@ export const DisplayTasks = [
         enableHiding: false,
     },
     {
-        accessorKey: 'title',
-        header: ({ column }) => (
-            <DataTableColumnHeader column={column} title='Title' />
-        ),
-        cell: ({ row }) => {
-            const label = labels.find(
-                (label) => label.value === row.original.label
-            );
-            return (
-                <div className='flex space-x-2'>
-                    <span className='max-w-[500px] truncate font-medium'>
-                        {row.getValue('title')}
-                    </span>
-                </div>
-            );
-        },
-    },
-    {
         accessorKey: 'category',
         header: ({ column }) => (
             <DataTableColumnHeader column={column} title='Category' />
@@ -76,6 +58,24 @@ export const DisplayTasks = [
                 <div className='flex space-x-2'>
                     <span className='max-w-[500px] truncate font-medium'>
                         {row.getValue('category')}
+                    </span>
+                </div>
+            );
+        },
+    },
+     {
+        accessorKey: 'title',
+        header: ({ column }) => (
+            <DataTableColumnHeader column={column} title='Title' />
+        ),
+        cell: ({ row }) => {
+            const label = labels.find(
+                (label) => label.value === row.original.label
+            );
+            return (
+                <div className='flex space-x-2'>
+                    <span className='max-w-[500px] truncate font-medium'>
+                        {row.getValue('title')}
                     </span>
                 </div>
             );

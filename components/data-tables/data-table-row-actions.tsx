@@ -2,7 +2,7 @@
 
 import { DotsHorizontalIcon } from '@radix-ui/react-icons';
 import { Row } from '@tanstack/react-table';
-import { doc, deleteDoc, collection, getDocs } from 'firebase/firestore';
+import { doc, deleteDoc, collection, getDocs, updateDoc } from 'firebase/firestore';
 import { Button } from '@/components/ui/button';
 import {
     DropdownMenu,
@@ -19,22 +19,51 @@ import {
 } from '@/components/ui/dropdown-menu';
 
 import { labels } from './data/data';
-import { db, deleteItem, deleteTodo } from '@/utils/firebase';
+import { db, deleteTodo } from '@/utils/firebase';
 import { toast } from '../ui/use-toast';
+import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
+import { useState } from 'react';
+import { Label } from '@radix-ui/react-label';
+import { Input } from '../ui/input';
 
 interface DataTableRowActionsProps<TData extends { id: string }> {
     row: Row<TData>;
 }
 
-export function DataTableRowActions<TData extends { id: string }>({
-    row,
-}: DataTableRowActionsProps<TData>) {
+export function DataTableRowActions<
+    TData extends {
+        [x: string]: any;
+        id: string;
+    }
+>({ row }: DataTableRowActionsProps<TData>) {
     const task = row.original;
+    const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+
+    const togglePopover = () => {
+        setIsPopoverOpen((prevState) => !prevState);
+    };
+
+    const [editedTask, setEditedTask] = useState({
+        label: task.label,
+    });
+
+    const handleEditSubmit = async () => {
+        // Update the task in Firestore (as an example)
+        const taskRef = doc(collection(db, 'tasks'), task.id);
+        await updateDoc(taskRef, editedTask);
+
+        // Close the popover
+        setIsPopoverOpen(false);
+
+        // Optionally show a toast or notification for success
+        toast({ title: 'Task updated successfully!' });
+    };
 
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <Button
+                    // @ts-ignore
                     variant='ghost'
                     className='flex h-8 w-8 p-0 data-[state=open]:bg-muted'
                 >
@@ -68,6 +97,48 @@ export function DataTableRowActions<TData extends { id: string }>({
                     Deletee
                     <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
                 </DropdownMenuItem>
+                {isPopoverOpen && (
+                    <Popover>
+                        <PopoverTrigger asChild>
+                            <Button variant='outline'>Open popover</Button>
+                        </PopoverTrigger>
+                        <PopoverContent className='w-80'>
+                            <div className='grid gap-4'>
+                                <div className='space-y-2'>
+                                    <h4 className='font-medium leading-none'>
+                                        Edit Task
+                                    </h4>
+                                    <p className='text-sm text-muted-foreground'>
+                                        Update the task details.
+                                    </p>
+                                </div>
+                                <div className='grid gap-2'>
+                                    {/* Field for label */}
+                                    <div className='grid grid-cols-3 items-center gap-4'>
+                                        <Label htmlFor='label'>Label</Label>
+                                        <Input
+                                            id='label'
+                                            value={editedTask.label}
+                                            onChange={(e) =>
+                                                setEditedTask((prev) => ({
+                                                    ...prev,
+                                                    label: e.target.value,
+                                                }))
+                                            }
+                                            className='col-span-2 h-8'
+                                        />
+                                    </div>
+                                    {/* Add more fields as required */}
+                                </div>
+                                <div className='mt-4'>
+                                    <Button onClick={handleEditSubmit}>
+                                        Submit
+                                    </Button>
+                                </div>
+                            </div>
+                        </PopoverContent>
+                    </Popover>
+                )}
             </DropdownMenuContent>
         </DropdownMenu>
     );

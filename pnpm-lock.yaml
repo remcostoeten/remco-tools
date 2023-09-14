@@ -158,6 +158,9 @@ dependencies:
   next-themes:
     specifier: ^0.2.1
     version: 0.2.1(next@13.3.2-canary.13)(react-dom@18.2.0)(react@18.2.0)
+  papaparse:
+    specifier: ^5.4.1
+    version: 5.4.1
   prop-types:
     specifier: ^15.8.1
     version: 15.8.1
@@ -173,6 +176,9 @@ dependencies:
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
+  react-fetch-hook:
+    specifier: ^1.9.5
+    version: 1.9.5(react@18.2.0)
   react-hook-form:
     specifier: ^7.45.4
     version: 7.45.4(react@18.2.0)
@@ -9666,6 +9672,10 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
+  /papaparse@5.4.1:
+    resolution: {integrity: sha512-HipMsgJkZu8br23pW15uvo6sib6wne/4woLZPlFf3rpDyMe9ywEXUsuD7+6K9PRkJlVT51j/sCOYDKGGS3ZJrw==}
+    dev: false
+
   /param-case@2.1.1:
     resolution: {integrity: sha512-eQE845L6ot89sk2N8liD8HAuH4ca6Vvr7VWAWwt7+kvvG5aBcPmmphQ68JsEG2qa9n1TykS2DLeMt363AAH8/w==}
     dependencies:
@@ -10232,6 +10242,14 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+    dev: false
+
+  /react-fetch-hook@1.9.5(react@18.2.0):
+    resolution: {integrity: sha512-LhTwUk0iYQ4SUl2laQr5Jc2fk/K4B6ezntDWWBNdlag/cB3n2RYshofIL3bOghE5FEfkoDi6BqGD/YIwqW1/8w==}
+    peerDependencies:
+      react: '>=16.8.0 <19.0.0'
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react-hook-form@7.45.4(react@18.2.0):
