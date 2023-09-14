@@ -7,7 +7,7 @@ import ActiveSectionContextProvider from '@/context/active-section-contex';
 import Header from '@/components/core/header/Header';
 import ThemeContextProvider from '@/context/theme-context';
 import ToggleTheme from '@/components/core/ToggleTheme';
-import ParallaxDiv from '@/components/ParallaxBackground';
+import GlowEffect from '@/components/ParallaxBackground';
 import { seoKeywords } from '@/config/keywords';
 import { Inter, Manrope } from 'next/font/google';
 import Trailer from '@/components/core/Cursor';
@@ -68,7 +68,7 @@ export default function RootLayout({
             <body
                 className={`${inter.className} bg-gray-50 text-gray-950 relative pt-28 sm:pt-36 dark:bg-black dark:text-gray-50 dark:text-opacity-90`}
             >
-                <ParallaxDiv />
+                <GlowEffect />
                 <ThemeContextProvider>
                     <ActiveSectionContextProvider>
                         <Trailer />

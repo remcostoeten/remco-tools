@@ -20,6 +20,7 @@ import {
     SelectValue,
 } from '../ui/select';
 import { opacity } from '@/app/fancy-hamburger-header/anim';
+import { categoryOptions } from '@/utils/data';
 
 interface NewTaskProps {
     content?: string;
@@ -32,6 +33,7 @@ const initialThoughtState = {
     description: '',
     subject: '',
     sort: '',
+    category: '',
 };
 
 export function NewThought({ content }: NewTaskProps) {
@@ -40,6 +42,7 @@ export function NewThought({ content }: NewTaskProps) {
     const [date, setDate] = useState<Date | null>(null);
     const [loading, setLoading] = useState(false);
     const [sort, setSort] = useState<string>('');
+    const [category, setCategory] = useState<string>('');
     const [description, setDescription] = useState<string>('');
     const user = auth?.currentUser;
     const [markdownContent, setMarkdownContent] = useState('');
@@ -81,9 +84,11 @@ export function NewThought({ content }: NewTaskProps) {
                 description,
                 priority,
                 sort,
+                category,
             };
 
             const docRef = await addDoc(collection(db, 'todos'), newThought);
+
             // @ts-ignore
             newThought.id = docRef.id;
 
@@ -92,7 +97,7 @@ export function NewThought({ content }: NewTaskProps) {
             setDescription('');
             setPriority([]);
             setMarkdownContent('');
-            setSort('');
+            setCategory('');
 
             toast({
                 title: 'Thought created successfully.',
@@ -200,20 +205,32 @@ export function NewThought({ content }: NewTaskProps) {
                     }
                 />
             </motion.div>
+
             <motion.div
                 initial={{ opacity: 0, scale: 0.5, y: 10 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{
-                    duration: 0.6,
+                    duration: 0.8,
                 }}
             >
-                <Input
-                    type='text'
-                    className='theme-background--inputs'
-                    placeholder='Sort'
-                    value={task.sort}
-                    onChange={(e) => setTask({ ...task, sort: e.target.value })}
-                />
+                <Select>
+                    <SelectTrigger className='theme-background--inputs w-[140px]'>
+                        <SelectValue placeholder='Category' />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectGroup>
+                            {categoryOptions.map((option) => (
+                                <SelectItem
+                                    key={option.value}
+                                    value={option.value}
+                                    onClick={() => setCategory(option.value)}
+                                >
+                                    <SelectLabel>{option.label}</SelectLabel>
+                                </SelectItem>
+                            ))}
+                        </SelectGroup>
+                    </SelectContent>
+                </Select>
             </motion.div>
             <motion.div
                 initial={{ opacity: 0, scale: 0.5, y: 10 }}
@@ -245,14 +262,6 @@ export function NewThought({ content }: NewTaskProps) {
                         </SelectGroup>
                     </SelectContent>
                 </Select>
-
-                <Input
-                    type='text'
-                    placeholder='Priority'
-                    value={priority.join(', ')}
-                    className='theme-background--inputs'
-                    onChange={(e) => setPriority([e.target.value])}
-                />
             </motion.div>
             <motion.div
                 initial={{ opacity: 0, scale: 0.5, y: 10 }}
@@ -263,7 +272,7 @@ export function NewThought({ content }: NewTaskProps) {
             >
                 <Textarea
                     value={description}
-                    className='theme-background--inputs min-h-[200px] mb-4'
+                    className='theme-background--inputs mb-4 min-h-[200px]'
                     onChange={(e) => setDescription(e.target.value)}
                 />
             </motion.div>
@@ -274,7 +283,7 @@ export function NewThought({ content }: NewTaskProps) {
                     duration: 1.2,
                 }}
             >
-                <div className='flex items-center gap-2 justify-between'>
+                <div className='flex items-center justify-between gap-2'>
                     <div className='cursor-hover'>
                         <Button>New post</Button>
                     </div>
@@ -299,10 +308,10 @@ export function NewThought({ content }: NewTaskProps) {
                 </Drawer.Trigger>
                 <Drawer.Portal>
                     <Drawer.Overlay className='fixed inset-0 bg-black/40' />
-                    <Drawer.Content className='fixed bottom-0 shadow-lg bg-[#0a0a0a] p-12 left-0 right-0 mt-24 flex h-[75vh] flex-col rounded-t-[10px] rounded-2xl'>
-                        <div className='flex-1 rounded-t-[10px] [text-[#5D5C63] font-notes] p-4'>
+                    <Drawer.Content className='fixed bottom-0 left-0 right-0 mt-24 flex h-[75vh] flex-col rounded-2xl rounded-t-[10px] bg-[#0a0a0a] p-12 shadow-lg'>
+                        <div className='[text-[#5D5C63] font-notes] flex-1 rounded-t-[10px] p-4'>
                             <div className='mx-auto w-4/12'>
-                                <Drawer.Title className='mb-4 font-medium text-4xl font-serif'>
+                                <Drawer.Title className='mb-4 font-serif text-4xl font-medium'>
                                     Add whatever is on your mind.
                                 </Drawer.Title>
                                 {form}

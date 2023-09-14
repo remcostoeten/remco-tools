@@ -113,7 +113,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="container mt-32 relative flex h-screen -translate-y-36 flex-col items-center justify-center">
+    <div className="bg-theme container mt-32 relative flex h-screen -translate-y-36 flex-col items-center justify-center">
       <Link href="/">
         <motion.div
           className="absolute left-0 top-22 flex items-center pl-8 align-middle"

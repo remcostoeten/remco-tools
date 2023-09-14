@@ -19,35 +19,30 @@ import {
 } from '@/components/ui/dropdown-menu';
 
 import { labels } from './data/data';
-import { db, deleteItem } from '@/utils/firebase';
+import { db, deleteItem, deleteTodo } from '@/utils/firebase';
 import { toast } from '../ui/use-toast';
 
 interface DataTableRowActionsProps<TData extends { id: string }> {
     row: Row<TData>;
 }
 
-export function DataTableRowActions<TData extends { id: string }>({ row }: DataTableRowActionsProps<TData>) {
+export function DataTableRowActions<TData extends { id: string }>({
+    row,
+}: DataTableRowActionsProps<TData>) {
     const task = row.original;
-
-    const handleDelete = async () => {
-        try {
-            const taskId = (task as any).id;
-            await deleteItem(taskId);
-            console.log('Task deleted successfully');
-        } catch (error) {
-            console.log(`Failed to delete task: ${error.message}`);
-        }
-    };
 
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="flex h-8 w-8 p-0 data-[state=open]:bg-muted">
-                    <DotsHorizontalIcon className="h-4 w-4" />
-                    <span className="sr-only">Open menu</span>
+                <Button
+                    variant='ghost'
+                    className='flex h-8 w-8 p-0 data-[state=open]:bg-muted'
+                >
+                    <DotsHorizontalIcon className='h-4 w-4' />
+                    <span className='sr-only'>Open menu</span>
                 </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-[160px]">
+            <DropdownMenuContent align='end' className='w-[160px]'>
                 <DropdownMenuItem>Edit</DropdownMenuItem>
                 <DropdownMenuItem>Make a copy</DropdownMenuItem>
                 <DropdownMenuItem>Favorite</DropdownMenuItem>
@@ -58,7 +53,10 @@ export function DataTableRowActions<TData extends { id: string }>({ row }: DataT
                         {/* @ts-ignore */}
                         <DropdownMenuRadioGroup value={task.label}>
                             {labels.map((label) => (
-                                <DropdownMenuRadioItem key={label.value} value={label.value}>
+                                <DropdownMenuRadioItem
+                                    key={label.value}
+                                    value={label.value}
+                                >
                                     {label.label}
                                 </DropdownMenuRadioItem>
                             ))}
@@ -66,8 +64,8 @@ export function DataTableRowActions<TData extends { id: string }>({ row }: DataT
                     </DropdownMenuSubContent>
                 </DropdownMenuSub>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={handleDelete}>
-                    Delete
+                <DropdownMenuItem onClick={() => deleteTodo(task.id)}>
+                    Deletee
                     <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
                 </DropdownMenuItem>
             </DropdownMenuContent>

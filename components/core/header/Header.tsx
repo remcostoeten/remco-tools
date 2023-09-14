@@ -10,7 +10,6 @@ import { ToolsDropdown } from './ToolsDropdown';
 
 export default function Header() {
     const { activeSection, setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
-
     return (
         <>
             <header className='hidden md:flex showAlternativeCursor z-50 relative'>

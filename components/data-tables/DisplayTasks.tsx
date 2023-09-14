@@ -64,6 +64,24 @@ export const DisplayTasks = [
         },
     },
     {
+        accessorKey: 'category',
+        header: ({ column }) => (
+            <DataTableColumnHeader column={column} title='Category' />
+        ),
+        cell: ({ row }) => {
+            const label = labels.find(
+                (label) => label.value === row.original.label
+            );
+            return (
+                <div className='flex space-x-2'>
+                    <span className='max-w-[500px] truncate font-medium'>
+                        {row.getValue('category')}
+                    </span>
+                </div>
+            );
+        },
+    },
+    {
         accessorKey: 'priority',
         header: ({ column }) => (
             <DataTableColumnHeader column={column} title='Priority' />

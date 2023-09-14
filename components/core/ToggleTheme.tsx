@@ -1,5 +1,6 @@
 'use client';;
 import { useTheme } from '@/context/theme-context';
+import { Input } from '../ui/input';
 
 const ToggleTheme: React.FC = () => {
     const { theme, toggleTheme } = useTheme();
@@ -7,10 +8,11 @@ const ToggleTheme: React.FC = () => {
     return (
         <div className='fixed bottom-5 right-5 bg-white w-[3rem] h-[3rem] bg-opacity-80 backdrop-blur-[0.5rem] border border-white border-opacity-40 shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.15] active:scale-105 transition-all dark:bg-gray-950'>
             <div onClick={toggleTheme}>
-                <input
+                <Input
                     id='toggle'
                     className='toggle translate-x-0.5 translate-y-1 toggle'
                     type='checkbox'
+                    onChange={toggleTheme}
                     checked={theme === 'light'} 
                 />
             </div>

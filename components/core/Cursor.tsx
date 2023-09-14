@@ -89,7 +89,7 @@ export default function Trailer() {
                         <path
                             d='M6.76308 4.70864L3.89868 3.01601L4.527 6.28328L12.027 45.2832L12.7679 49.1358L14.7863 45.7716L23.4762 31.2885L39.3948 26.9472L42.8178 26.0136L39.7632 24.2085L6.76308 4.70864Z'
                             stroke='white'
-                            stroke-linecap='square'
+                            strokeLinecap='square'
                         />
                     </g>
                     <defs>
@@ -100,10 +100,8 @@ export default function Trailer() {
                             width='46.8921'
                             height='54.4931'
                             filterUnits='userSpaceOnUse'
-                            color-interpolation-filters='sRGB'
                         >
                             <feFlood
-                                flood-opacity='0'
                                 result='BackgroundImageFix'
                             />
                             <feColorMatrix
