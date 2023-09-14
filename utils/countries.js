@@ -2,7 +2,7 @@ const { join } = require('path')
 const { writeFile } = require('fs/promises')
 
 const JSON_URL =
-  'https://raw.githubusercontent.com/rem/countries/master/dist/countries.json'
+  'https://raw.githubusercontent.com/remcostoeten/remco-tools/master/utils/countries.json'
 
 async function setupCountryInfo() {
   const req = await fetch(JSON_URL)
@@ -23,7 +23,6 @@ async function setupCountryInfo() {
 
 function withCountryInfo(nextConfig = {}) {
   const { rewrites } = nextConfig
-  // Not really adding rewrites but using its async behavior to load the country data
   nextConfig.rewrites = async (...args) => {
     await setupCountryInfo()
     return rewrites?.(...args) ?? {}
