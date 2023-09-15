@@ -1,10 +1,8 @@
 'use client';
-
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { BsArrowRight } from 'react-icons/bs';
 import { useActiveSectionContext } from '@/context/active-section-contex';
 import DownloadCV from './pdf';
 
@@ -23,75 +21,109 @@ export default function Intro() {
         };
     }, []);
 
+    const containerVariants = {
+        hidden: {},
+        visible: {
+            transition: {
+                when: 'beforeChildren',
+                staggerChildren: 0.2, // Adjust the stagger duration as needed
+            },
+        },
+    };
+
+    const itemVariants = {
+        hidden: {
+            opacity: 0,
+            y: 20, // Adjust the initial y position as needed
+        },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                type: 'spring',
+                stiffness: 5,
+                duration: 0.7,
+            },
+        },
+    };
+
     return (
         <section
             id='home'
-            className='padding-y  mx-auto max-w-[50rem] text-center scroll-mt-[100rem]'
+            className='padding-y mx-auto max-w-[50rem] text-center scroll-mt-[100rem]'
         >
-            <div className='flex items-center justify-center'>
-                <div className='relative'>
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0, rotate:90, skewY: 45 }}
-                        animate={{ opacity: 1, scale: 1, y: scrollY * 0.03, rotate:0, skewY: 0 }} 
-                        transition={{
-                            type: 'spring',
-                            duration: 1.7,
-                            delay: 0.3,
-                            repeat: Infinity,
-                        }}
-                    >
-                        <Image
-                            src='https://media.licdn.com/dms/image/C5603AQFIlU2oV2JEgg/profile-displayphoto-shrink_800_800/0/1638502874210?e=2147483647&v=beta&t=NQAizH_x-gBtMhmn1APmsKcl9QjmasnaZ60TqG-ZhR4'
-                            alt='Remco Stoeten'
-                            width='192'
-                            height='192'
-                            quality='95'
-                            priority={true}
-                            className='h-24 mb-8  w-24 rounded-full object-cover border-[0.35rem] border-offwhite shadow-xl'
-                        />
-                    </motion.div>
-
-                    <motion.span
-                        className='absolute bottom-0 right-0 text-4xl'
-                        initial={{ opacity: 0, scale: 0 }}
-                        animate={{ opacity: 1, scale: 1, y: scrollY * 0.03 }} 
-                        transition={{
-                            type: 'spring',
-                            stiffness: 5    ,
-                            delay: 0.1 ,
-                            duration: 0.7,
-                        }}
-                    >
-                        <span className='wave'>👋</span>
-                    </motion.span>
-                </div>
-            </div>
-
-            <motion.h1
-                className='grow text-2xl font-medium padding-y !leading-[1.5] sm:text-4xl'
-                initial={{ opacity: 0, y: 100 }}
-                animate={{ opacity: 1, scale: 1, y: scrollY * 0.13 }} 
+            <motion.div
+                variants={containerVariants}
+                initial='hidden'
+                animate='visible'
             >
-                <span className='font-bold'> My name is Remco, </span>a{' '}
-                <span className='italic dutch'>dutch</span>{' '}
-                <span className='font-bold'>front-end developer</span> with{' '}
-                <span className='font-bold'>7 years</span> of experience. I
-                enjoy building things, <span className='italic'>with code</span>
-                .
-            </motion.h1>
+                <div className='flex items-center justify-center'>
+                    <div className='relative'>
+                        <motion.div
+                            initial={{
+                                opacity: 0,
+                                scale: 0,
+                                rotate: 90,
+                                skewY: 45,
+                            }}
+                            animate={{
+                                opacity: 1,
+                                scale: 1,
+                                y: scrollY * 0.03,
+                                rotate: 0,
+                                skewY: 0,
+                            }}
+                            transition={{
+                                type: 'spring',
+                                duration: 1.7,
+                                delay: 0.3,
+                            }}
+                        >
+                            {' '}
+                            <Image
+                                src='https://media.licdn.com/dms/image/C5603AQFIlU2oV2JEgg/profile-displayphoto-shrink_800_800/0/1638502874210?e=2147483647&v=beta&t=NQAizH_x-gBtMhmn1APmsKcl9QjmasnaZ60TqG-ZhR4'
+                                alt='Remco Stoeten'
+                                width='192'
+                                height='192'
+                                quality='95'
+                                priority={true}
+                                className='h-24 mb-8  w-24 rounded-full object-cover border-[0.35rem] border-offwhite shadow-xl'
+                            />
+                        </motion.div>
 
-            <div className='showAlternativeCursor w-full padding-y -translate-y-[20px]'>
+                        <motion.span
+                            variants={itemVariants}
+                            className='absolute bottom-0 right-0 text-4xl'
+                        >
+                            <motion.span
+                                variants={itemVariants}
+                                className='wave'
+                            >
+                                👋
+                            </motion.span>
+                        </motion.span>
+                    </div>
+                </div>
+
+                <motion.h1
+                    variants={itemVariants}
+                    className='grow text-2xl font-medium padding-y !leading-[1.5] sm:text-4xl'
+                >
+                    <span className='font-bold'> My name is Remco, </span>a{' '}
+                    <span className='italic dutch'>dutch</span>{' '}
+                    <span className='font-bold'>front-end developer</span> with{' '}
+                    <span className='font-bold'>7 years</span> of experience. I
+                    enjoy building things,{' '}
+                    <span className='italic'>with code</span>.
+                </motion.h1>
+
                 <motion.div
+                    variants={itemVariants}
                     className='flex   flex-col sm:flex-row items-center justify-center gap-2 px-4 text-lg font-medium'
-                    initial={{ opacity: 0, y: 100 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                        delay: 0.1,
-                    }}
                 >
                     <div className='animbtn'>
                         <Link
-                            className='border flex h-[60px]border animbutton p-2.5 bg-transparent rounded-xl w-max flex align-middle items-center gap-4 justify-center  text-offwhite  px-10 shadow-lg shadow-neutral-900 mt-2 animated-arrow'
+                            className='warp border flex h-[60px]border animbutton p-2.5 bg-transparent rounded-xl w-max flex align-middle items-center gap-4 justify-center  text-offwhite  px-10 shadow-lg shadow-neutral-900 mt-2 animated-arrow'
                             href='#contact'
                             onClick={() => {
                                 setActiveSection('Contact');
@@ -150,7 +182,7 @@ export default function Intro() {
                         </Link>
                     </div>
                 </motion.div>
-            </div>
+            </motion.div>
         </section>
     );
 }
