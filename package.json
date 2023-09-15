@@ -92,6 +92,7 @@
     "shiki": "^0.11.1",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.6",
+    "three": "^0.156.1",
     "typed.js": "^2.0.16",
     "unist-util-visit": "^5.0.0",
     "vaul": "^0.1.2",

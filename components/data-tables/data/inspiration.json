@@ -14,6 +14,17 @@
                 "componentInspiration": null
             },
             {
+                "projectType": "portfolio",
+                "colors": ["dark", "blue", "pink"],
+                "colorScheme": "dark",
+                "style": ["minimalistic", "effects"],
+                "url": "https://dau1oi2ms0imm.cloudfront.net/2022-10-04-racket.html",
+                "preview": null,
+                "hasMobileDevice": null,
+                "animations": null,
+
+            },
+{
                 "projectType": "Portfolio",
                 "colors":"dark",
                 "colorScheme":"dark",
