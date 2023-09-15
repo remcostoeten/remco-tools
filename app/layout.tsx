@@ -2,7 +2,7 @@ import '@/styles/styles.scss';
 import { siteConfig } from '@/config/site';
 import { Toaster } from '@/components/ui/toaster';
 import { Analytics } from '@vercel/analytics/react';
-import FancyHeader from '../../components/fancy-hamburger-header/header';
+import FancyHeader from '../components/fancy-hamburger-header/header';
 import ActiveSectionContextProvider from '@/context/active-section-contex';
 import Header from '@/components/core/header/Header';
 import ThemeContextProvider from '@/context/theme-context';

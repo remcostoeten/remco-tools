@@ -31,11 +31,13 @@ export default function Intro() {
             <div className='flex items-center justify-center'>
                 <div className='relative'>
                     <motion.div
-                        initial={{ opacity: 0, scale: 0 }}
-                        animate={{ opacity: 1, scale: 1, y: scrollY * 0.03 }} 
+                        initial={{ opacity: 0, scale: 0, rotate:90, skewY: 45 }}
+                        animate={{ opacity: 1, scale: 1, y: scrollY * 0.03, rotate:0, skewY: 0 }} 
                         transition={{
-                            type: 'tween',
-                            duration: 0.2,
+                            type: 'spring',
+                            duration: 1.7,
+                            delay: 0.3,
+                            repeat: Infinity,
                         }}
                     >
                         <Image
@@ -55,8 +57,8 @@ export default function Intro() {
                         animate={{ opacity: 1, scale: 1, y: scrollY * 0.03 }} 
                         transition={{
                             type: 'spring',
-                            stiffness: 125,
-                            delay: 0.1,
+                            stiffness: 5    ,
+                            delay: 0.1 ,
                             duration: 0.7,
                         }}
                     >
