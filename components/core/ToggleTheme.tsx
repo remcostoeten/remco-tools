@@ -1,25 +1,26 @@
 'use client';
-'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTheme } from '@/context/theme-context';
 import { Input } from '../ui/input';
 import GlowEffect from '../ParallaxBackground';
 import Trailer from './Cursor';
 import { Switch } from '../ui/switch';
-import PinkCursor from './icons/Cursor/PinkCursor';
 
 const ThemeSettings: React.FC = () => {
     const { theme, toggleTheme } = useTheme();
-    const [animationsOff, setAnimationsOff] = useState(() =>
-        JSON.parse(localStorage.getItem('animationsOff') || 'false')
-    );
+
+    const [animationsOff, setAnimationsOff] = useState(false);
+
+    useEffect(() => {
+        const storedValue = localStorage.getItem('animationsOff');
+        setAnimationsOff(JSON.parse(storedValue || 'false'));
+    }, []);
 
     const animationsOffHandler = () => {
         const newAnimationsOff = !animationsOff;
         setAnimationsOff(newAnimationsOff);
         localStorage.setItem('animationsOff', JSON.stringify(newAnimationsOff));
     };
-
     return (
         <>
             <div className='hidden sm:block'>
@@ -70,9 +71,7 @@ const ThemeSettings: React.FC = () => {
 
             <div
                 className={`fixed bottom-5 right-5  backdrop-blur-[0.5rem] border  rounded-full flex items-center justify-center hover:scale-[1.15] active:scale-105 transition-all ${
-                    theme === 'dark'
-                        ? 'green-shadow'
-                        : 'red-shadow red-pulse'
+                    theme === 'dark' ? 'green-shadow' : 'red-shadow red-pulse'
                 }`}
             >
                 {' '}
