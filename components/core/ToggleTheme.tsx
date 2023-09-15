@@ -33,13 +33,6 @@ const ThemeSettings: React.FC = () => {
                     </>
                 )}
             </div>
-            <div className='flex fixed  flex-col left-2 bottom-2'>
-                <Switch onCheckedChange={animationsOffHandler} />
-                <span className='text-sm text-slate-300 dark:text-offwhite'>
-                    Turn {animationsOff ? <>on</> : <>off</>} cursor
-                </span>
-            </div>
-
             <div
                 onClick={animationsOffHandler}
                 className={`fixed bottom-[80px] right-5 bg-white w-[3rem] h-[3rem] bg-opacity-80 backdrop-blur-[0.5rem] border border-opacity-40 shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.15] active:scale-105 transition-all dark:bg-gray-950 ${
