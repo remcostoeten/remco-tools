@@ -1,18 +1,10 @@
+// @ts-nocheck
 'use client';
 import { Label } from '@radix-ui/react-label';
-import {
-    addDoc,
-    collection,
-    deleteDoc,
-    getDocs,
-    QueryDocumentSnapshot,
-} from 'firebase/firestore';
+import { addDoc, collection, deleteDoc, getDocs, QueryDocumentSnapshot } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 
-import {
-    BorderButton,
-    RoundedGlowButton,
-} from '@/components/core/buttons/CustomButtons';
+import { BorderButton, RoundedGlowButton } from '@/components/core/buttons/CustomButtons';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { toast } from '@/components/ui/use-toast';
@@ -21,15 +13,15 @@ import { auth, db } from '@/utils/firebase';
 import Spinner from '@/components/core/Spinner';
 import IncomeNotAuthenticated from './IncomeNotAutthenticated';
 
-interface Expense {
+interface IncomeProps {
     id: string;
     name: string;
     isLoading: boolean;
-    expenseAmount: number;
+    expenseAmount: any;
     incomeAmount: any;
 }
 
-const AddIncomeExpenseForm: React.FC = () => {
+export default function Income({}: IncomeProps) {
     const [expenseAmount, setExpenseAmount] = useState<number>(0);
     const [incomeAmount, setIncomeAmount] = useState<number>(0);
     const [expenseName, setExpenseName] = useState<string>('');
@@ -42,12 +34,8 @@ const AddIncomeExpenseForm: React.FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const user = auth?.currentUser;
 
-    const [expenses, setExpenses] = useState([
-        { id: 1, name: 'Dinner', amount: 50, category: 'Food' },
-    ]);
-    const [incomes, setIncomes] = useState([
-        { id: 1, name: 'Dinner', amount: 50, category: 'Food' },
-    ]);
+    const [expenses, setExpenses] = useState([{ id: 1, name: 'Dinner', amount: 50, category: 'Food' }]);
+    const [incomes, setIncomes] = useState([{ id: 1, name: 'Dinner', amount: 50, category: 'Food' }]);
     const [selectedCategory, setSelectedCategory] = useState('');
 
     const fetchData = async () => {
@@ -76,9 +64,7 @@ const AddIncomeExpenseForm: React.FC = () => {
     const expenseQuerySnapshot = getDocs(collection(db, 'expenses'));
     useEffect(() => {
         const fetchData = async () => {
-            const expenseQuerySnapshot = await getDocs(
-                collection(db, 'expenses')
-            );
+            const expenseQuerySnapshot = await getDocs(collection(db, 'expenses'));
             const fetchedExpenses = expenseQuerySnapshot.docs.map((doc) => ({
                 id: doc.id,
                 name: doc.data().name,
@@ -86,9 +72,7 @@ const AddIncomeExpenseForm: React.FC = () => {
             }));
             setExpenses(fetchedExpenses as any);
 
-            const incomeQuerySnapshot = await getDocs(
-                collection(db, 'incomes')
-            );
+            const incomeQuerySnapshot = await getDocs(collection(db, 'incomes'));
             const fetchedIncomes = incomeQuerySnapshot.docs.map((doc) => ({
                 id: doc.id,
                 name: doc.data().name,
@@ -165,23 +149,17 @@ const AddIncomeExpenseForm: React.FC = () => {
 
     const handleClearAll = async () => {
         try {
-            const incomeQuerySnapshot = await getDocs(
-                collection(db, 'incomes')
-            );
+            const incomeQuerySnapshot = await getDocs(collection(db, 'incomes'));
             incomeQuerySnapshot.forEach(async (doc) => {
                 await deleteDoc(doc.ref);
             });
 
-            const expenseQuerySnapshot = await getDocs(
-                collection(db, 'expenses')
-            );
+            const expenseQuerySnapshot = await getDocs(collection(db, 'expenses'));
             expenseQuerySnapshot.forEach(async (doc) => {
                 await deleteDoc(doc.ref);
             });
 
-            const savingsQuerySnapshot = await getDocs(
-                collection(db, 'savings')
-            );
+            const savingsQuerySnapshot = await getDocs(collection(db, 'savings'));
             savingsQuerySnapshot.forEach(async (doc) => {
                 await deleteDoc(doc.ref);
             });
@@ -201,13 +179,8 @@ const AddIncomeExpenseForm: React.FC = () => {
 
     const calculateTotalIncome = async () => {
         try {
-            const incomeQuerySnapshot = await getDocs(
-                collection(db, 'incomes')
-            );
-            const total = incomeQuerySnapshot.docs.reduce(
-                (acc, doc) => acc + doc.data().incomeAmount,
-                0
-            );
+            const incomeQuerySnapshot = await getDocs(collection(db, 'incomes'));
+            const total = incomeQuerySnapshot.docs.reduce((acc, doc) => acc + doc.data().incomeAmount, 0);
             setTotalIncome(total);
             calculateNetWorth();
         } catch (error) {
@@ -216,15 +189,9 @@ const AddIncomeExpenseForm: React.FC = () => {
     };
     const calculateTotalExpense = async () => {
         try {
-            const userExpenses = (await expenseQuerySnapshot).docs.filter(
-                (doc) => doc.data().userId === (user ? user.uid : null)
-            );
+            const userExpenses = (await expenseQuerySnapshot).docs.filter((doc) => doc.data().userId === (user ? user.uid : null));
 
-            const total = userExpenses.reduce(
-                (acc: number, doc: QueryDocumentSnapshot) =>
-                    acc + doc.data().expenseAmount,
-                0
-            );
+            const total = userExpenses.reduce((acc: number, doc: QueryDocumentSnapshot) => acc + doc.data().expenseAmount, 0);
 
             setTotalExpense(total);
         } catch (error) {
@@ -245,47 +212,30 @@ const AddIncomeExpenseForm: React.FC = () => {
 
     return (
         <>
-            <div className='flex w-full flex-col  justify-between gap-4'>
-                <Card className=' expense bg-expense'>
+            <div className="flex w-full flex-col  justify-between gap-4">
+                <Card className=" expense bg-expense">
                     {user ? (
                         <>
-                            <dl className='flex justify-between text-2xl font-bold'>
+                            <dl className="flex justify-between text-2xl font-bold">
                                 <dd>
                                     <h2>Total Income:</h2>
                                 </dd>
-                                <dt className='font-normal'>
-                                    €{totalIncome},-
-                                </dt>
+                                <dt className="font-normal">€{totalIncome},-</dt>
                             </dl>
-                            <dl className='flex justify-between text-2xl font-bold'>
+                            <dl className="flex justify-between text-2xl font-bold">
                                 <dd>
                                     <h2>Total expense:</h2>
                                 </dd>
-                                {isLoading ? (
-                                    <Spinner />
-                                ) : (
-                                    <dt className='font-normal'>
-                                        €{totalExpense},-
-                                    </dt>
-                                )}{' '}
+                                {isLoading ? <Spinner /> : <dt className="font-normal">€{totalExpense},-</dt>}{' '}
                             </dl>
-                            <dl className='flex justify-between text-2xl font-bold'>
+                            <dl className="flex justify-between text-2xl font-bold">
                                 <dd>
                                     <h2>Net Worth:</h2>
                                 </dd>
-                                {isLoading ? (
-                                    <Spinner />
-                                ) : (
-                                    <dt className='font-normal'>
-                                        €{netWorth},-
-                                    </dt>
-                                )}
+                                {isLoading ? <Spinner /> : <dt className="font-normal">€{netWorth},-</dt>}
                             </dl>
-                            <div className='mt-4 flex justify-end'>
-                                <RoundedGlowButton
-                                    onClick={handleClearAll}
-                                    text='Clear All'
-                                />
+                            <div className="mt-4 flex justify-end">
+                                <RoundedGlowButton onClick={handleClearAll} text="Clear All" />
                             </div>
                         </>
                     ) : (
@@ -294,132 +244,62 @@ const AddIncomeExpenseForm: React.FC = () => {
                 </Card>
             </div>
 
-            <div className='flex flex-col gap-4'>
-                <div className='flex flex-col gap-4'>
-                    <div className='flex gap-4'>
-                        <Card className='card expense p-8 '>
-                            <h2 className='mb-4 text-2xl font-bold'>
-                                Add Income
-                            </h2>
-                            <div className='mb-4 flex items-center gap-4'>
-                                <Input
-                                    type='number'
-                                    placeholder='€ ,-'
-                                    value={incomeAmount}
-                                    onChange={(e) =>
-                                        setIncomeAmount(Number(e.target.value))
-                                    }
-                                />
-                                <Input
-                                    type='text'
-                                    value={incomeName}                                     
-                                    onChange={(e) =>
-                                        setIncomeName(e.target.value)
-                                    }
-                                    placeholder='Income Name'
-                                />
+            <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-4">
+                    <div className="flex gap-4">
+                        <Card className="card expense p-8 ">
+                            <h2 className="mb-4 text-2xl font-bold">Add Income</h2>
+                            <div className="mb-4 flex items-center gap-4">
+                                <Input type="number" placeholder="€ ,-" value={incomeAmount} onChange={(e) => setIncomeAmount(Number(e.target.value))} />
+                                <Input type="text" value={incomeName} onChange={(e) => setIncomeName(e.target.value)} placeholder="Income Name" />
                             </div>
-                            <BorderButton
-                                onClick={handleAddIncome}
-                                text='Add Income'
-                            />
+                            <BorderButton onClick={handleAddIncome} text="Add Income" />
                         </Card>
-                        <Card className='card expense p-8 '>
-                            <h2 className='mb-4 text-2xl font-bold'>
-                                Add Expense
-                            </h2>
-                            <div className='mb-4 flex items-center gap-4'>
-                                <Input
-                                    type='number'
-                                    value={expenseAmount}
-                                    placeholder='€ ,-'
-                                    onChange={(e) =>
-                                        setExpenseAmount(Number(e.target.value))
-                                    }
-                                />
-                                <Input
-                                    type='text'
-                                    value={expenseName}
-                                    onChange={(e) =>
-                                        setExpenseName(e.target.value)
-                                    }
-                                    placeholder='Expense Name'
-                                />
-                                <select
-                                    value={selectedCategory}
-                                    onChange={(e) =>
-                                        setSelectedCategory(e.target.value)
-                                    }
-                                >
-                                    <option value='Food'>Food</option>
-                                    <option value='Transport'>Transport</option>
-                                    <option value='Utilities'>Utilities</option>
+                        <Card className="card expense p-8 ">
+                            <h2 className="mb-4 text-2xl font-bold">Add Expense</h2>
+                            <div className="mb-4 flex items-center gap-4">
+                                <Input type="number" value={expenseAmount} placeholder="€ ,-" onChange={(e) => setExpenseAmount(Number(e.target.value))} />
+                                <Input type="text" value={expenseName} onChange={(e) => setExpenseName(e.target.value)} placeholder="Expense Name" />
+                                <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
+                                    <option value="Food">Food</option>
+                                    <option value="Transport">Transport</option>
+                                    <option value="Utilities">Utilities</option>
                                 </select>
                             </div>
-                            <BorderButton
-                                onClick={handleAddExpense}
-                                text='Add Expense'
-                            />
+                            <BorderButton onClick={handleAddExpense} text="Add Expense" />
                         </Card>
-                        <div className='flex flex-col gap-4'>
-                            <Card className='card expense p-8 '>
-                                <h2 className='mb-4 text-2xl font-bold'>
-                                    Add Savings
-                                </h2>
-                                <div className='mb-4 flex items-center'>
+                        <div className="flex flex-col gap-4">
+                            <Card className="card expense p-8 ">
+                                <h2 className="mb-4 text-2xl font-bold">Add Savings</h2>
+                                <div className="mb-4 flex items-center">
                                     <Input
-                                        type='number'
+                                        type="number"
                                         value={savingsAmount}
-                                        placeholder='€ ,-'
-                                        onChange={(e) =>
-                                            setSavingsAmount(
-                                                Number(e.target.value)
-                                            )
-                                        }
-                                        className='-300 mr-2 w-1/2 rounded-md border p-2'
+                                        placeholder="€ ,-"
+                                        onChange={(e) => setSavingsAmount(Number(e.target.value))}
+                                        className="-300 mr-2 w-1/2 rounded-md border p-2"
                                     />
-                                    <Input
-                                        type='text'
-                                        value={savingsName}
-                                        onChange={(e) =>
-                                            setSavingsName(e.target.value)
-                                        }
-                                        placeholder='Savings Name'
-                                        className='-300 w-1/2 rounded-md border p-2'
-                                    />
+                                    <Input type="text" value={savingsName} onChange={(e) => setSavingsName(e.target.value)} placeholder="Savings Name" className="-300 w-1/2 rounded-md border p-2" />
                                 </div>
-                                <BorderButton
-                                    onClick={handleAddSavings}
-                                    text='Add Savings'
-                                />
+                                <BorderButton onClick={handleAddSavings} text="Add Savings" />
                             </Card>
                         </div>
                     </div>
-                    <div className='flex w-full gap-4 '>
-                        <Card className='card expense flex flex-1 flex-col p-8 '>
-                            <dl className='mb-4 text-2xl font-bold'>
-                                Expenses List:
-                            </dl>
+                    <div className="flex w-full gap-4 ">
+                        <Card className="card expense flex flex-1 flex-col p-8 ">
+                            <dl className="mb-4 text-2xl font-bold">Expenses List:</dl>
                             {expenses.map((expense) => (
-                                <dl
-                                    className='flex w-full justify-between'
-                                    key={expense.id}
-                                >
+                                <dl className="flex w-full justify-between" key={expense.id}>
                                     <dd>Name: {expense.name}</dd>
                                     <Label>{expense.category}</Label>
                                     <dt>Amount: €{expense.expenseAmount},-</dt>
                                 </dl>
                             ))}
                         </Card>
-                        <Card className='card expense flex flex-1 flex-col p-8 '>
-                            <dl className='mb-4 text-2xl font-bold'>
-                                Income List:
-                            </dl>
+                        <Card className="card expense flex flex-1 flex-col p-8 ">
+                            <dl className="mb-4 text-2xl font-bold">Income List:</dl>
                             {incomes.map((income) => (
-                                <dl
-                                    className='flex w-full justify-between'
-                                    key={income.id}
-                                >
+                                <dl className="flex w-full justify-between" key={income.id}>
                                     <dd>Name: {income.name}</dd>
                                     <dt>Amount: €{income.incomeAmount},-</dt>
                                 </dl>
@@ -430,6 +310,4 @@ const AddIncomeExpenseForm: React.FC = () => {
             </div>
         </>
     );
-};
-
-export default AddIncomeExpenseForm;
+}

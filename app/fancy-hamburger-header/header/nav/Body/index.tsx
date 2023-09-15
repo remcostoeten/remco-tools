@@ -36,18 +36,17 @@ function Body({ links, selectedLink = { isActive: false, index: -1 }, setSelecte
                 const { title, href } = link;
                 return (
                     <Link key={`l_${index}`} href={href}>
-                        <motion.p className="text-2xl font-medium"
+                        <motion.p
+                            className="showAlternativeCursor text-2xl font-medium"
                             onMouseOver={() => {
                                 setSelectedLink({ isActive: true, index });
                             }}
-                            className="showAlternativeCursor"
                             onMouseLeave={() => {
                                 setSelectedLink({ isActive: false, index });
                             }}
                             onClick={closeMenuOnClick}
                             variants={blur}
-                            animate={selectedLink.isActive && selectedLink.index !== index ? 'open' : 'closed'}
-                        >
+                            animate={selectedLink.isActive && selectedLink.index !== index ? 'open' : 'closed'}>
                             {getChars(title)}
                         </motion.p>
                     </Link>
