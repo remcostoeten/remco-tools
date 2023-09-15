@@ -1,5 +1,6 @@
 import SectionDivider from '@/components/divider';
 import Experience from '@/components/experience';
+import AboutTwo from '@/components/home/AboutTwo';
 import About from '@/components/home/about';
 import Contact from '@/components/home/contact';
 import Footer from '@/components/home/footer';
@@ -11,6 +12,7 @@ export default function Home() {
         <main className="flex flex-col items-center container">
             <Intro />
             <SectionDivider />
+            <AboutTwo />
             <About />
             <SectionDivider />
             <Skills />
