@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
+import I from '../core/Italic';
+import T from '../core/Italic';
 
 export default function About() {
     const [isOpen, setIsOpen] = useState(false);
@@ -20,134 +21,44 @@ export default function About() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, [isOpen]);
 
+    const paragraphStyles =
+        'text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight text-theme-300 leading-tight sm:leading-tight md:leading-tight lg:leading-tight';
+
     return (
-        <><motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className=' padding-y-xl   margin-y  container max-w-[45rem] text-center leading-8 scroll-mt-28 font-barlow-condensed font-medium text-xl'
-            id='about'
-        >
-            <motion.p
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.2 }}
-                className='grow mb-3 text-left'
+        <>
+            <motion.section
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, type: 'spring', stiffness: 150 }}
+                id='about'
+                className='padding-y-xl   margin-y  container scroll-mt-28 hero-section flex flex-col justify-center pb-8 relative z-10'
             >
-                Remco Stoeten, 26 years old, creative developer from the
-                Netherlands. I have a strong passion for CSS, complex UI's, and
-                micro interactions.
-            </motion.p>
-
-            <motion.p
-                className='mb-3 text-left'
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.3 }}
-            >
-                Currently I'm focusing on NextJS with Typescript & co. But I'm
-                also learning some Python & Lua, in the future I want to dive
-                into Go.
-            </motion.p>
-            <motion.p
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.4 }}
-                className='mb-3 text-left pb-[32px]'
-            >
-                I've studied graphic design, and during my internship I got{' '}
-                {isOpen ? null : '...'}
-            </motion.p>
-
-            <div
-                className='content-wrapper'
-                style={{
-                    position: 'relative',
-                    boxShadow: !isOpen ? '0 -15px 15px -15px inset' : 'none'
-                }}
-            >
-                <div
-                    style={{
-                        opacity: isOpen ? 1 : 0,
-                        height: isOpen ? '200px' : '0',
-                        overflow: 'hidden',
-                        transition: 'opacity 1s, height .7s'
-                    }}
+                <p
+                    className={paragraphStyles}
+                    style={{ opacity: 1, translate: 0 }}
                 >
-                    <p className='mb-3 text-left'>
-                        offered a job at an{' '}
-                        <Link
-                            className='skew-x-10 underline hover:text-blue-800'
-                            href='https://tickles.nl'
-                            target='_blank'
-                        >
-                            agency
-                        </Link>{' '}
-                        where I build custom designed Magento 2 🤮 webshops like{' '}
-                        <Link
-                            className='underline'
-                            href='https://vedder-vedder.com'
-                            target='_blank'
-                        >
-                            such
-                        </Link>
-                        . After five years I moved to an international
-                        wholesaler and SaaS provider where I rebuilt the FE off
-                        their webshop.
-                    </p>
-                    <p className='mb-3 text-left'>
-                        Currently I'm employed at{' '}
-                        <Link
-                            className='underline hover:text-blue-800'
-                            target='_blank'
-                            href='https://gitlab.com/pleio'
-                        >
-                            Pleio
-                        </Link>{' '}
-                        which is fully open source. I work mostly on FSV, a
-                        government project which can be found{' '}
-                        <Link
-                            className='underline'
-                            href='https://gitlab.com/pleio/dossier'
-                            target='_blank'
-                        >
-                            here
-                        </Link>
-                        .
-                    </p>
-                </div>
+                    <span className='libre-italic'>I</span> am a 26 years old{' '}
+                    <span className='libre-italic'>creative </span> developer
+                    with a strong <span className='gradient-text'>passion</span>{' '}
+                    for css, <span className='libre-italic'>complex</span> ui's,
+                    and micro interactions.
+                </p>
+            </motion.section>
 
-                {!isOpen && (
-                    <div
-                        className='blur-overlay'
-                        style={{
-                            content: '""',
-                            position: 'absolute',
-                            bottom: 0,
-                            left: 0,
-                            right: 0,
-                            filter: 'blur(50px)',
-                            zIndex: 9999,
-                            height: '150px',
-                            background: 'linear-gradient(to bottom, transparent, black)',
-                            pointerEvents: 'none'
-                        }}
-                    ></div>
-                )}
-            </div>
-
-            <button
-                onClick={() => setIsOpen(!isOpen)}
-                className='showAlternativeCursor margin-y margin-y border p-2.5 bg-transparent rounded-full w-max text-offwhite px-10 shadow-lg shadow-neutral-900 mt-2'
+            <motion.section
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, type: 'spring', stiffness: 150 }}
+                id='skills'
+                className='padding-y-xl   margin-y  container scroll-mt-28 hero-section flex flex-col justify-center pb-8 relative z-10'
             >
-                <span className='translate-y-4'>
-                    {isOpen ? 'Read Less' : 'Read More'}
-                </span>
-            </button>
-        </motion.section>
-        
-        <div className="sm:hidden bg-gray-200 my-24 h-16 w-1 rounded-full dark:bg-opacity-10"></div>
-        
+                <p className={paragraphStyles}>
+                    Currently I am <I i='focusing' /> on NextJS with Typescript
+                    & co.
+                </p>
+            </motion.section>
         </>
     );
 }

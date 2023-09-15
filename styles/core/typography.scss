@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+.libre-italic {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+}
+
 .dark {
     h1,
     p,
@@ -23,7 +30,6 @@ html:not(.dark) {
         color: $black;
     }
 }
-
 
 .rope {
     font-family: 'Manrope';
