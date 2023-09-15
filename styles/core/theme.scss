@@ -4,6 +4,31 @@ body {
 
 $expense-black: #ff181818;
 
+// drop shadow classes
+.blue-shadow {
+    box-shadow: 0 0 64px #1878f1;
+}
+
+.green-shadow {
+    box-shadow: 0 0 64px #44ff73
+}
+
+.red-shadow {
+    box-shadow:0 0 64px #ff4266;
+}
+
+ .teal-shadow {
+    box-shadow: 0 0 64px #34fff3;
+ }
+
+ .purple-shadow {
+    box-shadow: 0 0 64px #b71fff;
+ }
+
+ .yellow-shadow {
+    box-shadow: 0 0 64px #fda428;
+ }
+
 .bg-expense {
     background-color: $expense-black;
     padding: 64px;
@@ -203,10 +228,24 @@ html:not(.dark) {
         scale: 0.75;
         transform: translate(2px, 4px);
     }
+
+    .intro {
+        svg {
+            fill : $black
+        }
+    }
 }
+
 .dark {
     .toggle {
         color: $white;
+    }
+
+    .intro {
+        a,button {
+            border: 1px solid $white;
+            border: 1px solid #1c1c20;
+        }
     }
 }
 

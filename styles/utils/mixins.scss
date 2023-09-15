@@ -1,19 +1,17 @@
-// Generic setup for media queries.
-// Designer will give all the exact breakpoints soon which are used by the entrire belastingdienst.
+@import '../variables/colors.scss';
 
-$screen-zero:   0;
-$screen-xxs:    320px;
-$screen-xs:     480px;
-$screen-s:      640px;
-$screen-m:      768px;
-$screen-l:      1024px;
-$screen-xl:     1440px;
+$screen-zero: 0;
+$screen-xxs: 320px;
+$screen-xs: 480px;
+$screen-s: 640px;
+$screen-m: 768px;
+$screen-l: 1024px;
+$screen-xl: 1440px;
 $breakpoints: (
-    mobile:     $screen-xxs,
-    tablet:     $screen-m,
-    desktop:    $screen-l,
+    mobile: $screen-xxs,
+    tablet: $screen-m,
+    desktop: $screen-l,
 );
-
 
 @mixin desktop {
     @media (min-width: $screen-l) {
@@ -49,4 +47,47 @@ $breakpoints: (
     @media (min-width: $screen-zero) and (max-width: $screen-xs - 1px) {
         @content;
     }
+}
+
+@each $color, $value in $shadow-colors {
+    .#{$color}-shadow {
+        box-shadow: 0 0 64px $value;
+    }
+}
+
+@keyframes pulse-shadow {
+    @each $color, $value in $shadow-colors {
+        0%, 100% {
+            box-shadow: 0 0 64px $value;
+        }
+        50% {
+            box-shadow: 0 0 64px $value;
+        }
+    }
+}
+
+@keyframes red-shadow-pulse {
+    0% {
+        box-shadow: 0  0 64px #ff4266;
+    }
+
+    100% {
+        box-shadow: 0 0 0 #ff4266;
+    }
+}
+
+.red-pulse {
+    animation: red-shadow-pulse 10s infinite;
+}
+
+
+@for $i from 1 through 20 {
+    $duration: $i * 1s; 
+    .pulse-shadow-#{$i}s {
+        animation: pulse-shadow $duration infinite;
+    }
+}
+
+#skills li {
+    transition: box-shadow 0.3s ease; // Adjusts the box-shadow property over 0.3 seconds with an ease timing function.
 }

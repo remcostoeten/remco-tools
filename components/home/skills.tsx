@@ -36,6 +36,7 @@ export default function Skills() {
     const { ref } = useSectionInView('Skills');
     const [shuffledSkillsData, setShuffledSkillsData] = useState([]);
     const headingAnimation = useAnimation();
+    const [hoveredClass, setHoveredClass] = useState<string>('');
 
     useEffect(() => {
         headingAnimation.start('animate');
@@ -48,7 +49,7 @@ export default function Skills() {
         initial: {},
         animate: {
             transition: {
-                staggerChildren: 0.02, 
+                staggerChildren: 0.02,
             },
         },
     };
@@ -58,20 +59,34 @@ export default function Skills() {
             opacity: 0,
             x: -200,
             scale: 0.4,
-            y: -40, 
+            y: -40,
             rotate: 10,
         },
         animate: {
             opacity: 1,
-            scale: [0.4, 2, 0.4], 
-            y: [0, -10, 0], 
-            rotate: [10, 0, 10], 
+            scale: [0.4, 2, 0.4],
+            y: [0, -10, 0],
+            rotate: [10, 0, 10],
             transition: {
-                type: 'spring', 
+                type: 'spring',
                 stiffness: 300,
                 damping: 100,
             },
         },
+    };
+
+    const shadowClasses: string[] = [
+        'blue',
+        'green',
+        'red',
+        'teal',
+        'purple',
+        'yellow',
+    ];
+
+    const getRandomShadowClass = (): string => {
+        const randomIndex = Math.floor(Math.random() * shadowClasses.length);
+        return `${shadowClasses[randomIndex]}-shadow`;
     };
 
     useEffect(() => {
@@ -99,16 +114,21 @@ export default function Skills() {
                     ))}
                 </motion.h2>
 
-             
                 <ul className='flex flex-wrap justify-center gap-2 text-lg text-gray-800'>
                     {shuffledSkillsData.map((skill, index) => (
                         <motion.li
-                            className='bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80'
+                            className={`bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80 ${
+                                index === hoveredClass
+                                    ? getRandomShadowClass()
+                                    : ''
+                            }`}
                             key={index}
                             variants={fadeInAnimationVariants}
                             initial='initial'
                             animate='animate'
                             custom={index}
+                            onMouseEnter={() => setHoveredClass(index)}
+                            onMouseLeave={() => setHoveredClass(-1)}
                         >
                             {skill}
                         </motion.li>

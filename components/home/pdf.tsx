@@ -16,7 +16,7 @@ export default function DownloadCV() {
             <Drawer.Root shouldScaleBackground>
                 <Drawer.Trigger asChild>
                     <button
-                        className='border p-2.5 bg-transparent rounded-xl w-max flex align-middle items-center gap-4 justify-center  text-offwhite  px-10 shadow-lg shadow-neutral-900 mt-2'
+                        className='border p-2.5 bg-transparent rounded-xl w-max flex align-middle items-center gap-4 justify-center  text-offwhite  px-10 border-black borderf dark:shadow-lg shadow-neutral-900 mt-2'
                         onClick={openPdf}
                     >
                         Download CV
