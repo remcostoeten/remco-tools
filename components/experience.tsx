@@ -8,7 +8,7 @@ import {
 import 'react-vertical-timeline-component/style.min.css';
 import { useTheme } from '@/context/theme-context';
 import { useSectionInView } from '@/hooks/useSectionInview';
-import { experiencesData } from '@/utils/data';
+import { experiencesData } from '@/config/data';
 import { motion } from 'framer-motion';
 
 export default function Experience() {

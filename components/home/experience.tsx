@@ -7,7 +7,7 @@ import {
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
-import { experiencesData } from "@/utils/data";
+import { experiencesData } from "@/config/data";
 import { useTheme } from "@/context/theme-context";
 import { useSectionInView } from "@/hooks/useSectionInview";
 

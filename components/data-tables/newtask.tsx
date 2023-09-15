@@ -11,7 +11,7 @@ import { Button } from '../ui/button';
 import { Textarea } from '../ui/textarea';
 import { motion } from 'framer-motion';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '../ui/select';
-import { categoryOptions } from '@/utils/data';
+import { categoryOptions } from '@/config/data';
 
 interface NewTaskProps {
     content?: string;

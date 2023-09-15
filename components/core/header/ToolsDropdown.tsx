@@ -1,9 +1,9 @@
 import * as React from 'react';
 import Link from 'next/link';
 
-import { Icons } from '@/components/icons';
+import { Icons } from '@/components/core/icons/icons';
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from '@/components/ui/navigation-menu';
-import { cn } from '@/lib/utils';
+import { cn } from '@/utils/utils';
 import RemcoLogoIcon from '../icons/remcostoeten-logo-icon';
 
 const components: { title: string; href: string; description: string }[] = [

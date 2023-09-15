@@ -14,7 +14,6 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { Separator } from "@/components/ui/separator"
-import lowPriority from "@/components/icons/lowPriority.svg"
 
 import { Input } from "../ui/input"
 import {

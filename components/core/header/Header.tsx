@@ -1,12 +1,12 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { links } from '@/utils/data';
+import { links } from '@/config/data';
 import Link from 'next/link';
 import clsx from 'clsx';
 import { useActiveSectionContext } from '@/context/active-section-contex';
-import SecondaryDropdown from '@/components/SecondaryDropdown';
 import { ToolsDropdown } from './ToolsDropdown';
+import SecondaryDropdown from './SecondaryDropdown';
 
 export default function Header() {
     const { activeSection, setActiveSection, setTimeOfLastClick } = useActiveSectionContext();

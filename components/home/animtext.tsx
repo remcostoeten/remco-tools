@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { motion, useAnimation, Variants } from 'framer-motion';
 import { useSectionInView } from '@/hooks/useSectionInview';
-import { skillsData } from '@/utils/data';
+import { skillsData } from '@/config/data';
 import SectionHeading from '../section-heading';
 import AnimatedText from './animtext';
 

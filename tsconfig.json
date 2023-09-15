@@ -40,13 +40,14 @@
       "dom.iterable",
       "esnext"
     ],
+    "strictNullChecks": false
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/fancy-hamburger-header/header/anim.js",
+    "components/fancy-hamburger-header/header/anim.js",
     "components/core/BackgroundVariantTwo.tsx",
     "next.config.mjs",
     "app/(nocontainer)/inspiration/page.js"

@@ -1,4 +1,4 @@
-import { links } from "./data";
+import { links } from "../config/data";
 
 export type SectionName = (typeof links)[number]["name"];
 

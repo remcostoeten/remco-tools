@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useAnimation, Variants } from 'framer-motion';
 import { useSectionInView } from '@/hooks/useSectionInview';
-import { skillsData } from '@/utils/data';
+import { skillsData } from '@/config/data';
 
 const shuffleArray = (array) => {
     const shuffledArray = [...array];
