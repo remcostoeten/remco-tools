@@ -217,7 +217,7 @@
 .dutch {
     background: linear-gradient(
         90deg,
-        rgba(177, 35, 47, 0.476),
+        rgba(189, 339, 51, 0.476),
         white,
         rgba(37, 74, 143, 0.485)
     );
@@ -225,7 +225,7 @@
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent !important;
-    animation: dutchFlagGradient 25s ease-in-out infinite;
+    animation: dutchFlagGradient 10s ease-in-out infinite;
 }
 
 /* animation for dutch colors  overlay on text for homepage */
