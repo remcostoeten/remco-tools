@@ -2,6 +2,61 @@
     {
         "name": "Dribble",
         "projects": [
+            // {
+            //     "projectType": "",
+            //     "colors": ["", "", ""],
+            //     "colorScheme": "",
+            //     "style": ["", "", " "],
+            //     "url": "",
+            //     "preview": "",
+            //     "hasMobileDevice": null,
+            //     "animations": "true",
+            //     "componentInspiration": null
+            // },
+            // {
+            //     "projectType": "",
+            //     "colors": ["", "", ""],
+            //     "colorScheme": "",
+            //     "style": ["", "", " "],
+            //     "url": "",
+            //     "preview": "",
+            //     "hasMobileDevice": null,
+            //     "animations": "true",
+            //     "componentInspiration": null
+            // },
+            // {
+            //     "projectType": "",
+            //     "colors": ["", "", ""],
+            //     "colorScheme": "",
+            //     "style": ["", "", " "],
+            //     "url": "",
+            //     "preview": "",
+            //     "hasMobileDevice": null,
+            //     "animations": "true",
+            //     "componentInspiration": null
+            // },
+            // {
+            //     "projectType": "",
+            //     "colors": ["", "", ""],
+            //     "colorScheme": "",
+            //     "style": ["", "", " "],
+            //     "url": "",
+            //     "preview": "",
+            //     "hasMobileDevice": null,
+            //     "animations": "true",
+            //     "componentInspiration": null
+            // },
+            {
+                "projectType": "Banking SaaS",
+                "colors": ["dark", "light", "rainbow"],
+                "colorScheme": "All",
+                "style": ["Parallax", "Scroll", "Blocks"],
+                "url": "https://www.usesammy.com/",
+                "preview": "live",
+                "hasMobileDevice": null,
+                "animations": "true",
+                "componentInspiration": null
+            },
             {
                 "projectType": "AI landing",
                 "colors": ["black", "purple", "pink"],
