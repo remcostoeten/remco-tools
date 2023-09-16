@@ -24,6 +24,9 @@ export default function About() {
     const paragraphStyles =
         'text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight text-theme-300 leading-tight sm:leading-tight md:leading-tight lg:leading-tight';
 
+        const sectionStylesFullHeight = 'padding-y-xl   margin-y  container scroll-mt-28 hero-section flex flex-col justify-center pb-8 relative z-10 h-screen';
+        const sectionStyles = 'padding-y-xl   margin-y  container scroll-mt-28 hero-section flex flex-col justify-center pb-8 relative z-10';
+
     return (
         <>
             <motion.section
@@ -32,7 +35,7 @@ export default function About() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, type: 'spring', stiffness: 150 }}
                 id='about'
-                className='padding-y-xl   margin-y  container scroll-mt-28 hero-section flex flex-col justify-center pb-8 relative z-10'
+                className={sectionStyles}
             >
                 <p
                     className={paragraphStyles}
@@ -51,8 +54,26 @@ export default function About() {
                 animate={{ opacity: 1 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, type: 'spring', stiffness: 150 }}
+                id='about'
+                className={sectionStylesFullHeight}
+            >
+                <p
+                    className={paragraphStyles}
+                    style={{ opacity: 1, translate: 0 }}
+                >
+                    currently i am{' '}<I i='focusing' /> on NextJS with Typescript
+                    & co.
+                </p>
+            </motion.section>
+
+
+            <motion.section
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, type: 'spring', stiffness: 150 }}
                 id='skills'
-                className='padding-y-xl   margin-y  container scroll-mt-28 hero-section flex flex-col justify-center pb-8 relative z-10'
+                className={sectionStyles}
             >
                 <p className={paragraphStyles}>
                     Currently I am <I i='focusing' /> on NextJS with Typescript

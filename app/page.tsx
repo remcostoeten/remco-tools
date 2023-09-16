@@ -6,12 +6,14 @@ import Footer from '@/components/home/footer';
 import Intro from '@/components/home/intro';
 import Skills from '@/components/home/skills';
 import SectionDividerBig from '@/components/ui/divider-big';
+import Readmore from '@/components/Readmore';
 
 export default function Home() {
     return (
         <main className="flex flex-col items-center container">
             <Intro />
             <SectionDividerBig />
+        <Readmore/>
             <About />
             <SectionDivider />
             <Skills />
