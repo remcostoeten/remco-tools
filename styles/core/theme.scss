@@ -110,18 +110,6 @@ body:not(.table) {
     background-color: $black;
 }
 
-.menu.w-full.absolute.p-8.left-0.top-0.overflow-hidden.black,
-.is-open {
-    animation: height 1s 5s infinite;
-    opacity: 0;
-}
-
-@keyframes height {
-    to {
-        height: 0;
-        max-height: 0;
-    }
-}
 
 .theme-transitioning * {
     transition-duration: 300ms;
