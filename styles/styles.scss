@@ -8,17 +8,17 @@
 //  variables
 @import 'variables/variables';
 
-// utilities
+// // utilities
 @import 'utils/mixins';
 @import 'utils/animations';
 
-// core
+// // core
 @import 'core/body';
 @import 'core/theme';
-// @import 'core/page-layout';
+@import 'core/page-layout';
 @import 'core/typography';
 
-// // components
+// // // components
 @import 'components/hamburger-icon';
 @import 'components/not-found';
 @import 'components/page-loader';
@@ -29,6 +29,7 @@
 @import 'components/buttons.scss';
 @import 'components/footer.scss';
 @import 'components/turbo.scss';
+@import 'components/glowcard.scss';
 
 @layer base {
     :root {
@@ -52,6 +53,32 @@
         --input: 220 13% 91%;
         --ring: 224 71.4% 4.1%;
         --radius: 0.3rem;
+        // utilities
+        --debug: 0;
+        --supported: 0;
+        --not-supported: 0;
+
+        // Pen vars
+        --card-color: hsl(260deg 100% 3%);
+        --text-color: hsl(260deg 10% 55%);
+        --card-radius: 3.6vw;
+        --card-width: 35vw;
+        --border-width: 3px;
+        --bg-size: 1;
+
+        --hue: 0;
+        --hue-speed: 1;
+
+        --rotate: 0;
+        --animation-speed: 4s;
+
+        --interaction-speed: 0.55s;
+        --glow-scale: 1.5;
+        --scale-factor: 1;
+        --glow-blur: 6; // 6
+        --glow-opacity: 1; // 0.6
+        --glow-radius: 100; // 100
+        --glow-rotate-unit: 1deg;
     }
 
     .dark {
