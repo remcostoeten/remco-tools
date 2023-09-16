@@ -51,7 +51,7 @@
     "components/core/BackgroundVariantTwo.tsx",
     "next.config.mjs",
     "app/(nocontainer)/inspiration/page.js"
-  ],
+, "app/(nocontainer)/(tests)/emptyy/page.jsx"  ],
   "exclude": [
     "node_modules"
   ]

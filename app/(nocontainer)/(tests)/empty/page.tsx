@@ -1,9 +1,15 @@
-import Spinner from '@/components/core/Spinner';
+'use client';
+import React, { useEffect } from 'react';
 
-export default function page() {
+const Home: React.FC = () => {
     return (
         <>
-            <Spinner />
+            <div className='glowcard ' role='button'>
+                <span className='glow'></span>
+                <div></div>
+            </div>
         </>
     );
-}
+};
+
+export default Home;
