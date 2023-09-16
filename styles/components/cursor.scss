@@ -79,7 +79,16 @@ body,
 .menu {
     &:hover {
         #trailer {
-            opacity: 1;
+            opacity: 1 !important;
+        }
+    }
+}
+
+#trailer {
+    .menu {
+        &:has(.showAlternativeCursor) {
+            opacity: 1 !important;
+            pointer-events: none;
         }
     }
 }

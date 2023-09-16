@@ -9,6 +9,7 @@ import ThemeContextProvider from '@/context/theme-context';
 import ThemeSettings from '@/components/core/ToggleTheme';
 import { seoKeywords } from '@/config/keywords';
 import { Inter, Manrope, Lexend_Deca } from 'next/font/google';
+import { SelectedLinkProvider } from '@/context/SelectedLinkContext';
 const inter = Inter({ subsets: ['latin'] });
 const rope = Manrope({ subsets: ['latin'] });
 const lexend = Lexend_Deca({ subsets: ['latin'] });
@@ -58,24 +59,32 @@ export const metadata = {
     ],
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+    children,
+}: {
+    children: React.ReactNode;
+}) {
     return (
-        <html lang="en" className="!scroll-smooth dark">
-            <body className={`${lexend.className} bg-gray-50 text-gray-950 relative pt-28 sm:pt-36 dark:bg-black dark:text-gray-50 dark:text-opacity-90`}>
-                <ThemeContextProvider>
-                    <ActiveSectionContextProvider>
-                        <ThemeSettings />
-                        <FancyHeader />
-                        <Header />
-                        <main className="page-wrapper__inner flex flex-col items-center ">
-                            <div className="container">{children}</div>
-                        </main>
-                        <Analytics />
-                        <Toaster />
-                        {/* <Cursor /> */}
-                    </ActiveSectionContextProvider>
-                </ThemeContextProvider>
-            </body>
-        </html>
+        <SelectedLinkProvider>
+            <html lang='en' className='!scroll-smooth dark'>
+                <body
+                    className={`${lexend.className} bg-gray-50 text-gray-950 relative pt-28 sm:pt-36 dark:bg-black dark:text-gray-50 dark:text-opacity-90`}
+                >
+                    <ThemeContextProvider>
+                        <ActiveSectionContextProvider>
+                            <ThemeSettings />
+                            <FancyHeader />
+                            <Header />
+                            <main className='page-wrapper__inner flex flex-col items-center '>
+                                <div className='container'>{children}</div>
+                            </main>
+                            <Analytics />
+                            <Toaster />
+                            {/* <Cursor /> */}
+                        </ActiveSectionContextProvider>
+                    </ThemeContextProvider>
+                </body>
+            </html>
+        </SelectedLinkProvider>
     );
 }
