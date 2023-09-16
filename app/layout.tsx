@@ -83,4 +83,5 @@ export default function RootLayout({
                 </ThemeContextProvider>
             </body>
         </html>
+    );
 }

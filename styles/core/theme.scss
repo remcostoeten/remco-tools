@@ -10,24 +10,24 @@ $expense-black: #ff181818;
 }
 
 .green-shadow {
-    box-shadow: 0 0 64px #44ff73
+    box-shadow: 0 0 64px #44ff73;
 }
 
 .red-shadow {
-    box-shadow:0 0 64px #ff4266;
+    box-shadow: 0 0 64px #ff4266;
 }
 
- .teal-shadow {
+.teal-shadow {
     box-shadow: 0 0 64px #34fff3;
- }
+}
 
- .purple-shadow {
+.purple-shadow {
     box-shadow: 0 0 64px #b71fff;
- }
+}
 
- .yellow-shadow {
+.yellow-shadow {
     box-shadow: 0 0 64px #fda428;
- }
+}
 
 .bg-expense {
     background-color: $expense-black;
@@ -108,6 +108,19 @@ body:not(.table) {
     padding: 50px 70px;
     left: 0;
     background-color: $black;
+}
+
+.menu.w-full.absolute.p-8.left-0.top-0.overflow-hidden.black,
+.is-open {
+    animation: height 1s 5s infinite;
+    opacity: 0;
+}
+
+@keyframes height {
+    to {
+        height: 0;
+        max-height: 0;
+    }
 }
 
 .theme-transitioning * {
@@ -231,7 +244,7 @@ html:not(.dark) {
 
     .intro {
         svg {
-            fill : $black
+            fill: $black;
         }
     }
 }
@@ -242,7 +255,8 @@ html:not(.dark) {
     }
 
     .intro {
-        a,button {
+        a,
+        button {
             border: 1px solid $white;
             border: 1px solid #1c1c20;
         }

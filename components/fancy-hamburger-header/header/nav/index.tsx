@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import styles from './style.module.scss';
@@ -13,11 +14,10 @@ export default function Index() {
         index: 0,
     });
 
-    // Function to close the menu
     const closeMenu = () => {
-        setSelectedLink((prevState) => ({
+        setSelectedLink(prevState => ({
             ...prevState,
-            isActive: false,
+            isActive: false
         }));
     };
 
@@ -35,21 +35,23 @@ export default function Index() {
                         links={navigationRoutes.links}
                         selectedLink={selectedLink}
                         setSelectedLink={setSelectedLink}
-                        closeMenu={closeMenu} // Passed down the closeMenu function
+                        closeMenu={closeMenu} // Passing down the closeMenu function
                     />
                     <Footer />
                 </div>
                 {/* @ts-ignore */}
                 {navigationRoutes.links[selectedLink.index]?.src ? (
-                    <Badge>
-                        {navigationRoutes.links[selectedLink.index].labels?.map(
-                            (label, idx) => (
+                    <>
+                        <Badge>
+                            {navigationRoutes.links[
+                                selectedLink.index
+                            ].labels?.map((label, idx) => (
                                 <span key={idx} className='label'>
                                     {label}
                                 </span>
-                            )
-                        )}
-                    </Badge>
+                            ))}
+                        </Badge>
+                    </>
                 ) : null}
             </div>
         </motion.div>
