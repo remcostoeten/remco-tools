@@ -13,6 +13,14 @@ export default function Index() {
         index: 0,
     });
 
+    // Function to close the menu
+    const closeMenu = () => {
+        setSelectedLink((prevState) => ({
+            ...prevState,
+            isActive: false,
+        }));
+    };
+
     return (
         <motion.div
             variants={height}
@@ -27,22 +35,21 @@ export default function Index() {
                         links={navigationRoutes.links}
                         selectedLink={selectedLink}
                         setSelectedLink={setSelectedLink}
+                        closeMenu={closeMenu} // Passed down the closeMenu function
                     />
                     <Footer />
                 </div>
                 {/* @ts-ignore */}
                 {navigationRoutes.links[selectedLink.index]?.src ? (
-                    <>
-                        <Badge>
-                            {navigationRoutes.links[
-                                selectedLink.index
-                            ].labels?.map((label, idx) => (
+                    <Badge>
+                        {navigationRoutes.links[selectedLink.index].labels?.map(
+                            (label, idx) => (
                                 <span key={idx} className='label'>
                                     {label}
                                 </span>
-                            ))}
-                        </Badge>
-                    </>
+                            )
+                        )}
+                    </Badge>
                 ) : null}
             </div>
         </motion.div>
