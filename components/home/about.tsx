@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import I from '../core/Italic';
-import T from '../core/Italic';
+import T from '../core/GradientText';
 
 export default function About() {
     const [isOpen, setIsOpen] = useState(false);
@@ -24,8 +24,10 @@ export default function About() {
     const paragraphStyles =
         'text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight text-theme-300 leading-tight sm:leading-tight md:leading-tight lg:leading-tight';
 
-        const sectionStylesFullHeight = 'padding-y-xl   margin-y  container scroll-mt-28 hero-section flex flex-col justify-center pb-8 relative z-10 h-screen';
-        const sectionStyles = 'padding-y-xl   margin-y  container scroll-mt-28 hero-section flex flex-col justify-center pb-8 relative z-10';
+    const sectionStylesFullHeight =
+        'padding-y-xl   margin-y  container scroll-mt-28 hero-section flex flex-col justify-center pb-8 relative z-10 h-screen';
+    const sectionStyles =
+        'padding-y-xl   margin-y  container scroll-mt-28 hero-section flex flex-col justify-center pb-8 relative z-10';
 
     return (
         <>
@@ -41,11 +43,9 @@ export default function About() {
                     className={paragraphStyles}
                     style={{ opacity: 1, translate: 0 }}
                 >
-                    <span className='libre-italic'>I</span> am a 26 years old{' '}
-                    <span className='libre-italic'>creative </span> developer
-                    with a strong <span className='gradient-text'>passion</span>{' '}
-                    for css, <span className='libre-italic'>complex</span> ui's,
-                    and micro interactions.
+                    <I i='I' />{' '}am a 26 years old <I i='creative' /> developer with a strong{' '}
+                    <T t='passion' /> for <I i='complex' /> ui's, and micro
+                    interactions.
                 </p>
             </motion.section>
 
@@ -61,11 +61,15 @@ export default function About() {
                     className={paragraphStyles}
                     style={{ opacity: 1, translate: 0 }}
                 >
-                    currently i am{' '}<I i='focusing' /> on NextJS with Typescript
-                    & co.
+                    Currently <I i='I' /> am <I i='focusing' /> on{' '}
+                    <T t='nextJS' /> with <T t='typescript' /> <I i='& co' />.{' '}
+                    <br />
+                    <br />
+                    But my <I i='interests' /> are not limited, I am also{' '}
+                    <I i='learning' /> a little <T t='python' /> & <T t='lua' />{' '}
+                    and want to dive into go in the <I i='future' />.
                 </p>
             </motion.section>
-
 
             <motion.section
                 initial={{ opacity: 0, scale: 0.9 }}

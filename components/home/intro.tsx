@@ -26,7 +26,7 @@ export default function Intro() {
 
     const containerVariants = {
         hidden: {},
-        visible: {
+        visible: {                                  
             transition: {
                 when: 'beforeChildren',
                 staggerChildren: 0.2, // Adjust the stagger duration as needed

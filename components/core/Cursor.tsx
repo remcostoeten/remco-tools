@@ -65,10 +65,11 @@ export default function Trailer() {
                     pointerEvents: 'none',
                     top: 0,
                     left: 0,
+                    background: 'none'
                 }}>
                 <svg className="z-[999]" width="28" height="35" viewBox="0 0 48 55" fill="none" style={{ zIndex: 9999 }} xmlns="http://www.w3.org/2000/svg">
                     <g filter="url(#filter0_d_2_682)">
-                        <path d="M13.5 45L6 6L39 25.5L22.5 30L13.5 45Z" fill="#EE46D3" />
+                        <path d="M13.5 45L6 6L39 25.5L22.5 30L13.5 45Z" fill="#fff" />
                         <path
                             d="M6.76308 4.70864L3.89868 3.01601L4.527 6.28328L12.027 45.2832L12.7679 49.1358L14.7863 45.7716L23.4762 31.2885L39.3948 26.9472L42.8178 26.0136L39.7632 24.2085L6.76308 4.70864Z"
                             stroke="white"

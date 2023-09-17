@@ -1,14 +1,16 @@
-'use client';
-import { useState, useEffect } from 'react';
+'use client';import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
-export default function ArrowDown(): JSX.Element {
+type ArrowProps = {
+    target: string;
+};
+
+export default function ArrowDown({ target }: ArrowProps) {
     const [showIndicator, setShowIndicator] = useState<boolean>(true);
-    let scrollPos: number;
 
     useEffect(() => {
         const handleScroll = () => {
-            scrollPos = window.scrollY;
+            const scrollPos = window.scrollY;
             if (scrollPos > 150) {
                 setShowIndicator(false);
             } else if (scrollPos < 150) {
@@ -16,6 +18,7 @@ export default function ArrowDown(): JSX.Element {
             }
         };
         window.addEventListener('scroll', handleScroll);
+
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
@@ -23,11 +26,11 @@ export default function ArrowDown(): JSX.Element {
 
     return (
         showIndicator && (
-            <div>
-                <span className='scroll-down'>
-                    <Link href='#' className='scroll-down__animate'></Link>
+            <a href={target} className='scroll-down'>
+                <span className='scroll-down__animate'>
+                    Scroll Down
                 </span>
-            </div>
+            </a>
         )
     );
 }

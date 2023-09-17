@@ -30,14 +30,16 @@ module.exports = {
             },
             textColor: {
                 offwhite: 'FAF9F6',
-                black: '#151515',
+                black: '#151817',
             },
             colors: {
                 offwhite: 'FAF9F6',
+                offblack: 'var(--offblack)',
+                test: 'var(--test)',
                 border: 'hsl(var(--border))',
                 input: 'hsl(var(--input))',
                 ring: 'hsl(var(--ring))',
-                background: 'hsl(var(--background))',
+                background: 'var(--offblack)',
                 foreground: 'hsl(var(--foreground))',
                 primary: {
                     DEFAULT: 'hsl(var(--primary))',

@@ -10,10 +10,11 @@ import ArrowDown from '@/components/ArrowDown';
 
 export default function Home() {
     return (
-        <main className="container flex flex-col items-center">
+        <main className='flex flex-col items-center'>
             <Intro />
-            <ArrowDown/>
-            <SectionSpacer variant="big" />
+            <ArrowDown target="about" />
+            <SectionDivider />
+            <SectionSpacer variant='large' />
             <About />
             <SectionDivider />
             <Skills />

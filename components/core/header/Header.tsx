@@ -12,7 +12,7 @@ export default function Header() {
     const { activeSection, setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
     return (
         <>
-            <header className='hidden md:flex showAlternativeCursor z-50 relative'>
+            <header className='relative z-50 hidden md:flex showAlternativeCursor'>
                 <motion.div
                     className='header   fixed top-0 left-1/2 h-[4.5rem] w-full rounded-none   bg-header  shadow-lg shadow-white/[0.06] backdrop-blur-[0.5rem] sm:top-6 sm:h-[3.25rem] sm:w-[58rem] sm:rounded-full '
                     initial={{ y: -100, x: '-50%', opacity: 0 }}
@@ -22,10 +22,10 @@ export default function Header() {
                     <ul className="flex w-[22rem] flex-wrap items-center justify-center gap-y-1 text-[0.9rem] font-medium text-gray-500 sm:w-max sm:flex-nowrap sm:gap-5">
                         {links.map((link, index) => (
                             <React.Fragment key={link.hash}>
-                                <motion.li data-cursor-hover className="h-3/4 flex items-center justify-center relative" initial={{ y: -100, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
+                                <motion.li data-cursor-hover className="relative flex items-center justify-center h-3/4" initial={{ y: -100, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
                                     <Link
                                         className={clsx('flex w-full items-center justify-center px-3 py-3 hover:text-gray-950 transition dark:text-gray-500 dark:hover:text-gray-300', {
-                                            'text-gray-950 dark:text-gray-200': activeSection === link.name,
+                                            'text-black dark:text-gray-200': activeSection === link.name,
                                         })}
                                         href={link.hash}
                                         onClick={() => {
@@ -36,7 +36,7 @@ export default function Header() {
 
                                         {link.name === activeSection && (
                                             <motion.span
-                                                className='dark:bg-zinc-950 border rounded-full absolute inset-0 -z-10  dark:active-bg'
+                                                className='absolute inset-0 border rounded-full dark:bg-black -z-10 dark:active-bg'
                                             layoutId='activeSection'
                                                 transition={{
                                                     type: 'spring',

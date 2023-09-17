@@ -45,10 +45,10 @@ export function ToolsDropdown() {
                             <li className="row-span-3">
                                 <NavigationMenuLink asChild>
                                     <a
-                                        className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                                        className="flex flex-col justify-end w-full h-full p-6 no-underline rounded-md outline-none select-none bg-gradient-to-b from-muted/50 to-muted focus:shadow-md"
                                         href="/">
                                         <RemcoLogoIcon />
-                                        <div className="mb-2 mt-4 text-lg font-medium">Some tools I built</div>
+                                        <div className="mt-4 mb-2 text-lg font-medium">Some tools I built</div>
                                         <p className="text-sm leading-tight text-muted-foreground">
                                             Initially to practice my skills, but ended up building tools which I use quite often and wanted to self-host, and share with others.
                                         </p>
@@ -89,7 +89,7 @@ const ListItem = React.forwardRef<React.ElementRef<'a'>, React.ComponentPropsWit
                     )}
                     {...props}>
                     <div className="text-sm font-medium leading-none">{title}</div>
-                    <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">{children}</p>
+                    <p className="text-sm leading-snug line-clamp-2 text-muted-foreground">{children}</p>
                 </a>
             </NavigationMenuLink>
         </li>
