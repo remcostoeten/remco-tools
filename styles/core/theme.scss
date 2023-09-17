@@ -2,6 +2,10 @@ body {
     overflow-x: hidden;
 }
 
+html {
+    font-size: 22px;
+}
+
 $expense-black: #ff181818;
 
 // drop shadow classes
@@ -55,18 +59,18 @@ body:not(.table) {
     }
     tr {
         padding: $spacing;
-        border: 1px solid rgba($color: #fff, $alpha: 0.2);
+        border: 1px solid rgba($color: $black, $alpha: 0.2);
         td {
             padding: $spacing;
         }
 
         &:nth-child(odd) {
-            background-color: rgba($color: #000000, $alpha: 0.9);
+            background-color: rgba($color: $black, $alpha: 0.9);
             border-color: $white;
         }
 
         &:nth-child(even) {
-            background-color: rgba($color: #fff, $alpha: 0.05);
+            background-color: rgba($color: $black, $alpha: 0.05);
             border-color: $white;
         }
     }
@@ -289,9 +293,10 @@ html:not(.dark) {
         bottom: 0;
         left: 0;
 
+        
         // Animation configuration
         animation: gradienText 5s ease infinite,
-            gradientTextGrow 2s cubic-bezier(0.175, 0.485, 0.32, 1.275) forwards;
+            gradientTextGrow 2s cubic-bezier(.96,.13,.29,1) forwards; // Adjusted cubic-bezier values with a 10% + and - margin spread
         animation-play-state: paused; // by default, don't animate
     }
 
@@ -300,6 +305,3 @@ html:not(.dark) {
         //
     }
 }
-
-// Keyframes
-

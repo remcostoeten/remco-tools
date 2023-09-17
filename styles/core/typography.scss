@@ -3,6 +3,44 @@
 .libre-italic {
     font-family: 'Libre Baskerville', serif;
     font-style: italic;
+    position: relative;
+    transition: 400ms ease all;
+
+    &::after {
+        content: '';
+        background-image: linear-gradient(
+            90deg,
+            transparent,
+            transparent 34.37%,
+            transparent 66.67%,
+            transparent
+        );
+        background-position: 0 100%;
+        background-repeat: no-repeat;
+        background-size: 100% 4px;
+        position: absolute;
+        width: 0;
+        height: 4px;
+        bottom: 0;
+        left: 0;
+        transition: 400ms ease all;
+    }
+
+    &:hover {
+        transition: 400ms ease all;
+        &::after {
+            content: '';
+            background-image: linear-gradient(
+                90deg,
+                #fbc340,
+                #f15a29 34.37%,
+                #f291c6 66.67%,
+                #27aae1
+            );
+            width: 100%;
+            transition: 400ms ease all;
+        }
+    }
 }
 
 .dark {
