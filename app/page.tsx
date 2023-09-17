@@ -12,7 +12,10 @@ export default function Home() {
     return (
         <main className='flex flex-col items-center'>
             <Intro />
-            <ArrowDown target="about" />
+            <a href='' className='scroll-down'>
+                <span className='scroll-down__animate'></span>
+            </a>{' '}
+            <ArrowDown target='about' />
             <SectionDivider />
             <SectionSpacer variant='large' />
             <About />

@@ -1,4 +1,4 @@
-'use';
+'use client';
 import { useState, useEffect, Ref } from 'react';
 
 interface Options extends IntersectionObserverInit {
