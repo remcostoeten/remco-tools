@@ -7,6 +7,8 @@ import { useActiveSectionContext } from '@/context/active-section-contex';
 import DownloadCV from './pdf';
 import { useTheme } from '@/context/theme-context';
 import ArrowDown from '../ArrowDown';
+import { useTheme } from '@/context/theme-context';
+import ArrowDown from '../ArrowDown';
 
 export default function Intro() {
     const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
