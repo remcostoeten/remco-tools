@@ -288,26 +288,18 @@ html:not(.dark) {
         height: 4px;
         bottom: 0;
         left: 0;
-        animation: gradienText 5s ease infinite;
+
+        // Animation configuration
+        animation: gradienText 5s ease infinite,
+            gradientTextGrow 2s cubic-bezier(0.175, 0.485, 0.32, 1.275) forwards;
+        animation-play-state: paused; // by default, don't animate
+    }
+
+    &.animate::after {
+        animation-play-state: running; // animate when in view
+        //
     }
 }
 
-@keyframes scaleText {
-    0% {
-        scale: 1;
-    }
+// Keyframes
 
-    100% {
-        scale: 2;
-    }
-}
-
-@keyframes gradienText {
-    50% {
-        background-size: 200% 4px;
-    }
-
-    100% {
-        background-position: 0 100%;
-    }
-}

@@ -19,8 +19,27 @@ export default function Contact() {
             ref={ref}
             className='mb-20 sm:mb-28 w-[min(100%,38rem)] text-center'
         >
-            <form
-                className='mt-10 gap-4 flex flex-col dark:text-black'
+            <form className='flex flex-col gap-4 mt-10 dark:text-black'>
+                <Input
+                    name='senderEmail'
+                    type='email'
+                    required
+                    maxLength={500}
+                    className='theme-background text-slate-500 theme-background--inputs'
+                    placeholder='ronnypickering@gmail.com'
+                />
+                <Textarea
+                    className='theme-background text-slate-500  h-[400px] theme-background--inputs'
+                    name='message'
+                    style={{ minHeight: '120px' }}
+                    placeholder='Your message goes here.'
+                    required
+                    maxLength={5000}
+                />
+                <SubmitBtn />
+            </form>
+            {/* <form
+                className='flex flex-col gap-4 mt-10 dark:text-black'
                 // @ts-ignore
                 action={async (formData) => {
                     const { data, error } = await sendEmail(formData);
@@ -41,7 +60,7 @@ export default function Contact() {
                         type='email'
                         required
                         maxLength={500}
-                        className='theme-background  text-slate-500 theme-background--inputs'
+                        className='theme-background text-slate-500 theme-background--inputs'
                         placeholder='ronnypickering@gmail.com'
                     />
                     <Textarea
@@ -53,7 +72,7 @@ export default function Contact() {
                         maxLength={5000}
                     />
                     <SubmitBtn />
-            </form>
+            </form> */}
         </motion.section>
     );
 }

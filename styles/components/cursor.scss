@@ -60,6 +60,17 @@
     .showAlternativeCursor {
         cursor: none;
 
+        * {
+            cursor: none;
+        }
+    }
+
+    #trailer {
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    #custom-cursor {
         opacity: 1;
         transition: opacity 0.5s ease-in-out;
     }

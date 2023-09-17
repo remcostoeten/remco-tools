@@ -326,12 +326,7 @@ $readmore-ease: ease;
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-        background-color: rgba(
-            255,
-            255,
-            255,
-            0.8
-        );
+        background-color: rgba(255, 255, 255, 0.8);
         border: none;
         padding: 5px 15px;
         cursor: pointer;
@@ -423,42 +418,77 @@ $readmore-ease: ease;
             display: block;
             width: 100%;
             height: 100%;
-            background: url('../../public/arrow-down.svg')
-                no-repeat center top;
+            background: url('../../public/arrow-down.svg') no-repeat center top;
             background-size: 100% auto;
         }
 
-        @keyframes arrowFade{
+        @keyframes arrowFade {
             0% {
                 opacity: 0;
             }
 
             25% {
-                opacity: .1;
+                opacity: 0.1;
             }
 
             75% {
-                opacity: .1;
+                opacity: 0.1;
             }
 
             0% {
-                opacity: .02;
+                opacity: 0.02;
             }
         }
 
-$arrow-down-duration: 1.5s;
+        $arrow-down-duration: 1.5s;
 
         &:before {
             mix-blend-mode: overlay;
-            animation: pulse $arrow-down-duration 0.25s infinite normal ease forwards, arrowFade $arrow-down-duration infinite;
+            animation: pulse $arrow-down-duration 0.25s infinite normal ease
+                    forwards,
+                arrowFade $arrow-down-duration infinite;
         }
 
         &:after {
-            animation: pulse $arrow-down-duration 0.5s infinite normal ease forwards, arrowFade $arrow-down-duration infinite;
+            animation: pulse $arrow-down-duration 0.5s infinite normal ease
+                    forwards,
+                arrowFade $arrow-down-duration infinite;
         }
 
         &:hover {
             background-color: rgba(0, 0, 0, 0.3);
         }
+    }
+}
+
+
+//   Animation for scroll in view gradient after grow effect.
+
+@keyframes gradienText {
+    50% {
+        background-size: 200% 4px;
+    }
+    100% {
+        background-position: 0 100%;
+    }
+}
+
+@keyframes gradientTextGrow {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+// Generic scaleIn 
+
+@keyframes scaleOneToTwo {
+    0% {
+        scale: 1;
+    }
+    100% {
+        scale: 2;
     }
 }

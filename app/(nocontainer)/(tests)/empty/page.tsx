@@ -5,7 +5,7 @@ const Home: React.FC = () => {
     return (
         <>
             <div className='flex flex-col gap-[125px] justify-between w-screen'>
-                <main className='mt-4 mb-4 border py-20'>
+                <main className='py-20 mt-4 mb-4 border effect'>
                     <button aria-label='Say Hello'>
                         <div>
                             <span className='inner'>
