@@ -2,50 +2,6 @@
     {
         "name": "Dribble",
         "projects": [
-            // {
-            //     "projectType": "",
-            //     "colors": ["", "", ""],
-            //     "colorScheme": "",
-            //     "style": ["", "", " "],
-            //     "url": "",
-            //     "preview": "",
-            //     "hasMobileDevice": null,
-            //     "animations": "true",
-            //     "componentInspiration": null
-            // },
-            // {
-            //     "projectType": "",
-            //     "colors": ["", "", ""],
-            //     "colorScheme": "",
-            //     "style": ["", "", " "],
-            //     "url": "",
-            //     "preview": "",
-            //     "hasMobileDevice": null,
-            //     "animations": "true",
-            //     "componentInspiration": null
-            // },
-            // {
-            //     "projectType": "",
-            //     "colors": ["", "", ""],
-            //     "colorScheme": "",
-            //     "style": ["", "", " "],
-            //     "url": "",
-            //     "preview": "",
-            //     "hasMobileDevice": null,
-            //     "animations": "true",
-            //     "componentInspiration": null
-            // },
-            // {
-            //     "projectType": "",
-            //     "colors": ["", "", ""],
-            //     "colorScheme": "",
-            //     "style": ["", "", " "],
-            //     "url": "",
-            //     "preview": "",
-            //     "hasMobileDevice": null,
-            //     "animations": "true",
-            //     "componentInspiration": null
-            // },
             {
                 "projectType": "Banking SaaS",
                 "colors": ["dark", "light", "rainbow"],
