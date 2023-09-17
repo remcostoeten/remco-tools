@@ -59,18 +59,18 @@
 
     .showAlternativeCursor {
         cursor: none;
-
-        * {
-            cursor: none;
+        &::after,
+        &::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 70%;
+            height: 2px;
+            background-color: red;
+            transform-origin: center;
         }
-    }
-
-    #trailer {
-        opacity: 0;
-        transition: opacity 0.5s ease-in-out;
-    }
-
-    #custom-cursor {
+    
         opacity: 1;
         transition: opacity 0.5s ease-in-out;
     }

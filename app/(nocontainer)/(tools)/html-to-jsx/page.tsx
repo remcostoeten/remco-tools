@@ -40,12 +40,31 @@ export default function PlaygroundPage() {
 
     useEffect(() => {
         const editorInstance = editorRef.current;
+        const body = document.body;
+        let timeoutId: NodeJS.Timeout;
 
-        const timeoutId = setTimeout(() => {
+        const cleanup = () => {
+            body.classList.remove('html-to-jsx');
+            clearTimeout(timeoutId);
+        };
+
+        const handleRouteChange = () => {
+            cleanup();
+        };
+
+        body.classList.add('html-to-jsx');
+        timeoutId = setTimeout(() => {
             editorInstance?.getAction('editor.action.formatDocument')?.run();
         }, 1000);
 
-        return () => clearTimeout(timeoutId);
+        // Listen for route changes
+        window.addEventListener('popstate', handleRouteChange);
+
+        // Cleanup on unmount
+        return () => {
+            cleanup();
+            window.removeEventListener('popstate', handleRouteChange);
+        };
     }, []);
 
     function convertHtmlToJSX(html: string): string {
@@ -274,9 +293,9 @@ export default function PlaygroundPage() {
                     }}
                     className='overflow-hidden rounded-[0.5rem] border bg-background shadow'
                 >
-                    <div className='hidden h-full flex-col md:flex '>
+                    <div className='flex-col hidden h-full md:flex '>
                         <div className=' relative mb-1.5 mt-8 flex items-start justify-between space-y-2 pb-4 pl-4 pt-0 pt-4 sm:flex-row sm:items-end sm:space-y-0.5 md:h-16'>
-                            <div className='flex w-min  flex-col gap-2'>
+                            <div className='flex flex-col gap-2 w-min'>
                                 <Label className='translate-x-2.5'>
                                     What is the component name?
                                 </Label>
@@ -298,12 +317,12 @@ export default function PlaygroundPage() {
                                 isOptional={isOptional}
                             />
 
-                            <div className='ml-auto flex w-full space-x-2 sm:justify-end'></div>
+                            <div className='flex w-full ml-auto space-x-2 sm:justify-end'></div>
                         </div>
                         <Tabs defaultValue='insert' className='flex-1'>
-                            <div className=' h-full py-6'>
+                            <div className='h-full py-6 '>
                                 <div className='grid h-full w-full items-stretch gap-6 pr-8 md:grid-cols-[1fr_200px]'>
-                                    <div className='hidden flex-col space-y-4 sm:flex md:order-2'>
+                                    <div className='flex-col hidden space-y-4 sm:flex md:order-2'>
                                         <ModelSelector
                                             types={types}
                                             models={models}
@@ -315,12 +334,12 @@ export default function PlaygroundPage() {
                                     <div className='md:order-1'>
                                         <TabsContent
                                             value='complete'
-                                            className='mt-0 border-0 p-0'
+                                            className='p-0 mt-0 border-0'
                                         >
-                                            <div className='flex h-full flex-col space-y-4'>
+                                            <div className='flex flex-col h-full space-y-4'>
                                                 <button
                                                     onClick={handleCopy}
-                                                    className='absolute right-0 top-0 z-50 rounded-md border border-zinc-700 bg-zinc-900 p-2'
+                                                    className='absolute top-0 right-0 z-50 p-2 border rounded-md border-zinc-700 bg-zinc-900'
                                                 >
                                                     <CopyIcon />
                                                 </button>
@@ -371,14 +390,14 @@ export default function PlaygroundPage() {
                                                         <span className='sr-only'>
                                                             Show history
                                                         </span>
-                                                        <CounterClockwiseClockIcon className='h-4 w-4' />
+                                                        <CounterClockwiseClockIcon className='w-4 h-4' />
                                                     </Button>
                                                 </div>
                                             </div>
                                         </TabsContent>
                                         <TabsContent
                                             value='insert'
-                                            className='mt-0 border-0 p-0'
+                                            className='p-0 mt-0 border-0'
                                         >
                                             <div className='flex flex-col space-y-4'>
                                                 <motion.div
@@ -443,11 +462,11 @@ export default function PlaygroundPage() {
                                                     >
                                                         <button
                                                             onClick={handleCopy}
-                                                            className='absolute right-0 top-0 z-50 rounded-md border border-zinc-700 bg-zinc-900 p-2'
+                                                            className='absolute top-0 right-0 z-50 p-2 border rounded-md border-zinc-700 bg-zinc-900'
                                                         >
                                                             <svg
                                                                 xmlns='http://www.w3.org/2000/svg'
-                                                                className='h-5 w-5 text-white'
+                                                                className='w-5 h-5 text-white'
                                                                 fill='#fff'
                                                                 viewBox='0 0 256 256'
                                                             >
@@ -489,7 +508,7 @@ export default function PlaygroundPage() {
                                                         <span className='sr-only'>
                                                             Show history
                                                         </span>
-                                                        <CounterClockwiseClockIcon className='h-4 w-4' />
+                                                        <CounterClockwiseClockIcon className='w-4 h-4' />
                                                     </Button>
                                                 </div>
                                             </div>
@@ -497,12 +516,12 @@ export default function PlaygroundPage() {
 
                                         <TabsContent
                                             value='edit'
-                                            className='mt-0 border-0 p-0'
+                                            className='p-0 mt-0 border-0'
                                         >
                                             <div className='flex flex-col space-y-4'>
                                                 <div className='grid h-full gap-6 lg:grid-cols-2'>
                                                     <div className='flex flex-col space-y-4'>
-                                                        <div className='flex flex-1 flex-col space-y-2'>
+                                                        <div className='flex flex-col flex-1 space-y-2'>
                                                             <Label htmlFor='input'>
                                                                 Input
                                                             </Label>
@@ -530,7 +549,7 @@ export default function PlaygroundPage() {
                                                         <span className='sr-only'>
                                                             Show history
                                                         </span>
-                                                        <CounterClockwiseClockIcon className='h-4 w-4' />
+                                                        <CounterClockwiseClockIcon className='w-4 h-4' />
                                                     </Button>
                                                 </div>
                                             </div>
@@ -539,7 +558,7 @@ export default function PlaygroundPage() {
                                 </div>
                             </div>
                         </Tabs>
-                        <div className='m-3 flex gap-2 p-3'>
+                        <div className='flex gap-2 p-3 m-3'>
                             <PresetSave />
                             <CodeViewer />
                             <PresetShare />
