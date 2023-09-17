@@ -30,16 +30,14 @@ module.exports = {
             },
             textColor: {
                 offwhite: 'FAF9F6',
-                black: '#151817',
+                black: '#151515',
             },
             colors: {
                 offwhite: 'FAF9F6',
-                offblack: 'var(--offblack)',
-                test: 'var(--test)',
                 border: 'hsl(var(--border))',
                 input: 'hsl(var(--input))',
                 ring: 'hsl(var(--ring))',
-                background: 'var(--offblack)',
+                background: 'hsl(var(--background))',
                 foreground: 'hsl(var(--foreground))',
                 primary: {
                     DEFAULT: 'hsl(var(--primary))',
@@ -92,3 +90,4 @@ module.exports = {
     },
     plugins: [require('tailwindcss-animate')],
 };
+

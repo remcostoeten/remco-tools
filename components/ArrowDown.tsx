@@ -1,4 +1,5 @@
-'use client';import { useState, useEffect } from 'react';
+'use client';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 type ArrowProps = {
@@ -27,9 +28,7 @@ export default function ArrowDown({ target }: ArrowProps) {
     return (
         showIndicator && (
             <a href={target} className='scroll-down'>
-                <span className='scroll-down__animate'>
-                    Scroll Down
-                </span>
+                <span className='scroll-down__animate'></span>
             </a>
         )
     );
