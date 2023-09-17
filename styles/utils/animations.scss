@@ -331,7 +331,7 @@ $readmore-ease: ease;
             255,
             255,
             0.8
-        ); /* slightly transparent white */
+        );
         border: none;
         padding: 5px 15px;
         cursor: pointer;
@@ -398,21 +398,15 @@ $readmore-ease: ease;
     margin: 0;
     position: absolute;
     left: 50%;
-    bottom: -50%;
+    bottom: -90%;
     width: $arrow-down-size;
     height: $arrow-down-size;
     transform: translate(-50%, -50%);
 
     &__animate {
-        display: block;
+        border: 0 !important;
         opacity: 0;
-        border-radius: 100px;
         transition: all 0.4s $readmore-ease;
-        line-height: 0;
-        font-size: 0;
-        color: transparent;
-        margin-left: auto;
-        margin-right: auto;
         width: 100%;
         height: 100%;
         background-size: 0 auto;
@@ -429,18 +423,38 @@ $readmore-ease: ease;
             display: block;
             width: 100%;
             height: 100%;
-            opacity: .2;
             background: url('../../public/arrow-down.svg')
                 no-repeat center top;
             background-size: 100% auto;
         }
 
+        @keyframes arrowFade{
+            0% {
+                opacity: 0;
+            }
+
+            25% {
+                opacity: .1;
+            }
+
+            75% {
+                opacity: .1;
+            }
+
+            0% {
+                opacity: .02;
+            }
+        }
+
+$arrow-down-duration: 1.5s;
+
         &:before {
-            animation: pulse 1.5s 0.25s infinite normal ease forwards;
+            mix-blend-mode: overlay;
+            animation: pulse $arrow-down-duration 0.25s infinite normal ease forwards, arrowFade $arrow-down-duration infinite;
         }
 
         &:after {
-            animation: pulse 1.5s 0.5s infinite normal ease forwards;
+            animation: pulse $arrow-down-duration 0.5s infinite normal ease forwards, arrowFade $arrow-down-duration infinite;
         }
 
         &:hover {

@@ -122,7 +122,7 @@ export default function Intro() {
 
                 <motion.div
                     variants={itemVariants}
-                    className='flex   flex-col sm:flex-row items-center justify-center gap-2 px-4 text-lg font-medium'
+                    className='flex flex-col items-center justify-center gap-2 px-4 text-lg font-medium sm:flex-row'
                 >
                     <div className='animbtn'>
                         <Link
