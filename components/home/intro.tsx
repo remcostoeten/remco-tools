@@ -5,10 +5,13 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useActiveSectionContext } from '@/context/active-section-contex';
 import DownloadCV from './pdf';
+import { useTheme } from '@/context/theme-context';
+import ArrowDown from '../ArrowDown';
 
 export default function Intro() {
     const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
     const [scrollY, setScrollY] = useState(0);
+    const { theme } = useTheme();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -23,10 +26,10 @@ export default function Intro() {
 
     const containerVariants = {
         hidden: {},
-        visible: {
+        visible: {                                  
             transition: {
                 when: 'beforeChildren',
-                staggerChildren: 0.2, 
+                staggerChildren: 0.2, // Adjust the stagger duration as needed
             },
         },
     };
@@ -34,7 +37,7 @@ export default function Intro() {
     const itemVariants = {
         hidden: {
             opacity: 0,
-            y: 20,
+            y: 20, // Adjust the initial y position as needed
         },
         visible: {
             opacity: 1,
@@ -50,7 +53,7 @@ export default function Intro() {
     return (
         <section
             id='home'
-            className='padding-y mx-auto max-w-[50rem] text-center scroll-mt-[100rem]'
+            className='intro relative padding-y mx-auto max-w-[50rem] text-center scroll-mt-[100rem] h-[80vh]'
         >
             <motion.div
                 variants={containerVariants}
@@ -75,7 +78,7 @@ export default function Intro() {
                             }}
                             transition={{
                                 type: 'spring',
-                                duration: .7,
+                                duration: 1.7,
                                 delay: 0.3,
                             }}
                         >
@@ -123,7 +126,7 @@ export default function Intro() {
                 >
                     <div className='animbtn'>
                         <Link
-                            className='warp border flex h-[60px]border animbutton p-2.5 bg-transparent rounded-xl w-max flex align-middle items-center gap-4 justify-center  text-offwhite  px-10 shadow-lg shadow-neutral-900 mt-2 animated-arrow'
+                            className='border-black border flex animbutton p-2.5 bg-transparent rounded-xl w-max flex align-middle items-center gap-4 justify-center  text-offwhite  px-10 dark:shadow-lg shadow-neutral-900 mt-2 animated-arrow'
                             href='#contact'
                             onClick={() => {
                                 setActiveSection('Contact');
@@ -144,19 +147,23 @@ export default function Intro() {
                     </div>
 
                     <DownloadCV />
-                    <div className='mobile-flexer'>
+                    <div className='flex gap-4 '>
                         <Link
                             data-cursor-hover
-                            className='border p-2.5 bg-transparent rounded-xl h-[50px] w-[50px] text-offwhite   shadow-lg shadow-neutral-900 mt-2 flex items-center justify-center gap-2 focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack   dark:text-offwhite/60'
-                            href='https://www.linkedin.com/in/remco-stoeten/'
+                            className={`border-black border p-2.5 bg-transparent rounded-xl h-[50px] w-[50px] text-offwhite   dark:shadow-lg shadow-neutral-900 mt-2 flex items-center justify-center gap-2 focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack   ${
+                                theme === 'light'
+                                    ? 'text-black'
+                                    : 'dark:text-offwhite/60'
+                            }`}
+                            href='https://github.com/remcostoeten'
                             target='_blank'
                         >
                             <svg
                                 xmlns='http://www.w3.org/2000/svg'
                                 width='20'
                                 height='20'
-                                viewBox='0 0 24 24'
                                 fill='currentColor'
+                                viewBox='0 0 24 24'
                                 style={{ mixBlendMode: 'difference' }}
                             >
                                 <path d='M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z' />
@@ -165,7 +172,7 @@ export default function Intro() {
 
                         <Link
                             data-cursor-hover
-                            className='border p-2.5 bg-transparent rounded-xl h-[50px] w-[50px] text-offwhite   shadow-lg shadow-neutral-900 mt-2 flex items-center justify-center gap-2 focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack   dark:text-offwhite/60'
+                            className='border-black border p-2.5 bg-transparent rounded-xl h-[50px] w-[50px] text-offwhite   dark:shadow-lg shadow-neutral-900 mt-2 flex items-center justify-center gap-2 focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack   dark:text-offwhite/60'
                             href='https://github.com/remcostoeten'
                             target='_blank'
                         >
@@ -183,6 +190,8 @@ export default function Intro() {
                     </div>
                 </motion.div>
             </motion.div>
+        <ArrowDown/>
+
         </section>
     );
 }
