@@ -11,6 +11,36 @@
         }
     }
 }
+
+.pdf {
+    overflow: hidden;
+    transition: 500ms ease all;
+
+    &__hover-initial {
+        transform: translatteY(0);
+    }
+
+    transition: 500ms ease all;
+    &:hover {
+        .pdf__hover-icon{
+            transition: 333ms cubic-bezier(0.165, 0.84, 0.84, 1) all;
+            transform: translateY(43px);
+            transition-delay: 250ms;
+        }
+
+        .pdf__hover-initial {
+            transform: translateY(40px);
+            transition: 333ms cubic-bezier(0.165, 0.84, 0.84, 1) all;
+        }
+    }
+
+    &__hover-icon {
+        position: absolute;
+        right: 40px;
+        top: -30px;
+    }
+}
+
 .buttons {
     &--expand {
         display: inline-block;

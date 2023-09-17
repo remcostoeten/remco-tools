@@ -1,4 +1,9 @@
 @import './keyframes.scss';
+@import '../variables/colors';
+@import '../variables/variables';
+
+$readmore-ease: ease;
+
 // Start animation for glitch not-found effect.
 .static {
     width: 100%;
@@ -149,7 +154,7 @@
 // Start 👋 wave animation
 .wave {
     animation-name: wave-animation, scaleIn;
-    animation-duration: 2.5s, 1s;
+    animation-duration: 2.3s, 1s;
     animation-iteration-count: infinite, forwards;
     transform-origin: 70% 70%;
     display: inline-block;
@@ -209,7 +214,7 @@
 // End 👋 animation
 
 .motion-div {
-    animation: gradient 15s ease infinite;
+    animation: gradient 13s ease infinite;
 }
 
 // Dutch text mask gradient
@@ -271,7 +276,7 @@
     }
 
     25% {
-        opacity: 1; //0.5s
+        opacity: 1; //0.3s
     }
 
     50% {
@@ -335,7 +340,7 @@
 
 //   mobile body gradient animation
 .gradientanim {
-    animation: gradientanim 15s ease infinite;
+    animation: gradientanim 13s ease infinite;
 }
 
 // Animation for box shadow pulse effect
@@ -356,204 +361,90 @@
         animation: pulse #{$i}s infinite;
     }
 }
-// usage:  class="pulse-shadow-2s"
-@-webkit-keyframes pulse {
+// usage:   class="pulse-shadow-2s"
+
+// Pulse animation WiP for fixed toglges
+
+@keyframes pulse {
     0% {
-      opacity: 0;
-      background-position: center top;
-      -moz-background-size: 0 auto;
-      -o-background-size: 0 auto;
-      -webkit-background-size: 0 auto;
-      background-size: 0 auto;
+        opacity: 0;
+        background-position: center top;
+        background-size: 0 auto;
     }
+
     10% {
-      opacity: 0;
+        opacity: 0;
     }
+
     50% {
-      opacity: 1;
-      -moz-background-size: 75% auto;
-      -o-background-size: 75% auto;
-      -webkit-background-size: 75% auto;
-      background-size: 75% auto;
+        opacity: 1;
+        background-size: 75% auto;
     }
+
     90% {
-      opacity: 0;
+        opacity: 0;
     }
+
     100% {
-      opacity: 0;
-      background-position: center bottom;
-      -moz-background-size: 0 auto;
-      -o-background-size: 0 auto;
-      -webkit-background-size: 0 auto;
-      background-size: 0 auto;
+        opacity: 0;
+        background-position: center bottom;
+        background-size: 0 auto;
     }
-  }
-  @-moz-keyframes pulse {
-    0% {
-      opacity: 0;
-      background-position: center top;
-      -moz-background-size: 0 auto;
-      -o-background-size: 0 auto;
-      -webkit-background-size: 0 auto;
-      background-size: 0 auto;
-    }
-    10% {
-      opacity: 0;
-    }
-    50% {
-      opacity: 1;
-      -moz-background-size: 75% auto;
-      -o-background-size: 75% auto;
-      -webkit-background-size: 75% auto;
-      background-size: 75% auto;
-    }
-    90% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 0;
-      background-position: center bottom;
-      -moz-background-size: 0 auto;
-      -o-background-size: 0 auto;
-      -webkit-background-size: 0 auto;
-      background-size: 0 auto;
-    }
-  }
-  @-ms-keyframes pulse {
-    0% {
-      opacity: 0;
-      background-position: center top;
-      -moz-background-size: 0 auto;
-      -o-background-size: 0 auto;
-      -webkit-background-size: 0 auto;
-      background-size: 0 auto;
-    }
-    10% {
-      opacity: 0;
-    }
-    50% {
-      opacity: 1;
-      -moz-background-size: 75% auto;
-      -o-background-size: 75% auto;
-      -webkit-background-size: 75% auto;
-      background-size: 75% auto;
-    }
-    90% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 0;
-      background-position: center bottom;
-      -moz-background-size: 0 auto;
-      -o-background-size: 0 auto;
-      -webkit-background-size: 0 auto;
-      background-size: 0 auto;
-    }
-  }
-  @keyframes pulse {
-    0% {
-      opacity: 0;
-      background-position: center top;
-      -moz-background-size: 0 auto;
-      -o-background-size: 0 auto;
-      -webkit-background-size: 0 auto;
-      background-size: 0 auto;
-    }
-    10% {
-      opacity: 0;
-    }
-    50% {
-      opacity: 1;
-      -moz-background-size: 75% auto;
-      -o-background-size: 75% auto;
-      -webkit-background-size: 75% auto;
-      background-size: 75% auto;
-    }
-    90% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 0;
-      background-position: center bottom;
-      -moz-background-size: 0 auto;
-      -o-background-size: 0 auto;
-      -webkit-background-size: 0 auto;
-      background-size: 0 auto;
-    }
-  }
-  body {
-    background-color: #0d74ff;
-  }
-  
-  .scroll-down {
+}
+
+// Arrow pointing down animation for indicating scroll
+
+.scroll-down {
     margin: 0;
-    border: 2px solid #fff;
-    -moz-border-radius: 100px;
-    -webkit-border-radius: 100px;
-    border-radius: 100px;
     position: absolute;
     left: 50%;
-    top: 50%;
-    width: 100px;
-    height: 100px;
-    margin-left: -50px;
-    margin-top: -50px;
-  }
-  .scroll-down a {
-    display: block;
-    opacity: 0;
-    -moz-border-radius: 100px;
-    -webkit-border-radius: 100px;
-    border-radius: 100px;
-    -moz-transition: all 0.4s ease;
-    -o-transition: all 0.4s ease;
-    -webkit-transition: all 0.4s ease;
-    transition: all 0.4s ease;
-    line-height: 0;
-    font-size: 0;
-    color: transparent;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    height: 100%;
-    -moz-background-size: 0 auto;
-    -o-background-size: 0 auto;
-    -webkit-background-size: 0 auto;
-    background-size: 0 auto;
-    -webkit-animation: pulse 1.5s 0s infinite normal ease forwards;
-    -moz-animation: pulse 1.5s 0s infinite normal ease forwards;
-    -o-animation: pulse 1.5s 0s infinite normal ease forwards;
-    animation: pulse 1.5s 0s infinite normal ease forwards;
-    background-image: url("https://jamesmuspratt.com/codepen/img/arrow-down.svg");
-    background-repeat: no-repeat;
-  }
-  .scroll-down a:before, .scroll-down a:after {
-    content: " ";
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    background: url("https://jamesmuspratt.com/codepen/img/arrow-down.svg") no-repeat center top;
-    -moz-background-size: 100% auto;
-    -o-background-size: 100% auto;
-    -webkit-background-size: 100% auto;
-    background-size: 100% auto;
-  }
-  .scroll-down a:before {
-    -webkit-animation: pulse 1.5s 0.25s infinite normal ease forwards;
-    -moz-animation: pulse 1.5s 0.25s infinite normal ease forwards;
-    -o-animation: pulse 1.5s 0.25s infinite normal ease forwards;
-    animation: pulse 1.5s 0.25s infinite normal ease forwards;
-  }
-  .scroll-down a:after {
-    -webkit-animation: pulse 1.5s 0.5s infinite normal ease forwards;
-    -moz-animation: pulse 1.5s 0.5s infinite normal ease forwards;
-    -o-animation: pulse 1.5s 0.5s infinite normal ease forwards;
-    animation: pulse 1.5s 0.5s infinite normal ease forwards;
-  }
-  .scroll-down a:hover {
-    background-color: rgba(0, 0, 0, 0.3);
-  }
-  
+    bottom: -50%;
+    width: $arrow-down-size;
+    height: $arrow-down-size;
+    transform: translate(-50%, -50%);
+
+    &__animate {
+        display: block;
+        opacity: 0;
+        border-radius: 100px;
+        transition: all 0.4s $readmore-ease;
+        line-height: 0;
+        font-size: 0;
+        color: transparent;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        height: 100%;
+        background-size: 0 auto;
+        animation: pulse 1.5s 0s infinite normal $readmore-ease forwards;
+        background-image: url('../../public/arrow-down.svg');
+        background-repeat: no-repeat;
+
+        &:before,
+        &:after {
+            content: ' ';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+            opacity: .2;
+            background: url('../../public/arrow-down.svg')
+                no-repeat center top;
+            background-size: 100% auto;
+        }
+
+        &:before {
+            animation: pulse 1.5s 0.25s infinite normal ease forwards;
+        }
+
+        &:after {
+            animation: pulse 1.5s 0.5s infinite normal ease forwards;
+        }
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+    }
+}

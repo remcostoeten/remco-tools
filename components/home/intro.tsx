@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useActiveSectionContext } from '@/context/active-section-contex';
 import DownloadCV from './pdf';
 import { useTheme } from '@/context/theme-context';
+import ArrowDown from '../ArrowDown';
 
 export default function Intro() {
     const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
@@ -52,7 +53,7 @@ export default function Intro() {
     return (
         <section
             id='home'
-            className='intro padding-y mx-auto max-w-[50rem] text-center scroll-mt-[100rem]'
+            className='intro relative padding-y mx-auto max-w-[50rem] text-center scroll-mt-[100rem]'
         >
             <motion.div
                 variants={containerVariants}
@@ -189,6 +190,8 @@ export default function Intro() {
                     </div>
                 </motion.div>
             </motion.div>
+        <ArrowDown/>
+
         </section>
     );
 }

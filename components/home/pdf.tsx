@@ -16,11 +16,16 @@ export default function DownloadCV() {
             <Drawer.Root shouldScaleBackground>
                 <Drawer.Trigger asChild>
                     <button
-                        className='border p-2.5 bg-transparent rounded-xl w-max flex align-middle items-center gap-4 justify-center  text-offwhite  px-10 border-black borderf dark:shadow-lg shadow-neutral-900 mt-2'
+                        className='pdf border p-2.5 bg-transparent rounded-xl w-max flex align-middle items-center gap-4 justify-center  text-offwhite  px-10 border-black borderf dark:shadow-lg shadow-neutral-900 mt-2'
                         onClick={openPdf}
                     >
+                        <span className='pdf__hover-icon'>
+                            <HiDownload />
+                        </span>
                         Download CV
-                        <HiDownload />
+                        <span className='pdf__hover-initial'>
+                            <HiDownload />
+                        </span>
                     </button>
                 </Drawer.Trigger>
                 <Drawer.Portal>
@@ -38,10 +43,10 @@ export default function DownloadCV() {
                                             indication.
                                         </h2>
                                         <small className='absolute right-4 top-2 sm:top-12 opacity-25 '>
-                                        Swipe to close, also on desktop :)
-                                    </small>
+                                            Swipe to close, also on desktop :)
+                                        </small>
                                     </div>
-                         
+
                                     <div className='bg-white w-4/5 h-4/5 shadow-lg rounded-lg overflow-hidden relative'>
                                         <iframe
                                             title='PDF Viewer'
