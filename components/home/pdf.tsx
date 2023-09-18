@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import { HiDownload } from 'react-icons/hi';
 import { Drawer } from 'vaul';
+import ArrowButton from '../core/buttons/ArrowBtn';
 
 export default function DownloadCV() {
     const [isPdfOpen, setIsPdfOpen] = useState(false);
@@ -12,28 +13,16 @@ export default function DownloadCV() {
     };
 
     return (
-        <>
-            <Drawer.Root shouldScaleBackground>
-                <Drawer.Trigger asChild>
-                    <button
-                        className='relative pdf btn btn__intro'
-                        onClick={openPdf}
-                    >
-                        <span className='pdf__hover-icon'>
-                            <HiDownload />
-                        </span>
-                        Download CV
-                        <span className='pdf__hover-initial'>
-                            <HiDownload />
-                        </span>
-                        <div className="particles"></div>
-                    </button>
-                </Drawer.Trigger>
-                <Drawer.Portal>
-                    <Drawer.Overlay className='fixed inset-0 bg-black/40' />
-                    <Drawer.Content className='bg-zinc-100 flex flex-col rounded-t-[10px] h-[96%] mt-24 fixed bottom-0 left-0 right-0'>
-                        <div className='relative p-4 bg-white rounded-t-[10px] flex-1'>
-                            {isPdfOpen && (
+        <Drawer.Root shouldScaleBackground>
+            <Drawer.Trigger asChild>
+                <ArrowButton text='Or download' onClick={openPdf} hoverText='View CV'/>
+            </Drawer.Trigger>
+            <Drawer.Portal>
+                <Drawer.Overlay className='fixed inset-0 bg-black/40' />
+                <Drawer.Content className='fixed bottom-0 left-0 right-0 mt-24 flex h-[96%] flex-col rounded-t-[10px] bg-zinc-100'>
+                    <div className='relative flex-1 rounded-t-[10px] bg-white p-4'>
+                        {isPdfOpen && (
+                            <React.Fragment>
                                 <div className='fixed inset-0 flex flex-col items-center justify-center gap-4 z-max'>
                                     <div className='fixed inset-0 bg-black opacity-75'></div>
                                     <div className='flex justify-between w-4/5 gap-2 left-10 top-4 '>
@@ -64,12 +53,12 @@ export default function DownloadCV() {
                                         </Link>
                                     </div>
                                 </div>
-                            )}
-                        </div>
-                        <Drawer.Close>Close</Drawer.Close>
-                    </Drawer.Content>
-                </Drawer.Portal>
-            </Drawer.Root>
-        </>
+                            </React.Fragment>
+                        )}
+                    </div>
+                    <Drawer.Close>Close</Drawer.Close>
+                </Drawer.Content>
+            </Drawer.Portal>
+        </Drawer.Root>
     );
 }

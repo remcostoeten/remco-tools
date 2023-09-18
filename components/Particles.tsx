@@ -2,14 +2,21 @@ import { Scale } from 'lucide-react';
 import React from 'react';
 
 /**
- * Props for the Particles component.
  * @typedef {Object} ParticlesProps
+ * @description Props for the Particles component.
  * @property {number} [particleCount] - Number of divs to be rendered.
  */
 interface ParticlesProps {
     particleCount: number;
 }
 
+/**
+ * @function Particles
+ * @description A functional component that generates a specified number of particles.
+ * Each particle is a div with random scale, rotation, skew, and perspective.
+ * @param {ParticlesProps} {particleCount} - The number of particles to generate.
+ * @returns {JSX.Element} A div containing all the generated particles.
+ */
 export default function Particles({particleCount}: ParticlesProps) {
     const particles = [];
     for(let i = 0; i < particleCount; i++) {
