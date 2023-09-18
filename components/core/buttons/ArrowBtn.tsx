@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-
+import Particles from '@c/Particles';
 /**
  * Props for the ArrowButton component.
  * @typedef {Object} ButtonProps
@@ -43,7 +43,7 @@ const ArrowButton = ({
                         </span>
                     )}
                 </span>
-                <div className='particles'></div>
+                <Particles particleCount={3}/>
             </Link>
         </button>
     );
