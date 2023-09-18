@@ -66,7 +66,7 @@ export default function RootLayout({
     return (
         <html lang='en' className='!scroll-smooth dark'>
             <body
-                className={`${lexend.className} bg-gray-50 text-gray-950 relative pt-28 sm:pt-36 dark:bg-[#151817] dark:text-gray-50 dark:text-opacity-90`}
+                className={`${lexend.className} relative pt-28 sm:pt-36 dark:bg-offblack dark:text-gray-50 dark:text-opacity-90`}
             >
                 <ThemeContextProvider>
                     <ActiveSectionContextProvider>

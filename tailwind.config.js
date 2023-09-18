@@ -7,6 +7,7 @@ module.exports = {
         './app/**/*.{ts,tsx}',
         './src/**/*.{ts,tsx}',
     ],
+    important: true,
     theme: {
         container: {
             center: true,
@@ -27,10 +28,12 @@ module.exports = {
             },
             backgroundColor: {
                 expense: '#f181818',
+                offblack: 'var(--offblack)'
             },
             textColor: {
                 offwhite: 'FAF9F6',
-                black: '#151515',
+                black: 'var(--offblack)',
+                offblack: 'var(--offblack)',
             },
             colors: {
                 offwhite: 'FAF9F6',
@@ -44,7 +47,7 @@ module.exports = {
                     foreground: 'hsl(var(--primary-foreground))',
                 },
                 secondary: {
-                    DEFAULT: '#151515',
+                    DEFAULT: 'var(--offblack)',
                 },
                 destructive: {
                     DEFAULT: 'hsl(var(--destructive))',

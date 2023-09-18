@@ -41,7 +41,7 @@ export default function page() {
                     <div id='reach-skip-nav' />
                     <div className='nx-w-full nx-break-words'>
                         <main className='relative flex h-full w-full flex-col items-center justify-center  overflow-hidden [--geist-foreground:#fff] [--gradient-stop-1:0px] [--gradient-stop-2:120px] dark:[--geist-foreground:#000] sm:[--gradient-stop-1:0px] sm:[--gradient-stop-2:120px]'>
-                            <div className='pointer-events-none absolute left-0 top-0 h-full w-full overflow-hidden'>
+                            <div className='absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none'>
                                 <div
                                     className='[--gradient-color-1=rgba(0,0,0,1)] [--gradient-color-2=rgba(0,0,0,0.8)] [--gradient-color-3=rgba(0,0,0,0)] dark:[--gradient-color-1=rgba(255,255,255,1)] dark:[--gradient-color-2=rgba(255,255,255,0.8)] dark:[--gradient-color-3=rgba(255,255,255,0)] absolute z-[-1] h-full w-full [--gradient-stop-1:60%] [--gradient-stop-2:85%] lg:[--gradient-stop-1:50%] lg:[--gradient-stop-2:90%]'
                                     style={{
@@ -49,9 +49,9 @@ export default function page() {
                                             'linear-gradient(180deg, var(--gradient-color-1) 0%, var(--gradient-color-2) var(--gradient-stop-1), var(--gradient-color-3) var(--gradient-stop-2), 100% transparent)',
                                     }}
                                 />
-                                <span className='landing_leftLights__L8NEZ opacity-50 dark:opacity-100' />
-                                <span className='landing_rightLights__agcl8 opacity-50 dark:opacity-100' />
-                                <span className='absolute bottom-0 left-0 h-48 w-full bg-gradient-to-t from-white to-transparent dark:from-black' />
+                                <span className='opacity-50 landing_leftLights__L8NEZ dark:opacity-100' />
+                                <span className='opacity-50 landing_rightLights__agcl8 dark:opacity-100' />
+                                <span className='absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-white to-transparent dark:from-black' />
                                 <span className='absolute left-0 top-[20vh] h-[50vh] w-full bg-gradient-to-b from-white to-transparent dark:from-black' />
                                 <div className='turbohero-background_container__Vu5AA ![perspective:1000px] sm:![perspective:1000px] md:![perspective:1000px] lg:![perspective:1000px]'>
                                     <div
@@ -76,7 +76,7 @@ export default function page() {
                                 </div>
                             </div>
                             <div
-                                className='z-10 flex h-full w-full flex-col items-center justify-center'
+                                className='z-10 flex flex-col items-center justify-center w-full h-full'
                                 style={{ opacity: 1, transform: 'none' }}
                             >
                                 <h1 className='mx-6 mt-12 w-[300px] bg-gradient-to-b from-black/80 to-black bg-clip-text pb-4  text-center text-5xl font-extrabold leading-tight text-transparent dark:from-white dark:to-[#AAAAAA] md:!w-full lg:!mt-20 lg:text-6xl xl:leading-snug'>
@@ -99,8 +99,8 @@ export default function page() {
                                             style={{ opacity: 0 }}
                                         />
                                         <div className='turborepoCardBg relative flex h-full w-full max-w-full flex-col items-center justify-center overflow-hidden rounded-xl border border-[rgba(255,255,255,0.05)] p-3 !pb-12 pt-8 md:!pb-4 md:!pt-4'>
-                                            <div className='mb-7 flex flex-1 items-center justify-center md:mb-0'>
-                                                <div className='relative h-24 w-24'>
+                                            <div className='flex items-center justify-center flex-1 mb-7 md:mb-0'>
+                                                <div className='relative w-24 h-24'>
                                                     <div className='pointer-events-none absolute left-1/2 top-1/2 h-[261px] w-[261px] -translate-x-1/2 -translate-y-1/2 bg-gradient-to-b from-[#FF3358] to-[#FF4FD8] opacity-5 mix-blend-normal blur-[60px] dark:opacity-[0.15]' />
                                                     <div className='contents dark:hidden'>
                                                         <img
@@ -134,7 +134,7 @@ export default function page() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className='flex flex-1 flex-col items-center'>
+                                            <div className='flex flex-col items-center flex-1'>
                                                 <svg
                                                     alt='Turborepo'
                                                     className='mb-3 w-[160px] fill-black dark:fill-white md:w-[220px]'
@@ -173,8 +173,8 @@ export default function page() {
                                             style={{ opacity: 0 }}
                                         />
                                         <div className='turbopackCardBg relative flex h-full w-full max-w-full flex-col items-center justify-center overflow-hidden rounded-xl border border-[rgba(255,255,255,0.05)] p-3 !pb-12 pt-8 md:!pb-4 md:!pt-4'>
-                                            <div className='mb-7 flex flex-1 items-center justify-center md:mb-0'>
-                                                <div className='relative h-24 w-24'>
+                                            <div className='flex items-center justify-center flex-1 mb-7 md:mb-0'>
+                                                <div className='relative w-24 h-24'>
                                                     <div className='pointer-events-none absolute left-1/2 top-1/2 h-[261px] w-[261px] -translate-x-1/2 -translate-y-1/2 bg-gradient-to-b from-[#4EBFFF] to-[#BD69FF] opacity-5 mix-blend-normal blur-[60px] dark:opacity-[0.15]' />
                                                     <div className='contents dark:hidden'>
                                                         <img
@@ -208,7 +208,7 @@ export default function page() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className='flex flex-1 flex-col items-center'>
+                                            <div className='flex flex-col items-center flex-1'>
                                                 <svg
                                                     alt='Turbopack'
                                                     className='mb-3 w-[160px] fill-black dark:fill-white md:w-[220px]'
@@ -253,7 +253,7 @@ export default function page() {
                                         around the world
                                     </p>
                                     <div className='z-50 grid grid-flow-col grid-rows-6 sm:grid-rows-3 md:grid-rows-2 lg:grid-rows-1'>
-                                        <div className='flex flex w-48 items-center justify-center dark:hidden lg:w-40'>
+                                        <div className='flex items-center justify-center w-48 dark:hidden lg:w-40'>
                                             <img
                                                 alt="Vercel's Logo"
                                                 fetchpriority='high'
@@ -261,7 +261,7 @@ export default function page() {
                                                 height={75}
                                                 decoding='async'
                                                 data-nimg={1}
-                                                className='mx-8 inline dark:hidden'
+                                                className='inline mx-8 dark:hidden'
                                                 src='/images/logos/color/vercel.svg'
                                                 style={{
                                                     color: 'transparent',
@@ -270,7 +270,7 @@ export default function page() {
                                                 }}
                                             />
                                         </div>
-                                        <div className='flex flex w-48 items-center justify-center dark:hidden lg:w-40'>
+                                        <div className='flex items-center justify-center w-48 dark:hidden lg:w-40'>
                                             <img
                                                 alt="AWS's Logo"
                                                 fetchpriority='high'
@@ -278,7 +278,7 @@ export default function page() {
                                                 height={75}
                                                 decoding='async'
                                                 data-nimg={1}
-                                                className='mx-8 inline dark:hidden'
+                                                className='inline mx-8 dark:hidden'
                                                 src='/images/logos/color/aws.svg'
                                                 style={{
                                                     color: 'transparent',
@@ -287,7 +287,7 @@ export default function page() {
                                                 }}
                                             />
                                         </div>
-                                        <div className='flex flex w-48 items-center justify-center dark:hidden lg:w-40'>
+                                        <div className='flex items-center justify-center w-48 dark:hidden lg:w-40'>
                                             <img
                                                 alt="Microsoft's Logo"
                                                 fetchpriority='high'
@@ -295,7 +295,7 @@ export default function page() {
                                                 height={75}
                                                 decoding='async'
                                                 data-nimg={1}
-                                                className='mx-8 inline dark:hidden'
+                                                className='inline mx-8 dark:hidden'
                                                 src='/images/logos/color/microsoft.svg'
                                                 style={{
                                                     color: 'transparent',
@@ -304,7 +304,7 @@ export default function page() {
                                                 }}
                                             />
                                         </div>
-                                        <div className='flex flex w-48 items-center justify-center dark:hidden lg:w-40'>
+                                        <div className='flex items-center justify-center w-48 dark:hidden lg:w-40'>
                                             <img
                                                 alt="Netflix's Logo"
                                                 fetchpriority='high'
@@ -312,7 +312,7 @@ export default function page() {
                                                 height={75}
                                                 decoding='async'
                                                 data-nimg={1}
-                                                className='mx-8 inline dark:hidden'
+                                                className='inline mx-8 dark:hidden'
                                                 src='/images/logos/color/netflix.svg'
                                                 style={{
                                                     color: 'transparent',
@@ -321,7 +321,7 @@ export default function page() {
                                                 }}
                                             />
                                         </div>
-                                        <div className='flex flex w-48 items-center justify-center dark:hidden lg:w-40'>
+                                        <div className='flex items-center justify-center w-48 dark:hidden lg:w-40'>
                                             <img
                                                 alt="Disney's Logo"
                                                 fetchpriority='high'
@@ -329,7 +329,7 @@ export default function page() {
                                                 height={75}
                                                 decoding='async'
                                                 data-nimg={1}
-                                                className='mx-8 inline dark:hidden'
+                                                className='inline mx-8 dark:hidden'
                                                 src='/images/logos/color/disney.svg'
                                                 style={{
                                                     color: 'transparent',
@@ -338,7 +338,7 @@ export default function page() {
                                                 }}
                                             />
                                         </div>
-                                        <div className='flex flex w-48 items-center justify-center dark:hidden lg:w-40'>
+                                        <div className='flex items-center justify-center w-48 dark:hidden lg:w-40'>
                                             <img
                                                 alt="Adobe's Logo"
                                                 fetchpriority='high'
@@ -346,7 +346,7 @@ export default function page() {
                                                 height={75}
                                                 decoding='async'
                                                 data-nimg={1}
-                                                className='mx-8 inline dark:hidden'
+                                                className='inline mx-8 dark:hidden'
                                                 src='/images/logos/color/adobe.svg'
                                                 style={{
                                                     color: 'transparent',
@@ -355,7 +355,7 @@ export default function page() {
                                                 }}
                                             />
                                         </div>
-                                        <div className='flex hidden w-48 items-center justify-center dark:flex lg:w-40'>
+                                        <div className='flex items-center justify-center hidden w-48 dark:flex lg:w-40'>
                                             <img
                                                 alt="Vercel's Logo"
                                                 fetchpriority='high'
@@ -363,7 +363,7 @@ export default function page() {
                                                 height={75}
                                                 decoding='async'
                                                 data-nimg={1}
-                                                className='mx-8 hidden dark:inline'
+                                                className='hidden mx-8 dark:inline'
                                                 src='/images/logos/white/vercel.svg'
                                                 style={{
                                                     color: 'transparent',
@@ -372,7 +372,7 @@ export default function page() {
                                                 }}
                                             />
                                         </div>
-                                        <div className='flex hidden w-48 items-center justify-center dark:flex lg:w-40'>
+                                        <div className='flex items-center justify-center hidden w-48 dark:flex lg:w-40'>
                                             <img
                                                 alt="AWS's Logo"
                                                 fetchpriority='high'
@@ -380,7 +380,7 @@ export default function page() {
                                                 height={75}
                                                 decoding='async'
                                                 data-nimg={1}
-                                                className='mx-8 hidden dark:inline'
+                                                className='hidden mx-8 dark:inline'
                                                 src='/images/logos/white/aws.svg'
                                                 style={{
                                                     color: 'transparent',
@@ -389,7 +389,7 @@ export default function page() {
                                                 }}
                                             />
                                         </div>
-                                        <div className='flex hidden w-48 items-center justify-center dark:flex lg:w-40'>
+                                        <div className='flex items-center justify-center hidden w-48 dark:flex lg:w-40'>
                                             <img
                                                 alt="Microsoft's Logo"
                                                 fetchpriority='high'
@@ -397,7 +397,7 @@ export default function page() {
                                                 height={75}
                                                 decoding='async'
                                                 data-nimg={1}
-                                                className='mx-8 hidden dark:inline'
+                                                className='hidden mx-8 dark:inline'
                                                 src='/images/logos/white/microsoft.svg'
                                                 style={{
                                                     color: 'transparent',
@@ -406,7 +406,7 @@ export default function page() {
                                                 }}
                                             />
                                         </div>
-                                        <div className='flex hidden w-48 items-center justify-center dark:flex lg:w-40'>
+                                        <div className='flex items-center justify-center hidden w-48 dark:flex lg:w-40'>
                                             <img
                                                 alt="Netflix's Logo"
                                                 fetchpriority='high'
@@ -414,7 +414,7 @@ export default function page() {
                                                 height={75}
                                                 decoding='async'
                                                 data-nimg={1}
-                                                className='mx-8 hidden dark:inline'
+                                                className='hidden mx-8 dark:inline'
                                                 src='/images/logos/white/netflix.svg'
                                                 style={{
                                                     color: 'transparent',
@@ -423,7 +423,7 @@ export default function page() {
                                                 }}
                                             />
                                         </div>
-                                        <div className='flex hidden w-48 items-center justify-center dark:flex lg:w-40'>
+                                        <div className='flex items-center justify-center hidden w-48 dark:flex lg:w-40'>
                                             <img
                                                 alt="Disney's Logo"
                                                 fetchpriority='high'
@@ -431,7 +431,7 @@ export default function page() {
                                                 height={75}
                                                 decoding='async'
                                                 data-nimg={1}
-                                                className='mx-8 hidden dark:inline'
+                                                className='hidden mx-8 dark:inline'
                                                 src='/images/logos/white/disney.svg'
                                                 style={{
                                                     color: 'transparent',
@@ -440,7 +440,7 @@ export default function page() {
                                                 }}
                                             />
                                         </div>
-                                        <div className='flex hidden w-48 items-center justify-center dark:flex lg:w-40'>
+                                        <div className='flex items-center justify-center hidden w-48 dark:flex lg:w-40'>
                                             <img
                                                 alt="Adobe's Logo"
                                                 fetchpriority='high'
@@ -448,7 +448,7 @@ export default function page() {
                                                 height={75}
                                                 decoding='async'
                                                 data-nimg={1}
-                                                className='mx-8 hidden dark:inline'
+                                                className='hidden mx-8 dark:inline'
                                                 src='/images/logos/white/adobe.svg'
                                                 style={{
                                                     color: 'transparent',

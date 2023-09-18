@@ -16,7 +16,7 @@ export default function DownloadCV() {
             <Drawer.Root shouldScaleBackground>
                 <Drawer.Trigger asChild>
                     <button
-                        className='pdf relative border p-2.5 bg-transparent rounded-xl w-max flex align-middle items-center gap-4 justify-center  text-offwhite  px-10 border-black borderf dark:shadow-lg shadow-neutral-900 mt-2'
+                        className='relative pdf btn btn__intro'
                         onClick={openPdf}
                     >
                         <span className='pdf__hover-icon'>
@@ -26,6 +26,7 @@ export default function DownloadCV() {
                         <span className='pdf__hover-initial'>
                             <HiDownload />
                         </span>
+                        <div className="particles"></div>
                     </button>
                 </Drawer.Trigger>
                 <Drawer.Portal>

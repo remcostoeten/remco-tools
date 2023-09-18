@@ -1,3 +1,49 @@
+$button-border: rgb(87, 83, 78);
+$transparent-button: transparent;
+$button-height: 42px;
+
+.btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: $button-height;
+    padding: $spacing 64px;
+    justify-content: center;
+    grid-column-gap: 12px;
+    grid-row-gap: 12px;
+    border: 1px solid #363333;
+    border-radius: 5000px;
+    background-color: transparent;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+
+    &__text {
+        transform: translateY(20px);
+    }
+
+    .animated-arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &--rounded {
+        border-radius: 9999px !important;
+    }
+
+    &--transparent {
+        background-color: $transparent-button !important;
+        border: 1px solid $button-border !important;
+        background-color: rgba(0, 0, 0, 0);
+        transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg)
+            rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+        transform-style: preserve-3d;
+        border-color: rgb(87, 83, 78);
+        opacity: 1;
+    }
+}
+
 .animbutton {
     transition: 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
 
@@ -7,6 +53,14 @@
 
     &:hover {
         transition: 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
+
+        .text {
+            transform: translateX(40px);                
+        }
+
+        .btn__hover-text {
+            scale: 2;
+        }
 
         .arrow {
             padding-left: $spacing;
@@ -23,7 +77,7 @@ $pdf-transition: 333ms;
     &:hover {
         .pdf__hover-icon {
             transition: $pdf-transition cubic-bezier(0.165, 0.84, 0.84, 1) all;
-            transform: translateY(43px);
+            transform: translateY(63px);
             transition-delay: $pdf-transition;
         }
 
@@ -111,7 +165,7 @@ $pdf-transition: 333ms;
 // Variables
 
 $black: #666;
-$white: #eaeaea;
+$white: $white;
 $gray: #999;
 
 $text-arrow-space: 16px;
@@ -123,6 +177,20 @@ $arrow-head-thickness: $shaft-thickness;
 .animbtn {
     height: 60px;
     display: flex;
+
+    .btn__hover-text {
+        transition-delay: 1.3s;
+        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);        transform: translatex(0);
+    }
+
+    &:hover {
+        .btn__hover-text {
+            transition-delay: 1.3s;
+            transition: all 0.5s;
+            transform: translatex(250px);
+            scale: 0;
+        }
+    }
 
     ul {
         li {
@@ -138,8 +206,8 @@ $arrow-head-thickness: $shaft-thickness;
 
         &.-left {
             position: absolute;
-            top: 60%;
-            left: 0;
+            top: 55%;
+            left: -60px;
 
             > .shaft {
                 width: 0;
@@ -163,6 +231,7 @@ $arrow-head-thickness: $shaft-thickness;
 
         &.-right {
             top: 3px;
+            right: -25px;
 
             > .shaft {
                 width: $shaft-width;
@@ -228,7 +297,7 @@ $arrow-head-thickness: $shaft-thickness;
             color: $white;
 
             > .the-arrow.-left {
-                transform: translateY(-8px);
+                transform: translateY(-44px), translateX(-12px);
                 > .shaft {
                     width: $shaft-width;
                     transition-delay: 0.1s;

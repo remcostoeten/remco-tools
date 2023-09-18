@@ -13,7 +13,6 @@ export default function Home() {
     return (
         <main className='flex flex-col items-center'>
             <Intro />
-            <ArrowDown target='about' />
             <HomeBanners/>
             <SectionDivider />
             <SectionSpacer variant='large' />
@@ -25,3 +24,4 @@ export default function Home() {
         </main>
     );
 }
+

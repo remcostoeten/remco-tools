@@ -7,10 +7,11 @@ $spacing-xl: 40px;
 $color-primary: pink;
 $color-secondary: blue;
 
-$black: #151817;
+$black: var(--offblack);
+$dark-text: var(--black-text);
 $white: #faf9f6;
 $grey: #fefeff;
-$dark-grey: #2e2e2e;
+$dark-grey: var(--black-accent);
 
 $arrow-down-size: 75px;
    

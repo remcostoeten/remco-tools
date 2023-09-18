@@ -7,8 +7,11 @@ import { useActiveSectionContext } from '@/context/active-section-contex';
 import DownloadCV from './pdf';
 import { useTheme } from '@/context/theme-context';
 import ArrowDown from '../ArrowDown';
-import { useTheme } from '@/context/theme-context';
-import ArrowDown from '../ArrowDown';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import IntroButtons from './IntroButtons';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Intro() {
     const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
@@ -26,9 +29,28 @@ export default function Intro() {
         };
     }, []);
 
+    useEffect(() => {
+        gsap.to(window, {
+            ScrollToOptions: {
+                y: '#home',
+                autoKill: false,
+                trigger: '#home',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: 1,
+                snap: {
+                    snapTo: 1 / 4,
+                    duration: { min: 0.2, max: 0.3 },
+                    delay: 0.2,
+                    ease: 'power1.inOut',
+                },
+            },
+        });
+    }, []);
+
     const containerVariants = {
         hidden: {},
-        visible: {                                  
+        visible: {
             transition: {
                 when: 'beforeChildren',
                 staggerChildren: 0.2, // Adjust the stagger duration as needed
@@ -55,7 +77,7 @@ export default function Intro() {
     return (
         <section
             id='home'
-            className='intro relative padding-y mx-auto max-w-[50rem] text-center scroll-mt-[100rem]'
+            className='intro padding-y relative mx-auto h-[75vh] max-w-[50rem] scroll-mt-[100rem] border-b border-white text-center'
         >
             <motion.div
                 variants={containerVariants}
@@ -92,7 +114,7 @@ export default function Intro() {
                                 height='192'
                                 quality='95'
                                 priority={true}
-                                className='h-24 mb-8  w-24 rounded-full object-cover border-[0.35rem] border-offwhite shadow-xl'
+                                className='mb-8 h-24  w-24 rounded-full border-[0.35rem] border-offwhite object-cover shadow-xl'
                             />
                         </motion.div>
 
@@ -112,7 +134,7 @@ export default function Intro() {
 
                 <motion.h1
                     variants={itemVariants}
-                    className='grow text-2xl font-medium padding-y !leading-[1.5] sm:text-4xl'
+                    className='padding-y grow text-2xl font-medium !leading-[1.5] sm:text-4xl'
                 >
                     <span className='font-bold'> My name is Remco, </span>a{' '}
                     <span className='italic dutch'>dutch</span>{' '}
@@ -124,35 +146,40 @@ export default function Intro() {
 
                 <motion.div
                     variants={itemVariants}
-                    className='flex flex-col items-center justify-center gap-2 px-4 text-lg font-medium sm:flex-row'
+                    className='flex flex-col items-center justify-center gap-2 px-4 text-lg font-medium effect sm:flex-row'
                 >
-                    <div className='animbtn'>
+                <IntroButtons/>
+                
+                    {/* <button className='animbtn'>
                         <Link
-                            className='border-black border flex animbutton p-2.5 bg-transparent rounded-xl w-max flex align-middle items-center gap-4 justify-center  text-offwhite  px-10 dark:shadow-lg shadow-neutral-900 mt-2 animated-arrow'
-                            href='#contact'
                             onClick={() => {
                                 setActiveSection('Contact');
                                 setTimeOfLastClick(Date.now());
                             }}
+                            className='btn inner btn__intro animated-arrow'
+                            href='#contact'
                         >
                             <span className='the-arrow -left'>
                                 <span className='shaft'></span>
                             </span>
                             <span className='main'>
-                                <span className='text'>Contact me here</span>
+                                <span className='text particles'>
+                                    Contact me here
+                                </span>
                                 <span className='the-arrow -right'>
                                     {' '}
                                     <span className='shaft'></span>
                                 </span>
                             </span>
+                            <div className="particles"></div>
                         </Link>
-                    </div>
+                    </button> */}
 
-                    <DownloadCV />
-                    <div className='flex gap-4 '>
+                    {/* <DownloadCV /> */}
+                    {/* <div className='flex gap-4 '>
                         <Link
                             data-cursor-hover
-                            className={`border-black border p-2.5 bg-transparent rounded-xl h-[50px] w-[50px] text-offwhite   dark:shadow-lg shadow-neutral-900 mt-2 flex items-center justify-center gap-2 focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack   ${
+                            className={`borderBlack mt-2 flex h-[50px] w-[50px] cursor-pointer items-center justify-center   gap-2 rounded-xl border border-black bg-transparent p-2.5 text-offwhite shadow-neutral-900 transition hover:scale-[1.15] focus:scale-[1.15] active:scale-105 dark:shadow-lg   ${
                                 theme === 'light'
                                     ? 'text-black'
                                     : 'dark:text-offwhite/60'
@@ -174,7 +201,7 @@ export default function Intro() {
 
                         <Link
                             data-cursor-hover
-                            className='border-black border p-2.5 bg-transparent rounded-xl h-[50px] w-[50px] text-offwhite   dark:shadow-lg shadow-neutral-900 mt-2 flex items-center justify-center gap-2 focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack   dark:text-offwhite/60'
+                            className='borderBlack dark:text-offwhite/60 mt-2 flex h-[50px] w-[50px] cursor-pointer items-center   justify-center gap-2 rounded-xl border border-black bg-transparent p-2.5 text-offwhite shadow-neutral-900 transition hover:scale-[1.15] focus:scale-[1.15] active:scale-105   dark:shadow-lg'
                             href='https://github.com/remcostoeten'
                             target='_blank'
                         >
@@ -189,11 +216,10 @@ export default function Intro() {
                                 <path d='M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z' />
                             </svg>
                         </Link>
-                    </div>
+                    </div> */}
                 </motion.div>
             </motion.div>
-        <ArrowDown/>
-
+            <ArrowDown target='#about' />
         </section>
     );
 }

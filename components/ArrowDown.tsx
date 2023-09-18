@@ -1,6 +1,5 @@
 'use client';
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 
 type ArrowProps = {
     target: string;
@@ -13,7 +12,7 @@ export default function ArrowDown({ target }: ArrowProps) {
         const handleScroll = () => {
             const scrollPos = window.scrollY;
             if (scrollPos > 150) {
-                setShowIndicator(false);
+                setShowIndicator(true);
             } else if (scrollPos < 150) {
                 setShowIndicator(true);
             }
@@ -27,8 +26,8 @@ export default function ArrowDown({ target }: ArrowProps) {
 
     return (
         showIndicator && (
-            <a href={target} className='scroll-down'>
-                <span className='scroll-down__animate'></span>
+            <a href={target} className='scroll-down z-max'>
+               <h1 className='text-[100px] text-white'>dddddddddddddd</h1> <span className='scroll-down__animate'></span>
             </a>
         )
     );
