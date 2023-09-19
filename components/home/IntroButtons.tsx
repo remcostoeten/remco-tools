@@ -5,7 +5,12 @@ import DownloadCV from './pdf';
 export default function IntroButtons() {
     return (
         <>
-                <ArrowButton text='Or download'  hoverText='View CV'/>
+            <ArrowButton
+                text='Get in contact'
+                showLeftArrow={false}
+                showRightArrow={false}
+                hoverText='say hiiiiiiiii'
+            />
             <DownloadCV />
         </>
     );

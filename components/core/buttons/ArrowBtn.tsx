@@ -37,23 +37,23 @@ const ArrowButton = ({
 }: ArrowArrowProps) => {
     return (
         <button className={`btn animbtn ${customClassName}`} onClick={onClick}>
+            {showLeftArrow && (
+                <span className='the-arrow -left'>
+                    <span className='shaft'></span>
+                </span>
+            )}{' '}
             <Link href='' className='btn--animated btn__intro animated-arrow'>
-                {showLeftArrow && (
-                    <span className='the-arrow -left'>
-                        <span className='shaft'></span>
-                    </span>
-                )}
                 <span className='main'>
                     {hoverText && (
                         <span className='btn__hover-text'>{hoverText}</span>
                     )}
-                    <span className='absolute text particles'>{text}</span>
-                    {showRightArrow && (
-                        <span className='the-arrow -right'>
-                            <span className='shaft'></span>
-                        </span>
-                    )}
-                </span>
+                    <span className='text'>{text}</span>
+                </span>{' '}
+                {showRightArrow && (
+                    <span className='the-arrow -right'>
+                        <span className='shaft'></span>
+                    </span>
+                )}
                 <Particles particleCount={3} />
             </Link>
         </button>
