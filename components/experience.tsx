@@ -12,7 +12,7 @@ import { experiencesData } from '@/config/data';
 import { motion } from 'framer-motion';
 
 export default function Experience() {
-    const { ref } = useSectionInView('Experience');
+    const { ref } = useSectionInView('exp');
     const { theme } = useTheme();
     const fadeInAnimationVariants = {
         initial: {

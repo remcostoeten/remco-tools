@@ -37,8 +37,8 @@ export function useMouseHoverEffect() {
     }
 
     elements.forEach((element) => {
-      addMouseHoverEffect(element);
-      return () => removeMouseHoverEffect(element);
+      addMouseHoverEffect(element as any);
+      return () => removeMouseHoverEffect(element as any);
     });
   }, [mouseX, mouseY]);
 
