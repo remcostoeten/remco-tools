@@ -75,17 +75,10 @@ export default function Intro() {
     };
 
     return (
-        <section
-            id='home'
-            className='intro padding-y relative mx-auto h-[75vh] max-w-[50rem] scroll-mt-[100rem] border-b border-white text-center'
-        >
-            <motion.div
-                variants={containerVariants}
-                initial='hidden'
-                animate='visible'
-            >
-                <div className='flex items-center justify-center'>
-                    <div className='relative'>
+        <section id="home" className="intro padding-y relative mx-auto h-[75vh] max-w-[50rem] scroll-mt-[100rem] border-b border-white text-center">
+            <motion.div variants={containerVariants} initial="hidden" animate="visible">
+                <div className="flex items-center justify-center">
+                    <div className="relative">
                         <motion.div
                             initial={{
                                 opacity: 0,
@@ -107,47 +100,19 @@ export default function Intro() {
                             }}
                         >
                             {' '}
-                            <Image
-                                src='https://media.licdn.com/dms/image/C5603AQFIlU2oV2JEgg/profile-displayphoto-shrink_800_800/0/1638502874210?e=2147483647&v=beta&t=NQAizH_x-gBtMhmn1APmsKcl9QjmasnaZ60TqG-ZhR4'
-                                alt='Remco Stoeten'
-                                width='192'
-                                height='192'
-                                quality='95'
-                                priority={true}
-                                className='mb-8 h-24  w-24 rounded-full border-[0.35rem] border-offwhite object-cover shadow-xl'
-                            />
+                            <Image src="https://media.licdn.com/dms/image/C5603AQFIlU2oV2JEgg/profile-displayphoto-shrink_800_800/0/1638502874210?e=2147483647&v=beta&t=NQAizH_x-gBtMhmn1APmsKcl9QjmasnaZ60TqG-ZhR4" alt="Remco Stoeten" width="192" height="192" quality="95" priority={true} className="mb-8 h-24  w-24 rounded-full border-[0.35rem] border-offwhite object-cover shadow-xl" />
                         </motion.div>
-
-                        <motion.span
-                            variants={itemVariants}
-                            className='absolute bottom-0 right-0 text-4xl'
-                        >
-                            <motion.span
-                                variants={itemVariants}
-                                className='wave'
-                            >
-                                👋
-                            </motion.span>
+                        <motion.span variants={itemVariants} className="absolute text-4xl left-[-17px] top-[4rem]">
+                            <span className="text-[35px] wave">👋</span>
                         </motion.span>
                     </div>
                 </div>
 
-                <motion.h1
-                    variants={itemVariants}
-                    className='padding-y grow text-2xl font-medium !leading-[1.5] sm:text-4xl'
-                >
-                    <span className='font-bold'> My name is Remco, </span>a{' '}
-                    <span className='italic dutch'>dutch</span>{' '}
-                    <span className='font-bold'>front-end developer</span> with{' '}
-                    <span className='font-bold'>7 years</span> of experience. I
-                    enjoy building things,{' '}
-                    <span className='italic'>with code</span>.
+                <motion.h1 variants={itemVariants} className="padding-y grow text-2xl font-medium !leading-[1.5] sm:text-4xl">
+                    <span className="font-bold"> My name is Remco, </span>a <span className="italic dutch">dutch</span> <span className="font-bold">front-end developer</span> with <span className="font-bold">7 years</span> of experience. I enjoy building things, <span className="italic">with code</span>.
                 </motion.h1>
 
-                <motion.div
-                    variants={itemVariants}
-                    className='flex flex-col items-center justify-center gap-2 px-4 text-lg font-medium effect sm:flex-row'
-                >
+                <motion.div variants={itemVariants} className="flex flex-col items-center justify-center gap-2 px-4 text-lg font-medium effect sm:flex-row">
                     <IntroButtons />
 
                     {/* <button className='animbtn'>

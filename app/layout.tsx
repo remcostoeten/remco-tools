@@ -9,10 +9,12 @@ import ThemeContextProvider from '@/context/theme-context';
 import ThemeSettings from '@/components/core/ToggleTheme';
 import { seoKeywords } from '@/config/keywords';
 import { Inter, Manrope, Lexend_Deca } from 'next/font/google';
+import Trailer from '@/components/core/Cursor';
+import Particles from './c/components/particles';
+import gridBg from './c/components/grid';
 const inter = Inter({ subsets: ['latin'] });
 const rope = Manrope({ subsets: ['latin'] });
 const lexend = Lexend_Deca({ subsets: ['latin'] });
-
 export const metadata = {
     title: {
         default: siteConfig.name,
@@ -58,28 +60,38 @@ export const metadata = {
     ],
 };
 
-export default function RootLayout({
-    children,
-}: {
-    children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="en" className="!scroll-smooth dark">
-            <body className={`${lexend.className} relative pt-28 sm:pt-36 dark:bg-offblack dark:text-gray-50 dark:text-opacity-90`}>
+        <html lang="en" className="dark">
+            <body className={`${lexend.className} relative pt-20 sm:pt-36 dark:bg-offblack dark:text-gray-50 dark:-text-opacity-90`}>
                 <ThemeContextProvider>
                     <ActiveSectionContextProvider>
-                        {/* <ThemeSettings /> */}
-                        <FancyHeader />
                         <Header />
-                        <main className="flex flex-col items-center page-wrapper__inner ">
-                            <div className="container">{children}</div>
-                        </main>
-                        <Analytics />
+                        <FancyHeader />
+                        <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" />
+                        <Particles className="absolute inset-0 -z-10 animate-fade-in" quantity={250} />
+                        {children}
+                        <Trailer />
                         <Toaster />
-                        {/* <Cursor /> */}
+                        <Analytics />
                     </ActiveSectionContextProvider>
                 </ThemeContextProvider>
             </body>
         </html>
+        // <html lang="en" className="!scroll-smooth dark">
+        //     <body className={`${lexend.className} relative pt-28 sm:pt-36 dark:bg-offblack dark:text-gray-50 dark:text-opacity-90`}>
+        //         <ThemeContextProvider>
+        //             <ActiveSectionContextProvider>
+        //                 {/* <ThemeSettings /> */}
+        //                 <main className="flex flex-col items-center page-wrapper__inner ">
+        //                     <div className="container">{children}</div>
+        //                 </main>
+        //                 <Analytics />
+        //                 <Toaster />
+        //                 {/* <Cursor /> */}
+        //             </ActiveSectionContextProvider>
+        //         </ThemeContextProvider>
+        //     </body>
+        // </html>
     );
 }

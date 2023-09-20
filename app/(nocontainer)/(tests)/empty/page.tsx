@@ -1,6 +1,5 @@
 'use client';
 import { Card } from '@/components/core/card';
-import { useMouseHoverEffect } from '@/hooks/useRemcostoeten';
 import React from 'react';
 
 interface YourComponentProps {
@@ -8,8 +7,6 @@ interface YourComponentProps {
 }
 
 export default function page() {
-    const { className } = useMouseHoverEffect();
-
     return (
         <div className=" bg-gradient-to-tl from-zinc-900/0 via-zinc-900 to-zinc-900/0">
             <div className="container flex items-center justify-center min-h-screen px-4 mx-auto">
