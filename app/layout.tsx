@@ -64,17 +64,15 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang='en' className='!scroll-smooth dark'>
-            <body
-                className={`${lexend.className} relative pt-28 sm:pt-36 dark:bg-offblack dark:text-gray-50 dark:text-opacity-90`}
-            >
+        <html lang="en" className="!scroll-smooth dark">
+            <body className={`${lexend.className} relative pt-28 sm:pt-36 dark:bg-offblack dark:text-gray-50 dark:text-opacity-90`}>
                 <ThemeContextProvider>
                     <ActiveSectionContextProvider>
-                        <ThemeSettings />
+                        {/* <ThemeSettings /> */}
                         <FancyHeader />
                         <Header />
-                        <main className='flex flex-col items-center page-wrapper__inner '>
-                            <div className='container'>{children}</div>
+                        <main className="flex flex-col items-center page-wrapper__inner ">
+                            <div className="container">{children}</div>
                         </main>
                         <Analytics />
                         <Toaster />

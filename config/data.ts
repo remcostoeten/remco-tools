@@ -50,12 +50,16 @@ export const links = [
         hash: '#skills',
     },
     {
-        name: 'Experience',
+        name: 'exp',
         hash: '#experience',
     },
     {
         name: 'Contact',
         hash: '#contact',
+    },
+    {
+        name: 'Posts',
+        hash: 'c',
     },
 ] as const;
 

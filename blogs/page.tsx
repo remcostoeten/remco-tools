@@ -8,15 +8,14 @@ import Skills from '@/components/home/skills';
 import SectionSpacer from '@/components/ui/SectionSpacer';
 import ArrowDown from '@/components/ArrowDown';
 import { HomeBanners } from '@/components/HomeBanners';
-import { MouseHoverEffect } from '@/components/core/MouseHoverEffect';
 
 export default function Home() {
     return (
-        <main className="flex flex-col items-center">
-            <MouseHoverEffect />
+        <main className='flex flex-col items-center'>
             <Intro />
+            <HomeBanners/>
             <SectionDivider />
-            <SectionSpacer variant="large" />
+            <SectionSpacer variant='large' />
             <About />
             <SectionDivider />
             <Skills />
@@ -25,3 +24,4 @@ export default function Home() {
         </main>
     );
 }
+
