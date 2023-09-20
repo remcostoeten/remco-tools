@@ -61,6 +61,7 @@
     "cmdk": "^0.1.22",
     "contentlayer": "^0.3.4",
     "date-fns": "^2.30.0",
+    "encoding": "^0.1.13",
     "firebase": "^10.2.0",
     "framer-motion": "^10.16.0",
     "gsap": "^3.12.2",

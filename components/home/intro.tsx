@@ -115,30 +115,28 @@ export default function Intro() {
                 <motion.div variants={itemVariants} className="flex flex-col items-center justify-center gap-2 px-4 text-lg font-medium effect sm:flex-row">
                     <IntroButtons />
 
-                    {/* <button className='animbtn'>
+                    <button className="animbtn">
                         <Link
                             onClick={() => {
                                 setActiveSection('Contact');
                                 setTimeOfLastClick(Date.now());
                             }}
-                            className='btn inner btn__intro animated-arrow'
-                            href='#contact'
+                            className="btn inner btn__intro animated-arrow"
+                            href="#contact"
                         >
-                            <span className='the-arrow -left'>
-                                <span className='shaft'></span>
+                            <span className="the-arrow -left">
+                                <span className="shaft"></span>
                             </span>
-                            <span className='main'>
-                                <span className='text particles'>
-                                    Contact me here
-                                </span>
-                                <span className='the-arrow -right'>
+                            <span className="main">
+                                <span className="text particles">Contact me here</span>
+                                <span className="the-arrow -right">
                                     {' '}
-                                    <span className='shaft'></span>
+                                    <span className="shaft"></span>
                                 </span>
                             </span>
                             <div className="particles"></div>
                         </Link>
-                    </button> */}
+                    </button>
 
                     {/* <DownloadCV /> */}
                     {/* <div className='flex gap-4 '>
