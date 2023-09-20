@@ -51,10 +51,20 @@ $button-height: 42px;
         padding-left: 0;
     }
 
+    .text {
+        padding: 16 24px;
+    }
+
+    .btn__hover-text {
+        position: absolute;
+        scale: 0;
+    }
+
     &:hover {
         transition: 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
 
         .text {
+            position: relative;
             transform: translateX(40px);
         }
 
@@ -372,13 +382,26 @@ $arrow-head-thickness: $shaft-thickness;
         position: relative;
         transition: all 0.2s;
 
+        &:hover {
+            .btn__hover-text {
+                transform:unset;
+            }
+        }
+
         > .main {
             display: flex;
             align-items: center;
+            justify-content: center;
             transition: all 0.2s;
 
+            .btn__hover-text {
+                position: absolute;
+            }
+
             > .text {
-                margin: 0 $text-arrow-space 0 0;
+                // margin: 0 $text-arrow-space 0 0;
+                padding: 12px 48px;
+                text-align: center;
             }
 
             > .the-arrow {

@@ -10,6 +10,11 @@ import ArrowDown from '../ArrowDown';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import IntroButtons from './IntroButtons';
+import I from '../core/Italic';
+import T from '../core/GradientText';
+import metadata from '@/config/metadata';
+import GithubLogo from '../core/icons/GithubLogo';
+import Linkedin from '../core/icons/Linkedin';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -39,7 +44,7 @@ export default function Intro() {
                 end: 'bottom top',
                 scrub: 1,
                 snap: {
-                    snapTo: 1 / 4,
+                    snapTo: 2 / 4,
                     duration: { min: 0.2, max: 0.3 },
                     delay: 0.2,
                     ease: 'power1.inOut',
@@ -74,8 +79,10 @@ export default function Intro() {
         },
     };
 
+    const socialClass = 'h-[60px] p-4 border rounded-xl';
+
     return (
-        <section id="home" className="intro padding-y relative mx-auto h-[75vh] max-w-[50rem] scroll-mt-[100rem] border-b border-white text-center">
+        <section id="home" className="intro padding-y relative mx-auto h-[75vh] max-w-[50rem] scroll-mt-[100rem]  text-center">
             <motion.div variants={containerVariants} initial="hidden" animate="visible">
                 <div className="flex items-center justify-center">
                     <div className="relative">
@@ -83,7 +90,7 @@ export default function Intro() {
                             initial={{
                                 opacity: 0,
                                 scale: 0,
-                                rotate: 90,
+                   ggfukiiuuuuuuuuyyygggggggggggdddsasaasaaaaaaaaaaeeeeewsssssssssssssdddddd             rotate: 90,
                                 skewY: 45,
                             }}
                             animate={{
@@ -109,35 +116,19 @@ export default function Intro() {
                 </div>
 
                 <motion.h1 variants={itemVariants} className="padding-y grow text-2xl font-medium !leading-[1.5] sm:text-4xl">
-                    <span className="font-bold"> My name is Remco, </span>a <span className="italic dutch">dutch</span> <span className="font-bold">front-end developer</span> with <span className="font-bold">7 years</span> of experience. I enjoy building things, <span className="italic">with code</span>.
+                    <span className="font-bold"> Remco, </span>a <I className="dutch" i="dutch" /> <span className="font-bold">front-end developer</span> with <span className="font-bold">7 years</span> of <T t="experience" />. I <I i="enjoy" /> building things,
+                    <I i="with code" />.
                 </motion.h1>
 
                 <motion.div variants={itemVariants} className="flex flex-col items-center justify-center gap-2 px-4 text-lg font-medium effect sm:flex-row">
                     <IntroButtons />
 
-                    <button className="animbtn">
-                        <Link
-                            onClick={() => {
-                                setActiveSection('Contact');
-                                setTimeOfLastClick(Date.now());
-                            }}
-                            className="btn inner btn__intro animated-arrow"
-                            href="#contact"
-                        >
-                            <span className="the-arrow -left">
-                                <span className="shaft"></span>
-                            </span>
-                            <span className="main">
-                                <span className="text particles">Contact me here</span>
-                                <span className="the-arrow -right">
-                                    {' '}
-                                    <span className="shaft"></span>
-                                </span>
-                            </span>
-                            <div className="particles"></div>
-                        </Link>
-                    </button>
-
+                    <Link data-cursor-hover className={socialClass} href={metadata.linkedinProfile} target="_blank">
+                        <Linkedin />
+                    </Link>
+                    <Link data-cursor-hover className={socialClass} href={metadata.githubProfile} target="_blank">
+                        <GithubLogo />
+                    </Link>
                     {/* <DownloadCV /> */}
                     {/* <div className='flex gap-4 '>
                         <Link
