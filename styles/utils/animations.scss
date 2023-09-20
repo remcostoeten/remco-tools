@@ -170,7 +170,7 @@ $readmore-ease: ease;
     display: inline-block;
     scale: 0;
     animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
-    animation: wave-animation 2.3s  infinite, scaleIn 1s 1750ms forwards;
+    animation: wave-animation 2.3s infinite, scaleIn 1s 1750ms forwards;
 }
 
 @keyframes scaleIn {
@@ -233,12 +233,7 @@ $readmore-ease: ease;
 // Dutch text mask gradient
 
 .dutch {
-    background: linear-gradient(
-        90deg,
-        rgba(255, 0, 0, 0.476),
-        white,
-        rgba(37, 74, 143, 0.485)
-    );
+    background: linear-gradient(90deg, rgba(255, 0, 0, 0.476), white, rgba(37, 74, 143, 0.485));
     background-size: 200% 100%;
     background-clip: text;
     -webkit-background-clip: text;
@@ -310,11 +305,7 @@ $readmore-ease: ease;
         position: relative;
         max-height: 100px; /* or however tall you want the preview to be */
         overflow: hidden;
-        background: linear-gradient(
-            to bottom,
-            red,
-            yellow
-        ); /* just a sample gradient background */
+        background: linear-gradient(to bottom, red, yellow); /* just a sample gradient background */
     }
 
     .text-content {
@@ -327,11 +318,7 @@ $readmore-ease: ease;
         left: 0;
         right: 0;
         height: 30px; /* height of the fade effect */
-        background: linear-gradient(
-            to bottom,
-            rgba(255, 255, 255, 0),
-            rgba(255, 255, 255, 1)
-        );
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
     }
 
     .read-more {
@@ -457,15 +444,11 @@ $readmore-ease: ease;
 
         &:before {
             mix-blend-mode: overlay;
-            animation: pulse $arrow-down-duration 0.25s infinite normal ease
-                    forwards,
-                arrowFade $arrow-down-duration infinite;
+            animation: pulse $arrow-down-duration 0.25s infinite normal ease forwards, arrowFade $arrow-down-duration infinite;
         }
 
         &:after {
-            animation: pulse $arrow-down-duration 0.5s infinite normal ease
-                    forwards,
-                arrowFade $arrow-down-duration infinite;
+            animation: pulse $arrow-down-duration 0.5s infinite normal ease forwards, arrowFade $arrow-down-duration infinite;
         }
 
         &:hover {
@@ -473,7 +456,6 @@ $readmore-ease: ease;
         }
     }
 }
-
 
 //   Animation for scroll in view gradient after grow effect.
 
@@ -495,7 +477,7 @@ $readmore-ease: ease;
     }
 }
 
-// Generic scaleIn 
+// Generic scaleIn
 
 @keyframes scaleOneToTwo {
     0% {
@@ -513,32 +495,32 @@ $readmore-ease: ease;
     flex-direction: column;
     text-align: center;
     animation: move 4s infinite;
-  }
-  
-  .greeting {
+}
+
+.greeting {
     position: relative;
     top: 8.6vmin;
     animation: white-out 5s infinite;
-  }
-  
-  .closure::after {
+}
+
+.closure::after {
     content: '';
     position: absolute;
     height: 25vmin;
     width: 40vmin;
     background: #282c34;
     transform: translate(-45vmin, -24.5vmin);
-  }
-  
-  .closure::before {
+}
+
+.closure::before {
     content: '';
     position: absolute;
     height: 25vmin;
     width: 40vmin;
     background: #282c34;
     transform: translate(-40vmin, 5vmin);
-  }
-   
+}
+
 .wrapper {
     background: #282c34;
     font-size: 2vmin;
@@ -550,32 +532,76 @@ $readmore-ease: ease;
     align-items: center;
     color: #e4bb68;
 }
-   
-  .en {
+
+.en {
     color: #fa8231;
-  }
-  
-  .es {
+}
+
+.es {
     color: white;
-  }
-  
-  .de {
+}
+
+.de {
     color: #c678dd;
-  }
-  
-  .it {
+}
+
+.it {
     color: #a9b0bd;
-  }
-  
-  @keyframes move {
+}
+
+@keyframes move {
     25% {
-      transform: translatey(-5.8vmin);
-      opacity: 1;
+        transform: translatey(-5.8vmin);
+        opacity: 1;
     }
     50% {
-      transform: translatey(-11vmin);
+        transform: translatey(-11vmin);
     }
     75% {
-      transform: translatey(-16.5vmin);
+        transform: translatey(-16.5vmin);
     }
-  }
+}
+
+//   Scroll down anim
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    // transform: rotate(90deg);
+    cursor: pointer;
+}
+
+.arrow span {
+    display: block;
+    width: 1.5vw;
+    height: 1.5vw;
+    border-bottom: 5px solid white;
+    border-right: 5px solid white;
+    transform: rotate(45deg);
+    margin: -10px;
+    animation: animate 2s infinite;
+}
+
+.arrow span:nth-child(2) {
+    animation-delay: -0.2s;
+}
+
+.arrow span:nth-child(3) {
+    animation-delay: -0.4s;
+}
+
+@keyframes animate {
+    0% {
+        opacity: 0;
+        transform: rotate(45deg) translate(-20px, -20px);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: rotate(45deg) translate(20px, 20px);
+    }
+}

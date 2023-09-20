@@ -1,6 +1,6 @@
 'use client';
 import { useMousePosition } from '@/utils/Mouse';
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 
 interface ParticlesProps {
     className?: string;
@@ -15,7 +15,6 @@ export default function Particles({ className = '', quantity = 30, staticity = 5
     const canvasContainerRef = useRef<HTMLDivElement>(null);
     const context = useRef<CanvasRenderingContext2D | null>(null);
     const circles = useRef<any[]>([]);
-    const squares = useRef<any[]>([]);
     const mousePosition = useMousePosition();
     const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
     const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
@@ -48,17 +47,12 @@ export default function Particles({ className = '', quantity = 30, staticity = 5
     };
 
     const onMouseMove = () => {
-        if (canvasRef.current) {
-            const rect = canvasRef.current.getBoundingClientRect();
-            const { w, h } = canvasSize.current;
-            const x = mousePosition.x - rect.left - w / 2;
-            const y = mousePosition.y - rect.top - h / 2;
-            const inside = x < w / 2 && x > -w / 2 && y < h / 2 && y > -h / 2;
-            if (inside) {
-                mouse.current.x = x;
-                mouse.current.y = y;
-            }
-        }
+        // Calculate the mouse position relative to the entire body
+        const x = mousePosition.x - canvasSize.current.w / 2;
+        const y = mousePosition.y - canvasSize.current.h / 2;
+
+        mouse.current.x = x;
+        mouse.current.y = y;
     };
 
     type Circle = {
@@ -233,6 +227,8 @@ export default function Particles({ className = '', quantity = 30, staticity = 5
         });
         window.requestAnimationFrame(animate);
     };
+
+    // Rest of your code (circleParams, drawSquare, drawCircle, clearContext, drawParticles, remapValue, animate)
 
     return (
         <div className={className} ref={canvasContainerRef} aria-hidden="true" style={{ height: '100vh' }}>

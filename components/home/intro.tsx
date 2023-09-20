@@ -90,7 +90,7 @@ export default function Intro() {
                             initial={{
                                 opacity: 0,
                                 scale: 0,
-                   ggfukiiuuuuuuuuyyygggggggggggdddsasaasaaaaaaaaaaeeeeewsssssssssssssdddddd             rotate: 90,
+                                rotate: 90,
                                 skewY: 45,
                             }}
                             animate={{
