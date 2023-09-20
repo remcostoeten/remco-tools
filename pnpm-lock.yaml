@@ -107,6 +107,9 @@ dependencies:
   '@types/leaflet':
     specifier: ^1.9.3
     version: 1.9.4
+  '@upstash/redis':
+    specifier: ^1.22.0
+    version: 1.22.0
   '@vercel/analytics':
     specifier: ^1.0.2
     version: 1.0.2
@@ -5197,6 +5200,14 @@ packages:
       eslint-visitor-keys: 3.4.3
     dev: true
 
+  /@upstash/redis@1.22.0:
+    resolution: {integrity: sha512-sXoJDoEqqik0HbrNE7yRWckOySEFsoBxfRdCgOqkc0w6py19ZZG50SpGkDDEUXSnBqP8VgGYXhWAiBpqxrt5oA==}
+    dependencies:
+      isomorphic-fetch: 3.0.0
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
   /@vercel/analytics@1.0.2:
     resolution: {integrity: sha512-BZFxVrv24VbNNl5xMxqUojQIegEeXMI6rX3rg1uVLYUEXsuKNBSAEQf4BWEcjQDp/8aYJOj6m8V4PUA3x/cxgg==}
     dev: false
@@ -7726,6 +7737,15 @@ packages:
   /isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
     dev: true
+
+  /isomorphic-fetch@3.0.0:
+    resolution: {integrity: sha512-qvUtwJ3j6qwsF3jLxkZ72qCgjMysPzDfeV240JHiGZsANBYd+EEuu35v7dfrJ9Up0Ak07D7GGSkGhCHTqg/5wA==}
+    dependencies:
+      node-fetch: 2.6.7
+      whatwg-fetch: 3.6.19
+    transitivePeerDependencies:
+      - encoding
+    dev: false
 
   /iterator.prototype@1.1.2:
     resolution: {integrity: sha512-DR33HMMr8EzwuRL8Y9D3u2BMj8+RqSE850jfGu59kS7tbmPLzGkZmVSfyCFSDxuZiEY6Rzt3T2NA/qU+NwVj1w==}
@@ -10941,6 +10961,10 @@ packages:
   /websocket-extensions@0.1.4:
     resolution: {integrity: sha512-OqedPIGOfsDlo31UNwYbCFMSaO9m9G/0faIHj5/dZFDMFqPTcx6UwqyOy3COEaEOg/9VsGIpdqn62W5KhoKSpg==}
     engines: {node: '>=0.8.0'}
+    dev: false
+
+  /whatwg-fetch@3.6.19:
+    resolution: {integrity: sha512-d67JP4dHSbm2TrpFj8AbO8DnL1JXL5J9u0Kq2xW6d0TFDbCA3Muhdt8orXC22utleTVj7Prqt82baN6RBvnEgw==}
     dev: false
 
   /whatwg-url@5.0.0:

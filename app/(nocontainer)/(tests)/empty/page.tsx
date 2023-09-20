@@ -1,6 +1,6 @@
 'use client';
 import { Card } from '@/components/core/card';
-import { useMouseHoverEffect } from '@/hooks/useChronark';
+import { useMouseHoverEffect } from '@/hooks/useRemcostoeten';
 import React from 'react';
 
 interface YourComponentProps {
