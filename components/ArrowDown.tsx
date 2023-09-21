@@ -26,8 +26,8 @@ export default function ArrowDown({ target }: ArrowProps) {
 
     return (
         showIndicator && (
-            <a href={target} className='scroll-down z-max'>
-               <h1 className='text-[100px] text-white'>dddddddddddddd</h1> <span className='scroll-down__animate'></span>
+            <a href={target} className="scroll-down z-max">
+                <span className="scroll-down__animate"></span>
             </a>
         )
     );

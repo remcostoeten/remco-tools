@@ -332,7 +332,7 @@ $readmore-ease: ease;
         cursor: pointer;
     }
 }
-
+ 
 //   mobile body gradient animation
 .gradientanim {
     animation: gradientanim 13s ease infinite;
@@ -393,7 +393,7 @@ $readmore-ease: ease;
     margin: 0;
     position: absolute;
     left: 50%;
-    bottom: -70%;
+    bottom: -10%;
     width: $arrow-down-size;
     height: $arrow-down-size;
     transform: translate(-50%, -50%);
