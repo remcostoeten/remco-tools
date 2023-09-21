@@ -74,8 +74,8 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="en" className="dark">
-            <body className={`${lexend.className} relative pt-20 sm:pt-36 dark:bg-offblack dark:text-gray-50 dark:-text-opacity-90`}>
+        <html lang="en" className="!scroll-smooth dark">
+        <body className={`${lexend.className} relative pt-20 sm:pt-36 dark:bg-offblack dark:text-gray-50 dark:-text-opacity-90`}>
                 <ThemeContextProvider>
                     <ActiveSectionContextProvider>
                         <Header />
@@ -89,7 +89,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </ThemeContextProvider>
             </body>
         </html>
-        // <html lang="en" className="!scroll-smooth dark">
         //     <body className={`${lexend.className} relative pt-28 sm:pt-36 dark:bg-offblack dark:text-gray-50 dark:text-opacity-90`}>
         //         <ThemeContextProvider>
         //             <ActiveSectionContextProvider>

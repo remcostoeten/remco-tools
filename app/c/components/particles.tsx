@@ -47,8 +47,7 @@ export default function Particles({ className = '', quantity = 30, staticity = 5
     };
 
     const onMouseMove = () => {
-        // Calculate the mouse position relative to the entire body
-        const x = mousePosition.x - canvasSize.current.w / 2;
+          const x = mousePosition.x - canvasSize.current.w / 2;
         const y = mousePosition.y - canvasSize.current.h / 2;
 
         mouse.current.x = x;
