@@ -5,31 +5,31 @@
 // utils
 @import 'utils/animations';
 
-// //  variables
-// @import 'variables/variables';
+//  variables
+@import 'variables/variables';
 
-// // // utilities
-// @import 'utils/mixins';
-// @import 'utils/animations';
+// // utilities
+@import 'utils/mixins';
+@import 'utils/animations';
 
-// // // core
-// @import 'core/body';
-// @import 'core/theme';
-// @import 'core/page-layout';
-// @import 'core/typography';
+// // core
+@import 'core/body';
+@import 'core/theme';
+@import 'core/page-layout';
+@import 'core/typography';
 
-// // // // components
-// @import 'components/hamburger-icon';
-// @import 'components/not-found';
-// @import 'components/page-loader';
-// @import 'components/cards.scss';
-// @import 'components/hovereffect.scss';
-// @import 'components/cursor';
-// @import 'components/blobcursor';
-// @import 'components/buttons.scss';
-// @import 'components/footer.scss';
-// @import 'components/turbo.scss';
-// // @import 'components/glowcard.scss';
+// // // components
+@import 'components/hamburger-icon';
+@import 'components/not-found';
+@import 'components/page-loader';
+@import 'components/cards.scss';
+@import 'components/hovereffect.scss';
+@import 'components/cursor';
+@import 'components/blobcursor';
+@import 'components/buttons.scss';
+@import 'components/footer.scss';
+@import 'components/turbo.scss';
+@import 'components/glowcard.scss';
 
 @layer base {
     :root {

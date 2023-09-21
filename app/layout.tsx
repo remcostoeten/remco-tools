@@ -52,6 +52,17 @@ export const metadata = {
         shortcut: '/favicon-16x16.png',
         apple: '/apple-touch-icon.png',
     },
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            'index': true,
+            'follow': true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
     authors: [
         {
             name: 'Remco Stoeten',
@@ -68,7 +79,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <ActiveSectionContextProvider>
                         <Header />
                         <FancyHeader />
-                        <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" />
                         <Particles className="absolute inset-0 -z-10 animate-fade-in" quantity={250} />
                         {children}
                         <Trailer />

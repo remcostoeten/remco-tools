@@ -9,6 +9,7 @@ import SectionSpacer from '@/components/ui/SectionSpacer';
 import ArrowDown from '@/components/ArrowDown';
 import { HomeBanners } from '@/components/HomeBanners';
 import { MouseHoverEffect } from '@/components/core/MouseHoverEffect';
+import AnimatedDiv from '@/utils/AnimatedDiv';
 
 export default function Home() {
     return (
