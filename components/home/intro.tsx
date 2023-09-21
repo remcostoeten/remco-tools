@@ -83,7 +83,7 @@ export default function Intro() {
 
     return (
         <>
-            <section id="home" className="intro padding-y relative mx-auto h-[75vh] max-w-[50rem] scroll-mt-[100rem]  text-center">
+            <section id="home" className="intro padding-y relative mx-auto h-[75vh] max-w-[53rem] scroll-mt-[100rem]  text-center">
                 <ArrowDown target={''} />
                 <motion.div variants={containerVariants} initial="hidden" animate="visible">
                     <div
@@ -122,7 +122,7 @@ export default function Intro() {
                         </div>
                     </div>
 
-                    <motion.h1 variants={itemVariants} className="padding-y grow text-4xl font-medium leading-[51px]">
+                    <motion.h1 variants={itemVariants} className="padding-y grow text-5xl font-medium leading-[51px]">
                         <span className="font-bold"> Remco, </span>a <I className="dutch" i="dutch" /> <span className="font-bold">front-end developer</span> with <span className="font-bold">7 years</span> of <T t="experience" />. I <I i="enjoy" /> building things,
                         <I i="with code" />.
                     </motion.h1>
