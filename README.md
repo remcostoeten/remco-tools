@@ -1,3 +1,3 @@
 ## remcostoeten.com
 
-My personal site which is a combination of all kinds of tools I built for experience or producitvity. Alsoshowcasing some portfolio stuff and overall making cool stuff which I enjoy.
+My personal website that is a ongoing WiP. A combination between various productivity tools I built, a portfolio showcase and a blog/snippets site. Nothing special, just some hobby coding.
