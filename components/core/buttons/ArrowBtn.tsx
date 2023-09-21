@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Particles from '@c/Particles';
 import { MenuArrowProps } from '@radix-ui/react-dropdown-menu';
 /**
- * Props for the ArrowButton component.
+ * Props for the RoundedButton component.
  * @typedef {Object} ButtonProps
  * @property {() => void} [onClick] - Function to be called on button click.
  * @property {string} [customClassName] - Custom CSS class name for the button.
@@ -14,11 +14,11 @@ import { MenuArrowProps } from '@radix-ui/react-dropdown-menu';
  */
 
 /**
- * ArrowButton component for displaying an animated button with arrows.
+ * RoundedButton component for displaying an animated button with arrows.
  * @param {ButtonProps} props - The component props.
  */
 
-type ArrowArrowProps = {
+type RoundedButtonProps = {
     onClick?: () => void;
     customClassName?: string;
     showLeftArrow?: boolean;
@@ -27,37 +27,18 @@ type ArrowArrowProps = {
     text: string;
 };
 
-const ArrowButton = ({
-    onClick,
-    customClassName,
-    showLeftArrow = true,
-    showRightArrow = true,
-    hoverText,
-    text,
-}: ArrowArrowProps) => {
+const RoundedButton = ({ onClick, customClassName, showLeftArrow = true, showRightArrow = true, hoverText, text }: RoundedButtonProps) => {
     return (
-        <button className={`btn animbtn ${customClassName}`} onClick={onClick}>
-            {showLeftArrow && (
-                <span className='the-arrow -left'>
-                    <span className='shaft'></span>
-                </span>
-            )}{' '}
-            <Link href='' className='btn--animated btn__intro animated-arrow'>
-                <span className='main'>
-                    {hoverText && (
-                        <span className='btn__hover-text'>{hoverText}</span>
-                    )}
-                    <span className='text'>{text}</span>
+        <button className={`cta animbtn ${customClassName}`} onClick={onClick}>
+            <Link href="" className="btn--animated btn__intro animated-arrow">
+                <span className="main">
+                    {hoverText && <span className="btn__hover-text">{hoverText}</span>}
+                    <span className="text">{text}</span>
                 </span>{' '}
-                {showRightArrow && (
-                    <span className='the-arrow -right'>
-                        <span className='shaft'></span>
-                    </span>
-                )}
-                <Particles particleCount={3} />
+                <Particles particleCount={} />
             </Link>
         </button>
     );
 };
 
-export default ArrowButton;
+export default RoundedButton;

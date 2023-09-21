@@ -129,29 +129,23 @@ export default function Intro() {
                     <Link data-cursor-hover className={socialClass} href={metadata.githubProfile} target="_blank">
                         <GithubLogo />
                     </Link>
+                    <button className="button button--regular">
+                        <Link
+                            onClick={() => {
+                                setActiveSection('Contact');
+                                setTimeOfLastClick(Date.now());
+                            }}
+                            href="#contact"
+                        >
+                            <span className="button__text">Contact </span>
+                            <span className="button__hover-text">Contact me here</span>
+                            <div className="particles"></div>
+                        </Link>
+                    </button>
+
                     {/* <DownloadCV /> */}
                     {/* <div className='flex gap-4 '>
-                        <Link
-                            data-cursor-hover
-                            className={`borderBlack mt-2 flex h-[50px] w-[50px] cursor-pointer items-center justify-center   gap-2 rounded-xl border border-black bg-transparent p-2.5 text-offwhite shadow-neutral-900 transition hover:scale-[1.15] focus:scale-[1.15] active:scale-105 dark:shadow-lg   ${
-                                theme === 'light'
-                                    ? 'text-black'
-                                    : 'dark:text-offwhite/60'
-                            }`}
-                            href='https://github.com/remcostoeten'
-                            target='_blank'
-                        >
-                            <svg
-                                xmlns='http://www.w3.org/2000/svg'
-                                width='20'
-                                height='20'
-                                fill='currentColor'
-                                viewBox='0 0 24 24'
-                                style={{ mixBlendMode: 'difference' }}
-                            >
-                                <path d='M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z' />
-                            </svg>
-                        </Link>
+
 
                         <Link
                             data-cursor-hover

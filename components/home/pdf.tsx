@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import { HiDownload } from 'react-icons/hi';
 import { Drawer } from 'vaul';
-import ArrowButton from '../core/buttons/ArrowBtn';
+import RoundedButton from '../core/buttons/ArrowBtn';
 
 export default function DownloadCV() {
     const [isPdfOpen, setIsPdfOpen] = useState(false);
@@ -15,7 +15,7 @@ export default function DownloadCV() {
     return (
         <Drawer.Root shouldScaleBackground>
             <Drawer.Trigger asChild>
-                <ArrowButton showLeftArrow={false} showRightArrow={false} text="View CV" onClick={openPdf} hoverText="Or Download" />
+                <RoundedButton showLeftArrow={false} showRightArrow={false} text="View CV" onClick={openPdf} hoverText="Or Download" />
             </Drawer.Trigger>
             <Drawer.Portal>
                 <Drawer.Overlay className="fixed inset-0 bg-black/40" />
