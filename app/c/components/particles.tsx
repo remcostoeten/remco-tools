@@ -132,7 +132,7 @@ export default function Particles({ className = '', quantity = 30, staticity = 5
             context.current.setTransform(dpr, 0, 0, dpr, 0, 0);
 
             if (!update) {
-                squares.current.push(square);
+                circles.current.push(square);
             }
         }
     };
