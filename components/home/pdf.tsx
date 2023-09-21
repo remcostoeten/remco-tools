@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import { HiDownload } from 'react-icons/hi';
 import { Drawer } from 'vaul';
-import RoundedButton from '../core/buttons/ArrowBtn';
+import { RoundedButton } from '../core/buttons/ArrowBtn';
 
 export default function DownloadCV() {
     const [isPdfOpen, setIsPdfOpen] = useState(false);

@@ -10,11 +10,13 @@ import ArrowDown from '@/components/ArrowDown';
 import { HomeBanners } from '@/components/HomeBanners';
 import { MouseHoverEffect } from '@/components/core/MouseHoverEffect';
 import AnimatedDiv from '@/utils/AnimatedDiv';
-
+import BlurBackground from '@/components/core/BlurBackground';
 export default function Home() {
     return (
         <main className="flex flex-col items-center">
             <MouseHoverEffect />
+            <BlurBackground />
+            <AnimatedDiv children={<HomeBanners />} />
             <Intro />
             <SectionDivider />
             <SectionSpacer variant="large" />

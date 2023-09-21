@@ -54,6 +54,7 @@ export const metadata = {
     },
     robots: {
         index: true,
+        
         follow: true,
         googleBot: {
             'index': true,
@@ -79,7 +80,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <ActiveSectionContextProvider>
                         <Header />
                         <FancyHeader />
-                        {/* <Particles className="absolute inset-0 -z-10 animate-fade-in" quantity={250} /> */}
+                        <Particles className="absolute inset-0 -z-10 animate-fade-in" quantity={150} />
                         {children}
                         <Trailer />
                         <Toaster />
