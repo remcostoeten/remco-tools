@@ -1,14 +1,11 @@
 body {
     overflow-x: hidden;
     background-color: $white;
+}
 
-}              
-body {
-  }
-  
 #_app-content {
     background-color: $black; /* or whatever your desired app background color is */
-  }
+}
 
 .grid-bg {
     margin: 0;
@@ -130,7 +127,7 @@ body:not(.table) {
     background-color: $black;
 }
 
-//  
+//
 @keyframes height {
     to {
         height: 0;
