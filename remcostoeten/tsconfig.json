@@ -1,22 +1,18 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
+    "module": "commonjs",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "baseUrl": ".",
     "plugins": [
       {
         "name": "next"
@@ -39,13 +35,23 @@
         "./styles/module/*"
       ]
     },
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "strictNullChecks": false
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "components/icons/ RemcostoetenLogoIcon.tsx"
+    "components/fancy-hamburger-header/header/anim.js",
+    "components/core/BackgroundVariantTwo.tsx",
+    "next.config.mjs",
+    "app/(nocontainer)/inspiration/page.js",
+    "app/(nocontainer)/(tests)/emptyy/page.jsx"
   ],
   "exclude": [
     "node_modules"

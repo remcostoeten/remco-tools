@@ -1,4 +1,4 @@
-import { SiteConfig } from '../utils/types';
+import { SiteConfig } from "@/lib/types";
 
 export const siteConfig: SiteConfig = {
     name: 'remcostoeten',
