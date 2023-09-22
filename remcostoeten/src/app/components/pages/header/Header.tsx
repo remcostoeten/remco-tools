@@ -1,12 +1,12 @@
 'use client';
+import { links } from '@/app/config/data';
+import { useActiveSectionContext } from '@/context/active-section-contex';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import React from 'react';
 import MiscDropdown from './MiscDropdown';
 import ShowcaseDropdown from './ShowcaseDropdown';
-import { links } from '@/config/data';
-import { useActiveSectionContext } from '@/context/ActiveSectionContext';
 
 export default function Header() {
     const { activeSection, setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
@@ -51,7 +51,7 @@ export default function Header() {
                                             <MiscDropdown />
                                         </motion.li>
                                         <motion.li initial={{ y: -100, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
-                                            <ShowcaseDropdown />
+                                            <SecondaryDropdown />
                                         </motion.li>
                                     </>
                                 )}

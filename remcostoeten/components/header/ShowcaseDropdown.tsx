@@ -1,36 +1,68 @@
-'use client';
-
 import * as React from 'react';
 
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from '@/components/ui/navigation-menu';
+import RemcoLogoIcon from '../icons/ RemcostoetenLogoIcon';
 import { cn } from '@/lib/utils';
 
 const components: { title: string; href: string; description: string }[] = [
     {
-        title: 'Inspiration',
-        href: '/inspiration',
-        description: 'A list of dope websites for inspiration.',
+        title: 'HTML to J/TSX Converter',
+        href: '/html-to-jsx',
+        description: 'Converts any HTML to JSX with the option to generate a fully functioning functional component, with or without props.',
     },
     {
-        title: 'Website todo list',
-        href: '/todo',
-        description: 'A todo  list for myself..',
+        title: 'Geolocation',
+        href: '/geolocation',
+        description: 'An app that allows you to find the longitude and latitude which pairs to an address. Save the address, reverse search them, show them on the map.',
+    },
+    {
+        title: 'Expenses Tracker',
+        href: '/income',
+        description: 'Life is expensive... get a grip on your expenses..',
+    },
+    {
+        title: 'SVG to CSS',
+        href: '/convert-svg',
+        description: 'Converts any SVG to CSS. Either as psuedo element or background image.',
+    },
+    {
+        title: 'Python Script Generator',
+        href: '/python',
+        description: 'Visually or semantically separates content.',
     },
 ];
 
-export default function MiscDropdown() {
+export default function ShowcaseDropdown() {
     return (
         <NavigationMenu>
             <NavigationMenuList>
                 <NavigationMenuItem>
-                    <NavigationMenuTrigger>Todos</NavigationMenuTrigger>
+                    <NavigationMenuTrigger className="trigger">Productivity tools</NavigationMenuTrigger>
                     <NavigationMenuContent>
-                        <ul className="grid gap-3 p-4 w-max md:grid-cols-1 ">
+                        <ul className="showAlternativeCursor z-max grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                            <li className="row-span-3">
+                                <NavigationMenuLink asChild>
+                                    <a className="flex flex-col justify-end w-full h-full p-6 no-underline rounded-md outline-none select-none bg-gradient-to-b from-muted/50 to-muted focus:shadow-md" href="/">
+                                        <RemcoLogoIcon />
+                                        <div className="mt-4 mb-2 text-lg font-medium">Some tools I built</div>
+                                        <p className="text-sm leading-tight text-muted-foreground">Initially to practice my skills, but ended up building tools which I use quite often and wanted to self-host, and share with others.</p>
+                                    </a>
+                                </NavigationMenuLink>
+                            </li>
                             {components.map((component) => (
-                                <ListItem key={component.title} title={component.title} href={component.href}>
+                                <ListItem key={component.href} href={component.href} title={component.title}>
                                     {component.description}
                                 </ListItem>
                             ))}
+                            <ListItem href="/playground" title="Playground">
+                                A code style playground UI used for the HTML converter and Python script generator.
+                            </ListItem>
+                            <ListItem href="/ui-elements/buttons" title="Buttons">
+                                An overview off various different buttons I've build.
+                            </ListItem>
+                            <ListItem href="/docs/primitives/typography" title="Typography">
+                                Styles for headings, paragraphs, lists...etc
+                            </ListItem>
                         </ul>
                     </NavigationMenuContent>
                 </NavigationMenuItem>
