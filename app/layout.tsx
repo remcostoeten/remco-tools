@@ -12,6 +12,7 @@ import { Inter, Manrope, Lexend_Deca } from 'next/font/google';
 import Trailer from '@/components/core/Cursor';
 import Particles from './c/components/particles';
 import gridBg from './c/components/grid';
+import ScrollBorder from '@/components/effects/ScrollBorder';
 const inter = Inter({ subsets: ['latin'] });
 const rope = Manrope({ subsets: ['latin'] });
 const lexend = Lexend_Deca({ subsets: ['latin'] });
@@ -78,6 +79,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <body className={`${lexend.className} dark:-text-opacity-90 relative pt-20 dark:bg-offblack dark:text-gray-50 sm:pt-36`}>
                 <ThemeContextProvider>
                     <ActiveSectionContextProvider>
+                        <ScrollBorder />
                         <Header />
                         <FancyHeader />
                         <Particles className="animate-fade-in fixed inset-0 -z-10" quantity={150} />

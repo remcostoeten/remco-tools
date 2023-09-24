@@ -27,11 +27,11 @@ export default function Footer() {
             transition={{
                 duration: 1,
             }}
-            className="flex pb-40 flex-col sm:flex-row w-full h-[475px] rounded-[18px] mb-32"
+            className="home-container mb-32 flex h-[475px] w-full flex-col rounded-[18px] pb-40 sm:flex-row"
         >
-            <div className="w-full border-none col-block sm:w-11/12 padding-block h-96 footer-grid__block l-round">
+            <div className="col-block padding-block footer-grid__block l-round h-96 w-full border-none sm:w-11/12">
                 <Image className="glow-icon" src="/icon-social.svg" alt="Social media" width={72} height={72} />
-                <h3 className="text-3xl font-bold grow">
+                <h3 className="grow text-3xl font-bold">
                     <span className={rope.className}>
                         Get in contact,
                         <br />
@@ -41,9 +41,9 @@ export default function Footer() {
                 <Contact />
             </div>
 
-            <div className="w-full r-round sm:w-5/12 justify-between flex flex-col sm:ml-[2rem]">
-                <div className="col-block footer-grid__block mb-[2rem] rounded-[18px] sm:h-full flex flex-col justify-between">
-                    <h3 className="text-3xl font-bold grow">
+            <div className="r-round flex w-full flex-col justify-between sm:ml-[2rem] sm:w-5/12">
+                <div className="col-block footer-grid__block mb-[2rem] flex flex-col justify-between rounded-[18px] sm:h-full">
+                    <h3 className="grow text-3xl font-bold">
                         <span className={rope.className}>
                             Before you go,
                             <br />
@@ -51,34 +51,34 @@ export default function Footer() {
                         </span>
                     </h3>
                     <ul className="flex flex-col gap-1.5 ">
-                        <li className="text-xl list-none col-block">
+                        <li className="col-block list-none text-xl">
                             <Link className="underline" href="https://snippets.remcostoeten.com" target="_blank" rel="noopener noreferrer">
                                 My snippets/docs
                             </Link>
                         </li>
-                        <li className="text-xl list-none col-block">
+                        <li className="col-block list-none text-xl">
                             <Link href="https://kanban.remcostoeten.com" className="underline" target="_blank" rel="noopener noreferrer">
                                 Kanban board
                             </Link>
                         </li>
-                        <li className="text-xl list-none">
+                        <li className="list-none text-xl">
                             <Link className="underline" href="geolocation" rel="noopener noreferrer">
                                 Geolocation app
                             </Link>
                         </li>
-                        <li className="text-xl underline list-none">
+                        <li className="list-none text-xl underline">
                             <Link href="/html-to-jsx">HTML to JSX</Link>
                         </li>
                     </ul>
                 </div>
-                <div className="footer mb-20 sm:mb-0 -mr-[1rem] flex h-[40%] justify-between">
-                    <Link href="https://github.com/remcostoeten" target="_blank" className="col-block grid mr-[1rem] w-1/3 h-[100%] place-items-center footer-grid__block rounded-[18px]">
+                <div className="footer -mr-[1rem] mb-20 flex h-[40%] justify-between sm:mb-0">
+                    <Link href="https://github.com/remcostoeten" target="_blank" className="col-block footer-grid__block mr-[1rem] grid h-[100%] w-1/3 place-items-center rounded-[18px]">
                         <GithubIcon />
                     </Link>
-                    <Link href="https://www.linkedin.com/in/remco-stoeten" target="_blank" rel="noopener noreferrer" className="showAlternativeCursor col-block  grid mr-[1rem] w-1/3 h-[100%] place-items-center footer-grid__block rounded-[18px]">
+                    <Link href="https://www.linkedin.com/in/remco-stoeten" target="_blank" rel="noopener noreferrer" className="showAlternativeCursor col-block  footer-grid__block mr-[1rem] grid h-[100%] w-1/3 place-items-center rounded-[18px]">
                         <Linkedin />
                     </Link>
-                    <Link target="_blank" href="https://gitlab.com/remcostoeten" className="showAlternativeCursor col-block grid mr-[1rem] w-1/3 h-[100%] place-items-center footer-grid__block rounded-[18px]">
+                    <Link target="_blank" href="https://gitlab.com/remcostoeten" className="showAlternativeCursor col-block footer-grid__block mr-[1rem] grid h-[100%] w-1/3 place-items-center rounded-[18px]">
                         <GitlabIcon />
                     </Link>
                 </div>
