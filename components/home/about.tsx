@@ -80,18 +80,6 @@ export default function About() {
                     </motion.p>
 
                     <motion.p className={`${paragraphStyles} pt-[100px]`} initial={{ opacity: 0, rotateX: -50, scale: 0.9 }} animate={{ opacity: 1 }} whileInView={{ opacity: 1, rotateX: 0, scale: 1 }} transition={{ duration: 1.5, type: 'spring', stiffness: 5 }}>
-                        <span className="swapwrapper">
-                            <div className="sentence">
-                                <div className="words rotate">
-                                    <span>Beautiful</span>
-                                    <span>Inspiring</span>
-                                    <span>Fabulous</span>
-                                    <span>Delightful</span>
-                                    <span>Spirited</span>
-                                </div>
-                                <br />
-                            </div>
-                        </span>{' '}
                         I love exploring new technologies, currently dabbling in some <T className="libre effect" t="Python" /> & <T className="libre" t="Lua" /> and want to dive into <T t="Go" className="libre" /> and the world of <I i="devops" />.{isOpen && <motion.div initial="hidden" animate={isOpen} variants={container}></motion.div>}
                     </motion.p>
                     <RoundedButton customClassName="mt-16 w-max" onClick={() => setIsOpen(!isOpen)} text="Want to know more?" />

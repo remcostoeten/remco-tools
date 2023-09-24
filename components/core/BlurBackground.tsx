@@ -24,9 +24,9 @@ export default function ParallaxEffect() {
     }, []);
 
     return (
-        <div className="-z-10 md:top:[-100px]" id="parallax" style={{ position: 'fixed', top: '0', left: '0' }} ref={parallaxRef}>
-            <div class Name="bg-[#1a1a1a] top-[-6rem ] right-[11rem] h-[31.25rem] w-[31.25r1em] rounded-full blur-[15rem] sm:w-[68.75rem] dark:bg-[#1e1e1e ]"></div>
-            <div className="bg-[#dbd7fb] left-[-35rem] h-[31.25rem] -bottom-[100px] w-[50rem] rounded-full blur-[15rem] sm:w-[68.75rem] md:left-[-33rem] lg:left-[-28rem] xl:left-[-15rem] 2xl:left-[-5rem] dark:bg-[#292736]"></div>
+        <div className="md:top:[-100px] -z-10" id="parallax" style={{ position: 'fixed', top: '0', left: '0' }} ref={parallaxRef}>
+            <div className="top-[-6rem ] dark:bg-[#1e1e1e ] right-[11rem] h-[31.25rem] w-[31.25r1em] rounded-full bg-[#1a1a1a] blur-[15rem] sm:w-[68.75rem]"></div>
+            <div className="-bottom-[100px] left-[-35rem] h-[31.25rem] w-[50rem] rounded-full bg-[#dbd7fb] blur-[15rem] dark:bg-[#292736] sm:w-[68.75rem] md:left-[-33rem] lg:left-[-28rem] xl:left-[-15rem] 2xl:left-[-5rem]"></div>
         </div>
     );
 }

@@ -15,7 +15,7 @@ export default function Home() {
     return (
         <main className="flex flex-col items-center">
             <MouseHoverEffect />
-            {/* <BlurBackground /> */}
+            <BlurBackground />
             <AnimatedDiv children={<HomeBanners />} />
             <Intro />
             <SectionSpacer variant="large" />
