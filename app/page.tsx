@@ -18,7 +18,7 @@ export default function Home() {
             <BlurBackground />
             <AnimatedDiv children={<HomeBanners />} />
             <Intro />
-            <SectionSpacer variant="large" />
+            {/* <SectionSpacer variant="large" /> */}
             <About />
             <SectionDivider />
             <Skills />

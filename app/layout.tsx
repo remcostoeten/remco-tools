@@ -74,13 +74,13 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="en" className="!scroll-smooth dark">
-        <body className={`${lexend.className} relative pt-20 sm:pt-36 dark:bg-offblack dark:text-gray-50 dark:-text-opacity-90`}>
+        <html lang="en" className="dark !scroll-smooth">
+            <body className={`${lexend.className} dark:-text-opacity-90 relative pt-20 dark:bg-offblack dark:text-gray-50 sm:pt-36`}>
                 <ThemeContextProvider>
                     <ActiveSectionContextProvider>
                         <Header />
                         <FancyHeader />
-                        <Particles className="absolute inset-0 -z-10 animate-fade-in" quantity={150} />
+                        <Particles className="animate-fade-in fixed inset-0 -z-10" quantity={150} />
                         {children}
                         <Trailer />
                         <Toaster />

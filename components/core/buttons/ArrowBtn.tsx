@@ -41,6 +41,21 @@ const RoundedButton = ({ onClick, customClassName, showLeftArrow = true, showRig
     );
 };
 
+
+const ReadMore = ({ onClick, customClassName, showLeftArrow = true, showRightArrow = true, hoverText, text }: RoundedButtonProps) => {
+    return (
+        <button className={`cta animbtn ${customClassName}`} onClick={onClick}>
+            <span className="btn--animated btn__intro animated-arrow">
+                <span className="main">
+                    {hoverText && <span className="btn__hover-text">{hoverText}</span>}
+                    <span className="text">{text}</span>
+                </span>
+                <Particles particleCount={2} /> {/* Assuming you have the Particles component */}
+            </span>
+        </button>
+    );
+};
+
 /**
  * Another button component example
  */
@@ -56,4 +71,4 @@ const RegularButton = () => {
     );
 };
 
-export { RoundedButton, RegularButton };
+export { RoundedButton, ReadMore, RegularButton };
