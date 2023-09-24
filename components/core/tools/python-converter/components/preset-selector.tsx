@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
 import { PopoverProps } from "@radix-ui/react-popover"
 
-import { cn } from '@/utils/utils';
+import { cn } from '@/lib/utils';
 import { Button } from '@ui/button';
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from '@ui/command';
 import { Popover, PopoverContent, PopoverTrigger } from '@ui/popover';

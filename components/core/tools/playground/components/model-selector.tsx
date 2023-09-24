@@ -4,7 +4,7 @@ import * as React from "react"
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
 import { PopoverProps } from "@radix-ui/react-popover"
 
-import { cn } from '@/utils/utils';
+import { cn } from '@/lib/utils';
 import { useMutationObserver } from '@/hooks/use-mutation-observer';
 import { Button } from '@ui/button';
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@ui/command';
