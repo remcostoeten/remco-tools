@@ -4,7 +4,8 @@ body {
 }
 
 #_app-content {
-    background-color: $black; /* or whatever your desired app background color is */
+    background-color: $black;
+    /* or whatever your desired app background color is */
 }
 
 .grid-bg {
@@ -52,6 +53,60 @@ $expense-black: #ff181818;
     border-radius: 16px;
 }
 
+.canvas-gradient {
+    background: linear-gradient(62deg, rgba(19, 20, 20, 0) 0%, rgba(30, 30, 30, 1) 75%);
+    width: 100vw;
+    height: 100vh;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    /* Add other CSS styles for your app content */
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, transparent, var(--offblack)) top,
+        linear-gradient(to right, transparent, var(--offblack)) right,
+        linear-gradient(to bottom, transparent, var(--offblack)) bottom,
+        linear-gradient(to left, transparent, var(--offblack)) left;
+    background-repeat: no-repeat;
+    background-size: 100% 200px, 200px 100%, 100% 20px, 20px 100%;
+    background-origin: border-box;
+    background-clip: content-box, content-box, content-box, content-box;
+    z-index: 9999;
+    /* Adjust the z-index as needed to make it sit on top */
+}
+
+canvas {
+    width: 100vw !important;
+
+    scale: 1.2;
+    height: 100vh !important;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        // a gradient that is transparent on the middle and offblack on the edges. the edges must be entiery solid color.
+        background: rgb(19, 20, 20);
+        background: radial-gradient(circle, rgba(19, 20, 20, 0) 0%, rgba(30, 30, 30, 1) 75%);
+        z-index: 1;
+        left: 0;
+        top: 0;
+    }
+}
+
 body:not(.table) {
     .container {
         display: flex;
@@ -64,14 +119,17 @@ body:not(.table) {
 
 .inspiration-table {
     font-weight: 600;
+
     thead {
         padding: $spacing;
         margin: $spacing;
         height: 60px;
     }
+
     tr {
         padding: $spacing;
         border: 1px solid rgba($color: #fff, $alpha: 0.2);
+
         td {
             padding: $spacing;
         }
@@ -93,6 +151,7 @@ body:not(.table) {
     max-width: 45rem !important;
 
     a {
+
         &:hover,
         &:visited,
         &:focus {

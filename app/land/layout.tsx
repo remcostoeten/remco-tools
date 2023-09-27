@@ -2,7 +2,6 @@ import '@/styles/styles.scss';
 import { siteConfig } from '@/config/site';
 import { Toaster } from '@/components/ui/toaster';
 import { Analytics } from '@vercel/analytics/react';
-import FancyHeader from '../components/fancy-hamburger-header/header';
 import ActiveSectionContextProvider from '@/context/active-section-contex';
 import Header from '@/components/core/header/Header';
 import ThemeContextProvider from '@/context/theme-context';
@@ -10,8 +9,8 @@ import ThemeSettings from '@/components/core/ToggleTheme';
 import { seoKeywords } from '@/config/keywords';
 import { Inter, Manrope, Lexend_Deca } from 'next/font/google';
 import Trailer from '@/components/core/Cursor';
-import Particles from './c/components/particles';
-import gridBg from './c/components/grid';
+import Particles from '../../c/components/particles';
+import gridBg from '../../c/components/grid';
 import ScrollBorder from '@/components/effects/ScrollBorder';
 const inter = Inter({ subsets: ['latin'] });
 const rope = Manrope({ subsets: ['latin'] });
@@ -76,10 +75,9 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en" className="dark !scroll-smooth">
-            <body className={`${lexend.className} bg-offblackw`}>
+            <body className={`${lexend.className} bg-offblack`}>
                 <ThemeContextProvider>
                     <ActiveSectionContextProvider>
-                        <ScrollBorder />
                         {/* <Header /> */}
                         {/* <FancyHeader /> */}
                         {/* <Particles className="animate-fade-in fixed inset-0 -z-10" quantity={150} /> */}
@@ -91,19 +89,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </ThemeContextProvider>
             </body>
         </html>
-        //     <body className={`${lexend.className} relative pt-28 sm:pt-36 dark:bg-offblack dark:text-gray-50 dark:text-opacity-90`}>
-        //         <ThemeContextProvider>
-        //             <ActiveSectionContextProvider>
-        //                 {/* <ThemeSettings /> */}
-        //                 <main className="flex flex-col items-center page-wrapper__inner ">
-        //                     <div className="container">{children}</div>
-        //                 </main>
-        //                 <Analytics />
-        //                 <Toaster />
-        //                 {/* <Cursor /> */}
-        //             </ActiveSectionContextProvider>
-        //         </ThemeContextProvider>
-        //     </body>
-        // </html>
     );
 }

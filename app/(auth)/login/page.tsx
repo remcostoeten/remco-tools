@@ -13,12 +13,10 @@ export default function LoginPage() {
       const result = await signInWithEmailAndPassword(auth, email, password);
       console.log('User logged in:', result.user);
 
-      // Continue with your logic here
-      // Please finish
-      // Add the logic needed for login
+
 
     } catch (error) {
-      console.error('Login failed:', error);
+      console.error('Login failed:', error); 
     }
   };
 
