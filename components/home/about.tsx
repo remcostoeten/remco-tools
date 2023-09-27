@@ -1,17 +1,14 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import { motion, useAnimation } from 'framer-motion'; // Updated motion import
 import useInView from '@/hooks/useInView';
-import { cubicBezier } from 'framer-motion';
-import { useSectionInView } from '@/hooks/useSectionInview';
-import { ReadMore, RoundedButton } from '../core/buttons/ArrowBtn';
+import { cubicBezier, motion, useAnimation } from 'framer-motion'; // Updated motion import
+import { useEffect, useState } from 'react';
 import T from '../core/GradientText';
 import I from '../core/Italic';
-import Link from 'next/link';
+import { ReadMore } from '../core/buttons/ArrowBtn';
 
 export default function About() {
     const [isOpen, setIsOpen] = useState(false);
-    const { ref } = useSectionInView('About me');
+    // const { ref } = useSectionInView('');
 
     const [reff, inView] = useInView({
         threshold: 0.1,
@@ -66,7 +63,7 @@ export default function About() {
 
     return (
         <>
-            <div className="home-container ml-0 pt-40 ">
+            <div className="home-container ml-0 pt-40">
                 <motion.section initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 1.5, stiffness: 150 }} id="about" className={sectionStyles}>
                     <motion.p className={`${paragraphStyles} pt-[100px]`} initial={{ opacity: 0, rotateX: -20, scale: 0.9 }} animate={{ opacity: 1 }} whileInView={{ opacity: 1, rotateX: 0, scale: 1 }} transition={{ duration: 1.5, type: 'spring', stiffness: 150 }}>
                         <I className="text-[90px]" i="Who dis?" />

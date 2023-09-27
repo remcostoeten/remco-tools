@@ -2,6 +2,32 @@ import { links } from "../config/data";
 
 export type SectionName = (typeof links)[number]["name"];
 
+export interface Expense {
+  id: string;
+  name: string;
+  expenseAmount: number;
+}
+
+export interface Income {
+  id: string;
+  name: string;
+  incomeAmount: number;
+}
+
+export interface Savings {
+  id: string;
+  name: string;
+  savingsAmount: number;
+}
+
+export interface IncomeProps {
+  id: string;
+  name: string;
+  isLoading: boolean;
+  expenseAmount: number;
+  incomeAmount: number;
+}
+
 
 export interface Task {
   id: string;
@@ -10,7 +36,7 @@ export interface Task {
   priority: string;
   task: string;
   description: string;
-  createdAt: string;  
+  createdAt: string;
      status: string;
 }
 
@@ -37,4 +63,3 @@ export interface SiteConfig {
     children: React.ReactNode
   }
 
-  

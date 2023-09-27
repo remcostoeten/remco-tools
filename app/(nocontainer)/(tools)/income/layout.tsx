@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 
 import CustomStatusBadge from '@/components/core/StatusBadge';
 import { PageHeader } from '@/components/ui/page-nav';
+import Intro from '@/components/dashboard/Intro';
 
 export const metadata: Metadata = {
     title: 'Expense Tracker',
@@ -21,7 +22,7 @@ const badges = [
 export default function UiShowcaseLayout({ children }: UiShowcaseLayoutProps) {
     return (
         <>
-            <div className='flex gap-4'>
+            {/* <div className='flex gap-4'>
                 {badges.map((badge, index) => (
                     <CustomStatusBadge key={index} {...badge} index={index} />
                 ))}
@@ -37,7 +38,8 @@ export default function UiShowcaseLayout({ children }: UiShowcaseLayoutProps) {
                         later to enter more expenses! 💵 💰
                     </p>
                 </PageHeader>
-            </header>
+                <Intro />
+            </header> */}
             <>{children}</>
         </>
     );

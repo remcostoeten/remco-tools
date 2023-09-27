@@ -38,8 +38,8 @@ export const links = [
         hash: '#home',
     },
     {
-        name: 'About me',
-        hash: '#about',
+        name: 'Dashboard',
+        hash: 'dashboard',
     },
     {
         name: 'Projects',

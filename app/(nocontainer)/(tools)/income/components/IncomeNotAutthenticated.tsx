@@ -16,7 +16,7 @@ interface IncomeNotAuthenticatedProps {
 const IncomeNotAuthenticated: React.FC<IncomeNotAuthenticatedProps> = ({ totalIncome, totalExpense, netWorth, expenses, incomes }) => {
     return (
         <>
-            <div className="flex flex-col gap-4 blur-[4px]">
+            {/* <div className="flex flex-col gap-4 blur-[4px]">
                 <div className="flex flex-col gap-4">
                     <div className="flex gap-4">
                         <Card className="card expense p-8 ">
@@ -72,7 +72,7 @@ const IncomeNotAuthenticated: React.FC<IncomeNotAuthenticatedProps> = ({ totalIn
                         </Card>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </>
     );
 };

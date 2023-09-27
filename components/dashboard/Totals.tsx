@@ -1,43 +1,14 @@
-// @ts-nocheck
 'use client';
-import React, { useEffect, useState } from 'react';
-import { addDoc, collection, deleteDoc, getDocs, QueryDocumentSnapshot } from 'firebase/firestore';
+import { useState, useEffect } from 'react';
 import { auth, db } from '@/utils/firebase';
+import { collection, getDocs, addDoc, deleteDoc, QueryDocumentSnapshot } from 'firebase/firestore';
+import Spinner from '@c/core/Spinner';
+import { toast } from '../ui/use-toast';
+import { Button } from '../ui/button';
+import { Expense, Income } from '@/utils/types';
+import { Input } from '../ui/input';
 
-import { BorderButton, RoundedGlowButton } from '@/components/core/buttons/CustomButtons';
-import { Card } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { toast } from '@/components/ui/use-toast';
-import IncomeNotAuthenticated from './IncomeNotAutthenticated';
-import Spinner from '@/components/core/Spinner';
-
-interface Expense {
-    id: string;
-    name: string;
-    expenseAmount: number;
-}
-
-interface Income {
-    id: string;
-    name: string;
-    incomeAmount: number;
-}
-
-interface Savings {
-    id: string;
-    name: string;
-    savingsAmount: number;
-}
-
-interface IncomeProps {
-    id: string;
-    name: string;
-    isLoading: boolean;
-    expenseAmount: number;
-    incomeAmount: number;
-}
-
-export default function Income({ }: IncomeProps) {
+export default function Totals() {
     const [expenseAmount, setExpenseAmount] = useState<number>(0);
     const [incomeAmount, setIncomeAmount] = useState<number>(0);
     const [expenseName, setExpenseName] = useState<string>('');
@@ -202,50 +173,72 @@ export default function Income({ }: IncomeProps) {
 
     return (
         <>
-            {/* <div className="flex w-full flex-col  justify-between gap-4">
-                <Card className="expense bg-expense">
+            <div className="flex w-full flex-col  justify-between gap-4">
+                <div className="">
                     {user ? (
                         <>
-                            <dl className="flex justify-between text-2xl font-bold">
-                                <dd>
-                                    <h2>Total Income:</h2>
-                                </dd>
-                                <dt className="font-normal">€{totalIncome},-</dt>
-                            </dl>
-                            <dl className="flex justify-between text-2xl font-bold">
-                                <dd>
-                                    <h2>Total expense:</h2>
-                                </dd>
-                                {isLoading ? <Spinner /> : <dt className="font-normal">€{totalExpense},-</dt>}{' '}
-                            </dl>
-                            <dl className="flex justify-between text-2xl font-bold">
-                                <dd>
-                                    <h2>Net Worth:</h2>
-                                </dd>
-                                {isLoading ? <Spinner /> : <dt className="font-normal">€{netWorth},-</dt>}
-                            </dl>
-                            <div className="mt-4 flex justify-end">
-                                <RoundedGlowButton onClick={handleClearAll} text="Clear All" />
-                            </div>
+                            return (
+                            <>
+                                <div className="flex w-full justify-between gap-4">
+                                    {/* Income Block */}
+                                    <div className="block-container">
+                                        <div className="block-title">Income</div>
+                                        <div className="block-content">
+                                            {/* Map and display income data here */}
+                                            {incomes.map((income) => (
+                                                <div key={income.id}>
+                                                    <span>Name: {income.name}</span>
+                                                    <span>Amount: €{income.incomeAmount},-</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    {/* Expense Block */}
+                                    <div className="block-container">
+                                        <div className="block-title">Expense</div>
+                                        <div className="block-content">
+                                            {/* Map and display expense data here */}
+                                            {expenses.map((expense) => (
+                                                <div key={expense.id}>
+                                                    <span>Name: {expense.name}</span>
+                                                    <span>Amount: €{expense.expenseAmount},-</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    {/* Savings Block */}
+                                    <div className="block-container">
+                                        <div className="block-title">Savings</div>
+                                        <div className="block-content">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Rest of your component */}
+                            </>
+                            );
+
                         </>
                     ) : (
-                        <IncomeNotAuthenticated totalIncome={0} totalExpense={0} netWorth={0} expenses={[]} incomes={[]} />
+                        <h1>test</h1>
                     )}
-                </Card>
+                </div>
             </div>
 
             <div className="flex flex-col gap-4">
                 <div className="flex flex-col gap-4">
                     <div className="flex gap-4">
-                        <Card className="card expense p-8 ">
+                        <div className="card expense p-8 ">
                             <h2 className="mb-4 text-2xl font-bold">Add Income</h2>
                             <div className="mb-4 flex items-center gap-4">
                                 <Input type="number" placeholder="€ ,-" value={incomeAmount} onChange={(e) => setIncomeAmount(Number(e.target.value))} />
                                 <Input type="text" value={incomeName} onChange={(e) => setIncomeName(e.target.value)} placeholder="Income Name" />
                             </div>
-                            <BorderButton onClick={handleAddIncome} text="Add Income" />
-                        </Card>
-                        <Card className="card expense p-8 ">
+                            <Button onClick={handleAddIncome} >Add income</Button>                        </div>
+                        <div className="card expense p-8 ">
                             <h2 className="mb-4 text-2xl font-bold">Add Expense</h2>
                             <div className="mb-4 flex items-center gap-4">
                                 <Input type="number" value={expenseAmount} placeholder="€ ,-" onChange={(e) => setExpenseAmount(Number(e.target.value))} />
@@ -256,10 +249,10 @@ export default function Income({ }: IncomeProps) {
                                     <option value="Utilities">Utilities</option>
                                 </select>
                             </div>
-                            <BorderButton onClick={handleAddExpense} text="Add Expense" />
-                        </Card>
+                            <button onClick={handleAddExpense}>Add Expense</button>
+                        </div>
                         <div className="flex flex-col gap-4">
-                            <Card className="card expense p-8 ">
+                            <div className="card expense p-8 ">
                                 <h2 className="mb-4 text-2xl font-bold">Add Savings</h2>
                                 <div className="mb-4 flex items-center">
                                     <Input
@@ -271,22 +264,22 @@ export default function Income({ }: IncomeProps) {
                                     />
                                     <Input type="text" value={savingsName} onChange={(e) => setSavingsName(e.target.value)} placeholder="Savings Name" className="-300 w-1/2 rounded-md border p-2" />
                                 </div>
-                                <BorderButton onClick={handleAddSavings} text="Add Savings" />
-                            </Card>
+                                <button onClick={handleAddSavings}>add saving</button>
+                            </div>
                         </div>
                     </div>
                     <div className="flex w-full gap-4 ">
-                        <Card className="card expense flex flex-1 flex-col p-8 ">
+                        <div className="card expense flex flex-1 flex-col p-8 ">
                             <dl className="mb-4 text-2xl font-bold">Expenses List:</dl>
                             {expenses.map((expense) => (
                                 <dl className="flex w-full justify-between" key={expense.id}>
                                     <dd>Name: {expense.name}</dd>
-                                    <Label>{expense.category}</Label>
+                                    <label>{expense.category}</label>
                                     <dt>Amount: €{expense.expenseAmount},-</dt>
                                 </dl>
                             ))}
-                        </Card>
-                        <Card className="card expense flex flex-1 flex-col p-8 ">
+                        </div>
+                        <div className="card expense flex flex-1 flex-col p-8 ">
                             <dl className="mb-4 text-2xl font-bold">Income List:</dl>
                             {incomes.map((income) => (
                                 <dl className="flex w-full justify-between" key={income.id}>
@@ -294,10 +287,11 @@ export default function Income({ }: IncomeProps) {
                                     <dt>Amount: €{income.incomeAmount},-</dt>
                                 </dl>
                             ))}
-                        </Card>
+                        </div>
                     </div>
                 </div>
-            </div> */}
+            </div>
         </>
     );
 }
+

@@ -8,7 +8,14 @@ import {
 
 import { MouseEventHandler, PropsWithChildren } from "react";
 
-export const Card: React.FC<PropsWithChildren> = ({ children }) => {
+type CardProps = {
+	className?: string;
+	children?: React.ReactNode;
+	onClick?: MouseEventHandler<HTMLDivElement>;
+};
+
+
+const Card: React.FC<CardProps> = ({ className, children }) => {
 	const mouseX = useSpring(0, { stiffness: 500, damping: 100 });
 	const mouseY = useSpring(0, { stiffness: 500, damping: 100 });
 
