@@ -4,7 +4,7 @@ import { cubicBezier, motion, useAnimation } from 'framer-motion'; // Updated mo
 import { useEffect, useState } from 'react';
 import T from '../core/GradientText';
 import I from '../core/Italic';
-import { ReadMore } from '../core/buttons/ArrowBtn';
+import { ReadMore } from '../core/buttons/Buttons';
 
 export default function About() {
     const [isOpen, setIsOpen] = useState(false);
