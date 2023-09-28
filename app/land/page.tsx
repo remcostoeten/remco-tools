@@ -34,7 +34,9 @@ export default function Page() {
                 <div className='absolute z-max top-[100px] left-[100px]'></div>
             </div>
             <main>
-                <InteractiveDots size={10} dotSize={dotSize} />
+                <InteractiveDots dotSize={
+                    125
+                } />
             </main>
         </>
     )

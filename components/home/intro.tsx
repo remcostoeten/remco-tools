@@ -79,7 +79,7 @@ export default function Intro() {
         },
     };
 
-    const socialClass = 'h-[60px] p-4 border rounded-xl';
+    const socialClass = 'h-[60px] p-4 border-[#363333] border rounded-xl';
 
     return (
         <>

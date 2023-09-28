@@ -25,17 +25,31 @@ type RoundedButtonProps = {
     showRightArrow?: boolean;
     hoverText?: string;
     text: string;
+    borderRadius?: 'rounded' | 'semi-rounded' | 'none';
 };
 
-const RoundedButton = ({ onClick, customClassName, showLeftArrow = true, showRightArrow = true, hoverText, text }: RoundedButtonProps) => {
+const Button = ({
+    onClick,
+    customClassName,
+    showLeftArrow = true,
+    showRightArrow = true,
+    hoverText,
+    text,
+    borderRadius = 'none'
+}: RoundedButtonProps) => {
     return (
-        <button className={`cta animbtn ${customClassName}`} onClick={onClick}>
+        <button
+            className={`cta animbtn ${customClassName}
+                            ${borderRadius === 'rounded' ? 'cta--rounded' : ''}
+                            ${borderRadius === 'semi-rounded' ? 'cta--semi-rounded' : ''}`}
+            onClick={onClick}
+        >
             <Link href="#contact" className="btn--animated btn__intro animated-arrow">
                 <span className="main">
                     {hoverText && <span className="btn__hover-text">{hoverText}</span>}
                     <span className="text">{text}</span>
                 </span>
-                <Particles particleCount={2} /> {/* Assuming you have the Particles component */}
+                <Particles particleCount={2} />
             </Link>
         </button>
     );
@@ -44,7 +58,7 @@ const RoundedButton = ({ onClick, customClassName, showLeftArrow = true, showRig
 
 const ReadMore = ({ onClick, customClassName, showLeftArrow = true, showRightArrow = true, hoverText, text }: RoundedButtonProps) => {
     return (
-        <button className={`cta animbtn ${customClassName}`} onClick={onClick}>
+        <button className={`cta cta--semi-rounded animbtn ${customClassName}`} onClick={onClick}>
             <span className="btn--animated btn__intro animated-arrow">
                 <span className="main">
                     {hoverText && <span className="btn__hover-text">{hoverText}</span>}
@@ -71,4 +85,4 @@ const RegularButton = () => {
     );
 };
 
-export { RoundedButton, ReadMore, RegularButton };
+export { Button, ReadMore, RegularButton };

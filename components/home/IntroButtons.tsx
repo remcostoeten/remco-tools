@@ -1,12 +1,16 @@
 import React from 'react';
 import DownloadCV from './pdf';
-import { RoundedButton } from '../core/buttons/ArrowBtn';
-
+import { Button } from '../core/buttons/Buttons';
 export default function IntroButtons() {
     return (
         <>
-            <RoundedButton text="Get in contact" showLeftArrow={false} customClassName="btn--rounded" showRightArrow={false} hoverText="say hiiiiiiiii" />
-            <DownloadCV />
+            <Button
+                text="Get in contact"
+                showLeftArrow={false}
+                customClassName="btn--semi-rounded" // Updated to "btn--semi-rounded"
+                showRightArrow={false}
+                hoverText="say hiiiiiiiii"
+            />            <DownloadCV />
         </>
     );
 }

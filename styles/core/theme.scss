@@ -67,23 +67,25 @@ body {
     /* Add other CSS styles for your app content */
 }
 
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, transparent, var(--offblack)) top,
-        linear-gradient(to right, transparent, var(--offblack)) right,
-        linear-gradient(to bottom, transparent, var(--offblack)) bottom,
-        linear-gradient(to left, transparent, var(--offblack)) left;
-    background-repeat: no-repeat;
-    background-size: 100% 200px, 200px 100%, 100% 20px, 20px 100%;
-    background-origin: border-box;
-    background-clip: content-box, content-box, content-box, content-box;
-    z-index: 9999;
-    /* Adjust the z-index as needed to make it sit on top */
+body {
+    &::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, transparent, var(--offblack)) top,
+            linear-gradient(to right, transparent, var(--offblack)) right,
+            linear-gradient(to bottom, transparent, var(--offblack)) bottom,
+            linear-gradient(to left, transparent, var(--offblack)) left;
+        background-repeat: no-repeat;
+        background-size: 100% 200px, 200px 100%, 100% 20px, 20px 100%;
+        background-origin: border-box;
+        background-clip: content-box, content-box, content-box, content-box;
+        z-index: 9999;
+        pointer-events: none;
+    }
 }
 
 canvas {

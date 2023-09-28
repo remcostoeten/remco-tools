@@ -3,8 +3,8 @@ $transparent-button: transparent;
 $button-height: 60px;
 
 .cta {
-      display: flex ;
-    align-items: center ;
+    display: flex;
+    align-items: center;
     justify-content: center;
     height: $button-height;
     justify-content: center;
@@ -14,7 +14,15 @@ $button-height: 60px;
     position: relative;
     overflow: hidden;
     transition: 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
-    border-radius: 9999px !important;
+
+    &--semi-rounded {
+        border-radius: 32px;
+    }
+
+    &--rounded {
+        border-radius: 99px;
+        ;
+    }
 }
 
 .button {
@@ -56,6 +64,7 @@ $button-height: 60px;
 
     &:hover {
         transition: 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
+
         .btn__hover-text {
             opacity: 1;
         }
@@ -87,8 +96,7 @@ $button-height: 60px;
         background-color: $transparent-button !important;
         border: 1px solid $button-border !important;
         background-color: rgba(0, 0, 0, 0);
-        transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg)
-            rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+        transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
         transform-style: preserve-3d;
         border-color: rgb(87, 83, 78);
         opacity: 1;
@@ -155,6 +163,7 @@ $pdf-transition: 333ms;
         text-decoration: none;
         border-radius: 300px;
         border: 1px solid rgba(255, 255, 255, 0.3);
+        border: 1px solid red;
         color: rgba(255, 255, 255, 0.3);
         height: 44px;
         width: 44px;
@@ -250,9 +259,10 @@ $arrow-head-thickness: $shaft-thickness;
         &:hover {
             color: $white;
 
-            > .the-arrow.-left {
+            >.the-arrow.-left {
                 transform: translateY(-44px), translateX(-12px);
-                > .shaft {
+
+                >.shaft {
                     width: $shaft-width;
                     transition-delay: 0.1s;
                     background-color: $white;
@@ -275,11 +285,11 @@ $arrow-head-thickness: $shaft-thickness;
             }
         }
 
-        > .main {
+        >.main {
             transform: translateX($shaft-width + $text-arrow-space);
 
-            > .the-arrow.-right {
-                > .shaft {
+            >.the-arrow.-right {
+                >.shaft {
                     width: 0;
                     transform: translateX(200%);
                     transition-delay: 0;
@@ -337,7 +347,7 @@ $arrow-head-thickness: $shaft-thickness;
             top: 55%;
             left: -60px;
 
-            > .shaft {
+            >.shaft {
                 width: 0;
                 background-color: $gray;
 
@@ -361,7 +371,7 @@ $arrow-head-thickness: $shaft-thickness;
             top: 3px;
             right: -25px;
 
-            > .shaft {
+            >.shaft {
                 width: $shaft-width;
                 transition-delay: 0.2s;
 
@@ -382,7 +392,7 @@ $arrow-head-thickness: $shaft-thickness;
             }
         }
 
-        > .shaft {
+        >.shaft {
             background-color: $gray;
             display: block;
             height: $shaft-thickness;
@@ -428,7 +438,7 @@ $arrow-head-thickness: $shaft-thickness;
             }
         }
 
-        > .main {
+        >.main {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -438,13 +448,13 @@ $arrow-head-thickness: $shaft-thickness;
                 position: absolute;
             }
 
-            > .text {
+            >.text {
                 // margin: 0 $text-arrow-space 0 0;
                 padding: 12px 48px;
                 text-align: center;
             }
 
-            > .the-arrow {
+            >.the-arrow {
                 transform: translateY(-2px);
                 position: relative;
             }
