@@ -2,6 +2,18 @@ import { links } from "../config/data";
 
 export type SectionName = (typeof links)[number]["name"];
 
+export interface Thought  {
+  id: string;
+  title: string;
+  description: string;
+  createdAt: string;
+  status: string;
+  priority: string;
+  label: string;
+  task: string;
+}
+
+
 export interface Expense {
   id: string;
   name: string;

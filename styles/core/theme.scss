@@ -3,9 +3,91 @@ body {
     background-color: $white;
 }
 
+.words {
+    padding: 6px 12px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    border-radius: 16px;
+    background-color: #282726;
+}
+
 #_app-content {
     background-color: $black;
     /* or whatever your desired app background color is */
+}
+
+
+.home-container {
+    min-width: 680px;
+    max-width: 680px;
+    margin: 0 auto;
+
+
+.text {
+    position: absolute;
+    width: 600px;
+    left: 50%;
+    margin-left: -225px;
+    height: 40px;
+    top: 50%;
+    margin-top: -20px;
+  }
+  
+  p {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0;
+  }
+  
+  .word {
+    position: absolute;
+    opacity: 0;
+  }
+  
+  .letter {
+    display: inline-block;
+    position: relative;
+    float: left;
+    transform: translateZ(25px);
+    transform-origin: 50% 50% 25px;
+  }
+  
+  .letter.out {
+    transform: rotateX(90deg);
+    transition: transform 0.32s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  
+  .letter.behind {
+    transform: rotateX(-90deg);
+  }
+  
+  .letter.in {
+    transform: rotateX(0deg);
+    transition: transform 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .wisteria {
+    color: #8e44ad;
+  }
+  
+  .belize {
+    color: #2980b9;
+  }
+  
+  .pomegranate {
+    color: #c0392b;
+  }
+  
+  .green {
+    color: #16a085;
+  }
+  
+  .midnight {
+    color: #2c3e50;
+  }
 }
 
 .grid-bg {
@@ -83,17 +165,16 @@ body {
         background-size: 100% 200px, 200px 100%, 100% 20px, 20px 100%;
         background-origin: border-box;
         background-clip: content-box, content-box, content-box, content-box;
-        z-index: 9999;
+        z-index: 49;
         pointer-events: none;
     }
 }
 
 canvas {
     width: 100vw !important;
-
     scale: 1.2;
     height: 100vh !important;
-    position: relative;
+    position: fixed;
 
     &::after {
         content: '';

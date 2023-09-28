@@ -82,7 +82,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         <ScrollBorder />
                         {/* <Header /> */}
                         <FancyHeader />
-                        <Particles className="animate-fade-in fixed inset-0 -z-10" quantity={150} />
+                        {/* <Particles className="animate-fade-in fixed inset-0 -z-10" quantity={150} /> */}
                         {children}
                         {/* <Trailer /> */}
                         <Toaster />
