@@ -1,9 +1,93 @@
 {
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.startupEditor": "newUntitledFile",
+  "editor.tabSize": 4,
+  "editor.fontFamily": "Fira Code",
+  "editor.fontSize": 14,
+  "editor.lineHeight": 20,
+  "editor.wordWrap": "off",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/build": true,
+    "**/,next": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/build": true,
+    "**/vendor": true
+  },
+  "vscodeWorkspaceSwitcher.paths": [
+    "~/Documents/Workspaces"
+  ],
+  "vscodeWorkspaceSwitcher.codeExecutable": "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code",
+  "html.autoClosingTags": false,
+  "javascript.autoClosingTags": false,
+  "typescript.autoClosingTags": true,
+  "gitlens.advanced.messages": {
+    "suppressShowKeyBindingsNotice": true
+  },
+  "gitlens.currentLine.enabled": false,
+  "gitlens.hovers.currentLine.over": "line",
+  "gitlens.codeLens.enabled": false,
+  "gitlens.hovers.enabled": false,
+  "gitlens.gitExplorer.location": "explorer",
+  "gitlens.gitExplorer.enabled": false,
+  "gitlens.historyExplorer.enabled": false,
+  "files.trimTrailingWhitespace": true,
+  "npm.enableScriptExplorer": true,
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "editor.smoothScrolling": true,
+  "editor.tokenColorCustomizations": {
+    "[Community Material Theme Darker High Contrast]": {
+      "comments": "#666666"
+    }
+  },
+  "gitlens.views.repositories.location": "explorer",
+  "gitlens.views.fileHistory.enabled": false,
+  "workbench.colorCustomizations": {},
+  "editor.cursorBlinking": "smooth",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "emmet.showAbbreviationSuggestions": false,
+  "emmet.showExpandedAbbreviation": "never",
+  "emmet.optimizeStylesheetParsing": false,
+  "python.showStartPage": false,
+  "[search-result]": {
+    "editor.lineNumbers": "off"
+  },
+  "[json]": {
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+    "editor.suggest.insertMode": "replace",
+    "gitlens.codeLens.scopes": [
+      "document"
+    ]
+  },
+  "material-icon-theme.files.associations": {},
+  "workbench.editor.untitled.hint": "hidden",
+  "security.workspace.trust.untrustedFiles": "newWindow",
+  "workbench.colorTheme": "Community Material Theme Palenight High Contrast",
+  "editor.accessibilitySupport": "off",
+  "html.format.preserveNewLines": false,
+  "vetur.format.enable": false,
+  "editor.formatOnSave": true,
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "window.zoomLevel": 4,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "gitlens.currentLine.dateFormat": "",
   "typescript.tsdk": "node_modules/.pnpm/typescript@4.7.4/node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
-  "cSpell.words": [
-    "fetchmessages",
-    "Statusasuse",
-    "tailwindcss"
-  ]
+  "workbench.editor.empty.hint": "hidden"
+  // "eslint.codeActionsOnSave.rules": null,
 }

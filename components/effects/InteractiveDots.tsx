@@ -1,3 +1,4 @@
+// @ts-nocheck
 'use client';
 import React, { useEffect, useState, useRef } from 'react';
 
@@ -34,6 +35,7 @@ export default function InteractiveDots({ size = 1, dotSize = 75, dotColor = "wh
         constructor(canvasElement: HTMLCanvasElement) {
             this.canvasElement = canvasElement;
             this.dpr = window.devicePixelRatio || 1;
+            this.canvas = this.canvasElement.getContext("2d")!;
         }
 
         setupCanvas() {
@@ -71,15 +73,21 @@ export default function InteractiveDots({ size = 1, dotSize = 75, dotColor = "wh
         }
 
         drawDots() {
-            for (var i = 2; i < this.canvasWidth / this.dpr / dotSize - 1; i++) {
-                for (var j = 2; j < this.canvasHeight / this.dpr / dotSize - 1; j++) {
+            for (let i = 0; i < this.canvasWidth / this.dpr / dotSize; i++) {
+                for (let j = 0; j < this.canvasHeight / this.dpr / dotSize; j++) {
                     let x = i * dotSize;
                     let y = j * dotSize;
+
+                    // Calculate the distance between the current dot and the mouse cursor
                     let dist = this.pythag(x, y, this.mouseX, this.mouseY);
+
+                    // Create a sine wave effect for connecting the dots
+                    let yOffset = Math.sin(dist * 0.05) * 10;
+
                     this.canvas.beginPath();
                     this.canvas.arc(
                         x + (x - this.mouseX) / dist * dotSize,
-                        y + (y - this.mouseY) / dist * dotSize,
+                        y + (y - this.mouseY) / dist * dotSize + yOffset, // Add yOffset for the wave effect
                         size,
                         size,
                         Math.PI,
@@ -108,7 +116,7 @@ export default function InteractiveDots({ size = 1, dotSize = 75, dotColor = "wh
 
     return (
         <>
-            <canvas id="sketch" ref={canvasRef}></canvas>
+            <canvas className='pointer-events-none -z-10' id="sketch" ref={canvasRef}></canvas>
         </>
     )
 }
