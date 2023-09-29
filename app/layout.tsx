@@ -79,7 +79,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <body className={`${lexend.className} bg-offblack`}>
                 <ThemeContextProvider>
                     <ActiveSectionContextProvider>
-                        <ScrollBorder />
+                        {/* <ScrollBorder /> */}
                         <Header />
                         <FancyHeader />
                         <Particles className="animate-fade-in fixed inset-0 -z-10" quantity={150} />

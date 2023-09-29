@@ -19,7 +19,7 @@ import Particles from '@c/Particles'; // You should import this module if it exi
  */
 
 type RoundedButtonProps = {
-    onClick?: () => void;
+    onClick?: any;
     customClassName?: string;
     showLeftArrow?: boolean;
     showRightArrow?: boolean;
@@ -73,9 +73,9 @@ const ReadMore = ({ onClick, customClassName, showLeftArrow = true, showRightArr
 /**
  * Another button component example
  */
-const RegularButton = () => {
+const RegularButton = ({ props }) => {
     return (
-        <button className="button btn--regular">
+        <button onClick={props} className="button btn--regular">
             <Link href="#contact">
                 <span className="button__text">Contact </span>
                 <span className="button__hover-text">Contact me here</span>

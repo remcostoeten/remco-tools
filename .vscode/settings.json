@@ -88,6 +88,9 @@
   "gitlens.currentLine.dateFormat": "",
   "typescript.tsdk": "node_modules/.pnpm/typescript@4.7.4/node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
-  "workbench.editor.empty.hint": "hidden"
+  "workbench.editor.empty.hint": "hidden",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  }
   // "eslint.codeActionsOnSave.rules": null,
 }
