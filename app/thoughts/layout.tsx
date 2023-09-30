@@ -1,5 +1,5 @@
 import AllThoughts from "./components/AllThoughts"
-import { NewThought } from "./components/NewThought"
+import NewThought from "./components/NewThought"
 import { ThoughtProvider } from "./components/ThoughtContext"
 
 const sidebarNavItems = [
@@ -29,13 +29,13 @@ interface RootLayoutProps {
   children: React.ReactNode
 }
 
-export default function RootLayout({}: RootLayoutProps) {
+export default function RootLayout({ }: RootLayoutProps) {
   return (
     <>
       <ThoughtProvider>
         <div className="flex relative container  flex-col">
-          <AllThoughts /> 
-          <NewThought/>
+          <AllThoughts />
+          <NewThought />
         </div>
       </ThoughtProvider>
     </>
