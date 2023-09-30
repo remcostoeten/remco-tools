@@ -174,7 +174,7 @@ export async function NewThought() {
                                 <SelectItem
                                     key={option.value}
                                     value={option.value}
-                                    onChange={(e) =>
+                                    onSelect={(e) =>
                                         setCategory({
                                             ...task,
                                             // @ts-ignore

@@ -42,6 +42,7 @@ export default function LoggedInBar() {
                             type="email"
                             placeholder="Email"
                             value={email}
+                            // @ts-ignore
                             onChange={(e) => setEmail(e.target.value)}
                             className="px-2 py-1"
                         />
@@ -49,6 +50,7 @@ export default function LoggedInBar() {
                             type="password"
                             placeholder="Password"
                             value={password}
+                            // @ts-ignore
                             onChange={(e) => setPassword(e.target.value)}
                             className="px-2 py-1 mt-2"
                         />

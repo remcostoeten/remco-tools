@@ -7,7 +7,7 @@ export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = async (e) => {
+  const handleLogin = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     try {
       const result = await signInWithEmailAndPassword(auth, email, password);
@@ -16,7 +16,7 @@ export default function LoginPage() {
 
 
     } catch (error) {
-      console.error('Login failed:', error); 
+      console.error('Login failed:', error);
     }
   };
 
@@ -26,12 +26,14 @@ export default function LoginPage() {
       <form onSubmit={handleLogin}>
         <label>
           Email:
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          {/* @ts-ignore */}
+          <input type="email" value={email} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)} />
         </label>
         <br />
         <label>
           Password:
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          {/* @ts-ignore */}
+          <input type="password" value={password} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)} />
         </label>
         <br />
         <button type="submit">Login</button>

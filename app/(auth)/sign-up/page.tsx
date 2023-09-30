@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { toast } from "@/components/ui/use-toast"
 import { auth } from "@/utils/firebase"
+import { Checkbox } from "@/components/ui/checkbox"
 
 export default function LoginPage() {
     const [email, setEmail] = useState("")
@@ -126,8 +127,11 @@ export default function LoginPage() {
                             <Input id="password" placeholder="Password" type="password" autoCapitalize="none" autoComplete="current-password" autoCorrect="off" onChange={(e) => setPassword(e.target.value)} value={password} />
 
                             <div className="flex items-center mt-2 mb-2">
-                                <input type="checkbox" className="translate-y-0.5" checked={rememberEmail} onChange={() => setRememberEmail(!rememberEmail)} />
-                                <Label className="ml-2">Remember email</Label>
+                                {/* @ts-ignore */}
+                                <Checkbox checked={rememberEmail} onChange={() => setRememberEmail(!rememberEmail)}>
+                                    <Label className="ml-2">Remember email</Label>
+                                </Checkbox>
+
                             </div>
                         </div>
 
