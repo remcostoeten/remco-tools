@@ -1,12 +1,33 @@
+'use client';
+import { Sprinkle } from '@c/effects/Sprinkle';
 import I from '@/components/core/Italic';
 import InteractiveDots from '@/components/effects/InteractiveDots';
 import SwappingWords from '@/components/effects/SwappingWords';
 import Footer from '@/components/landing/Footer';
 import SectionSpacer from '@/components/ui/SectionSpacer';
 import { Label, Subheading, Text } from '@c/core/PageElements';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 export default function Page() {
+  const rand = (min, max) =>
+    Math.floor(Math.random() * (max - min + 1)) + min;
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const stars = document.getElementsByClassName("magic-star");
+      for (const star of stars) {
+        star.style.setProperty("--star-left", `${rand(-10, 100)}%`);
+        star.style.setProperty("--star-top", `${rand(-40, 80)}%`);
+
+        star.style.animation = "none";
+        star.offsetHeight;
+        star.style.animation = "";
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <React.Fragment>
       <SectionSpacer variant={'small'} />
@@ -31,7 +52,7 @@ export default function Page() {
           <div className="flex flex-col">
             <Text>
               My name is{' '}
-              <span className="pl-1 text-[#FFD700]">{' '}Remco Stoeten{' '}</span>
+              <span className="pl-1 ">remco stoeten</span>
             </Text>
             <Text>I enjoy building things, with code.</Text>
             <Text>
@@ -76,6 +97,7 @@ export default function Page() {
           </section>
         </div>
       </main>
+      <Sprinkle t1='some random ' t2='effect' t3='which can be cool' />
       <Footer />
     </React.Fragment>
   );

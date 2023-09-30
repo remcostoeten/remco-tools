@@ -5,6 +5,5 @@ export default function
     () {
     return <div className='home-container pt-[100px]'>
         <EasingExample />
-
     </div>;
 }

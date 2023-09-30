@@ -13,15 +13,21 @@ type MenuItem = {
 
 const menu: MenuItem[] = [
   {
-    title: "Projects",
-    description: "To See Everything",
+    title: "About me",
+    description: "Get to know me Get to know me Get to know me ",
     images: ['projects1.jpg', 'projects2.jpg']
   },
   {
-    title: "Agence",
-    description: "To Learn Everything",
+    title: "Projects",
+    description: "Productivity tools and experiments",
     images: ['agence1.jpg', 'agence2.jpg']
   },
+  {
+    title: "Miscellaneous",
+    description: "Just some random stuff",
+    images: ['contact1.jpg', 'contact2.jpg']
+  },
+
   {
     title: "Contact",
     description: "To Send a FAX",

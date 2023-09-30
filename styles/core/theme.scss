@@ -160,7 +160,16 @@ body {
     /* Add other CSS styles for your app content */
 }
 
-body {
+body {}
+
+canvas {
+    width: 100vw !important;
+    scale: 1.2;
+    height: 100vh !important;
+    position: fixed;
+    top: 0;
+    z-index: -1;
+
     &::before {
         content: "";
         position: fixed;
@@ -179,15 +188,6 @@ body {
         z-index: 1;
         pointer-events: none;
     }
-}
-
-canvas {
-    width: 100vw !important;
-    scale: 1.2;
-    height: 100vh !important;
-    position: fixed;
-    top: 0;
-    z-index: -1;
 
     &::after {
         content: '';

@@ -80,7 +80,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <ThemeContextProvider>
                     <ActiveSectionContextProvider>
                         {/* <ScrollBorder /> */}
-                        <SectionDivider />
                         <Header />
                         <InteractiveDots />
                         <Particles className="animate-fade-in fixed inset-0 -z-10" quantity={150} />

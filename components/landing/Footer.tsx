@@ -1,7 +1,6 @@
 import MetaData from "@/config/metadata";
-import AnchorIcon from "../icons/Anchor";
 import Link from "next/link";
-import EasingExample from "../effects/EasingExamples";
+import AnchorIcon from "../icons/Anchor";
 
 type FooterProps = {
     linkedIn?: string;
@@ -18,19 +17,20 @@ export default function Footer(props: FooterProps): JSX.Element {
     };
 
     return (
-        <>           <div className="footer">
-            {Object.keys(footerItems).map((key) => (
-                <Link key={key} href={footerItems[key]}>
-                    <span className={`footer__item footer__item--${key}`}>
-                        <span className="footer__inner">
-                            <span className="anchor link-props">{key}</span>
-                            <AnchorIcon />
+        <>
+            <div className="footer">
+                {Object.keys(footerItems).map((key) => (
+                    <Link key={key} href={footerItems[key]}>
+                        <span className={`footer__item footer__item--${key}`}>
+                            <span className="footer__inner">
+                                <span className="anchor link-props">{key}</span>
+                                <AnchorIcon />
+                            </span>
                         </span>
-                    </span>
-                </Link>
-            ))
-            }
-        </div>
+                    </Link>
+                ))
+                }
+            </div>
         </>
     );
 }
