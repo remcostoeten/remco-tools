@@ -1,5 +1,6 @@
 import Trailer from '@/components/core/Cursor';
-import Header from '@/components/core/header/Header';
+import Header from "@/components/effects/SliderMenu/SlideNavigation";
+import InteractiveDots from '@/components/effects/InteractiveDots';
 import SliderMenu from '@/components/effects/SliderMenu/menu';
 import Footer from '@/components/landing/Footer';
 import { Toaster } from '@/components/ui/toaster';
@@ -11,6 +12,7 @@ import '@/styles/styles.scss';
 import { Analytics } from '@vercel/analytics/react';
 import { Inter, Lexend_Deca, Manrope } from 'next/font/google';
 import Particles from './c/components/particles';
+import SectionDivider from '@/components/ui/divider';
 const inter = Inter({ subsets: ['latin'] });
 const rope = Manrope({ subsets: ['latin'] });
 const lexend = Lexend_Deca({ subsets: ['latin'] });
@@ -78,8 +80,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <ThemeContextProvider>
                     <ActiveSectionContextProvider>
                         {/* <ScrollBorder /> */}
-
-
+                        <SectionDivider />
+                        <Header />
+                        <InteractiveDots />
                         <Particles className="animate-fade-in fixed inset-0 -z-10" quantity={150} />
                         {children}
                         <Footer />
@@ -97,6 +100,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         //                 <main className="flex flex-col items-center page-wrapper__inner ">
         //                     <div className="container">{children}</div>
         //                 </main>
+
         //                 <Analytics />
         //                 <Toaster />
         //                 {/* <Cursor /> */}

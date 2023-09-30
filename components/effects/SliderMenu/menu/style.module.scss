@@ -1,4 +1,8 @@
-.menu{
+.header {
+    z-index: 9999999999999;
+}
+
+.menu {
     position: fixed;
     display: flex;
     z-index: 3;
@@ -6,51 +10,60 @@
     width: 100%;
     flex-direction: column;
     justify-content: space-between;
-    .header{
+
+    .header {
         display: flex;
         justify-content: flex-end;
         padding: 20px;
-        svg{
+
+        svg {
             cursor: pointer;
             width: 100px;
             height: 100px;
-            path{
+
+            path {
                 transition: color 0.5s;
             }
 
-            &:hover{
-                path{
+            &:hover {
+                path {
                     stroke: #D3FD50;
                 }
             }
         }
     }
-    .body{
+
+    .body {
         position: absolute;
         left: 50%;
         top: 50%;
         transform: translateX(-50%) translateY(-50%);
         width: 100%;
-        .el{
+
+        .el {
             border-top: 1px solid white;
             display: flex;
             justify-content: center;
             cursor: pointer;
             perspective: 80vw;
             transform-origin: top;
-            &:last-of-type{
+
+            &:last-of-type {
                 border-bottom: 1px solid white;
             }
-            &:hover{
-                .outer{
-                    .container{
+
+            &:hover {
+                .outer {
+                    .container {
                         opacity: 1;
                     }
                 }
-                
+
             }
         }
-        a, p{
+
+        a,
+        p {
             color: white;
             text-transform: uppercase;
             font-size: 8vw;
@@ -59,7 +72,8 @@
             margin: 0px;
             text-decoration: none;
         }
-        .outer{
+
+        .outer {
             display: flex;
             position: absolute;
             height: 100%;
@@ -67,7 +81,8 @@
             overflow: hidden;
             pointer-events: none;
             will-change: top;
-            .inner{
+
+            .inner {
                 background-color: #D3FD50;
                 position: absolute;
                 white-space: nowrap;
@@ -75,22 +90,25 @@
                 top: 100%;
                 display: flex;
                 will-change: top;
-                .container{
+
+                .container {
                     display: flex;
                     align-items: center;
                     animation: slider 12s linear infinite;
                     transition: opacity 0.3s;
                     position: relative;
                     opacity: 0;
-                    
-                    &:nth-of-type(2){
+
+                    &:nth-of-type(2) {
                         transition-delay: -4s;
 
                     }
-                    &:nth-of-type(3){
+
+                    &:nth-of-type(3) {
                         transition-delay: -6s;
                     }
-                    .imageContainer{
+
+                    .imageContainer {
                         height: 6vw;
                         width: 16vw;
                         position: relative;
@@ -99,16 +117,19 @@
                         margin-left: 1vw;
                         margin-right: 1vw;
                         display: flex;
-                        img{
+
+                        img {
                             object-fit: cover;
                         }
                     }
-                    p{
+
+                    p {
                         color: black;
                     }
                 }
             }
-            .background{
+
+            .background {
                 background-color: #D3FD50;
                 position: absolute;
                 height: 100%;
@@ -117,14 +138,15 @@
             }
         }
     }
-    .footer{
+
+    .footer {
         color: white;
         display: flex;
-        justify-content: center;     
+        justify-content: center;
         gap: 10px;
-        padding: 20px;   
+        padding: 20px;
 
-        a{
+        a {
             font-size: 3vw;
             border: 2px solid white;
             padding: 0px 10px 0px 10px;
@@ -134,10 +156,11 @@
     }
 }
 
-@keyframes slider{
+@keyframes slider {
     from {
         transform: translate3d(0, 0, 0);
     }
+
     to {
         transform: translate3d(-100%, 0, 0);
     }
