@@ -4,13 +4,16 @@ export type SectionName = (typeof links)[number]["name"];
 
 export interface Thought  {
   id: string;
+  selectedDate?: Date;
   title: string;
   description: string;
-  createdAt: string;
+  createdAt: any;
   status: string;
   priority: string;
   label: string;
   task: string;
+  subject?: string;
+  userId?: string;
 }
 
 

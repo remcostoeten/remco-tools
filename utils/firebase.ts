@@ -1,16 +1,12 @@
+import { toast } from '@/components/ui/use-toast';
 import { initializeApp } from 'firebase/app';
 import {
     createUserWithEmailAndPassword,
-    getAuth,
-    signInWithEmailAndPassword,
-    GoogleAuthProvider,
-    signInWithPopup,
-    updateProfile,
+    getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup,
+    updateProfile
 } from 'firebase/auth';
 import { collection, deleteDoc, doc, getFirestore } from 'firebase/firestore';
-import { FC, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { toast } from '@/components/ui/use-toast';
 
 const firebaseConfig = {
     apiKey: "AIzaSyC6eh7Lqnb-LYKVsuXJuStbMe08xZjxoQs",
@@ -74,27 +70,27 @@ export const signUp = async (name: string, email: string, password: string) => {
     return { result, error };
 };
 
-// export const deleteTodo = async (itemId: string) => {
-//     if (typeof itemId !== 'string') {
-//         console.error(`itemId is not a string:`, itemId);
-//         return;
-//     }
-//     try {
-//         const taskRef = doc(collection(db, 'todos'), itemId);
+export const deleteTodo = async (itemId: string) => {
+    if (typeof itemId !== 'string') {
+        console.error(`itemId is not a string:`, itemId);
+        return;
+    }
+    try {
+        const taskRef = doc(collection(db, 'todos'), itemId);
 
-//         await deleteDoc(taskRef);
+        await deleteDoc(taskRef);
 
-//         toast({
-//             title: '`Item with ID ${itemId} deleted successfully.`',
-//         });
-//         console.log(`Item with ID ${itemId} deleted successfully.`);
-//     } catch (error) {
-//         console.error(`Error deleting item with ID ${itemId}:`, error);
-//         toast({
-//             title: 'Error deleting item.',
-//             variant: 'destructive',
-//         });
-//     }
-// };
+        toast({
+            title: '`Item with ID ${itemId} deleted successfully.`',
+        });
+        console.log(`Item with ID ${itemId} deleted successfully.`);
+    } catch (error) {
+        console.error(`Error deleting item with ID ${itemId}:`, error);
+        toast({
+            title: 'Error deleting item.',
+            variant: 'destructive',
+        });
+    }
+};
 
 export { auth, db, createUserWithEmailAndPassword, signInWithEmailAndPassword };

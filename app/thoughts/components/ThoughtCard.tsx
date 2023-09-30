@@ -1,3 +1,4 @@
+// @ts-ignore
 "use client"
 
 import {
@@ -178,7 +179,7 @@ export default function ThoughtCard() {
             className="border  border-[#27272a]  text-[#fafafa] border-input hover:bg-accent hover:text-accent-foreground px-3 rounded-md note-btn ml-auto hidden h-[100%] lg:flex"
             value={sortOrder}
             data-type="hand"
-            onChange={(e) => setSortOrder(e.target.value)}
+            onChange={(e) => setSelectedLabel(e.target.value)}
           >
             <motion.option
               initial={{ opacity: 0, y: 20 }}
@@ -228,11 +229,10 @@ export default function ThoughtCard() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
               transition={{ delay: index * 0.1 + 0.5, duration: 0.5 }}
-              className={`icon-card border flex flex-col mb-4 justify-between rounded-md break-words p-6 ${
-                selectedThought && selectedThought.id === thought.id
-                  ? "active"
-                  : ""
-              }`}
+              className={`icon-card border flex flex-col mb-4 justify-between rounded-md break-words p-6 ${selectedThought && selectedThought.id === thought.id
+                ? "active"
+                : ""
+                }`}
               onClick={() => handleSelect(thought.id)}
             >
               <div className="top sidebar-notes flex-col flex align-middle gap-4">
@@ -247,16 +247,15 @@ export default function ThoughtCard() {
                       <span className="font-notes text-xs text-[#5D5C63] uppercase">
                         {thought.selectedDate
                           ? thought.selectedDate
-                              .toDate()
-                              .toLocaleString("en-US", {
-                                weekday: "short",
-                              })
+                            .toLocaleString("en-US", {
+                              weekday: "short",
+                            })
                           : "N/A"}
                       </span>
 
                       <span className="text-notes -translate-y-.5 text-lg font-notes-bold uppercase">
                         {thought.selectedDate
-                          ? thought.selectedDate.toDate().getDate()
+                          ? thought.selectedDate.getDate()
                           : "N/A"}
                       </span>
                     </div>
@@ -267,11 +266,11 @@ export default function ThoughtCard() {
                       <span className="text-[#5D5C63] font-notes">
                         {thought.createdAt
                           ? thought.createdAt
-                              .toDate()
-                              .toLocaleTimeString("en-US", {
-                                hour: "2-digit",
-                                minute: "2-digit",
-                              })
+                            .toDate()
+                            .toLocaleTimeString("en-US", {
+                              hour: "2-digit",
+                              minute: "2-digit",
+                            })
                           : "N/A"}
                       </span>
                     </div>

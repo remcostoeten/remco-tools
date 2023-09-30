@@ -1,8 +1,9 @@
 'use client'
-import React, { useState, useEffect } from "react";
-import { onSnapshot, collection, deleteDoc, doc, updateDoc, query, where } from "firebase/firestore";
-import { db } from "@/utils/firebase";
 import { Input } from "@/components/ui/input";
+import { toast } from "@/components/ui/use-toast";
+import { db } from "@/utils/firebase";
+import { collection, deleteDoc, doc, onSnapshot, updateDoc } from "firebase/firestore";
+import { useEffect, useState } from "react";
 import { Card } from "../c/components/card";
 
 export function DisplayCategories() {
@@ -49,6 +50,10 @@ export function DisplayCategories() {
         price: itemPrice,
         url: itemUrl
       });
+      toast({
+        title: "Item saved.",
+        description: "Item has been saved."
+      });
       setEditingItemId(null);
     } catch (error) {
       console.error("Error updating document: ", error);
@@ -59,6 +64,11 @@ export function DisplayCategories() {
     try {
       const itemRef = doc(db, "items", itemId);
       await deleteDoc(itemRef);
+      toast({
+        title: "Item deleted.",
+        description: "Item has been deleted.",
+        variant: "destructive"
+      });
     } catch (error) {
       console.error("Error deleting document: ", error);
     }

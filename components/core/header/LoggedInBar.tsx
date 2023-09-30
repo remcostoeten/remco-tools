@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { auth } from "@/utils/firebase";
+import { auth, signInWithEmailAndPassword } from "@/utils/firebase";
 
 export default function LoggedInBar() {
     const [email, setEmail] = useState('');
@@ -11,7 +11,7 @@ export default function LoggedInBar() {
 
     const handleLogin = async () => {
         try {
-            await auth.signInWithEmailAndPassword(email, password);
+            await signInWithEmailAndPassword(auth, email, password);
             setEmail('');
             setPassword('');
         } catch (error) {

@@ -28,7 +28,7 @@ interface NewThoughtProps {
   content?: string
 }
 
-export function  NewThought({ content }: NewThoughtProps) {
+export function NewThought({ content }: NewThoughtProps) {
   const [open, setOpen] = useState(false)
   const [title, setTitle] = useState("")
   const [date, setDate] = useState<Date | null>(null)
@@ -67,7 +67,10 @@ export function  NewThought({ content }: NewThoughtProps) {
         id: "",
         subject,
         selectedDate: date,
-        label, 
+        label,
+        status: "",
+        priority: "",
+        task: ""
       }
 
       const docRef = await addDoc(collection(db, "thoughts"), newThought)
@@ -97,8 +100,8 @@ export function  NewThought({ content }: NewThoughtProps) {
   }
   const form = (
     <form className="flex flex-col gap-2 py-6" onSubmit={handleSubmit}>
-        <input
-    
+      <input
+
         type="text"
         className="wysiwyg-input"
         placeholder="Title"
@@ -206,7 +209,7 @@ export function  NewThought({ content }: NewThoughtProps) {
   //         exit={{ opacity: 0, y: 10 }}
   //         transition={{ delay: 0.6, duration: 0.5 }}
   //       >
-  
+
   //       </motion.div>
   //     </motion.div>
   //     <motion.div
@@ -238,7 +241,7 @@ export function  NewThought({ content }: NewThoughtProps) {
           exit={{ opacity: 0, y: 10 }}
           transition={{ delay: 0.2, duration: 0.5 }}
         >
-=        </motion.span>
+          =        </motion.span>
         <span className="pl-3 text-xl text-notes font-notes">All thoughts</span>
       </motion.div>
       <Drawer.Root shouldScaleBackground>

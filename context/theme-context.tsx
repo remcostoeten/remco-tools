@@ -20,7 +20,6 @@ export default function ThemeContextProvider({
     const [theme, setTheme] = useState<Theme>('dark');
 
     const toggleTheme = () => {
-        // Toggle between light and dark themes
         setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
     };
 
@@ -39,7 +38,6 @@ export default function ThemeContextProvider({
         }
     }, []);
 
-    // Update the HTML class based on the current theme
     useEffect(() => {
         document.documentElement.classList.toggle('dark', theme === 'dark');
     }, [theme]);

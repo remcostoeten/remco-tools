@@ -1,7 +1,7 @@
 import React from "react";
 
 type logoProps = {
-  fill: string
+  fill?: string
 }
 
 export default function LogoIcon({ fill }: logoProps) {

@@ -1,25 +1,22 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
-import Link from "next/link"
-import { useRouter } from "next/navigation"
 import {
-    GoogleAuthProvider,
-    browserLocalPersistence,
-    getAuth,
-    onAuthStateChanged,
+    browserLocalPersistence, GoogleAuthProvider, onAuthStateChanged,
     setPersistence,
     signInWithEmailAndPassword,
-    signInWithPopup,
+    signInWithPopup
 } from "firebase/auth"
 import { motion } from "framer-motion"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { useEffect, useState } from "react"
 
+import RemcoLogoIcon from "@/components/core/icons/remcostoeten-logo-icon"
+import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { toast } from "@/components/ui/use-toast"
 import { auth } from "@/utils/firebase"
-import RemcoLogoIcon from "@/components/core/icons/remcostoeten-logo-icon"
-import { Button } from "@/components/ui/button"
 
 export default function LoginPage() {
     const [email, setEmail] = useState("")
@@ -110,7 +107,7 @@ export default function LoginPage() {
             <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
                 <div className="flex flex-col space-y-2 text-center">
                     <div className="mx-auto">
-                        <RemcoLogoIcon />{' '}
+                        <RemcoLogoIcon fill={"white"} />
                     </div>
                     <h1 className="text-2xl font-semibold tracking-tight">Welcome back</h1>
                     <p className="text-sm text-muted-foreground">Enter your email and password to sign in to your account</p>

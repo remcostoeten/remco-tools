@@ -1,11 +1,11 @@
 'use client'
-import React, { useState, useEffect } from "react"
-import { addDoc, collection, onSnapshot } from "firebase/firestore"
-import { db } from "@/utils/firebase"
-import { Input } from "@/components/ui/input"
-import { SelectContent, SelectTrigger, SelectValue, Select, SelectItem } from "@/components/ui/select"
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { toast } from "@/components/ui/use-toast"
+import { db } from "@/utils/firebase"
+import { addDoc, collection, onSnapshot } from "firebase/firestore"
+import React, { useEffect, useState } from "react"
 
 export function NewItemInCategory() {
   const [categories, setCategories] = useState([])
@@ -59,7 +59,8 @@ export function NewItemInCategory() {
 
   return (
     <form className="flex gap-2 flex-col" onSubmit={handleSubmit}>
-      <Select value={selectedCategoryId} onChange={e => setSelectedCategoryId(e.target.value)}>
+      {/* @ts-ignore */}
+      <Select value={selectedCategoryId} onChange={(e) => setSelectedCategoryId(e.target.value)}>
         <SelectTrigger className="w-[180px]">
           <SelectValue placeholder="Theme" />
         </SelectTrigger>
@@ -71,6 +72,7 @@ export function NewItemInCategory() {
           ))}
         </SelectContent>
       </Select>
+
       <Input
         value={itemName} onChange={e => setItemName(e.target.value)} placeholder="Item Name" />
       <Input

@@ -1,7 +1,7 @@
 import React, { ReactNode, createContext, useContext } from "react"
 import { Firestore } from "firebase/firestore"
 
-import { db } from "@/lib/firebase"
+import { db } from "@/utils/firebase"
 
 export interface FirebaseContextType {
   db: Firestore

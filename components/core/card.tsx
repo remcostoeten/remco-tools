@@ -1,12 +1,10 @@
 "use client";
 import {
 	motion,
-	useMotionTemplate,
-	useMotionValue,
-	useSpring,
+	useMotionTemplate, useSpring
 } from "framer-motion";
 
-import { MouseEventHandler, PropsWithChildren } from "react";
+import { MouseEventHandler } from "react";
 
 type CardProps = {
 	className?: string;

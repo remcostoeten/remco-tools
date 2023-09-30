@@ -1,6 +1,6 @@
+
 "use client"
 
-import { useEffect, useState } from "react"
 import { Select, SelectValue } from "@radix-ui/react-select"
 import {
   addDoc,
@@ -9,15 +9,17 @@ import {
   doc,
   getDocs,
   serverTimestamp,
-  updateDoc,
+  updateDoc
 } from "firebase/firestore"
+import { useEffect, useState } from "react"
 
 import { Button, buttonVariants } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { SelectContent, SelectItem, SelectTrigger } from "@/components/ui/select"
+import { Textarea } from "@/components/ui/textarea"
 import { toast } from "@/components/ui/use-toast"
 import { auth, db } from "@/utils/firebase"
-import { SelectContent, SelectTrigger } from "@/components/ui/select"
-import { Textarea } from "@/components/ui/textarea"
+import { cn } from "@/lib/utils"
 
 export default function Dashboard() {
   const [title, setTitle] = useState("")
@@ -168,7 +170,7 @@ export default function Dashboard() {
             />
             <Select onValueChange={setCategory} defaultValue={category}>
               <SelectTrigger>
-                <SelectValue placeholader="Select a verified email to display" />
+                <SelectValue placeholder="Select a verified email to display" />
               </SelectTrigger>
               <SelectContent>
                 {categories.map((category) => (
@@ -225,6 +227,7 @@ export default function Dashboard() {
                           onClick={() => handleEdit(message)}
                           className={cn(
                             buttonVariants({
+                              // @ts-ignore
                               variant: "primary",
                               color: "success",
                               size: "sm",

@@ -7,10 +7,10 @@ export const metadata: Metadata = {
         default: 'remcostoeten.com',
         template: '%s | remcostoeten.com',
     },
-    description: 'Software engineer at upstash.com and founder of planetfall.io',
+    description: 'Software engineer at Pleio.nl',
     openGraph: {
         title: 'remcostoeten.com',
-        description: 'Software engineer at upstash.com and founder of planetfall.io',
+        description: 'Software engineer at Pleio.nl',
         url: 'https://remcostoeten.com',
         siteName: 'remcostoeten.com',
         images: [

@@ -1,12 +1,14 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { auth, db } from '@/utils/firebase';
-import { collection, getDocs, addDoc, deleteDoc, QueryDocumentSnapshot } from 'firebase/firestore';
-import Spinner from '@c/core/Spinner';
-import { toast } from '../ui/use-toast';
 import { Button } from '../ui/button';
-import { Expense, Income } from '@/utils/types';
 import { Input } from '../ui/input';
+import { toast } from '../ui/use-toast';
+import { auth, db } from '@/utils/firebase';
+import { Expense, Income } from '@/utils/types';
+import { addDoc, collection, deleteDoc, getDocs, QueryDocumentSnapshot } from 'firebase/firestore';
+import SectionSpacer from '@/components/ui/SectionSpacer';
+
+type Category = 'Food' | 'Transport' | 'Utilities';
 
 export default function Totals() {
     const [expenseAmount, setExpenseAmount] = useState<number>(0);
@@ -23,9 +25,7 @@ export default function Totals() {
 
     const [expenses, setExpenses] = useState<Expense[]>([]);
     const [incomes, setIncomes] = useState<Income[]>([]);
-    const [selectedCategory, setSelectedCategory] = useState<string>('');
-
-    const expenseQuerySnapshot = getDocs(collection(db, 'expenses'));
+    const [selectedCategory, setSelectedCategory] = useState<Category>('Food');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -63,11 +63,11 @@ export default function Totals() {
             console.log('Income added with ID:', docRef.id);
             setIncomeAmount(0);
             setIncomeName('');
-            calculateTotalIncome();
+            await calculateTotalIncome();
             toast({
                 title: `${incomeAmount} for ${incomeName} added!`,
             });
-            fetchData();
+            await fetchData();
         } catch (error) {
             console.error('Error adding income:', error);
         }
@@ -84,12 +84,12 @@ export default function Totals() {
             console.log('Expense added with ID:', docRef.id);
             setExpenseAmount(0);
             setExpenseName('');
-            setSelectedCategory('');
-            calculateTotalExpense();
+            setSelectedCategory('Food');
+            await calculateTotalExpense();
             toast({
                 title: `${expenseAmount} for ${expenseName} added!`,
             });
-            fetchData();
+            await fetchData();
         } catch (error) {
             console.error('Error adding expense:', error);
         }
@@ -107,7 +107,7 @@ export default function Totals() {
             toast({
                 title: `${savingsAmount} saving added!`,
             });
-            fetchData();
+            await fetchData();
         } catch (error) {
             console.error('Error adding Savings:', error);
         }
@@ -156,7 +156,7 @@ export default function Totals() {
 
     const calculateTotalExpense = async () => {
         try {
-            const userExpenses = (await expenseQuerySnapshot).docs.filter((doc) => doc.data().userId === (user ? user.uid : null));
+            const userExpenses = (await getDocs(collection(db, 'expenses'))).docs.filter((doc) => doc.data().userId === (user ? user.uid : null));
 
             const total = userExpenses.reduce((acc: number, doc: QueryDocumentSnapshot) => acc + doc.data().expenseAmount, 0);
 
@@ -171,56 +171,66 @@ export default function Totals() {
         setNetWorth(netWorth);
     };
 
+    const fetchData = async () => {
+        const expenseQuerySnapshot = await getDocs(collection(db, 'expenses'));
+        const fetchedExpenses = expenseQuerySnapshot.docs.map((doc) => ({
+            id: doc.id,
+            name: doc.data().name,
+            expenseAmount: doc.data().expenseAmount,
+        }));
+        setExpenses(fetchedExpenses);
+
+        const incomeQuerySnapshot = await getDocs(collection(db, 'incomes'));
+        const fetchedIncomes = incomeQuerySnapshot.docs.map((doc) => ({
+            id: doc.id,
+            name: doc.data().name,
+            incomeAmount: doc.data().incomeAmount,
+        }));
+        setIncomes(fetchedIncomes);
+
+        await calculateTotalIncome();
+        await calculateTotalExpense();
+
+        setIsLoading(false);
+    };
+
     return (
         <>
-            <div className="flex w-full flex-col  justify-between gap-4">
-                <div className="">
+            <SectionSpacer variant="small" />
+            <div className="flex w-full flex-col justify-between gap-4">
+                <div>
                     {user ? (
                         <>
-                            return (
-                            <>
-                                <div className="flex w-full justify-between gap-4">
-                                    {/* Income Block */}
-                                    <div className="block-container">
-                                        <div className="block-title">Income</div>
-                                        <div className="block-content">
-                                            {/* Map and display income data here */}
-                                            {incomes.map((income) => (
-                                                <div key={income.id}>
-                                                    <span>Name: {income.name}</span>
-                                                    <span>Amount: €{income.incomeAmount},-</span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    {/* Expense Block */}
-                                    <div className="block-container">
-                                        <div className="block-title">Expense</div>
-                                        <div className="block-content">
-                                            {/* Map and display expense data here */}
-                                            {expenses.map((expense) => (
-                                                <div key={expense.id}>
-                                                    <span>Name: {expense.name}</span>
-                                                    <span>Amount: €{expense.expenseAmount},-</span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    {/* Savings Block */}
-                                    <div className="block-container">
-                                        <div className="block-title">Savings</div>
-                                        <div className="block-content">
-
-                                        </div>
+                            <div className="flex w-full justify-between gap-4">
+                                <div className="block-container">
+                                    <div className="block-title">Income</div>
+                                    <div className="block-content">
+                                        {incomes.map((income) => (
+                                            <div key={income.id}>
+                                                <span>Name: {income.name}</span>
+                                                <span>Amount: €{income.incomeAmount},-</span>
+                                            </div>
+                                        ))}
                                     </div>
                                 </div>
 
-                                {/* Rest of your component */}
-                            </>
-                            );
+                                <div className="block-container">
+                                    <div className="block-title">Expense</div>
+                                    <div className="block-content">
+                                        {expenses.map((expense) => (
+                                            <div key={expense.id}>
+                                                <span>Name: {expense.name}</span>
+                                                <span>Amount: €{expense.expenseAmount},-</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
 
+                                <div className="block-container">
+                                    <div className="block-title">Savings</div>
+                                    <div className="block-content"></div>
+                                </div>
+                            </div>
                         </>
                     ) : (
                         <h1>test</h1>
@@ -237,19 +247,20 @@ export default function Totals() {
                                 <Input type="number" placeholder="€ ,-" value={incomeAmount} onChange={(e) => setIncomeAmount(Number(e.target.value))} />
                                 <Input type="text" value={incomeName} onChange={(e) => setIncomeName(e.target.value)} placeholder="Income Name" />
                             </div>
-                            <Button onClick={handleAddIncome} >Add income</Button>                        </div>
+                            <Button onClick={handleAddIncome}>Add income</Button>
+                        </div>
                         <div className="card expense p-8 ">
                             <h2 className="mb-4 text-2xl font-bold">Add Expense</h2>
                             <div className="mb-4 flex items-center gap-4">
                                 <Input type="number" value={expenseAmount} placeholder="€ ,-" onChange={(e) => setExpenseAmount(Number(e.target.value))} />
                                 <Input type="text" value={expenseName} onChange={(e) => setExpenseName(e.target.value)} placeholder="Expense Name" />
-                                <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
+                                <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value as Category)}>
                                     <option value="Food">Food</option>
                                     <option value="Transport">Transport</option>
                                     <option value="Utilities">Utilities</option>
                                 </select>
                             </div>
-                            <button onClick={handleAddExpense}>Add Expense</button>
+                            <Button onClick={handleAddExpense}>Add Expense</Button>
                         </div>
                         <div className="flex flex-col gap-4">
                             <div className="card expense p-8 ">
@@ -264,7 +275,7 @@ export default function Totals() {
                                     />
                                     <Input type="text" value={savingsName} onChange={(e) => setSavingsName(e.target.value)} placeholder="Savings Name" className="-300 w-1/2 rounded-md border p-2" />
                                 </div>
-                                <button onClick={handleAddSavings}>add saving</button>
+                                <Button onClick={handleAddSavings}>add saving</Button>
                             </div>
                         </div>
                     </div>
@@ -274,7 +285,6 @@ export default function Totals() {
                             {expenses.map((expense) => (
                                 <dl className="flex w-full justify-between" key={expense.id}>
                                     <dd>Name: {expense.name}</dd>
-                                    <label>{expense.category}</label>
                                     <dt>Amount: €{expense.expenseAmount},-</dt>
                                 </dl>
                             ))}
@@ -294,4 +304,3 @@ export default function Totals() {
         </>
     );
 }
-
