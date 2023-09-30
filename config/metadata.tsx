@@ -32,6 +32,8 @@ const MetaData = {
     linkedinProfile: 'https://www.linkedin.com/in/remco-stoeten/',
     githubProfile: 'https://github.com/remcostoeten',
     gitlabProfile: 'https://gitlab.com/remcostoeten',
+    snippetsUrl: 'https://snippets.remcostoeten.com',
+
 
     icons: {
         icon: '/favicon.ico',

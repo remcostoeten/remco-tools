@@ -1,14 +1,15 @@
-import React from 'react';
-import { Label, Subheading, Text } from '@c/core/PageElements';
 import I from '@/components/core/Italic';
 import InteractiveDots from '@/components/effects/InteractiveDots';
-import SectionSpacer from '@/components/ui/SectionSpacer';
 import SwappingWords from '@/components/effects/SwappingWords';
+import Footer from '@/components/landing/Footer';
+import SectionSpacer from '@/components/ui/SectionSpacer';
+import { Label, Subheading, Text } from '@c/core/PageElements';
+import React from 'react';
 
 export default function Page() {
   return (
     <React.Fragment>
-      <SectionSpacer variant={'small'}/>
+      <SectionSpacer variant={'small'} />
       <InteractiveDots dotColor='#fff' />
       <main className="home-container">
         <div className="flex gap-[40px] pt-4 pb-12">
@@ -30,7 +31,7 @@ export default function Page() {
           <div className="flex flex-col">
             <Text>
               My name is{' '}
-              <span className="pl-1 text-[#FFD700]">{' ' }Remco Stoeten{' '}</span>
+              <span className="pl-1 text-[#FFD700]">{' '}Remco Stoeten{' '}</span>
             </Text>
             <Text>I enjoy building things, with code.</Text>
             <Text>
@@ -69,12 +70,13 @@ export default function Page() {
             </div>
           </section>
           <section>
-          <span>
+            <span>
               <Subheading>Some things i've build or working on.</Subheading>
             </span>
-                  </section>
+          </section>
         </div>
       </main>
+      <Footer />
     </React.Fragment>
   );
 }

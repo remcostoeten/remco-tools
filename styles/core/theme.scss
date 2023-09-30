@@ -15,7 +15,8 @@ body {
 }
 
 .cats {
-    color: #000!important;
+    color: #000 !important;
+
     * {
         color: #000 !important;
     }
@@ -36,68 +37,68 @@ body {
     margin: 0 auto;
 
 
-.text {
-    position: absolute;
-    width: 600px;
-    left: 50%;
-    margin-left: -225px;
-    height: 40px;
-    top: 50%;
-    margin-top: -20px;
-  }
+    .text {
+        position: absolute;
+        width: 600px;
+        left: 50%;
+        margin-left: -225px;
+        height: 40px;
+        top: 50%;
+        margin-top: -20px;
+    }
 
-  p {
-    display: inline-block;
-    vertical-align: top;
-    margin: 0;
-  }
+    p {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0;
+    }
 
-  .word {
-    position: absolute;
-    opacity: 0;
-  }
+    .word {
+        position: absolute;
+        opacity: 0;
+    }
 
-  .letter {
-    display: inline-block;
-    position: relative;
-    float: left;
-    transform: translateZ(25px);
-    transform-origin: 50% 50% 25px;
-  }
+    .letter {
+        display: inline-block;
+        position: relative;
+        float: left;
+        transform: translateZ(25px);
+        transform-origin: 50% 50% 25px;
+    }
 
-  .letter.out {
-    transform: rotateX(90deg);
-    transition: transform 0.32s cubic-bezier(0.55, 0.055, 0.675, 0.19);
-  }
+    .letter.out {
+        transform: rotateX(90deg);
+        transition: transform 0.32s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
 
-  .letter.behind {
-    transform: rotateX(-90deg);
-  }
+    .letter.behind {
+        transform: rotateX(-90deg);
+    }
 
-  .letter.in {
-    transform: rotateX(0deg);
-    transition: transform 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
+    .letter.in {
+        transform: rotateX(0deg);
+        transition: transform 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
 
-  .wisteria {
-    color: #8e44ad;
-  }
+    .wisteria {
+        color: #8e44ad;
+    }
 
-  .belize {
-    color: #2980b9;
-  }
+    .belize {
+        color: #2980b9;
+    }
 
-  .pomegranate {
-    color: #c0392b;
-  }
+    .pomegranate {
+        color: #c0392b;
+    }
 
-  .green {
-    color: #16a085;
-  }
+    .green {
+        color: #16a085;
+    }
 
-  .midnight {
-    color: #2c3e50;
-  }
+    .midnight {
+        color: #2c3e50;
+    }
 }
 
 .grid-bg {
@@ -175,7 +176,7 @@ body {
         background-size: 100% 200px, 200px 100%, 100% 20px, 20px 100%;
         background-origin: border-box;
         background-clip: content-box, content-box, content-box, content-box;
-        z-index: 49;
+        z-index: 1;
         pointer-events: none;
     }
 }
@@ -202,8 +203,6 @@ canvas {
 
 body:not(.table) {
     .container {
-        display: flex;
-        flex-direction: column;
         max-width: $container-width;
         margin: 0 auto;
         padding: 0 $spacing-xl;

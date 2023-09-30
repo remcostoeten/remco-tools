@@ -1,18 +1,16 @@
-import '@/styles/styles.scss';
-import { siteConfig } from '@/config/site';
-import { Toaster } from '@/components/ui/toaster';
-import { Analytics } from '@vercel/analytics/react';
-import FancyHeader from '../components/fancy-hamburger-header/header';
-import ActiveSectionContextProvider from '@/context/active-section-contex';
-import Header from '@/components/core/header/Header';
-import ThemeContextProvider from '@/context/theme-context';
-import ThemeSettings from '@/components/core/ToggleTheme';
-import { seoKeywords } from '@/config/keywords';
-import { Inter, Manrope, Lexend_Deca } from 'next/font/google';
 import Trailer from '@/components/core/Cursor';
+import Header from '@/components/core/header/Header';
+import SliderMenu from '@/components/effects/SliderMenu/menu';
+import Footer from '@/components/landing/Footer';
+import { Toaster } from '@/components/ui/toaster';
+import { seoKeywords } from '@/config/keywords';
+import { siteConfig } from '@/config/site';
+import ActiveSectionContextProvider from '@/context/active-section-contex';
+import ThemeContextProvider from '@/context/theme-context';
+import '@/styles/styles.scss';
+import { Analytics } from '@vercel/analytics/react';
+import { Inter, Lexend_Deca, Manrope } from 'next/font/google';
 import Particles from './c/components/particles';
-import gridBg from './c/components/grid';
-import ScrollBorder from '@/components/effects/ScrollBorder';
 const inter = Inter({ subsets: ['latin'] });
 const rope = Manrope({ subsets: ['latin'] });
 const lexend = Lexend_Deca({ subsets: ['latin'] });
@@ -80,10 +78,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <ThemeContextProvider>
                     <ActiveSectionContextProvider>
                         {/* <ScrollBorder /> */}
-                        <Header />
-                        <FancyHeader />
+
+
                         <Particles className="animate-fade-in fixed inset-0 -z-10" quantity={150} />
                         {children}
+                        <Footer />
                         <Trailer />
                         <Toaster />
                         <Analytics />

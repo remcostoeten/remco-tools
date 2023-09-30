@@ -91,6 +91,12 @@
   "workbench.editor.empty.hint": "hidden",
   "[typescriptreact]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "vscode.css-language-features"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   }
   // "eslint.codeActionsOnSave.rules": null,
 }

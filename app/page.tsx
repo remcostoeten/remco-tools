@@ -25,7 +25,7 @@ export default function Home() {
             <SectionSpacer variant="small" />
             <Experience />
             <SectionSpacer variant="small" />
-            <Footer />
+            {/* <Footer /> */}
         </main>
     );
 }
