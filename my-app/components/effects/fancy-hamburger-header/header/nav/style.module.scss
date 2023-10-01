@@ -1,0 +1,30 @@
+@import '../../../../styles/variables/colors.scss';
+@import '../../../../styles/utils/mixins.scss';
+
+.nav {
+    overflow: hidden;
+
+    .wrapper {
+        display: flex;
+        gap: 50px;
+        margin-bottom: 80px;
+        z-index: 9999;
+        padding: 40px;
+        background-color: $black;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
+
+@include above-mobile {
+    .nav {
+        .wrapper {
+            margin-bottom: 0px;
+            justify-content: space-between;
+        }
+    }
+}

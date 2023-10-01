@@ -6,6 +6,7 @@
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
+    "downlevelIteration": true,
     "module": "commonjs",
     "moduleResolution": "node",
     "resolveJsonModule": true,
@@ -13,6 +14,7 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": ".",
+    "noImplicitAny": false,
     "plugins": [
       {
         "name": "next"
@@ -50,8 +52,9 @@
     "components/fancy-hamburger-header/header/anim.js",
     "components/core/BackgroundVariantTwo.tsx",
     "next.config.mjs",
-    "app/(nocontainer)/inspiration/page.js"
-, "app/(nocontainer)/(tests)/emptyy/page.jsx"  ],
+    "app/(nocontainer)/inspiration/page.js",
+    "app/(nocontainer)/(tests)/emptyy/page.jsx"
+  ],
   "exclude": [
     "node_modules"
   ]

@@ -1,0 +1,35 @@
+@import '../../../../../styles/variables/colors.scss';
+@import '../../../../../styles/utils/mixins.scss';
+
+.footer{
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-top: 40px;
+
+    ul{
+        width: 50%;
+        margin-top: 10px;
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li{
+        span{
+            color: $grey;
+            font-size: 18px;
+        }
+    }
+}
+
+@include above-mobile {
+    .footer{
+        justify-content: space-between;
+
+        ul{
+            width: auto
+        }
+    }
+}

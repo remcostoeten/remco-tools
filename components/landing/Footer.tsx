@@ -74,7 +74,6 @@ export default function Footer(props: FooterProps): JSX.Element {
                                 <div className="hover-wrapper absolute left-0" ref={hoverContainerRef} style={{ overflowY: 'auto', maxHeight: '200px' }}>
                                     {renderHoverItems(key)}
                                 </div>
-
                             )}
                         </span>
                     </Link>

@@ -1,5 +1,5 @@
 // @ts-ignore
-"use client"
+"use client";
 
 import {
   collection,
@@ -9,129 +9,129 @@ import {
   onSnapshot,
   orderBy,
   query,
-  where
-} from "firebase/firestore"
-import { motion } from "framer-motion"
-import { useEffect, useState } from "react"
-import ReactMarkdown from "react-markdown"
-import rehypeRaw from "rehype-raw"
+  where,
+} from "firebase/firestore";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 
-import TrashIcon from "@/components/icons/TrashIcon"
+import TrashIcon from "@/components/icons/TrashIcon";
 import {
   ContextMenu,
   ContextMenuContent,
   ContextMenuItem,
-  ContextMenuTrigger
+  ContextMenuTrigger,
+} from "@/components/ui/context-menu";
 
-} from "@/components/ui/context-menu"
-
-import ThoughtDetail from "./ThoughtSingle"
-import { Thought } from "@/utils/types"
-import { toast } from "@/components/ui/use-toast"
-import { db, auth } from "@/utils/firebase"
-import { useThoughtContext } from "./ThoughtContext"
+import ThoughtDetail from "./ThoughtSingle";
+import { Thought } from "@/utils/types";
+import { toast } from "@/components/ui/use-toast";
+import { db, auth } from "@/utils/firebase";
+import { useThoughtContext } from "./ThoughtContext";
 
 export default function ThoughtCard() {
-  const [thoughts, setThoughts] = useState<Thought[]>([])
-  const [selectedThought, setSelectedThought] = useState<Thought | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [selectedLabel, setSelectedLabel] = useState<string>("")
-  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc")
-  const labelOptions = useThoughtContext()
+  const [thoughts, setThoughts] = useState<Thought[]>([]);
+  const [selectedThought, setSelectedThought] = useState<Thought | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [selectedLabel, setSelectedLabel] = useState<string>("");
+  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
+  const labelOptions = useThoughtContext();
 
-  const [filterValue, setFilterValue] = useState([])
+  const [filterValue, setFilterValue] = useState<string[]>([]);
 
-  const updateFilterValue = (values) => {
-    setFilterValue(values)
-  }
+  const updateFilterValue = (values: string[]) => {
+    setFilterValue(values);
+  };
+
   const fetchThoughts = () => {
-    const thoughtsCollection = collection(db, "thoughts")
-    let q = query(thoughtsCollection, orderBy("selectedDate", sortOrder))
+    const thoughtsCollection = collection(db, "thoughts");
+    let q = query(thoughtsCollection, orderBy("selectedDate", sortOrder));
 
     if (selectedLabel) {
       q = query(
         thoughtsCollection,
         where("label", "==", selectedLabel),
         orderBy("selectedDate", sortOrder)
-      )
+      );
     }
 
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const thoughtsData = snapshot.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
-      }))
-      setThoughts(thoughtsData as any)
-    })
+      }));
+      setThoughts(thoughtsData as any);
+    });
 
-    return unsubscribe
-  }
+    return unsubscribe;
+  };
 
   useEffect(() => {
-    const unsubscribe = fetchThoughts()
-    return () => unsubscribe()
-  }, [selectedLabel, sortOrder])
+    const unsubscribe = fetchThoughts();
+    return unsubscribe;
+  }, [selectedLabel, sortOrder]);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        fetchThoughts()
+        fetchThoughts();
       }
-      setLoading(false)
-    })
+      setLoading(false);
+    });
 
-    return () => unsubscribe()
-  }, [])
+    return unsubscribe;
+  }, []);
 
-  const handleRemove = (thoughtId: string) => {
-    setThoughts((prev) => prev.filter((t) => t.id !== thoughtId))
+  const handleRemove = async (thoughtId: string) => {
+    setThoughts((prev) => prev.filter((t) => t.id !== thoughtId));
 
     if (selectedThought && selectedThought.id === thoughtId) {
-      setSelectedThought(null)
+      setSelectedThought(null);
     }
 
     setTimeout(async () => {
       try {
-        await deleteDoc(doc(db, "thoughts", thoughtId))
+        await deleteDoc(doc(db, "thoughts", thoughtId));
         toast({
           title: "Note deleted successfully.",
-        })
+        });
       } catch (error) {
         toast({
           title: "Couldn't delete note.",
           variant: "destructive",
-        })
-        console.error(error)
+        });
+        console.error(error);
       }
-    }, 500)
-  }
+    }, 500);
+  };
 
   const handleRemoveAll = async () => {
     try {
-      const thoughtsCollection = collection(db, "thoughts")
-      const snapshot = await getDocs(thoughtsCollection)
+      const thoughtsCollection = collection(db, "thoughts");
+      const snapshot = await getDocs(thoughtsCollection);
 
-      const deletePromises = snapshot.docs.map((doc) => deleteDoc(doc.ref))
+      const deletePromises = snapshot.docs.map((doc) => deleteDoc(doc.ref));
 
-      await Promise.all(deletePromises)
+      await Promise.all(deletePromises);
 
       toast({
         title: "All notes deleted successfully.",
-      })
+      });
     } catch (error) {
       toast({
         title: "Couldn't delete notes.",
         variant: "destructive",
-      })
-      console.error(error)
+      });
+      console.error(error);
     }
-  }
+  };
 
   const handleSelect = (thoughtId: string) => {
-    console.log(`Note with id ${thoughtId} clicked`)
-    const selected = thoughts.find((t) => t.id === thoughtId)
-    setSelectedThought(selected || null)
-  }
+    console.log(`Note with id ${thoughtId} clicked`);
+    const selected = thoughts.find((t) => t.id === thoughtId);
+    setSelectedThought(selected || null);
+  };
 
   return (
     <div className="flex flex-col gap-4">
@@ -178,8 +178,7 @@ export default function ThoughtCard() {
             transition={{ delay: 0.6, duration: 0.5 }}
             className="border  border-[#27272a]  text-[#fafafa] border-input hover:bg-accent hover:text-accent-foreground px-3 rounded-md note-btn ml-auto hidden h-[100%] lg:flex"
             value={sortOrder}
-            data-type="hand"
-            onChange={(e) => setSelectedLabel(e.target.value)}
+            onChange={(e) => setSortOrder(e.target.value)}
           >
             <motion.option
               initial={{ opacity: 0, y: 20 }}
@@ -230,8 +229,8 @@ export default function ThoughtCard() {
               exit={{ opacity: 0, y: 10 }}
               transition={{ delay: index * 0.1 + 0.5, duration: 0.5 }}
               className={`icon-card border flex flex-col mb-4 justify-between rounded-md break-words p-6 ${selectedThought && selectedThought.id === thought.id
-                ? "active"
-                : ""
+                  ? "active"
+                  : ""
                 }`}
               onClick={() => handleSelect(thought.id)}
             >
@@ -246,10 +245,9 @@ export default function ThoughtCard() {
                     <div className="rounded-xl w-14 h-14 align-middle items-center justify-center mr-2 flex flex-col text-center border">
                       <span className="font-notes text-xs text-[#5D5C63] uppercase">
                         {thought.selectedDate
-                          ? thought.selectedDate
-                            .toLocaleString("en-US", {
-                              weekday: "short",
-                            })
+                          ? thought.selectedDate.toLocaleString("en-US", {
+                            weekday: "short",
+                          })
                           : "N/A"}
                       </span>
 
@@ -306,5 +304,5 @@ export default function ThoughtCard() {
         </div>
       </div>
     </div>
-  )
+  );
 }
