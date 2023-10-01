@@ -3,8 +3,8 @@ import React, { useState } from "react"
 import { addDoc, collection } from "firebase/firestore"
 import { toast } from "@/components/ui/use-toast"
 import { db } from "@/utils/firebase"
-import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { ReadMore } from "@/components/core/buttons/Buttons"
 
 export function NewCategory() {
   const [categoryName, setCategoryName] = useState("")
@@ -34,9 +34,9 @@ export function NewCategory() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form  className="flex flex-col gap-2" onSubmit={handleSubmit}>
       <Input value={categoryName} onChange={e => setCategoryName(e.target.value)} placeholder="Category Name" />
-      <Button type="submit" >Add category</Button>
+      <ReadMore text='Add Category' /> 
     </form>
   )
 }

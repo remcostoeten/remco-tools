@@ -1,13 +1,13 @@
 import SectionSpacer from "@/components/ui/SectionSpacer";
-import { DisplayCategories } from "./DisplayCategory";
+import { CategoriesList, DisplayCategories } from "./DisplayCategory";
 import { NewCategory } from "./NewCategory";
 import { NewItemInCategory } from "./NewItemInCategory";
 
 export default function Page() {
     return (
         <>
-            <SectionSpacer variant="small" />
-            <div className="home-container">
+            <div className="bg-black px-8 py-12 rounded-sm drop-shadow-sm w-screen ">
+                <div className="container">
                 <h1>Add New Category</h1>
                 <NewCategory />
 
@@ -15,7 +15,7 @@ export default function Page() {
                 <NewItemInCategory />
 
                 <h1>Display Categories and Items</h1>
-                <DisplayCategories />
+                <CategoriesList /></div>
             </div>
         </>
     );

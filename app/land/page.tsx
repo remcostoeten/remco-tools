@@ -68,9 +68,13 @@ export default function Page() {
           </div>
           <section className='gap-[16px] flex flex-col'>
             <span>
-              <Subheading>I am currently occupied with.</Subheading>
+              <FramerMagnetic>
+                <Subheading>I am currently occupied with.</Subheading>
+              </FramerMagnetic>
+
             </span>
             <div className="flex gap-2 flex-wrap">
+
               <Label>
                 Next<I i="js" /> {'  '}<span className='pl-1 font-light'> as the weapon of choice</span>
               </Label>

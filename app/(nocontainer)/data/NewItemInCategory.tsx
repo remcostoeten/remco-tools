@@ -1,4 +1,5 @@
 'use client'
+import { ReadMore } from "@/components/core/buttons/Buttons"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -65,23 +66,19 @@ export function NewItemInCategory() {
   return (
     <form className="flex gap-2 flex-col" onSubmit={handleSubmit}>
       {/* @ts-ignore */}
-      <Select value={selectedCategoryId} onChange={(e) => setSelectedCategoryId(e.target.value)}>
-        <SelectTrigger className="w-[180px]">
-          <SelectValue placeholder="Theme" />
-        </SelectTrigger>
-        <SelectContent>
-          {categories.map(category => (
-            <SelectItem key={category.id} value={category.id}>
-              {category.name}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
+      <select>
+        {categories.map(category => (
+          <option key={category.id} value={category.id}>
+            {category.name}
+          </option>
+        ))}
+      </select>
 
       <Input
         type="number" value={itemPrice ?? ''} onChange={e => setItemPrice(e.target.valueAsNumber || null)} placeholder="Price" />
       <Input
         value={itemUrl} onChange={e => setItemUrl(e.target.value)} placeholder="Item URL" />
-      <Button type="submit" >Add item</Button>  </form >
+      <ReadMore text='Add Item' />
+    </form >
   )
 }
