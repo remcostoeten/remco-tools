@@ -55,20 +55,18 @@ export default function Footer(props: FooterProps): JSX.Element {
     };
 
     return (
-        <motion.div className="footer container">
+        <motion.div className="">
             {Object.keys(footerItems).map((key) => (
                 <span className="footer__inner" key={key}>
-                    <Link
+                    <Link target='_blank'
                         href={footerItems[key]}
                         onMouseEnter={() => setHoveredItem(key)}
                         onMouseLeave={() => setHoveredItem('')}
                     >
                         <span className={`footer__item footer__item--${key}`}>
-                            <span className="flex justify-between items-center">
-                                <span className="anchor regular grow link-props">{key}</span>
-                                <span className="grow">
-                                    <AnchorIcon />
-                                </span>
+                            <span className="anchor regular grow link-props">{key}</span>
+                            <span className="grow flex justify-end">
+                                <AnchorIcon />
                             </span>
                             {hoveredItem === key && (
                                 <div className="hover-wrapper absolute left-0" ref={hoverContainerRef} style={{ overflowY: 'auto', maxHeight: '200px' }}>

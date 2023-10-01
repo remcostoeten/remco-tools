@@ -1,8 +1,10 @@
-import Trailer from '@/components/core/Cursor';
-import InteractiveDots from '@/components/effects/InteractiveDots';
-import Header from "@/components/effects/SliderMenu/SlideNavigation";
-import Footer from '@/components/landing/Footer';
-import { Toaster } from '@/components/ui/toaster';
+import Trailer from '@c/core/Cursor';
+import ThemeSettings from '@c/core/ToggleTheme';
+import InteractiveDots from '@c/effects/InteractiveDots';
+import SliderNavigation from '@c/effects/SliderMenu/SlideNavigation';
+import Header from "@c/core/header/Header";
+import Footer from '@c/landing/Footer';
+import { Toaster } from '@c/ui/toaster';
 import { seoKeywords } from '@/config/keywords';
 import { siteConfig } from '@/config/site';
 import ActiveSectionContextProvider from '@/context/active-section-contex';
@@ -26,7 +28,6 @@ export const metadata = {
     type: 'Portfolio site and SaaS',
 
     openGraph: {
-        // @ts-ignore
         type: 'website',
         url: siteConfig.url,
         title: siteConfig.name,
@@ -76,8 +77,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <body className={`${lexend.className} bg-offblack`}>
                 <ThemeContextProvider>
                     <ActiveSectionContextProvider>
-                        {/* <ScrollBorder /> */}
+                        <ThemeSettings/>
                         <Header />
+                        <SliderNavigation />
                         <InteractiveDots />
                         {children}
                         <Footer />

@@ -1,6 +1,6 @@
 body {
     overflow-x: hidden;
-    background-color: $white;
+    background-color: $black;
 }
 
 .words {
@@ -22,14 +22,10 @@ body {
     }
 }
 
-
-
-
 #_app-content {
     background-color: $black;
     /* or whatever your desired app background color is */
 }
-
 
 .home-container {
     min-width: 680px;
@@ -162,17 +158,15 @@ body {
 
     &::after {
         content: '';
-        width: 100vw;
+        width: 160vw;
         height: 100%;
-        // background: radial-gradient(circle, rgba(30, 30, 30, 1) 43%, rgba(19, 20, 20, 0) 100%);
+        background: radial-gradient(circle, rgba(30, 30, 30, 1) 23%, rgba(19, 20, 20, 0) 100%);
         position: fixed;
         top: 0;
         left: 0;
-        z-index: -1;
+        z-index: -2;
     }
 }
-
-body {}
 
 canvas {
     width: 100vw !important;
@@ -180,7 +174,7 @@ canvas {
     height: 100vh !important;
     position: fixed;
     top: 0;
-    z-index: -1;
+    z-index: -3;
 
     &::before {
         content: "";
@@ -197,7 +191,7 @@ canvas {
         background-size: 100% 200px, 200px 100%, 100% 20px, 20px 100%;
         background-origin: border-box;
         background-clip: content-box, content-box, content-box, content-box;
-        z-index: 1;
+        z-index: -2;
         pointer-events: none;
     }
 
@@ -209,7 +203,7 @@ canvas {
         // a gradient that is transparent on the middle and offblack on the edges. the edges must be entiery solid color.
         background: rgb(19, 20, 20);
         background: radial-gradient(circle, rgba(19, 20, 20, 0) 0%, rgba(30, 30, 30, 1) 75%);
-        z-index: -1;
+        z-index: -2;
         left: 0;
         top: 0;
     }

@@ -6,7 +6,7 @@ import { AnimatePresence } from 'framer-motion';
 import Stairs from './stairs/Stairs';
 import SectionSpacer from '@/components/ui/SectionSpacer';
 
-export default function Header() {
+export default function SliderNavigation() {
 
     const [menuIsOpen, setMenuIsOpen] = useState(false);
 
