@@ -1,11 +1,12 @@
-'use client'; import { useRef, useState } from 'react';
+'use client';
+import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
 interface Props {
     children: React.ReactNode;
 }
 
-const Framer: React.FC<Props> = ({ children }) => {
+const FramerMagnetic: React.FC<Props> = ({ children }) => {
     const ref = useRef<HTMLDivElement>(null);
     const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -36,4 +37,4 @@ const Framer: React.FC<Props> = ({ children }) => {
     );
 };
 
-export default Framer;
+export default FramerMagnetic;

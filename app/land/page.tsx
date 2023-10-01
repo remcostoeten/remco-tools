@@ -7,6 +7,8 @@ import Footer from '@/components/landing/Footer';
 import SectionSpacer from '@/components/ui/SectionSpacer';
 import { Label, Subheading, Text } from '@c/core/PageElements';
 import React, { useEffect } from 'react';
+import FramerMagnetic from '@c/effects/framer';
+import AlternatingGrid from '@/components/IconGrid';
 
 export default function Page() {
   const rand = (min, max) =>
@@ -98,6 +100,8 @@ export default function Page() {
         </div>
       </main>
       <Sprinkle t1='some random ' t2='effect' t3='which can be cool' />
+      <AlternatingGrid />
+
       <Footer />
     </React.Fragment>
   );

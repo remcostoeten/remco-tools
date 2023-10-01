@@ -4,7 +4,12 @@ import Link from 'next/link';
 import MetaData from '@/config/metadata';
 import AnchorIcon from '../icons/Anchor';
 import { motion } from 'framer-motion';
-
+import GithubIcon from '../core/icons/Github';
+import FramerMagnetic from '../effects/framer';
+import GsapMagnetic from '../effects/gsap';
+import IconGrid from '../icons/IconGrid';
+import IconGridd from '../IconGrid';
+import AlternatingGrid from '../IconGrid';
 type FooterProps = {
     linkedIn?: string;
     github?: string;
@@ -59,7 +64,9 @@ export default function Footer(props: FooterProps): JSX.Element {
     };
 
     return (
-        <motion.div className="footer">
+        <motion.div className="footer container">
+
+
             {Object.keys(footerItems).map((key) => (
                 <span className="footer__inner" key={key}>
                     <Link
