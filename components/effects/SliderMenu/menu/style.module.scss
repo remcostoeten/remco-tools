@@ -94,7 +94,7 @@
                 .container {
                     display: flex;
                     align-items: center;
-                    animation: slider 12s linear infinite;
+                    animation: menuSlider 12s linear infinite;
                     transition: opacity 0.3s;
                     position: relative;
                     opacity: 0;
@@ -160,7 +160,7 @@
     }
 }
 
-@keyframes slider {
+@keyframes menuSlider {
     from {
         transform: translate3d(0, 0, 0);
     }

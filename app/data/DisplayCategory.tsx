@@ -1,10 +1,10 @@
 'use client'
+import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
 import { db } from "@/utils/firebase";
 import { collection, deleteDoc, doc, onSnapshot, updateDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { Card } from "../c/components/card";
 
 export function DisplayCategories() {
   const [categories, setCategories] = useState([]);

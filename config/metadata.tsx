@@ -14,7 +14,6 @@ const MetaData = {
     type: 'Portfolio site and SaaS',
 
     openGraph: {
-        // @ts-ignore
         type: 'website',
         url: siteConfig.url,
         title: siteConfig.name,
@@ -34,18 +33,24 @@ const MetaData = {
     gitlabProfile: 'https://gitlab.com/remcostoeten',
     snippetsUrl: 'https://snippets.remcostoeten.com',
 
+    footerItems: {
+        'Github': 'https://github.com/remcostoeten',
+        'LinkedIn': 'https://www.linkedin.com/in/remco-stoeten/',
+        'Gitlab': 'https://gitlab.com/remcostoeten',
+        'Snippets': 'https://snippets.remcostoeten.com',
 
-    icons: {
-        icon: '/favicon.ico',
-        shortcut: '/favicon-16x16.png',
-        apple: '/apple-touch-icon.png',
-    },
-    authors: [
-        {
-            name: 'Remco Stoeten',
-            url: 'https://remcostoeten.com',
+        icons: {
+            icon: '/favicon.ico',
+            shortcut: '/favicon-16x16.png',
+            apple: '/apple-touch-icon.png',
         },
-    ],
+        authors: [
+            {
+                name: 'Remco Stoeten',
+                url: 'https://remcostoeten.com',
+            },
+        ],
+    },
 };
 
 export default MetaData;

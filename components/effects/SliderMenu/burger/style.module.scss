@@ -1,7 +1,7 @@
-.button{
+.button {
     width: 150px;
     height: 30px;
-    background-color: black;
+    background-color: var(--offblack);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -11,7 +11,7 @@
     padding: 10px;
     cursor: pointer;
 
-    p{
+    p {
         display: none;
         color: white;
         margin: 0px;
@@ -19,17 +19,17 @@
         transition: color 0.5s;
     }
 
-    svg{
+    svg {
         position: absolute;
         right: 20px;
         top: 20px;
 
-        line{
+        line {
             transition: stroke 0.5s;
         }
     }
 
-    .background{
+    .background {
         background-color: #D3FD50;
         width: 100%;
         position: absolute;
@@ -40,25 +40,28 @@
         transition: height 0.3s;
     }
 
-    &:hover{
-        p{
-            color: black;
+    &:hover {
+        p {
+            color: var(--offblack);
         }
-        svg{
-            line{
-                stroke: black;
+
+        svg {
+            line {
+                stroke: var(--offblack);
             }
         }
-        .background{
+
+        .background {
             height: 100%;
         }
     }
 }
 
 @media only screen and (min-width: 600px) {
-    .button{
+    .button {
         height: 120px;
-        p{
+
+        p {
             display: block;
         }
     }

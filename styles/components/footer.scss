@@ -1,11 +1,11 @@
-$active: #E0FC61;
+$active: #D3FD50;
 
 .anchor {
     @extend .link-props;
-    font-size: 38.4px;
+
+    font-size: 28.4px;
     letter-spacing: -1.152px;
-    font-weight: 500;
-    line-height: 42.24px;
+    font-weight: 300;
     text-transform: uppercase;
     opacity: 1;
 }
@@ -22,32 +22,64 @@ $active: #E0FC61;
     box-sizing: border-box;
 }
 
+.footer__item--hover-container {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.footer__item--hover-container .footer__item--hover {
+    margin-right: 10px;
+}
+
+.hover-wrapper {
+    display: flex;
+    gap: 100px;
+    animation: 40s InfiniteScroller infinite;
+    justify-content: space-between;
+
+    path,
+    span {
+        color: var(--offblack);
+        fill: var(--offblack);
+    }
+}
 
 .footer {
     display: flex;
     flex-direction: column;
     margin: 48px 0;
+    z-index: 10;
 
-    &__item {
+    .regular {
+
         display: flex;
-        align-items: center;
         justify-content: space-between;
-        padding: 56px 0;
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
+        align-items: center;
+        width: $container-width;
+    }
 
-        border-bottom: 1px solid $dark-grey;
+    &__inner {
+        position: relative;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
         &:first-child {
-            border-top: 1px solid $dark-grey;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+
         }
 
-        span {
-            text-transform: uppercase;
-        }
+        &:hover {
 
-        &:not(:last-child) {}
+            &::after,
+            &::before {
+                height: 100%;
+            }
+        }
 
         &::after,
         &::before {
@@ -64,16 +96,58 @@ $active: #E0FC61;
             z-index: -1;
         }
 
+        &::after,
+        &::before {
+            content: '';
+            width: 100vw;
+            height: 0px;
+            background-color: $active;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: 500ms;
+            z-index: -1;
+        }
+
+    }
+
+    &__item--hover {
+        z-index: 100;
+        color: yellow;
+        animation: menuSlider 5s infinite;
+
+        .link-props {
+            color: yellow !important;
+        }
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 46px 0;
+        cursor: pointer;
+        margin: 0 auto;
+        width: $container-width;
+
+        span {
+            text-transform: uppercase;
+        }
+
+
 
         &:hover {
-            .anchor {
+            .regular {
                 opacity: 0;
+
+                .link-props {
+                    // opacity: 0;
+                }
             }
 
-            &::after,
-            &::before {
-                height: 100%;
-            }
+
 
             &::after {}
 
@@ -83,12 +157,33 @@ $active: #E0FC61;
         }
     }
 
-    &__inner {
-        @extend .container;
+    &__inner-hover {
         display: flex;
-        justify-content: spacebetween;
+        justify-content: space-between;
         align-items: center;
         width: 100%;
+    }
+
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        &:hover {
+            .regular {
+                opacity: 0;
+            }
+        }
+
+        a {
+            margin: 0 auto;
+        }
+
+        .regular {
+            transition: 500ms ease-in-out all;
+            opacity: 1;
+        }
 
         @include mobile {
             padding: 0 24px;
