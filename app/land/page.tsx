@@ -11,13 +11,13 @@ import FramerMagnetic from '@c/effects/framer';
 import AlternatingGrid from '@/components/IconGrid';
 
 export default function Page() {
-  const rand = (min, max) =>
+  const rand = (min: number, max: number) =>
     Math.floor(Math.random() * (max - min + 1)) + min;
 
   useEffect(() => {
     const interval = setInterval(() => {
       const stars = document.getElementsByClassName("magic-star");
-      for (const star of stars) {
+      for (const star of stars as any) {
         star.style.setProperty("--star-left", `${rand(-10, 100)}%`);
         star.style.setProperty("--star-top", `${rand(-40, 80)}%`);
 
@@ -101,7 +101,6 @@ export default function Page() {
       </main>
       <Sprinkle t1='some random ' t2='effect' t3='which can be cool' />
       <AlternatingGrid />
-
       <Footer />
     </React.Fragment>
   );

@@ -1,47 +1,49 @@
-'use client';
-import React, { useEffect, useRef, useState } from 'react';
+'use client'; import { useEffect, useRef, useState } from 'react';
 
 export default function Trailer() {
-    const trailer = useRef(null);
-    const customCursor = useRef(null);
-    const [hovered, setHovered] = useState(false);
+    const trailer = useRef<HTMLDivElement>(null);
+    const customCursor = useRef<HTMLDivElement>(null);
+    const [hovered, setHovered] = useState<boolean>(false);
 
     useEffect(() => {
-        const handleMouseMove = (e) => {
-            const hide = e.target.closest('.showAlternativeCursor');
+        const handleMouseMove = (e: MouseEvent) => {
+            const hide = (e.target as HTMLElement).closest('.showAlternativeCursor');
 
             if (hide) {
                 setHovered(true);
-                trailer.current.style.opacity = 0;
-                customCursor.current.style.opacity = 1;
+                if (trailer.current) trailer.current.style.opacity = '0';
+                if (customCursor.current) customCursor.current.style.opacity = '1';
 
-                customCursor.current.style.left = `${e.clientX}px`;
-                customCursor.current.style.top = `${e.clientY}px`;
+                if (customCursor.current) {
+                    customCursor.current.style.left = `${e.clientX}px`;
+                    customCursor.current.style.top = `${e.clientY}px`;
+                }
             } else {
                 setHovered(false);
-                trailer.current.style.opacity = 1;
-                customCursor.current.style.opacity = 0;
+                if (trailer.current) trailer.current.style.opacity = '1';
+                if (customCursor.current) customCursor.current.style.opacity = '0';
             }
 
-            const interactable = e.target.closest('.grow');
+            const interactable = (e.target as HTMLElement).closest('.grow');
             const interacting = interactable !== null;
 
             animateTrailer(e, interacting);
-            trailer.current.dataset.type = interacting ? interactable.dataset.type : '';
         };
 
-        const animateTrailer = (e, interacting) => {
-            const x = e.clientX - trailer.current.offsetWidth / 2,
-                y = e.clientY - trailer.current.offsetHeight / 2;
+        const animateTrailer = (e: MouseEvent, interacting: boolean) => {
+            const x = e.clientX - (trailer.current?.offsetWidth ?? 0) / 2,
+                y = e.clientY - (trailer.current?.offsetHeight ?? 0) / 2;
 
             const keyframes = {
                 transform: `translate(${x}px, ${y}px) scale(${interacting ? 8 : 1})`,
             };
 
-            trailer.current.animate(keyframes, {
-                duration: 800,
-                fill: 'forwards',
-            });
+            if (trailer.current) {
+                trailer.current.animate(keyframes, {
+                    duration: 800,
+                    fill: 'forwards',
+                });
+            }
         };
 
         window.addEventListener('mousemove', handleMouseMove);

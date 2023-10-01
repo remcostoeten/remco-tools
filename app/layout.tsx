@@ -1,7 +1,6 @@
 import Trailer from '@/components/core/Cursor';
-import Header from "@/components/effects/SliderMenu/SlideNavigation";
 import InteractiveDots from '@/components/effects/InteractiveDots';
-import SliderMenu from '@/components/effects/SliderMenu/menu';
+import Header from "@/components/effects/SliderMenu/SlideNavigation";
 import Footer from '@/components/landing/Footer';
 import { Toaster } from '@/components/ui/toaster';
 import { seoKeywords } from '@/config/keywords';
@@ -11,8 +10,6 @@ import ThemeContextProvider from '@/context/theme-context';
 import '@/styles/styles.scss';
 import { Analytics } from '@vercel/analytics/react';
 import { Inter, Lexend_Deca, Manrope } from 'next/font/google';
-import Particles from './chronark/components/particles';
-import SectionDivider from '@/components/ui/divider';
 const inter = Inter({ subsets: ['latin'] });
 const rope = Manrope({ subsets: ['latin'] });
 const lexend = Lexend_Deca({ subsets: ['latin'] });
@@ -82,7 +79,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         {/* <ScrollBorder /> */}
                         <Header />
                         <InteractiveDots />
-                        <Particles className="animate-fade-in fixed inset-0 -z-10" quantity={150} />
                         {children}
                         <Footer />
                         <Trailer />
@@ -92,20 +88,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </ThemeContextProvider>
             </body>
         </html>
-        //     <body className={`${lexend.className} relative pt-28 sm:pt-36 dark:bg-offblack dark:text-gray-50 dark:text-opacity-90`}>
-        //         <ThemeContextProvider>
-        //             <ActiveSectionContextProvider>
-        //                 {/* <ThemeSettings /> */}
-        //                 <main className="flex flex-col items-center page-wrapper__inner ">
-        //                     <div className="container">{children}</div>
-        //                 </main>
-
-        //                 <Analytics />
-        //                 <Toaster />
-        //                 {/* <Cursor /> */}
-        //             </ActiveSectionContextProvider>
-        //         </ThemeContextProvider>
-        //     </body>
-        // </html>
     );
 }

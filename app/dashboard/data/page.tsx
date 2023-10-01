@@ -1,7 +1,6 @@
 
 "use client"
-
-import { Select, SelectValue } from "@radix-ui/react-select"
+import { Select, SelectValue } from "@radix-ui/react-select";
 import {
   addDoc,
   collection,
@@ -10,150 +9,161 @@ import {
   getDocs,
   serverTimestamp,
   updateDoc
-} from "firebase/firestore"
-import { useEffect, useState } from "react"
+} from "firebase/firestore";
+import { useEffect, useState } from "react";
 
-import { Button, buttonVariants } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { SelectContent, SelectItem, SelectTrigger } from "@/components/ui/select"
-import { Textarea } from "@/components/ui/textarea"
-import { toast } from "@/components/ui/use-toast"
-import { auth, db } from "@/utils/firebase"
-import { cn } from "@/lib/utils"
+import { Button, buttonVariants } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { SelectContent, SelectItem, SelectTrigger } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import { toast } from "@/components/ui/use-toast";
+import { auth, db } from "@/utils/firebase";
+import { cn } from "@/lib/utils";
+
+interface Message {
+  id: string;
+  title: string;
+  userId: string;
+  content: string;
+  category: string;
+  createdAt: any;
+}
 
 export default function Dashboard() {
-  const [title, setTitle] = useState("")
-  const [category, setCategory] = useState("")
-  const [content, setContent] = useState("")
-  const [messages, setMessages] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [editModeMap, setEditModeMap] = useState({})
-  const password = process.env.NEXT_PUBLIC_PASSWORD
-  const [enteredPassword, setEnteredPassword] = useState("")
-  const [isPasswordCorrect, setIsPasswordCorrect] = useState(false)
-  const fetchmessages = async () => {
-    const messagesCollection = collection(db, "messages")
-    const snapshot = await getDocs(messagesCollection)
-    const messages = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-    setMessages(messages)
-  }
+  const [title, setTitle] = useState("");
+  const [category, setCategory] = useState("");
+  const [content, setContent] = useState("");
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [editModeMap, setEditModeMap] = useState<{ [key: string]: boolean }>({});
+  const password = process.env.NEXT_PUBLIC_PASSWORD!;
+  const [enteredPassword, setEnteredPassword] = useState("");
+  const [isPasswordCorrect, setIsPasswordCorrect] = useState(false);
 
-  const user = auth.currentUser
+  const fetchMessages = async () => {
+    const messagesCollection = collection(db, "messages");
+    const snapshot = await getDocs(messagesCollection);
+    const messages = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })) as Message[];
+    setMessages(messages);
+  };
+
+  const user = auth.currentUser;
 
   useEffect(() => {
-    fetchmessages()
-  }, [])
+    fetchMessages();
+  }, []);
 
   const categories = [
     { id: "1", name: "Pleio" },
     { id: "2", name: "Softhouse" },
     { id: "3", name: "Prive" },
-  ]
+  ];
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      fetchmessages()
-    })
+      fetchMessages();
+    });
 
-    return () => unsubscribe()
-  }, [])
+    return () => unsubscribe();
+  }, []);
 
   const handleSubmit = async () => {
-
     try {
-      const newMessage = {
+      const newMessage: Message = {
         title,
-        userId: user.uid,
+        userId: user?.uid!,
         content,
         category,
         createdAt: serverTimestamp(),
-      }
+        id: "",
+      };
 
-      await addDoc(collection(db, "messages"), newMessage)
+      const docRef = await addDoc(collection(db, "messages"), newMessage);
+      newMessage.id = docRef.id;
 
-      setMessages((prevMessage) => [newMessage, ...prevMessage])
+      setMessages((prevMessage) => [newMessage, ...prevMessage]);
 
-      setCategory("")
-      setTitle("")
-      setContent("")
+      setCategory("");
+      setTitle("");
+      setContent("");
       toast({
         title: "message created successfully.",
         description: `In the category ${category} with title ${title}`,
-      })
+      });
     } catch (error) {
       toast({
         title: "Something went wrong.",
         description: `Your sign-in request failed. Please try again. ${error}`,
         variant: "destructive",
-      })
-      console.error(error)
+      });
+      console.error(error);
     }
-  }
+  };
 
-  const handleRemove = async (id) => {
+  const handleRemove = async (id: string) => {
     try {
-      await deleteDoc(doc(db, "messages", id))
+      await deleteDoc(doc(db, "messages", id));
       setMessages((prevMessages) =>
-        prevMessages.filter((message) => message.userId !== id)
-      )
+        prevMessages.filter((message) => message.id !== id)
+      );
 
       toast({
         title: "message removed successfully.",
-      })
+      });
     } catch (error) {
       toast({
         title: "Couldn't remove message.",
         variant: "destructive",
-      })
-      console.error(error)
+      });
+      console.error(error);
     }
-  }
+  };
 
-  const toggleEditMode = (id) => {
+  const toggleEditMode = (id: string) => {
     setEditModeMap((prev) => ({
       ...prev,
       [id]: !prev[id],
-    }))
-  }
+    }));
+  };
 
-  const handleEdit = async (message) => {
+  const handleEdit = async (message: Message) => {
     try {
-      await updateDoc(doc(db, "messages", message.userId), {
+      await updateDoc(doc(db, "messages", message.id), {
         title: message.title,
         content: message.content,
-      })
+      });
 
-      toggleEditMode(message.userId)
+      toggleEditMode(message.id);
 
       toast({
         title: "message updated successfully.",
-      })
+      });
     } catch (error) {
       toast({
         title: "Couldn't update message.",
         variant: "destructive",
-      })
-      console.error(error)
+      });
+      console.error(error);
     }
-  }
+  };
 
   const handlePasswordSubmit = () => {
     if (enteredPassword === password) {
-      setIsPasswordCorrect(true)
+      setIsPasswordCorrect(true);
       toast({
         title: "Correct password.",
-      })
+      });
     } else {
       toast({
         title: "Wrong password.",
         variant: "destructive",
-      })
+      });
     }
-  }
+  };
 
   return (
     <div className="max-w-3xl">
-      {enteredPassword === password ? (
+      {isPasswordCorrect ? (
         <div className="grid items-start gap-8">
           <div className="grid gap-1">
             <h1 className="text-3xl font-heading md:text-4xl">messages</h1>
@@ -168,13 +178,15 @@ export default function Dashboard() {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
-            <Select onValueChange={setCategory} defaultValue={category}>
+            <Select onValueChange={setCategory} value={category}>
               <SelectTrigger>
                 <SelectValue placeholder="Select a verified email to display" />
               </SelectTrigger>
               <SelectContent>
                 {categories.map((category) => (
-                  <SelectItem value={category.name}>{category.name}</SelectItem>
+                  <SelectItem key={category.id} value={category.name}>
+                    {category.name}
+                  </SelectItem>
                 ))}
               </SelectContent>
             </Select>
@@ -191,11 +203,11 @@ export default function Dashboard() {
           <div className="pb-2 ">
             {messages.map((message) => (
               <div
-                key={message.userId}
+                key={message.id}
                 className="border divide-y rounded-md divide-border"
               >
                 <div className="flex flex-col content-center gap-2 px-8 py-4">
-                  {editModeMap[message.userId] ? (
+                  {editModeMap[message.id] ? (
                     <>
                       <Input
                         type="text"
@@ -203,7 +215,7 @@ export default function Dashboard() {
                         onChange={(e) =>
                           setMessages((prevMessages) =>
                             prevMessages.map((prevMessage) =>
-                              prevMessage.userId === message.userId
+                              prevMessage.id === message.id
                                 ? { ...prevMessage, title: e.target.value }
                                 : prevMessage
                             )
@@ -215,7 +227,7 @@ export default function Dashboard() {
                         onChange={(e) =>
                           setMessages((prevMessages) =>
                             prevMessages.map((prevMessage) =>
-                              prevMessage.userId === message.userId
+                              prevMessage.id === message.id
                                 ? { ...prevMessage, content: e.target.value }
                                 : prevMessage
                             )
@@ -238,7 +250,7 @@ export default function Dashboard() {
                           Save
                         </Button>
                         <Button
-                          onClick={() => toggleEditMode(message.userId)}
+                          onClick={() => toggleEditMode(message.id)}
                         >
                           Cancel
                         </Button>
@@ -254,11 +266,11 @@ export default function Dashboard() {
                       <div>
                         <p className="text-sm text-muted-foreground"></p>{" "}
                       </div>
-                      <span onClick={() => handleRemove(message.userId)}>
+                      <span onClick={() => handleRemove(message.id)}>
                         Delete
                       </span>
                       <Button
-                        onClick={() => toggleEditMode(message.userId)}
+                        onClick={() => toggleEditMode(message.id)}
                       >
                         Edit
                       </Button>
@@ -281,5 +293,5 @@ export default function Dashboard() {
         </div>
       )}
     </div>
-  )
+  );
 }

@@ -9,7 +9,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import ArrowDown from '../ArrowDown';
-import Particles from '../Particles';
 import T from '../core/GradientText';
 import I from '../core/Italic';
 import GithubLogo from '../core/icons/GithubLogo';
@@ -143,7 +142,6 @@ export default function Intro() {
                     </motion.div>
                 </motion.div>
             </section>
-            {showParticles && <Particles particleCount={100} />}
         </>
     );
 }

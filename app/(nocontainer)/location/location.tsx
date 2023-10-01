@@ -1,12 +1,19 @@
-import Image from 'next/image'
-import map from '@/public/map.svg'
+import Image from 'next/image';
+import map from '@/public/map.svg';
 
 // Forward properties from `middleware.ts`
 // When support for configuring gSSP to use Edge Functions lands,
 // We could add that logic here directly.
-export const getServerSideProps = ({ query }) => ({
-  props: query,
-})
+
+interface IndexProps {
+  name: string;
+  languages: string;
+  city: string;
+  region: string;
+  country: string;
+  currencyCode: string;
+  currencySymbol: string;
+}
 
 export default function Index({
   name,
@@ -16,9 +23,9 @@ export default function Index({
   country,
   currencyCode,
   currencySymbol,
-}) {
-  name = decodeURIComponent(name)
-  city = decodeURIComponent(city)
+}: IndexProps) {
+  name = decodeURIComponent(name);
+  city = decodeURIComponent(city);
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-gray-50">
       <div className="fixed inset-0 overflow-hidden opacity-75 bg-[#f8fafb]">
@@ -100,5 +107,5 @@ export default function Index({
         </section>
       </main>
     </div>
-  )
+  );
 }

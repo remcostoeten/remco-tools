@@ -4,11 +4,16 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { toast } from "@/components/ui/use-toast"
 import { db } from "@/utils/firebase"
-import { addDoc, collection, onSnapshot } from "firebase/firestore"
+import { DocumentData, addDoc, collection, onSnapshot } from "firebase/firestore"
 import React, { useEffect, useState } from "react"
 
+type Category = {
+  id: string;
+  name: string;
+}
+
 export function NewItemInCategory() {
-  const [categories, setCategories] = useState([])
+  const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState("")
   const [itemName, setItemName] = useState("")
   const [itemPrice, setItemPrice] = useState<number | null>(null)
@@ -16,13 +21,13 @@ export function NewItemInCategory() {
 
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(db, "categories"), (snapshot) => {
-      const fetchedCategories = []
+      const fetchedCategories: ((prevState: never[]) => never[]) | DocumentData[] = []
       snapshot.forEach((doc) => {
         const category = doc.data()
         category.id = doc.id
         fetchedCategories.push(category)
       })
-      setCategories(fetchedCategories)
+      setCategories(fetchedCategories as Category[])
     })
     return (): void => unsubscribe()
   }, [])
@@ -74,9 +79,7 @@ export function NewItemInCategory() {
       </Select>
 
       <Input
-        value={itemName} onChange={e => setItemName(e.target.value)} placeholder="Item Name" />
-      <Input
-        type="number" value={itemPrice} onChange={e => setItemPrice(Number(e.target.value))} placeholder="Price" />
+        type="number" value={itemPrice ?? ''} onChange={e => setItemPrice(e.target.valueAsNumber || null)} placeholder="Price" />
       <Input
         value={itemUrl} onChange={e => setItemUrl(e.target.value)} placeholder="Item URL" />
       <Button type="submit" >Add item</Button>  </form >

@@ -1,8 +1,8 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
-import Slider from "react-slick"
+import { useEffect, useState } from "react"
 
+import { Slider } from "@/components/ui/slider"
 import FirebaseLogo from "../../icons/FirebaseLogo"
 import NextIcon from "../../icons/NextIcon"
 import ReactIcon from "../../icons/ReactIcon"
@@ -108,3 +108,4 @@ const Carousel = () => {
 }
 
 export { Carousel, banners }
+

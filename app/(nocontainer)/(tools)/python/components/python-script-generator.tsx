@@ -132,7 +132,7 @@ if __name__ == '__main__':
         setToggleScript(!toggleScript);
     };
 
-    const handleOptionChange = (option) => {
+    const handleOptionChange = (option: React.SetStateAction<string>) => {
         setSelectedOption(option);
     };
 

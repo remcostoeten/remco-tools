@@ -1,3 +1,4 @@
+// @ts-nocheck
 'use client';
 import I from '@/components/core/Italic';
 import InteractiveDots from '@/components/effects/InteractiveDots';
@@ -7,10 +8,10 @@ import SectionSpacer from '@/components/ui/SectionSpacer';
 import { Label, Subheading, Text } from '@c/core/PageElements';
 import React, { useEffect } from 'react';
 
+interface SprinkleProps { }
 
 export default function Page() {
-    const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
-
+    const rand = (min: number, max: number): number => Math.floor(Math.random() * (max - min + 1)) + min;
     useEffect(() => {
         const interval = setInterval(() => {
             const stars = document.getElementsByClassName("magic-star");
@@ -99,9 +100,11 @@ export default function Page() {
             <Footer />
         </React.Fragment>
     );
+}
 
-    function Sprinkle({ }) {
-        return (<div className='sprinle'>
+function Sprinkle(props: SprinkleProps) {
+    return (
+        <div className='sprinle'>
             HTML CSS JSResult Skip Results Iframe
             <h1>
                 Sometimes I'll start a line of code and I
@@ -125,6 +128,6 @@ export default function Page() {
                 </span>
                 where it's going.
             </h1>
-        </div>);
-    }
+        </div>
+    );
 }

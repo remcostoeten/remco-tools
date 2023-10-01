@@ -68,7 +68,7 @@ export default function LoginPage() {
             });
     };
 
-    const handleClick = async (e) => {
+    const handleClick = async (e: { preventDefault: () => void }) => {
         e.preventDefault();
         setIsLoading(true);
 

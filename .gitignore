@@ -1,7 +1,5 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-*test_directory/*
-
 # dependencies
 /node_modules
 /.pnp
@@ -35,30 +33,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-*env*
-
-*swp*
-utils/test_directory/*
-utils/test_directory/subdir1/file2.scss
-utils/test_directory/file1.scss
-Hunter Hastings - From MVP to IPO - Product Designer, UX, UI for Startups_files/_script0.QRZE2N7P.mjs
-Hunter Hastings - From MVP to IPO - Product Designer, UX, UI for Startups_files/dy8TVcm2njiimYaAZXJDJBt3o.svg
-Hunter Hastings - From MVP to IPO - Product Designer, UX, UI for Startups_files/EIkhcgqxZoX7y2mBRDO61MT1wI.svg
-Hunter Hastings - From MVP to IPO - Product Designer, UX, UI for Startups_files/hJgOwOz8mbKzA1jRmQKidxLduwE.svg
-Hunter Hastings - From MVP to IPO - Product Designer, UX, UI for Startups_files/hotjar-1404588.js
-Hunter Hastings - From MVP to IPO - Product Designer, UX, UI for Startups_files/iGpBa9SKZZkcySoutPcT1QYdjuc.svg
-Hunter Hastings - From MVP to IPO - Product Designer, UX, UI for Startups_files/Irqk5Q0Cg5J5JmkPq8b9ATbSA.svg
-Hunter Hastings - From MVP to IPO - Product Designer, UX, UI for Startups_files/JRxoPgnqBWsPkgeKsaE3zjFtAcU.svg
-Hunter Hastings - From MVP to IPO - Product Designer, UX, UI for Startups_files/js
-Hunter Hastings - From MVP to IPO - Product Designer, UX, UI for Startups_files/NMFJ3dx5hw2rsEM9Bj3E2aO5FNo.svg
-Hunter Hastings - From MVP to IPO - Product Designer, UX, UI for Startups_files/oanAXEaFCzfSJYk5ox26ukcnI.svg
-Hunter Hastings - From MVP to IPO - Product Designer, UX, UI for Startups_files/QvvbS0j9Bw2fkIi2qaqTcrquBqc.svg
-Hunter Hastings - From MVP to IPO - Product Designer, UX, UI for Startups_files/RgyHCBqf6K3q0xGSdSzib5QQUt8.svg
-Hunter Hastings - From MVP to IPO - Product Designer, UX, UI for Startups_files/RmB8b4CW6uSxrM2Tl8Nxtdt15b8.svg
-Hunter Hastings - From MVP to IPO - Product Designer, UX, UI for Startups_files/saved_resource.html
-Hunter Hastings - From MVP to IPO - Product Designer, UX, UI for Startups_files/script
-Hunter Hastings - From MVP to IPO - Product Designer, UX, UI for Startups_files/Uxa2nEUcdzo1SdXxp06OQgcHaY.svg
-Hunter Hastings - From MVP to IPO - Product Designer, UX, UI for Startups_files/vuNp0mWfQKjooPWk3kytYqLLQU.svg
-Hunter Hastings - From MVP to IPO - Product Designer, UX, UI for Startups.html
-.contentlayer/*
