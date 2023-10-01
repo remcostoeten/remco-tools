@@ -1,4 +1,3 @@
-
 import Trailer from '@/components/core/Cursor';
 import Header from "@/components/effects/SliderMenu/SlideNavigation";
 import InteractiveDots from '@/components/effects/InteractiveDots';
@@ -12,8 +11,8 @@ import ThemeContextProvider from '@/context/theme-context';
 import '@/styles/styles.scss';
 import { Analytics } from '@vercel/analytics/react';
 import { Inter, Lexend_Deca, Manrope } from 'next/font/google';
+import Particles from './c/components/particles';
 import SectionDivider from '@/components/ui/divider';
-import Particles from '@/components/Particles';
 const inter = Inter({ subsets: ['latin'] });
 const rope = Manrope({ subsets: ['latin'] });
 const lexend = Lexend_Deca({ subsets: ['latin'] });
