@@ -11,7 +11,7 @@ import ThemeContextProvider from '@/context/theme-context';
 import '@/styles/styles.scss';
 import { Analytics } from '@vercel/analytics/react';
 import { Inter, Lexend_Deca, Manrope } from 'next/font/google';
-import Particles from './c/components/particles';
+import Particles from './chronark/components/particles';
 import SectionDivider from '@/components/ui/divider';
 const inter = Inter({ subsets: ['latin'] });
 const rope = Manrope({ subsets: ['latin'] });

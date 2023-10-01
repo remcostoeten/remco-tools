@@ -158,6 +158,18 @@ body {
     padding: 0;
     position: relative;
     /* Add other CSS styles for your app content */
+
+
+    &::after {
+        content: '';
+        width: 100vw;
+        height: 100%;
+        background: radial-gradient(circle, rgba(30, 30, 30, 1) 43%, rgba(19, 20, 20, 0) 100%);
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
 }
 
 body {}
