@@ -1,6 +1,7 @@
 import GithubLogo from "./core/icons/GithubLogo";
 import MagneticGsap from '@c/effects/gsap';
 import MagneticFramer from '@c/effects/framer';
+
 function AlternatingGrid() {
     const rows = 3;
     const cols = 4;
@@ -18,10 +19,10 @@ function AlternatingGrid() {
                                 key={colIndex}
                                 className={`w-24 gird place-items-center alternatinggrid h-24 ${isAlternateColor ? "bg-gray-300" : "bg-gray-500"}`}
                             >
-                                <MagneticFramers>
+                                <MagneticFramer>
 
                                     <GithubLogo />
-                                </MagneticFramers></div>
+                                </MagneticFramer></div>
                         );
                     })}
                 </div>

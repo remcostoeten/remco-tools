@@ -2,26 +2,26 @@
 import metadata from '@/config/metadata';
 import { useActiveSectionContext } from '@/context/active-section-contex';
 import { useTheme } from '@/context/theme-context';
+import FramerMagnetic from '@c/effects/framer';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import ArrowDown from '../ArrowDown';
+import Particles from '../Particles';
 import T from '../core/GradientText';
 import I from '../core/Italic';
 import GithubLogo from '../core/icons/GithubLogo';
 import Linkedin from '../core/icons/Linkedin';
 import IntroButtons from './IntroButtons';
-import Particles from '../Particles';
-import ArrowDown from '../ArrowDown';
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Intro() {
     const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
     const [scrollY, setScrollY] = useState(0);
     const { theme } = useTheme();
     const [showParticles, setShowParticles] = useState(false);
+    const magnetic = useRef(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -66,7 +66,7 @@ export default function Intro() {
     const itemVariants = {
         hidden: {
             opacity: 0,
-            y: 20, // Adjust the initial y position as needed
+            y: 20,
         },
         visible: {
             opacity: 1,
@@ -113,11 +113,10 @@ export default function Intro() {
                                     delay: 0.3,
                                 }}
                             >
-                                {' '}
-                                <Image src="https://media.licdn.com/dms/image/C5603AQFIlU2oV2JEgg/profile-displayphoto-shrink_800_800/0/1638502874210?e=2147483647&v=beta&t=NQAizH_x-gBtMhmn1APmsKcl9QjmasnaZ60TqG-ZhR4" alt="Remco Stoeten" width="192" height="192" quality="95" priority={true} className="mb-8 h-24  w-24 rounded-full border-[0.35rem] border-offwhite object-cover shadow-xl" />
+                                <Image src="/remco.png" alt="Remco Stoeten" width="192" height="192" quality="95" priority={true} className="mb-8 h-24  w-24 rounded-full border-[0.35rem] border-offwhite object-cover shadow-xl" />
                             </motion.div>
                             <motion.span variants={itemVariants} className="absolute text-4xl left-[-17px] top-[4rem]">
-                                <span className="text-[35px] wave">👋</span>
+                                <span className="tsext-[35px] wave">👋</span>
                             </motion.span>
                         </div>
                     </div>
@@ -130,12 +129,17 @@ export default function Intro() {
                     <motion.div variants={itemVariants} className="flex flex-col items-center justify-center gap-2 px-4 text-lg font-medium effect sm:flex-row">
                         <IntroButtons />
 
-                        <Link data-cursor-hover className={socialClass} href={metadata.linkedinProfile} target="_blank">
-                            <Linkedin />
-                        </Link>
-                        <Link data-cursor-hover className={socialClass} href={metadata.githubProfile} target="_blank">
-                            <GithubLogo />
-                        </Link>
+                        <FramerMagnetic>
+                            <Link data-cursor-hover className={socialClass} href={metadata.linkedinProfile} target="_blank">
+                                <Linkedin />
+                            </Link>
+                        </FramerMagnetic>
+
+                        <FramerMagnetic>
+                            <Link ref={magnetic} data-cursor-hover className={socialClass} href={metadata.githubProfile} target="_blank">
+                                <GithubLogo />
+                            </Link>
+                        </FramerMagnetic>
                     </motion.div>
                 </motion.div>
             </section>

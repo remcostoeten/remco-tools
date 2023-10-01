@@ -1,15 +1,9 @@
 'use client';
-import { useState, useRef, useEffect } from 'react';
-import Link from 'next/link';
 import MetaData from '@/config/metadata';
-import AnchorIcon from '../icons/Anchor';
 import { motion } from 'framer-motion';
-import GithubIcon from '../core/icons/Github';
-import FramerMagnetic from '../effects/framer';
-import GsapMagnetic from '../effects/gsap';
-import IconGrid from '../icons/IconGrid';
-import IconGridd from '../IconGrid';
-import AlternatingGrid from '../IconGrid';
+import Link from 'next/link';
+import { useEffect, useRef, useState } from 'react';
+import AnchorIcon from '../icons/Anchor';
 type FooterProps = {
     linkedIn?: string;
     github?: string;
@@ -31,10 +25,10 @@ export default function Footer(props: FooterProps): JSX.Element {
             const container = hoverContainerRef.current;
             if (container) {
                 const { scrollTop, scrollHeight, clientHeight } = container;
-                const isNearBottom = scrollTop + clientHeight > scrollHeight - 50; // 50 is a threshold, can be adjusted
+                const isNearBottom = scrollTop + clientHeight > scrollHeight - 50;
 
                 if (isNearBottom) {
-                    container.scrollTop = 0; // reset scroll to the top
+                    container.scrollTop = 0;
                 }
             }
         };
@@ -47,12 +41,9 @@ export default function Footer(props: FooterProps): JSX.Element {
         };
     }, []);
 
-
-
-
     const renderHoverItems = (key: string) => {
         const items = [];
-        for (let i = 0; i < 60; i++) { // Increase count to make it seem long
+        for (let i = 0; i < 120; i++) {
             items.push(
                 <span className="footer__inner-hover hover" key={i}>
                     <span className="anchor link-props pr-8">{key}</span>
@@ -65,8 +56,6 @@ export default function Footer(props: FooterProps): JSX.Element {
 
     return (
         <motion.div className="footer container">
-
-
             {Object.keys(footerItems).map((key) => (
                 <span className="footer__inner" key={key}>
                     <Link

@@ -30,9 +30,12 @@ const Gsap: React.FC<Props> = ({ children }) => {
         magnetic.current!.addEventListener('mousemove', handleMouseMove);
         magnetic.current!.addEventListener('mouseleave', handleMouseLeave);
 
+
         return () => {
-            magnetic.current!.removeEventListener('mousemove', handleMouseMove);
-            magnetic.current!.removeEventListener('mouseleave', handleMouseLeave);
+            if (magnetic.current) {
+                magnetic.current.removeEventListener('mousemove', handleMouseMove);
+                magnetic.current.removeEventListener('mouseleave', handleMouseLeave);
+            }
         };
     }, []);
 

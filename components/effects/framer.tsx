@@ -6,7 +6,7 @@ interface Props {
     children: React.ReactNode;
 }
 
-const FramerMagnetic: React.FC<Props> = ({ children }) => {
+const Framer: React.FC<Props> = ({ children }) => {
     const ref = useRef<HTMLDivElement>(null);
     const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -24,7 +24,7 @@ const FramerMagnetic: React.FC<Props> = ({ children }) => {
 
     const { x, y } = position;
     return (
-        <motion.div
+        <motion.span
             style={{ position: 'relative' }}
             ref={ref}
             onMouseMove={handleMouse}
@@ -33,8 +33,8 @@ const FramerMagnetic: React.FC<Props> = ({ children }) => {
             transition={{ type: 'spring', stiffness: 150, damping: 15, mass: 0.1 }}
         >
             {children}
-        </motion.div>
+        </motion.span>
     );
 };
 
-export default FramerMagnetic;
+export default Framer;
