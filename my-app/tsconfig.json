@@ -15,10 +15,6 @@
     "incremental": true,
     "baseUrl": ".",
     "noImplicitAny": false,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "noFallthroughCasesInSwitch": false,
-    "strictNullChecks": false,
     "plugins": [
       {
         "name": "next"
@@ -45,7 +41,8 @@
       "dom",
       "dom.iterable",
       "esnext"
-    ]
+    ],
+    "strictNullChecks": false
   },
   "include": [
     "next-env.d.ts",

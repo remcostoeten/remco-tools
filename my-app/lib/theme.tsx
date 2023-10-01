@@ -13,7 +13,7 @@ export default function DashboardWrapper({ children }: { children: React.ReactNo
 
     return (
         <div className="dashboard h-screen bg-[#09090b]">
-            <Particles className="animate-fade-in fixed inset-0 -z-10" quantity={150} />
+            <Particles quantity={150} className="animate-fade-in fixed inset-0 -z-10" />
 
             {children}
         </div>

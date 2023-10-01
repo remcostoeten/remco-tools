@@ -1,8 +1,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Particles from '@c/Particles'; // You should import this module if it exists
-
+// import Particles from '../../Particles';
 /**
  * Props for the RoundedButton component.
  * @typedef {Object} RoundedButtonProps
@@ -32,8 +31,6 @@ type RoundedButtonProps = {
 const Button = ({
     onClick,
     customClassName,
-    showLeftArrow = true,
-    showRightArrow = true,
     hoverText,
     text,
     borderRadius = 'none'
@@ -50,7 +47,6 @@ const Button = ({
                     {hoverText && <span className="btn__hover-text">{hoverText}</span>}
                     <span className="text">{text}</span>
                 </span>
-                <Particles particleCount={2} />
             </Link>
         </button>
     );
@@ -65,7 +61,7 @@ const ReadMore = ({ onClick, customClassName, showLeftArrow = true, showRightArr
                     {hoverText && <span className="btn__hover-text">{hoverText}</span>}
                     <span className="text">{text}</span>
                 </span>
-                <Particles particleCount={2} /> {/* Assuming you have the Particles component */}
+                {/* <Particles quantity={2} /> Assuming you have the Particles component */}
             </span>
         </button>
     );
