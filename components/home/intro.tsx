@@ -129,13 +129,13 @@ export default function Intro() {
                         <IntroButtons />
 
                         <FramerMagnetic>
-                            <Link data-cursor-hover className={socialClass} href={metadata.linkedinProfile} target="_blank">
+                            <Link data-cursor-hover href={metadata.linkedinProfile} target="_blank">
                                 <Linkedin />
                             </Link>
                         </FramerMagnetic>
 
                         <FramerMagnetic>
-                            <Link ref={magnetic} data-cursor-hover className={socialClass} href={metadata.githubProfile} target="_blank">
+                            <Link ref={magnetic} data-cursor-hover href={metadata.githubProfile} target="_blank">
                                 <GithubLogo />
                             </Link>
                         </FramerMagnetic>
