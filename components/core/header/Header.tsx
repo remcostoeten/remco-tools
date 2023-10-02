@@ -27,7 +27,7 @@ export default function Header() {
                             <React.Fragment key={link.hash}>
                                 <motion.li data-cursor-hover className="relative flex items-center justify-center h-3/4" initial={{ y: -100, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
                                     <Link
-                                        className={clsx('flex w-full items-center justify-center px-3 py-3 hover:text-gray-950 transition dark:-text-white', {
+                                        className={clsx('flex w-full items-center justify-center px-3 py-3 hover:text-gray-200 transition dark:-text-white', {
                                             '': activeSection === link.name,
                                         })}
                                         href={link.hash}

@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 
 interface Props {
     children: React.ReactNode;
+
+    onClick?: any;
 }
 
 const Framer: React.FC<Props> = ({ children }) => {
@@ -25,7 +27,7 @@ const Framer: React.FC<Props> = ({ children }) => {
     const { x, y } = position;
     return (
         <motion.span
-            style={{ position: 'relative' }}
+            style={{ position: 'relative'  }}
             ref={ref}
             onMouseMove={handleMouse}
             onMouseLeave={reset}

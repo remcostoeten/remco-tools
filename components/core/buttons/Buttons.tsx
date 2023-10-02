@@ -42,7 +42,7 @@ const Button = ({
                             ${borderRadius === 'semi-rounded' ? 'cta--semi-rounded' : ''}`}
             onClick={onClick}
         >
-            <Link href="#contact" className="btn--animated btn__intro animated-arrow">
+            <Link href="" className="btn--animated btn__intro animated-arrow">
                 <span className="main">
                     {hoverText && <span className="btn__hover-text">{hoverText}</span>}
                     <span className="text">{text}</span>

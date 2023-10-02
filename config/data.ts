@@ -42,20 +42,8 @@ export const links = [
         hash: 'dashboard',
     },
     {
-        name: 'Projects',
-        hash: '#projects',
-    },
-    {
         name: 'Skills',
         hash: '#skills',
-    },
-    {
-        name: 'exp',
-        hash: '#experience',
-    },
-    {
-        name: 'Contact',
-        hash: '#contact',
     },
     {
         name: 'Posts',

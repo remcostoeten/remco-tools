@@ -125,7 +125,12 @@ export default function Intro() {
                         <I i="with code" />.
                     </motion.h1>
 
-                    <motion.div variants={itemVariants} className="flex flex-col items-center justify-center gap-2 px-4 text-lg font-medium effect sm:flex-row">
+                    <motion.div variants={itemVariants} className="flex gap-4 flex-col items-center justify-center gap-2 px-4 text-lg font-medium effect sm:flex-row">
+                        <FramerMagnetic>
+                            <Link ref={magnetic} data-cursor-hover href={metadata.githubProfile} target="_blank">
+                                <GithubLogo />
+                            </Link>
+                        </FramerMagnetic>
                         <IntroButtons />
 
                         <FramerMagnetic>
@@ -134,11 +139,7 @@ export default function Intro() {
                             </Link>
                         </FramerMagnetic>
 
-                        <FramerMagnetic>
-                            <Link ref={magnetic} data-cursor-hover href={metadata.githubProfile} target="_blank">
-                                <GithubLogo />
-                            </Link>
-                        </FramerMagnetic>
+
                     </motion.div>
                 </motion.div>
             </section>

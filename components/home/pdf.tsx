@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import { HiDownload } from 'react-icons/hi';
 import { Drawer } from 'vaul';
-import { Button } from '../core/buttons/Buttons';
+import { Button, ReadMore } from '../core/buttons/Buttons';
 import FramerMagnetic from '@c/effects/framer';
 
 export default function DownloadCV() {
@@ -16,9 +16,7 @@ export default function DownloadCV() {
     return (
         <Drawer.Root shouldScaleBackground>
             <Drawer.Trigger asChild>
-                <FramerMagnetic>
-                    <Button showLeftArrow={false} showRightArrow={false} text="View CV" onClick={openPdf} hoverText="Or Download" />
-                </FramerMagnetic>
+                    <ReadMore showLeftArrow={false} showRightArrow={false} text="Vsiew CV" onClick={openPdf} hoverText="Or Download" />
             </Drawer.Trigger>
             <Drawer.Portal>
                 <Drawer.Overlay className="fixed inset-0 bg-black/40" />
