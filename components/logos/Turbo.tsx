@@ -1,9 +1,12 @@
+
 type LogoProps = {
   className?: string;
   height?: number;
 };
+import React from "react";
 
-const Turbo = ({ height = 32, className = "" }: LogoProps) => (
+export default function Turbo({ height = 32, className = "" }: LogoProps) {
+
   <svg
     className={className}
     width="112"
@@ -57,6 +60,5 @@ const Turbo = ({ height = 32, className = "" }: LogoProps) => (
       </linearGradient>
     </defs>
   </svg>
-);
 
-export default Turbo;
+}

@@ -12,7 +12,7 @@ import { motion } from 'framer-motion';
 import SectionHeading from '../section-heading';
 
 export default function Experience() {
-    const { ref } = useSectionInView('experience');
+    const { ref } = useSectionInView('exp');
     const { theme } = useTheme();
     const fadeInAnimationVariants = {
         initial: {

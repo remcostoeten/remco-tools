@@ -21,3 +21,14 @@ export default function Cards() {
         </div>
     );
 }
+
+export const CardBadge = ({
+  children
+}: {
+  children: React.ReactNode;
+}): JSX.Element => {
+  return <div className="font-mono font-bold text-xs text-black/50 dark:text-white/50  px-[6px] py-[3.25px] tracking-[-0.01em] rounded-[6px] uppercase flex justify-center items-center bg-black/5 dark:bg-white/[0.15] border border-black/[0.1] dark:border-white/[0.1]">
+      {children}
+    </div>;
+};
+  

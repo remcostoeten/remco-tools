@@ -13,8 +13,9 @@ import { Turbopack } from "@/components/landing/Turbopack";
 import { Turborepo } from "@/components/landing/Turborepo";
 import PackLogo from "@/components/logos/PackLogo";
 import RepoLogo from "@/components/logos/RepoLogo";
+import { CardBadge } from "@/components/misc/Cards";
 
-function Background() {
+function Background(): JSX.Element {
   return (
     <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
       <div
@@ -37,18 +38,21 @@ function Background() {
   );
 }
 
-export function CardBadge({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="font-mono font-bold text-xs text-black/50 dark:text-white/50  px-[6px] py-[3.25px] tracking-[-0.01em] rounded-[6px] uppercase flex justify-center items-center bg-black/5 dark:bg-white/[0.15] border border-black/[0.1] dark:border-white/[0.1]">
-      {children}
-    </div>
-  );
-}
+
 
 const variants = {
   hidden: { opacity: 0 },
   active: { opacity: 1 },
 };
+
+interface CardProps {
+  href: string;
+  icon: React.ElementType;
+  title: "repo" | "pack";
+  alt?: string;
+  className?: string;
+  children: React.ReactNode;
+}
 
 function Card({
   alt,
@@ -57,14 +61,7 @@ function Card({
   icon: Icon,
   className,
   children,
-}: {
-  href: string;
-  icon: React.ElementType;
-  title: "repo" | "pack";
-  alt?: string;
-  className?: string;
-  children: React.ReactNode;
-}) {
+}: CardProps): JSX.Element {
   const [hovering, setHovering] = React.useState(false);
   return (
     <Link
@@ -111,7 +108,7 @@ function Card({
   );
 }
 
-function SiteCards() {
+function SiteCards(): JSX.Element {
   return (
     <div className="flex w-full container items-center justify-center gap-6 px-6 sm:mx-0 mt-8 md:!mt-14 lg:!mt-15 md:mb-0 flex-col lg:!flex-row z-10 lg:!translate-y-0">
         <Card
@@ -144,7 +141,7 @@ function SiteCards() {
   );
 }
 
-function Teams() {
+function Teams(): JSX.Element {
   return (
     <div className="mx-auto ">
       <p className="bg-contain mb-2 md:!mb-4 text-sm font-semibold tracking-wide text-center text-[#666666] dark:text-[#888888] uppercase">
@@ -168,7 +165,7 @@ function Teams() {
   );
 }
 
-function LandingPage() {
+function LandingPage(): JSX.Element {
   return (
     <>
       <main className="relative flex flex-col items-center justify-center w-full h-full  overflow-hidden [--geist-foreground:#fff] dark:[--geist-foreground:#000] [--gradient-stop-1:0px] [--gradient-stop-2:120px] sm:[--gradient-stop-1:0px] sm:[--gradient-stop-2:120px]">

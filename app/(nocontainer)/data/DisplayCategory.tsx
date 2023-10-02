@@ -1,10 +1,10 @@
-'use client'
+'use client';
 import React, { useState, useEffect } from "react";
 import { onSnapshot, doc, updateDoc, deleteDoc, collection } from "firebase/firestore";
 import { db } from "@/utils/firebase";
 import { toast } from "@/components/ui/use-toast";
 import { Input } from "@/components/ui/input";
-import { Button, ReadMore } from "@/components/core/buttons/Buttons";
+import { ReadMore } from "@/components/core/buttons/Buttons";
 
 type Category = {
   id: string;
@@ -64,11 +64,11 @@ export function CategoriesList() {
 }
 
 interface EditCategoryProps {
-  categoryId: string;
-  onClose: () => void;
+  categoryId?: string;
+  onClose?: () => void;
 }
 
-function EditCategory({ categoryId, onClose }: EditCategoryProps) {
+export default function EditCategory({ categoryId, onClose }: EditCategoryProps) {
   const [categoryName, setCategoryName] = useState<string>("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -96,7 +96,25 @@ function EditCategory({ categoryId, onClose }: EditCategoryProps) {
         onChange={e => setCategoryName(e.target.value)}
         placeholder="Category Name"
       />
-      <ReadMore text='Update category' type="submit" />
+      <ReadMore text='Update category' />
     </form>
+  );
+}
+
+interface RoundedButtonProps {
+  text: string;
+  onClick: () => void;
+  type?: "button" | "submit" | "reset";
+}
+
+export function Button({ text, onClick, type = "button" }: RoundedButtonProps) {
+  return (
+    <button
+      type={type}
+      className="px-4 py-2 rounded-md bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300"
+      onClick={onClick}
+    >
+      {text}
+    </button>
   );
 }

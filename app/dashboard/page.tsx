@@ -3,7 +3,7 @@ import SummaryCard from '@/components/dashboard/SummaryCard';
 import Totals from '@/components/dashboard/Totals';
 import SectionSpacer from '@/components/ui/SectionSpacer';
 import React from 'react';
-import { DisplayCategories } from '../(nocontainer)/data/DisplayCategory';
+import DisplayCategories from '../(nocontainer)/data/DisplayCategory';
 import { NewCategory } from '../(nocontainer)/data/NewCategory';
 import { NewItemInCategory } from '../(nocontainer)/data/NewItemInCategory';
 

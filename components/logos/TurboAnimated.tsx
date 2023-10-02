@@ -1,5 +1,4 @@
 import { AnimatePresence, motion, Variants } from "framer-motion";
-import { useTurboSite } from "../SiteSwitcher";
 import cn from "classnames";
 import styles from "../header-logo.module.css";
 
@@ -14,7 +13,6 @@ const RIGHT_PADDING = 12;
 const VISUAL_WIDTH = 112;
 
 const TurboAnimated = ({ height = 32, className = "" }: LogoProps) => {
-  const site = useTurboSite();
 
   return (
     <svg
@@ -59,7 +57,6 @@ const TurboAnimated = ({ height = 32, className = "" }: LogoProps) => {
 
       <g mask="url(#logo-mask)" transform={`translate(${LEFT_PADDING},0)`}>
         <AnimatePresence mode="sync" initial={false}>
-          {site === "repo" || site === undefined ? (
             <motion.g
               key="turborepo"
               variants={variants}
@@ -80,7 +77,6 @@ const TurboAnimated = ({ height = 32, className = "" }: LogoProps) => {
                 fill="url(#logo-ring-gradient)"
               />
             </motion.g>
-          ) : (
             <motion.g
               key="turbopack"
               variants={variants}
@@ -103,7 +99,6 @@ const TurboAnimated = ({ height = 32, className = "" }: LogoProps) => {
                 fill="url(#logo-ring-gradient)"
               />
             </motion.g>
-          )}
         </AnimatePresence>
       </g>
 

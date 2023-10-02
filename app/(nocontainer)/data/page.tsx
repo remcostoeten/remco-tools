@@ -1,7 +1,7 @@
 import SectionSpacer from "@/components/ui/SectionSpacer";
-import { CategoriesList, DisplayCategories } from "./DisplayCategory";
 import { NewCategory } from "./NewCategory";
 import { NewItemInCategory } from "./NewItemInCategory";
+import { CategoriesList } from "./DisplayCategory";
 
 export default function Page() {
     return (

@@ -12,7 +12,6 @@ import { cn } from 'lib/utils';
 import shortcuts from 'lib/shortcuts';
 import SidebarLink from './SidebarLink';
 import RemcoLogoIcon from '../core/icons/remcostoeten-logo-icon';
-import { useSidebar } from './sidebarProvider';
 
 const dashboardLinks = [
     { name: 'Overview', href: '/', Icon: OverviewIcon, shortcutText: shortcuts.menu.overview.shortcut },
