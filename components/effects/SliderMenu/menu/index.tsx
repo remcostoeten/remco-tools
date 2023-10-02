@@ -4,6 +4,9 @@ import { opacity, slideLeft, mountAnim } from '../AnimationHelpers';
 import styles from './style.module.scss';
 import Anchor from './Anchor';
 import { useState } from 'react';
+import { DiscordIcon, WhatsApp } from '@/components/core/DiscordIcon';
+import Link from 'next/link';
+import Router, { useRouter } from 'next/navigation';
 
 type MenuItem = {
   title: string;
@@ -39,7 +42,13 @@ type Props = {
   closeMenu: () => void;
 }
 
+
 export default function SliderMenu({ closeMenu }: Props) {
+  const router = useRouter();
+
+  const close = () => {
+    router.refresh
+  }
 
   return (
     <motion.div className={styles.menu} variants={opacity} initial="initial" animate="enter" exit="exit">
@@ -72,10 +81,13 @@ export default function SliderMenu({ closeMenu }: Props) {
         {...mountAnim}
         custom={0.5}
         className={styles.footer}>
-        <a>FB</a>
-        <a>IG</a>
-        <a>IN</a>
-        <a>BE</a>
+        <Link href="https://app.discord.com/@yowremco" onClick={close} target="_blank"><DiscordIcon />
+        </Link>
+        <a href="https://wa.me/31636590707">
+
+          <WhatsApp />
+
+        </a>
       </motion.div>
 
     </motion.div>
