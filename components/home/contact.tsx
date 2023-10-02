@@ -11,12 +11,12 @@ import { toast } from '../ui/use-toast';
 import SubmitBtn from './submit-btn';
 
 export default function Contact() {
-    const { ref } = useSectionInView('Contact');
+    // const { ref } = useSectionInView('Contact');
 
     return (
         <motion.section
             id='contact'
-            ref={ref}
+            // ref={ref}
             className='mb-20 sm:mb-28 w-[min(100%,38rem)] text-center'
         >
             <form className='flex flex-col gap-4 mt-10 dark:text-black'>

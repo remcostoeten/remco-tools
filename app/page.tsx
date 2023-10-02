@@ -12,17 +12,12 @@ export default function Home() {
     return (
         <main className="flex flex-col items-center px-4 sm:px-0">
             <MouseHoverEffect />
-            <BlurBackground />
-            <AnimatedDiv children={<HomeBanners />} />
             <Intro />
             {/* <SectionSpacer variant="large" /> */}
-            <About />
-            <SectionSpacer variant="small" />
             <Skills />
             <SectionSpacer variant="small" />
             <Experience />
             <SectionSpacer variant="small" />
-            <Footer />
         </main>
     );
 }

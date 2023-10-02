@@ -78,6 +78,9 @@ export default function Footer() {
                     <Link href="https://www.linkedin.com/in/remco-stoeten" target="_blank" rel="noopener noreferrer" className="showAlternativeCursor col-block  footer-grid__block mr-[1rem] grid h-[100%] w-1/3 place-items-center rounded-[18px]">
                         <Linkedin />
                     </Link>
+                    <Link href="https://wa.me/31636590707" target="_blank" rel="noopener noreferrer" className="showAlternativeCursor col-block  footer-grid__block mr-[1rem] grid h-[100%] w-1/3 place-items-center rounded-[18px]">
+                        <Linkedin />
+                    </Link>
                     <Link target="_blank" href="https://gitlab.com/remcostoeten" className="showAlternativeCursor col-block footer-grid__block mr-[1rem] grid h-[100%] w-1/3 place-items-center rounded-[18px]">
                         <GitlabIcon />
                     </Link>

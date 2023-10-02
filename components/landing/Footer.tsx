@@ -8,6 +8,7 @@ type FooterProps = {
     linkedIn?: string;
     github?: string;
     gitlab?: string;
+    whatsapp?: string;
 };
 
 export default function Footer(props: FooterProps): JSX.Element {
@@ -17,7 +18,7 @@ export default function Footer(props: FooterProps): JSX.Element {
         linkedin: MetaData.linkedinProfile,
         github: MetaData.githubProfile,
         gitlab: MetaData.gitlabProfile,
-
+        whatsapp: MetaData.whatsapp,
     };
 
     useEffect(() => {

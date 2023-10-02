@@ -12,7 +12,6 @@ import { motion } from 'framer-motion';
 import SectionHeading from '../section-heading';
 
 export default function Experience() {
-    const { ref } = useSectionInView('exp');
     const { theme } = useTheme();
     const fadeInAnimationVariants = {
         initial: {
@@ -33,7 +32,6 @@ export default function Experience() {
     return (
         <section
             id='experience'
-            ref={ref}
             className='scroll-mt-28 mb-28 sm:mb-40'
         >
             <motion.div

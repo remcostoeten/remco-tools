@@ -80,7 +80,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         <ThemeSettings/>
                         <Header />
                         <SliderNavigation />
-                        <InteractiveDots />
+                        <InteractiveDots dotSize={200}/>
                         {children}
                         <Footer />
                         <Trailer />
