@@ -148,24 +148,6 @@ $expense-black: #ff181818;
 }
 
 
-body {
-    margin: 0;
-    padding: 0;
-    position: relative;
-    /* Add other CSS styles for your app content */
-
-
-    &::after {
-        content: '';
-        width: 160vw;
-        height: 100%;
-        background: radial-gradient(circle, rgba(30, 30, 30, 1) 23%, rgba(19, 20, 20, 0) 100%);
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: -2;
-    }
-}
 
 canvas {
     width: 100vw !important;
@@ -310,6 +292,24 @@ body:not(.table) {
     z-index: 999;
 }
 
+body {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    /* Add other CSS styles for your app content */
+
+
+    &::after {
+        // content: '';
+        width: 160vw;
+        height: 100%;
+        background: radial-gradient(circle, rgba(30, 30, 30, 1) 23%, rgba(19, 20, 20, 0) 100%);
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -2;
+    }
+}
 // magic
 .toggle {
     --size: 2rem;

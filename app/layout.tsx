@@ -12,6 +12,7 @@ import ThemeContextProvider from '@/context/theme-context';
 import '@/styles/styles.scss';
 import { Analytics } from '@vercel/analytics/react';
 import { Inter, Lexend_Deca, Manrope } from 'next/font/google';
+import Notification from '@/components/Notification';
 const inter = Inter({ subsets: ['latin'] });
 const rope = Manrope({ subsets: ['latin'] });
 const lexend = Lexend_Deca({ subsets: ['latin'] });
@@ -78,13 +79,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <ThemeContextProvider>
                     <ActiveSectionContextProvider>
                         <ThemeSettings/>
-                        <Header />
+                        {/* <Header /> */}
                         <SliderNavigation />
                         <InteractiveDots dotSize={200}/>
                         {children}
                         <Footer />
                         <Trailer />
                         <Toaster />
+                        <Notification text='This is not a production site.' btn='Close' subtext='Stricly a testing enviorment'/>/>
                         <Analytics />
                     </ActiveSectionContextProvider>
                 </ThemeContextProvider>

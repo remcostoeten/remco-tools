@@ -18,6 +18,6 @@ export default function Home() {
             <SectionSpacer variant="small" />
             <Experience />
             <SectionSpacer variant="small" />
-        </main>
+arf        </main>
     );
 }
