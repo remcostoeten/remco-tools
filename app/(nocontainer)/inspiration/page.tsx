@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
+import MiniSpinner from '@/components/effects/MiniSpinner';
 
 interface Project {
     projectType: string;
@@ -121,8 +122,7 @@ const InspirationTable: React.FC = () => {
     return (
         <div>
             {isLoading ? (
-                <p>Loading...</p>
-            ) : (
+              <MiniSpinner/>) : (
                 <>
                     <div className="mb-4">
                         <Label className="mr-2" htmlFor="filter">

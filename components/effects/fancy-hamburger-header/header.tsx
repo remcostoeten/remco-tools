@@ -27,7 +27,6 @@ export default function FancyHeader() {
             <div className={styles.el}></div>
           </motion.div>
     
-          {/* Anchor style toggle */}
           <a 
             href="#" 
             className={`showAlternativeCursor btn--menu ${isActive ? 'actived' : ''}`} 

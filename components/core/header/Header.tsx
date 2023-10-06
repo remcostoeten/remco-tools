@@ -7,6 +7,7 @@ import clsx from 'clsx';
 import { useActiveSectionContext } from '@/context/active-section-contex';
 import { ToolsDropdown } from './ToolsDropdown';
 import SecondaryDropdown from './SecondaryDropdown';
+import { ShowcaseDropdow } from './ShowcaseDropdow';
 
 export default function Header() {
     const { activeSection, setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
@@ -65,6 +66,8 @@ export default function Header() {
                             </React.Fragment>
                         ))}
                     </ul>
+                    <ShowcaseDropdow />
+                    ><SecondaryDropdown />
                 </nav>
             </header>
         </>
