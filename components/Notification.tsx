@@ -6,9 +6,10 @@ import NotificationWrapper from "./NotificationWrapper";
 type NotificationProps = {
   text?: string,
   subtext?: string,
+  children?: React.ReactNode
 }
 
-export default function Notification({ text, subtext }: NotificationProps) {
+export default function Notification({ text, subtext, children }: NotificationProps) {
   const [isHidden, setIsHidden] = useState(false);
 
   const handleClose = () => {
@@ -21,12 +22,12 @@ export default function Notification({ text, subtext }: NotificationProps) {
       onClose={handleClose}
       style={{ opacity: isHidden ? 0 : 1, scale: isHidden ? 0 : 1 }}
     >
-      <InProgressIcon w='30' h='30' fill='white' />
+      {children}
       <div className="toast__title">
         {text}
         <span className="toast__alternate-title">
           {subtext}
-        </span> 
+        </span>
       </div>
     </NotificationWrapper>
   );

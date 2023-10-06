@@ -1,71 +1,56 @@
-'use client';
-import { useEffect, useState } from "react";
+'use client'; import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 
-type ToastProps = {
-  isHidden: boolean,
-  onClose: () => void,
-  children: React.ReactNode,
-  style: any 
+interface ToastProps {
+  title?: string;
+  description?: string;
+  action?: React.ReactNode;
+  icon?: React.ReactNode;
+  onClose?: () => void;
+  children?: React.ReactNode;
+  isHidden?: boolean;
+  style?: React.CSSProperties;
 }
 
-export default function NotificationWrapper({ isHidden, onClose, children, style }: ToastProps) {
-  const [isClosed, setIsClosed] = useState(true);
+export default function NotificationWrapper({ title, description, action, icon, onClose, children, ...rest }: ToastProps) {
+  const [isOpen, setIsOpen] = useState(true);
 
   useEffect(() => {
-    // Check if localStorage is available before using it
-    if (typeof localStorage !== 'undefined') {
-      setIsClosed(localStorage.getItem("hideMessage") === "false" ? true : false);
-    }
+    const timeout = setTimeout(() => {
+      setIsOpen(false);
+    }, 3000);
+    return () => clearTimeout(timeout);
   }, []);
 
-  useEffect(() => {
-    // Check if localStorage is available before using it
-    if (typeof localStorage !== 'undefined') {
-      localStorage.setItem("hideMessage", isClosed.toString());
-    }
-  }, [isClosed]);
-
-  const hideMessage = () => {
-    setIsClosed(true);
-    setTimeout(() => {
+  const handleClose = () => {
+    setIsOpen(false);
+    if (onClose) {
       onClose();
-    }, 1000);
-  }
-
-  const SPACING = '24px';
-
-  const position = {
-    leftBottom: {
-      left: SPACING,
-      bottom: SPACING,
-    },
-    leftTop: {
-      left: SPACING,
-      top: SPACING,
-    },
-    rightBottom: {
-      right: SPACING,
-      bottom: SPACING,
-    },
-    rightTop: {
-      right: SPACING,
-      top: SPACING,
     }
-  }
+  };
+
+  const variants = {
+    hidden: { y: 100, opacity: 0 },
+    visible: { y: 0, opacity: 1 },
+    exit: { y: 100, opacity: 0 },
+  };
+
   return (
-    <>
-      {isClosed ? null : (
-        <div
-          style={{ ...position.leftBottom, ...style }}           className={`toast notification ${isHidden ? 'hide' : ''}`}
-        >
-          <div className="toast__inner">
-            {children}
-            <div className="toast__close" onClick={hideMessage}>
-              Close
-            </div>
-          </div>
-        </div>
-      )}
-    </>
+    <motion.div
+      className='toast tempw'
+      variants={variants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      onAnimationComplete={handleClose}
+    >
+      {icon && <div className="toast__icon">{icon}</div>}
+      <div className="toast__content">
+        {title && <div className="toast__title">{title}</div>}
+        {description && <div className="toast__description">{description}</div>}
+      </div>
+      {children}
+      {action && <div className="toast__action">{action}</div>}
+    </motion.div>
   );
-}
+};

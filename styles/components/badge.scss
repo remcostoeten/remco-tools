@@ -1,3 +1,13 @@
+.toast.temp {
+    opacity: 1;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.toast.temp.hide {
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
 .toast {
     background-color: #000;
     display: inline-flex;
@@ -18,10 +28,18 @@
     left: 24px;
     animation: slideUp 1s cubic-bezier(0.215, 0.81, 0.355, 1) 0s forwards;
     opacity: 1;
+    
 
     &.temp {
-        animation: slideUp 444ms cubic-bezier(0.715, 0.81, 0.355, 1) 0s ,
-        toastOut 1s cubic-bezier(0.215, 0.81, 0.355, 1) 3s forwards;
+        top: 24px;
+
+        right: 24px;
+
+        bottom: unset;
+
+        left: unset;z-index: 2112312312;
+        
+        animation: unset;
     }
 
     @keyframes toastOut {
