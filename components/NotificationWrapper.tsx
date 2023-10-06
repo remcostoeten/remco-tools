@@ -8,10 +8,20 @@ type ToastProps = {
 }
 
 export default function NotificationWrapper({ isHidden, onClose, children }: ToastProps) {
-  const [isClosed, setIsClosed] = useState(localStorage.getItem("hideMessage") === "false" ? true : false);
+  const [isClosed, setIsClosed] = useState(true);
 
   useEffect(() => {
-    localStorage.setItem("hideMessage", isClosed.toString());
+    // Check if localStorage is available before using it
+    if (typeof localStorage !== 'undefined') {
+      setIsClosed(localStorage.getItem("hideMessage") === "false" ? true : false);
+    }
+  }, []);
+
+  useEffect(() => {
+    // Check if localStorage is available before using it
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem("hideMessage", isClosed.toString());
+    }
   }, [isClosed]);
 
   const hideMessage = () => {
@@ -20,6 +30,7 @@ export default function NotificationWrapper({ isHidden, onClose, children }: Toa
       onClose();
     }, 1000);
   }
+
   const SPACING = '24px';
 
   const position = {

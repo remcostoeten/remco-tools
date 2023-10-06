@@ -86,7 +86,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         <Footer />
                         <Trailer />
                         <Toaster />
-                        <Notification text='This is not a production site.' btn='Close' subtext='Stricly a testing enviorment'/>/>
+                        <Notification text='This is not a production site.' subtext='Stricly a testing enviorment'/>
                         <Analytics />
                     </ActiveSectionContextProvider>
                 </ThemeContextProvider>

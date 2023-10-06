@@ -15,9 +15,6 @@ export default function Notification({ text, subtext }: NotificationProps) {
     setIsHidden(true);
   }
 
-
-
-
   return (
     <NotificationWrapper isHidden={isHidden} onClose={handleClose}>
       <InProgressIcon w='30' h='30' fill='white' />
