@@ -26,6 +26,7 @@ type RoundedButtonProps = {
     hoverText?: string;
     text?: string;
     children?: any;
+    disabled?: boolean;
     borderRadius?: 'rounded' | 'semi-rounded' | 'none';
 };
 
@@ -34,6 +35,7 @@ const Button = ({
     customClassName,
     hoverText,
     text,
+    disabled,
     borderRadius = 'none'
 }: RoundedButtonProps) => {
     return (
