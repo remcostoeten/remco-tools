@@ -7,6 +7,7 @@ import {
 import Typewriter from "./components/alternating-text"
 import { ReactNode } from 'react'
 import { LayoutProps } from '@/utils/types'
+import Notification from '@/components/Notification'
 
 const metadata = {
   title: {
@@ -54,8 +55,10 @@ export default function ConverterLayout({ children } : LayoutProps) {
         <link rel="shortcut icon" href={metadata.icons.shortcut} />
         <link rel="apple-touch-icon" href={metadata.icons.apple} />
         <link rel="manifest" href={metadata.manifest} />
-      </Head>
+        </Head>
 
+        <div style={{position: 'absolute', right: '0', top: '0', zIndex: 9999}}>
+      <Notification text='The props / component creator is currently broken!' subtext='The html to react code works fine tho.'/></div>
       <CustomStatusBadge title="beta" emojiKey="rocket" index={0} />
       <CustomStatusBadge title="wip" emojiKey="fire" index={1} />
       <PageHeader>

@@ -42,13 +42,14 @@ export const links = [
         hash: 'dashboard',
     },
     {
-        name: 'Skills',
-        hash: '#skills',
+        name: 'Login',
+        hash: 'login',
     },
     {
-        name: 'Posts',
-        hash: 'c',
+        name: 'Html To React',
+        hash: 'html-to-jsx',
     },
+
 ] as const;
 
 export const experiencesData = [

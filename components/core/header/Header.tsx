@@ -7,7 +7,6 @@ import clsx from 'clsx';
 import { useActiveSectionContext } from '@/context/active-section-contex';
 import { ToolsDropdown } from './ToolsDropdown';
 import SecondaryDropdown from './SecondaryDropdown';
-import { auth } from '@/utils/firebase';
 
 export default function Header() {
     const { activeSection, setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
