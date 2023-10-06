@@ -43,7 +43,7 @@ export const links = [
     },
     {
         name: 'Login',
-        hash: 'login',
+        hash: 'sign-up',
     },
     {
         name: 'Html To React',
