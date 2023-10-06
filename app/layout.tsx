@@ -79,7 +79,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <ThemeContextProvider>
                     <ActiveSectionContextProvider>
                         <ThemeSettings/>
-                        {/* <Header /> */}
+                        <Header />
                         <SliderNavigation />
                         <InteractiveDots dotSize={200}/>
                         {children}
