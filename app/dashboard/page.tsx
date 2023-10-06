@@ -9,8 +9,9 @@ import { NewCategory } from '../(nocontainer)/data/NewCategory';
 import { NewItemInCategory } from '../(nocontainer)/data/NewItemInCategory';
 import { usePasswordProtection } from '@/hooks/usePasswordProtection';
 import Savings from '@/components/dashboard/Savings';
-
-const correctPassword = process.env.ADMIN_PASSWORD || ''; 
+import DashboardUser from "@c/dashboard/DashboardUser";
+import CurrentBalance from '@/components/dashboard/CurrentBalance';
+const correctPassword = process.env.ADMIN_PASSWORD || '';
 
 export default function Page() {
   const isLocal = process.env.NODE_ENV === 'development';
@@ -21,7 +22,8 @@ export default function Page() {
       <div className='border cats border-white r bg-zinc-300 text-black p-4'>
         {isAuthenticated ? (
           <>
-            {/* <h1>Add New Category</h1>
+            {/* <h1>A
+            dd New Category</h1>
             <NewCategory />
 
             <h1>Add New Item in Category</h1>
@@ -29,6 +31,9 @@ export default function Page() {
 
             <h1>Display Categories and Items</h1>
             <DisplayCategories /> */}
+
+            <DashboardUser />
+            <CurrentBalance/>
             <Totals />
             <SummaryCard title="Income" data={<Income />} />
             <Income />

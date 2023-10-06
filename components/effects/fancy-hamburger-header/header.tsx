@@ -7,7 +7,6 @@ import Nav from "./header/nav";
 
 export default function FancyHeader() {
   const [isActive, setIsActive] = useState(false);
-
   const handleToggle = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
     setIsActive(prev => !prev);

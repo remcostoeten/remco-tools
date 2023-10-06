@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -120,6 +121,7 @@
 @import 'components/badge.scss';
 // @import 'components/turbo.scss';
 // @import 'components/glowcard.scss';
+@import 'dashboard/CurrentBalance.scss';
 
 @layer base {
     :root {
