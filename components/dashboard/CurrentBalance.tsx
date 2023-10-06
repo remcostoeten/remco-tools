@@ -1,37 +1,28 @@
-'use client'
 
+'use client'
+import { collection, getDocs } from "@firebase/firestore";
 import React, { useEffect, useState } from "react";
+import { db } from "@/utils/firebase";
 
 export default function CurrentBalance() {
-    const [expenses, setExpenses] = useState([]);
-    const [incomes, setIncomes] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [totalExpense, setTotalExpense] = useState(0);
+    const [totalIncome, setTotalIncome] = useState<number>(0);
 
     useEffect(() => {
-        const fetchData = async () => {
-            const expenseResponse = await fetch('/api/expenses');
-            const expenseData = await expenseResponse.json();
-            setExpenses(expenseData);
-
-            const incomeResponse = await fetch('/api/incomes');
-            const incomeData = await incomeResponse.json();
-            setIncomes(incomeData);
-
-            await calculateTotalExpense();
-
-            setIsLoading(false);
-        };
-
-        fetchData();
+        async function fetchIncomes() {
+            console.log("Fetching incomes...");
+            const incomesCollection = collection(db, "incomes");
+            const incomesSnapshot = await getDocs(incomesCollection);
+            let total = 0;
+            incomesSnapshot.forEach((doc) => {
+                const income = doc.data();
+                console.log("Income:", income);
+                total += income.incomeAmount;
+            });
+            console.log("Total income:", total);
+            setTotalIncome(total);
+        }
+        fetchIncomes();
     }, []);
-
-    const calculateTotalExpense = async () => {
-        const totalExpense = expenses.reduce((acc, expense) => acc + expense.expenseAmount, 0);
-        setTotalExpense(totalExpense);
-    };
-
-    const currentBalance = 55569 - totalExpense;
 
     return (
         <>
@@ -42,9 +33,9 @@ export default function CurrentBalance() {
                         alt="Wallet"
                         src="https://cdn.animaapp.com/projects/64c183a1cc30c096864cfffd/releases/652063e7a68dc888fc265c00/img/wallet@2x.png"
                     />
-                    <div className="wallet-expense">
-                        <div className="text-wrapper-2">€{totalExpense},-</div>
-                        <div className="text-wrapper-3">Total Expense</div>
+                    <div className="wallet-income">
+                        <div className="text-wrapper-2">€{totalIncome},-</div>
+                        <div className="text-wrapper-3">Total Income</div>
                     </div>
                 </div>
                 <div className="current-balance-2">CURRENT BALANCE</div>

@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { Button } from '../ui/button';
-import { Input } from '../ui/input';
+
 import { toast } from '../ui/use-toast';
 import { auth, db } from '@/utils/firebase';
 import { Expense, Income } from '@/utils/types';
