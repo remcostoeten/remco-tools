@@ -1,27 +1,29 @@
 import { Label, Input, Checkbox } from '@ui/ui-imports';
 
 type InputWithLabelProps = {
-    label?: string;
-    value?: string;
-    placeholder?: string;
-    className?: string;
+    label?: any;
+    value?: any;
+    placeholder?: any;
+    className?: any;
+    type?: any;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 type CheckboxWithLabel = {
-    label?: string;
-    value?: string;
-    checked?: boolean;
-    defaultValue?: string;
-    className?: string;
+    label?: any;
+    value?: any;
+    checked?: any;
+    defaultValue?: any;
+    className?: any;
+    type?: any
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export default function InputWithLabel({ label, className, value, placeholder, onChange }: InputWithLabelProps) {
+export default function InputWithLabel({ label, type, className, value, placeholder, onChange }: InputWithLabelProps) {
     return (
         <div className="flex flex-col gap-2 `${className}`">
-            <Label className="text-white">{label}</Label>
-            <Input className="bg-transparent" value={value} placeholder={placeholder} onChange={onChange} />
+            <Label className="light:text-white text-cream-dark">{label}</Label>
+            <Input type={type} className="border-cream-dark bg-transparent" value={value} placeholder={placeholder} onChange={onChange} />
         </div>
     );
 }

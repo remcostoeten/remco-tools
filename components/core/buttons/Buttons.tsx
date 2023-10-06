@@ -20,11 +20,12 @@ import Link from 'next/link';
 
 type RoundedButtonProps = {
     onClick?: any;
-    customClassName?: string;
+    customClassName?: any;
     showLeftArrow?: boolean;
     showRightArrow?: boolean;
     hoverText?: string;
-    text: string;
+    text?: string;
+    children?: any;
     borderRadius?: 'rounded' | 'semi-rounded' | 'none';
 };
 
@@ -45,7 +46,6 @@ const Button = ({
             <Link href="" className="btn--animated btn__intro animated-arrow">
                 <span className="main">
                     {hoverText && <span className="btn__hover-text">{hoverText}</span>}
-                    <span className="text">{text}</span>
                 </span>
             </Link>
         </button>
@@ -53,13 +53,13 @@ const Button = ({
 };
 
 
-const ReadMore = ({ onClick, customClassName, showLeftArrow = true, showRightArrow = true, hoverText, text }: RoundedButtonProps) => {
+const          ReadMore = ({ onClick, children, customClassName, showLeftArrow = true, showRightArrow = true, hoverText, text }: RoundedButtonProps) => {
     return (
         <button className={`cta cta--semi-rounded animbtn ${customClassName}`} onClick={onClick}>
             <span className="btn--animated btn__intro animated-arrow">
-                <span className="main">
+                <span className="main text-center">
                     {hoverText && <span className="btn__hover-text">{hoverText}</span>}
-                    <span className="text">{text}</span>
+                    {children}{text}
                 </span>
                 {/* <Particles quantity={2} /> Assuming you have the Particles component */}
             </span>

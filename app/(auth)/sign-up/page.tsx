@@ -1,4 +1,5 @@
 
+
 "use client"
 
 import {
@@ -19,6 +20,9 @@ import { Label } from "@/components/ui/label"
 import { toast } from "@/components/ui/use-toast"
 import { auth } from "@/utils/firebase"
 import { Checkbox } from "@/components/ui/checkbox"
+import { GlowButton } from "@/components/core/buttons/CustomButtons"
+import IntroButtons from "@/components/home/IntroButtons"
+import { ReadMore } from "@/components/core/buttons/Buttons"
 
 export default function LoginPage() {
     const [email, setEmail] = useState("")
@@ -128,17 +132,16 @@ export default function LoginPage() {
                             <Input id="password" placeholder="Password" type="password" autoCapitalize="none" autoComplete="current-password" autoCorrect="off" onChange={(e) => setPassword(e.target.value)} value={password} />
 
                             <div className="flex items-center mt-2 mb-2">
-                                {/* @ts-ignore */}
                                 <Checkbox checked={rememberEmail} onChange={() => setRememberEmail(!rememberEmail)}>
                                     <Label className="ml-2">Remember email</Label>
                                 </Checkbox>
-
                             </div>
                         </div>
 
-                        <button className="inline-flex items-center justify-center h-10 px-4 py-2 text-sm font-medium transition-colors rounded-md bg-primary text-primary-foreground ring-offset-background hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50" disabled={isLoading}>
-                            {isLoading ? <>Signing In...</> : 'Sign In with Email'}
-                        </button>
+                        <ReadMore customClassName="flex justify-center w-full mx-auto text-center">
+                            Sign In with Email
+                        </ReadMore>
+
                     </div>
                 </form>
                 <div className="relative">
@@ -149,15 +152,14 @@ export default function LoginPage() {
                         <span className="px-2 bg-background text-muted-foreground">Or continue with</span>
                     </div>
                 </div>
-                <Button title=" Google" className="flex justify-center w-full mx-auto text-center" onClick={signInWithGoogle} disabled={isLoading || isGoogleLoading}>
-                    {isGoogleLoading ? (
-                        <>Signing In...</>
-                    ) : (
-                        <>
-                            <div className="flex items-center justify-center align-center">google </div>
-                        </>
-                    )}
-                </Button>
+                <ReadMore text=" Google" customClassName="flex justify-center w-full mx-auto scale-75 text-center" onClick={signInWithGoogle} disabled={isLoading || isGoogleLoading} />
+                {isGoogleLoading ? (
+                    <>Signing In...</>
+                ) : (
+                    <>
+                        <div className="flex items-center justify-center align-center">google </div>
+                    </>
+                )}
                 <p className="px-8 mx-auto text-sm text-center text-muted-foreground">
                     <Link href="/register" className="underline hover:text-brand underline-offset-4">
                         Don&apos;t have an account? Sign Up
