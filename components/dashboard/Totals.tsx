@@ -196,111 +196,124 @@ export default function Totals() {
 
     return (
         <>
-            <SectionSpacer variant="small" />
-            <div className="flex w-full flex-col justify-between gap-4">
-                <div>
-                    {user ? (
-                        <>
-                            <div className="flex w-full justify-between gap-4">
-                                <div className="block-container">
-                                    <div className="block-title">Income</div>
-                                    <div className="block-content">
-                                        {incomes.map((income) => (
-                                            <div key={income.id}>
-                                                <span>Name: {income.name}</span>
-                                                <span>Amount: €{income.incomeAmount},-</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                <div className="block-container">
-                                    <div className="block-title">Expense</div>
-                                    <div className="block-content">
-                                        {expenses.map((expense) => (
-                                            <div key={expense.id}>
-                                                <span>Name: {expense.name}</span>
-                                                <span>Amount: €{expense.expenseAmount},-</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                <div className="block-container">
-                                    <div className="block-title">Savings</div>
-                                    <div className="block-content"></div>
-                                </div>
-                            </div>
-                        </>
-                    ) : (
-                        <h1>test</h1>
-                    )}
-                </div>
+          <SectionSpacer variant="small" />
+      
+          <div className="flex w-full flex-col justify-between gap-4">
+            <div>
+              {user ? (
+                <>
+                  <div className="flex w-full justify-between gap-4">
+                    <div className="block-container">
+                      <div className="block-title">Income</div>
+                      <div className="block-content">
+                        {incomes.map((income) => (
+                          <div key={income.id}>
+                            <span>Name: {income.name}</span>
+                            <span>Amount: €{income.incomeAmount},-</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+      
+                    <div className="block-container">
+                      <div className="block-title">Expense</div>
+                      <div className="block-content">
+                        {expenses.map((expense) => (
+                          <div key={expense.id}>
+                            <span>Name: {expense.name}</span>
+                            <span>Amount: €{expense.expenseAmount},-</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+      
+                    <div className="block-container">
+                      <div className="block-title">Savings</div>
+                      <div className="block-content"></div>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <h1>test</h1>
+              )}
             </div>
-
+          </div>
+      
+          <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-4">
-                <div className="flex flex-col gap-4">
-                    <div className="flex gap-4">
-                        <div className="card expense p-8 ">
-                            <h2 className="mb-4 text-2xl font-bold">Add Income</h2>
-                            <div className="mb-4 flex items-center gap-4">
-                                <Input type="number" placeholder="€ ,-" value={incomeAmount} onChange={(e) => setIncomeAmount(Number(e.target.value))} />
-                                <Input type="text" value={incomeName} onChange={(e) => setIncomeName(e.target.value)} placeholder="Income Name" />
-                            </div>
-                            <Button onClick={handleAddIncome}>Add income</Button>
-                        </div>
-                        <div className="card expense p-8 ">
-                            <h2 className="mb-4 text-2xl font-bold">Add Expense</h2>
-                            <div className="mb-4 flex items-center gap-4">
-                                <Input type="number" value={expenseAmount} placeholder="€ ,-" onChange={(e) => setExpenseAmount(Number(e.target.value))} />
-                                <Input type="text" value={expenseName} onChange={(e) => setExpenseName(e.target.value)} placeholder="Expense Name" />
-                                <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value as Category)}>
-                                    <option value="Food">Food</option>
-                                    <option value="Transport">Transport</option>
-                                    <option value="Utilities">Utilities</option>
-                                </select>
-                            </div>
-                            <Button onClick={handleAddExpense}>Add Expense</Button>
-                        </div>
-                        <div className="flex flex-col gap-4">
-                            <div className="card expense p-8 ">
-                                <h2 className="mb-4 text-2xl font-bold">Add Savings</h2>
-                                <div className="mb-4 flex items-center">
-                                    <Input
-                                        type="number"
-                                        value={savingsAmount}
-                                        placeholder="€ ,-"
-                                        onChange={(e) => setSavingsAmount(Number(e.target.value))}
-                                        className="-300 mr-2 w-1/2 rounded-md border p-2"
-                                    />
-                                    <Input type="text" value={savingsName} onChange={(e) => setSavingsName(e.target.value)} placeholder="Savings Name" className="-300 w-1/2 rounded-md border p-2" />
-                                </div>
-                                <Button onClick={handleAddSavings}>add saving</Button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="flex w-full gap-4 ">
-                        <div className="card expense flex flex-1 flex-col p-8 ">
-                            <dl className="mb-4 text-2xl font-bold">Expenses List:</dl>
-                            {expenses.map((expense) => (
-                                <dl className="flex w-full justify-between" key={expense.id}>
-                                    <dd>Name: {expense.name}</dd>
-                                    <dt>Amount: €{expense.expenseAmount},-</dt>
-                                </dl>
-                            ))}
-                        </div>
-                        <div className="card expense flex flex-1 flex-col p-8 ">
-                            <dl className="mb-4 text-2xl font-bold">Income List:</dl>
-                            {incomes.map((income) => (
-                                <dl className="flex w-full justify-between" key={income.id}>
-                                    <dd>Name: {income.name}</dd>
-                                    <dt>Amount: €{income.incomeAmount},-</dt>
-                                </dl>
-                            ))}
-                        </div>
-                    </div>
+              <div className="flex gap-4">
+                <div className="card expense p-8">
+                  <h2 className="mb-4 text-2xl font-bold">Add Income</h2>
+                  <div className="mb-4 flex items-center gap-4">
+                    <Input type="number" placeholder="€ ,-" value={incomeAmount} onChange={(e) => setIncomeAmount(Number(e.target.value))} />
+                    <Input type="text" value={incomeName} onChange={(e) => setIncomeName(e.target.value)} placeholder="Income Name" />
+                  </div>
+                  <Button onClick={handleAddIncome}>Add income</Button>
                 </div>
+                <div className="card expense p-8">
+                  <h2 className="mb-4 text-2xl font-bold">Add Expense</h2>
+                  <div className="mb-4 flex items-start gap-4">
+                    <div className="flex flex-col gap-1">
+                      <Input type="number" value={expenseAmount} placeholder="€ ,-" onChange={(e) => setExpenseAmount(Number(e.target.value))} />
+                      <Input type="text" value={expenseName} onChange={(e) => setExpenseName(e.target.value)} placeholder="Expense Name" />
+                    </div>
+                    <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value as Category)}>
+                      <option value="Food">Food</option>
+                      <option value="Transport">Transport</option>
+                      <option value="Utilities">Utilities</option>
+                    </select>
+                  </div>
+                  <Button onClick={handleAddExpense}>Add Expense</Button>
+                </div>
+                <div className="flex flex-col gap-4">
+                  <div className="card expense p-8">
+                    <h2 className="mb-4 text-2xl font-bold">Add Savings</h2>
+                    <div className="mb-4 flex items-center">
+                      <Input
+                        type="number"
+                        value={savingsAmount}
+                        placeholder="€ ,-"
+                        onChange={(e) => setSavingsAmount(Number(e.target.value))}
+                        className="-300 mr-2 w-1/2 rounded-md border p-2"
+                      />
+                      <Input type="text" value={savingsName} onChange={(e) => setSavingsName(e.target.value)} placeholder="Savings Name" className="-300 w-1/2 rounded-md border p-2" />
+                    </div>
+                    <Button onClick={handleAddSavings}>add saving</Button>
+                  </div>
+                </div>
+              </div>
+              <div className="flex w-full gap-4">
+                <div className="card expense flex flex-1 flex-col p-8">
+                  <dl className="mb-4 text-2xl font-bold">Expenses List:</dl>
+                  {expenses.map((expense) => (
+                    <dl className="flex w-full justify-between" key={expense.id}>
+                      <dd>Name: {expense.name}</dd>
+                      <dt>Amount: €{expense.expenseAmount},-</dt>
+                    </dl>
+                  ))}
+                </div>
+                <div className="card expense flex flex-1 flex-col p-8">
+                  <dl className="mb-4 text-2xl font-bold">Income List:</dl>
+                  {incomes.map((income) => (
+                    <dl className="flex w-full justify-between" key={income.id}>
+                      <dd>Name: {income.name}</dd>
+                      <dt>Amount: €{income.incomeAmount},-</dt>
+                    </dl>
+                  ))}
+                </div>
+              </div>
             </div>
+          </div>
+          <div className="block-container">
+  <div className="block-title">Net Worth</div>
+  <div className="block-content">
+    <span>Total Income: €{totalIncome},-</span>
+    <span>Total Expenses: €{totalExpense},-</span>
+    <span>Net Worth: €{netWorth},-</span>
+  </div>
+</div>
+
         </>
-    );
+      );
+      
 }

@@ -83,7 +83,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         <SliderNavigation />
                         <InteractiveDots dotSize={200}/>
                         {children}
-                        <Footer />
+                        {/* <Footer /> */}
                         <Trailer />
                         <Toaster />
                         <Notification text='This is not a production site.' subtext='Stricly a testing enviorment'/>

@@ -4,10 +4,11 @@ import { useEffect, useState } from "react";
 type ToastProps = {
   isHidden: boolean,
   onClose: () => void,
-  children: React.ReactNode
+  children: React.ReactNode,
+  style: any 
 }
 
-export default function NotificationWrapper({ isHidden, onClose, children }: ToastProps) {
+export default function NotificationWrapper({ isHidden, onClose, children, style }: ToastProps) {
   const [isClosed, setIsClosed] = useState(true);
 
   useEffect(() => {
@@ -55,8 +56,8 @@ export default function NotificationWrapper({ isHidden, onClose, children }: Toa
     <>
       {isClosed ? null : (
         <div
-          style={{ ...position.leftBottom }} className={`toast 
-         ${isHidden ? 'hide' : ''}`}>
+          style={{ ...position.leftBottom, ...style }}           className={`toast ${isHidden ? 'hide' : ''}`}
+        >
           <div className="toast__inner">
             {children}
             <div className="toast__close" onClick={hideMessage}>
