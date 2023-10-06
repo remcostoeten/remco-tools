@@ -1,17 +1,15 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import { GoogleAuthProvider, browserLocalPersistence, onAuthStateChanged, setPersistence, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import React, { useState } from 'react';
+import { browserLocalPersistence, setPersistence, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '@/utils/firebase';
 import { toast } from '@/components/ui/use-toast';
-import router, { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false)
-  const [isGoogleLoading, setIsGoogleLoading] = useState(false)
   const [rememberEmail, setRememberEmail] = useState(false)
-  const [user, setUser] = useState(null)
   const router = useRouter();
   const handleClick = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -46,13 +44,11 @@ export default function LoginPage() {
       <form onSubmit={handleClick}>
         <label>
           Email:
-          {/* @ts-ignore */}
           <input type="email" value={email} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)} />
         </label>
         <br />
         <label>
           Password:
-          {/* @ts-ignore */}
           <input type="password" value={password} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)} />
         </label>
         <br />
