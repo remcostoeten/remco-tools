@@ -18,18 +18,17 @@ export default function Page() {
 
   return (
     <>
-      <SectionSpacer variant="small" />
       <div className='border cats border-white r bg-zinc-300 text-black p-4'>
         {isAuthenticated ? (
           <>
-            <h1>Add New Category</h1>
+            {/* <h1>Add New Category</h1>
             <NewCategory />
 
             <h1>Add New Item in Category</h1>
             <NewItemInCategory />
 
             <h1>Display Categories and Items</h1>
-            <DisplayCategories />
+            <DisplayCategories /> */}
             <Totals />
             <SummaryCard title="Income" data={<Income />} />
             <Income />

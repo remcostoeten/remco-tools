@@ -8,6 +8,7 @@ import { useActiveSectionContext } from '@/context/active-section-contex';
 import { ToolsDropdown } from './ToolsDropdown';
 import SecondaryDropdown from './SecondaryDropdown';
 import { auth } from '@/utils/firebase';
+import LoggedInBar from './LoggedInBar';
 
 export default function Header() {
     const { activeSection, setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
@@ -15,6 +16,8 @@ export default function Header() {
 
     return (
         <>
+
+        <LoggedInBar/>
             <header className='relative z-50 hidden md:flex showAlternativeCursor'>
                 <motion.div
                     className='header   fixed top-0 left-1/2 h-[4.5rem] w-full rounded-none   bg-header  shadow-lg shadow-white/[0.06] backdrop-blur-[0.5rem] sm:top-6 sm:h-[3.25rem] sm:w-[58rem] sm:rounded-full '

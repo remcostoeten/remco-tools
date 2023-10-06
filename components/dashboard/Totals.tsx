@@ -6,7 +6,6 @@ import { toast } from '../ui/use-toast';
 import { auth, db } from '@/utils/firebase';
 import { Expense, Income } from '@/utils/types';
 import { addDoc, collection, deleteDoc, getDocs, QueryDocumentSnapshot } from 'firebase/firestore';
-import SectionSpacer from '@/components/ui/SectionSpacer';
 
 type Category = 'Food' | 'Transport' | 'Utilities';
 
@@ -196,7 +195,6 @@ export default function Totals() {
 
     return (
         <>
-          <SectionSpacer variant="small" />
       
           <div className="flex w-full flex-col justify-between gap-4">
             <div>

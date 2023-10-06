@@ -1,4 +1,3 @@
-import SectionSpacer from "@/components/ui/SectionSpacer";
 import { NewCategory } from "./NewCategory";
 import { NewItemInCategory } from "./NewItemInCategory";
 import { CategoriesList } from "./DisplayCategory";

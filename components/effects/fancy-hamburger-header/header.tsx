@@ -27,7 +27,7 @@ export default function FancyHeader() {
             <p className={styles.shop}>Shop</p>
             <div className={styles.el}></div>
           </motion.div>
-
+    
           {/* Anchor style toggle */}
           <a 
             href="#" 
