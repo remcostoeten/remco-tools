@@ -19,7 +19,7 @@ export default function Notification({ text, subtext }: NotificationProps) {
     <NotificationWrapper
       isHidden={isHidden}
       onClose={handleClose}
-      style={{ opacity: isHidden ? 0 : 1, transition: "opacity 0.5s ease" }}
+      style={{ opacity: isHidden ? 0 : 1, scale: isHidden ? 0 : 1 }}
     >
       <InProgressIcon w='30' h='30' fill='white' />
       <div className="toast__title">

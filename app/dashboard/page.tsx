@@ -9,31 +9,35 @@ import { NewCategory } from '../(nocontainer)/data/NewCategory';
 import { NewItemInCategory } from '../(nocontainer)/data/NewItemInCategory';
 import { usePasswordProtection } from '@/hooks/usePasswordProtection';
 import Savings from '@/components/dashboard/Savings';
+
+const correctPassword = process.env.ADMIN_PASSWORD || ''; 
+
 export default function Page() {
-    const correctPassword = "mySecret"; // Define your correct password here
-    const { isAuthenticated, password, setPassword, handlePasswordSubmit } = usePasswordProtection(correctPassword);
-  
-    return (
-      <>
-        <SectionSpacer variant="small" />
-        <div className='border cats border-white r bg-zinc-300 text-black p-4'>
-          {isAuthenticated ? (
-            <>
-              <h1>Add New Category</h1>
-              <NewCategory />
-  
-              <h1>Add New Item in Category</h1>
-              <NewItemInCategory />
-  
-              <h1>Display Categories and Items</h1>
-              <DisplayCategories />
-              <Totals />
-        <SummaryCard title="Income" data={<Income />} />
-        <Income />
-        <SummaryCard title="Expenses" data="wdddddddddddddddddddd" />
-        <SummaryCard title="Savings" data={<Savings/>}/>
-            </>
-          ) : (
+  const isLocal = process.env.NODE_ENV === 'development';
+  const { isAuthenticated, password, setPassword, handlePasswordSubmit } = usePasswordProtection(isLocal ? '' : correctPassword);
+
+  return (
+    <>
+      <SectionSpacer variant="small" />
+      <div className='border cats border-white r bg-zinc-300 text-black p-4'>
+        {isAuthenticated ? (
+          <>
+            <h1>Add New Category</h1>
+            <NewCategory />
+
+            <h1>Add New Item in Category</h1>
+            <NewItemInCategory />
+
+            <h1>Display Categories and Items</h1>
+            <DisplayCategories />
+            <Totals />
+            <SummaryCard title="Income" data={<Income />} />
+            <Income />
+            <SummaryCard title="Expenses" data="wdddddddddddddddddddd" />
+            <SummaryCard title="Savings" data={<Savings />} />
+          </>
+        ) : (
+          !isLocal && (
             <form onSubmit={handlePasswordSubmit}>
               <input
                 type="password"
@@ -43,10 +47,9 @@ export default function Page() {
               />
               <button type="submit">Submit</button>
             </form>
-          )}
-        </div>
-      
-      </>
-    );
-  }
-  
+          )
+        )}
+      </div>
+    </>
+  );
+}

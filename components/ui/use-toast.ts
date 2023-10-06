@@ -1,4 +1,3 @@
-// Inspired by react-hot-toast library
 import * as React from "react"
 
 import type {
@@ -14,7 +13,10 @@ type ToasterToast = ToastProps & {
   title?: React.ReactNode
   description?: React.ReactNode
   action?: ToastActionElement
+  icon? : React.ReactNode
 }
+
+type ToastPosition = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
 
 const actionTypes = {
   ADD_TOAST: "ADD_TOAST",
@@ -169,7 +171,7 @@ function toast({ ...props }: Toast) {
   }
 }
 
-function useToast() {
+function useToast(position?: ToastPosition) {
   const [state, setState] = React.useState<State>(memoryState)
 
   React.useEffect(() => {
@@ -182,10 +184,30 @@ function useToast() {
     }
   }, [state])
 
+  const positionStyles = {
+    'top-left': {
+      top: '24px',
+      left: '24px',
+    },
+    'top-right': {
+      top: '24px',
+      right: '24px',
+    },
+    'bottom-left': {
+      bottom: '24px',
+      left: '24px',
+    },
+    'bottom-right': {
+      bottom: '24px',
+      right: '24px',
+    },
+  };
+
   return {
     ...state,
     toast,
     dismiss: (toastId?: string) => dispatch({ type: "DISMISS_TOAST", toastId }),
+    positionStyles: position ? positionStyles[position] : positionStyles['bottom-right'],
   }
 }
 

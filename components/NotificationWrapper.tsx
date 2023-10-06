@@ -56,7 +56,7 @@ export default function NotificationWrapper({ isHidden, onClose, children, style
     <>
       {isClosed ? null : (
         <div
-          style={{ ...position.leftBottom, ...style }}           className={`toast ${isHidden ? 'hide' : ''}`}
+          style={{ ...position.leftBottom, ...style }}           className={`toast notification ${isHidden ? 'hide' : ''}`}
         >
           <div className="toast__inner">
             {children}

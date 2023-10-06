@@ -1,5 +1,4 @@
 "use client"
-
 import {
   Toast,
   ToastClose,
@@ -9,27 +8,42 @@ import {
   ToastViewport,
 } from "@/components/ui/toast"
 import { useToast } from "@/components/ui/use-toast"
+import Particles from "../Part";
 
-export function Toaster() {
-  const { toasts } = useToast()
+interface ToasterProps {
+  icon?: React.ReactNode;
+  className?: string;
+}
+
+export function Toaster({ icon, className }: ToasterProps) {
+  const { toasts } = useToast();
 
   return (
     <ToastProvider>
-      {toasts.map(function ({ id, title, description, action, ...props }) {
+      {toasts.map(function ({ title, description, action }) {
         return (
-          <Toast key={id} {...props}>
-            <div className="grid gap-1">
-              {title && <ToastTitle>{title}</ToastTitle>}
-              {description && (
-                <ToastDescription>{description}</ToastDescription>
+          <div className={`toast temp ${className || ''}`}>
+            <div className="gradient"></div>
+            {icon}
+            <div className="toast__inner">
+              {title && (
+                <ToastTitle>
+                  {title}
+                  {description && (
+                    <div className="toast__alternate-title">
+                      <ToastDescription>{description}</ToastDescription>
+                    </div>
+                  )}
+                </ToastTitle>
               )}
             </div>
-            {action}
+            <div className="toast__close">{action}</div>
             <ToastClose />
-          </Toast>
-        )
+          <Particles particleCount={100
+          }/></div>
+        );
       })}
       <ToastViewport />
     </ToastProvider>
-  )
+  );
 }

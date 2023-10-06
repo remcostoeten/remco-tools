@@ -44,23 +44,20 @@ import { useState } from "react";
  * 
  */
 
-export function usePasswordProtection(correctPassword: string) {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-  const [password, setPassword] = useState<string>("");
 
-  function handlePasswordSubmit(e: React.FormEvent) {
-    e.preventDefault();
+export function usePasswordProtection(correctPassword: string) {
+  const [isAuthenticated, setIsAuthenticated] = useState(correctPassword === '');
+
+  const [password, setPassword] = useState('');
+
+  const handlePasswordSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     if (password === correctPassword) {
       setIsAuthenticated(true);
     } else {
-      toast({ title: "Incorrect password" });
+      alert('Incorrect password');
     }
-  }
-
-  return {
-    isAuthenticated,
-    password,
-    setPassword,
-    handlePasswordSubmit,
   };
+
+  return { isAuthenticated, password, setPassword, handlePasswordSubmit };
 }
