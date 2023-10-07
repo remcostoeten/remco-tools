@@ -16,7 +16,7 @@ type MenuItem = {
 
 const menu: MenuItem[] = [
   {
-    title: "About me",
+    title: "Login",
     description: "Get to know me Get to know me Get to know me ",
     images: ['projects1.jpg', 'projects2.jpg']
   },

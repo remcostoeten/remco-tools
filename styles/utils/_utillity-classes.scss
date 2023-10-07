@@ -20,6 +20,16 @@
 
     &--section {
         padding: 24px;
+    }
 
+    &--no-border {
+        border: none;
+    }
+
+    &--border-left {
+        border-left: 1px solid #363333;
+        border-top: 0;
+        border-right: 0;
+        border-bottom: 0;
     }
 }

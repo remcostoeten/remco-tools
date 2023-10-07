@@ -53,7 +53,7 @@ export default function Anchor({ data, index }: AnchorProps) {
       custom={index}
       className={styles.el}
     >
-      <Link href="/">{title}</Link>
+      <Link href="/login">{title}</Link>
       <div ref={outer} className={styles.outer}>
         <div ref={inner} className={styles.inner}>
           {[...Array(2)].map((_, index) => {

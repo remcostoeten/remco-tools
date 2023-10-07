@@ -1,66 +1,187 @@
-
 'use client';
+import { cn } from "@/lib/utils";
+import { Playlist } from "./playlist";
+import { ScrollArea } from "../ui/scroll-area";
+import { Button } from "../ui/button";
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
-import { Separator } from 'components/ui/separator';
+interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
+  playlists: Playlist[]
+}
 
-
-import SidebarLink from './SidebarLink';
-import RemcoLogoIcon from '../core/icons/remcostoeten-logo-icon';
-import { dashboardLinks, settingsLinks } from '@/config/data';
-import { SignoutIcon } from './icons';
-
-
-export default function Sidebar() {
-    const pathname = usePathname();
-    return (
-        <>
-            <div className="fixed inset-0 left-0 right-0 z-[1] hidden bg-black bg-opacity-10 backdrop-blur" />
-
-            <div className="flex">
-                <nav className="fixed bottom-0 left-0 top-0 z-[1] hidden min-h-full w-[140px] flex-col bg-[#09090b] px-3 py-2 transition-all sm:flex sm:w-[124px] sm:dark:border-r sm:dark:border-border">
-                    <div className="z-[10] mb-[10px] flex h-full w-[100%] flex-col justify-between">
-                        <div className="flex flex-col items-center justify-between h-full gap-8">
-                            <div className="flex flex-col items-center">
-                                <Link href="/" className="mt-[15px] rounded-lg p-1 transition-all focus:outline-none active:scale-95">
-                                    <RemcoLogoIcon />
-                                </Link>
-                                <Separator className="mb-4 mt-[8px] border-t border-gray-100 opacity-[0.2]" />
-                                {dashboardLinks.map((link, index) => {
-                                    return (
-                                        <SidebarLink className={index === 0 ? '!mt-0' : ''} key={link.name} name={link.name} active={pathname === link.href} href={link.href} shortcut={link.shortcutText}>
-                                            <link.Icon className="text-white" />
-                                        </SidebarLink>
-                                    );
-                                })}
-                            </div>
-                            <div className="flex flex-col items-center">
-                                {settingsLinks.map((link) => {
-                                    return (
-                                        <SidebarLink key={link.href} active={pathname === link.href} href={link.href}>
-                                            <link.Icon className="text-white" />
-                                        </SidebarLink>
-                                    );
-                                })}
-                                <button className={`mt-2 flex h-[40px] w-full items-center justify-center rounded-lg p-2 text-base tracking-wide text-white hover:bg-[#27272a]`} title="Sign out">
-                                    <div className="flex items-center">
-                                        <SignoutIcon className="text-white" />
-                                    </div>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-                <nav className="fixed bottom-0 left-[140px] top-0 z-[1] hidden min-h-full w-[25vw] flex-col bg-[#FFFBF3] px-3 py-2 transition-all sm:dark:border-r sm:dark:border-border">
-                    <div className="z-[10] mb-[10px] flex h-full w-[100%] flex-col justify-between">
-                        <div className="flex flex-col items-center justify-between h-full gap-8">
-                            <div className="flex flex-col items-center"></div>
-                        </div>
-                    </div>
-                </nav>
-            </div >
-        </>
-    );
+export function Sidebar({ className, playlists }: SidebarProps) {
+  return (
+    <aside className={cn("overflow-hidden rounded-[0.5rem]  bg-background text-cream shadow", className)}>
+        <div className="space-y-4 py-4">
+        <div className="px-3 py-2">
+          <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
+            Personal Dashboard
+          </h2>
+          <div className="space-y-1">
+            <Button className="w-full justify-start">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="mr-2 h-4 w-4"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <polygon points="10 8 16 12 10 16 10 8" />
+              </svg>
+              Your Content 1
+            </Button>
+            <Button className="w-full justify-start">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="mr-2 h-4 w-4"
+              >
+                <rect width="7" height="7" x="3" y="3" rx="1" />
+                <rect width="7" height="7" x="14" y="3" rx="1" />
+                <rect width="7" height="7" x="14" y="14" rx="1" />
+                <rect width="7" height="7" x="3" y="14" rx="1" />
+              </svg>
+              Your Content 2
+            </Button>
+            <Button className="w-full justify-start">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="mr-2 h-4 w-4"
+              >
+                <path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9" />
+                <path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5" />
+                <circle cx="12" cy="12" r="2" />
+                <path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5" />
+                <path d="M19.1 4.9C23 8.8 23 15.1 19.1 19" />
+              </svg>
+              Your Content 3
+            </Button>
+          </div>
+        </div>
+        <div className="px-3 py-2">
+          <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
+            Library
+          </h2>
+          <div className="space-y-1">
+            <Button className="w-full justify-start">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="mr-2 h-4 w-4"
+              >
+                <path d="M21 15V6" />
+                <path d="M18.5 18a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
+                <path d="M12 12H3" />
+                <path d="M16 6H3" />
+                <path d="M12 18H3" />
+              </svg>
+              Your Content 4
+            </Button>
+            <Button className="w-full justify-start">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="mr-2 h-4 w-4"
+              >
+                <circle cx="8" cy="18" r="4" />
+                <path d="M12 18V2l7 4" />
+              </svg>
+              Your Content 5
+            </Button>
+            <Button className="w-full justify-start">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="mr-2 h-4 w-4"
+              >
+                <path d="m12 8-9.04 9.06a2.82 2.82 0 1 0 3.98 3.98L16 12" />
+                <circle cx="17" cy="7" r="5" />
+              </svg>
+              Your Content 6
+            </Button>
+            <Button className="w-full justify-start">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="mr-2 h-4 w-4"
+              >
+                <path d="m16 6 4 14" />
+                <path d="M12 6v14" />
+                <path d="M8 8v12" />
+                <path d="M4 4v16" />
+              </svg>
+              Your Content 7
+            </Button>
+          </div>
+        </div>
+        <div className="py-2 text-cream">
+          <h2 className="relative px-7 text-lg font-semibold tracking-tight">
+            Personal Dashboard
+          </h2>
+          <ScrollArea className="h-[300px] px-1">
+            <div className="space-y-1 p-2">
+              {playlists?.map((playlist, i) => (
+                <Button
+                  key={`${playlist}-${i}`}
+                  className="w-full justify-start font-normal"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="mr-2 h-4 w-4"
+                  >
+                    <path d="M21 15V6" />
+                    <path d="M18.5 18a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
+                    <path d="M12 12H3" />
+                    <path d="M16 6H3" />
+                    <path d="M12 18H3" />
+                  </svg>
+                  {playlist}
+                </Button>
+              ))}
+            </div>
+          </ScrollArea>
+        </div>
+      </div>
+    </aside>
+  )
 }

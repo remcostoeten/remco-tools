@@ -9,7 +9,8 @@ import Savings from '@/components/dashboard/Savings';
 import DashboardUser from "@c/dashboard/DashboardUser";
 import CurrentBalance from '@/components/dashboard/CurrentBalance';
 import { useRouter } from 'next/navigation';
-import CurrentExpenses from '@/components/dashboard/CurrentExpenses';
+import MoneyCard from '@/components/dashboard/MoneyCard';
+import SmallMoneyCard from '@/components/dashboard/SmallMoneyCard';
 const correctPassword = process.env.ADMIN_PASSWORD || '';
 
 export default function Page() {
@@ -19,31 +20,34 @@ export default function Page() {
 
   return (
     <>
-      <div className='black-block black-block--section'>
-        {isAuthenticated ? (
-          <>
-            <DashboardUser />
-            <CurrentBalance />
-            <CurrentExpenses />
-            <Totals />
-            <SummaryCard title="Income" data={<Income />} />
-            <SummaryCard title="Expenses" data="wdddddddddddddddddddd" />
-            <SummaryCard title="Savings" data={<Savings />} />
-          </>
-        ) : (
-          !isLocal && (
-            <form onSubmit={handlePasswordSubmit}>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter password"
-              />
-              <button type="submit">Submit</button>
-            </form>
-          )
-        )}
-      </div>
+      {isAuthenticated ? (
+        <>
+
+          <DashboardUser />
+          <div className="flex gap-4 justify-end">
+            <MoneyCard type={'income'} />
+            <MoneyCard type={'expense'} />
+            <SmallMoneyCard type={'savings'} />
+          </div>
+          <Totals />
+          <SummaryCard title="Income" data={<Income />} />
+          <SummaryCard title="Expenses" data="wdddddddddddddddddddd" />
+          <SummaryCard title="Savings" data={<Savings />} />
+        </>
+      ) : (
+        !isLocal && (
+          <form onSubmit={handlePasswordSubmit}>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter password"
+            />
+            <button type="submit">Submit</button>
+          </form>
+        )
+      )}
+
     </>
   );
 }
