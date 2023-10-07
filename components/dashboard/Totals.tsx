@@ -201,36 +201,7 @@ export default function Totals() {
         <div>
           {user ? (
             <>
-              <div className="flex w-full justify-between gap-4">
-                <div className="block-container">
-                  <div className="block-title">Income</div>
-                  <div className="block-content">
-                    {incomes.map((income) => (
-                      <div key={income.id}>
-                        <span>Name: {income.name}</span>
-                        <span>Amount: €{income.incomeAmount},-</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="block-container">
-                  <div className="block-title">Expense</div>
-                  <div className="block-content">
-                    {expenses.map((expense) => (
-                      <div key={expense.id}>
-                        <span>Name: {expense.name}</span>
-                        <span>Amount: €{expense.expenseAmount},-</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="block-container">
-                  <div className="block-title">Savings</div>
-                  <div className="block-content"></div>
-                </div>
-              </div>
+             
             </>
           ) : (
             <h1>test</h1>

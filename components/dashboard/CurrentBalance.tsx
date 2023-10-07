@@ -3,9 +3,12 @@
 import { collection, getDocs } from "@firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { db } from "@/utils/firebase";
+import MiniSpinner from "../effects/MiniSpinner";
+import Image from "next/image";
 
 export default function CurrentBalance() {
-    const [totalIncome, setTotalIncome] = useState<number>(0);
+    const [totalIncome, setTotalIncome] = useState<number | null>(null);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
         async function fetchIncomes() {
@@ -20,9 +23,14 @@ export default function CurrentBalance() {
             });
             console.log("Total income:", total);
             setTotalIncome(total);
+            setIsLoading(false);
         }
         fetchIncomes();
     }, []);
+
+    if (isLoading) {
+        return <MiniSpinner/>;
+    }
 
     return (
         <>
@@ -41,9 +49,10 @@ export default function CurrentBalance() {
                 <div className="current-balance-2">CURRENT BALANCE</div>
                 <div className="decoration">
                     <div className="overlap-group-4">
-                        <img
+                        <Image
                             className="vector-3"
                             alt="Vector"
+                            fill
                             src="https://cdn.animaapp.com/projects/64c183a1cc30c096864cfffd/releases/652063e7a68dc888fc265c00/img/vector-13.svg"
                         />
                         <img
