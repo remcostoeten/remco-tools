@@ -13,7 +13,7 @@ export default function Home() {
         <main className="flex flex-col items-center px-4 sm:px-0">
             <MouseHoverEffect />
             <Intro />
-            {/* <SectionSpacer variant="large" /> */}
+            <SectionSpacer variant="small" />
             <Skills />
             <SectionSpacer variant="small" />
             <Experience />
