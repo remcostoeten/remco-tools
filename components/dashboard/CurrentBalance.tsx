@@ -1,10 +1,10 @@
 
 'use client'
-import { collection, getDocs } from "@firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { db } from "@/utils/firebase";
 import MiniSpinner from "../effects/MiniSpinner";
 import Image from "next/image";
+import { collection, getDocs } from "firebase/firestore";
 
 export default function CurrentBalance() {
     const [totalIncome, setTotalIncome] = useState<number | null>(null);
@@ -29,7 +29,7 @@ export default function CurrentBalance() {
     }, []);
 
     if (isLoading) {
-        return <MiniSpinner/>;
+        return <MiniSpinner />;
     }
 
     return (

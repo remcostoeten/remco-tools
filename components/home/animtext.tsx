@@ -7,7 +7,6 @@ import SectionHeading from '../section-heading';
 import AnimatedText from './animtext';
 
 const Skills: React.FC = () => {
-    const { ref } = useSectionInView('Skills');
     const headingAnimation = useAnimation();
 
     useEffect(() => {
@@ -59,7 +58,6 @@ const Skills: React.FC = () => {
     return (
         <section
             id='skills'
-            ref={ref}
             className='mb-28 max-w-[53rem] scroll-mt-28 text-center sm:mb-40'
         >
             <motion.h2

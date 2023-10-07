@@ -33,7 +33,6 @@ const fadeInAnimationVariants = {
 };
 
 export default function Skills() {
-    const { ref } = useSectionInView('Skills');
     const [shuffledSkillsData, setShuffledSkillsData] = useState([]);
     const headingAnimation = useAnimation();
 
@@ -48,7 +47,7 @@ export default function Skills() {
         initial: {},
         animate: {
             transition: {
-                staggerChildren: 0.02, 
+                staggerChildren: 0.02,
             },
         },
     };
@@ -58,16 +57,16 @@ export default function Skills() {
             opacity: 0,
             x: -200,
             scale: 0.4,
-            y: -40, 
+            y: -40,
             rotate: 10,
         },
         animate: {
             opacity: 1,
-            scale: [0.4, 2, 0.4], 
-            y: [0, -10, 0], 
-            rotate: [10, 0, 10], 
+            scale: [0.4, 2, 0.4],
+            y: [0, -10, 0],
+            rotate: [10, 0, 10],
             transition: {
-                type: 'spring', 
+                type: 'spring',
                 stiffness: 300,
                 damping: 100,
             },
@@ -82,7 +81,6 @@ export default function Skills() {
         <>
             <section
                 id='skills'
-                ref={ref}
                 className='mb-28 max-w-[53rem] scroll-mt-28 text-center sm:mb-40'
             >
                 <motion.h2
@@ -99,7 +97,7 @@ export default function Skills() {
                     ))}
                 </motion.h2>
 
-             
+
                 <ul className='flex flex-wrap justify-center gap-2 text-lg text-gray-800'>
                     {shuffledSkillsData.map((skill, index) => (
                         <motion.li

@@ -15,10 +15,10 @@ export default function Totals() {
   const [incomeAmount, setIncomeAmount] = useState<any>("€0");
   const [expenseName, setExpenseName] = useState<string>('');
   const [savingsName, setSavingsName] = useState<string>('');
-  const [savingsAmount, setSavingsAmount] = useState<number>("€0");
+  const [savingsAmount, setSavingsAmount] = useState<any>("€0");
   const [incomeName, setIncomeName] = useState<string>('');
-  const [totalIncome, setTotalIncome] = useState<number>("€0");
-  const [totalExpense, setTotalExpense] = useState<number>("€0");
+  const [totalIncome, setTotalIncome] = useState<any>("€0");
+  const [totalExpense, setTotalExpense] = useState<any>("€0");
   const [netWorth, setNetWorth] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const user = auth?.currentUser;
@@ -201,7 +201,7 @@ export default function Totals() {
         <div>
           {user ? (
             <>
-             
+
             </>
           ) : (
             <h1>test</h1>
