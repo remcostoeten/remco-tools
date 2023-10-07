@@ -4,38 +4,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-
-import { ExpensesIcon, IncomeIcon, InvestmentIcon, OverviewIcon, SettingsIcon, SignoutIcon, SubscriptionsIcon, SupportIcon } from '@/components/dashboard/icons';
 import { Separator } from 'components/ui/separator';
 
-import { cn } from 'lib/utils';
 
-import shortcuts from 'lib/shortcuts';
 import SidebarLink from './SidebarLink';
 import RemcoLogoIcon from '../core/icons/remcostoeten-logo-icon';
+import { dashboardLinks, settingsLinks } from '@/config/data';
+import { SignoutIcon } from './icons';
 
-const dashboardLinks = [
-    { name: 'Overview', href: '/', Icon: OverviewIcon, shortcutText: shortcuts.menu.overview.shortcut },
-    { name: 'Income', href: '/income', Icon: IncomeIcon, shortcutText: shortcuts.menu.income.shortcut },
-    { name: 'Expenses', href: '/expenses', Icon: ExpensesIcon, shortcutText: shortcuts.menu.expenses.shortcut },
-    {
-        name: 'Investments',
-        href: '/investments',
-        Icon: InvestmentIcon,
-        shortcutText: shortcuts.menu.investments.shortcut,
-    },
-    {
-        name: 'Subscriptions',
-        href: '/subscriptions',
-        Icon: SubscriptionsIcon,
-        shortcutText: shortcuts.menu.subscriptions.shortcut,
-    },
-];
 
-const settingsLinks = [
-    { href: 'mailto:support@expense.fyi', name: 'Support', Icon: SupportIcon },
-    { href: '/settings', name: 'Settings', Icon: SettingsIcon },
-];
 export default function Sidebar() {
     const pathname = usePathname();
     return (

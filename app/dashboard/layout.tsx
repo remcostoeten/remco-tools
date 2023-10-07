@@ -5,6 +5,7 @@ import DashboardWrapper from '../../lib/theme';
 import Intro from '@/components/dashboard/Intro';
 
 export default function layout({ children }: { children: React.ReactNode }) {
+    
     return (
         <>
             <DashboardWrapper>

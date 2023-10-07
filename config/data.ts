@@ -4,6 +4,31 @@ import { LuGraduationCap } from 'react-icons/lu';
 import corpcommentImg from '@/public/corpcomment.png';
 import rmtdevImg from '@/public/rmtdev.png';
 import wordanalyticsImg from '@/public/wordanalytics.png';
+import { ExpensesIcon, IncomeIcon, InvestmentIcon, OverviewIcon, SettingsIcon, SubscriptionsIcon, SupportIcon } from '@/components/dashboard/icons';
+import shortcuts from '@/lib/shortcuts';
+
+export const dashboardLinks = [
+    { name: 'Overview', href: '/', Icon: OverviewIcon, shortcutText: shortcuts.menu.overview.shortcut },
+    { name: 'Income', href: '/income', Icon: IncomeIcon, shortcutText: shortcuts.menu.income.shortcut },
+    { name: 'Expenses', href: '/expenses', Icon: ExpensesIcon, shortcutText: shortcuts.menu.expenses.shortcut },
+    {
+        name: 'Investments',
+        href: '/investments',
+        Icon: InvestmentIcon,
+        shortcutText: shortcuts.menu.investments.shortcut,
+    },
+    {
+        name: 'Subscriptions',
+        href: '/subscriptions',
+        Icon: SubscriptionsIcon,
+        shortcutText: shortcuts.menu.subscriptions.shortcut,
+    },
+];
+
+export const settingsLinks = [
+    { href: 'mailto:remcostoeten@hotail.com', name: 'Support', Icon: SupportIcon },
+    { href: '/settings', name: 'Settings', Icon: SettingsIcon },
+];
 
 export const categoryOptions = [
     {
@@ -24,6 +49,7 @@ export const categoryOptions = [
     },
     {
         value: 'Design',
+
         label: 'Design',
     },
     {

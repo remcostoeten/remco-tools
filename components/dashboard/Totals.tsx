@@ -1,7 +1,6 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ReactNode } from 'react';
 import { Button } from '../ui/button';
-
 import { toast } from '../ui/use-toast';
 import { auth, db } from '@/utils/firebase';
 import { Expense, Income } from '@/utils/types';
@@ -10,15 +9,20 @@ import InputWithLabel from '../InputWithElement';
 
 type Category = 'Food' | 'Transport' | 'Utilities';
 
+type MoneyCardProps = {
+  items: { id: number; name: string; amount: number }[];
+  title: string;
+};
+
 export default function Totals() {
-  const [expenseAmount, setExpenseAmount] = useState<any>("€0");
-  const [incomeAmount, setIncomeAmount] = useState<any>("€0");
+  const [expenseAmount, setExpenseAmount] = useState<number>(0);
+  const [incomeAmount, setIncomeAmount] = useState<number>(0);
   const [expenseName, setExpenseName] = useState<string>('');
   const [savingsName, setSavingsName] = useState<string>('');
-  const [savingsAmount, setSavingsAmount] = useState<any>("€0");
+  const [savingsAmount, setSavingsAmount] = useState<number>(0);
   const [incomeName, setIncomeName] = useState<string>('');
-  const [totalIncome, setTotalIncome] = useState<any>("€0");
-  const [totalExpense, setTotalExpense] = useState<any>("€0");
+  const [totalIncome, setTotalIncome] = useState<number>(0);
+  const [totalExpense, setTotalExpense] = useState<number>(0);
   const [netWorth, setNetWorth] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const user = auth?.currentUser;
@@ -26,6 +30,12 @@ export default function Totals() {
   const [expenses, setExpenses] = useState<Expense[]>([]);
   const [incomes, setIncomes] = useState<Income[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<Category>('Food');
+
+  type MoneyCardProps = {
+    items: { id: number; name: string; amount: number }[];
+    title: string;
+  };
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -146,7 +156,7 @@ export default function Totals() {
   const calculateTotalIncome = async () => {
     try {
       const incomeQuerySnapshot = await getDocs(collection(db, 'incomes'));
-      const total = incomeQuerySnapshot.docs.reduce((acc, doc) => acc + doc.data().incomeAmount, 0);
+      const total = incomeQuerySnapshot.docs.reduce((acc, doc) => acc + doc.data().amount, 0);
       setTotalIncome(total);
       calculateNetWorth();
     } catch (error) {
@@ -176,7 +186,7 @@ export default function Totals() {
     const fetchedExpenses = expenseQuerySnapshot.docs.map((doc) => ({
       id: doc.id,
       name: doc.data().name,
-      expenseAmount: doc.data().expenseAmount,
+      amount: doc.data().expenseAmount,
     }));
     setExpenses(fetchedExpenses);
 
@@ -184,7 +194,7 @@ export default function Totals() {
     const fetchedIncomes = incomeQuerySnapshot.docs.map((doc) => ({
       id: doc.id,
       name: doc.data().name,
-      incomeAmount: doc.data().incomeAmount,
+      amount: doc.data().incomeAmount,
     }));
     setIncomes(fetchedIncomes);
 
@@ -196,23 +206,24 @@ export default function Totals() {
 
   return (
     <>
-
       <div className="flex w-full flex-col justify-between gap-4">
         <div>
           {user ? (
             <>
-
             </>
           ) : (
             <h1>test</h1>
           )}
         </div>
       </div>
-
+      <div className="flex w-full gap-4">
+        <MoneyCard items={expenses} title="Expenses" />
+        <MoneyCard items={incomes} title="Incomes" />
+      </div>
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-4">
           <div className="flex gap-4">
-            <div className="card expense p-8">
+            <div className="black-block black-blockt--content p-8">
               <h2 className="mb-4 text-2xl font-bold">Add Income</h2>
               <div className="mb-4 flex flex-col items-center gap-1">
                 <InputWithLabel type="number" placeholder="€ ,-" value={incomeAmount} onChange={(e) => setIncomeAmount(Number(e.target.value))} />
@@ -220,7 +231,7 @@ export default function Totals() {
               </div>
               <Button onClick={handleAddIncome}>Add income</Button>
             </div>
-            <div className="card expense p-8">
+            <div className="black-block black-blockt--content p-8">
               <h2 className="mb-4 text-2xl font-bold">Add Expense</h2>
               <div className="mb-4 flex items-start gap-4">
                 <div className="flex flex-col gap-1">
@@ -235,10 +246,10 @@ export default function Totals() {
               </div>
               <Button onClick={handleAddExpense}>Add Expense</Button>
             </div>
-            <div className="flex flex-col gap-1 flex-col">
-              <div className="card expense p-8">
+            <div className="flex gap-1 flex-col">
+              <div className="black-block black-blockt--content p-8">
                 <h2 className="mb-4 text-2xl font-bold">Add Savings</h2>
-                <div className="mb-4 flex items-center">
+                <div className="mb-4 flex-col flex items-center">
 
                   <InputWithLabel type="number" placeholder="€ ,-" value={savingsAmount} onChange={(e) => setSavingsAmount(Number(e.target.value))} />
                   <InputWithLabel type="text" placeholder="Savings Name" value={savingsName} onChange={(e) => setSavingsName(e.target.value)} />
@@ -247,26 +258,7 @@ export default function Totals() {
               </div>
             </div>
           </div>
-          <div className="flex w-full gap-4">
-            <div className="card expense flex flex-1 flex-col p-8">
-              <dl className="mb-4 text-2xl font-bold">Expenses List:</dl>
-              {expenses.map((expense) => (
-                <dl className="flex w-full justify-between" key={expense.id}>
-                  <dd>Name: {expense.name}</dd>
-                  <dt>Amount: €{expense.expenseAmount},-</dt>
-                </dl>
-              ))}
-            </div>
-            <div className="card expense flex flex-1 flex-col p-8">
-              <dl className="mb-4 text-2xl font-bold">Income List:</dl>
-              {incomes.map((income) => (
-                <dl className="flex w-full justify-between" key={income.id}>
-                  <dd>Name: {income.name}</dd>
-                  <dt>Amount: €{income.incomeAmount},-</dt>
-                </dl>
-              ))}
-            </div>
-          </div>
+
         </div>
       </div>
       <div className="block-container">
@@ -280,4 +272,27 @@ export default function Totals() {
     </>
   );
 
+  function MoneyCard({ items, title }: MoneyCardProps) {
+    return (
+      <div className="w-4/12 sblack-block black-blockt--content p-8">
+        <dl className="mb-4 text-2xl font-bold">{title} List:</dl>
+        {/* Get total only */}
+        {title === 'Expenses' && (
+          <dl className="mb-4 text-2xl font-bold">Total: €{totalExpense},-</dl>
+        )}
+        
+
+     
+        {items.map((item: {
+          length: ReactNode; id: number; name: string; amount: number 
+}) => (
+          <><dl className="flex w-full justify-between" key={item.id}>
+            <dd>Name: {item.name}</dd>
+            <dt>Amount: €{item.amount},-</dt>
+          </dl><div className="flex justify-between items-center"><span className='text-cream font-lg'>Name: {item.length}</span>
+              <span>+12%</span>    </div></>
+        ))}
+      </div>
+    );
+  }
 }
