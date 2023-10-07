@@ -17,7 +17,7 @@ export default function NavBar() {
     return (
         <>
         <NotProd />
-        <nav className="hidden sm:f;ex items-center justify-center z-10 fixed black-block rounded-full top-0 black-box px-10 left-1/2 h-12 -translate-x-1/2   mt-8 shadow-lg shadow-white/[0.06] backdrop-blur-3xl pr-8 ">
+        <nav className="hidden sm:flex items-center justify-center z-10 fixed black-block rounded-full top-0 black-box px-10 left-1/2 h-12 -translate-x-1/2   mt-8 shadow-lg shadow-white/[0.06] backdrop-blur-3xl pr-8 ">
             <ul className="flex w-[22rem] flex-wrap items-center justify-center gap-y-1 text-[0.9rem] font-medium text-cream sm:w-max sm:flex-nowrap sm:gap-5">
                 {links.map((link, index) => (
                     <React.Fragment key={link.hash}>
