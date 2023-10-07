@@ -1,0 +1,38 @@
+// Define the variables
+$dot-bg: $black;
+$dot-color: grey;
+$dot-size: 1px;
+$dot-space: 22px;
+.black {
+    background-color: $black;
+} 
+
+body {
+    position: relative;
+
+    &::before {
+        content: '';
+        width: 100vw;
+        height: 100%;
+        background: radial-gradient(circle,var(--offblack) 53%, rgba(19,20,20,0) 100%);
+        position: absolute;
+        top: 0;
+        margin: auto;
+        z-index: -1;
+        background-position: center;
+    }
+
+    .cursor {
+        transition: 500ms ease-in-out opacity;
+        display: none;
+        scale: 0;
+    }
+
+    &:hover {
+        .cursor {
+            scale: 1;
+            transition: 500ms ease-in-out opacity;
+            display: block;
+        }
+    }
+}

@@ -1,0 +1,25 @@
+.width-fill {
+    width: -webkit-fill-available;
+}
+
+.border {
+    border: 1px solid #363333 !important;
+}
+
+.bg-black {
+
+
+    background-color: #101010 !important;
+}
+
+
+.black-block {
+    background-color: #101010;
+    border: 1px solid #363333;
+    color: #f1f1ef;
+
+    &--section {
+        padding: 24px;
+
+    }
+}

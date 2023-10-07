@@ -1,0 +1,463 @@
+body {
+    overflow-x: hidden;
+    background-color: $black !important;
+
+    &:has(.bg-offblack) {
+
+        h1,
+        span,
+        p,
+        h2,
+        h3 {
+            color: #efefee;
+        }
+    }
+}
+
+.words {
+    @extend .black-block;
+    padding: 6px 12px;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    border-radius: 16px;
+}
+
+.cats {
+    color: #000 !important;
+
+    * {
+        color: #000 !important;
+    }
+}
+
+.home-container {
+
+    margin: 0 auto;
+
+
+    .text {
+        position: absolute;
+        width: 600px;
+        left: 50%;
+        margin-left: -225px;
+        height: 40px;
+        top: 50%;
+        margin-top: -20px;
+    }
+
+    p {
+        vertical-align: top;
+        margin: 0;
+    }
+
+    .word {
+        position: absolute;
+        opacity: 0;
+    }
+
+    .letter {
+        display: inline-block;
+        position: relative;
+        float: left;
+        transform: translateZ(25px);
+        transform-origin: 50% 50% 25px;
+    }
+
+    .letter.out {
+        transform: rotateX(90deg);
+        transition: transform 0.32s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+
+    .letter.behind {
+        transform: rotateX(-90deg);
+    }
+
+    .letter.in {
+        transform: rotateX(0deg);
+        transition: transform 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .wisteria {
+        color: #8e44ad;
+    }
+
+    .belize {
+        color: #2980b9;
+    }
+
+    .pomegranate {
+        color: #c0392b;
+    }
+
+    .green {
+        color: #16a085;
+    }
+
+    .midnight {
+        color: #2c3e50;
+    }
+}
+
+.grid-bg {
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    background: #333;
+    background-image: linear-gradient(rgba(0, 255, 0, 0.7) 0.1em, transparent 0.1em), linear-gradient(90deg, rgba(0, 255, 0, 0.7) 0.1em, transparent 0.1em);
+    background-size: 3em 3em;
+}
+
+$expense-black: #ff181818;
+
+// drop shadow classes
+.blue-shadow {
+    box-shadow: 0 0 64px #1878f1;
+}
+
+.green-shadow {
+    box-shadow: 0 0 64px #44ff73;
+}
+
+.red-shadow {
+    box-shadow: 0 0 64px #ff4266;
+}
+
+.teal-shadow {
+    box-shadow: 0 0 64px #34fff3;
+}
+
+.purple-shadow {
+    box-shadow: 0 0 64px #b71fff;
+}
+
+.yellow-shadow {
+    box-shadow: 0 0 64px #fda428;
+}
+
+.bg-expense {
+    background-color: $expense-black;
+    padding: 64px;
+    border-radius: 16px;
+}
+
+.canvas-gradient {
+    background: linear-gradient(62deg, rgba(19, 20, 20, 0) 0%, rgba(30, 30, 30, 1) 75%);
+    width: 100vw;
+    height: 100vh;
+}
+
+
+
+canvas {
+    width: 100vw !important;
+    scale: 1.2;
+    height: 100vh !important;
+    position: fixed;
+    top: 0;
+    z-index: -3;
+
+    &::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, transparent, var(--offblack)) top,
+            linear-gradient(to right, transparent, var(--offblack)) right,
+            linear-gradient(to bottom, transparent, var(--offblack)) bottom,
+            linear-gradient(to left, transparent, var(--offblack)) left;
+        background-repeat: no-repeat;
+        background-size: 100% 200px, 200px 100%, 100% 20px, 20px 100%;
+        background-origin: border-box;
+        background-clip: content-box, content-box, content-box, content-box;
+        z-index: -2;
+        pointer-events: none;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        // a gradient that is transparent on the middle and offblack on the edges. the edges must be entiery solid color.
+        background: rgb(19, 20, 20);
+        background: radial-gradient(circle, rgba(19, 20, 20, 0) 0%, rgba(30, 30, 30, 1) 75%);
+        z-index: -2;
+        left: 0;
+        top: 0;
+    }
+}
+
+body:not(.table) {
+    .container {
+        max-width: $container-width;
+        margin: 0 auto;
+        padding: 0 $spacing-xl;
+    }
+}
+
+.magnetic {
+    svg {
+        font-size: 20px;
+    }
+}
+
+
+.inspiration-table {
+    font-weight: 600;
+
+    thead {
+        padding: $spacing;
+        margin: $spacing;
+        height: 60px;
+    }
+
+    tr {
+        padding: $spacing;
+        border: 1px solid rgba($color: #fff, $alpha: 0.2);
+
+        td {
+            padding: $spacing;
+        }
+
+        &:nth-child(odd) {
+            background-color: rgba($color: #000000, $alpha: 0.9);
+            border-color: $white;
+        }
+
+        &:nth-child(even) {
+            background-color: rgba($color: #fff, $alpha: 0.05);
+            border-color: $white;
+        }
+    }
+}
+
+#about {
+    @extend .container;
+    max-width: 45rem !important;
+
+    a {
+
+        &:hover,
+        &:visited,
+        &:focus {
+            color: darken($white, 5%);
+        }
+    }
+}
+
+.table {
+    .container {
+        all: unset;
+    }
+}
+
+.z-max {
+    z-index: 9999;
+}
+
+.logo {
+    transform: translateX(20px);
+}
+
+.vertical-timeline-element-content-arrow {
+    display: none !important;
+}
+
+.is-open {
+    z-index: 99999999;
+    padding: 50px 70px;
+    left: 0;
+    background-color: $black;
+}
+
+//
+@keyframes height {
+    to {
+        height: 0;
+        max-height: 0;
+    }
+}
+
+.theme-transitioning * {
+    transition-duration: 300ms;
+    transition-property: background, color;
+    transition-timing-function: cubic-bezier(0.165, 0.84, 0.94, 1);
+    transition-delay: background 333ms;
+}
+
+[vaul-drawer] {
+    z-index: 999;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    /* Add other CSS styles for your app content */
+
+
+    &::after {
+        // content: '';
+        width: 160vw;
+        height: 100%;
+        background: radial-gradient(circle, rgba(30, 30, 30, 1) 23%, rgba(19, 20, 20, 0) 100%);
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -2;
+    }
+}
+
+// magic
+.toggle {
+    --size: 2rem;
+    appearance: none;
+    outline: none;
+    width: var(--size);
+    height: var(--size);
+    box-shadow: inset calc(var(--size) * 0.33) calc(var(--size) * -0.25) 0;
+    border-radius: 999px;
+    color: $black;
+
+    transition: all 500ms;
+
+    &:checked {
+        --ray-size: calc(var(--size) * -0.4);
+        --offset-orthogonal: calc(var(--size) * 0.65);
+        --offset-diagonal: calc(var(--size) * 0.45);
+
+        transform: scale(0.75);
+        color: #fff;
+        box-shadow: inset 0 0 0 var(--size), calc(var(--offset-orthogonal) * -1) 0 0 var(--ray-size), var(--offset-orthogonal) 0 0 var(--ray-size), 0 calc(var(--offset-orthogonal) * -1) 0 var(--ray-size), 0 var(--offset-orthogonal) 0 var(--ray-size), calc(var(--offset-diagonal) * -1) calc(var(--offset-diagonal) * -1) 0 var(--ray-size),
+            var(--offset-diagonal) var(--offset-diagonal) 0 var(--ray-size), calc(var(--offset-diagonal) * -1) var(--offset-diagonal) 0 var(--ray-size), var(--offset-diagonal) calc(var(--offset-diagonal) * -1) 0 var(--ray-size);
+    }
+}
+
+.padding-y {
+    padding: $spacing-xl 0;
+}
+
+.padding-x {
+    padding: 0 $spacing-xl;
+}
+
+.margin -y {
+    margin: $spacing-xl 0;
+}
+
+.margin-x {
+    margin: 0 $spacing-xl;
+}
+
+.padding-y-l {
+    padding: $spacing-xl * 2 0;
+}
+
+.padding-x-l {
+    padding: 0 $spacing-xl * 2;
+}
+
+.margin-y-l {
+    margin: $spacing-xl * 2 0;
+}
+
+.margin-x-l {
+    margin: 0 $spacing-xl * 2;
+}
+
+.padding-y-xl {
+    padding: $spacing-xl * 3 0;
+}
+
+.padding-x-xl {
+    padding: 0 $spacing-xl * 3;
+}
+
+.margin-y-xl {
+    margin: $spacing-xl * 3 0;
+}
+
+.margin-x-xl {
+    margin: 0 $spacing-xl * 3;
+}
+
+// .toggle {
+//     z-index: 1;
+//     &:checked {
+//         & ~ .background {
+//             --bg: $white;
+//         }
+//         & ~ .title {
+//             --color: $black;
+//         }
+//     }
+// }
+
+ul.group.flex.flex-1.list-none.items-center.justify-center.space-x-1 {
+    button {
+        background-color: transparent;
+    }
+}
+
+html:not(.dark) {
+    .toggle {
+        color: $black;
+        scale: 0.75;
+        transform: translate(2px, 4px);
+    }
+
+    .intro {
+        svg {
+            fill: $black;
+        }
+    }
+}
+
+.dark {
+    $white: #f1f1ef;
+    .toggle {
+        color: $white;
+    }
+
+    h1,h2,h3,h4.h5.h6,p,span {
+        color: $white;
+    }
+}
+
+.mobile-flexer {
+    display: flex;
+    gap: 4;
+}
+
+.gradient-text {
+    position: relative;
+
+    &::after {
+        content: '';
+        background-image: linear-gradient(90deg, #fbc340, #f15a29 34.37%, #f291c6 66.67%, #27aae1);
+        background-position: 0 100%;
+        background-repeat: no-repeat;
+        background-size: 100% 4px;
+        position: absolute;
+        width: 100%;
+        height: 4px;
+        bottom: 0;
+        left: 0;
+
+        // Animation configuration
+        animation: gradienText 5s ease infinite, gradientTextGrow 2s cubic-bezier(0.175, 0.485, 0.32, 1.275) forwards;
+        animation-play-state: paused; // by default, don't animate
+    }
+
+    &.animate::after {
+        animation-play-state: running; // animate when in view
+        //
+    }
+}
+
+// Keyframes

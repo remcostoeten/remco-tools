@@ -1,0 +1,15 @@
+@import 'typography.scss';
+@import 'colors'; 
+
+$spacing: 16px;
+$spacing-s: 8px;
+$spacing-xl: 24px;
+$container-width: 1280px;
+$cursorsize: 24px;
+
+
+
+$spacing: 8px;
+$spacing-medium: $spacing * 2;
+$spacing-large: $spacing * 3;
+$spacing-xlarge: $spacing * 4;
