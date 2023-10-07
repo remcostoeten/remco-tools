@@ -8,7 +8,7 @@ function PageHeader({
   return (
     <span
       className={cn(
-        "flex lg:max-w-[1280px] max-w-[980px] flex-col items-start gap-2 px-4 pt-8 md:pt-12 page-header pb-8",
+        "flex lg:max-w-[1280px] max-w-[980px] flex-col items-start gap-2 px-4 page-header pb-8",
         className
       )}
       {...props}
@@ -48,4 +48,5 @@ function PageHeaderDescription({
   )
 }
 
-export { PageHeader, PageHeaderHeading, PageHeaderDescription }
+export { PageHeader, PageHeaderDescription, PageHeaderHeading }
+

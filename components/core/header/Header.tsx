@@ -6,25 +6,21 @@ import Link from 'next/link';
 import clsx from 'clsx';
 import { useActiveSectionContext } from '@/context/active-section-contex';
 import ToolsDropdown from './ToolsDropdown';
-import SecondaryDropdown from './SecondaryDropdown';
-import { ShowcaseDropdow } from './ShowcaseDropdow';
 import MiscMenu from './MiscDropdown';
 import UiElementsDropdown from './UiElementsDropdown';
 
 export default function Header() {
     const { activeSection, setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
-    const [isOpen, setIsOpen] = useState(false);
-
     return (
         <>
             <header className="relative z-50 header hidden md:flex showAlternativeCursor">
                 <motion.div
-                    className="header bg-offblack width-fill fixed top-0 left-1/2 h-[4.5rem] w-full rounded-none shadow-lg shadow-white/[0.06] backdrop-blur-[0.5rem] sm:top-6 sm:h-[3.25rem]  sm:rounded-full "
+                    className="header black-block width-fill fixed top-0 left-1/2 h-[4.5rem] w-full rounded-none shadow-lg shadow-white/[0.06] backdrop-blur-[0.5rem] sm:top-6 sm:h-[3.25rem]  sm:rounded-full "
                     initial={{ y: -100, x: "-50%", opacity: 0 }}
                     animate={{ y: 0, x: "-50%", opacity: 1 }}
                 ></motion.div>
 
-                <nav className="border-shadow  flex w fixed top-[0.15rem] left-1/2 h-12 -translate-x-1/2 py-2 sm:top-[1.7rem] sm:h-[initial] sm:py-0">
+                <nav className="flex items-center justify-center border-shadow  flex w fixed top-[0.15rem] left-1/2 h-12 -translate-x-1/2 py-2 sm:top-[1.7rem] sm:h-[initial] sm:py-0">
                     <ul className="flex w-[22rem] flex-wrap items-center justify-center gap-y-1 text-[0.9rem] font-medium text-gray-500 sm:w-max sm:flex-nowrap sm:gap-5">
                         {links.map((link, index) => (
                             <React.Fragment key={link.hash}>
@@ -35,7 +31,7 @@ export default function Header() {
                                     animate={{ y: 0, opacity: 1 }}
                                 >
                                     <Link
-                                        className={clsx("flex w-full items-center justify-center px-3 py-3 hover:text-gray-200 transition dark:-text-white", {
+                                        className={clsx("flex w-full items-center justify-center py-3 hover:text-gray-200 transition dark:-text-white pl-4 pr-4 h-9", {
                                             "": activeSection === link.name,
                                         })}
                                         href={link.hash}
@@ -48,7 +44,8 @@ export default function Header() {
 
                                         {link.name === activeSection && (
                                             <motion.span
-                                                className="absolute inset-0 border rounded-full dark:bg-black -z-10 dark:active-bg"
+                                                className="black-block absolute inset-0
+                                                 border rounded-full -z-10"
                                                 layoutId="activeSection"
                                                 transition={{
                                                     type: "spring",
@@ -59,7 +56,7 @@ export default function Header() {
                                         )}
                                     </Link>
                                 </motion.li>
-                                {index === 3 && (
+                                {index === 2 && (
                                     <>
                                         <motion.li
                                             data-type="video"

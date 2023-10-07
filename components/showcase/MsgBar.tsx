@@ -11,7 +11,9 @@ export default function MsgBar() {
             initial={{ opacity: 0, y: -5 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: .5 }}
-            className="inline-flex items-center rounded-lg bg-muted px-3 py-1 text-sm font-medium"
+            className="  rounded-full black-block  inline-flex items-cente px-3 py-1 text-sm font-medium"
+        
+
         >
             <Link href="roadmap">
                 🎉 <Separator className="mx-2 h-4" orientation="vertical" />

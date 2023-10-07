@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDownIcon } from '@heroicons/react/solid';
 import { ChevronUpIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
+import { toolLinks } from '@/config/data';
 
 export default function ToolsDropdown() {
     const [isOpen, setIsOpen] = useState(false);
@@ -12,43 +13,6 @@ export default function ToolsDropdown() {
         open: { opacity: 1, height: 'auto', display: 'block' },
         closed: { opacity: 0, height: 0, display: 'none' },
     };
-
-    const components = [
-        {
-            title: 'HTML to J/TSX Converter',
-            href: '/html-to-jsx',
-            description:
-                'Converts any HTML to JSX with the option to generate a fully functioning functional component, with or without props.',
-        },
-        {
-            title: 'Geolocation',
-            href: '/geolocation',
-            description:
-                'An app that allows you to find the longitude and latitude which pairs to an address. Save the address, reverse search them, show them on the map.',
-        },
-        {
-            title: 'Expenses Tracker',
-            href: '/income',
-            description: 'Life is expensive... get a grip on your expenses..',
-        },
-        {
-            title: 'SVG to CSS',
-            href: '/convert-svg',
-            description:
-                'Converts any SVG to CSS. Either as psuedo element or background image.',
-        },
-        {
-            title: 'Python Script Generator',
-            href: '/python',
-            description: 'Visually or semantically separates content.',
-        },
-
-        {
-            title: 'Convert SVG to CSS',
-            href: '/convert-svg',
-            description: 'Visually or semantically separates content.',
-        },
-    ];
 
     return (
         <div className="relative">
@@ -79,8 +43,8 @@ export default function ToolsDropdown() {
                         onMouseLeave={() => setIsOpen(false)}
                     >
                         <ul className="showAlternativeCursor z-max grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                           
-                            {components.map((component) => (
+
+                            {toolLinks.map((component) => (
                                 <Link
                                     key={component.href}
                                     href={component.href}

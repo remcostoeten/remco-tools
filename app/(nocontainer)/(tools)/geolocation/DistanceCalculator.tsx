@@ -23,8 +23,7 @@ const DistanceCalculator = () => {
     const lat2 = parseFloat(latitude2);
     const lon2 = parseFloat(longitude2);
   
-    // Calculate the distance using the Haversine formula
-    const R = 6371; // Radius of the Earth in kilometers
+    const R = 6371; 
     const dLat = (lat2 - lat1) * (Math.PI / 180);
     const dLon = (lon2 - lon1) * (Math.PI / 180);
     const a =

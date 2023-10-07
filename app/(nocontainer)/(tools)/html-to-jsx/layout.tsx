@@ -5,7 +5,6 @@ import {
   PageHeaderDescription
 } from "@/components/ui/page-nav"
 import Typewriter from "./components/alternating-text"
-import { ReactNode } from 'react'
 import { LayoutProps } from '@/utils/types'
 import Notification from '@/components/Notification'
 
@@ -38,7 +37,7 @@ const metadata = {
   manifest: "https://remcostoeten.nl/site.webmanifest",
 }
 
-export default function ConverterLayout({ children } : LayoutProps) {
+export default function ConverterLayout({ children }: LayoutProps) {
   return (
     <>
       <Head>
@@ -55,29 +54,29 @@ export default function ConverterLayout({ children } : LayoutProps) {
         <link rel="shortcut icon" href={metadata.icons.shortcut} />
         <link rel="apple-touch-icon" href={metadata.icons.apple} />
         <link rel="manifest" href={metadata.manifest} />
-        </Head>
-
-        <div style={{position: 'absolute', right: '0', top: '0', zIndex: 9999}}>
-      <Notification text='The props / component creator is currently broken!' subtext='The html to react code works fine tho.'/></div>
-      <CustomStatusBadge title="beta" emojiKey="rocket" index={0} />
-      <CustomStatusBadge title="wip" emojiKey="fire" index={1} />
-      <PageHeader>
-        <span className="inline-block  space-y-4 font-heading text-4xl sm:mb-0 lg:text-5xl">
-          Convert your HTML to <Typewriter />
-        </span>
-        <PageHeaderDescription>
-          <span className="cursor-hover ">
-            Simply paste in your HTML and get the JSX/TSX version. When you
-            want to prefix the output with{" "}
-            <pre className="inline-block"> 'use client '</pre> for NextJS
-            simply toggle the switch. When using TypeScript you can also get
-            a version with the types included by filling in the props but they are not required.
+      </Head>
+      <div className='black-block relative container section black-block--section rounded-sm'>
+        <div style={{ position: 'absolute', right: '0', top: '0', zIndex: 9999 }}>
+          <Notification text='The props / component creator is currently broken!' subtext='The html to react code works fine tho.' /></div>
+        <CustomStatusBadge title="beta" emojiKey="rocket" index={0} />
+        <CustomStatusBadge title="wip" emojiKey="fire" index={1} />
+        <PageHeader>
+          <span className="inline-block  space-y-4 font-heading text-4xl sm:mb-0 lg:text-5xl">
+            Convert your HTML to <Typewriter />
           </span>
-        </PageHeaderDescription>
-      </PageHeader>
-      <main>
-        {children}
-      </main>
-                                  </>
+          <PageHeaderDescription>
+            <span className="cursor-hover ">
+              Simply paste in your HTML and get the JSX/TSX version. When you
+              want to prefix the output with{" "}
+              <pre className="inline-block"> 'use client '</pre> for NextJS
+              simply toggle the switch. When using TypeScript you can also get
+              a version with the types included by filling in the props but they are not required.
+            </span>
+          </PageHeaderDescription>
+        </PageHeader>
+        <main>
+          {children}
+        </main></div>
+    </>
   )
 }

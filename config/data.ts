@@ -32,6 +32,12 @@ export const categoryOptions = [
     },
 ];
 
+export const folderPrefix = {
+    showcase: '/showcase/',
+    ui: '/ui-elements/',
+    tools: '/tools/',
+};
+
 export const links = [
     {
         name: 'Home',
@@ -39,18 +45,116 @@ export const links = [
     },
     {
         name: 'Dashboard',
-        hash: 'dashboard',
-    },
-    {
-        name: 'Login',
-        hash: 'sign-up',
+        hash: '/dashboard',
     },
     {
         name: 'Html To React',
-        hash: 'html-to-jsx',
+        hash: '/html-to-jsx',
     },
 
 ] as const;
+
+export const toolLinks = [
+    {
+        title: 'HTML to J/TSX Converter',
+        href: `${folderPrefix.tools}html-to-jsx`,
+        description:
+            'Converts any HTML to JSX with the option to generate a fully functioning functional component, with or without props.',
+    },
+    {
+        title: 'Geolocation',
+        href: `${folderPrefix.tools}geolocation`,
+        description:
+            'An app that allows you to find the longitude and latitude which pairs to an address. Save the address, reverse search them, show them on the map.',
+    },
+    {
+        title: 'Expenses Tracker',
+        href: `${folderPrefix.tools}income`,
+        description: 'Life is expensive... get a grip on your expenses..',
+    },
+    {
+        title: 'SVG to CSS',
+        href: `${folderPrefix.tools}convert-svg`,
+        description:
+            'Converts any SVG to CSS. Either as psuedo element or background image.',
+    },
+    {
+        title: 'Python Script Generator',
+        href: `${folderPrefix.tools}python`,
+        description: 'Visually or semantically separates content.',
+    },
+    {
+        title: 'Convert SVG to CSS',
+        href: `${folderPrefix.tools}convert-svg`,
+        description: 'Visually or semantically separates content.',
+    },
+];
+
+export const uiShowcaseLinks = [
+    {
+        title: '3D Text',
+        href: `${folderPrefix.ui}3d-text`,
+    },
+    {
+        title: 'Buttons',
+        href: `${folderPrefix.ui}buttons`,
+    },
+    {
+        title: 'Layout',
+        href: `${folderPrefix.ui}layout`,
+    },
+    {
+        title: 'Loading',
+        href: `${folderPrefix.ui}loading`,
+    },
+    {
+        title: 'Mouse Trailer',
+        href: `${folderPrefix.ui}mouse-trailer`,
+    },
+    {
+        title: 'Perspective Panning',
+        href: `${folderPrefix.ui}perspective-panning`,
+    },
+    {
+        title: 'Reveal Animations',
+        href: `${folderPrefix.ui}reveal-animations`,
+    },
+    {
+        title: 'UI Links',
+        href: `${folderPrefix.ui}ui-links`,
+    },
+];
+
+export const miscLinks = [
+    {
+        title: 'Easing animation showcase',
+        href: `${folderPrefix.showcase}easing`,
+    },
+    {
+        title: 'Turbo landing WiP',
+        href: `${folderPrefix.showcase}turbo`,
+    },
+    {
+        title: 'Landing page WiP',
+        href: '/land',
+    },
+    {
+        title: 'Mouse hook example',
+        href: `${folderPrefix.showcase}use-mouse`,
+    },
+    {
+        title: 'Firebase post & fetch example',
+        href: `${folderPrefix.showcase}firebase-post-and-fetch`,
+    },
+    {
+        title: 'Inspiration table',
+        href: `${folderPrefix.showcase}inspiration`,
+    },
+    {
+        title: 'Todo table',
+        href: `${folderPrefix.showcase}todo`,
+    },
+];
 
 export const experiencesData = [
     {
@@ -154,3 +258,4 @@ export const skillsData = [
     'Django📚',
     'Framer Motion',
 ] as const;
+

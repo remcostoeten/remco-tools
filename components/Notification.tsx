@@ -1,34 +1,33 @@
 'use client';
-import { useState } from "react";
+import React, { useEffect } from "react";
 import InProgressIcon from "./core/icons/InProgressIcon";
 import NotificationWrapper from "./NotificationWrapper";
+import { toast, useToast } from "./ui/use-toast";
 
 type NotificationProps = {
-  text?: string,
-  subtext?: string,
-  children?: React.ReactNode
-}
+  text?: string;
+  subtext?: string;
+  children?: React.ReactNode;
+};
 
 export default function Notification({ text, subtext, children }: NotificationProps) {
-  const [isHidden, setIsHidden] = useState(false);
+  const {  dismiss } = useToast(); 
+  const [isOpen, setIsOpen] = React.useState(true);
 
-  const handleClose = () => {
-    setIsHidden(true);
-  }
+  useEffect(() => {
+    const { id } = toast({
+      title: text,
+      description: subtext,
+      icon: <InProgressIcon />,
+    });
+    
+    const handleClose = () => {
+      dismiss(id);
+      setIsOpen(false);
+    };
+  }, []);
 
   return (
-    <NotificationWrapper
-      isHidden={isHidden}
-      onClose={handleClose}
-      style={{ opacity: isHidden ? 0 : 1, scale: isHidden ? 0 : 1 }}
-    >
-      {children}
-      <div className="toast__title">
-        {text}
-        <span className="toast__alternate-title">
-          {subtext}
-        </span>
-      </div>
-    </NotificationWrapper>
+ <></>
   );
 }

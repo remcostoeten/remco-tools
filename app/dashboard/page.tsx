@@ -4,9 +4,6 @@ import SummaryCard from '@/components/dashboard/SummaryCard';
 import Totals from '@/components/dashboard/Totals';
 import SectionSpacer from '@/components/ui/SectionSpacer';
 import React from 'react';
-import DisplayCategories from '../(nocontainer)/firebase-post-and-fetch/DisplayCategory';
-import { NewCategory } from '../(nocontainer)/firebase-post-and-fetch/NewCategory';
-import { NewItemInCategory } from '../(nocontainer)/firebase-post-and-fetch/NewItemInCategory';
 import { usePasswordProtection } from '@/hooks/usePasswordProtection';
 import Savings from '@/components/dashboard/Savings';
 import DashboardUser from "@c/dashboard/DashboardUser";
@@ -19,7 +16,7 @@ export default function Page() {
 
   return (
     <>
-      <div className='border cats border-white r bg-zinc-300 text-black p-4'>
+      <div className='black-block black-block--section'>
         {isAuthenticated ? (
           <>
             {/* <h1>A

@@ -18,7 +18,7 @@ interface ToasterProps {
 }
 
 export function Toaster({ icon, className }: ToasterProps) {
-  const { toasts } = useToast();
+  const { toasts, dismiss } = useToast();
   const toastControls = useAnimation();
 
   useEffect(() => {
@@ -32,15 +32,17 @@ export function Toaster({ icon, className }: ToasterProps) {
 
   return (
     <ToastProvider>
-      {toasts.map(function ({ title, description, action }) {
+      {toasts.map(function ({ id, title, description, action }) {
         return (
           <motion.div
+            key={id}
             className={`toast temp ${className || ''}`}
             initial={{ opacity: 1, y: 0 }}
             animate={toastControls}
             exit={{ height: 0, margin: 0, y: 200, padding: 0 }}
-            transition={{ duration: 0.5, delay: 3, tween: 'easeOut' }}
-          >
+            transition={{ duration: 0.5, delay: 3, tween: 'easeOut' }} >
+
+
             <div className="gradient"></div>
             {icon}
             <div className="toast__inner">
@@ -55,8 +57,9 @@ export function Toaster({ icon, className }: ToasterProps) {
                 </ToastTitle>
               )}
             </div>
-            <div className="toast__close">{action}</div>
-            <ToastClose />
+            <div className="toast__close">
+              <button onClick={() => dismiss(id)}>Close</button>
+            </div>
             <Particles particleCount={100} />
           </motion.div>
         );

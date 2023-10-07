@@ -7,21 +7,15 @@ function LandingPage() {
     const [showExample2, setShowExample2] = useState(false);
     const [showExample3, setShowExample3] = useState(false);
     const { x, y } = useMousePosition();
-
-    // State for CTA button position
     const [ctaButtonPosition, setCtaButtonPosition] = useState({ x: 0, y: 0 });
-
-    // Calculate the distance between mouse pointer and CTA button
     const distanceX = x - ctaButtonPosition.x;
     const distanceY = y - ctaButtonPosition.y;
-
-    // Update CTA button position
     const updateCtaButtonPosition = () => {
         setCtaButtonPosition({ x, y });
     };
 
     return (
-        <div className="flex flex-col items-center justify-center h-screen ">
+        <div className="black-block black-block--content container flex flex-col items-center justify-center h-screen ">
             <h1 className="mb-4 text-4xl font-bold">Landing Page 1</h1>
             <p className="text-lg">
                 Mouse position: {x}, {y}

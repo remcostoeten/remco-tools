@@ -194,6 +194,7 @@ function useToast(position?: ToastPosition) {
       top: '24px',
       right: '24px',
     },
+    
     'bottom-left': {
       bottom: '24px',
       left: '24px',
