@@ -236,6 +236,7 @@ $arrow-head-thickness: $shaft-thickness;
 .animbtn {
     height: 60px;
     display: flex;
+    padding: 0 24px;
 
     .btn__hover-text {
         opacity: 0;
