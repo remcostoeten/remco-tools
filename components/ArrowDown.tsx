@@ -26,7 +26,7 @@ export default function ArrowDown({ target }: ArrowProps) {
 
     return (
         showIndicator && (
-            <a href={target} className="scroll-down z-max">
+            <a title="Arrow to scroll down" aria-label="arrow to scroll down" href={target} className="scroll-down z-max">
                 <span className="scroll-down__animate"></span>
             </a>
         )

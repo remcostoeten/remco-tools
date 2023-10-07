@@ -1,9 +1,8 @@
 'use client';
+'use client';
 import { ArrowTopLeftIcon } from '@radix-ui/react-icons';
 import { motion } from 'framer-motion';
-import { useRouter } from 'next/navigation';
 import { toast } from '@/components/ui/use-toast';
-import notFoundProps from './not-found';
 import { Label } from '@radix-ui/react-label';
 import { Switch } from '@radix-ui/react-switch';
 import { useState, useRef, useEffect } from 'react';
@@ -13,39 +12,21 @@ type NotFoundProps = {
     pause?: any;
 };
 
-export default function NotFound({}: NotFoundProps) {
-    // Corrected function name and parameter type
+export default function NotFound({ }: NotFoundProps) {
     const [showError, setShowError] = useState(true);
     const [playAbba, setPlayAbba] = useState(false);
-    const elevatorRef = useRef<HTMLAudioElement | null>(null);
-    const abbaRef = useRef<HTMLAudioElement | null>(null);
+    const audioRef = useRef<HTMLAudioElement | null>(null);
 
     useEffect(() => {
-        setTimeout(() => {
-            toast({
-                title: 'Now playing generic_elevator.mp3',
-            });
-            elevatorRef.current?.play();
-        }, 1000);
-    }, []);
+        toast({
+            title: playAbba ? '🎉 Now playing abba - dancing queen.mp3 💃' : 'Now playing generic_elevator.mp3',
+        });
+        audioRef.current?.play();
+    }, [playAbba]);
 
     const switchSong = () => {
         setPlayAbba(!playAbba);
     };
-
-    useEffect(() => {
-        if (playAbba) {
-            setTimeout(() => {
-                toast({
-                    title: '🎉 Now playing abba - dancing queen.mp3 💃',
-                });
-                elevatorRef.current?.pause();
-                abbaRef.current?.play();
-            }, 1000);
-        } else {
-            abbaRef.current?.pause();
-        }
-    }, [playAbba]);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -78,8 +59,8 @@ export default function NotFound({}: NotFoundProps) {
             <br />
             <br />
             <span className="info font-[40px]">File not found</span>
-            <img src="http://images2.layoutsparks.com/1/160030/too-much-tv-static.gif" className="static" alt="Static GIF" /> <audio ref={elevatorRef} src="/music.mp3" loop autoPlay={showError} />
-            <audio ref={abbaRef} src="/abba.mp3" loop />
+            <img src="http://images2.layoutsparks.com/1/160030/too-much-tv-static.gif" className="static" alt="Static GIF" />
+            <audio ref={audioRef} src={playAbba ? "/abba.mp3" : "/music.mp3"} loop autoPlay />
         </div>
     );
 }

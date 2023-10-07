@@ -35,9 +35,8 @@ const ThemeSettings: React.FC = () => {
             </div>
             <div
                 onClick={animationsOffHandler}
-                className={`fixed bottom-[80px] right-5 bg-white w-[3rem] h-[3rem] bg-opacity-80 backdrop-blur-[0.5rem] border border-opacity-40 shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.15] active:scale-105 transition-all dark:bg-gray-950 ${
-                    animationsOff ? 'red-shadow' : 'green-shadow '
-                }`}
+                className={`fixed bottom-[80px] right-5 bg-white w-[3rem] h-[3rem] bg-opacity-80 backdrop-blur-[0.5rem] border border-opacity-40 shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.15] active:scale-105 transition-all dark:bg-gray-950 ${animationsOff ? 'red-shadow' : 'green-shadow '
+                    }`}
             >
                 <svg
                     // @ts-ignore
@@ -63,13 +62,13 @@ const ThemeSettings: React.FC = () => {
             </div>
 
             <div
-                className={`fixed bottom-5 right-5  backdrop-blur-[0.5rem] border  rounded-full flex items-center justify-center hover:scale-[1.15] active:scale-105 transition-all ${
-                    theme === 'dark' ? 'green-shadow' : 'red-shadow red-pulse'
-                }`}
+                className={`fixed bottom-5 right-5  backdrop-blur-[0.5rem] border  rounded-full flex items-center justify-center hover:scale-[1.15] active:scale-105 transition-all ${theme === 'dark' ? 'green-shadow' : 'red-shadow red-pulse'
+                    }`}
             >
                 {' '}
                 <div onClick={toggleTheme}>
                     <Input
+                        aria-label='toggle-theme'
                         id='toggle'
                         className='toggle translate-x-0.5 translate-y-1'
                         type='checkbox'

@@ -127,14 +127,17 @@ export default function Intro() {
 
                     <motion.div variants={itemVariants} className="flex gap-4 flex-col items-center justify-center gap-2 px-4 text-lg font-medium effect sm:flex-row">
                         <FramerMagnetic>
-                            <Link ref={magnetic} data-cursor-hover href={metadata.githubProfile} target="_blank">
+                            <Link
+                                title="Remcostoeten Github profile link"
+                                aria-label="Remcostoeten Github profile link"
+                                ref={magnetic} data-cursor-hover href={metadata.githubProfile} target="_blank">
                                 <GithubLogo />
                             </Link>
                         </FramerMagnetic>
                         <IntroButtons />
 
                         <FramerMagnetic>
-                            <Link data-cursor-hover href={metadata.linkedinProfile} target="_blank">
+                            <Link aria-label="remco stoeten linkedin profile" title="remco stoeten linkedin profile" data-cursor-hover href={metadata.linkedinProfile} target="_blank">
                                 <Linkedin />
                             </Link>
                         </FramerMagnetic>

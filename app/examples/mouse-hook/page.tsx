@@ -32,9 +32,11 @@ function MouseHookExamplePage() {
                     useMousePosition.ts hook example
                 </h1>
                 <Link
-                  className='underline text-sm'
-                  href='https://github.com/remcostoeten/remco-tools/blob/dev/hooks/useMousePosition.ts'
+                    className='underline text-sm'
+                    href='https://github.com/remcostoeten/remco-tools/blob/dev/hooks/useMousePosition.ts'
                     target='_blank'
+                    aria-label='Github  remcostoeten github repo'
+                    title='github remcostoeten github repo'
                 >
                     code here
                 </Link>
@@ -104,9 +106,8 @@ function MouseHookExamplePage() {
                     <button
                         className='px-4 py-2 mt-4 text-white bg-blue-500 rounded hover:bg-blue-700'
                         style={{
-                            transform: `translate(${mouseX / 10}px, ${
-                                mouseY / 10
-                            }px)`,
+                            transform: `translate(${mouseX / 10}px, ${mouseY / 10
+                                }px)`,
                             transition: 'transform 0.2s',
                         }}
                     >

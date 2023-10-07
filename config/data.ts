@@ -35,7 +35,7 @@ export const categoryOptions = [
 export const links = [
     {
         name: 'Home',
-        hash: '#home',
+        hash: '/',
     },
     {
         name: 'Dashboard',
