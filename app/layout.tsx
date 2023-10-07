@@ -14,6 +14,7 @@ import { Inter, Lexend_Deca, Manrope } from 'next/font/google';
 import Notification from '@/components/Notification';
 import NotProd from '@/components/NotProd';
 import { Toaster } from 'sonner';
+import NavBar from '@/components/core/NavBar';
 const inter = Inter({ subsets: ['latin'] });
 const rope = Manrope({ subsets: ['latin'] });
 const lexend = Lexend_Deca({ subsets: ['latin'] });
@@ -80,13 +81,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <ThemeContextProvider>
                     <ActiveSectionContextProvider>
                         <ThemeSettings />
-                        <Header />
+                        <NavBar />
                         <SliderNavigation />
                         <InteractiveDots dotSize={200} />
-                        <Toaster expand visibleToasts={9} />
-
-                        <NotProd />
-                        {children}
+                        <Toaster />                        {children}
                         <Footer />
                         <Trailer />
                         {/* <Toaster /> */}

@@ -17,7 +17,7 @@ export default function MiscDropdown() {
     return (
         <div className="relative">
             <div
-                className="flex w-full items-center justify-center px-3 py-3 hover:text-gray-200 transition text-gray-400 row-reverse"
+                className="flex w-full items-center justify-center px-3 py-3  transition text-cream row-reverse"
                 onMouseEnter={() => setIsOpen(true)}
                 onMouseLeave={() => setIsOpen(false)}
                 onClick={() => setIsOpen(!isOpen)}
