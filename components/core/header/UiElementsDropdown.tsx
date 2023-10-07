@@ -40,8 +40,8 @@ export default function UiElementsDropdown() {
                         <ul className="showAlternativeCursor z-max grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                             {uiShowcaseLinks.map((component) => (
                                 <li key={component.href}>
-                                    <Link href={component.href}>
-                                        <a title={component.title}>{component.title}</a>
+                                    <Link href={component.href} title={component.title}>
+                                        {component.title}
                                     </Link>
                                 </li>
                             ))}

@@ -1,11 +1,10 @@
-
 {
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "bun run dev",
-    "build": "next  build", 
+    "dev": "next dev",
+    "build": "next  build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -88,6 +87,7 @@
     "sass": "^1.66.1",
     "sharp": "^0.32.6",
     "shiki": "^0.14.4",
+    "sonner": "^1.0.3",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7",
     "typed.js": "^2.0.16",

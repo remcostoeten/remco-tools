@@ -4,7 +4,6 @@ import InteractiveDots from '@c/effects/InteractiveDots';
 import SliderNavigation from '@c/effects/SliderMenu/SlideNavigation';
 import Header from "@c/core/header/Header";
 import Footer from '@c/landing/Footer';
-import { Toaster } from '@c/ui/toaster';
 import { seoKeywords } from '@/config/keywords';
 import { siteConfig } from '@/config/site';
 import ActiveSectionContextProvider from '@/context/active-section-contex';
@@ -13,6 +12,8 @@ import '@/styles/styles.scss';
 import { Analytics } from '@vercel/analytics/react';
 import { Inter, Lexend_Deca, Manrope } from 'next/font/google';
 import Notification from '@/components/Notification';
+import NotProd from '@/components/NotProd';
+import { Toaster } from 'sonner';
 const inter = Inter({ subsets: ['latin'] });
 const rope = Manrope({ subsets: ['latin'] });
 const lexend = Lexend_Deca({ subsets: ['latin'] });
@@ -78,15 +79,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <body className={`${lexend.className} bg-offblack`}>
                 <ThemeContextProvider>
                     <ActiveSectionContextProvider>
-                        <ThemeSettings/>
+                        <ThemeSettings />
                         <Header />
                         <SliderNavigation />
-                        <InteractiveDots dotSize={200}/>
+                        <InteractiveDots dotSize={200} />
+                        <Toaster expand visibleToasts={9} />
+
+                        <NotProd />
                         {children}
                         <Footer />
                         <Trailer />
-                        <Toaster />
-                        <Notification text='This is not a production site.' subtext='Stricly a testing enviorment'/>
+                        {/* <Toaster /> */}
+                        <Notification text='This is not a production site.' subtext='Stricly a testing enviorment' />
                         <Analytics />
                     </ActiveSectionContextProvider>
                 </ThemeContextProvider>

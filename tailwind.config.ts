@@ -1,3 +1,4 @@
+
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
@@ -15,7 +16,7 @@ const config: Config = {
       },
       backgroundColor: {
         'offblack': '#0E1112',
-        'black': 'red',
+        'black': '#0E1112',
         'white': '#f1f1ef',        
       },
       colors: {

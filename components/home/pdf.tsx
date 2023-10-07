@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { HiDownload } from 'react-icons/hi';
 import { Drawer } from 'vaul';
 import { Button, ReadMore } from '../core/buttons/Buttons';
-import FramerMagnetic from '@c/effects/framer';
 
 export default function DownloadCV() {
     const [isPdfOpen, setIsPdfOpen] = useState(false);

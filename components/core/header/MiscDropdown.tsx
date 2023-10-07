@@ -41,7 +41,7 @@ export default function MiscDropdown() {
                         <ul className="showAlternativeCursor z-max grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                             {miscLinks.map((component) => (
                                 <Link key={component.href} href={component.href} title={component.title}>
-                                    <a>{component.title}</a>
+                                    {component.title}
                                 </Link>
                             ))}
                         </ul>
