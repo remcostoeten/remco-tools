@@ -84,52 +84,51 @@
                 var(--pink),
                 var(--purple));
         background-size: 200%;
-        -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         white-space: nowrap;
     }
 }
 
 // utils
-@import 'utils/animations';
+@import 'utils/_animations';
 
-// //  variables
+//  variables
 @import 'variables/variables';
 
-// // // utilities
-@import 'utils/mixins';
-@import 'utils/animations';
-@import 'utils/uwtillity-classes';
+// utilities
+@import 'utils/_mixins';
+@import 'utils/_animations';
+@import 'utils/_utillity-classes';
 
-// // // core
-@import 'core/body';
-@import 'core/theme';
-@import 'core/page-layout';
-@import 'core/typography';
+// core
+@import 'core/_body';
+@import 'core/_theme';
+@import 'core/_page-layout';
+@import 'core/_typography';
 
-// // // // components
-@import 'components/hamburger-icon';
-@import 'components/not-found';
-@import 'components/page-loader';
-@import 'components/cards.scss';
-@import 'components/hovereffect.scss';
-@import 'components/cursor';
-@import 'components/blobcursor';
-@import 'components/buttons.scss';
-@import 'components/footer.scss';
-@import 'components/htmltojsx.scss';
-@import 'components/badge.scss';
-// @import 'components/turbo.scss';
-// @import 'components/glowcard.scss';
-@import 'dashboard/CurrentBalance.scss';
+// components
+@import 'components/_hamburger-icon';
+@import 'components/_not-found';
+@import 'components/_page-loader';
+@import 'components/_cards';
+@import 'components/_hovereffect';
+@import 'components/_cursor';
+@import 'components/_blobcursor';
+@import 'components/_buttons';
+@import 'components/_footer';
+@import 'components/_htmltojsx';
+@import 'components/_toast';
+@import 'components/_turbo';
+@import 'components/_glowcard';
+@import 'dashboard/_CurrentBalance';
+
 @layer base {
     :root {
-        --black-accent: #282726;
         --purple: rgb(123, 31, 162);
         --violet: rgb(103, 58, 183);
         --pink: rgb(244, 143, 177);
         --black-text: ##e7e5e4;
-        --offblack: #1e1e1e;
+        --offblack: #101010;
         --background: 0 0% 100%;
         --foreground: 224 71.4% 4.1%;
         --card: 0 0% 100%;
