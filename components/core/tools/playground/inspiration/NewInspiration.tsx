@@ -5,7 +5,7 @@ import { toast } from '@/components/ui/use-toast';
 import { Drawer } from 'vaul';
 import { PlusSquare } from 'lucide-react';
 import { getAuth, signInAnonymously } from 'firebase/auth';
-import { auth, auth as firebaseAuth, db } from '@/utils/firebase';
+import { auth, db } from '@/utils/firebase';
 import { Input } from '../../../../ui/input';
 import { Button } from '../../../../ui/button';
 import { Textarea } from '../../../../ui/textarea';
@@ -152,11 +152,11 @@ export function NewInspiration({ content }: NewInspirationProps) {
                     setInspiration({ ...Inspiration, name: e.target.value })
                 }
             />
-    
+
             {Inspiration.projects.map((project, projectIndex) => (
                 <div key={projectIndex}>
                     <h2>Project {projectIndex + 1} Details</h2>
-    
+
                     <Input
                         type='text'
                         placeholder='Project Type'
@@ -169,7 +169,7 @@ export function NewInspiration({ content }: NewInspirationProps) {
                             )
                         }
                     />
-    
+
                     <Textarea
                         placeholder='Colors (comma-separated)'
                         value={project.colors.join(', ')}
@@ -183,7 +183,7 @@ export function NewInspiration({ content }: NewInspirationProps) {
                             )
                         }
                     />
-    
+
                     <Input
                         type='text'
                         placeholder='Color Scheme'
@@ -196,7 +196,7 @@ export function NewInspiration({ content }: NewInspirationProps) {
                             )
                         }
                     />
-    
+
                     <Textarea
                         placeholder='Style (comma-separated)'
                         value={project.style.join(', ')}
@@ -210,7 +210,7 @@ export function NewInspiration({ content }: NewInspirationProps) {
                             )
                         }
                     />
-    
+
                     <Input
                         type='text'
                         placeholder='URL'
@@ -219,7 +219,7 @@ export function NewInspiration({ content }: NewInspirationProps) {
                             handleProjectChange('url', e.target.value, projectIndex)
                         }
                     />
-    
+
                     <Input
                         type='text'
                         placeholder='Preview URL'
@@ -232,7 +232,7 @@ export function NewInspiration({ content }: NewInspirationProps) {
                             )
                         }
                     />
-    
+
                     <div className="flex items-center">
                         <Input
                             type='checkbox'
@@ -247,7 +247,7 @@ export function NewInspiration({ content }: NewInspirationProps) {
                         />
                         <label>Has Mobile Device</label>
                     </div>
-    
+
                     <Textarea
                         placeholder='Animations Description'
                         value={project.animations}
@@ -259,7 +259,7 @@ export function NewInspiration({ content }: NewInspirationProps) {
                             )
                         }
                     />
-    
+
                     <Textarea
                         placeholder='Component Inspiration'
                         value={project.componentInspiration}
@@ -273,7 +273,7 @@ export function NewInspiration({ content }: NewInspirationProps) {
                     />
                 </div>
             ))}
-    
+
             <motion.div
                 initial={{ opacity: 0, scale: 0.5, y: 10 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -285,7 +285,7 @@ export function NewInspiration({ content }: NewInspirationProps) {
             </motion.div>
         </motion.form>
     );
-    
+
     return (
         <>
             <Drawer.Root shouldScaleBackground>

@@ -5,7 +5,7 @@ import { ChevronDownIcon } from '@heroicons/react/solid';
 import { ChevronUpIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
 
-export default function ToolsDropdown() {
+export default function MiscMenu() {
     const [isOpen, setIsOpen] = useState(false);
 
     const variants = {
@@ -15,39 +15,35 @@ export default function ToolsDropdown() {
 
     const components = [
         {
-            title: 'HTML to J/TSX Converter',
-            href: '/html-to-jsx',
+            title: 'Easing animation showcase',
+            href: '/easing',
             description:
                 'Converts any HTML to JSX with the option to generate a fully functioning functional component, with or without props.',
         },
         {
-            title: 'Geolocation',
-            href: '/geolocation',
-            description:
-                'An app that allows you to find the longitude and latitude which pairs to an address. Save the address, reverse search them, show them on the map.',
+            title: 'Turbo landing WiP',
+            href: '/turbo'
         },
         {
-            title: 'Expenses Tracker',
-            href: '/income',
-            description: 'Life is expensive... get a grip on your expenses..',
+            title: 'Landing page WiP',
+            href: '/land'
         },
         {
-            title: 'SVG to CSS',
-            href: '/convert-svg',
-            description:
-                'Converts any SVG to CSS. Either as psuedo element or background image.',
+            title: 'Mouse hook example',
+            href: '/useMouse'
         },
         {
-            title: 'Python Script Generator',
-            href: '/python',
-            description: 'Visually or semantically separates content.',
+            title: 'Firebase post & fetch example',
+            href: '/firebase-post-and-fetch'
         },
-
         {
-            title: 'Convert SVG to CSS',
-            href: '/convert-svg',
-            description: 'Visually or semantically separates content.',
+            title: 'Inspiration table',
+            href: '/inspiration'
         },
+        {
+            title: 'Todo table',
+            href: '/todo'
+        }
     ];
 
     return (
@@ -58,7 +54,7 @@ export default function ToolsDropdown() {
                 onMouseLeave={() => setIsOpen(false)}
                 onClick={() => setIsOpen(!isOpen)}
             >
-                <div className="ml-2">Tool</div>
+                <div  className="ml-2">Misc</div>
                 {isOpen ? (
                     <ChevronUpIcon className="w-5 h-5" />
                 ) : (
@@ -74,12 +70,12 @@ export default function ToolsDropdown() {
                         exit="closed"
                         variants={variants}
                         transition={{ duration: 0.3 }}
-                        className="fixed left-0  w-full rounded-md shadow-lg bg-offblack     shadow-white/[0.06] backdrop-blur-[0.5rem]  text-white"
+                        className="fixed left-0  w-full rounded-md shadow-lg bg-offblack      shadow-lg shadow-white/[0.06] backdrop-blur-[0.5rem]  text-white"
                         onMouseEnter={() => setIsOpen(true)}
                         onMouseLeave={() => setIsOpen(false)}
                     >
                         <ul className="showAlternativeCursor z-max grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                           
+
                             {components.map((component) => (
                                 <Link
                                     key={component.href}
@@ -89,6 +85,8 @@ export default function ToolsDropdown() {
                                     {component.title}
                                 </Link>
                             ))}
+                            <Link href="/playground" title="Playground">
+                            </Link>
                         </ul>
                     </motion.div>
                 )}

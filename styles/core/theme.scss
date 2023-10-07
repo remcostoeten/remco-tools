@@ -1,6 +1,17 @@
 body {
     overflow-x: hidden;
-    background-color: $black;
+    background-color: $black !important;
+
+    &:has(.bg-offblack) {
+
+        h1,
+        span,
+        p,
+        h2,
+        h3 {
+            color: #efefee;
+        }
+    }
 }
 
 .words {
@@ -20,11 +31,6 @@ body {
     * {
         color: #000 !important;
     }
-}
-
-#_app-content {
-    background-color: $black;
-    /* or whatever your desired app background color is */
 }
 
 .home-container {
@@ -310,6 +316,7 @@ body {
         z-index: -2;
     }
 }
+
 // magic
 .toggle {
     --size: 2rem;

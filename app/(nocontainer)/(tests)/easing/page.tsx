@@ -3,7 +3,7 @@ import React from "react";
 
 export default function
     () {
-    return <div className='home-container pt-[100px]'>
+    return <div className='home-container'>
         <EasingExample />
     </div>;
 }
