@@ -67,7 +67,7 @@ export default function Header() {
                         ))}
                     </ul>
                     <ShowcaseDropdow />
-                    ><SecondaryDropdown />
+                    <SecondaryDropdown />
                 </nav>
             </header>
         </>
