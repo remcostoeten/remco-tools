@@ -1,0 +1,128 @@
+.toast.temp {
+    opacity: 1;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.toast.temp.hide {
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+.toast {
+    background-color: #000;
+    display: inline-flex;
+    border-radius: 5px;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid #323233;
+    padding: 8px 16px;
+    border-radius: 150px;
+    text-emphasis: center;
+    transition: 250ms ease-in-out;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75); 
+    position: fixed;
+    font-size: 12px;
+    z-index: 10;
+    bottom: 24px;
+    left: 24px;
+    animation: slideUp 1s cubic-bezier(0.215, 0.81, 0.355, 1) 0s forwards;
+    opacity: 1;
+    
+
+    &.temp {
+        bottom: 48px;
+
+         left: 24px;
+
+        bottom: unset;
+
+        left: unset;z-index: 2112312312;
+        
+        animation: unset;
+    }
+
+    @keyframes toastOut {
+        0% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        100% {
+            transform: translateY(100px);
+            scale: 0.1;
+            filter: blur(10px);
+            opacity: 0;
+        }
+    }
+
+    @keyframes slideUp {
+        0% {
+            filter: blur(3px);
+            opacity: 0;
+            scale:
+                .1;
+            transform-origin: bottom;
+            transform: translateY(100px);
+        }
+
+        25% {
+
+            filter: blur(2px);
+        }
+
+
+        75% {
+            opacity: 1;
+        }
+
+
+
+        100% {
+            filter: blur(0);
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    &:hover {
+        scale: 1.01;
+        background-color: lighten(#000, 10%);
+    }
+
+
+    &__icon {}
+
+    &__close {
+        cursor: pointer;
+
+        &:hover {
+            transform: rotate(5deg);
+            scale:
+                1.1;
+        }
+
+        color: #6885ee;
+    }
+
+    &__inner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+        text-align: center;
+        padding-left:  16px;
+        padding-right:  16px;
+    }
+
+    &__title {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        color: white;
+    }
+
+    &__alternate-title {
+        color: #9a9a9a !important;
+    }
+}
