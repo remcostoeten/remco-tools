@@ -21,9 +21,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/components/ui/use-toast";
 import { auth } from "@/utils/firebase";
-import { Checkbox } from "@/components/ui/checkbox";
-import { GlowButton } from "@/components/core/buttons/CustomButtons";
-import IntroButtons from "@/components/home/IntroButtons";
 import { ReadMore } from "@/components/core/buttons/Buttons";
 import MiniSpinner from "@/components/effects/MiniSpinner";
 
@@ -74,7 +71,9 @@ export default function LoginPage() {
             });
     };
 
-    const handleClick = async (e: { preventDefault: () => void }) => {
+    const handleClick = async (e: {
+        [x: string]: any; preventDefault: () => void
+    }) => {
         e.preventDefault();
 
         setIsGoogleLoading(false);
@@ -98,7 +97,7 @@ export default function LoginPage() {
                 const user = userCredential.user;
                 console.log(`User ${user.email} logged in.`);
 
-                if (rememberEmail) { 
+                if (rememberEmail) {
 
                     console.log("remember email")
                     localStorage.setItem("email", emailValue);
