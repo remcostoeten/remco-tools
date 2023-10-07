@@ -3,8 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 .mag {
 
     @keyframes background-pan {
@@ -101,6 +99,7 @@
 // // // utilities
 @import 'utils/mixins';
 @import 'utils/animations';
+@import 'utils/uwtillity-classes';
 
 // // // core
 @import 'core/body';
@@ -123,7 +122,6 @@
 // @import 'components/turbo.scss';
 // @import 'components/glowcard.scss';
 @import 'dashboard/CurrentBalance.scss';
-
 @layer base {
     :root {
         --black-accent: #282726;
