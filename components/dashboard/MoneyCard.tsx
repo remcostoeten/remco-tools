@@ -85,7 +85,6 @@ export default function MoneyCard({
             >
                 <Block
                     {...blockProps}
-                    className={small ? "w-2/12" : "w-5/12"}
                 >
                     {children}
                 </Block>

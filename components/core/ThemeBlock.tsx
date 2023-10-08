@@ -31,7 +31,7 @@ export default function Block({
                     </div>
                     <ContextMenu>
                         <ContextMenuTrigger>
-                            <span className="dots text-zinc-600 text-4xl flex gap-[2px]"><DotIcon fill="#eee" /><DotIcon fill="#eee" /> <DotIcon fill="#eee" />         </span>
+                            <span className="dots"></span>
                         </ContextMenuTrigger>
                         <ContextMenuContent>
                             <ContextMenuItem>Profile</ContextMenuItem>
