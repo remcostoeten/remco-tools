@@ -2,7 +2,7 @@ import { SiteConfig } from '../utils/types';
 
 export const siteConfig: SiteConfig = {
     name: 'remcostoeten',
-    description: '...',
+    description: 'Remco Stoeten - remcostoeten.com - Software Engineer/Developer/Divjesschuiver.',
     url: 'https://remcostoeten.com',
     links: {
         gitlab: 'https://gitlab.com/remcostoeten',
