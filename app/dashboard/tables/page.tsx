@@ -24,7 +24,7 @@ async function getData(): Promise<Expense[]> {
   return expenseData
 }
 
-export default function DemoPage() {
+export default function CombinedExpenses() {
   const [data, setData] = useState<Expense[]>([])
 
   useEffect(() => {
@@ -36,8 +36,6 @@ export default function DemoPage() {
   }, [])
 
   return (
-    <div className="container mx-auto py-10">
-      <DataTable columns={ExpenseColumns} data={data} />
-    </div>
+    <DataTable columns={ExpenseColumns} data={data} />
   )
 }

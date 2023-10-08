@@ -10,7 +10,7 @@ export default function layout({ children }: { children: React.ReactNode }) {
                 <TooltipProvider delayDuration={500}>
                     <div className="guolong flex gap-4 justify-end">
                         <Sidebar playlists={[]} />
-                        <main className='black-block black-block--section black-block--no-border sm:w-7/12 w-full'>
+                        <main className='gap-4  flex flex-wrap black-block black-block--section black-block--no-border sm:w-7/12 w-full flex-col'>
                             {children}
                         </main>
                         <aside className='black-block black-block--section black-block--border-left hidden sm:block 

@@ -45,6 +45,7 @@ export default function DemoPage() {
 
   interface PaymentExpense extends Expense, Payment {
     createdAt: Date;
+    amount: number;
   }
 
   type PaymentData = PaymentIncome | PaymentExpense;
@@ -54,14 +55,25 @@ export default function DemoPage() {
   useEffect(() => {
     const fetchData = async () => {
       const payments = await getData();
-      setData(payments);
+      const paymentData: PaymentData[] = payments.map((payment) => {
+        if ('incomeAmount' in payment) {
+          return {
+            ...payment,
+            amount: payment.incomeAmount,
+          } as PaymentIncome;
+        } else {
+          return {
+            ...payment,
+            amount: payment.expenseAmount,
+          } as PaymentExpense;
+        }
+      });
+      setData(paymentData);
     };
     fetchData();
   }, []);
 
   return (
-    <div className="container mx-auto py-10">
-      <DataTable columns={IncomeColumns} data={data} />
-    </div>
+    <DataTable columns={IncomeColumns} data={data} />
   );
 }
