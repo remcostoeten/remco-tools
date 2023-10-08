@@ -11,6 +11,7 @@ import MiniSpinner from '../effects/MiniSpinner';
 import Block from '../core/ThemeBlock';
 import SectionSpacer from '../ui/SectionSpacer';
 import FetchIncomes from './FetchIndividualIncome';
+import MoneyCard from './MoneyCard';
 
 type Category = 'Food' | 'Transport' | 'Utilities';
 
@@ -222,8 +223,7 @@ export default function Totals() {
         </div>
       </div>
       <div className="flex w-full gap-4">
-        <MoneyCard items={expenses} title="Expenses" />
-        <MoneyCard items={incomes} title="Incomes" />
+
       </div>
       <SectionSpacer variant='small' />
 

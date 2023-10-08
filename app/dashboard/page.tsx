@@ -22,20 +22,15 @@ export default function Page() {
           <div className="flex-col sm:flex-row flex gap-4 justify-end">
             <MoneyCard type={'income'} />
             <MoneyCard type={'expense'} />
-            <MoneyCard useChildren small  
-            >
-            <MoneyCard useChildren small  >
+            <MoneyCard useChildren small>
               Some content to go into the small card
             </MoneyCard>
           </div>
-
           <div className="flex-col sm:flex-row flex gap-4 justify-end">
             <FetchExpenses />
             <FetchIncomes />
           </div>
-
           <Totals />
-
         </>
       ) : (
         !isLocal && (
@@ -53,3 +48,5 @@ export default function Page() {
     </>
   );
 }
+
+     
