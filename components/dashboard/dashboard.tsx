@@ -10,7 +10,7 @@ interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export function Sidebar({ className, playlists }: SidebarProps) {
   return (
-    <aside className={cn("overflow-hidden rounded-[0.5rem] bg-background text-cream shadow w-2/12", className)}>
+    <aside className={cn("overflow-hidden hidden sm:block rounded-[0.5rem] bg-background text-cream shadow w-2/12", className)}>
         <div className="space-y-4 py-4">
         <div className="px-3 py-2">
           <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">

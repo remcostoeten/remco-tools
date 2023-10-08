@@ -1,73 +1,86 @@
+.dots {
+  position: relative;
+  height: 8rem;
+  transform: translate(-25px, -34px);
+  width: 0.1rem;
+  border-radius: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.25);
+  overflow: hidden;
 
-.glowIcon::before {
-
+  &::after {
+    content: '...';
+    position: absolute;
+    left: 50%;
+    bottom: -2.75rem;
+    transform: translate(-40px, -40px);
+    font-size: 1.25rem;
+  }
 }
 
-.glowIcon:hover::before {
+.glowIcon::before {}
 
-}
+.glowIcon:hover::before {}
+
 .glowICon {
   scale: 1;
 
   transition: 250ms ease all;
 }
+
 .glowIcon:hover {
   color: #ffee10;
   box-shadow: 0 0 5px #ffee10;
   text-shadow: 0 0 5px #ffee10;
 
 
-  scale: 1.2;transition: 250ms ease all;
+  scale: 1.2;
+  transition: 250ms ease all;
 }
 
 
 .hover-effect {
-    border-radius: 10px;
-    cursor: pointer;
-    position: relative;
-  }
-  
-  .hover-effect:hover::before {
-    opacity: 1;
-  }
-  
-  .hover-effect::before,
-  .hover-effect::after {
-    border-radius: inherit;
-    content: "";
-    height: 100%;
-    left: 0px;
-    opacity: 0;
-    position: absolute;
-    top: 0px;
-    transition: opacity 500ms;
-    width: 100%;
-    background: radial-gradient(
-      800px circle at var(--mouse-x) var(--mouse-y), 
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+}
+
+.hover-effect:hover::before {
+  opacity: 1;
+}
+
+.hover-effect::before,
+.hover-effect::after {
+  border-radius: inherit;
+  content: "";
+  height: 100%;
+  left: 0px;
+  opacity: 0;
+  position: absolute;
+  top: 0px;
+  transition: opacity 500ms;
+  width: 100%;
+  background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y),
       rgba(255, 255, 255, 0.1),
-      transparent 40%
-    );
-    z-index: 3;
-    opacity: 0;
-  }
-  
-  .hover-effect::after {  
-    background: radial-gradient(
-      600px circle at var(--mouse-x) var(--mouse-y), 
-      rgba(255, 1, 225, 1 ),
-      transparent 40%
-    );
-    z-index: 1;
-  }
-  
-  .hover-effect > .hover-effect-content {
-    background-color: var(--hover-effect-color);
-    border-radius: inherit;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    inset: 1px;
-    padding: 10px;
-    position: absolute;
-    z-index: 2;
-  }
+      transparent 40%);
+  z-index: 3;
+  opacity: 0;
+}
+
+.hover-effect::after {
+  background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y),
+      rgba(255, 1, 225, 1),
+      transparent 40%);
+  z-index: 1;
+}
+
+.hover-effect>.hover-effect-content {
+  background-color: var(--hover-effect-color);
+  border-radius: inherit;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  inset: 1px;
+  padding: 10px;
+  position: absolute;
+  z-index: 2;
+}

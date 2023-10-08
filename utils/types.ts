@@ -14,7 +14,7 @@ export type ThemeBlockProps = {
 
 export type iconProps = {
   fill?: string;
-  size? : string;
+  size?: string;
   className?: string;
 }
 
@@ -36,12 +36,14 @@ export interface Thought {
 
 
 export interface Expense {
-  id: string;
+  id: string; 
+  createdAt: any;
   name: string;
   expenseAmount: number;
 }
 
 export interface Income {
+  createdAt: any;
   id: string;
   name: string;
   incomeAmount: number;
@@ -49,7 +51,8 @@ export interface Income {
 
 export interface Savings {
   id: string;
-  name: string;
+  name: string; createdAt: any;
+
   savingsAmount: number;
 }
 

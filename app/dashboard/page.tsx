@@ -1,14 +1,12 @@
 'use client';
-import Income from '@/components/dashboard/Income';
-import SummaryCard from '@/components/dashboard/SummaryCard';
 import Totals from '@/components/dashboard/Totals';
-import SectionSpacer from '@/components/ui/SectionSpacer';
 import React from 'react';
 import { usePasswordProtection } from '@/hooks/usePasswordProtection';
-import Savings from '@/components/dashboard/Savings';
 import DashboardUser from "@c/dashboard/DashboardUser";
 import { useRouter } from 'next/navigation';
 import MoneyCard from '@/components/dashboard/MoneyCard';
+import FetchIncomes from '@/components/dashboard/FetchIndividualIncome';
+import FetchExpenses from '@/components/dashboard/FetchIndividualExpense';
 const correctPassword = process.env.ADMIN_PASSWORD || '';
 
 export default function Page() {
@@ -20,17 +18,21 @@ export default function Page() {
     <>
       {isAuthenticated ? (
         <>
-
           <DashboardUser />
-          <div className="flex gap-4 justify-end">
-            <MoneyCard  type={'income'} />
+          <div className="flex-col sm:flex-row flex gap-4 justify-end">
+            <MoneyCard type={'income'} />
             <MoneyCard type={'expense'} />
             <MoneyCard useChildren small  
             >
+            <MoneyCard useChildren small>
+              Some content to go into the small card
             </MoneyCard>
-            </div>
+          </div>
+          <div className="flex-col sm:flex-row flex gap-4 justify-end">
+            <FetchExpenses />
+            <FetchIncomes />
+          </div>
           <Totals />
-     
         </>
       ) : (
         !isLocal && (
@@ -45,7 +47,8 @@ export default function Page() {
           </form>
         )
       )}
-
     </>
   );
 }
+
+     

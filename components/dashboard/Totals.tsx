@@ -9,13 +9,12 @@ import InputWithLabel from '../InputWithElement';
 import MoneyCardSkeleton from '../core/LoaderBlock';
 import MiniSpinner from '../effects/MiniSpinner';
 import Block from '../core/ThemeBlock';
+import SectionSpacer from '../ui/SectionSpacer';
+import FetchIncomes from './FetchIndividualIncome';
+import MoneyCard from './MoneyCard';
 
 type Category = 'Food' | 'Transport' | 'Utilities';
 
-type MoneyCardProps = {
-  items: { id: number; name: string; amount: number }[];
-  title: string;
-};
 
 export default function Totals() {
   const [expenseAmount, setExpenseAmount] = useState<number>(0);
@@ -41,6 +40,7 @@ export default function Totals() {
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       setIsLoading(true);
       const expenseQuerySnapshot = await getDocs(collection(db, 'expenses'));
       const fetchedExpenses = expenseQuerySnapshot.docs.map((doc) => ({
@@ -72,6 +72,7 @@ export default function Totals() {
       const docRef = await addDoc(collection(db, 'incomes'), {
         incomeAmount,
         name: incomeName,
+        createdAt: new Date(),
       });
       console.log('Income added with ID:', docRef.id);
       setIncomeAmount(0);
@@ -86,6 +87,7 @@ export default function Totals() {
     }
   };
 
+
   const handleAddExpense = async () => {
     try {
       const docRef = await addDoc(collection(db, 'expenses'), {
@@ -93,6 +95,7 @@ export default function Totals() {
         name: expenseName,
         category: selectedCategory,
         userId: user ? user.uid : null,
+        createdAt: new Date(),
       });
       console.log('Expense added with ID:', docRef.id);
       setExpenseAmount(0);
@@ -117,9 +120,10 @@ export default function Totals() {
       console.log('Savings added with ID:', docRef.id);
       setSavingsAmount(0);
       setSavingsName('');
-      toast({
-        title: `${savingsAmount} saving added!`,
-      });
+      createdAt: new Date(),
+        toast({
+          title: `${savingsAmount} saving added!`,
+        });
       await fetchData();
     } catch (error) {
       console.error('Error adding Savings:', error);
@@ -189,7 +193,7 @@ export default function Totals() {
     const fetchedExpenses = expenseQuerySnapshot.docs.map((doc) => ({
       id: doc.id,
       name: doc.data().name,
-      expenseAmount: doc.data().expenseAmount, // add expenseAmount property
+      expenseAmount: doc.data().expenseAmount,
     }));
     setExpenses(fetchedExpenses);
 
@@ -197,7 +201,7 @@ export default function Totals() {
     const fetchedIncomes = incomeQuerySnapshot.docs.map((doc) => ({
       id: doc.id,
       name: doc.data().name,
-      incomeAmount: doc.data().incomeAmount, // add incomeAmount property
+      incomeAmount: doc.data().incomeAmount,
     }));
     setIncomes(fetchedIncomes);
 
@@ -226,6 +230,11 @@ export default function Totals() {
           </div>
         )}
       </div>
+      <SectionSpacer variant='small' />
+
+
+
+
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-4">
           <div className="flex gap-4">
@@ -264,7 +273,6 @@ export default function Totals() {
               </div>
             </div>
           </div>
-
         </div>
       </div>
       <div className="block-container">
@@ -278,27 +286,4 @@ export default function Totals() {
     </>
   );
 
-  function MoneyCard({ items, title }: MoneyCardProps) {
-    return (
-      <div className="w-4/12 sblack-block black-blockt--content p-8">
-        <dl className="mb-4 text-2xl font-bold">{title} List:</dl>
-        {/* Get total only */}
-        {title === 'Expenses' && (
-          <dl className="mb-4 text-2xl font-bold">Total: €{totalExpense},-</dl>
-        )}
-
-
-
-        {items.map((item: {
-          length: ReactNode; id: number; name: string; amount: number
-        }) => (
-          <><dl className="flex w-full justify-between" key={item.id}>
-            <dd>Name: {item.name}</dd>
-            <dt>Amount: €{item.amount},-</dt>
-          </dl><div className="flex justify-between items-center"><span className='text-cream font-lg'>Name: {item.length}</span>
-              <span>+12%</span>    </div></>
-        ))}
-      </div>
-    );
-  }
 }

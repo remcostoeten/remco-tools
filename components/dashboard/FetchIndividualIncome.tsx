@@ -5,17 +5,10 @@ import Notification from '@c/Notification';
 import { Toast } from '../ui/toast';
 import { toast, useToast } from '../ui/use-toast';
 import { HiUserRemove } from 'react-icons/hi';
+import { Income } from '@/utils/types';
 
-interface Income {
-    id: string;
-    amount: number;
-    name: string;
-}
-
-export default function Income() {
+export default function FetchIncomes() {
     const [incomes, setIncomes] = useState<Income[]>([]);
-    const [showNotification, setShowNotification] = useState(false);
-    const { toasts, toast, dismiss, positionStyles } = useToast('top-right');
 
     useEffect(() => {
         const unsubscribe = onSnapshot(collection(db, 'incomes'), (querySnapshot) => {
@@ -24,8 +17,9 @@ export default function Income() {
                 const data = doc.data();
                 incomeData.push({
                     id: doc.id,
-                    amount: data.amount,
+                    incomeAmount: data.incomeAmount,
                     name: data.name,
+                    createdAt: data.createdAt.toDate(),
                 });
             });
             setIncomes(incomeData);
@@ -51,12 +45,12 @@ export default function Income() {
         <>
             {incomes.map((income) => (
                 <div key={income.id}>
-                    <p>Namea: {income.name}</p>
-                    <p>Amount: {income.amount}</p>
-                    <button onClick={() => handleDelete(income.id)}>Delete</button>
+                    <p>Name: {income.name}</p>
+                    <p>Amount: {income.incomeAmount}</p>
+                    <p>Created at: {income.createdAt.toLocaleString()}</p>
+                    <button className='aaaaa' onClick={() => handleDelete(income.id)}>Delete</button>
                 </div>
             ))}
-
         </>
     );
 }
