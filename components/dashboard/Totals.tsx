@@ -32,7 +32,7 @@ export default function Totals() {
   const [selectedCategory, setSelectedCategory] = useState<Category>('Food');
 
   type MoneyCardProps = {
-    items: { id: number; name: string; amount: number }[];
+    items: any;
     title: string;
   };
 
@@ -186,7 +186,7 @@ export default function Totals() {
     const fetchedExpenses = expenseQuerySnapshot.docs.map((doc) => ({
       id: doc.id,
       name: doc.data().name,
-      amount: doc.data().expenseAmount,
+      expenseAmount: doc.data().expenseAmount, // add expenseAmount property
     }));
     setExpenses(fetchedExpenses);
 
@@ -194,7 +194,7 @@ export default function Totals() {
     const fetchedIncomes = incomeQuerySnapshot.docs.map((doc) => ({
       id: doc.id,
       name: doc.data().name,
-      amount: doc.data().incomeAmount,
+      incomeAmount: doc.data().incomeAmount, // add incomeAmount property
     }));
     setIncomes(fetchedIncomes);
 
@@ -280,12 +280,12 @@ export default function Totals() {
         {title === 'Expenses' && (
           <dl className="mb-4 text-2xl font-bold">Total: €{totalExpense},-</dl>
         )}
-        
 
-     
+
+
         {items.map((item: {
-          length: ReactNode; id: number; name: string; amount: number 
-}) => (
+          length: ReactNode; id: number; name: string; amount: number
+        }) => (
           <><dl className="flex w-full justify-between" key={item.id}>
             <dd>Name: {item.name}</dd>
             <dt>Amount: €{item.amount},-</dt>
