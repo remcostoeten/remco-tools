@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { db } from "@/utils/firebase";
 import MiniSpinner from "../effects/MiniSpinner";
-import { collection, getDocs, QueryDocumentSnapshot } from "firebase/firestore";
+import { collection, onSnapshot, QueryDocumentSnapshot } from "firebase/firestore";
 import { ThemeBlockProps } from "@/utils/types";
 import Block from "../core/ThemeBlock";
 import { motion } from "framer-motion";
@@ -39,29 +39,27 @@ export default function MoneyCard({
     const [totalItems, setTotalItems] = useState<number>(0);
 
     useEffect(() => {
-        async function fetchData() {
-            console.log(`Fetching ${type}s...`);
-            const collectionName = type === "income" ? "incomes" : "expenses";
-            const dataCollection = collection(db, collectionName);
-            const dataSnapshot = await getDocs(dataCollection);
+        const collectionName = type === "income" ? "incomes" : "expenses";
+        const dataCollection = collection(db, collectionName);
+
+        const unsubscribe = onSnapshot(dataCollection, (snapshot) => {
             let totalAmount = 0;
-            
-            dataSnapshot.forEach((doc: QueryDocumentSnapshot<Income | Expense>) => {
+            snapshot.forEach((doc: QueryDocumentSnapshot<Income | Expense>) => {
                 const data = doc.data();
-                console.log(`${type}:`, data);
                 if (type === "income" && "incomeAmount" in data) {
                     totalAmount += data.incomeAmount;
                 } else if (type === "expense" && "expenseAmount" in data) {
                     totalAmount += data.expenseAmount;
                 }
             });
-
-            console.log(`Total ${type}:`, totalAmount);
             setTotal(totalAmount);
-            setTotalItems(dataSnapshot.size);
+            setTotalItems(snapshot.size);
             setIsLoading(false);
-        }
-        fetchData();
+        });
+
+        return () => {
+            unsubscribe();
+        };
     }, [type]);
 
     if (isLoading) {
