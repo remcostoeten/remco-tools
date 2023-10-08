@@ -37,10 +37,7 @@ export default function Block({
     const Icon = isIncome ? <MoneyUpIcon className="glowIcon" size={size} fill={iconFill} /> : <MoneyDownIcon size={size} fill={downFill} />;
 
     return (
-        <motion.div
-            initial={{ opacity: 0, }}
-            animate={{ opacity: 1, transition: { duration: 150, ease: 'easeInOut', delay: 0, ms: 0 } }}
-            className={`black-block black-block--section ${borderRadius} flex flex-${flexDir} ${gap} ${width} ${className}`}>
+        <div className={`black-block black-block--section ${borderRadius} flex flex-${flexDir} ${gap} ${width} ${className}`}>
             {title && (
                 <div className="flex justify-between items-center">
                     <div className="flex gap-4 items-center">{Icon}

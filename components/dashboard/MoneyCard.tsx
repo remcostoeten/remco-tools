@@ -80,9 +80,6 @@ export default function MoneyCard({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, transition: { duration: 2 } }}
                 className={small ? "sm:w-2/12 w-full " : "sm:w-5/12 w-full"}
-                initial={{ opacity: 0, y: 100, scale: 0.5 }}
-                animate={{ opacity: 1, y: 0, scale: 1, transition: { duration: 2 } }}
-                className={small ? "w-2/12" : "w-5/12"}
             >
                 <Block                           
                     {...blockProps}

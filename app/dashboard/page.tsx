@@ -24,8 +24,6 @@ export default function Page() {
             <MoneyCard type={'expense'} />
             <MoneyCard useChildren small  
             >
-            <MoneyCard useChildren small>
-              Some content to go into the small card
             </MoneyCard>
           </div>
           <div className="flex-col sm:flex-row flex gap-4 justify-end">
