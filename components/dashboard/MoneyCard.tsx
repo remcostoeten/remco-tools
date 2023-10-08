@@ -81,7 +81,7 @@ export default function MoneyCard({
                 animate={{ opacity: 1, transition: { duration: 2 } }}
                 className={small ? "sm:w-2/12 w-full " : "sm:w-5/12 w-full"}
             >
-                <Block
+                <Block                           
                     {...blockProps}
                 >
                     {children}

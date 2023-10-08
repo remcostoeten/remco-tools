@@ -30,6 +30,7 @@ export default function LoginPage() {
     const [user, setUser] = useState(null);
     const [isGoogleLoading, setIsGoogleLoading] = useState(false);
     const router = useRouter();
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -119,27 +120,9 @@ export default function LoginPage() {
             });
     };
 
-    const [isLoading, setIsLoading] = useState(false);
 
     return (
         <div className="container relative flex flex-col items-center justify-center h-screen mt-32 bg-theme -translate-y-36">
-            <Link href="/">
-                <motion.div
-                    className="absolute left-0 flex items-center pl-8 align-middle top-22"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    whileTap={{ scale: 0.9 }}
-                    whileHover={{ scale: 1.1 }}
-                >
-                    <motion.div
-                        className="flex items-center pr-2"
-                        whileHover={{ x: 2, filter: "blur(.2px)" }}
-                    >
-                        <span className="pl-4 font-extralight">go back</span>
-                    </motion.div>
-                </motion.div>
-            </Link>
-
             <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
                 <div className="flex flex-col space-y-2 text-center">
                     <div className="mx-auto">
@@ -212,7 +195,7 @@ export default function LoginPage() {
                     onClick={signInWithGoogle}
                     disabled={isLoading || isGoogleLoading}
                 />
-                {isGoogleLoading ? <MiniSpinner /> : <div>google</div>}
+                {isGoogleLoading ? <MiniSpinner /> : null}
                 <p className="px-8 mx-auto text-sm text-center text-muted-foreground">
                     <Link
                         href="/register"

@@ -6,6 +6,9 @@ import { auth, db } from '@/utils/firebase';
 import { Expense, Income } from '@/utils/types';
 import { addDoc, collection, deleteDoc, getDocs, QueryDocumentSnapshot } from 'firebase/firestore';
 import InputWithLabel from '../InputWithElement';
+import MoneyCardSkeleton from '../core/LoaderBlock';
+import MiniSpinner from '../effects/MiniSpinner';
+import Block from '../core/ThemeBlock';
 import SectionSpacer from '../ui/SectionSpacer';
 import FetchIncomes from './FetchIndividualIncome';
 
@@ -24,7 +27,6 @@ export default function Totals() {
   const [netWorth, setNetWorth] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const user = auth?.currentUser;
-
   const [expenses, setExpenses] = useState<Expense[]>([]);
   const [incomes, setIncomes] = useState<Income[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<Category>('Food');
@@ -37,6 +39,7 @@ export default function Totals() {
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       const expenseQuerySnapshot = await getDocs(collection(db, 'expenses'));
       const fetchedExpenses = expenseQuerySnapshot.docs.map((doc) => ({
         id: doc.id,
@@ -219,7 +222,8 @@ export default function Totals() {
         </div>
       </div>
       <div className="flex w-full gap-4">
-        <FetchIncomes />
+        <MoneyCard items={expenses} title="Expenses" />
+        <MoneyCard items={incomes} title="Incomes" />
       </div>
       <SectionSpacer variant='small' />
 

@@ -79,15 +79,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <body className={`${lexend.className} bg-offblack`}>
                 <ThemeContextProvider>
                     <ActiveSectionContextProvider>
+                    <Toaster />
                         <ThemeSettings />
                         <NavBar />
                         <SliderNavigation />
                         <InteractiveDots dotSize={200} />
-                        <Toaster />                        {children}
+                        {children}
                         <Footer />
                         <Trailer />
-                        {/* <Toaster /> */}
-                        <Notification text='This is not a production site.' subtext='Stricly a testing enviorment' />
+                        <Notification text='This is not a production site.' />
                         <Analytics />
                     </ActiveSectionContextProvider>
                 </ThemeContextProvider>
