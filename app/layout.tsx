@@ -1,5 +1,6 @@
 import Notification from '@/components/Notification';
 import NavBar from '@/components/core/NavBar';
+import { Toaster } from '@/components/ui/toaster';
 import { seoKeywords } from '@/config/keywords';
 import { siteConfig } from '@/config/site';
 import ActiveSectionContextProvider from '@/context/active-section-contex';
@@ -11,8 +12,8 @@ import InteractiveDots from '@c/effects/InteractiveDots';
 import SliderNavigation from '@c/effects/SliderMenu/SlideNavigation';
 import Footer from '@c/landing/Footer';
 import { Analytics } from '@vercel/analytics/react';
+
 import { Inter, Lexend_Deca, Manrope } from 'next/font/google';
-import { Toaster } from 'sonner';
 const inter = Inter({ subsets: ['latin'] });
 const rope = Manrope({ subsets: ['latin'] });
 const lexend = Lexend_Deca({ subsets: ['latin'] });

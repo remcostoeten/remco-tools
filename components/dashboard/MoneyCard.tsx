@@ -1,3 +1,5 @@
+'use client';
+import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { db } from "@/utils/firebase";
 import MiniSpinner from "../effects/MiniSpinner";
@@ -29,6 +31,7 @@ export default function MoneyCard({ type, small, blockClassName, useChildren, ch
     const [total, setTotal] = useState<number | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [totalItems, setTotalItems] = useState<number>(0);
+    const MotionBlock = motion(Block);
 
     useEffect(() => {
         async function fetchData() {
@@ -69,20 +72,32 @@ export default function MoneyCard({ type, small, blockClassName, useChildren, ch
 
     if (useChildren) {
         return (
-            <Block
-                {...blockProps}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, transition: { duration: 2 } }}
                 className={small ? "w-2/12" : "w-5/12"}
             >
-                {children}
-            </Block>
+                <Block
+                    {...blockProps}
+                >
+                    {children}
+                </Block>
+            </motion.div>
         );
     } else {
         return (
-            <Block {...blockProps} title={type === "income" ? "Income" : "Expense"} className={small ? "w-2/12" : "w-5/12"}>
-                <span className="text-5xl font-medium tracking-wider">€{total},-</span>
-                <div className="flex gap-1"></div>
-                <p>Total of {totalItems} {type}s</p>
-            </Block>
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, transition: { duration: 2 } }}
+                className={small ? "w-2/12" : "w-5/12"}
+            >
+                <Block
+                    title={type === "income" ? "Income" : "Expense"}
+                    {...blockProps} >
+                    <span className="text-5xl font-medium tracking-wider">€{total},-</span>
+                    <div className="flex gap-1"></div>
+                    <p>Total of {totalItems} {type}s</p></Block>
+            </motion.div>
         );
     }
 }

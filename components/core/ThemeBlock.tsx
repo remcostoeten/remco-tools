@@ -4,6 +4,7 @@ import { ContextMenuTrigger } from "../ui/context-menu";
 import MoneyUpIcon from "./icons/MoneyUp";
 import MoneyDownIcon from "./icons/MoneyDown";
 import { DotIcon } from "@radix-ui/react-icons";
+import { motion } from "framer-motion";
 
 export default function Block({
     children,
@@ -22,7 +23,7 @@ export default function Block({
     const Icon = isIncome ? <MoneyUpIcon className="glowIcon" size={size} fill={iconFill} /> : <MoneyDownIcon size={size} fill={downFill} />;
 
     return (
-        <div className={`black-block black-block--section ${borderRadius} flex flex-${flexDir} ${gap} ${width} ${className}`}>
+        <motion.div className={`black-block black-block--section ${borderRadius} flex flex-${flexDir} ${gap} ${width} ${className}`}>
             {title && (
                 <div className="flex justify-between items-center">
                     <div className="flex gap-4 items-center">{Icon}
@@ -42,6 +43,6 @@ export default function Block({
                 </div>
             )}
             {children}
-        </div>
+        </motion.div>
     );
 }
