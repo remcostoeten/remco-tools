@@ -2,6 +2,16 @@ import { links } from "../config/data";
 
 export type SectionName = (typeof links)[number]["name"];
 
+export type ThemeBlockProps = {
+  children?: React.ReactNode;
+  flexDir?: "row" | "col";
+  borderRadius?: string;
+  gap?: string;
+  width?: string;
+  title?: string;
+  className?: string; 
+};
+
 export interface Thought  {
   id: string;
   selectedDate?: Date;

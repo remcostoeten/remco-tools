@@ -1,8 +1,9 @@
-'use client';
 import React, { useEffect, useState } from "react";
 import { db } from "@/utils/firebase";
 import MiniSpinner from "../effects/MiniSpinner";
 import { collection, getDocs, QueryDocumentSnapshot } from "firebase/firestore";
+import { ThemeBlockProps } from "@/utils/types";
+import Block from "../core/ThemeBlock";
 
 interface Income {
     id: string;
@@ -16,11 +17,15 @@ interface Expense {
     expenseAmount: number;
 }
 
-interface CurrentBalanceProps {
-    type: "income" | "expense";
-}
+type MoneyCardProps = {
+    type?: "income" | "expense";
+    small?: boolean;
+    blockClassName?: string;
+    useChildren?: boolean;
+    children?: React.ReactNode;
+};
 
-export default function MoneyCard({ type }: CurrentBalanceProps) {
+export default function MoneyCard({ type, small, blockClassName, useChildren, children }: MoneyCardProps) {
     const [total, setTotal] = useState<number | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [totalItems, setTotalItems] = useState<number>(0);
@@ -53,14 +58,33 @@ export default function MoneyCard({ type }: CurrentBalanceProps) {
         return <MiniSpinner />;
     }
 
-    return (
-        <>
-            <div className="black-block black-block--section rounded-md flex flex-col gap-4 w-5/12">
+    const blockProps: ThemeBlockProps = {
+        flexDir: "row",
+        borderRadius: "rounded-lg",
+        gap: "gap-2",
+        width: "w-full",
+        title: "",
+        className: blockClassName,
+    };
+
+    if (useChildren) {
+        return (
+            <Block
+                {...blockProps}
+                title={type === "income" ? "Income" : "Expense"}
+                className={small ? "w-2/12" : "w-5/12"}
+            >
+                {children}
+            </Block>
+        );
+    } else {
+        return (
+            <Block {...blockProps} title={type === "income" ? "Income" : "Expense"} className={small ? "w-2/12" : "w-5/12"}>
                 <h4 className="text-5xl font-medium tracking-wider">{type === "income" ? "Income" : "Expense"}</h4>
                 <span className="text-5xl font-medium tracking-wider">€{total},-</span>
                 <div className="flex gap-1"></div>
-                <p>Tota l of {totalItems} {type}s</p>
-            </div>
-        </>
-    );
+                <p>Total of {totalItems} {type}s</p>
+            </Block>
+        );
+    }
 }

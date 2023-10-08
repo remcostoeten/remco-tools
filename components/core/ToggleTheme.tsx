@@ -16,7 +16,7 @@ const ThemeSettings: React.FC = () => {
         setAnimationsOff(JSON.parse(storedValue || 'false'));
     }, []);
 
-    const animationsOffHandler = () => {
+    const animationsOffHandler = ( ) => {
         const newAnimationsOff = !animationsOff;
         setAnimationsOff(newAnimationsOff);
         localStorage.setItem('animationsOff', JSON.stringify(newAnimationsOff));
