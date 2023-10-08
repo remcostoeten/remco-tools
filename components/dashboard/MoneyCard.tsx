@@ -1,11 +1,11 @@
 'use client';
-import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { db } from "@/utils/firebase";
 import MiniSpinner from "../effects/MiniSpinner";
 import { collection, getDocs, QueryDocumentSnapshot } from "firebase/firestore";
 import { ThemeBlockProps } from "@/utils/types";
 import Block from "../core/ThemeBlock";
+import { motion } from "framer-motion";
 
 interface Income {
     id: string;
@@ -27,11 +27,16 @@ type MoneyCardProps = {
     children?: React.ReactNode;
 };
 
-export default function MoneyCard({ type, small, blockClassName, useChildren, children }: MoneyCardProps) {
+export default function MoneyCard({
+    type,
+    small,
+    blockClassName,
+    useChildren,
+    children
+}: MoneyCardProps) {
     const [total, setTotal] = useState<number | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [totalItems, setTotalItems] = useState<number>(0);
-    const MotionBlock = motion(Block);
 
     useEffect(() => {
         async function fetchData() {
@@ -40,6 +45,7 @@ export default function MoneyCard({ type, small, blockClassName, useChildren, ch
             const dataCollection = collection(db, collectionName);
             const dataSnapshot = await getDocs(dataCollection);
             let totalAmount = 0;
+            
             dataSnapshot.forEach((doc: QueryDocumentSnapshot<Income | Expense>) => {
                 const data = doc.data();
                 console.log(`${type}:`, data);
@@ -49,6 +55,7 @@ export default function MoneyCard({ type, small, blockClassName, useChildren, ch
                     totalAmount += data.expenseAmount;
                 }
             });
+
             console.log(`Total ${type}:`, totalAmount);
             setTotal(totalAmount);
             setTotalItems(dataSnapshot.size);
@@ -66,8 +73,7 @@ export default function MoneyCard({ type, small, blockClassName, useChildren, ch
         borderRadius: "rounded-lg",
         gap: "gap-2",
         width: "",
-        title: "",
-        className: blockClassName,
+        title: ""
     };
 
     if (useChildren) {
@@ -79,6 +85,7 @@ export default function MoneyCard({ type, small, blockClassName, useChildren, ch
             >
                 <Block
                     {...blockProps}
+                    className={small ? "w-2/12" : "w-5/12"}
                 >
                     {children}
                 </Block>
@@ -92,11 +99,13 @@ export default function MoneyCard({ type, small, blockClassName, useChildren, ch
                 className={small ? "w-2/12" : "w-5/12"}
             >
                 <Block
+                    {...blockProps}
                     title={type === "income" ? "Income" : "Expense"}
-                    {...blockProps} >
+                >
                     <span className="text-5xl font-medium tracking-wider">€{total},-</span>
                     <div className="flex gap-1"></div>
-                    <p>Total of {totalItems} {type}s</p></Block>
+                    <p>Total of {totalItems} {type}</p>
+                </Block>
             </motion.div>
         );
     }
