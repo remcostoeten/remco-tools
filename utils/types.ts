@@ -9,10 +9,18 @@ export type ThemeBlockProps = {
   gap?: string;
   width?: string;
   title?: string;
-  className?: string; 
+  className?: string;
 };
 
-export interface Thought  {
+export type iconProps = {
+  fill?: string;
+  size? : string;
+  className?: string;
+}
+
+
+
+export interface Thought {
   id: string;
   selectedDate?: Date;
   title: string;
@@ -62,7 +70,7 @@ export interface Task {
   task: string;
   description: string;
   createdAt: string;
-     status: string;
+  status: string;
 }
 
 export interface SiteConfig {
@@ -79,12 +87,12 @@ export interface SiteConfig {
   };
 }
 //   Types for the navigation
-  export type NavItem = {
-    title: string
-    href?: string
-  }
+export type NavItem = {
+  title: string
+  href?: string
+}
 
-  export type LayoutProps = {
-    children: React.ReactNode
-  }
+export type LayoutProps = {
+  children: React.ReactNode
+}
 
