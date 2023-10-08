@@ -40,7 +40,7 @@ export default function Income() {
             toast({
                 title: 'Income deleted',
                 description: 'Income deleted successfully',
-                icon: <HiUserRemove/>
+                icon: <HiUserRemove />
             });
         } catch (error) {
             console.error('Error deleting document: ', error);
@@ -51,12 +51,12 @@ export default function Income() {
         <>
             {incomes.map((income) => (
                 <div key={income.id}>
-                    <p>Name: {income.name}</p>
+                    <p>Namea: {income.name}</p>
                     <p>Amount: {income.amount}</p>
                     <button onClick={() => handleDelete(income.id)}>Delete</button>
                 </div>
             ))}
-           
+
         </>
     );
 }

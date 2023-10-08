@@ -27,6 +27,9 @@
       }
     ],
     "paths": {
+      "contentlayer/generated": [
+        "./.contentlayer/generated"
+      ],
       "@/*": [
         "./*"
       ],
@@ -43,19 +46,19 @@
         "./styles/module/*"
       ]
     },
-   
     "strictNullChecks": false
   },
   "include": [
     "next-env.d.ts",
-    "**/*.ts", 
+    "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
     "components/fancy-hamburger-header/header/anim.js",
     "components/core/BackgroundVariantTwo.tsx",
     "next.config.mjs",
     "app/(nocontainer)/showcase/inspiration/page.js",
-    "app/(nocontainer)/showcase/(tests)/emptyy/page.jsx"
+    "app/(nocontainer)/showcase/(tests)/emptyy/page.jsx",
+    ".contentlayer/generated"
   ],
   "exclude": [
     "node_modules"

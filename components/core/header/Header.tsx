@@ -25,7 +25,6 @@ export default function Header() {
                         {links.map((link, index) => (
                             <React.Fragment key={link.hash}>
                                 <motion.li
-                                    data-cursor-hover
                                     className="relative flex items-center justify-center h-3/4"
                                     initial={{ y: -100, opacity: 0 }}
                                     animate={{ y: 0, opacity: 1 }}
@@ -68,7 +67,6 @@ export default function Header() {
                                         </motion.li>
                                         <motion.li
                                             data-type="tools"
-                                            className="mouse"
                                             initial={{ y: -100, opacity: 0 }}
                                             animate={{ y: 0, opacity: 1 }}
                                         >
@@ -76,7 +74,6 @@ export default function Header() {
                                         </motion.li>
                                         <motion.li
                                             data-type="showcase"
-                                            className="mouse"
                                             initial={{ y: -100, opacity: 0 }}
                                             animate={{ y: 0, opacity: 1 }}>
                                             <UiElementsDropdown />
