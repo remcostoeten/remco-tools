@@ -6,6 +6,8 @@ import { auth, db } from '@/utils/firebase';
 import { Expense, Income } from '@/utils/types';
 import { addDoc, collection, deleteDoc, getDocs, QueryDocumentSnapshot } from 'firebase/firestore';
 import InputWithLabel from '../InputWithElement';
+import SectionSpacer from '../ui/SectionSpacer';
+import FetchIncomes from './FetchIndividualIncome';
 
 type Category = 'Food' | 'Transport' | 'Utilities';
 
@@ -217,9 +219,13 @@ export default function Totals() {
         </div>
       </div>
       <div className="flex w-full gap-4">
-        <MoneyCard items={expenses} title="Expenses" />
-        <MoneyCard items={incomes} title="Incomes" />
+        <FetchIncomes />
       </div>
+      <SectionSpacer variant='small' />
+
+
+
+
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-4">
           <div className="flex gap-4">
@@ -258,7 +264,6 @@ export default function Totals() {
               </div>
             </div>
           </div>
-
         </div>
       </div>
       <div className="block-container">
@@ -272,27 +277,4 @@ export default function Totals() {
     </>
   );
 
-  function MoneyCard({ items, title }: MoneyCardProps) {
-    return (
-      <div className="w-4/12 sblack-block black-blockt--content p-8">
-        <dl className="mb-4 text-2xl font-bold">{title} List:</dl>
-        {/* Get total only */}
-        {title === 'Expenses' && (
-          <dl className="mb-4 text-2xl font-bold">Total: €{totalExpense},-</dl>
-        )}
-
-
-
-        {items.map((item: {
-          length: ReactNode; id: number; name: string; amount: number
-        }) => (
-          <><dl className="flex w-full justify-between" key={item.id}>
-            <dd>Name: {item.name}</dd>
-            <dt>Amount: €{item.amount},-</dt>
-          </dl><div className="flex justify-between items-center"><span className='text-cream font-lg'>Name: {item.length}</span>
-              <span>+12%</span>    </div></>
-        ))}
-      </div>
-    );
-  }
 }
