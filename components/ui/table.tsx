@@ -19,7 +19,7 @@ const TableHeader = React.forwardRef<
   HTMLTableSectionElement,
   React.HTMLAttributes<HTMLTableSectionElement>
 >(({ className, ...props }, ref) => (
-  <thead ref={ref} className={cn("[&_tr]:border-b", className)} {...props} />
+  <thead ref={ref} className={cn("[&_tr]:border-b theadborder", className)} {...props} />
 ))
 TableHeader.displayName = "TableHeader"
 
@@ -27,7 +27,7 @@ const TableBody = React.forwardRef<
   HTMLTableSectionElement,
   React.HTMLAttributes<HTMLTableSectionElement>
 >(({ className, ...props }, ref) => (
-//  @ts-ignore
+  //  @ts-ignore
   <motion.tbody
     initial={{ opacity: 0, y: 10 }}
     animate={{ opacity: 1, y: 0 }}
@@ -46,8 +46,7 @@ const TableFooter = React.forwardRef<
   <tfoot
     ref={ref}
     className={cn(
-      "bg-slate-900 font-medium text-slate-50 dark:bg-slate-50 dark:text-slate-900",
-      className
+      "border-color-red-400", className
     )}
     {...props}
   />
@@ -58,10 +57,10 @@ const TableRow = React.forwardRef<
   HTMLTableRowElement,
   React.HTMLAttributes<HTMLTableRowElement>
 >(({ className, ...props }, ref) => (
-//  @ts-ignore 
- <motion.tr
+  //  @ts-ignore 
+  <motion.tr
     ref={ref}
-    className={cn("border-b", className)}
+    className={cn("theadborder", className)}
     initial={{ opacity: 0, y: 10 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.3, ease: "easeInOut" }}

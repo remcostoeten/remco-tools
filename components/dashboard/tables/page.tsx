@@ -1,7 +1,6 @@
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '@/utils/firebase';
-import { columns } from '@/components/dashboard/tables/Cols';
-import { DataTable } from '@/components/dashboard/tables/DataTable';
+import { DataTable, IncomeColumns } from '@/components/dashboard/tables/DataTable';
 import { Income, Expense } from '@/utils/types';
 import { useState, useEffect } from 'react';
 
@@ -62,7 +61,7 @@ export default function DemoPage() {
 
   return (
     <div className="container mx-auto py-10">
-      <DataTable columns={columns} data={data} />
+      <DataTable columns={IncomeColumns} data={data} />
     </div>
   );
 }
