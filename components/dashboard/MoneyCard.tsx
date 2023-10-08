@@ -59,10 +59,10 @@ export default function MoneyCard({ type, small, blockClassName, useChildren, ch
     }
 
     const blockProps: ThemeBlockProps = {
-        flexDir: "row",
+        flexDir: "col",
         borderRadius: "rounded-lg",
         gap: "gap-2",
-        width: "w-full",
+        width: "",
         title: "",
         className: blockClassName,
     };
@@ -71,7 +71,6 @@ export default function MoneyCard({ type, small, blockClassName, useChildren, ch
         return (
             <Block
                 {...blockProps}
-                title={type === "income" ? "Income" : "Expense"}
                 className={small ? "w-2/12" : "w-5/12"}
             >
                 {children}
@@ -80,7 +79,6 @@ export default function MoneyCard({ type, small, blockClassName, useChildren, ch
     } else {
         return (
             <Block {...blockProps} title={type === "income" ? "Income" : "Expense"} className={small ? "w-2/12" : "w-5/12"}>
-                <h4 className="text-5xl font-medium tracking-wider">{type === "income" ? "Income" : "Expense"}</h4>
                 <span className="text-5xl font-medium tracking-wider">€{total},-</span>
                 <div className="flex gap-1"></div>
                 <p>Total of {totalItems} {type}s</p>

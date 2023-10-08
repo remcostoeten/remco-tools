@@ -1,13 +1,9 @@
 import { TooltipProvider } from '@/components/ui/tooltip';
 import React from 'react';
-import DashboardWrapper from '../../lib/theme';
-import Intro from '@/components/dashboard/Intro';
+import DashboardWrapper from '@/lib/theme';
 import { Sidebar } from '@/components/dashboard/dashboard';
-import MoneyCard from '@/components/dashboard/MoneyCard';
-import SmallMoneyCard from '@/components/dashboard/SmallMoneyCard';
-
+            
 export default function layout({ children }: { children: React.ReactNode }) {
-
     return (
         <>
             <DashboardWrapper>
@@ -18,7 +14,7 @@ export default function layout({ children }: { children: React.ReactNode }) {
                             {children}
                         </main>
                         <aside className='black-block black-block--section black-block--border-left w-3/12'>
-                            <SmallMoneyCard type={'savings'} />
+                            some asides
                         </aside>
                     </div>
                 </TooltipProvider>
