@@ -25,10 +25,8 @@ export default function Page() {
           <div className="flex gap-4 justify-end">
             <MoneyCard  type={'income'} />
             <MoneyCard type={'expense'} />
-            <MoneyCard useChildren small  >
-             a aa                   
- 
-
+            <MoneyCard useChildren small  
+            >
             </MoneyCard>
             </div>
           <Totals />

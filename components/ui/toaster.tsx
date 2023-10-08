@@ -1,5 +1,5 @@
 "use client"
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { delay, motion, useAnimation } from 'framer-motion';
 import {
   Toast,
@@ -20,6 +20,7 @@ interface ToasterProps {
 export function Toaster({ icon, className }: ToasterProps) {
   const { toasts, dismiss } = useToast();
   const toastControls = useAnimation();
+  const [toastOpacity, setToastOpacity] = useState(1); // Add opacity state
 
   useEffect(() => {
     const hideToaster = async () => {
@@ -30,23 +31,28 @@ export function Toaster({ icon, className }: ToasterProps) {
     return () => clearTimeout(timeout);
   }, [toastControls]);
 
+
+  const handleToastClick = () => {
+    setToastOpacity(0);
+  };
+
   return (
     <ToastProvider>
+      <ToastViewport />
       {toasts.map(function ({ id, title, description, action }) {
         return (
           <motion.div
             key={id}
             className={`toast temp ${className || ''}`}
-            initial={{ opacity: 1, y: 0 }}
-            animate={toastControls}
+            initial={{ opacity: 0, y: 10 , scale: 0.95}}
+            animate={{ opacity: 1, y: 0, scale:1 }}  
             exit={{ height: 0, margin: 0, y: 200, padding: 0 }}
-            transition={{ duration: 0.5, delay: 3, tween: 'easeOut' }} >
-
-
-            <div className="gradient"></div>
+            transition={{ duration: 2.5, delay: 3, stiffness: 5, type: 'tween '}}
+            onClick={handleToastClick} 
+          >
             {icon}
             <div className="toast__inner">
-              {title && (
+           {title && (
                 <ToastTitle>
                   {title}
                   {description && (
@@ -58,7 +64,7 @@ export function Toaster({ icon, className }: ToasterProps) {
               )}
             </div>
             <div className="toast__close">
-              <button onClick={() => dismiss(id)}>Close</button>
+              
             </div>
             <Particles particleCount={100} />
           </motion.div>

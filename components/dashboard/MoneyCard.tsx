@@ -73,11 +73,11 @@ export default function MoneyCard({ type, small, blockClassName, useChildren, ch
     if (useChildren) {
         return (
             <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1, transition: { duration: 2 } }}
+                initial={{ opacity: 0, y: 100, scale: 0.5 }}
+                animate={{ opacity: 1, y: 0, scale: 1, transition: { duration: 2 } }}
                 className={small ? "w-2/12" : "w-5/12"}
             >
-                <Block
+                <Block                           
                     {...blockProps}
                 >
                     {children}
@@ -87,8 +87,8 @@ export default function MoneyCard({ type, small, blockClassName, useChildren, ch
     } else {
         return (
             <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1, transition: { duration: 2 } }}
+                initial={{ opacity: 0,  }}
+                animate={{ opacity: 1,  transition: { duration: 2 } }}
                 className={small ? "w-2/12" : "w-5/12"}
             >
                 <Block

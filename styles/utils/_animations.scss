@@ -48,6 +48,7 @@
     from {
         width: 20%;
     }
+
     to {
         width: 100%;
 
@@ -1073,13 +1074,60 @@ $readmore-ease: ease;
 
 @keyframes glowingEffect {
     0% {
-      background-position: 0 0;
+        background-position: 0 0;
     }
+
     50% {
-      background-position: 400% 0;
+        background-position: 400% 0;
     }
+
     100% {
-      background-position: 0 0;
+        background-position: 0 0;
     }
-  }
-  
+}
+
+@keyframes toastOut {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100px);
+        scale: 0.1;
+        filter: blur(10px);
+        opacity: 0;
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        filter: blur(3px);
+        opacity: 0;
+        scale:
+            .1;
+        transform-origin: bottom;
+        transform: translateY(100px);
+    }
+
+    15% {
+        filter: blur(2px);
+    }
+
+
+    25% {
+        opacity: 1;
+
+    }
+
+    75% {
+        filter: blur(0);
+        opacity: 1;
+    }
+
+    100% {
+        filter: blur(5px);
+        opacity: 0;
+        transform: translateY(0);
+    }
+}
