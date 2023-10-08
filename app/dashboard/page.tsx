@@ -21,7 +21,7 @@ export default function Page() {
       {isAuthenticated ? (
         <>
           <DashboardUser />
-          <div className="flex gap-4 justify-end">
+          <div className="flex-col sm:flex-row flex gap-4 justify-end">
             <MoneyCard type={'income'} />
             <MoneyCard type={'expense'} />
             <MoneyCard useChildren small  > 

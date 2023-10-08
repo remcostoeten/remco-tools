@@ -4,8 +4,21 @@ import { ContextMenuTrigger } from "../ui/context-menu";
 import MoneyUpIcon from "./icons/MoneyUp";
 import MoneyDownIcon from "./icons/MoneyDown";
 import { DotIcon } from "@radix-ui/react-icons";
-import { motion } from "framer-motion";
-
+import {
+    Menubar,
+    MenubarCheckboxItem,
+    MenubarContent,
+    MenubarItem,
+    MenubarMenu,
+    MenubarRadioGroup,
+    MenubarRadioItem,
+    MenubarSeparator,
+    MenubarShortcut,
+    MenubarSub,
+    MenubarSubContent,
+    MenubarSubTrigger,
+    MenubarTrigger,
+  } from "@c/ui/menubar"
 export default function Block({
     children,
     flexDir = "col",
@@ -23,26 +36,41 @@ export default function Block({
     const Icon = isIncome ? <MoneyUpIcon className="glowIcon" size={size} fill={iconFill} /> : <MoneyDownIcon size={size} fill={downFill} />;
 
     return (
-        <motion.div className={`black-block black-block--section ${borderRadius} flex flex-${flexDir} ${gap} ${width} ${className}`}>
+        <div className={`black-block black-block--section ${borderRadius} flex flex-${flexDir} ${gap} ${width} ${className}`}>
             {title && (
                 <div className="flex justify-between items-center">
                     <div className="flex gap-4 items-center">{Icon}
                         <h4 className="text-3xl font-medium tracking-wider">{title}</h4>
                     </div>
-                    <ContextMenu>
-                        <ContextMenuTrigger>
-                            <span className="dots"></span>
-                        </ContextMenuTrigger>
-                        <ContextMenuContent>
-                            <ContextMenuItem>Profile</ContextMenuItem>
-                            <ContextMenuItem>Billing</ContextMenuItem>
-                            <ContextMenuItem>Team</ContextMenuItem>
-                            <ContextMenuItem>Subscription</ContextMenuItem>
-                        </ContextMenuContent>
-                    </ContextMenu>
-                </div>
+                    <Menubar>
+                        <MenubarMenu>
+                            <MenubarTrigger>...</MenubarTrigger>
+                            <MenubarContent>
+                                <MenubarItem>
+                                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                                </MenubarItem>
+                                <MenubarItem>
+                                    New Window <MenubarShortcut>⌘N</MenubarShortcut>
+                                </MenubarItem>
+                                <MenubarItem disabled>New Incognito Window</MenubarItem>
+                                <MenubarSeparator />
+                                <MenubarSub>
+                                    <MenubarSubTrigger>Share</MenubarSubTrigger>
+                                    <MenubarSubContent>
+                                        <MenubarItem>Email link</MenubarItem>
+                                        <MenubarItem>Messages</MenubarItem>
+                                        <MenubarItem>Notes</MenubarItem>
+                                    </MenubarSubContent>
+                                </MenubarSub>
+                                <MenubarSeparator />
+                                <MenubarItem>
+                                    Print... <MenubarShortcut>⌘P</MenubarShortcut>
+                                </MenubarItem>
+                            </MenubarContent>
+                        </MenubarMenu>
+                    </Menubar>                </div>
             )}
             {children}
-        </motion.div>
+        </div>
     );
 }

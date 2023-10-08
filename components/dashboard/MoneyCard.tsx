@@ -81,7 +81,7 @@ export default function MoneyCard({
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, transition: { duration: 2 } }}
-                className={small ? "w-2/12" : "w-5/12"}
+                className={small ? "sm:w-2/12 w-full " : "sm:w-5/12 w-full"}
             >
                 <Block
                     {...blockProps}
@@ -95,7 +95,7 @@ export default function MoneyCard({
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, transition: { duration: 2 } }}
-                className={small ? "w-2/12" : "w-5/12"}
+                className={small ? "sm:w-2/12 w-full " : "sm:w-5/12 w-full"}
             >
                 <Block
                     {...blockProps}

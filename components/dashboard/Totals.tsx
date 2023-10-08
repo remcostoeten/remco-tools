@@ -9,10 +9,6 @@ import InputWithLabel from '../InputWithElement';
 
 type Category = 'Food' | 'Transport' | 'Utilities';
 
-type MoneyCardProps = {
-  items: { id: number; name: string; amount: number }[];
-  title: string;
-};
 
 export default function Totals() {
   const [expenseAmount, setExpenseAmount] = useState<number>(0);
@@ -69,6 +65,7 @@ export default function Totals() {
       const docRef = await addDoc(collection(db, 'incomes'), {
         incomeAmount,
         name: incomeName,
+        createdAt: new Date(),
       });
       console.log('Income added with ID:', docRef.id);
       setIncomeAmount(0);
@@ -83,6 +80,7 @@ export default function Totals() {
     }
   };
 
+
   const handleAddExpense = async () => {
     try {
       const docRef = await addDoc(collection(db, 'expenses'), {
@@ -90,6 +88,7 @@ export default function Totals() {
         name: expenseName,
         category: selectedCategory,
         userId: user ? user.uid : null,
+        createdAt: new Date(),
       });
       console.log('Expense added with ID:', docRef.id);
       setExpenseAmount(0);
@@ -114,9 +113,10 @@ export default function Totals() {
       console.log('Savings added with ID:', docRef.id);
       setSavingsAmount(0);
       setSavingsName('');
-      toast({
-        title: `${savingsAmount} saving added!`,
-      });
+      createdAt: new Date(),
+        toast({
+          title: `${savingsAmount} saving added!`,
+        });
       await fetchData();
     } catch (error) {
       console.error('Error adding Savings:', error);
@@ -186,7 +186,7 @@ export default function Totals() {
     const fetchedExpenses = expenseQuerySnapshot.docs.map((doc) => ({
       id: doc.id,
       name: doc.data().name,
-      expenseAmount: doc.data().expenseAmount, // add expenseAmount property
+      expenseAmount: doc.data().expenseAmount,
     }));
     setExpenses(fetchedExpenses);
 
@@ -194,7 +194,7 @@ export default function Totals() {
     const fetchedIncomes = incomeQuerySnapshot.docs.map((doc) => ({
       id: doc.id,
       name: doc.data().name,
-      incomeAmount: doc.data().incomeAmount, // add incomeAmount property
+      incomeAmount: doc.data().incomeAmount,
     }));
     setIncomes(fetchedIncomes);
 
