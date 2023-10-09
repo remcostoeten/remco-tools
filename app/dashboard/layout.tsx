@@ -5,7 +5,7 @@ import Search from '@/components/dashboard/Search';
 export default function layout({ children }: { children: React.ReactNode }) {
     return (
         <>
-            <div className="guolong flex gap-4 justify-end">
+            <div className="guolong flex gap-4 justify-end container">
                 <Sidebar playlists={[]} />
 
                 <main className='mx-auto container gap-4  flex flex-wrap black-block black-block--section pt-30 mt-30 black-block--no-border flex-col mt-24'>
