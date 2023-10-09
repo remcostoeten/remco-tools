@@ -1,0 +1,33 @@
+.chartContainer {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+  }
+  
+  .chart {
+    width: 100%;
+    border: 1px solid #ccc;
+  }
+  
+  @media (min-width: 768px) {
+    .chartContainer {
+      padding: 2rem;
+    }
+  }
+
+  .chart {
+    width: 100%;
+    border: 1px solid #ccc;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(1rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

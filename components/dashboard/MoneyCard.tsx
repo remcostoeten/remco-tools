@@ -21,7 +21,7 @@ interface Expense {
 }
 
 type MoneyCardProps = {
-    type?: "income" | "expense";
+    type?: "income" | "expense" | "Saving" |  "Totals";
     small?: boolean;
     blockClassName?: string;
     useChildren?: boolean;

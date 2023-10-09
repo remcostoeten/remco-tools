@@ -1,6 +1,12 @@
 import { links } from "../config/data";
+import firebase from "./firebase";
+import firebase from "./firebase";
+import firebase from "./firebase";
 
 export type SectionName = (typeof links)[number]["name"];
+
+export default Expense;
+
 
 export type ThemeBlockProps = {
   children?: React.ReactNode;
@@ -36,10 +42,12 @@ export interface Thought {
 
 
 export interface Expense {
-  id: string; 
-  createdAt: any;
-  name: string;
-  expenseAmount: number;
+  id?: string;
+  name?: string;
+  expenseAmount?:number;
+  category?: string;
+  createdAt?: firebase.firestore.Timestamp;
+  userId?: string;
 }
 
 export interface Income {

@@ -1,20 +1,16 @@
-'use client';
-import { useState, useEffect, ReactNode } from 'react';
-import { Button } from '../ui/button';
-import { toast } from '../ui/use-toast';
 import { auth, db } from '@/utils/firebase';
 import { Expense, Income } from '@/utils/types';
-import { addDoc, collection, deleteDoc, getDocs, QueryDocumentSnapshot } from 'firebase/firestore';
+import { QueryDocumentSnapshot, addDoc, collection, deleteDoc, getDocs } from 'firebase/firestore';
+import { useEffect, useState } from 'react';
 import InputWithLabel from '../InputWithElement';
-import MoneyCardSkeleton from '../core/LoaderBlock';
-import MiniSpinner from '../effects/MiniSpinner';
 import Block from '../core/ThemeBlock';
+import MiniSpinner from '../effects/MiniSpinner';
 import SectionSpacer from '../ui/SectionSpacer';
-import FetchIncomes from './FetchIndividualIncome';
+import { Button } from '../ui/button';
+import { toast } from '../ui/use-toast';
 import MoneyCard from './MoneyCard';
 
 type Category = 'Food' | 'Transport' | 'Utilities';
-
 
 export default function Totals() {
   const [expenseAmount, setExpenseAmount] = useState<number>(0);
@@ -32,21 +28,17 @@ export default function Totals() {
   const [incomes, setIncomes] = useState<Income[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<Category>('Food');
 
-  type MoneyCardProps = {
-    items: any;
-    title: string;
-  };
-
-
   useEffect(() => {
     const fetchData = async () => {
-      setIsLoading(true);
       setIsLoading(true);
       const expenseQuerySnapshot = await getDocs(collection(db, 'expenses'));
       const fetchedExpenses = expenseQuerySnapshot.docs.map((doc) => ({
         id: doc.id,
         name: doc.data().name,
         expenseAmount: doc.data().expenseAmount,
+        category: doc.data().category,
+        userId: doc.data().userId,
+        createdAt: doc.data().createdAt,
       }));
       setExpenses(fetchedExpenses);
 
@@ -55,6 +47,7 @@ export default function Totals() {
         id: doc.id,
         name: doc.data().name,
         incomeAmount: doc.data().incomeAmount,
+        createdAt: doc.data().createdAt,
       }));
       setIncomes(fetchedIncomes);
 
@@ -194,6 +187,9 @@ export default function Totals() {
       id: doc.id,
       name: doc.data().name,
       expenseAmount: doc.data().expenseAmount,
+      createdAt: doc.data().createdAt,
+      category: doc.data().category,
+      userId: doc.data().userId,
     }));
     setExpenses(fetchedExpenses);
 
@@ -202,6 +198,7 @@ export default function Totals() {
       id: doc.id,
       name: doc.data().name,
       incomeAmount: doc.data().incomeAmount,
+      createdAt: doc.data().createdAt,
     }));
     setIncomes(fetchedIncomes);
 
@@ -213,27 +210,29 @@ export default function Totals() {
 
   return (
     <>
-      <div className="flex w-full gap-4">
+      <div className="flex w-full gap-4 flex-wrap">
         {isLoading ? (
-
           <div className="flex w-full gap-4">
             <Block className='w-5/12' >
               <MiniSpinner /></Block>
             <Block className='w-5/12' >
               <MiniSpinner /></Block>
             <Block className='w-2/12' >
-              <MiniSpinner /></Block></div>
-        ) : (
-          <div className="flex w-full gap-4">
-            <MoneyCard items={expenses} title="Expenses" />
-            <MoneyCard items={incomes} title="Incomes" />
+              <MiniSpinner /></Block>
           </div>
+        ) : (
+          // <div className="flex w-full gap-4">
+          //   {incomes.map((income) => (
+          //     <MoneyCard key={income.id} type="income" />
+          //   ))}
+          //   {expenses.map((expense) => (
+          //     <MoneyCard key={expense.id} type="expense" />
+          //   ))}
+          //   <MoneyCard type="savings" name={savingsName} amount={savingsAmount} />
+          // </div>M
+          <></>
         )}
       </div>
-      <SectionSpacer variant='small' />
-
-
-
 
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-4">
@@ -265,7 +264,6 @@ export default function Totals() {
               <div className="black-block black-blockt--content p-8">
                 <h2 className="mb-4 text-2xl font-bold">Add Savings</h2>
                 <div className="mb-4 flex-col flex items-center">
-
                   <InputWithLabel type="number" placeholder="€ ,-" value={savingsAmount} onChange={(e) => setSavingsAmount(Number(e.target.value))} />
                   <InputWithLabel type="text" placeholder="Savings Name" value={savingsName} onChange={(e) => setSavingsName(e.target.value)} />
                 </div>
@@ -285,5 +283,4 @@ export default function Totals() {
       </div>
     </>
   );
-
 }

@@ -7,9 +7,13 @@ import { HiUserRemove } from 'react-icons/hi';
 import { Expense } from '@/utils/types';
 import MoneyCard from './MoneyCard';
 import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarRadioGroup, MenubarRadioItem, MenubarSeparator, MenubarTrigger } from '../ui/menubar';
+import { tr } from 'date-fns/locale';
+import Block from '../core/ThemeBlock';
+import MiniSpinner from '../effects/MiniSpinner';
 
 export default function FetchExpenses() {
     const [expenses, setExpenses] = useState<Expense[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
         const unsubscribe = onSnapshot(collection(db, 'expenses'), (querySnapshot) => {
@@ -21,9 +25,12 @@ export default function FetchExpenses() {
                     expenseAmount: data.expenseAmount,
                     name: data.name,
                     createdAt: data.createdAt.toDate(),
+                    category: '',
+                    userId: ''
                 });
             });
             setExpenses(expenseData);
+            setIsLoading(false);
         });
 
         return () => unsubscribe();
@@ -44,30 +51,29 @@ export default function FetchExpenses() {
 
     return (
         <>
-            <Menubar>
-                <MenubarMenu>
-                    <MenubarTrigger>Profiles</MenubarTrigger>
-                    <MenubarContent>
-                        <MenubarRadioGroup value="benoit">
-                            <MenubarRadioItem value="andy">Andy</MenubarRadioItem>
-                            <MenubarRadioItem value="benoit">Benoit</MenubarRadioItem>
-                            <MenubarRadioItem value="Luis">Luis</MenubarRadioItem>
-                        </MenubarRadioGroup>
-                        <MenubarSeparator />
-                        <MenubarItem inset>Edit...</MenubarItem>
-                        <MenubarSeparator />
-                        <MenubarItem inset>Add Profile...</MenubarItem>
-                    </MenubarContent>
-                </MenubarMenu>
-            </Menubar>
-            {expenses.map((expense) => (
-                <MoneyCard useChildren key={expense.id}>
-                    dawdawd    <p>Name: {expense.name}</p>
-                    <p>Amount: {expense.expenseAmount}</p>
-                    <p>Created at: {expense.createdAt.toLocaleString()}</p>
-                    <button className='aaaaa' onClick={() => handleDelete(expense.id)}>Delete</button>
-                </MoneyCard>
-            ))}
+            {isLoading ? (
+                <><h1>test</h1><div className="flex w-full gap-4">
+                    <Block className='w-5/12'>
+                        <MiniSpinner /></Block>
+                    <Block className='w-5/12'>
+                        <MiniSpinner /></Block>
+                    <Block className='w-2/12'>
+                        <MiniSpinner /></Block>
+                </div></>
+            ) : (
+                <><h1>test</h1>{
+                  
+                    expenses.map((expense) => (
+                        <MoneyCard useChildren key={expense.id}>
+                            dawdawd    <p>Name: {expense.name}</p>
+                            <p>Amount: {expense.expenseAmount}</p>
+                            <p>Created at: {expense.createdAt.toLocaleString()}</p>
+                            <button className='aaaaa' onClick={() => handleDelete(expense.id)}>Delete</button>
+                        </MoneyCard>
+                    ))
+                }</>
+
+            )}
         </>
     );
 }
