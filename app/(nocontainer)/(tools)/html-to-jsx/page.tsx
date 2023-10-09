@@ -93,7 +93,7 @@ export default function PlaygroundPage() {
                         if (!isNaN(value as any)) {
                             value = parseInt(value).toString();
                         } else if (value !== 'true' && value !== 'false') {
-                            value = `'${value}'`;
+                            value = `${value}`;
                         }
                         key = key.replace(/-./g, function (x) {
                             return x[1].toUpperCase();
@@ -105,7 +105,6 @@ export default function PlaygroundPage() {
                 return `style={{${style}}}`;
             }
         );
-
         const booleanAttributes = [
             'checked',
             'selected',

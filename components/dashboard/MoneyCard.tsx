@@ -6,6 +6,7 @@ import { collection, onSnapshot, QueryDocumentSnapshot } from "firebase/firestor
 import { ThemeBlockProps } from "@/utils/types";
 import Block from "../core/ThemeBlock";
 import { motion } from "framer-motion";
+import HoverCard from "../effects/HoverCard";
 
 interface Income {
     id: string;
@@ -24,12 +25,14 @@ type MoneyCardProps = {
     small?: boolean;
     blockClassName?: string;
     useChildren?: boolean;
+    hoverCard?: boolean;
     children?: React.ReactNode;
 };
 
 export default function MoneyCard({
     type,
     small,
+    hoverCard,
     blockClassName,
     useChildren,
     children
@@ -74,6 +77,23 @@ export default function MoneyCard({
         title: ""
     };
 
+    if (hoverCard) {
+        return (
+            <HoverCard cardType={type === 'income' ? 'card--income' : 'card--expense'}>
+                <Block {...blockProps}>
+                    <Block
+                        {...blockProps}
+                        title={type === 'income' ? 'Income' : 'Expense'}
+                    >
+                        <span className="text-5xl font-medium tracking-wider">€{total},-</span>
+                        <div className="flex gap-1"></div>
+                        <p>Total of {totalItems} {type}</p>
+                    </Block>
+                </Block>
+            </HoverCard>
+        );
+    }
+
     if (useChildren) {
         return (
             <motion.div
@@ -81,7 +101,7 @@ export default function MoneyCard({
                 animate={{ opacity: 1, transition: { duration: 2 } }}
                 className={small ? "sm:w-2/12 w-full " : "sm:w-5/12 w-full"}
             >
-                <Block                           
+                <Block
                     {...blockProps}
                 >
                     {children}

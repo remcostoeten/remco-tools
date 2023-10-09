@@ -1,3 +1,66 @@
+@import './accent-border-card.scss';
+
+.glowcard {
+  position: relative;
+  &::before {
+    position: absolute;
+    content: "";
+    background: linear-gradient(235deg, #89ff00, #060c21, #00bcd4);
+    top: -2px;
+    bottom: -2px;
+    left: -2px;
+    right: -2px;
+    z-index: -1;
+
+    opacity: 0;
+    animation: gradientRotate 5s linear infinite, showDelay 5s 2s forwards;
+  }
+
+  @keyframes showDelay {
+    0% {
+      opacity: 0;
+    }
+
+    50% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes gradientRotate {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    } 
+  
+  
+    100% {
+      background-position: 0% 50%;
+    }
+
+  }
+
+
+
+
+  &::after {
+    position: absolute;
+    content: "";
+    background: linear-gradient(235deg, #89ff00, #060c21, #00bcd4);
+    top: -5px;
+    bottom: -5px;
+    left: -5px;
+    right: -5px;
+    z-index: -2;
+    filter: blur(50px);
+  }
+}
 :root {
     --bg-color: rgb(20, 20, 20);
     --card-color: rgb(23, 23, 23);
@@ -23,7 +86,6 @@
     height: 260px;
     flex-direction: column;
     position: relative;
-    width: 300px;  
   }
   
   .card:hover::before {
@@ -41,14 +103,31 @@
     transition: opacity 500ms;
     width: 100%;
   }
-  
-  .card::before {
-    background: radial-gradient(
-      800px circle at var(--mouse-x) var(--mouse-y), 
-      rgba(255, 255, 255, 0.06),
-      transparent 40%
-    );
-    z-index: 3;
+
+  .card--expense {
+    &::before {
+      background: radial-gradient(
+        800px circle at var(--mouse-x) var(--mouse-y), 
+        rgba(178, 15, 15, 0.06),
+        transparent 40%
+      );
+      pointer-events: none;
+      z-index: 3;
+    }
+  }
+
+
+
+  .card--income {
+    &::before {
+      background: radial-gradient(
+        450px circle at var(--mouse-x) var(--mouse-y), 
+        rgba(4, 191, 113, 0.091),
+        transparent 40%
+      );
+      pointer-events: none;
+      z-index: 3;
+    }
   }
   
   .card::after {  
