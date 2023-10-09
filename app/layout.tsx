@@ -80,10 +80,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <ThemeContextProvider>
                     <ActiveSectionContextProvider>
                     <Toaster />
-                        <ThemeSettings />
+                        {/* <ThemeSettings /> */}
                         <NavBar />
-                        <SliderNavigation />
-                        <InteractiveDots dotSize={200} />
+                        {/* <SliderNavigation /> */}
+                        {/* <InteractiveDots dotSize={200} /> */}
                         {children}
                         <Footer />
                         <Trailer />

@@ -1,25 +1,28 @@
-import { TooltipProvider } from '@/components/ui/tooltip';
 import React from 'react';
-import DashboardWrapper from '@/lib/theme';
 import { Sidebar } from '@/components/dashboard/dashboard';
-            
+import Search from '@/components/dashboard/Search';
+
 export default function layout({ children }: { children: React.ReactNode }) {
     return (
         <>
-            <DashboardWrapper>
-                <TooltipProvider delayDuration={500}>
-                    <div className="guolong flex gap-4 justify-end">
-                        <Sidebar playlists={[]} />
-                        <main className='gap-4  flex flex-wrap black-block black-block--section black-block--no-border sm:w-7/12 w-full flex-col'>
-                            {children}
-                        </main>
-                        <aside className='black-block black-block--section black-block--border-left hidden sm:block 
+            <div className="guolong flex gap-4 justify-end">
+                <Sidebar playlists={[]} />
+
+                <main className='mx-auto container gap-4  flex flex-wrap black-block black-block--section pt-30 mt-30 black-block--no-border flex-col mt-24'>
+                    <search className=''>
+                        <Search />
+                    </search>
+                    <section className='gap-4  flex flex-wrap black-block black-block--section  black-block--no-border   w-full flex-col mt-24'>
+                        {children}
+                    </section>
+                </main>
+                <aside className='black-block black-block--section black-block--border-left hidden sm:block 
                         w-3/12'>
-                            some asides
-                        </aside>
-                    </div>
-                </TooltipProvider>
-            </DashboardWrapper>
+                    some asides
+                </aside>
+            </div>
         </>
     );
 }
+
+
