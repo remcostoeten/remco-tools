@@ -56,7 +56,7 @@ export default function Footer(props: FooterProps): JSX.Element {
     };
 
     return (
-        <motion.div className="">
+        <motion.div className="footer">
             {Object.keys(footerItems).map((key) => (
                 <span className="footer__inner" key={key}>
                     <Link target='_blank'
