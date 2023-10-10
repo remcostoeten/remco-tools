@@ -1,4 +1,3 @@
-import Notification from '@/components/Notification';
 import NavBar from '@/components/core/NavBar';
 import InProgressIcon from '@/components/core/icons/InProgressIcon';
 import SuccesIcon from '@/components/core/icons/SuccesIcon';
@@ -82,7 +81,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <body className={`${lexend.className} bg-offblack`}>
                 <ThemeContextProvider>
                     <ActiveSectionContextProvider>
-                        
+
                         <Toaster
                             text="This is not a production site"
                             subtext="Strictly a testing site"

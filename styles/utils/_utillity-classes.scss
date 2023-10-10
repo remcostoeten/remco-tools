@@ -7,8 +7,6 @@
 }
 
 .bg-black {
-
-
     background-color: #101010 !important;
 }
 
@@ -31,5 +29,144 @@
         border-top: 0;
         border-right: 0;
         border-bottom: 0;
+    }
+}
+
+.bg-dash {
+    background-color: #050d03;
+}
+
+.bg-dash-alt {
+    background-color: #0F160C;
+}
+
+.bg-dash-alt-border {
+    border: 1px solid #131A0D;
+}
+
+.border-dash {
+    border: 1px solid #ff1a2209;
+}
+
+.dash-block {
+    @extend .bg-dash;
+    @extend .border-dash;
+
+    &--section {
+        padding: 24px;
+    }
+
+    &--parent {
+        padding: 48px;
+    }
+
+    &--no-border {
+        border: none;
+    }
+}
+
+.dblock {
+    &--section {
+        padding: 24px;
+    }
+
+    &--section-s {
+        padding: 8px;
+    }
+
+    &--section-m {
+        padding: 16px;
+    }
+
+    &--no-border {
+        border: none;
+    }
+}
+
+
+.green-block {
+    @extend .bg-dash-alt;
+    @extend .border-dash;
+
+    &--section {
+        padding: 24px;
+    }
+
+    &--section-s {
+        padding: 8px;
+    }
+
+    &--section-m {
+        padding: 16px;
+    }
+
+    &--no-border {
+        border: none;
+    }
+}
+
+.fade-seperator {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, #2d3a12, #344412 50%, transparent 50%);
+}
+
+.fade-seperator-b {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, #2d3a12, #344412 75%, transparent 50%);
+
+}
+
+.fade-border-t,
+.fade-border-b,
+.fade-border {
+    position: relative;
+
+    &::after,
+    &::before {
+        content: '';
+        width: 100%;
+        position: absolute;
+        left: 0;
+        background: linear-gradient(to right, #192109, #192109 50%, transparent 50%);
+        height: 1px;
+    }
+}
+
+.fade-border-r {
+    position: relative;
+
+    &::after {
+        content: '';
+        background: linear-gradient(to bottom, #192109, #192109 50%, transparent 50%);
+        width: 1px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+    }
+}
+
+
+.fade-border-t {
+    &::after {
+        top: 0;
+    }
+}
+
+
+
+
+.fade-border-b,
+.fade-border {
+    &::before {
+        bottom: 0;
+    }
+}
+
+.fade-border {
+    &::after {
+        bottom: 0;
     }
 }

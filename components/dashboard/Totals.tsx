@@ -1,3 +1,4 @@
+'use client'
 import { auth, db } from '@/utils/firebase';
 import { Expense, Income } from '@/utils/types';
 import { QueryDocumentSnapshot, addDoc, collection, deleteDoc, getDocs } from 'firebase/firestore';
@@ -32,19 +33,30 @@ export default function Totals() {
     const fetchData = async () => {
       setIsLoading(true);
       const expenseQuerySnapshot = await getDocs(collection(db, 'expenses'));
-      const fetchedExpenses = expenseQuerySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        name: doc.data().name,
-        expenseAmount: doc.data().expenseAmount,
-
+      const fetchedExpenses = expenseQuerySnapshot.docs.map((doc: QueryDocumentSnapshot) => {
+        const data = doc.data();
+        return {
+          id: doc.id,
+          name: data.name,
+          expenseAmount: data.expenseAmount,
+          category: data.category,
+          userId: data.userId,
+          createdAt: data.createdAt instanceof Date ? data.createdAt : data.createdAt.toDate(),
+        };
+      });
 
       const incomeQuerySnapshot = await getDocs(collection(db, 'incomes'));
-      const fetchedIncomes = incomeQuerySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        name: doc.data().name,
-        incomeAmount: doc.data().incomeAmount,
-        createdAt: doc.data().createdAt,
-      }));
+      const fetchedIncomes = incomeQuerySnapshot.docs.map((doc: QueryDocumentSnapshot) => {
+        const data = doc.data();
+        return {
+          id: doc.id,
+          name: data.name,
+          incomeAmount: data.incomeAmount,
+          createdAt: data.createdAt instanceof Date ? data.createdAt : data.createdAt.toDate(),
+        };
+      });
+
+      setExpenses(fetchedExpenses);
       setIncomes(fetchedIncomes);
 
       await calculateTotalIncome();
@@ -76,7 +88,6 @@ export default function Totals() {
     }
   };
 
-
   const handleAddExpense = async () => {
     try {
       const docRef = await addDoc(collection(db, 'expenses'), {
@@ -105,14 +116,14 @@ export default function Totals() {
       const docRef = await addDoc(collection(db, 'savings'), {
         savingsAmount,
         name: savingsName,
+        createdAt: new Date(),
       });
       console.log('Savings added with ID:', docRef.id);
       setSavingsAmount(0);
       setSavingsName('');
-      createdAt: new Date(),
-        toast({
-          title: `${savingsAmount} saving added!`,
-        });
+      toast({
+        title: `${savingsAmount} saving added!`,
+      });
       await fetchData();
     } catch (error) {
       console.error('Error adding Savings:', error);
@@ -152,7 +163,7 @@ export default function Totals() {
   const calculateTotalIncome = async () => {
     try {
       const incomeQuerySnapshot = await getDocs(collection(db, 'incomes'));
-      const total = incomeQuerySnapshot.docs.reduce((acc, doc) => acc + doc.data().amount, 0);
+      const total = incomeQuerySnapshot.docs.reduce((acc, doc) => acc + doc.data().incomeAmount, 0);
       setTotalIncome(total);
       calculateNetWorth();
     } catch (error) {
@@ -177,56 +188,31 @@ export default function Totals() {
     setNetWorth(netWorth);
   };
 
-  const fetchData = async () => {
-    const expenseQuerySnapshot = await getDocs(collection(db, 'expenses'));
-    const fetchedExpenses = expenseQuerySnapshot.docs.map((doc) => ({
-      id: doc.id,
-      name: doc.data().name,
-      expenseAmount: doc.data().expenseAmount,
-      createdAt: doc.data().createdAt,
-      category: doc.data().category,
-      userId: doc.data().userId,
-    }));
-    setExpenses(fetchedExpenses);
-
-    const incomeQuerySnapshot = await getDocs(collection(db, 'incomes'));
-    const fetchedIncomes = incomeQuerySnapshot.docs.map((doc) => ({
-      id: doc.id,
-      name: doc.data().name,
-      incomeAmount: doc.data().incomeAmount,
-      createdAt: doc.data().createdAt,
-    }));
-    setIncomes(fetchedIncomes);
-
-    await calculateTotalIncome();
-    await calculateTotalExpense();
-
-    setIsLoading(false);
-  };
-
   return (
     <>
       <div className="flex w-full gap-4 flex-wrap">
         {isLoading ? (
           <div className="flex w-full gap-4">
-            <Block className='w-5/12' >
-              <MiniSpinner /></Block>
-            <Block className='w-5/12' >
-              <MiniSpinner /></Block>
-            <Block className='w-2/12' >
-              <MiniSpinner /></Block>
+            <Block className='w-5/12'>
+              <MiniSpinner />
+            </Block>
+            <Block className='w-5/12'>
+              <MiniSpinner />
+            </Block>
+            <Block className='w-2/12'>
+              <MiniSpinner />
+            </Block>
           </div>
         ) : (
-          // <div className="flex w-full gap-4">
-          //   {incomes.map((income) => (
-          //     <MoneyCard key={income.id} type="income" />
-          //   ))}
-          //   {expenses.map((expense) => (
-          //     <MoneyCard key={expense.id} type="expense" />
-          //   ))}
-          //   <MoneyCard type="savings" name={savingsName} amount={savingsAmount} />
-          // </div>M
-          <></>
+          <div className="flex w-full gap-4">
+            {incomes.map((income) => (
+              <MoneyCard key={income.id} type="income" />
+            ))}
+            {expenses.map((expense) => (
+              <MoneyCard key={expense.id} type="expense" />
+            ))}
+            <MoneyCard type="savings" name={savingsName} amount={savingsAmount} />
+          </div>
         )}
       </div>
 

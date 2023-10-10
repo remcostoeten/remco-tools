@@ -1,9 +1,15 @@
 .theadborder {
     border: 1px solid #363333 !important;
 }
+
+.bar {
+    max-width: 30vw;
+    transform: translateX(-100px);
+}
+
 body {
     overflow-x: hidden;
-    background-color: $black !important;
+    background-color: #000 !important;
 
     &:has(.bg-offblack) {
 

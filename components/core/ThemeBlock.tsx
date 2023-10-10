@@ -37,30 +37,30 @@ export default function Block({
     const Icon = isIncome ? <MoneyUpIcon className="glowIcon" size={size} fill={iconFill} /> : <MoneyDownIcon size={size} fill={downFill} />;
 
     return (
-        <div className={`black-block black-block--no-border black-block--section ${borderRadius} flex flex-${flexDir} ${gap} ${width} ${className}`}>
+        <div className={`dblock p-4 flex flex-col gap-4 ${borderRadius} flex flex-${flexDir} ${gap} ${width} ${className}`}>
             {title && (
                 <div className="flex justify-between items-center">
                     <div className="flex gap-4 items-center">{Icon}
-                        <h4 className="text-3xl font-medium tracking-wider">{title}</h4>
+                        <h4 className="text-3xl text-cream font-medium tracking-wider">{title}</h4>
                     </div>
                     <Menubar>
                         <MenubarMenu>
-                            <MenubarTrigger>...</MenubarTrigger>
+                            <MenubarTrigger><span className="text-cream">...</span></MenubarTrigger>
                             <MenubarContent>
                                 <MenubarItem>
-                                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                                    Add new <MenubarShortcut>⌘T</MenubarShortcut>
                                 </MenubarItem>
                                 <MenubarItem>
-                                    New Window <MenubarShortcut>⌘N</MenubarShortcut>
+                                 Some option <MenubarShortcut>⌘N</MenubarShortcut>
                                 </MenubarItem>
-                                <MenubarItem disabled>New Incognito Window</MenubarItem>
+                                <MenubarItem disabled>A disabled option</MenubarItem>
                                 <MenubarSeparator />
                                 <MenubarSub>
-                                    <MenubarSubTrigger>Share</MenubarSubTrigger>
+                                    <MenubarSubTrigger>Some menu</MenubarSubTrigger>
                                     <MenubarSubContent>
-                                        <MenubarItem>Email link</MenubarItem>
-                                        <MenubarItem>Messages</MenubarItem>
-                                        <MenubarItem>Notes</MenubarItem>
+                                        <MenubarItem>Some text</MenubarItem>
+                                        <MenubarItem>Some text</MenubarItem>
+                                        <MenubarItem>Some text</MenubarItem>
                                     </MenubarSubContent>
                                 </MenubarSub>
                                 <MenubarSeparator />

@@ -1,4 +1,5 @@
 
+
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
@@ -17,13 +18,19 @@ const config: Config = {
       backgroundColor: {
         'offblack': '#0E1112',
         'black': '#0E1112',
-        'white': '#f1f1ef',        
+        'white': '#f1f1ef',
+        'dash-green': '#ff050d03',
+        'dash-border': '#192109',
+        'dash-green-alt': '#0f170d',
       },
       colors: {
         cream: '#efefee',
         'cream-dark': '#14155f',
         'offblack': '#0E1112',
         'white': '#f1f1ef',
+        'dash-green': '#ff050d03',
+        'dash-border': '#192109',
+        'dash-green-alt': '##0f170d',
       },
     },
   },

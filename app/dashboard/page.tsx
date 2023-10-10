@@ -34,13 +34,12 @@ export default function Page() {
               <Block>
                 <h2>dwa</h2>
               </Block>
-
             </div>
           </div>
-          {/* <div className="flex gap-4">
+        * <div className="flex gap-4">
             <CombinedExpenses />
             <Chart />
-          </div> */}
+          </div> 
 
         </>
       ) : (
