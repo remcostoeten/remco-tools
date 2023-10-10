@@ -9,7 +9,8 @@
     transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
-.toast {
+.toast {display: flex;
+    gap: 12px;
     background-color: #000;
     display: inline-flex;
     border-radius: 5px;
@@ -27,8 +28,63 @@
     z-index: 10;
     bottom: 24px;
     left: 24px;
-    animation: slideUp 8s cubic-bezier(0.215, 0.81, 0.355, 1) 0s forwards;
     opacity: 1;
+    padding-right: 16px;
+    background-color: black;
+
+
+    &--warning {
+        animation: toastWarning 10s 2s infinite ;
+        @keyframes toastWarning {
+            0% {
+                box-shadow: 0 0 121px 1px #360303;
+            }
+
+            50% {
+                box-shadow: 0 0 22px 1px #210105;
+            }
+
+            100% {
+                box-shadow: 0 0 52px 1px #260102;
+            }
+
+        }
+    }
+
+    &--success {
+        animation: ToastShadow 10s 2s infinite;
+
+        @keyframes ToastShadow {
+            0% {
+                box-shadow: 0 0 121px 1px #012208;
+            }
+
+            50% {
+                box-shadow: 0 0 22px 1px #012108;
+            }
+
+            100% {
+                box-shadow: 0 0 52px 1px #012609;
+            }
+
+        }
+    }
+
+    @keyframes animateGlow {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        100% {
+            background-position: 200% 50%;
+        }
+    }
+
+
+    &--warning {
+        border-color: #f5a623;
+        transition: 500ms ease all;
+    }
 
     &.temp {
         bottom: 24px !important;
@@ -90,10 +146,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 25px;
         text-align: center;
+        flex-direction: column;
         padding-left: 16px;
-        padding-right: 16px;
     }
 
     &__title {

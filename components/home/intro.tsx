@@ -8,7 +8,7 @@ import { gsap } from 'gsap';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
-import ArrowDown from '../ArrowDown';
+import ArrowDown from '../effects/ArrowDown';
 import T from '../core/GradientText';
 import I from '../core/Italic';
 import GithubLogo from '../core/icons/GithubLogo';

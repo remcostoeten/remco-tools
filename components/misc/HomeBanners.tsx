@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 import ToolCard from '@/components/core/Carousel/CardComponent';
 import { banners } from '@/components/core/Carousel/Carousel';
-import { Card } from './ui/card';
+import { Card } from '../ui/card';
 export const HomeBanners = () => {
     const [scrollPosition, setScrollPosition] = useState(100);
 

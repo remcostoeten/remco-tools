@@ -1,4 +1,4 @@
-import InputWithLabel from '../../../../../../components/InputWithElement';
+import InputWithLabel from '../../../../../../components/core/icons/InputWithElement';
 import RadioGroupOption from './radio-group-item';
 import React from 'react';
 import { Button } from '@/components/ui/button';

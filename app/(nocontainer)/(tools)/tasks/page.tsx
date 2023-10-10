@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { DataTable } from '@/components/data-tables/data-table';
 import { UserNav } from '@/components/data-tables/user-nav';
-import { displayInspiration } from '@/components/core/tools/playground/inspiration/DisplayInspiration';
+import { displayInspiration } from '@/components/showcase/tools/playground/inspiration/DisplayInspiration';
 
 export const metadata: Metadata = {
     title: 'Tasks',

@@ -1,76 +1,97 @@
 "use client"
 import { useEffect, useState } from 'react';
-import { delay, motion, useAnimation } from 'framer-motion';
-import {
-  Toast,
-  ToastClose,
-  ToastDescription,
-  ToastProvider,
-  ToastTitle,
-  ToastViewport,
-} from "@/components/ui/toast"
-import { useToast } from "@/components/ui/use-toast"
-import Particles from "../Part";
+import { ToastTitle } from '@/components/ui/toast';
 
 interface ToasterProps {
   icon?: React.ReactNode;
   className?: string;
+  text: string;
+  subtext?: string;
+  variant?: 'default' | 'success' | 'warning';
 }
 
-export function Toaster({ icon, className }: ToasterProps) {
-  const { toasts, dismiss } = useToast();
-  const toastControls = useAnimation();
-  const [toastOpacity, setToastOpacity] = useState(1); // Add opacity state
+export function Toaster({
+  icon,
+  className,
+  text,
+  subtext,
+  variant = 'default',
+}: ToasterProps) {
+  const [isVisible, setIsVisible] = useState(false);
+  const [isClosed, setIsClosed] = useState(
+    () => JSON.parse(localStorage.getItem('toastClosed') || 'false')
+  );
 
   useEffect(() => {
-    const hideToaster = async () => {
-      await toastControls.start({ opacity: 0, y: -50 });
-      await toastControls.start({ height: 0, margin: 0, padding: 0 });
-    };
-    const timeout = setTimeout(hideToaster, 3000);
-    return () => clearTimeout(timeout);
-  }, [toastControls]);
+    if (!isClosed) {
+      setTimeout(() => {
+        setIsVisible(true);
+      }, 3000);
 
+      setTimeout(() => {
+        setIsVisible(false);
+      }, 80050);
+    }
+  }, [isClosed]);
 
-  const handleToastClick = () => {
-    setToastOpacity(0);
+  useEffect(() => {
+    if (isClosed) {
+      localStorage.setItem('toastClosed', JSON.stringify(true));
+    }
+  }, [isClosed]);
+
+  const handleClose = () => {
+    setIsVisible(false);
+    setIsClosed(true);
   };
 
+  let variantClass = '';
+
+  if (variant === 'success') {
+    variantClass = 'toast--success';
+  } else if (variant === 'warning') {
+    variantClass = 'toast--warning';
+  }
+
   return (
-    <ToastProvider>
-      <ToastViewport />
-      {toasts.map(function ({ id, title, description, action }) {
-        return (
-          <motion.div
-            key={id}
-            className={`toast temp ${className || ''}`}
-            initial={{ opacity: 0, y: 10 , scale: 0.95}}
-            animate={{ opacity: 1, y: 0, scale:1 }}  
-            exit={{ height: 0, margin: 0, y: 200, padding: 0 }}
-            transition={{ duration: 2.5, delay: 3, stiffness: 5, type: 'tween '}}
-            onClick={handleToastClick} 
-          >
-            {icon}
-            <div className="toast__inner">
-           {title && (
-                <ToastTitle>
-                  {title}
-                  {description && (
-                    <div className="toast__alternate-title">
-                      <ToastDescription>{description}</ToastDescription>
-                    </div>
-                  )}
-                </ToastTitle>
-              )}
-            </div>
-            <div className="toast__close">
-              
-            </div>
-            <Particles particleCount={100} />
-          </motion.div>
-        );
-      })}
-      <ToastViewport />
-    </ToastProvider>
+    <div className={`toast ${variantClass} ${className}`} style={{
+      opacity: isVisible ? 1 : 0,
+      transform: isVisible ? 'translateY(0)' : 'translateY(100%)',
+      transition: 'opacity transform 1s cubic-bezier(0.25, 1, 0.5, 1)',
+      marginTop: '1rem',
+    }}>
+      <span className='block translate-y-1'>
+        {icon}
+      </span>
+      <div className="toast__inner">
+        <ToastTitle>
+          {text}
+        </ToastTitle>
+        <span className="toast__alternate-title">
+          {subtext}
+        </span>
+      </div>
+      <div className="toast__close" onClick={handleClose}>
+        Close
+      </div>
+    </div>
   );
 }
+
+// Usage
+
+
+// <Toaster
+// variant="warning"
+// text="This is not a production site"
+// subtext="Strictly a testing site"
+// icon={<WarningIcon fill="white"
+//     w="24"
+//     h="24" />}
+
+// />  <Toaster
+// variant="success"
+// text="This is not a production site"
+// subtext="Strictly a testing site"
+// icon={<SuccesIcon fill="white" w="24" h="24" />}
+// />

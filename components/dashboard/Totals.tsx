@@ -2,7 +2,7 @@ import { auth, db } from '@/utils/firebase';
 import { Expense, Income } from '@/utils/types';
 import { QueryDocumentSnapshot, addDoc, collection, deleteDoc, getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
-import InputWithLabel from '../InputWithElement';
+import InputWithLabel from '../core/icons/InputWithElement';
 import Block from '../core/ThemeBlock';
 import MiniSpinner from '../effects/MiniSpinner';
 import SectionSpacer from '../ui/SectionSpacer';
@@ -36,11 +36,7 @@ export default function Totals() {
         id: doc.id,
         name: doc.data().name,
         expenseAmount: doc.data().expenseAmount,
-        category: doc.data().category,
-        userId: doc.data().userId,
-        createdAt: doc.data().createdAt,
-      }));
-      setExpenses(fetchedExpenses);
+
 
       const incomeQuerySnapshot = await getDocs(collection(db, 'incomes'));
       const fetchedIncomes = incomeQuerySnapshot.docs.map((doc) => ({

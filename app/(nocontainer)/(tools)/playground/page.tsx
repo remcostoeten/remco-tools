@@ -9,21 +9,21 @@ import { Separator } from '@ui/separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@ui/tabs';
 import { Textarea } from '@ui/textarea';
 
-import { CodeViewer } from '@/components/core/tools/playground/components/code-viewer';
-import { MaxLengthSelector } from '@/components/core/tools/playground/components/maxlength-selector';
-import { ModelSelector } from '@/components/core/tools/playground/components/model-selector';
-import { PresetActions } from '@/components/core/tools/playground/components/preset-actions';
-import { PresetSave } from '@/components/core/tools/playground/components/preset-save';
-import { PresetSelector } from '@/components/core/tools/playground/components/preset-selector';
-import { PresetShare } from '@/components/core/tools/playground/components/preset-share';
-import { TemperatureSelector } from '@/components/core/tools/playground/components/temperature-selector';
-import { TopPSelector } from '@/components/core/tools/playground/components/top-p-selector';
-import { models, types } from '@/components/core/tools/playground/data/models';
-import { presets } from '@/components/core/tools/playground/data/presets';
+import { CodeViewer } from '@/components/showcase/tools/playground/components/code-viewer';
+import { MaxLengthSelector } from '@/components/showcase/tools/playground/components/maxlength-selector';
+import { ModelSelector } from '@/components/showcase/tools/playground/components/model-selector';
+import { PresetActions } from '@/components/showcase/tools/playground/components/preset-actions';
+import { PresetSave } from '@/components/showcase/tools/playground/components/preset-save';
+import { PresetSelector } from '@/components/showcase/tools/playground/components/preset-selector';
+import { PresetShare } from '@/components/showcase/tools/playground/components/preset-share';
+import { TemperatureSelector } from '@/components/showcase/tools/playground/components/temperature-selector';
+import { TopPSelector } from '@/components/showcase/tools/playground/components/top-p-selector';
+import { models, types } from '@/components/showcase/tools/playground/data/models';
+import { presets } from '@/components/showcase/tools/playground/data/presets';
 import EditIcon from '@/components/core/icons/edit-icon';
 import CompleteIcon from '@/components/core/icons/complete-icon';
 import InsertIcon from '@/components/core/icons/insert-icon';
-import Toolbar from '@/components/core/tools/playground/components/toolbar';
+import Toolbar from '@/components/showcase/tools/playground/components/toolbar';
 
 export const metadata: Metadata = {
     title: 'Playground',

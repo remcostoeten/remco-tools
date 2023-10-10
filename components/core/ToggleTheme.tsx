@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useTheme } from '@/context/theme-context';
 import { Input } from '../ui/input';
-import GlowEffect from '../ParallaxBackground';
+import GlowEffect from '../effects/ParallaxBackground';
 import Trailer from './Cursor';
 import { Switch } from '../ui/switch';
 

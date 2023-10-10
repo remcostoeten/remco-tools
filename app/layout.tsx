@@ -1,5 +1,8 @@
 import Notification from '@/components/Notification';
 import NavBar from '@/components/core/NavBar';
+import InProgressIcon from '@/components/core/icons/InProgressIcon';
+import SuccesIcon from '@/components/core/icons/SuccesIcon';
+import WarningIcon from '@/components/core/icons/WarningIcon';
 import { Toaster } from '@/components/ui/toaster';
 import { seoKeywords } from '@/config/keywords';
 import { siteConfig } from '@/config/site';
@@ -79,15 +82,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <body className={`${lexend.className} bg-offblack`}>
                 <ThemeContextProvider>
                     <ActiveSectionContextProvider>
-                    <Toaster />
-                        {/* <ThemeSettings /> */}
+                        
+                        <Toaster
+                            text="This is not a production site"
+                            subtext="Strictly a testing site"
+                            icon={<InProgressIcon fill="white" w="24" h="24" />}
+                        />
                         <NavBar />
-                        {/* <SliderNavigation /> */}
-                        {/* <InteractiveDots dotSize={200} /> */}
                         {children}
                         <Footer />
                         <Trailer />
-                        <Notification text='This is not a production site.' />
                         <Analytics />
                     </ActiveSectionContextProvider>
                 </ThemeContextProvider>

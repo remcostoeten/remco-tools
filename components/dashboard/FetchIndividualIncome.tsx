@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { collection, onSnapshot, deleteDoc, doc } from 'firebase/firestore';
 import { db } from '@/utils/firebase';
-import Notification from '@c/Notification';
-import { Toast } from '../ui/toast';
-import { toast, useToast } from '../ui/use-toast';
 import { HiUserRemove } from 'react-icons/hi';
 import { Income } from '@/utils/types';
+import { toast } from '../ui/use-toast';
 
 export default function FetchIncomes() {
     const [incomes, setIncomes] = useState<Income[]>([]);
