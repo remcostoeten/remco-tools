@@ -24,18 +24,26 @@ export default function FetchIncomes() {
         const percentage = Math.round((income.incomeAmount / totalIncome) * 100);
 
         return (
-            <div className='w-full h-[10px] px-8 bg-[#121d12] rounded-md'>
+            <div className='w-full  mt-8 relative rounded-md'>
                 <TooltipProvider>
                     <Tooltip>
                         <TooltipTrigger>
-                            <div className="bar border border-grey h-[20px] -translate-x-14 grid place-items-center p-12 w-[200px] ">
+                            <div className="absolute bar  h-1/6 bar [#fff] z-10  rounded-md">
 
                             </div>
                         </TooltipTrigger>
-                        <div
-                            className={`h-full bar bg-[#8BB929] pb-[24px] rounded-md`}
-                            style={{ width: `${percentage}%` }}
-                        ></div>
+                        <div className="relative">
+
+
+                            <div
+                                className='absolute bg-[#1A221A] w-[29vw] h-1/6 bar'
+                            ></div>
+
+                            <div
+                                className={`absolute h-full bar bg-[#8ab829] w-[29vw]   `}
+                                style={{ width: `${percentage}%` }}
+                            ></div>
+                        </div>
                         <TooltipContent>
                             <p>{percentage}% of total income</p>
                         </TooltipContent>
@@ -67,31 +75,48 @@ export default function FetchIncomes() {
     const handleDelete = async (id: string) => {
         try {
             await deleteDoc(doc(db, 'incomes', id));
-            toast('Hello World!');
+            toast.success('Income deleted successfully!');
         } catch (error) {
             console.error('Error deleting document: ', error);
+            toast.error('Error deleting income');
         }
     };
 
+
     return (
         <div>
-            <span className='flex flex-col gap-4 text-cream text-lg pb-4'>Incoming expenses</span>
+            <span className='flex flex-col gap-4 bord   text-cream text-2xl pb-8'>Incoming expenses</span>
             {visibleIncomes.map((income, index) => (
-                <div className='px-4  gap-1 mb-6 w-full' key={income.id}>
-                    <ExpenseIconWrapper>
-                        <ShoppingCartIcon color='white' width={20} height={20} />
-                    </ExpenseIconWrapper>
-                    <div className='ml-4 flex flex-col align-baseline items-start w-full'>
-                        <div className='flex gap-1 relative w-full'>
-                            <span className='flex w-full relative text-cream gap-2 '>
-                                <p>{income.name}</p>
-                            </span>
+                <div className='pr-4  gap-1 pb-12 mb-6 w-full individual' key={income.id}>
+                    <div className='mr-4 pr-4 flex flex-col align-baseline items-start w-full'>
+                        <div className="flex justify-between items-center w-full">
+                            <div className=" pr-4 flex items-w-full justify-start w-full">
+                                <span>
+                                    <ExpenseIconWrapper>
+                                        <ShoppingCartIcon color='white' width={20} height={20} />
+                                    </ExpenseIconWrapper>
+                                </span>
+                                <span className='flex  flex-col  text-cream   pl-7'>
+                                    <p>€{income.incomeAmount},-</p>
+                                    <p>{income.name}</p>
+                                    <p>{income.createdAt ? income.createdAt.toLocaleDateString() : ' '}</p>
+                                </span>
+                            </div>
+                            <div className="flex items-center justify-center" onClick={() => handleDelete(income.id)}>
+                                <AltButton><TrashIcon color='white' width={20} />
+                                </AltButton>
+                            </div>
                         </div>
-                        <p>{income.createdAt ? income.createdAt.toLocaleDateString() : ''}</p>
+                        <div className="flex">
+
+                            <div className='flex gap-1 relative w-full'>
+                                <span className='flex w-full relative text-cream gap-2 '>
+                                    <p>{income.createdAt ? income.createdAt.toLocaleDateString() : ''}</p>
+                                </span>
+                            </div>
+                        </div>
+
                     </div>
-                    <button className='flex justify-end w-full' onClick={() => handleDelete(income.id)}>
-                        <TrashIcon color='white' width={20} />
-                    </button>
                     {bar(income)}
                 </div>
             ))}

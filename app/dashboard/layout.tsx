@@ -15,7 +15,7 @@ export default function layout({ children }: { children: React.ReactNode }) {
                     <MoneyCard type='income' />
                 </main>
                 <div className="fade-seperator-b"></div>
-                <section className='fade-border-r  w-3/6 dblock pt-8'>
+                <section className='fade-border-r w-3/6 dblock pr-8 py-8'>
                     <FetchIncomes />
                 </section>
 

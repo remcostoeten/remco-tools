@@ -10,6 +10,16 @@
     background-color: #101010 !important;
 }
 
+.seperator-fade {
+    height: 100%;
+    transform: rotate(90deg);
+    width: 1px;
+    position: absolute;
+
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5), transparent);
+    margin: 0 15px;
+    /* Adjust the margin if needed */
+}
 
 .black-block {
     background-color: #101010;
@@ -32,6 +42,8 @@
     }
 }
 
+$border-color: #242e0e;
+
 .bg-dash {
     background-color: #050d03;
 }
@@ -41,7 +53,15 @@
 }
 
 .bg-dash-alt-border {
-    border: 1px solid #131A0D;
+    border: 1px solid $border-color;
+}
+
+.border-right-alt {
+    border-right: 1px solid $border-color;
+}
+
+.border-left-alt {
+    border-left: 1px solid $border-color;
 }
 
 .border-dash {
@@ -129,7 +149,7 @@
         width: 100%;
         position: absolute;
         left: 0;
-        background: linear-gradient(to right, #192109, #192109 50%, transparent 50%);
+        background: linear-gradient(to right, #192109, #192109 95%, transparent 95%);
         height: 1px;
     }
 }
@@ -148,6 +168,19 @@
     }
 }
 
+.fade-border-l {
+    position: relative;
+
+    &::after {
+        content: '';
+        background: linear-gradient(to bottom, #192109, #192109 50%, transparent 50%);
+        width: 1px;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+    }
+}
 
 .fade-border-t {
     &::after {

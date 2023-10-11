@@ -3,6 +3,7 @@ import InProgressIcon from '@/components/core/icons/InProgressIcon';
 import SuccesIcon from '@/components/core/icons/SuccesIcon';
 import WarningIcon from '@/components/core/icons/WarningIcon';
 import { Toaster } from '@/components/ui/toaster';
+import { Tooltip, TooltipProvider } from '@/components/ui/tooltip';
 import { seoKeywords } from '@/config/keywords';
 import { siteConfig } from '@/config/site';
 import ActiveSectionContextProvider from '@/context/active-section-contex';
@@ -79,22 +80,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="en" className="dark !scroll-smooth">
             <body className={`${lexend.className} bg-offblack`}>
-                <ThemeContextProvider>
-                    <ActiveSectionContextProvider>
+                <TooltipProvider>
+                    <Tooltip>
+                        <ThemeContextProvider>
+                            <ActiveSectionContextProvider>
 
-                        <Toaster
-                            text="This is not a production site"
-                            subtext="Strictly a testing site"
-                            icon={<InProgressIcon fill="white" w="24" h="24" />}
-                        />
-                        <NavBar />
-                        {children}
-                        <Footer />
-                        <Trailer />
-                        <Analytics />
-                    </ActiveSectionContextProvider>
-                </ThemeContextProvider>
-            </body>
+                                <Toaster
+                                    text="This is not a production site"
+                                    subtext="Strictly a testing site"
+                                    icon={<InProgressIcon fill="white" w="24" h="24" />}
+                                />
+                                <NavBar />
+                                {children}
+                                <Footer />
+                                <Trailer />
+                                <Analytics />
+
+                            </ActiveSectionContextProvider>
+                        </ThemeContextProvider>
+                    </Tooltip>
+                </TooltipProvider>      </body>
         </html>
     );
 }

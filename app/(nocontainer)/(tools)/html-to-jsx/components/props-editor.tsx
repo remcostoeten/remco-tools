@@ -24,7 +24,7 @@ const PropsEditor = ({
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, y: 10 }}
       transition={{ type: "spring", stiffness: 150, damping: 15, delay: 1 }}
-      className="ml-4 flex"
+      className=" flex"
     >
       <div className="flex w-full items-center">
         {propsArray.map((propValue, index) => (
