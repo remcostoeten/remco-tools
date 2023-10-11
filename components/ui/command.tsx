@@ -9,10 +9,13 @@ import { cn } from '@/lib/utils';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { SearchCircleIcon } from '@heroicons/react/solid';
 import SearchIcon from '@mui/icons-material/Search';
-const Command = React.forwardRef<React.ElementRef<typeof CommandPrimitive>, React.ComponentPropsWithoutRef<typeof CommandPrimitive>>(({ className, ...props }, ref) => <CommandPrimitive ref={ref} className={cn('flex h-full w-full overflow-hidden rounded-md bg-popover text-popover-foreground', className)} {...props} />);
-Command.displayName = CommandPrimitive.displayName;
+const Command = React.forwardRef<React.ElementRef<typeof CommandPrimitive>, React.ComponentPropsWithoutRef<typeof CommandPrimitive>>(({ className, ...props }, ref) => (
+    <search>
+        <CommandPrimitive ref={ref} className={cn('flex h-full w-full overflow-hidden rounded-md bg-popover text-popover-foreground', className)} {...props} />
+    </search>
+));
 
-interface CommandDialogProps extends DialogProps {}
+interface CommandDialogProps extends DialogProps { }
 
 const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
     return (
@@ -29,8 +32,8 @@ const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
 const CommandInput = React.forwardRef<React.ElementRef<typeof CommandPrimitive.Input>, React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input>>(({ className, ...props }, ref) => (
     <div className="flex items-center  " cmdk-input-wrapper="">
         <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />
-        <CommandPrimitive.Input ref={ref} className={cn('flex h-11 w-full rounded-md bg-transparent text-cream/30 focus:text-cream py-3 text-sm outline-none' , className)} {...props} />
-  </div>
+        <CommandPrimitive.Input ref={ref} className={cn('flex h-11 w-full rounded-md bg-transparent text-cream/30 focus:text-cream py-3 text-sm outline-none', className)} {...props} />
+    </div>
 ));
 
 CommandInput.displayName = CommandPrimitive.Input.displayName;

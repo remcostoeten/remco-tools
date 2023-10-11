@@ -5,6 +5,9 @@ import { useRouter } from 'next/navigation';
 import CombinedExpenses from './tables/page';
 import Chart from '@/components/dashboard/ExpensesChart';
 import Block from '@/components/core/ThemeBlock';
+import MoneyCard from '@/components/dashboard/MoneyCard';
+import FetchIncomes from '@/components/dashboard/FetchIndividualIncome';
+import { Sidebar } from '@/components/dashboard/dashboard';
 const correctPassword = process.env.ADMIN_PASSWORD || '';
 
 export default function Page() {
@@ -14,21 +17,31 @@ export default function Page() {
 
   return (
     <>
+
+
       {isAuthenticated ? (
         <>
           <DashboardUser />
-          <div className="flex-col sm:flex-row flex gap-4 justify-start w-full">
-            {/* <Totals /> */}
-            <div className="flex gap-4 w-full">
-              {/* <MoneyCard hoverCard={true} type={'income'} />
-              <MoneyCard hoverCard={true} type={'expense'} /> */}
-              <Block>
-                <h2>dwa</h2>
-              </Block>
+
+          <main className='flex-col  w-7/12 sm:flex-row    flex justify-between items-center'>
+            <div className="flex w-full">
+              <MoneyCard type='expense' />
+              <div className="fade-seperator-brotate"></div>
+              <MoneyCard type='income' />
             </div>
+          </main>
+          <div className="fade-seperator-b-l"></div>
+          <FetchIncomes />
+          {/* <Totals /> */}
+          <div className="flex gap-4 w-full">
+            {/* <MoneyCard hoverCard={true} type={'income'} />
+              <MoneyCard hoverCard={true} type={'expense'} /> */}
+            <Block>
+              <h2>dwa</h2>
+            </Block>
           </div>
           * <div className="flex gap-4">
-            <CombinedExpenses />
+            {/* <CombinedExpenses /> */}
             <Chart />
           </div>
 

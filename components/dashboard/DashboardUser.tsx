@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { auth } from '@/utils/firebase';
+import Link from 'next/link';
 
 export default function DashboardUser() {
   const [user, setUser] = useState(null);
@@ -19,8 +20,18 @@ export default function DashboardUser() {
   }, []);
 
   if (user) {
-    return <h2 className="pb-10 text-4xl font-normal">Welcome, {user.displayName}!</h2>;
+    return (
+      <div className='pt-[20px] pb-[80px]'>
+        <h2 className="pb-10 text-4xl font-normal">Welcome, {user.displayName}!</h2>
+      </div>
+    );
   } else {
-    return <div>Welcome, guest!</div>;
+    return (
+      <div className='p-4'>
+        <div className='text-cream text-md'>
+          Welcome, guest! <Link className='underline' href='/login'>login please</Link>
+        </div>
+      </div>
+    );
   }
 }

@@ -85,7 +85,7 @@ export default function MoneyCard({
                         {...blockProps}
                         title={type === 'income' ? 'Income' : 'Expense'}
                     >
-                        <span className="text-5xl font-medium tracking-wider">€{total},-</span>
+                        <span className="text-3xl font-medium tracking-wider">€{total},-</span>
                         <div className="flex gap-1"></div>
                         <p>Total of {totalItems} {type}</p>
                     </Block>
@@ -113,13 +113,13 @@ export default function MoneyCard({
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, transition: { duration: 2 } }}
-                className={small ? "sm:w-2/12 w-full " : "sm:w-5/12 w-full"}
+                className={small ? "md:w-2/12 w-full " : "w-full  "}
             >
                 <Block
                     {...blockProps}
                     title={type === "income" ? "Income" : "Expense"}
                 >
-                    <span className="text-2xl sm:text-5xl font-medium tracking-wider">€{total},-</span>
+                    <span className="text-2xl sm:text-3xl font-medium tracking-wider">€{total},-</span>
                     <div className="flex gap-1"></div>
                     <p>Total of {totalItems} {type}</p>
                 </Block>

@@ -34,6 +34,7 @@ export default function Search() {
                     </CommandGroup>
                 </CommandList>
             </CommandDialog>
+            <div className="fade-seperator-b-l"></div>
         </>
     )
 }
