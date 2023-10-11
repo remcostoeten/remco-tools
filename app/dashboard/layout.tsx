@@ -7,18 +7,18 @@ import MoneyCard from '@/components/dashboard/MoneyCard';
 export default function layout({ children }: { children: React.ReactNode }) {
     return (
         <>
-            <div className=" max-w-[1280px] mx-auto  pt-48 mt-48 dash-block dash-block--parent  border-dash dash-border">
+            <div className="max-w-[1280px] h-max  mx-auto  pt-48 mt-48 dash-block dash-block--parent  border-dash dash-border">
                 <Search />
-                <div className="fade-seperator-b"></div>
-                <main className='dblock pt-8 flex justify-between items-center'>
+                 <div className="fade-seperator-b-l"></div>
+                {/*<main className='flex-col border-b  sm:flex-row  pt-8 flex justify-between items-center'>
                     <MoneyCard type='expense' />
                     <MoneyCard type='income' />
                 </main>
                 <div className="fade-seperator-b"></div>
-                <section className='fade-border-r w-3/6 dblock pr-8 py-8'>
+                <section className='fade-border-r w-full md:w-3/6 dblock pr-8 py-8'>
                     <FetchIncomes />
-                </section>
-
+                </section> */}
+                {children}
             </div>
             <div className="container mx-auto">
                 <div className="uolonga flex gap-4 justify-end space-y-48 ">

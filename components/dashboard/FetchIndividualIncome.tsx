@@ -25,22 +25,23 @@ export default function FetchIncomes() {
 
         return (
             <div className='w-full  mt-8 relative rounded-md'>
+
+
+
+
                 <TooltipProvider>
                     <Tooltip>
                         <TooltipTrigger>
-                            <div className="absolute bar  h-1/6 bar [#fff] z-10  rounded-md">
 
-                            </div>
                         </TooltipTrigger>
                         <div className="relative">
-
-
+}
                             <div
-                                className='absolute bg-[#1A221A] w-[29vw] h-1/6 bar'
+                                className='absolute bg-[#1A221A] w-[29vw] h-1/6 m-w-[30vw] h-[6px]'
                             ></div>
 
                             <div
-                                className={`absolute h-full bar bg-[#8ab829] w-[29vw]   `}
+                                className={`absolute bg-[#8ab829] w-[29vw] m-w-[30vw] h-[6px]   `}
                                 style={{ width: `${percentage}%` }}
                             ></div>
                         </div>
@@ -84,11 +85,11 @@ export default function FetchIncomes() {
 
 
     return (
-        <div>
-            <span className='flex flex-col gap-4 bord   text-cream text-2xl pb-8'>Incoming expenses</span>
+        <div className='expense-individual'>
+            <span className='flex flex-col gap-4 bord text-cream text-2xl pb-8'>Incoming expenses</span>
             {visibleIncomes.map((income, index) => (
-                <div className='pr-4  gap-1 pb-12 mb-6 w-full individual' key={income.id}>
-                    <div className='mr-4 pr-4 flex flex-col align-baseline items-start w-full'>
+                <div className='gap-1 pb-8 mb-8 w-full individual' key={income.id}>
+                    <div className='flex flex-col align-baseline items-start w-full'>
                         <div className="flex justify-between items-center w-full">
                             <div className=" pr-4 flex items-w-full justify-start w-full">
                                 <span>

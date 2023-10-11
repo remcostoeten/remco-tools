@@ -33,15 +33,19 @@ export default function Block({
     const iconFill = "#3eb557";
     const downFill = "#d6222e"
     const size = "48px"
+    const isMobile = document.body.clientWidth <= 768;
 
-    const Icon = isIncome ? <MoneyUpIcon className="glowIcon" size={size} fill={iconFill} /> : <MoneyDownIcon size={size} fill={downFill} />;
-
+    const Icon = isIncome ? (
+        <MoneyUpIcon className="glowIcon" size={isMobile ? '36px' : '48px'} fill={iconFill} />
+    ) : (
+        <MoneyDownIcon size={isMobile ? '36px' : '48px'} fill={downFill} />
+    );
     return (
         <div className={`dblock p-4 flex flex-col gap-4 ${borderRadius} flex flex-${flexDir} ${gap} ${width} ${className}`}>
             {title && (
                 <div className="flex justify-between items-center">
                     <div className="flex gap-4 items-center">{Icon}
-                        <h4 className="text-3xl text-cream font-medium tracking-wider">{title}</h4>
+                        <h4 className="text-xl sm:text-3xl text-cream font-medium tracking-wider">{title}</h4>
                     </div>
                     <Menubar>
                         <MenubarMenu>
@@ -51,7 +55,7 @@ export default function Block({
                                     Add new <MenubarShortcut>⌘T</MenubarShortcut>
                                 </MenubarItem>
                                 <MenubarItem>
-                                 Some option <MenubarShortcut>⌘N</MenubarShortcut>
+                                    Some option <MenubarShortcut>⌘N</MenubarShortcut>
                                 </MenubarItem>
                                 <MenubarItem disabled>A disabled option</MenubarItem>
                                 <MenubarSeparator />

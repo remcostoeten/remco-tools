@@ -119,7 +119,7 @@ export default function MoneyCard({
                     {...blockProps}
                     title={type === "income" ? "Income" : "Expense"}
                 >
-                    <span className="text-5xl font-medium tracking-wider">€{total},-</span>
+                    <span className="text-2xl sm:text-5xl font-medium tracking-wider">€{total},-</span>
                     <div className="flex gap-1"></div>
                     <p>Total of {totalItems} {type}</p>
                 </Block>
