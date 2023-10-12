@@ -7,7 +7,7 @@ import Chart from '@/components/dashboard/ExpensesChart';
 import Block from '@/components/core/ThemeBlock';
 import MoneyCard from '@/components/dashboard/MoneyCard';
 import FetchIncomes from '@/components/dashboard/FetchIndividualIncome';
-import { Sidebar } from '@/components/dashboard/LeftAside';
+import { Sidebar } from '@/components/dashboard/dashboard';
 const correctPassword = process.env.ADMIN_PASSWORD || '';
 
 export default function Page() {
@@ -19,7 +19,7 @@ export default function Page() {
     <>
 
 
-      {isAuthenticated ? (
+      {!isAuthenticated ? (
         <>
           <DashboardUser />
 
