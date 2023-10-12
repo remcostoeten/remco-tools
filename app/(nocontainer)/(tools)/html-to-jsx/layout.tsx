@@ -6,7 +6,6 @@ import {
 } from "@/components/ui/page-nav"
 import Typewriter from "./components/alternating-text"
 import { LayoutProps } from '@/utils/types'
-import Notification from '@/components/Notification'
 
 const metadata = {
   title: {
@@ -57,7 +56,6 @@ export default function ConverterLayout({ children }: LayoutProps) {
       </Head>
       <div className='black-block relative container section black-block--section rounded-sm'>
         <div style={{ position: 'absolute', right: '0', top: '0', zIndex: 9999 }}>
-          <Notification text='The props / component creator is currently broken!' subtext='The html to react code works fine tho.' /></div>
         <CustomStatusBadge title="beta" emojiKey="rocket" index={0} />
         <CustomStatusBadge title="wip" emojiKey="fire" index={1} />
         <PageHeader>

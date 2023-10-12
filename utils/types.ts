@@ -1,12 +1,27 @@
+import { Playlist } from "@/components/dashboard/playlist";
 import { links } from "../config/data";
-import firebase from "./firebase";
-import firebase from "./firebase";
-import firebase from "./firebase";
 
 export type SectionName = (typeof links)[number]["name"];
 
 export default Expense;
 
+export interface DashMenuItem {
+  title?: string;
+  text?: string;
+  icon?: JSX.Element;
+  items?: DashMenuItem[];
+}
+
+export interface DashMenuSection {
+  slice(arg0: number, arg1: number): unknown;
+  title?: string;
+  items: DashMenuItem[];
+}
+
+export interface LeftAsideProps extends React.HTMLAttributes<HTMLDivElement> {
+  playlists?: Playlist[];
+  children: React.ReactNode;
+}
 
 export type ThemeBlockProps = {
   children?: React.ReactNode;
@@ -44,7 +59,7 @@ export interface Thought {
 export interface Expense {
   id?: string;
   name?: string;
-  expenseAmount?:number;
+  expenseAmount?: number;
   category?: string;
   createdAt?: firebase.firestore.Timestamp;
   userId?: string;

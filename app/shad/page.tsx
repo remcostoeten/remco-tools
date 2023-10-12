@@ -12,8 +12,8 @@ export default function Home() {
     <main className="min-h-full min-w-full container py-6">
       <div className='flex items-center justify-between'>
         <div className='flex space-x-6'>
-        <h1 className='scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl'>/Dashboard</h1>
-        <Menu className={`max-md:hidden`} />
+          <h1 className='scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl'>/Dashboard</h1>
+          <Menu className={`max-md:hidden`} />
         </div>
         <ThemeToggle />
       </div>

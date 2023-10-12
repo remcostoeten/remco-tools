@@ -18,7 +18,7 @@ export default function RootLayout({
         <>
             <body className={inter.className}>
                 <ThemeProvider attribute="class" disableTransitionOnChange>
-                        <aside className="left bg-black"></aside>
+                        <aside className="dashboard-left bg-black"></aside>
                         <div className="dash-container">
                         <main className="flex-1 bg-[#071001] p-8 m-8 rounded-lg">{children}</main>
                         <aside className="right  bg-black"></aside>

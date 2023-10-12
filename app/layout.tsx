@@ -92,7 +92,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                                 />
                                 <NavBar />
                                 {children}
-                                <Footer />
+                                {/* <Footer /> */}
                                 <Trailer />
                                 <Analytics />
 

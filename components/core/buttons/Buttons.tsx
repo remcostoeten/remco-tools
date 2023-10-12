@@ -1,4 +1,4 @@
-
+'use client';
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -62,7 +62,7 @@ const AltButton = ({
 }) => {
     return (
         <motion.button
-            onClick={onClick} className="text-[#B6B9B7] px-3 py-2 text-xs bg-dash-alt bg-dash-alt-border flex rounded-lg w-max justify-end border"
+            onClick={onClick} className="text-[#B6B9B7] px-3 py-2 text-xs bg-green-alt bg-dash-alt-border flex rounded-lg w-max justify-end border"
             whileHover={{
                 scale: 1.1
             }}
@@ -76,4 +76,31 @@ const AltButton = ({
 };
 
 
-export { Button, AltButton,  ReadMore };
+const AltButtonTextOutside = ({
+    onClick,
+    children,
+    icon,
+}: {
+    onClick?: () => void;
+    icon?: React.ReactNode;
+    children?: React.ReactNode;
+}) => {
+    return (
+        <motion.button className='flex items-center justify-between'
+            onClick={onClick}
+            whileHover={{
+                scale: 1.1,
+            }}
+            whileTap={{
+                scale: 0.9,
+            }}
+        >
+            <span className="text-[#B6B9B7] flex items-center justify-center px-3 py-2 text-xs bg-green-alt bg-dash-alt-border rounded-lg w-max border">
+                {icon}
+            </span>
+            <span className='alt-children'>{children}.</span>
+        </motion.button>
+    );
+};
+
+export { Button, AltButton, ReadMore, AltButtonTextOutside };
