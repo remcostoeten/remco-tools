@@ -1,22 +1,18 @@
-import NavBar from '@/components/core/NavBar';
-import InProgressIcon from '@/components/core/icons/InProgressIcon';
-import SuccesIcon from '@/components/core/icons/SuccesIcon';
-import WarningIcon from '@/components/core/icons/WarningIcon';
-import { Toaster } from '@/components/ui/toaster';
-import { Tooltip, TooltipProvider } from '@/components/ui/tooltip';
+import Trailer from '@c/core/Cursor';
+import ThemeSettings from '@c/core/ToggleTheme';
+import InteractiveDots from '@c/effects/InteractiveDots';
+import SliderNavigation from '@c/effects/SliderMenu/SlideNavigation';
+import Header from "@c/core/header/Header";
+import Footer from '@c/landing/Footer';
+import { Toaster } from '@c/ui/toaster';
 import { seoKeywords } from '@/config/keywords';
 import { siteConfig } from '@/config/site';
 import ActiveSectionContextProvider from '@/context/active-section-contex';
 import ThemeContextProvider from '@/context/theme-context';
 import '@/styles/styles.scss';
-import Trailer from '@c/core/Cursor';
-import ThemeSettings from '@c/core/ToggleTheme';
-import InteractiveDots from '@c/effects/InteractiveDots';
-import SliderNavigation from '@c/effects/SliderMenu/SlideNavigation';
-import Footer from '@c/landing/Footer';
 import { Analytics } from '@vercel/analytics/react';
-
 import { Inter, Lexend_Deca, Manrope } from 'next/font/google';
+import MagneticCursor from '@/components/effects/MagneticCursor';
 const inter = Inter({ subsets: ['latin'] });
 const rope = Manrope({ subsets: ['latin'] });
 const lexend = Lexend_Deca({ subsets: ['latin'] });
@@ -79,27 +75,15 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en" className="dark !scroll-smooth">
-            <body className={`${lexend.className} !bg-[#111111]`}>
-                <TooltipProvider>
-                    <Tooltip>
-                        <ThemeContextProvider>
-                            <ActiveSectionContextProvider>
-                                <ThemeSettings />
-                                <Toaster
-                                    text="This is not a production site"
-                                    subtext="Strictly a testing site"
-                                    icon={<InProgressIcon fill="white" w="24" h="24" />}
-                                />
-                                <NavBar />
-                                {children}
-                                <Footer />
-                                <Trailer />
-                                <Analytics />
-
-                            </ActiveSectionContextProvider>
-                        </ThemeContextProvider>
-                    </Tooltip>
-                </TooltipProvider>      </body>
+            <body className={`${lexend.className} bg-cream`}>
+               
+                        {children}
+                        <Footer />
+                        <MagneticCursor/>
+                        <Toaster />
+                        <Analytics />
+          
+            </body>
         </html>
     );
 }

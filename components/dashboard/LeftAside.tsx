@@ -4,11 +4,11 @@ import { Playlist, playlists } from "./playlist";
 import { ScrollArea } from "../ui/scroll-area";
 import { Button } from "../ui/button";
 
-interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
+interface LeftAsideProps extends React.HTMLAttributes<HTMLDivElement> {
   playlists?: Playlist[]
 }
 
-export function Sidebar({ className }: SidebarProps) {
+export function LeftAside({ className }: LeftAsideProps) {
   return (
     <aside className={cn("overflow-hidden hidden sm:block rounded-[0.5rem] bg-background text-cream shadow w-2/12", className)}>
         <div className="space-y-4 py-4">

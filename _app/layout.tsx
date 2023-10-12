@@ -79,12 +79,12 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en" className="dark !scroll-smooth">
-            <body className={`${lexend.className} !bg-[#111111]`}>
+            <body className={`${lexend.className} bg-offblack`}>
                 <TooltipProvider>
                     <Tooltip>
                         <ThemeContextProvider>
                             <ActiveSectionContextProvider>
-                                <ThemeSettings />
+
                                 <Toaster
                                     text="This is not a production site"
                                     subtext="Strictly a testing site"
