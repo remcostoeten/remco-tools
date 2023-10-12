@@ -1,6 +1,6 @@
 'use client';
 import { usePasswordProtection } from '@/hooks/usePasswordProtection';
-import DashboardUser from "@c/dashboard/DashboardUser";
+import DashboardUser from "@/components/dashboard/DashboardUser";
 import { useRouter } from 'next/navigation';
 import CombinedExpenses from './tables/page';
 import Chart from '@/components/dashboard/ExpensesChart';

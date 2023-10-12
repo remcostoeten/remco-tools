@@ -1,7 +1,7 @@
 'use client';
 
 import { Expense } from "@/utils/types"
-import { DataTable } from "@c/dashboard/tables/DataTable"
+import { DataTable } from "@/components/dashboard/tables/DataTable"
 import { collection, getDocs } from "firebase/firestore"
 import { db } from "@/utils/firebase"
 import { useState, useEffect } from "react"

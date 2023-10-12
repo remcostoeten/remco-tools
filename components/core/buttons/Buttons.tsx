@@ -98,7 +98,7 @@ const AltButtonTextOutside = ({
             <span className="text-[#B6B9B7] flex items-center justify-center px-3 py-2 text-xs bg-green-alt bg-dash-alt-border rounded-lg w-max border">
                 {icon}
             </span>
-            <span className='alt-children'>{children}.</span>
+            <span className='alt-children'>{children}</span>
         </motion.button>
     );
 };
