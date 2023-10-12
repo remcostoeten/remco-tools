@@ -12,20 +12,19 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
 export default function RootLayout({
     children,
 }: {
-    children: React.ReactNode
+    children: React.ReactNode;
 }) {
     return (
-        <html lang="pt-BR">
+        <>
             <body className={inter.className}>
-                <ThemeProvider
-                    attribute="class"
-                    disableTransitionOnChange
-                >
-                    <div className='flex-1'>
-                        {children}
+                <ThemeProvider attribute="class" disableTransitionOnChange>
+                    <div className="dash-container">
+                        <aside className="left bg-black"></aside>
+                        <main className="flex-1 bg-[#071001] p-8 m-8 rounded-lg">{children}</main>
+                        <aside className="right  bg-black"></aside>
                     </div>
                 </ThemeProvider>
             </body>
-        </html>
-    )
+        </>
+    );
 }

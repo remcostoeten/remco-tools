@@ -1,0 +1,133 @@
+.dash-container {
+    @extend .ui-block;
+    @extend .ui-block--section;
+    display: flex;
+    max-width: 1440px;
+    margin: 0 auto;
+    
+    aside {
+        height: 100vh;
+        &.left {
+            width: 10%;
+        }
+        
+        &.right {
+            width: 15%;
+        }
+    }
+    
+    main {
+        flex: 1;
+    }
+}
+
+$container-background: #ff060d03;
+$container-border: #242e0e;
+$white: #efefee;
+$black: #111111;
+
+.ui-block {
+    background-color: $container-background;
+    border: 1px solid $container-border;
+    color: $white;
+    
+    &--section {
+        padding: 24px;
+    }
+    
+    &--no-border {
+        border: none;
+    }
+    
+    &--border-left {
+        border-left: 1px solid $container-border;
+        border-top: 0;
+        border-right: 0;
+        border-bottom: 0;
+    }
+    
+    &--border-right {
+        border-right: 1px solid $container-border;
+        border-top: 0;
+        border-left: 0;
+        border-bottom: 0;
+    }
+    
+    &--border-top {
+        border-top: 1px solid $container-border;
+        border-left: 0;
+        border-right: 0;
+        border-bottom: 0;
+    }
+    
+    &--border-bottom {
+        border-bottom: 1px solid $container-border;
+        border-left: 0;
+        border-right: 0;
+        border-top: 0;
+    }
+    
+    &--border-top-left {
+        border-top: 1px solid $container-border;
+        border-left: 1px solid $container-border;
+        border-right: 0;
+        border-bottom: 0;
+    }
+    
+    &--border-top-right {
+        border-top: 1px solid $container-border;
+        border-left: 0;
+        border-right: 1px solid $container-border;
+        border-bottom: 0;
+    }
+    
+    &--border-bottom-left {
+        border-bottom: 1px solid $container-border;
+        border-left: 1px solid $container-border;
+        border-right: 0;
+        border-top: 0;
+    }
+    
+    
+    &--border-bottom-right {
+        border-bottom: 1px solid $container-border;
+        border-left: 0;
+        border-right: 1px solid $container-border;
+        border-top: 0;
+    }
+    
+    &--border-top-bottom {
+        border-top: 1px solid $container-border;
+        border-bottom: 1px solid $container-border;
+        border-left: 0;
+        border-right: 0;
+    }
+    
+    &--border-left-right {
+        border-left: 1px solid $container-border;
+        border-right: 1px solid $container-border;
+        border-top: 0;
+        border-bottom: 0;
+    }
+}
+
+.black-block {
+    background-color: #101010;
+    border: 1px solid #363333;
+    color: #f1f1ef;
+
+    &--section {
+        padding: 24px;
+    }
+
+    &--no-border {
+        border: none;
+    }
+
+    &--border-left {
+        border-left: 1px solid #363333;
+        border-top: 0;
+        border-right: 0;
+        border-bottom: 0;
+    }
+}

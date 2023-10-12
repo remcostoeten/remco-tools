@@ -1,6 +1,6 @@
 'use client';
 import { cn } from "@/lib/utils";
-import { Playlist } from "./playlist";
+import { Playlist, playlists } from "./playlist";
 import { ScrollArea } from "../ui/scroll-area";
 import { Button } from "../ui/button";
 

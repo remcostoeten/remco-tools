@@ -1,13 +1,16 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import CardWithGraph from "./cardWithGraph";
+import MoneyCard from "@/components/dashboard/MoneyCard";
 
 export default function Cards() {
     return (
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 my-4 items-center cursor-default">
-            <Card className="h-full bg-primary text-white hover:scale-105 transition-all">
+            <MoneyCard type="income" />
+            <MoneyCard type="expense" />
+            {/* <Card className="h-full bg-primary text-white hover:scale-105 transition-all">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                     <CardTitle className="text-sm font-medium">
-                        Receita Total
+                        Expenses
                     </CardTitle>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -79,7 +82,7 @@ export default function Cards() {
                         +20.1% desde o último mês
                     </p>
                 </CardContent>
-            </Card>
+            </Card> */}
             <Card className="h-full hover:scale-105 transition-all">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                     <CardTitle className="text-sm font-medium">

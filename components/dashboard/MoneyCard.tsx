@@ -7,6 +7,7 @@ import { ThemeBlockProps } from "@/utils/types";
 import Block from "../core/ThemeBlock";
 import { motion } from "framer-motion";
 import HoverCard from "../effects/HoverCard";
+import { Card } from "../ui/card";
 
 interface Income {
     id: string;
@@ -21,7 +22,7 @@ interface Expense {
 }
 
 type MoneyCardProps = {
-    type?: "income" | "expense" | "Saving" |  "Totals";
+    type?: "income" | "expense" | "Saving" | "Totals";
     small?: boolean;
     blockClassName?: string;
     useChildren?: boolean;
@@ -79,51 +80,56 @@ export default function MoneyCard({
 
     if (hoverCard) {
         return (
-            <HoverCard cardType={type === 'income' ? 'card--income' : 'card--expense'}>
-                <Block {...blockProps}>
-                    <Block
-                        {...blockProps}
-                        title={type === 'income' ? 'Income' : 'Expense'}
-                    >
-                        <span className="text-3xl font-medium tracking-wider">€{total},-</span>
-                        <div className="flex gap-1"></div>
-                        <p>Total of {totalItems} {type}</p>
+            <Card>
+                                                                                                                                      <HoverCard cardType={type === 'income' ? 'card--income' : 'card--expense'}>
+                    <Block {...blockProps}>
+                        <Block
+                            {...blockProps}
+                            title={type === 'income' ? 'Income' : 'Expense'}
+                        >
+                            <span className="text-3xl font-medium tracking-wider">€{total},-</span>
+                            <div className="flex gap-1"></div>
+                            <p>Total of {totalItems} {type}</p>
+                        </Block>
                     </Block>
-                </Block>
-            </HoverCard>
+                </HoverCard>
+            </Card>
         );
     }
 
     if (useChildren) {
         return (
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1, transition: { duration: 2 } }}
-                className={small ? "sm:w-2/12 w-full " : "sm:w-5/12 w-full"}
-            >
-                <Block
-                    {...blockProps}
+            <Card>
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1, transition: { duration: 2 } }}
+                    className={small ? "sm:w-2/12 w-full " : "sm:w-5/12 w-full"}
                 >
-                    {children}
-                </Block>
-            </motion.div>
+                    <Block
+                        {...blockProps}
+                    >
+                        {children}
+                    </Block>
+                </motion.div>
+            </Card>
         );
     } else {
         return (
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1, transition: { duration: 2 } }}
-                className={small ? "md:w-2/12 w-full " : "w-full  "}
-            >
-                <Block
-                    {...blockProps}
-                    title={type === "income" ? "Income" : "Expense"}
+            <Card>
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1, transition: { duration: 2 } }}
+                    className={small ? "md:w-2/12 w-full " : "w-full  "}
                 >
-                    <span className="text-2xl sm:text-3xl font-medium tracking-wider">€{total},-</span>
-                    <div className="flex gap-1"></div>
-                    <p>Total of {totalItems} {type}</p>
-                </Block>
-            </motion.div>
+                    <Block
+                        {...blockProps}
+                        title={type === "income" ? "Income" : "Expense"}
+                    >
+                        <span className="text-2xl sm:text-3xl font-medium tracking-wider">€{total},-</span>
+                        <div className="flex gap-1"></div>
+                        <p>Total of {totalItems} {type}</p>
+                    </Block>
+                </motion.div></Card>
         );
     }
 }                 
