@@ -4,6 +4,24 @@ import firebase from "./firebase";
 export type SectionName = (typeof links)[number]["name"];
 
 export default Expense;
+export interface ChatSearchProps {
+  onSearch: (query: string) => void;
+  searchResults: string;
+  onJumpTo: (message: ChatMessage) => void;
+  chatHistory: ChatMessage[];
+}
+
+export interface ChatMessage {
+  name: string;
+  image: ReactNode;
+  id: string;
+  message: string;
+  type: 'sent' | 'received';
+  attachments?: any;
+  sender: string;
+  isSelf: boolean;
+  timestamp: Date;
+}
 
 export interface DashMenuItem {
     title?: string;

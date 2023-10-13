@@ -1,0 +1,22 @@
+{
+  "id": 123,
+  "name": "John Doe",
+  "email": "johndoe@example.com",
+  "messages": [
+    {
+      "id": 1,
+      "text": "Hello, how are you?",
+      "timestamp": "2022-01-27T14:30:00.000Z"
+    },
+    {
+      "id": 2,
+      "text": "I'm doing well, thanks for asking!",
+      "timestamp": "2022-01-27T14:35:00.000Z"
+    },
+    {
+      "id": 3,
+      "text": "What have you been up to lately?",
+      "timestamp": "2022-01-27T14:40:00.000Z"
+    }
+  ]
+}
