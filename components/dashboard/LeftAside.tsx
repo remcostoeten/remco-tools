@@ -15,6 +15,17 @@ const linkVariants = {
       duration: 0.2,
     },
   },
+  initial: {
+    opacity: 0,
+    y: 202,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0.5,
+    },
+  },
 };
 
 const containerVariants = {
@@ -25,6 +36,7 @@ const containerVariants = {
     opacity: 1,
     transition: {
       delay: 0.5,
+      staggerChildren: 0.1,
     },
   },
 };
@@ -39,10 +51,10 @@ export function LeftAside({ }: LeftAsideProps) {
       {DashmenuMap.map((section, index) => (
         <div key={index} className="sub">
           <ul className="space-y-1 sub">
-            {section.items.map((item: { text?: string; icon?: React.ReactNode; title?: string }) => {
+            {section.items.map((item: { text?: string; icon?: React.ReactNode; title?: string }, index: number) => {
               if (item.text) {
                 return (
-                  <motion.li key={item.text} variants={linkVariants}>
+                  <motion.li key={item.text} variants={linkVariants} custom={index}>
                     <AltButtonTextOutside icon={item.icon}>
                       <Link href={`/${item.text.toLowerCase()}`} className={currentRoute === `/${item.text.toLowerCase()}`
                         ? "active"
@@ -64,10 +76,10 @@ export function LeftAside({ }: LeftAsideProps) {
         <div key={index} className="sub">
           <ul className="space-y-1 sub-sub">
             <h2 className="title pl-[20px]">Settings</h2>
-            {section.items.map((item: { text?: string; icon?: React.ReactNode; title?: string }) => {
+            {section.items.map((item: { text?: string; icon?: React.ReactNode; title?: string }, index: number) => {
               if (item.text) {
                 return (
-                  <motion.li key={item.text} variants={linkVariants}>
+                  <motion.li key={item.text} variants={linkVariants} custom={index}>
                       <Link href={`/${item.text.toLowerCase()}`} className={currentRoute === `/${item.text.toLowerCase()}`
                       ? "active"
                       : ""}>
@@ -86,10 +98,10 @@ export function LeftAside({ }: LeftAsideProps) {
         <div key={index} className="sub">
           <ul className="space-y-1 sub-sub">
             <h2 className="title pl-[20px]">Settings</h2>
-            {section.items.map((item: { text?: string; icon?: React.ReactNode; title?: string }) => {
+            {section.items.map((item: { text?: string; icon?: React.ReactNode; title?: string }, index: number) => {
               if (item.text) {
                 return (
-                  <motion.li key={item.text} variants={linkVariants}>
+                  <motion.li key={item.text} variants={linkVariants} custom={index}>
                       <Link href={`/${item.text.toLowerCase()}`} className={currentRoute === `/${item.text.toLowerCase()}`
                       ? "active"
                       : ""}>
