@@ -44,7 +44,7 @@ const containerVariants = {
 export function LeftAside({ }: LeftAsideProps) {
   const currentRoute = usePathname().toLowerCase();
   return (
-    <motion.div className="text-cream" variants={containerVariants} initial="hidden" animate="visible">
+    <motion.div className="text-cream mt-[132px]" variants={containerVariants} initial="hidden" animate="visible">
       <div className="logo-section">
         <LogoIcon fill="#92C52A" />
       </div>
@@ -80,7 +80,7 @@ export function LeftAside({ }: LeftAsideProps) {
               if (item.text) {
                 return (
                   <motion.li key={item.text} variants={linkVariants} custom={index}>
-                      <Link href={`/${item.text.toLowerCase()}`} className={currentRoute === `/${item.text.toLowerCase()}`
+                    <Link href={`/${item.text.toLowerCase()}`} className={currentRoute === `/${item.text.toLowerCase()}`
                       ? "active"
                       : ""}>
                       {item.text}
@@ -102,7 +102,7 @@ export function LeftAside({ }: LeftAsideProps) {
               if (item.text) {
                 return (
                   <motion.li key={item.text} variants={linkVariants} custom={index}>
-                      <Link href={`/${item.text.toLowerCase()}`} className={currentRoute === `/${item.text.toLowerCase()}`
+                    <Link href={`/${item.text.toLowerCase()}`} className={currentRoute === `/${item.text.toLowerCase()}`
                       ? "active"
                       : ""}>
                       {item.text}
