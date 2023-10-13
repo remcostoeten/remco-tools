@@ -1,9 +1,8 @@
 import React from 'react';
 import Search from '@/components/dashboard/Search';
-import { LeftAside } from '@/components/dashboard/LeftAside';
 import { cn, headerSpacing } from '@/lib/utils';
-import Dashboard from '@/_app/dashboard/data/page';
 import DashboardAsides from '@/components/dashboard/DashboardAsides';
+import { LeftAside } from '@/components/dashboard/LeftAside';
 
 export default function layout({ children }: { children: React.ReactNode }) {
     return (
@@ -18,7 +17,7 @@ export default function layout({ children }: { children: React.ReactNode }) {
                 </main>
             </div >
             <DashboardAsides variant='right'>
-                dwadawdawdwdw
+                Some sidebar
             </DashboardAsides>
         </>
     );
