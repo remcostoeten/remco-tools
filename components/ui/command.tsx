@@ -10,7 +10,7 @@ import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { SearchCircleIcon } from '@heroicons/react/solid';
 import SearchIcon from '@mui/icons-material/Search';
 const Command = React.forwardRef<React.ElementRef<typeof CommandPrimitive>, React.ComponentPropsWithoutRef<typeof CommandPrimitive>>(({ className, ...props }, ref) => (
-    <search>
+    <search className='search'>
         <CommandPrimitive ref={ref} className={cn('mt-[40px] flex h-full w-full overflow-hidden rounded-md bg-popover text-popover-foreground', className)} {...props} />
     </search>
 ));

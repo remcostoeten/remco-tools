@@ -49,7 +49,7 @@ export default function LogoIcon({ fill }: logoProps) {
   }, [controls]);
 
   return (
-    <>   <svg
+    <>   <motion.svg
       xmlSpace="preserve"
       id="Laag_1"
       width="209.8"
@@ -66,7 +66,7 @@ export default function LogoIcon({ fill }: logoProps) {
       <motion.path
         d="M20.499 29.92c-1.426-3.025-4.432-5.156-7.95-5.316-.14.005-.28.005-.426.005V21.37c.14 0 .286.005.426.005a9.175 9.175 0 0 0 6.118-2.697 9.204 9.204 0 0 0 2.707-6.554h3.219c0 3.335-1.296 6.467-3.654 8.825a12.464 12.464 0 0 1-2.673 2.045 12.559 12.559 0 0 1 3.842 3.392A13.93 13.93 0 0 0 20.5 29.92z"
         className="st0 svg-elem-2 logo__icon-left"
-        fill={fill}  variants={pathVariants}
+        fill={fill} variants={pathVariants}
       />
 
       <motion.path
@@ -94,7 +94,7 @@ export default function LogoIcon({ fill }: logoProps) {
         className="st0 svg-elem-7 o"
         fill="#fff" variants={pathVariants}
       />
-    </svg>
+    </motion.svg>
 
     </>
 

@@ -145,6 +145,61 @@ body {
     }
 }
 
+.icon-svg {
+    opacity: 0;
+    animation: TopLeftFadeIn 500ms ease-in-out forwards;
+    transform: translateX(-40px);
+
+    @keyframes TopLeftFadeIn {
+        0% {
+            opacity: 0;
+            transform: translate(-40px, - 40px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+
+    @keyframes LeftFadeIn {
+        0% {
+            opacity: 0;
+            transform: translateX(-40px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+}
+
+.logo-section {
+    opacity: 0;
+    animation: fadeIn 500ms 50ms ease-in-out forwards;
+    width: 0;
+    
+    @keyframes fadeIn {
+        0% {
+            width: 0;
+            opacity: 0;
+        }
+
+        100% {
+            width: 100%;
+            opacity: 1;
+        }
+    }
+}
+
+.search {
+    animation: TopLeftFadeIn 1s 1s ease-in-out forwards;
+    transform: translate(-40px);
+    opacity: 0;
+}
+
 
 aside {
     .alt-children {
