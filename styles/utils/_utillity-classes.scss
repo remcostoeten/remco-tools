@@ -235,3 +235,9 @@ $border-color: #242e0e;
 .clear-header-aside {
     margin-top: 114px;
 }
+
+.clear-fixed-sidebar {
+    @include above-mobile {
+        margin-left: 20%;
+    }
+}
