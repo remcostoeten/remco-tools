@@ -91,7 +91,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                                     icon={<InProgressIcon fill="white" w="24" h="24" />}
                                 />
                                 <NavBar />
-                                {children}
+                                <main className='clear-header'>
+                                    {children}
+                                </main>
                                 {/* <Footer /> */}
                                 <Trailer />
                                 <Analytics />

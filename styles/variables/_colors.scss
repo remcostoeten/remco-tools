@@ -6,7 +6,17 @@ $spacing-xl: 40px;
 
 $color-primary: pink;
 $color-secondary: blue;
-
+$container-background: #ff060d03;
+// $container-border: #242e0e;
+$white: #efefee;
+$black: #111111;
+$green: #8BB928;
+$green-alt: #1E261D;
+$green-border: #182008;
+$container-border: $green-border;
+$fadeInEase: cubic-bezier(0.39, 0.575, 0.565, 1);
+$spacing-aside: 40px;
+$white: #f1f1ef;
 $black: var(--offblack);
 $dark-text: var(--black-text);
 $white: #faf9f6;

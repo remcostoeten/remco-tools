@@ -11,7 +11,7 @@ export function Spinner() {
 
 export default function MiniSpinner() {
   return (
-    <div className="spinner-container">
+    <div className="spinner-container w-screen h-screen grid place-items-center">
       <div className="spinner"></div>
     </div>
   )

@@ -8,65 +8,13 @@ import { DashmenuMap, DashmenuMapSub, DashmenuMapSubSub } from '@/config/data';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Pencil } from 'lucide-react';
-
-const linkVariants = {
-  hover: {
-    scale: 1.1,
-    transition: {
-      duration: 0.2,
-    },
-  },
-  initial: {
-    opacity: 0,
-    y: 202,
-  },
-  animate: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: 0.5,
-    },
-  },
-};
-
-const containerVariants = {
-  hidden: {
-    opacity: 0,
-  },
-  visible: {
-    opacity: 1,
-    transition: {
-      delay: 0.5,
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const leftSlideIn = {
-  hidden: {
-    opacity: 0,
-    x: -100,
-    pathLength: 0,
-  },
-  visible: {
-    opacity: 1,
-    x: 0,
-    pathLength: 1,
-    transition: {
-      duration: 2.75,
-      type: 'spring',
-      stiffness: 500,
-      damping: 50,
-      ease: 'tween',
-    },
-  },
-};
+import { linkVariants, leftSlideIn } from '@/utils/animations';
 
 export function LeftAside({ }: LeftAsideProps) {
   const currentRoute = usePathname().toLowerCase();
   return (
-    <motion.div className='flex flex-col justify-between h-screen' variants={containerVariants} >
-      <motion.div className="text-cream mt-[50px] mb-[40px] flex flex-col" variants={containerVariants} initial="hidden" animate="visible">
+    <motion.div className='flex flex-col justify-between h-screen'>
+      <motion.div className="text-cream mt-[50px] mb-[40px] flex flex-col" initial="hidden" animate="visible">
         <div className="logo-section">
           <LogoIcon fill="#92C52A" />
         </div>
@@ -97,11 +45,11 @@ export function LeftAside({ }: LeftAsideProps) {
         {DashmenuMapSub.map((section, index) => (
           <div key={index} className="sub ">
             <ul className="space-y-1 sub-sub parent">
-              <h2 className="title pl-[20px]">Settings</h2>
+              <h2 className="title pl-[10px]">Settings</h2>
               {section.items.map((item: { text?: string; icon?: React.ReactNode; title?: string }, index: number) => {
                 if (item.text) {
                   return (
-                    <motion.li key={item.text}  custom={index}>
+                    <motion.li key={item.text} variants={linkVariants} custom={index}>
                       <Link href={`dashboard/${item.text.toLowerCase()}`} className={currentRoute === `/${item.text.toLowerCase()}`
                         ? "active"
                         : ""}>
@@ -119,7 +67,7 @@ export function LeftAside({ }: LeftAsideProps) {
         {DashmenuMapSubSub.map((section, index) => (
           <div key={index} className="sub ">
             <ul className="space-y-1 sub-sub child ">
-              <h2 className="title pl-[20px]">Settings</h2>
+              <h2 className="title pl-[10px]">Settings</h2>
               {section.items.map((item: { text?: string; icon?: React.ReactNode; title?: string }, index: number) => {
                 if (item.text) {
                   return (

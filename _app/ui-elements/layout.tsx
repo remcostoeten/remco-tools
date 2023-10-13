@@ -20,7 +20,7 @@ interface UiShowcaseLayoutProps {
 export default function UiShowcaseLayout({ children }: UiShowcaseLayoutProps) {
   return (
     <>
-      <div className="container relative flex flex-col">
+      <div className="container claer-header relative flex flex-col">
         <PageHeader>
           <MsgBar />
           <LayoutIntroHeaderDescription />

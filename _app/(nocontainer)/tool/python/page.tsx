@@ -3,27 +3,20 @@ import { CounterClockwiseClockIcon } from '@radix-ui/react-icons';
 import { Button } from '@ui/button';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@ui/hover-card';
 import { Label } from '@ui/label';
-import { Separator } from '@ui/separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@ui/tabs';
 import { Textarea } from '@ui/textarea';
 
 import CompleteIcon from '@/components/core/icons/complete-icon';
 import EditIcon from '@/components/core/icons/edit-icon';
 import InsertIcon from '@/components/core/icons/insert-icon';
-import { Actionselector } from '@/components/showcase/tools/python-converter/components/action-selector';
-import { ScriptInput } from '@/components/showcase/tools/python-converter/components/script-generate-input';
 import { MaxLengthSelector } from '@/components/showcase/tools/playground/components/maxlength-selector';
-import { PresetActions } from '@/components/showcase/tools/playground/components/preset-actions';
-import { PresetSave } from '@/components/showcase/tools/playground/components/preset-save';
-import { PresetSelector } from '@/components/showcase/tools/playground/components/preset-selector';
-import { PresetShare } from '@/components/showcase/tools/playground/components/preset-share';
 import { TemperatureSelector } from '@/components/showcase/tools/playground/components/temperature-selector';
 import { TopPSelector } from '@/components/showcase/tools/playground/components/top-p-selector';
 import { types } from '@/components/showcase/tools/playground/data/models';
-import { presets } from '@/components/showcase/tools/playground/data/presets';
+import { Actionselector } from '@/components/showcase/tools/python-converter/components/action-selector';
 import { Actions } from '@/components/showcase/tools/python-converter/data/actions';
 
-import PythonScriptGenerator from '@/_app/(nocontainer)/(tools)/python/components/python-script-generator';
+import PythonScriptGenerator from '@/app/(nocontainer)/tools/python/components/python-script-generator';
 import Toolbar from '@/components/showcase/tools/playground/components/toolbar';
 export default function pythonScriptPlayground() {
     return (
