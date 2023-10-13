@@ -1,95 +1,102 @@
-'use client'
-import { motion } from "framer-motion";
-import React, { useState } from "react";
-import styles from "@s/module/logo.module.scss"
+'use client';
+import React, { useEffect } from 'react';
+import { motion, useAnimation } from 'framer-motion';
 import classNames from "classnames";
+import styles from "@s/module/logo.module.scss"
+
+const containerVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      delay: 0.5,
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const pathVariants = {
+  hidden: {
+    opacity: 0,
+    y: -100,
+    pathLength: 0,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    pathLength: 1,
+    transition: {
+      duration: 2.75,
+      type: 'spring',
+      stiffness: 500,
+      damping: 50,
+      ease: 'tween',
+    },
+  },
+};
+
 type logoProps = {
   fill?: string;
 };
 
 export default function LogoIcon({ fill }: logoProps) {
-  const [isReplaying, setIsReplaying] = useState(false);
+  const controls = useAnimation();
 
-  const handleReplay = () => {
-    setIsReplaying(true);
-    setTimeout(() => setIsReplaying(false), 500);
-  };
-
-  const replayButton = () => {
-    return (
-      // <button
-      //   className="absolute top-1/2 right-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black text-white rounded-full p-2 opacity-50 hover:opacity-100 transition-opacity duration-300"
-      //   onClick={handleReplay}
-      // >
-        <svg
-          version="1.1"
-          id="Capa_1"
-          xmlns="http://www.w3.org/2000/svg"
-          width="30px"
-          height="30px"
-          viewBox="0 0 487.4 487.401"
-          fill="#fff"
-        >
-          <g>
-            <g>
-              <path
-                d="M438.711,179.056c-3.809,3.554-7.485,7.221-11.116,10.933c-6.21-33.555-19.778-65.638-44.463-94.257
-        c-66.725-77.368-187.115-108.46-274.952-49.48C30.157,98.631-12.736,197.753,3.355,288.938
-        C21.248,390.35,104.405,484.181,220.274,470.547c63.107-7.419,119.863-38.558,159.552-83.67c0.812-0.722,1.534-1.514,2.25-2.326
-        c0.873-0.995,1.681-2.026,2.392-3.148c1.584-2.509,2.809-5.261,3.393-8.292l0.492-2.529c2.661-13.816-7.227-27.68-21.734-30.478
-        c-8.516-1.646-16.904,0.924-22.973,6.058c-2.412,2.037-4.397,4.484-5.91,7.257c-0.335,0.624-0.752,1.198-1.036,1.854
-        c-0.122-0.066-0.264-0.132-0.386-0.203c-39.248,44.95-98.559,74.412-160.152,63.013C74.351,399.222,37.952,282.073,62.234,197.377
-        C83.194,124.259,152.93,50.461,240.281,68.843c52.138,10.974,105.568,47.616,125.134,96.467
-        c2.041,5.098,3.788,10.217,5.302,15.366c-7.125-5.941-14.614-11.517-22.444-16.656c-12.264-8.043-27.676-9.374-38.167,2.072
-        c-8.744,9.537-9.414,28.467,2.859,36.516c16.433,10.781,30.742,23.075,43.193,37.024c7.53,8.435,14.36,17.498,20.515,27.248
-        c1.346,2.138,2.722,4.25,4.007,6.454c6.23,10.684,16.062,13.649,25.232,11.725c7.378-0.056,14.573-2.69,18.89-8.541
-        c2.956-3.996,6.003-7.911,9.039-11.836c3.301-4.266,6.688-8.455,10.105-12.614c11.126-13.507,22.866-26.502,35.795-38.557
-        C504.547,190.354,463.272,156.144,438.711,179.056z"
-              />
-            </g>
-          </g>
-        </svg>
-    );
-  };
+  useEffect(() => {
+    controls.start('visible');
+  }, [controls]);
 
   return (
-    <div className={styles["logo-svg"]}>
-      <motion.svg
-        key={isReplaying ? "replay" : "logo"}
-        initial={{ opacity: 0, rotate: -75, scale: 0.9 }}
-        animate={{ opacity: 1, rotate: 0, scale: 1 }}
-        transition={{ duration: 0.5, tween: 50, stiffness: 10, repeat: isReplaying ? Infinity : 0 }}
-        width="46.8"
-        height="46"
-        x="0"
-        y="0"
-        className={classNames("st0", "svgElem-2", "logo__iconLeft", "text-path", styles.moduleClassName)}
-        enableBackground="new 0 0 209.8 46"
-        fill={fill}
-      >
-        <path
-          d="M23.885 19.583a13.83 13.83 0 001.604-3.552c1.474 3.161 4.679 5.36 8.39 5.36v3.219h-.029c-5.098 0-9.25 4.156-9.25 9.265h-3.214c-.01-4.669 2.557-8.743 6.355-10.884a12.485 12.485 0 01-3.856-3.408z"
-          fill={fill}
-          className={classNames("st0", "svgElem-2", "logo__iconLeft", "text-path", styles.moduleClassName)}
-          opacity="1"
-          pathLength="1"
-          strokeDashoffset="0px"
-          strokeDasharray="1px 1px"
-        />
-        <path
-          d="M20.499 29.92c-1.426-3.025-4.432-5.156-7.95-5.316-.14.005-.28.005-.426.005V21.37c.14 0 .286.005.426.005a9.175 9.175 0 006.118-2.697 9.204 9.204 0 002.707-6.554h3.219c0 3.335-1.296 6.467-3.654 8.825a12.464 12.464 0 01-2.673 2.045 12.559 12.559 0 013.842 3.392A13.93 13.93 0 0020.5 29.92z"
-          fill={fill.toString()}
-          className={classNames("st0", "svgElem-2", "logo__iconLeft", "text-path", styles.moduleClassName)}
-          opacity="1"
-          pathLength="1"
-          strokeDashoffset="0px"
-          strokeDasharray="1px 1px"
-        />
-      </motion.svg>
+    <>   <svg
+      xmlSpace="preserve"
+      id="Laag_1"
+      width="209.8"
+      height={46}
+      x={0}
+      y={0}
+      className="icon-svg"
+    >
+      <motion.path
+        d="M23.885 19.583a13.83 13.83 0 0 0 1.604-3.552c1.474 3.161 4.679 5.36 8.39 5.36v3.219h-.029c-5.098 0-9.25 4.156-9.25 9.265h-3.214c-.01-4.669 2.557-8.743 6.355-10.884a12.485 12.485 0 0 1-3.856-3.408z"
+        className="st0 svg-elem-1 logo__icon-right"
+        fill={fill} variants={pathVariants}
+      />
+      <motion.path
+        d="M20.499 29.92c-1.426-3.025-4.432-5.156-7.95-5.316-.14.005-.28.005-.426.005V21.37c.14 0 .286.005.426.005a9.175 9.175 0 0 0 6.118-2.697 9.204 9.204 0 0 0 2.707-6.554h3.219c0 3.335-1.296 6.467-3.654 8.825a12.464 12.464 0 0 1-2.673 2.045 12.559 12.559 0 0 1 3.842 3.392A13.93 13.93 0 0 0 20.5 29.92z"
+        className="st0 svg-elem-2 logo__icon-left"
+        fill={fill}  variants={pathVariants}
+      />
 
-      {replayButton()}
-    </div>
+      <motion.path
+        d="M46.3 17.9c.6-.4 1.4-.5 2.2-.5V20h-.7c-1 0-1.8.3-2.3.8-.5.5-.8 1.4-.8 2.7V30h-2.6V17.5h2.6v1.8c.5-.6 1-1.1 1.6-1.4z"
+        className="st0 svg-elem-3 r"
+        fill="#fff" variants={pathVariants}
+      />
+      <motion.path
+        d="M62.2 24.7h-9.5c.1 1 .4 1.8 1.1 2.4.7.6 1.5.9 2.4.9 1.4 0 2.4-.6 2.9-1.7h2.8c-.4 1.1-1.1 2.1-2 2.8-1 .7-2.2 1.1-3.7 1.1-1.2 0-2.2-.3-3.2-.8-.9-.5-1.7-1.3-2.2-2.2-.5-1-.8-2.1-.8-3.4 0-1.3.3-2.4.8-3.4s1.2-1.7 2.2-2.2c.9-.5 2-.8 3.2-.8 1.2 0 2.2.3 3.1.8.9.5 1.6 1.2 2.1 2.1.5.9.8 2 .8 3.2v1.2zm-2.6-2.1c0-.9-.4-1.7-1-2.3-.7-.6-1.5-.9-2.5-.9-.9 0-1.6.3-2.3.8s-1 1.3-1.1 2.3h6.9z"
+        className="st0 svg-elem-4 e"
+        fill="#fff" variants={pathVariants}
+      />
+      <motion.path
+        d="M82.4 17.9c.8.4 1.4 1 1.8 1.8s.7 1.8.7 2.9v7.3h-2.5V23c0-1.1-.3-2-.8-2.6-.6-.6-1.3-.9-2.3-.9s-1.7.3-2.3.9c-.6.6-.8 1.4-.8 2.6v6.9h-2.5V23c0-1.1-.3-2-.8-2.6-.6-.6-1.3-.9-2.3-.9-1 0-1.7.3-2.3.9-.6.6-.8 1.4-.8 2.6v6.9h-2.6V17.5h2.6v1.4c.4-.5 1-.9 1.6-1.2.6-.3 1.3-.4 2.1-.4 1 0 1.9.2 2.7.6.8.4 1.4 1 1.8 1.8.4-.8 1-1.3 1.8-1.8.8-.4 1.6-.7 2.6-.7.6.1 1.5.3 2.3.7z"
+        className="st0 svg-elem-5 c"
+        fill="#fff" variants={pathVariants}
+      />
+      <motion.path
+        d="M88.1 20.3c.5-1 1.2-1.7 2.1-2.2.9-.5 2-.8 3.1-.8 1.5 0 2.7.4 3.7 1.1 1 .7 1.6 1.7 2 3h-2.8c-.2-.6-.6-1.1-1.1-1.4s-1.1-.5-1.9-.5c-1 0-1.9.4-2.5 1.1-.6.7-.9 1.8-.9 3.1s.3 2.4.9 3.1c.6.8 1.5 1.1 2.5 1.1 1.5 0 2.5-.7 2.9-2h2.8c-.4 1.3-1 2.3-2 3S94.7 30 93.2 30c-1.2 0-2.2-.3-3.1-.8-.9-.5-1.6-1.3-2.1-2.2-.5-1-.8-2.1-.8-3.4.1-1.2.3-2.3.9-3.3z"
+        className="st0 svg-elem-6 m"
+        fill="#fff" variants={pathVariants}
+      />
+      <motion.path
+        d="M103.8 29.3c-.9-.5-1.7-1.3-2.2-2.2-.5-1-.8-2.1-.8-3.4 0-1.3.3-2.4.8-3.4.6-1 1.3-1.7 2.3-2.2 1-.5 2-.8 3.2-.8s2.3.3 3.2.8c1 .5 1.7 1.3 2.3 2.2s.8 2.1.8 3.4c0 1.3-.3 2.4-.9 3.4-.6 1-1.3 1.7-2.3 2.3s-2.1.8-3.2.8c-1.2-.1-2.2-.3-3.2-.9zm5.1-1.9c.6-.3 1-.8 1.4-1.4.4-.6.5-1.4.5-2.3 0-.9-.2-1.7-.5-2.3-.3-.6-.8-1.1-1.4-1.4-.6-.3-1.2-.5-1.8-.5-.7 0-1.3.2-1.8.5-.6.3-1 .8-1.3 1.4s-.5 1.4-.5 2.3c0 1.3.3 2.4 1 3.1s1.5 1.1 2.6 1.1c.6 0 1.2-.2 1.8-.5z"
+        className="st0 svg-elem-7 o"
+        fill="#fff" variants={pathVariants}
+      />
+    </svg>
+
+    </>
+
   );
 }
-
-
