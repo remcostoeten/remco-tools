@@ -1,24 +1,16 @@
 import { ThemeBlockProps } from "@/utils/types";
-import { ContextMenu, ContextMenuContent, ContextMenuItem } from "../ui/context-menu";
-import { ContextMenuTrigger } from "../ui/context-menu";
 import MoneyUpIcon from "./icons/MoneyUp";
 import MoneyDownIcon from "./icons/MoneyDown";
-import { DotIcon } from "@radix-ui/react-icons";
 import {
-    Menubar,
-    MenubarCheckboxItem,
-    MenubarContent,
+    Menubar, MenubarContent,
     MenubarItem,
-    MenubarMenu,
-    MenubarRadioGroup,
-    MenubarRadioItem,
-    MenubarSeparator,
+    MenubarMenu, MenubarSeparator,
     MenubarShortcut,
     MenubarSub,
     MenubarSubContent,
     MenubarSubTrigger,
-    MenubarTrigger,
-} from "@c/ui/menubar"
+    MenubarTrigger
+} from "@c/ui/menubar";
 export default function Block({
     children,
     flexDir = "col",

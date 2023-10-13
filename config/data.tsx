@@ -1,12 +1,14 @@
 import React from 'react';
 import { FaJsSquare, FaMagento, FaReact } from 'react-icons/fa';
-import { LuGraduationCap } from 'react-icons/lu';
+import { LuGraduationCap, LuListTodo } from 'react-icons/lu';
 import corpcommentImg from '@/public/corpcomment.png';
 import rmtdevImg from '@/public/rmtdev.png';
 import wordanalyticsImg from '@/public/wordanalytics.png';
 import { ExpensesIcon, IncomeIcon, InvestmentIcon, OverviewIcon, SettingsIcon, SubscriptionsIcon, SupportIcon } from '@/components/dashboard/icons';
 import shortcuts from '@/lib/shortcuts';
 import { title } from 'process';
+import { LogoutIcon } from '@heroicons/react/solid';
+import { Settings } from 'lucide-react';
 
 function Icon1() {
     return (
@@ -167,9 +169,9 @@ export const DashmenuMap = [
     {
         items: [
             { text: 'Dashboard', icon: <Icon4 /> },
-            { text: 'Expenses', icon: <Icon6 /> },
-            { text: 'Income', icon: <Icon7 /> },
-            { text: 'Todos', icon: <Icon5 /> },
+            { text: 'Expenses', icon: <ExpensesIcon className={''} /> },
+            { text: 'Income', icon: <IncomeIcon className={''} /> },
+            { text: 'My account', icon: <SettingsIcon className='' /> },
         ],
     },
 ];
@@ -178,8 +180,8 @@ export const DashmenuMapSub = [
         items: [
             { title: 'Dashboard' },
             { text: 'Todos', icon: <Icon4 /> },
-            { text: 'Some link', icon: <Icon5 /> },
-            { text: 'Settings', icon: <Icon6 /> },
+            { text: 'Settings', icon: <SettingsIcon className={''} /> },
+            { text: 'Logout', icon: <LogoutIcon /> },
         ],
     },
 ];
@@ -191,6 +193,7 @@ export const DashmenuMapSubSub = [
             { text: 'Github', icon: <Icon4 /> },
             { text: 'Gitlab', icon: <Icon5 /> },
             { text: 'LinkedIn', icon: <Icon6 /> },
+            { text: 'Docs', icon: <Icon6 /> },
         ],
     },
 ];

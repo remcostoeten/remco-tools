@@ -96,15 +96,6 @@ export default function LoginPage() {
 
                 const user = userCredential.user;
                 console.log(`User ${user.email} logged in.`);
-
-                if (rememberEmail) {
-
-                    console.log("remember email")
-                    localStorage.setItem("email", emailValue);
-                    console.log("remember email");
-                } else {
-                    localStorage.removeItem("email");
-                }
             })
             .catch((error) => {
                 console.error(error);
@@ -171,7 +162,6 @@ export default function LoginPage() {
                         <ReadMore
                             customClassName="flex justify-center w-full mx-auto text-center"
                             onClick={() => setIsLoading(true)}
-                            disabled={isLoading}
                         >
                             Sign In with Email
                         </ReadMore>
@@ -193,7 +183,6 @@ export default function LoginPage() {
                     text=" Google"
                     customClassName="flex justify-center w-full mx-auto scale-75 text-center"
                     onClick={signInWithGoogle}
-                    disabled={isLoading || isGoogleLoading}
                 />
                 {isGoogleLoading ? <MiniSpinner /> : null}
                 <p className="px-8 mx-auto text-sm text-center text-muted-foreground">

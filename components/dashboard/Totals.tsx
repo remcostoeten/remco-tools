@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { auth, db } from '@/utils/firebase';
 import { Expense, Income } from '@/utils/types';
 import { QueryDocumentSnapshot, addDoc, collection, deleteDoc, getDocs } from 'firebase/firestore';
@@ -82,7 +82,6 @@ export default function Totals() {
       toast({
         title: `${incomeAmount} for ${incomeName} added!`,
       });
-      await fetchData();
     } catch (error) {
       console.error('Error adding income:', error);
     }
@@ -105,6 +104,40 @@ export default function Totals() {
       toast({
         title: `${expenseAmount} for ${expenseName} added!`,
       });
+      const fetchData = async () => {
+        setIsLoading(true);
+        const expenseQuerySnapshot = await getDocs(collection(db, 'expenses'));
+        const fetchedExpenses = expenseQuerySnapshot.docs.map((doc: QueryDocumentSnapshot) => {
+          const data = doc.data();
+          return {
+            id: doc.id,
+            name: data.name,
+            expenseAmount: data.expenseAmount,
+            category: data.category,
+            userId: data.userId,
+            createdAt: data.createdAt instanceof Date ? data.createdAt : data.createdAt.toDate(),
+          };
+        });
+
+        const incomeQuerySnapshot = await getDocs(collection(db, 'incomes'));
+        const fetchedIncomes = incomeQuerySnapshot.docs.map((doc: QueryDocumentSnapshot) => {
+          const data = doc.data();
+          return {
+            id: doc.id,
+            name: data.name,
+            incomeAmount: data.incomeAmount,
+            createdAt: data.createdAt instanceof Date ? data.createdAt : data.createdAt.toDate(),
+          };
+        });
+
+        setExpenses(fetchedExpenses);
+        setIncomes(fetchedIncomes);
+
+        await calculateTotalIncome();
+        await calculateTotalExpense();
+
+        setIsLoading(false);
+      };
       await fetchData();
     } catch (error) {
       console.error('Error adding expense:', error);
@@ -112,22 +145,59 @@ export default function Totals() {
   };
 
   const handleAddSavings = async () => {
-    try {
-      const docRef = await addDoc(collection(db, 'savings'), {
-        savingsAmount,
-        name: savingsName,
-        createdAt: new Date(),
+    const fetchData = async () => {
+      setIsLoading(true);
+      const expenseQuerySnapshot = await getDocs(collection(db, 'expenses'));
+      const fetchedExpenses = expenseQuerySnapshot.docs.map((doc: QueryDocumentSnapshot) => {
+        const data = doc.data();
+        return {
+          id: doc.id,
+          name: data.name,
+          expenseAmount: data.expenseAmount,
+          category: data.category,
+          userId: data.userId,
+          createdAt: data.createdAt instanceof Date ? data.createdAt : data.createdAt.toDate(),
+        };
       });
-      console.log('Savings added with ID:', docRef.id);
-      setSavingsAmount(0);
-      setSavingsName('');
-      toast({
-        title: `${savingsAmount} saving added!`,
+
+      const incomeQuerySnapshot = await getDocs(collection(db, 'incomes'));
+      const fetchedIncomes = incomeQuerySnapshot.docs.map((doc: QueryDocumentSnapshot) => {
+        const data = doc.data();
+        return {
+          id: doc.id,
+          name: data.name,
+          incomeAmount: data.incomeAmount,
+          createdAt: data.createdAt instanceof Date ? data.createdAt : data.createdAt.toDate(),
+        };
       });
-      await fetchData();
-    } catch (error) {
-      console.error('Error adding Savings:', error);
-    }
+
+      setExpenses(fetchedExpenses);
+      setIncomes(fetchedIncomes);
+
+      await calculateTotalIncome();
+      await calculateTotalExpense();
+
+      setIsLoading(false);
+    };
+
+    const handleAddSavings = async () => {
+      try {
+        const docRef = await addDoc(collection(db, 'savings'), {
+          savingsAmount,
+          name: savingsName,
+          createdAt: new Date(),
+        });
+        console.log('Savings added with ID:', docRef.id);
+        setSavingsAmount(0);
+        setSavingsName('');
+        toast({
+          title: `${savingsAmount} saving added!`,
+        });
+        await fetchData();
+      } catch (error) {
+        console.error('Error adding Savings:', error);
+      }
+    };
   };
 
   const handleClearAll = async () => {
@@ -211,7 +281,6 @@ export default function Totals() {
             {expenses.map((expense) => (
               <MoneyCard key={expense.id} type="expense" />
             ))}
-            <MoneyCard type="savings" name={savingsName} amount={savingsAmount} />
           </div>
         )}
       </div>

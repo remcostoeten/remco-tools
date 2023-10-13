@@ -3,10 +3,9 @@ import { motion } from 'framer-motion';
 import { opacity, slideLeft, mountAnim } from '../AnimationHelpers';
 import styles from './style.module.scss';
 import Anchor from './Anchor';
-import { useState } from 'react';
-import { DiscordIcon, WhatsApp } from '@/components/core/DiscordIcon';
 import Link from 'next/link';
 import Router, { useRouter } from 'next/navigation';
+import { DiscordIcon, WhatsApp } from '@/components/core/icons/DiscordIcon';
 
 type MenuItem = {
   title: string;
@@ -41,7 +40,6 @@ const menu: MenuItem[] = [
 type Props = {
   closeMenu: () => void;
 }
-
 
 export default function SliderMenu({ closeMenu }: Props) {
   const router = useRouter();

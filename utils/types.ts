@@ -1,5 +1,6 @@
 import { Playlist } from "@/components/dashboard/playlist";
 import { links } from "../config/data";
+import firebase from "./firebase";
 
 export type SectionName = (typeof links)[number]["name"];
 
@@ -20,7 +21,7 @@ export interface DashMenuSection {
 
 export interface LeftAsideProps extends React.HTMLAttributes<HTMLDivElement> {
   playlists?: Playlist[];
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export type ThemeBlockProps = {
@@ -39,8 +40,6 @@ export type iconProps = {
   className?: string;
 }
 
-
-
 export interface Thought {
   id: string;
   selectedDate?: Date;
@@ -55,12 +54,12 @@ export interface Thought {
   userId?: string;
 }
 
-
 export interface Expense {
   id?: string;
   name?: string;
   expenseAmount?: number;
   category?: string;
+  // @ts-ignore
   createdAt?: firebase.firestore.Timestamp;
   userId?: string;
 }
@@ -112,7 +111,7 @@ export interface SiteConfig {
     baseurl?: string;
   };
 }
-//   Types for the navigation
+
 export type NavItem = {
   title: string
   href?: string

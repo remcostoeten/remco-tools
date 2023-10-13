@@ -24,26 +24,14 @@ export default function FetchIncomes() {
         const percentage = Math.round((income.incomeAmount / totalIncome) * 100);
 
         return (
-            <div className='w-full  mt-8 relative rounded-md'>
-
-
-
-
+            <div className='w-full mt-8 relative rounded-md'>
                 <TooltipProvider>
                     <Tooltip>
                         <TooltipTrigger>
-
                         </TooltipTrigger>
                         <div className="relative">
-}
-                            <div
-                                className='absolute bg-[#1A221A] w-[29vw] h-1/6 m-w-[30vw] h-[6px]'
-                            ></div>
-
-                            <div
-                                className={`absolute bg-[#8ab829] w-[29vw] m-w-[30vw] h-[6px]   `}
-                                style={{ width: `${percentage}%` }}
-                            ></div>
+                            <div className='absolute bg-[#1A221A] w-[29vw] h-1/6 m-w-[30vw] h-[6px]'></div>
+                            <div className={`absolute bg-[#8ab829] w-[29vw] m-w-[30vw] h-[6px]`} style={{ width: `${percentage}%` }}></div>
                         </div>
                         <TooltipContent>
                             <p>{percentage}% of total income</p>
@@ -83,7 +71,6 @@ export default function FetchIncomes() {
         }
     };
 
-
     return (
         <div className='expense-individual'>
             <span className='flex flex-col gap-4 bord text-cream text-2xl pb-8'>Incoming expenses</span>
@@ -91,43 +78,40 @@ export default function FetchIncomes() {
                 <div className='gap-1 pb-8 mb-8 w-full individual' key={income.id}>
                     <div className='flex flex-col align-baseline items-start w-full'>
                         <div className="flex justify-between items-center w-full">
-                            <div className=" pr-4 flex items-w-full justify-start w-full">
+                            <div className="pr-4 flex items-w-full justify-start w-full">
                                 <span>
                                     <ExpenseIconWrapper>
                                         <ShoppingCartIcon color='white' width={20} height={20} />
                                     </ExpenseIconWrapper>
                                 </span>
-                                <span className='flex  flex-col  text-cream   pl-7'>
+                                <span className='flex flex-col text-cream pl-7'>
                                     <p>€{income.incomeAmount},-</p>
                                     <p>{income.name}</p>
                                     <p>{income.createdAt ? income.createdAt.toLocaleDateString() : ' '}</p>
                                 </span>
                             </div>
                             <div className="flex items-center justify-center" onClick={() => handleDelete(income.id)}>
-                                <AltButton><TrashIcon color='white' width={20} />
+                                <AltButton>
+                                    <TrashIcon color='white' width={20} />
                                 </AltButton>
                             </div>
                         </div>
                         <div className="flex">
-
                             <div className='flex gap-1 relative w-full'>
                                 <span className='flex w-full relative text-cream gap-2 '>
                                     <p>{income.createdAt ? income.createdAt.toLocaleDateString() : ''}</p>
                                 </span>
                             </div>
                         </div>
-
                     </div>
                     {bar(income)}
                 </div>
             ))}
-
             {!showAll && incomes.length > 6 && (
                 <div className='flex justify-center'>
                     <AltButton onClick={() => setShowAll(true)}>Read more</AltButton>
                 </div>
             )}
-
             {showAll && (
                 <div className='flex justify-center'>
                     <AltButton onClick={() => setShowAll(false)}>Read Less</AltButton>

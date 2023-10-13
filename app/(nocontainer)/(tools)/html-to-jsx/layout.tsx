@@ -56,25 +56,27 @@ export default function ConverterLayout({ children }: LayoutProps) {
       </Head>
       <div className='black-block relative container section black-block--section rounded-sm'>
         <div style={{ position: 'absolute', right: '0', top: '0', zIndex: 9999 }}>
-        <CustomStatusBadge title="beta" emojiKey="rocket" index={0} />
-        <CustomStatusBadge title="wip" emojiKey="fire" index={1} />
-        <PageHeader>
-          <span className="inline-block  space-y-4 font-heading text-4xl sm:mb-0 lg:text-5xl">
-            Convert your HTML to <Typewriter />
-          </span>
-          <PageHeaderDescription>
-            <span className="cursor-hover ">
-              Simply paste in your HTML and get the JSX/TSX version. When you
-              want to prefix the output with{" "}
-              <pre className="inline-block"> 'use client '</pre> for NextJS
-              simply toggle the switch. When using TypeScript you can also get
-              a version with the types included by filling in the props but they are not required.
+          <CustomStatusBadge title="beta" emojiKey="rocket" index={0} />
+          <CustomStatusBadge title="wip" emojiKey="fire" index={1} />
+          <PageHeader>
+            <span className="inline-block  space-y-4 font-heading text-4xl sm:mb-0 lg:text-5xl">
+              Convert your HTML to <Typewriter />
             </span>
-          </PageHeaderDescription>
-        </PageHeader>
-        <main>
-          {children}
-        </main></div>
+            <PageHeaderDescription>
+              <span className="cursor-hover ">
+                Simply paste in your HTML and get the JSX/TSX version. When you
+                want to prefix the output with{" "}
+                <pre className="inline-block"> 'use client '</pre> for NextJS
+                simply toggle the switch. When using TypeScript you can also get
+                a version with the types included by filling in the props but they are not required.
+              </span>
+            </PageHeaderDescription>
+          </PageHeader>
+          <main>
+            {children}
+          </main>
+        </div>
+      </div>
     </>
   )
 }

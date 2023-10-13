@@ -26,9 +26,7 @@ export function Toaster({
   variant = 'default',
 }: ToasterProps) {
   const [isVisible, setIsVisible] = useState(false);
-  const [isClosed, setIsClosed] = useState(
-    () => JSON.parse(localStorage.getItem('toastClosed') || 'false')
-  );
+  const [isClosed, setIsClosed] = useState(false);
 
   useEffect(() => {
     if (!isClosed) {
@@ -42,11 +40,6 @@ export function Toaster({
     }
   }, [isClosed]);
 
-  useEffect(() => {
-    if (isClosed) {
-      localStorage.setItem('toastClosed', JSON.stringify(true));
-    }
-  }, [isClosed]);
 
   const handleClose = () => {
     setIsVisible(false);

@@ -45,7 +45,7 @@ export const emojis = {
 type EmojiType = keyof typeof emojis;
 
 type StatusBadgeProps = {
-  title? :string
+  title?: string
   emojiKey?: EmojiType;
   index?: any;
   position?: "right" | "left" | "top" | "bottom";

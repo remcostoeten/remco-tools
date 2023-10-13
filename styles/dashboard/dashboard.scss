@@ -6,6 +6,7 @@ $green: #8BB928;
 $green-alt: #1E261D;
 $green-border: #182008;
 $container-border: $green-border;
+$fadeInEase: cubic-bezier(0.39, 0.575, 0.565, 1);
 
 .bg-green-alt {
     background-color: $green-alt;
@@ -142,7 +143,7 @@ $spacing-aside: 40px;
             padding-bottom: 80px;
         }
 
-        &.left {
+        c &.left {
             width: 30%;
         }
 
@@ -163,12 +164,155 @@ aside {
         transform: translateY(-2px);
     }
 
+    ul {
+        &:first-child {
+            display: block;
+        }
+    }
+
+    .sub {
+
+
+        li,
+        .title {
+            transform: translateX(-100px);
+            animation-name: footerIn;
+            opacity: 0;
+            animation-duration: 900ms;
+            animation-timing-function: $fadeInEase;
+            animation-fill-mode: forwards;
+        }
+
+        &.grandparent {
+            li {
+                animation-delay: 0ms;
+
+                &:nth-child(2) {
+                    animation-delay: 50ms;
+                }
+
+                &:nth-child(3) {
+                    animation-delay: 100ms;
+                }
+
+                &:nth-child(4) {
+                    animation-delay: 200ms;
+                }
+
+            }
+        }
+
+        .parent,
+        .title {
+            li {
+
+                &:nth-child(2) {
+                    animation-delay: 300ms;
+                }
+
+                &:nth-child(3) {
+                    animation-delay: 400ms;
+                }
+
+                &:nth-child(4) {
+                    animation-delay: 500ms;
+                }
+
+            }
+        }
+    }
+
+
+    .child {
+
+        .title,
+        li {
+            animation-delay: 600ms;
+        }
+
+        li {
+            &:nth-child(2) {
+                animation-delay: 700ms
+            }
+
+            :nth-child(3) {
+                animation-delay: 800ms
+            }
+
+            &:nth-child(4) {
+                animation-delay: 900ms
+            }
+
+
+            &:last-child {
+                animation-delay: 1000ms;
+            }
+        }
+    }
+
+
+    &.parent {
+        li {}
+    }
+
+    &.child {
+        li {}
+    }
+
+
+    .footer {
+        background: #0D0D0D;
+        border: 1px solid #262626;
+        border-radius: 8px;
+        padding: 24px;
+        margin-bottom: 24px;
+        opacity: 0;
+        animation-delay: 250ms;
+
+        .cta {
+            background-color: #050D03;
+            border: 1px solid $green;
+            border-radius: 12px;
+            width: 100%;
+            padding: 6px 12px;
+            color: $white;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            transition: 222ms ease-in-out;
+
+            &:hover {
+                background-color: darken(#050D03, 10%);
+            }
+
+            a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                align-items: center;
+                gap: 12px;
+                transform: translateY(10px);
+
+                svg {
+                    transform: translateY(2px) rotate(0);
+                }
+            }
+        }
+
+        p {
+            font-size: 12px;
+            ;
+        }
+    }
+
     .active {
         color: $green;
     }
 
     &.dashboard-left {
-        padding: $spacing-aside;
+        padding: 24px;
         padding-top: 0;
 
         .logo-section {
@@ -207,7 +351,7 @@ aside {
             padding-left: $spacing-aside;
             position: relative;
             margin-bottom: $spacing-aside / 2;
-            
+
             &::before {
                 content: '';
                 height: 100%;
@@ -257,19 +401,26 @@ aside {
 
                 &:nth-child(3) {
                     &::before {
-                        transform:  translateY(-18%) translateX(70%)  rotate(90deg);
+                        transform: translateY(-18%) translateX(70%) rotate(90deg);
                     }
                 }
 
                 &:nth-child(4) {
                     &::before {
-                        transform:translateY(-12%) translateX(35%) rotate(0deg);
+                        transform: translateY(-12%) translateX(35%) rotate(0deg);
                     }
                 }
 
                 &:nth-child(5) {
                     &::before {
-                        transform:  translateY(-18%) translateX(70%)  rotate(180deg);
+                        transform: translateY(-18%) translateX(70%) rotate(180deg);
+                    }
+                }
+
+
+                &:nth-child(5) {
+                    &::before {
+                        transform: translateY(-18%) translateX(70%) rotate(180deg);
                     }
                 }
             }

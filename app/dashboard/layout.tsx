@@ -11,7 +11,7 @@ export default function layout({ children }: { children: React.ReactNode }) {
             <DashboardAsides variant='left'>
                 <LeftAside />
             </DashboardAsides>
-            <div className="max-w-[1280px] h-max  mx-auto  !mt-[40px]  dash-block--parent  border-dash dash-border">
+            <div className="max-w-[1280px] h-max  mx-auto  !mt-[10px]  dash-block--parent  border-dash dash-border">
                 <Search />
                 <main className='flex dash-block'>
                     <section>{children}</section>

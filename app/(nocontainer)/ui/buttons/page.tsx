@@ -1,4 +1,4 @@
-import ExpandButton from '@/components/core/ExpandableButton';
+import ExpandButton from '@/components/core/buttons/ExpandableButton';
 import React, { ReactNode } from 'react';
 
 interface ExpandButtonProps {

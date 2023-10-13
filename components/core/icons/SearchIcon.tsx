@@ -1,9 +1,9 @@
 import React from "react";
 import { iconProps } from "@/utils/types";
 
-export default function SearchIcon({ w = 91, h = 113.75, fill = "#fff" }: iconProps) {
+export default function SearchIcon({ size, fill = "#fff" }: iconProps) {
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" x="0" y="0" width={w} height={h} viewBox="0 0 91 113.75">
+        <svg xmlns="http://www.w3.org/2000/svg" x="0" y="0" width={size} height={size} viewBox="0 0 91 113.75">
             <path
                 fill={fill}
                 fillRule="evenodd"

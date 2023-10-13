@@ -1,6 +1,5 @@
 'use client';
 
-import { CheckboxWithLabel } from '@/components/InputWithElement';
 import { Button } from '@/components/ui/ui-imports';
 import { toast } from '@/components/ui/use-toast';
 import ScriptContext from '@/context/ScriptContext';
@@ -8,6 +7,7 @@ import { CounterClockwiseClockIcon } from '@radix-ui/react-icons';
 import { TabsContent } from '@radix-ui/react-tabs';
 import React, { useContext, useState } from 'react';
 import FormOptions from './cards/card-form';
+import { CheckboxWithLabel } from '@/components/core/icons/InputWithElement';
 
 interface FormOptionsProps {
     cardTitle: string;

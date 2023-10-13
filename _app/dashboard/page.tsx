@@ -2,12 +2,11 @@
 import { usePasswordProtection } from '@/hooks/usePasswordProtection';
 import DashboardUser from "@/components/dashboard/DashboardUser";
 import { useRouter } from 'next/navigation';
-import CombinedExpenses from './tables/page';
 import Chart from '@/components/dashboard/ExpensesChart';
 import Block from '@/components/core/ThemeBlock';
 import MoneyCard from '@/components/dashboard/MoneyCard';
 import FetchIncomes from '@/components/dashboard/FetchIndividualIncome';
-import { Sidebar } from '@/components/dashboard/LeftAside';
+
 const correctPassword = process.env.ADMIN_PASSWORD || '';
 
 export default function Page() {
@@ -17,12 +16,9 @@ export default function Page() {
 
   return (
     <>
-
-
       {isAuthenticated ? (
         <>
           <DashboardUser />
-
           <main className='flex-col  w-7/12 sm:flex-row    flex justify-between items-center'>
             <div className="flex w-full">
               <MoneyCard type='expense' />
