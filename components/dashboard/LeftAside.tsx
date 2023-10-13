@@ -22,11 +22,11 @@ export default function LeftAside() {
         return user ? (
             <button className='cta gap-6' onClick={() => signOut(auth)}>
                 <MagicStar />
-                Logout <LuLogOut style={{transform: 'translate(20px, 3px)'}} color='#8BB928' />
+                Logout <LuLogOut style={{ transform: 'translate(20px, 3px)' }} color='#8BB928' />
                 <MagicStar />
             </button>
         ) : (
-            <Link className='cta text-sm' href='/login'>
+            <Link className='cta text-sm' href='/dashboard/login'>
                 <MagicStar />
                 <Pencil color="#8BB928" />
                 Login
@@ -68,7 +68,7 @@ export default function LeftAside() {
                                 if (item.text) {
                                     return (
                                         <li key={item.text} className={currentRoute === `/${item.text.toLowerCase()}` ? 'active' : ''}>
-                                            <Link href={`dashboard/${item.text.toLowerCase()}`}>{item.text}</Link>
+                                            <Link href={`/${item.text.toLowerCase()}`}>{item.text}</Link>
                                         </li>
                                     );
                                 } else {
@@ -104,6 +104,6 @@ export default function LeftAside() {
                 </div>
                 {loginMenuItem()}
             </div>
-        </div>
+        </div >
     );
 }
