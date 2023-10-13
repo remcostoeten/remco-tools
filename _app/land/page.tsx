@@ -1,5 +1,5 @@
 'use client';
-import { Sprinkle } from '@c/effects/Sprinkle';
+import Sprinkle  from '@c/effects/Sprinkle';
 import I from '@/components/core/Italic';
 import InteractiveDots from '@/components/effects/InteractiveDots';
 import SwappingWords from '@/components/effects/SwappingWords';
