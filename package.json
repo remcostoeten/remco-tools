@@ -107,7 +107,9 @@
     "tailwindcss-animate": "^1.0.7",
     "typed.js": "^2.0.16",
     "vaul": "^0.1.2",
-    "zod": "^3.22.1"
+    "@builder.io/dev-tools": "latest",
+    "@builder.io/react": "latest",
+    "@builder.io/sdk": "latest"
   },
   "devDependencies": {
     "@types/node": "latest",
