@@ -37,9 +37,12 @@
 @import 'dashboard/dashboard.scss';
 @import 'dashboard/_CurrentBalance';
 @import 'dashboard/individual.scss';
+@import 'module/sprinkle.module.scss';
 
 @layer base {
     :root {
+        --green: #8BB928;
+        --darkgreen: #374a0c;
         --purple: rgb(123, 31, 162);
         --violet: rgb(103, 58, 183);
         --pink: rgb(244, 143, 177);

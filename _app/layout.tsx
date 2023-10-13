@@ -85,11 +85,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         <ThemeContextProvider>
                             <ActiveSectionContextProvider>
 
-                                <Toaster
-                                    text="This is not a production site"
-                                    subtext="Strictly a testing site"
-                                    icon={<InProgressIcon fill="white" w="24" h="24" />}
-                                />
+                              
                                 <NavBar />
                                 {children}
                                 <Footer />

@@ -103,7 +103,7 @@ export default function Page() {
           </section>
         </div>
       </main>
-      <Sprinkle t1='some random ' t2='effect' t3='which can be cool' />
+      <Sprinkle t1='some random ' t2='effect' />
       <AlternatingGrid />
     </React.Fragment>
   );
