@@ -128,13 +128,12 @@ $border-color: #242e0e;
 .fade-seperator {
     width: 100%;
     height: 1px;
-    background: linear-gradient(to right, #2d3a12, #344412 50%, transparent 50%);
 }
 
 .fade-seperator-b {
     width: 100%;
     height: 1px;
-    background: linear-gradient(to right, #2d3a12, #344412 75%, transparent 50%);
+    background: linear-gradient(to right, #111, #050D03 75%, transparent 50%);
 }
 
 .fade-seperator-brotate {
@@ -148,17 +147,17 @@ $border-color: #242e0e;
 .fade-seperator-b-r {
     width: 100%;
     height: 1px;
-    background: linear-gradient(82deg, rgba(45,58,18,1) 3%, rgba(45,58,18,1) 82%, rgba(255,255,255,0) 100%);
+    background: linear-gradient(82deg, rgba(45,58,18,1) 3%, rgba(5,13,3,1) 82%, rgba(255,255,255,0) 100%);
 }
 .fade-seperator-b-l {
     width: 100%;
     height: 1px;
-    background: linear-gradient(45deg, rgba(45,58,18,1) 0%, rgba(45,58,18,1) 89%, rgba(255,255,255,0) 100%);
+    background: linear-gradient(45deg, rgba(45,58,18,1) 0%, rgba(5,13,3,1) 89%, rgba(255,255,255,0) 100%);
 }
 .fade-seperator-b-skew {
     width: 100%;
     height: 1px;
-    background: linear-gradient(263deg, rgba(255,255,255,0) 0%, rgba(45,58,18,1) 19%, rgba(45,58,18,1) 82%, rgba(255,255,255,0) 94%);
+    background: linear-gradient(263deg, rgba(255,255,255,0) 0%, rgba(5,13,3,1) 19%, rgba(45,58,18,1) 82%, rgba(255,255,255,0) 94%);
 }
 
 
