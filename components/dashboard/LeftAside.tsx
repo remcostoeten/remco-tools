@@ -1,20 +1,37 @@
 'use client';
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { memo } from 'react';
 import LogoIcon from '../core/icons/remcostoeten-logo-icon';
 import { AltButtonTextOutside } from '../core/buttons/Buttons';
-import { LeftAsideProps } from '@/utils/types';
 import { DashmenuMap, DashmenuMapSub, DashmenuMapSubSub } from '@/config/data';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Pencil } from 'lucide-react';
-import { linkVariants, leftSlideIn } from '@/utils/animations';
+import { useAuth } from '@/context/authContext';
+import { auth, db } from '@/utils/firebase';
+import { signOut } from 'firebase/auth';
+import { PencilIcon } from '@heroicons/react/solid';
+import  Sprinkle from '../effects/Sprinkle';
 
-export function LeftAside({ }: LeftAsideProps) {
+export default function LeftAside() {
   const currentRoute = usePathname().toLowerCase();
+  const user = auth?.currentUser
+
+  const loginMenuItem = () => {
+    {
+      user ? (
+        <button className='cta' onClick={() => signOut(auth)}>
+          Logout
+        </button>
+      ) : (
+        <Link className='cta' href="/login">Login</Link>
+      )
+    }
+  }
+
+
   return (
-    <motion.div className='flex flex-col justify-between h-screen'>
-      <motion.div className="text-cream mt-[50px] mb-[40px] flex flex-col" initial="hidden" animate="visible">
+    <div className='flex flex-col justify-between h-screen'>
+      <div className="text-cream mt-[50px] mb-[40px] flex flex-col">
         <div className="logo-section">
           <LogoIcon fill="#92C52A" />
         </div>
@@ -24,15 +41,13 @@ export function LeftAside({ }: LeftAsideProps) {
               {section.items.map((item: { text?: string; icon?: React.ReactNode; title?: string }, index: number) => {
                 if (item.text) {
                   return (
-                    <motion.li key={item.text} variants={linkVariants} custom={index}>
+                    <li key={item.text} className={currentRoute === `/${item.text.toLowerCase()}` ? "active" : ""}>
                       <AltButtonTextOutside icon={item.icon}>
-                        <Link href={`dashboard/${item.text.toLowerCase()}`} className={currentRoute === `/${item.text.toLowerCase()}`
-                          ? "active"
-                          : ""}>
+                        <Link href={`dashboard/${item.text.toLowerCase()}`}>
                           {item.text}
                         </Link>
                       </AltButtonTextOutside>
-                    </motion.li>
+                    </li>
                   );
                 } else {
                   return null;
@@ -49,13 +64,11 @@ export function LeftAside({ }: LeftAsideProps) {
               {section.items.map((item: { text?: string; icon?: React.ReactNode; title?: string }, index: number) => {
                 if (item.text) {
                   return (
-                    <motion.li key={item.text} variants={linkVariants} custom={index}>
-                      <Link href={`dashboard/${item.text.toLowerCase()}`} className={currentRoute === `/${item.text.toLowerCase()}`
-                        ? "active"
-                        : ""}>
+                    <li key={item.text} className={currentRoute === `/${item.text.toLowerCase()}` ? "active" : ""}>
+                      <Link href={`dashboard/${item.text.toLowerCase()}`}>
                         {item.text}
                       </Link>
-                    </motion.li>
+                    </li>
                   );
                 } else {
                   return null;
@@ -71,13 +84,11 @@ export function LeftAside({ }: LeftAsideProps) {
               {section.items.map((item: { text?: string; icon?: React.ReactNode; title?: string }, index: number) => {
                 if (item.text) {
                   return (
-                    <motion.li key={item.text}  custom={index}>
-                      <Link href={`dashboard/${item.text.toLowerCase()}`} className={currentRoute === `/${item.text.toLowerCase()}`
-                        ? "active"
-                        : ""}>
+                    <li key={item.text} className={currentRoute === `/${item.text.toLowerCase()}` ? "active" : ""}>
+                      <Link href={`dashboard/${item.text.toLowerCase()}`}>
                         {item.text}
                       </Link>
-                    </motion.li>
+                    </li>
                   );
                 } else {
                   return null;
@@ -86,17 +97,24 @@ export function LeftAside({ }: LeftAsideProps) {
             </ul>
           </div>
         ))}
-      </motion.div>
-      <motion.div variants={leftSlideIn} className='footer flex flex-col justify-end gap-[24px]'>
+      </div>
+      <div className='footer flex flex-col justify-end gap-[24px]'>
         <div className='flex gap flex-col'>
           <h3>Got a question?</h3>
-          <p className='text-xs leading-5'>Or just want to share some feedback? I'd be happy to hear. </p></div>
-        <motion.button variants={leftSlideIn} className='cta'>
-          <Link className='relative' href='#'>
+          <p className='text-xs leading-5'>Or just want to share some feedback? I'd be happy to hear. </p>
+        </div>
+        {user ? (
+          <button className='cta' onClick={() => signOut(auth)}>
             <Pencil color='#8BB928' />
-            <span>Contact</span></Link>
-        </motion.button>
-      </motion.div>
-    </motion.div>
+              <span>Logout</span>
+          </button>
+        ) : (
+          <Link className='cta' href="/login">            <Pencil color='#8BB928' />
+            <span>Login</span></Link>
+        )}
+        <Sprinkle t1='test' t2='test' t3='test' />
+      </div>
+    </div >
   );
 }
+

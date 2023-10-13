@@ -14,6 +14,7 @@ import I from '../core/Italic';
 import GithubLogo from '../core/icons/GithubLogo';
 import Linkedin from '../core/icons/Linkedin';
 import IntroButtons from './IntroButtons';
+import Sprinkle from '../effects/Sprinkle';
 
 export default function Intro() {
     const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
@@ -145,7 +146,7 @@ export default function Intro() {
 
                     </motion.div>
                 </motion.div>
-            </section>
+<Sprinkle t1="dawdawdaw" t2="Dwadawd"/>            </section>
         </>
     );
 }

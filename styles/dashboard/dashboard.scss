@@ -1,5 +1,3 @@
-
-
 .bg-green-alt {
     background-color: $green-alt;
 }
@@ -118,7 +116,6 @@ body {
     }
 }
 
-
 .dash-container {
     @extend .ui-block;
     @extend .ui-block--section;
@@ -134,7 +131,7 @@ body {
             padding-bottom: 80px;
         }
 
-        c &.left {
+        &.left {
             width: 30%;
         }
 
@@ -187,7 +184,6 @@ aside {
                 &:nth-child(4) {
                     animation-delay: 200ms;
                 }
-
             }
         }
 
@@ -212,6 +208,7 @@ aside {
     }
 
     .child {
+
         .title,
         li {
             animation-delay: 600ms;
@@ -252,9 +249,10 @@ aside {
         border: 1px solid #262626;
         border-radius: 8px;
         padding: 24px;
-        margin-bottom: 24px;
+        margin-bottom: 140px;
         opacity: 0;
         animation-delay: 250ms;
+        animation: footerIn 1s 1200ms $fadeInEase forwards;
 
         .cta {
             background-color: #050D03;
@@ -290,7 +288,6 @@ aside {
 
         p {
             font-size: 12px;
-            ;
         }
     }
 
@@ -320,8 +317,6 @@ aside {
             li {
                 list-style: none;
 
-                button {}
-
                 span {
                     margin-right: 20px;
                 }
@@ -330,8 +325,6 @@ aside {
                     padding-bottom: $spacing-aside / 2;
                 }
             }
-
-
         }
 
         .sub-sub {
@@ -379,7 +372,6 @@ aside {
                     background-size: 15px;
                 }
 
-
                 &:nth-child(2) {
                     &::before {
                         transform: translateY(-18%) translateX(70%) rotate(-90deg);
@@ -403,7 +395,6 @@ aside {
                         transform: translateY(-18%) translateX(70%) rotate(180deg);
                     }
                 }
-
 
                 &:nth-child(5) {
                     &::before {
