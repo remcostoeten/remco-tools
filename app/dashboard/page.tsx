@@ -7,6 +7,14 @@ import Chart from '@/components/dashboard/ExpensesChart';
 import Block from '@/components/core/ThemeBlock';
 import MoneyCard from '@/components/dashboard/MoneyCard';
 import FetchIncomes from '@/components/dashboard/FetchIndividualIncome';
+import Cards from '@/components/misc/Cards';
+import { CardTitle, CardDescription } from '@/components/ui/card';
+import CardWithGraph from '@/shad-dashboard-components/pages/home/cardWithGraph';
+import { Overview } from '@/shad-dashboard-components/pages/home/overview';
+import { Recents } from '@/shad-dashboard-components/pages/home/recents';
+import ThemeToggle from '@/shad-dashboard-components/theme-toggle';
+import { Card, CardHeader } from '@mui/material';
+import { Menu } from 'lucide-react';
 const correctPassword = process.env.ADMIN_PASSWORD || '';
 
 export default function Page() {
@@ -22,27 +30,38 @@ export default function Page() {
         <>
           <DashboardUser />
 
-          <main className='flex-col  w-7/12 sm:flex-row    flex justify-between items-center'>
-            <div className="flex w-full">
-              <MoneyCard type='expense' />
-              <div className="fade-seperator-brotate"></div>
-              <MoneyCard type='income' />
+          <main className="min-h-full min-w-full container py-6">
+            <div className='flex items-center justify-between'>
+              <div className='flex space-x-6'>
+                <h1 className='scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl'>/Dashboard</h1>
+                <Menu className={`max-md:hidden`} />
+              </div>
+              <ThemeToggle />
+            </div>
+            <Cards />
+            <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-2'>
+              <Card>
+                <Overview />
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle>
+                    Vendas recentes
+                  </CardTitle>
+                  <CardDescription>
+                    no total foram <b className='underline underline-offset-2'>15</b> vendas esse mês.
+                  </CardDescription>
+                </CardHeader>
+                <Recents />
+              </Card>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 my-4 items-center">
+              <CardWithGraph />
+              <CardWithGraph />
+              <CardWithGraph />
+              <CardWithGraph />
             </div>
           </main>
-          <div className="fade-seperator-b-l"></div>
-          <FetchIncomes />
-          {/* <Totals /> */}
-          <div className="flex gap-4 w-full">
-            {/* <MoneyCard hoverCard={true} type={'income'} />
-              <MoneyCard hoverCard={true} type={'expense'} /> */}
-            <Block>
-              <h2>dwa</h2>
-            </Block>
-          </div>
-          * <div className="flex gap-4">
-            {/* <CombinedExpenses /> */}
-            <Chart />
-          </div>
 
         </>
       ) : (
