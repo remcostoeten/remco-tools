@@ -15,7 +15,7 @@ import { Recents } from '@/shad-dashboard-components/pages/home/recents';
 import ThemeToggle from '@/shad-dashboard-components/theme-toggle';
 import { Card, CardHeader } from '@mui/material';
 import { Menu } from 'lucide-react';
-import LoginPage from './login/page';
+import LoginPage from './(auth)/login/page';
 const correctPassword = process.env.ADMIN_PASSWORD || '';
 
 export default function Page() {
@@ -25,7 +25,7 @@ export default function Page() {
 
     return (
         <>
-            {!isAuthenticated ? (
+            {isAuthenticated ? (
                 <>
                     <DashboardUser />
                     <main className='flex-col sm:flex-row    flex justify-between items-center'>

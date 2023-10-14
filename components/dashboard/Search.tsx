@@ -2,9 +2,15 @@
 import React from "react";
 import { Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator } from "../ui/command";
 import { SearchIcon } from "@heroicons/react/solid";
-
+import { usePathname } from "next/navigation";
 export default function Search() {
     const [open, setOpen] = React.useState(false)
+    const pathname = usePathname()
+
+    if (pathname === "dashboard/login" || pathname === "dashboard/register" || pathname === "dashboard") {
+        return null
+    }
+
 
     React.useEffect(() => {
         const down = (e: KeyboardEvent) => {
@@ -20,7 +26,7 @@ export default function Search() {
     return (
         <>
             <Command className="flex items-center">
-1                <CommandInput placeholder="Type a command or search..." />
+                1                <CommandInput placeholder="Type a command or search..." />
             </Command>
             <CommandDialog open={open} onOpenChange={setOpen}>
                 <CommandInput placeholder="Type a command or search..." />

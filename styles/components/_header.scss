@@ -7,6 +7,20 @@
 .header {
     width: -webkit-fill-available;
     z-index: -1;
+    
+    animation: slideHeaderIn 1s ease-in-out forwards;
+}
+
+@keyframes slideHeaderIn {
+    from {
+        transform: translate(0, -100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
 }
 
 body:not(.dark) {

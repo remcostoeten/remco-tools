@@ -1,0 +1,210 @@
+.barsSkeleton {
+    .container {
+        width: 350px;
+        padding: 5px;
+        margin: 0 auto;
+        box-shadow: 0px 1px 32px 4px rgba(0, 0, 0, 0.16);
+    }
+
+    .card1,
+    .card2 {
+        width: 275px;
+        height: 200px;
+        margin: 16px auto;
+        padding: 24px;
+        background-color: #111;
+        box-shadow: 0px 3px 2px 0px rgba(0, 0, 0, 0.08);
+    }
+
+    .card1 .element1 {
+        height: 16px;
+        width: 100%;
+    }
+
+    .card1 .element2 {
+        top: 10px;
+        height: 116px;
+        width: 50%;
+        border-radius: 50%;
+    }
+
+    .card1 .element3 {
+        top: 18px;
+        height: 16px;
+        width: 100%;
+    }
+
+    .card1 .element4 {
+        top: 26px;
+        left: 0px;
+        height: 16px;
+        width: 100%;
+    }
+
+    .card2 .element1 {
+        top: 16px;
+        height: 16px;
+        width: 35%;
+    }
+
+    .card2 .element2 {
+        top: 36px;
+        height: 50px;
+        width: 75%;
+    }
+
+    .card2 .element3 {
+        top: 58px;
+        height: 14px;
+        width: 100%;
+    }
+
+    .card2 .element4 {
+        top: 68px;
+        left: 0px;
+        height: 14px;
+        width: 80%;
+    }
+
+    .gradient {
+        animation-duration: 1.8s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: infinite;
+        animation-name: placeHolderShimmer;
+        animation-timing-function: linear;
+        background: $green-border;
+        background: linear-gradient(to right, lighten(#111, 5%) 15%, #111 20%, lighten(#111, 5%) 30%, #111 15%);
+        background-size: 1000px 640px;
+
+        position: relative;
+
+    }
+
+    @keyframes placeHolderShimmer {
+        0% {
+            background-position: -468px 0
+        }
+
+        100% {
+            background-position: 468px 0
+        }
+    }
+}
+
+
+.avatarTitleDescBtnSkeleton {
+    .card {
+        max-width: 350px;
+        width: 100%;
+        padding: 30px;
+        border: 1px solid #d9d9d9;
+        border-radius: 10px;
+    }
+
+    .card .header {
+        display: flex;
+        align-items: center;
+    }
+
+    .card .header .img {
+        position: relative;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    .header .details {
+        margin-left: 20px;
+    }
+
+    .details span {
+        position: relative;
+        display: block;
+        background: #d9d9d9;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .details .name {
+        width: 100px;
+        height: 15px;
+    }
+
+    .details .about {
+        width: 150px;
+        height: 15px;
+        margin-top: 10px;
+    }
+
+    .card .content {
+        margin: 25px 0;
+    }
+
+    .content .line {
+        position: relative;
+        height: 13px;
+        margin: 10px 0;
+        border-radius: 10px;
+        background: #d9d9d9;
+        overflow: hidden;
+    }
+
+    .content .line-3 {
+        width: calc(100% - 40%);
+    }
+
+    .card .btns {
+        display: flex;
+    }
+
+    .card .btns .btn {
+        position: relative;
+        width: 100%;
+        height: 40px;
+        background: #d9d9d9;
+        border-radius: 25px;
+        overflow: hidden;
+    }
+
+    .btns .btn-1 {
+        margin-right: 8px;
+    }
+
+    .btns .btn-2 {
+        margin-left: 8px;
+    }
+
+    .card .header .img::before,
+    .details span::before,
+    .content .line::before,
+    .btns .btn::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(to right,
+                #d9d9d9 0%,
+                #888b94 20%,
+                #d9d9d9 40%,
+                #d9d9d9 100%);
+        background-size: 450px 400px;
+        background-repeat: no-repeat;
+        animation: shimmer 1.4s linear infinite;
+    }
+
+    .details span::before,
+    .btns .btn-2::before {
+        animation-delay: 0.29s;
+    }
+
+    @keyframes shimmer {
+        0% {
+            background-position: -450px 0px;
+        }
+
+        100% {
+            background-position: 450px 0px;
+        }
+    }
+}

@@ -1,4 +1,3 @@
-import { Playlist } from "@/components/dashboard/playlist";
 import { links } from "../config/data";
 import firebase from "./firebase";
 
@@ -24,10 +23,6 @@ export interface DashMenuSection {
     items: DashMenuItem[];
 }
 
-export interface LeftAsideProps extends React.HTMLAttributes<HTMLDivElement> {
-    playlists?: Playlist[];
-    children?: React.ReactNode;
-}
 
 export type ThemeBlockProps = {
     children?: React.ReactNode;

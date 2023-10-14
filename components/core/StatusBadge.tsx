@@ -2,87 +2,87 @@ import React from "react";
 import { Badge } from "../ui/badge";
 
 export const label = {
-  beta: "Beta",
-  wip: "WiP",
-  bugs: "Bugs",
-  abandoned: "Abandoned",
-  lowPriority: "Low priority",
-  new: "New",
-  tool: "Tool",
-  showcase: "Showcase",
-  ui: "UI",
+    beta: "Beta",
+    wip: "WiP",
+    bugs: "Bugs",
+    abandoned: "Abandoned",
+    lowPriority: "Low priority",
+    new: "New",
+    tool: "Tool",
+    showcase: "Showcase",
+    ui: "UI",
 };
 
 export const emojis = {
-  rocket: "🚀",
-  fire: "🔥",
-  megaphone: "📣",
-  moneyBag: "💰",
-  graph: "📈",
-  trophy: "🏆",
-  lightBulb: "💡",
-  star: "⭐",
-  thunder: "⚡",
-  thumbsUp: "👍",
-  handshake: "🤝",
-  target: "🎯",
-  loudspeaker: "📢",
-  telephone: "☎️",
-  globe: "🌍",
-  email: "✉️",
-  mobilePhone: "📱",
-  construction: "🚧",
-  calendar: "📅",
-  clock: "⏰",
-  gift: "🎁",
-  shoppingCart: "🛒",
-  tag: "🏷️",
-  creditCard: "💳",
-  package: "📦",
-  percent: "💹",
+    rocket: "🚀",
+    fire: "🔥",
+    megaphone: "📣",
+    moneyBag: "💰",
+    graph: "📈",
+    trophy: "🏆",
+    lightBulb: "💡",
+    star: "⭐",
+    thunder: "⚡",
+    thumbsUp: "👍",
+    handshake: "🤝",
+    target: "🎯",
+    loudspeaker: "📢",
+    telephone: "☎️",
+    globe: "🌍",
+    email: "✉️",
+    mobilePhone: "📱",
+    construction: "🚧",
+    calendar: "📅",
+    clock: "⏰",
+    gift: "🎁",
+    shoppingCart: "🛒",
+    tag: "🏷️",
+    creditCard: "💳",
+    package: "📦",
+    percent: "💹",
 };
 
 type EmojiType = keyof typeof emojis;
 
 type StatusBadgeProps = {
-  title?: string
-  emojiKey?: EmojiType;
-  index?: any;
-  position?: "right" | "left" | "top" | "bottom";
-  className?: string;
-  label?: string;
+    title?: string
+    emojiKey?: EmojiType;
+    index?: any;
+    position?: "right" | "left" | "top" | "bottom";
+    className?: string;
+    label?: string;
 };
 
 export default function CustomStatusBadge({
-  title,
-  emojiKey,
-  index,
-  position = "right",
-  className,
+    title,
+    emojiKey,
+    index,
+    position = "right",
+    className,
 }: StatusBadgeProps) {
-  const offset = index as any * 30;
+    const offset = index as any * -30;
 
-  const transformMapping = {
-    right: `translateX(-3rem) translateY(${offset}px)`,
-    left: `translateX(3rem) translateY(${offset}px)`,
-    top: `translateY(${offset}px)`,
-    bottom: `translateY(-${offset}px)`,
-  };
+    const transformMapping = {
+        right: `translateX(-3rem) translateY(${offset}px)`,
+        left: `translateX(3rem) translateY(${offset}px)`,
+        top: `translateY(${offset}px)`,
+        bottom: `translateY(-${offset}px)`,
+    };
 
-  const style = {
-    transform: transformMapping[position],
-    [position]: 0,
-  };
+    const style = {
+        transform: transformMapping[position],
+        [position]: 0,
+    };
 
-  return (
-    <Badge
-      variant="default"
-      className={`absolute w-max ${className}`}
-      style={style}
-    >
-      {`${label[title as keyof typeof label]} ${emojis[emojiKey as EmojiType]}`}
-    </Badge>
-  );
+    return (
+        <Badge
+            variant="default"
+            className={`absolute w-max ${className}`}
+            style={style}
+        >
+            {`${label[title as keyof typeof label]} ${emojis[emojiKey as EmojiType]}`}
+        </Badge>
+    );
 }
 
 // USAGE

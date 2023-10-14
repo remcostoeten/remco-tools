@@ -1,18 +1,29 @@
 export function Spinner() {
-  return (
-    <div className='pswp__preloader__icn'>
-      <div className='pswp__preloader__cut'>
-        <div className='pswp__preloader__donut'></div>
-      </div>
-    </div>
-  );
+    return (
+        <div className="pswp__preloader__icn">
+            <div className="pswp__preloader__cut">
+                <div className="pswp__preloader__donut"></div>
+            </div>
+        </div>
+    );
 }
 
+type SpinnerProps = {
+    style?: React.CSSProperties;
+    absolute?: boolean; // Add absolute prop
+};
 
-export default function MiniSpinner() {
-  return (
-    <div className="spinner-container w-screen h-screen grid place-items-center">
-      <div className="spinner"></div>
-    </div>
-  )
+export default function MiniSpinner({
+    style,
+    absolute = false,
+}: SpinnerProps) {
+    return (
+        <div
+            style={style}
+            className={`spinner-container ${absolute ? "absolute winset-0" : ""
+                } grid place-items-center`}
+        >
+            <div className="spinner"></div>
+        </div>
+    );
 }

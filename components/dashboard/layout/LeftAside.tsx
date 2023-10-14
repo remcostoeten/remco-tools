@@ -76,8 +76,8 @@ export default function LeftAside() {
     };
 
     return (
-        <div className="flex flex-col justify-between h-screen">
-            <div className="text-cream mt-[50px] mb-[40px] flex flex-col">
+        <div className="flex flex-col justify-between h-screen w-min">
+            <div className="text-cream mt-[13px] mb-[40px] flex flex-col">
                 <div className="logo-section">
                     <LogoIcon fill="#92C52A" />
                 </div>

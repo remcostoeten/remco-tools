@@ -8,6 +8,7 @@ import Block from "../ThemeBlock";
 import { motion } from "framer-motion";
 import HoverCard from "../../effects/HoverCard";
 import { Card } from "../../ui/card";
+import MoneyCardSkeleton from "../LoaderBlock";
 
 interface Income {
     id: string;
@@ -67,7 +68,7 @@ export default function MoneyCard({
     }, [type]);
 
     if (isLoading) {
-        return <MiniSpinner />;
+        return <MoneyCardSkeleton />;
     }
 
     const blockProps: ThemeBlockProps = {

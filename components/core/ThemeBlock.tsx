@@ -12,6 +12,7 @@ import {
     MenubarTrigger
 } from "@c/ui/menubar";
 import { useEffect, useState } from "react";
+
 export default function Block({
     children,
     flexDir = "col",
@@ -21,7 +22,6 @@ export default function Block({
     title,
     className = "",
 }: ThemeBlockProps) {
-
     const isIncome = title === "Income";
     const iconFill = "#3eb557";
     const downFill = "#d6222e"
@@ -31,7 +31,7 @@ export default function Block({
     useEffect(() => {
         setIsMobile(document.body.clientWidth <= 768);
     }, []);
-    
+
     const Icon = isIncome ? (
         <MoneyUpIcon className="glowIcon" size={isMobile ? '36px' : '48px'} fill={iconFill} />
     ) : (
@@ -70,7 +70,8 @@ export default function Block({
                                 </MenubarItem>
                             </MenubarContent>
                         </MenubarMenu>
-                    </Menubar>                </div>
+                    </Menubar>
+                </div>
             )}
             {children}
         </div>

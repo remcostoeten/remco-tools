@@ -11,13 +11,13 @@ export default function DashboardAsides({
     variant,
     className,
 }: DashboardAsideProps) {
-    const width = variant === 'left' ? 'sm:block hidden dashboard-left clear-header-aside w-[15%]' : 'dashboard-right w-[30%]';
+    const width = variant === 'left' ? 'sm:block hidden dashboard-left clear-header-aside' : 'dashboard-right w-[30%]';
     const position = variant === 'left' ? 'left-0' : 'right-0';
 
     return (
         <>
             <aside
-                className={`bg-black ${width} ${position} ${className || 'top-0 bg-red-400 fixed min-h-screen'}`}
+                className={`bg-black ${width} ${position} ${className || 'top-0 bg-red-400 min-h-screen'}`}
             >
                 {children}
             </aside>

@@ -1,24 +1,24 @@
 'use client';
+import MiniSpinner from '@/components/effects/MiniSpinner';
+import Sprinkle from '@/components/effects/Sprinkle';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { auth } from '@/utils/firebase';
 import {
     browserLocalPersistence,
+    createUserWithEmailAndPassword,
     GoogleAuthProvider,
     onAuthStateChanged,
-    setPersistence,
-    signInWithEmailAndPassword,
-    signInWithPopup,
+    setPersistence, signInWithPopup,
+    updateProfile
 } from 'firebase/auth';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { toast } from '@/components/ui/use-toast';
-import { auth } from '@/utils/firebase';
-import { ReadMore } from '@/components/core/buttons/Buttons';
-import MiniSpinner from '@/components/effects/MiniSpinner';
-import Sprinkle from '@/components/effects/Sprinkle';
+import { toast } from 'sonner';
 
 export default function LoginPage() {
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [user, setUser] = useState(null);
@@ -44,65 +44,43 @@ export default function LoginPage() {
                 const user = userCredential.user;
                 console.log(`User ${user.displayName} logged in with Google.`);
 
-                toast({
-                    title: 'Google login successful.',
-                    description: `Welcome, ${user.displayName}!`,
-                });
+                toast.success("Welcome aboard" + user.displayName + "!");
 
                 router.push('/');
             })
             .catch((error) => {
                 console.error(error);
-
-                toast({
-                    title: 'Google login failed.',
-                    description: 'Failed to sign in with Google. Please try again.',
-                    variant: 'destructive',
-                });
+                toast.error("Failed to sign in with Google. Please try again.");
             })
             .finally(() => {
                 setIsGoogleLoading(false);
             });
     };
 
-    const handleClick = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
-        setIsGoogleLoading(false);
-        const [email, password] = (e.target as HTMLFormElement).elements;
-        const emailValue = (email as HTMLInputElement).value;
-        const passwordValue = (password as HTMLInputElement).value;
-
         setIsLoading(true);
+        const [nameInput, emailInput, passwordInput] = (e.target as HTMLFormElement).elements;
+        const nameValue = (nameInput as HTMLInputElement).value;
+        const emailValue = (emailInput as HTMLInputElement).value;
+        const passwordValue = (passwordInput as HTMLInputElement).value;
 
-        setPersistence(auth, browserLocalPersistence)
-            .then(() => {
-                return signInWithEmailAndPassword(auth, emailValue, passwordValue);
-            })
-            .then((userCredential) => {
-                toast({
-                    title: 'Login successful.',
-                    description: 'You have successfully signed in.',
-                });
-                router.push('/dashboard');
+        try {
+            await setPersistence(auth, browserLocalPersistence);
 
-                const user = userCredential.user;
-                console.log(`User ${user.email} logged in.`);
-            })
-            .catch((error) => {
-                console.error(error);
+            const userCredential = await createUserWithEmailAndPassword(auth, emailValue, passwordValue);
 
-                toast({
-                    title: 'Login failed.',
-                    description: 'Failed to sign in. Please try again.',
-                    variant: 'destructive',
-                });
-            })
-            .finally(() => {
-                setIsLoading(false);
-            });
+            await updateProfile(userCredential.user, { displayName: nameValue });
+            toast.success("Welcome aboard" + user.displayName + "!");
+
+            router.push('/');
+        } catch (error) {
+            console.error(error);
+            toast.error("Failed to register. Please try different credentials.");
+        } finally {
+            setIsLoading(false);
+        }
     };
-
     return (
         <>
             <div className='w-full p-8 mt-4 grid place-items-center'>
@@ -111,33 +89,44 @@ export default function LoginPage() {
                     Enter your email and password to sign in to your account
                 </p>
             </div>
-            <form onSubmit={handleClick} className='mt-8'>
+            <form onSubmit={handleRegister} className='mt-8'>
                 <div className='grid gap-2'>
                     <div className='grid gap-1'>
-                        <Label className='sr-only' htmlFor='email'>
+                        <Input
+                            id="name"
+                            placeholder="Jan Jansma"
+                            type="name"
+                            autoCapitalize="none"
+                            autoComplete="name"
+                            autoCorrect="off"
+                            onChange={(e) => setName(e.target.value)}
+                            value={name}
+                        />
+
+                        <Label className="sr-only" htmlFor="email">
                             Email
                         </Label>
                         <Input
-                            id='email'
-                            placeholder='name@example.com'
-                            type='email'
-                            autoCapitalize='none'
-                            autoComplete='email'
-                            autoCorrect='off'
+                            id="email"
+                            placeholder="name@example.com"
+                            type="email"
+                            autoCapitalize="none"
+                            autoComplete="email"
+                            autoCorrect="off"
                             onChange={(e) => setEmail(e.target.value)}
                             value={email}
                         />
 
-                        <Label className='sr-only' htmlFor='password'>
+                        <Label className="sr-only" htmlFor="password">
                             Password
                         </Label>
                         <Input
-                            id='password'
-                            placeholder='Password'
-                            type='password'
-                            autoCapitalize='none'
-                            autoComplete='current-password'
-                            autoCorrect='off'
+                            id="password"
+                            placeholder="Password"
+                            type="password"
+                            autoCapitalize="none"
+                            autoComplete="current-password"
+                            autoCorrect="off"
                             onChange={(e) => setPassword(e.target.value)}
                             value={password}
                         />

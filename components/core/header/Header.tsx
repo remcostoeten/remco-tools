@@ -8,19 +8,20 @@ import { useActiveSectionContext } from '@/context/active-section-contex';
 import ToolsDropdown from './ToolsDropdown';
 import MiscMenu from './MiscDropdown';
 import UiElementsDropdown from './UiElementsDropdown';
+import { topSlideIn } from '@/utils/animations';
 
 export default function Header() {
     const { activeSection, setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
     return (
         <>
-            <header className="relative z-50 header hidden md:flex showAlternativeCursor">
+            <header className="header relative z-50 header hidden md:flex showAlternativeCursor">
                 <motion.div
                     className="header black-block width-fill fixed top-0 left-1/2 h-[4.5rem] w-full rounded-none shadow-lg shadow-white/[0.06] backdrop-blur-[0.5rem] sm:top-6 sm:h-[3.25rem]  sm:rounded-full "
                     initial={{ y: -100, x: "-50%", opacity: 0 }}
                     animate={{ y: 0, x: "-50%", opacity: 1 }}
                 ></motion.div>
 
-                <nav className="items-center justify-center border-shadow  flex w fixed top-[0.15rem] left-1/2 h-16 -translate-x-1/2 py-2 sm:top-[1.7rem] sm:h-[initial] sm:py-0">
+                <motion.nav initial={{ opacity: 0 }} className="header items-center justify-center border-shadow  flex w fixed top-[0.15rem] left-1/2 h-16 -translate-x-1/2 py-2 sm:top-[1.7rem] sm:h-[initial] sm:py-0">
                     <ul className="flex w-[22rem] flex-wrap items-center justify-center gap-y-1 text-[0.9rem] font-medium text-gray-500 sm:w-max sm:flex-nowrap sm:gap-5">
                         {links.map((link, index) => (
                             <React.Fragment key={link.hash}>
@@ -83,7 +84,7 @@ export default function Header() {
                             </React.Fragment>
                         ))}
                     </ul>
-                </nav>
+                </motion.nav>
             </header>
         </>
     );

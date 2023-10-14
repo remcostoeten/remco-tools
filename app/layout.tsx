@@ -1,8 +1,4 @@
 import NavBar from '@/components/core/NavBar';
-import InProgressIcon from '@/components/core/icons/InProgressIcon';
-import SuccesIcon from '@/components/core/icons/SuccesIcon';
-import WarningIcon from '@/components/core/icons/WarningIcon';
-import { Toaster } from '@/components/ui/toaster';
 import { Tooltip, TooltipProvider } from '@/components/ui/tooltip';
 import { seoKeywords } from '@/config/keywords';
 import { siteConfig } from '@/config/site';
@@ -11,11 +7,8 @@ import ThemeContextProvider from '@/context/theme-context';
 import '@/styles/styles.scss';
 import Trailer from '@c/core/Cursor';
 import ThemeSettings from '@c/core/ToggleTheme';
-import InteractiveDots from '@c/effects/InteractiveDots';
-import SliderNavigation from '@c/effects/SliderMenu/SlideNavigation';
-import Footer from '@c/landing/Footer';
 import { Analytics } from '@vercel/analytics/react';
-
+import { Toaster } from 'sonner';
 import { Inter, Lexend_Deca, Manrope } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 const rope = Manrope({ subsets: ['latin'] });
@@ -85,15 +78,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         <ThemeContextProvider>
                             <ActiveSectionContextProvider>
                                 <ThemeSettings />
-                               
+
                                 <NavBar />
-                                <main className='clear-header'>
+                                <main className='clear-header flex justify-center '>
                                     {children}
                                 </main>
                                 {/* <Footer /> */}
                                 <Trailer />
+                                <Toaster richColors />
                                 <Analytics />
-
                             </ActiveSectionContextProvider>
                         </ThemeContextProvider>
                     </Tooltip>

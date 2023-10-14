@@ -22,8 +22,8 @@ type CheckboxWithLabel = {
 export default function InputWithLabel({ label, type, className, value, placeholder, onChange }: InputWithLabelProps) {
     return (
         <div className="flex flex-col gap-2 `${className}`">
-            <Label className="light:text-white text-cream-dark">{label}</Label>
-            <Input type={type} className="border-cream-dark bg-transparent" value={value} placeholder={placeholder} onChange={onChange} />
+            <Label className="light:text-white text-cream">{label}</Label>
+            <Input type={type} className="border-cream bg-transparent" value={value} placeholder={placeholder} onChange={onChange} />
         </div>
     );
 }
