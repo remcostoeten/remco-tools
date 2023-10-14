@@ -6,15 +6,16 @@ type SprinkleProps = {
     t1?: string;
     t2?: string;
     children?: ReactNode;
+    className?: string;
 };
 
-export default function Sprinkle({ t1, t2, children }: SprinkleProps) {
+export default function Sprinkle({ t1, t2, children, className }: SprinkleProps) {
     const starRef = useRef(null);
     const starTwoRef = useRef(null);
     const starThreeRef = useRef(null);
 
     useEffect(() => {
-        const randomizePosition = (element) => {
+        const randomizePosition = (element: { style: { setProperty: (arg0: string, arg1: string) => void } }) => {
             const randomTop = Math.random() * 5;
             const randomLeft = Math.random() * 5;
 
@@ -22,7 +23,7 @@ export default function Sprinkle({ t1, t2, children }: SprinkleProps) {
             element.style.setProperty('--star-left', `${randomLeft}%`);
         };
 
-        const handleAnimationIteration = (e) => {
+        const handleAnimationIteration = (e: { target: any }) => {
             randomizePosition(e.target);
         };
 
@@ -41,7 +42,7 @@ export default function Sprinkle({ t1, t2, children }: SprinkleProps) {
     }, []);
 
     return (
-        <div className={styles.heading}>
+        <div className={`${className} text-cream`}>
             {t1}
             <span className={styles.magic}>
                 <span className={styles['magic-star']} ref={starRef}>

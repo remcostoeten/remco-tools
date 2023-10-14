@@ -36,16 +36,6 @@ $size: clamp(20px, 1.5vw, 30px);
     @return random($max - $min + 1)+$min;
 }
 
-.heading {
-    color: white;
-    font-family: "Rubik", sans-serif;
-    font-size: clamp(2em, 2vw, 4em);
-    font-weight: 400;
-    margin: 0px;
-    padding: 20px;
-    text-align: center;
-}
-
 .magic {
     display: inline-block;
     position: relative;

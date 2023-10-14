@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
 import LogoIcon from '../core/icons/remcostoeten-logo-icon';
-import { AltButtonTextOutside } from '../core/buttons/Buttons';
 import { DashmenuMap, DashmenuMapSub, DashmenuMapSubSub } from '@/config/data';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
@@ -9,24 +8,20 @@ import { auth } from '@/utils/firebase';
 import { signOut } from 'firebase/auth';
 import MagicStar from '../effects/MagicStar';
 import { Pencil } from 'lucide-react';
-import { LogoutIcon } from '@heroicons/react/solid';
 import { LuLogOut } from 'react-icons/lu';
 import { useActiveSectionContext } from '@/context/active-section-contex';
 import { motion } from 'framer-motion';
 import clsx from 'clsx';
+import { UilCreateDashboard } from '@iconscout/react-unicons'
 
-type LinkProps = {
-    name: string;
-    hash: string;
-};
 
 const LeftAsideLink: React.FC<LinkProps> = ({ name, hash }) => {
     const { activeSection, setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
 
     return (
         <Link
-            className={clsx('flex w-full items-center justify-center py-3 hover:text-gray-200 transition dark:-text-white pl-4 pr-4 h-9', {
-                '': activeSection === name,
+            className={clsx('flex w-full items-center justify-start pb-[9px] hover:text-gray-200 transition dark:text-white pr-4 h-9', {
+                'text-gray-200': activeSection === name,
             })}
             href={hash}
             onClick={() => {
@@ -38,8 +33,13 @@ const LeftAsideLink: React.FC<LinkProps> = ({ name, hash }) => {
 
             {name === activeSection && (
                 <motion.span
-                    className="black-block absolute inset-0 border rounded-full -z-10"
+                    className="activec"
                     layoutId="activeSection"
+                    // style={{
+                    //     transform: 'translate(3px, 0px)',
+                    //     transformOrigin: '50% 50% 0px',
+                    //     height: '50px',
+                    // }}
                     transition={{
                         type: 'spring',
                         stiffness: 380,
@@ -58,16 +58,15 @@ export default function LeftAside() {
     const isActiveRoute = (route) => {
         return currentRoute === route.toLowerCase();
     };
-
     const loginMenuItem = () => {
         return user ? (
-            <button className="cta gap-6" onClick={() => signOut(auth)}>
+            <button className="cta-sprinkle gap-6" onClick={() => signOut(auth)}>
                 <MagicStar />
                 Logout <LuLogOut style={{ transform: 'translate(20px, 3px)' }} color="#8BB928" />
                 <MagicStar />
             </button>
         ) : (
-            <Link className="cta text-sm" href="/dashboard/login">
+            <Link className="cta-sprinkle text-sm" href="/dashboard/login">
                 <MagicStar />
                 <Pencil color="#8BB928" />
                 Login
@@ -84,14 +83,22 @@ export default function LeftAside() {
                 </div>
                 <div className="sub">
                     <ul className="space-y-1 sub grandparent">
-                        <li className={isActiveRoute('/dashboard') ? 'active' : ''}>
-                            <Link href="/dashboard">Dashboard</Link>
+
+                        <li className={isActiveRoute('/dashboard') ? 'active flex items- !text-red-400' : 'flex items-center     '}>
+                            <span className='text-cream flex items-center justify-center px-3 py-2 text-xs bg-green-alt bg-dash-alt-border rounded-lg w-max border'>
+                                <UilCreateDashboard />
+                            </span>
+                            <Link className={isActiveRoute('/dashboard') ? 'active ' : ' items-center     '} href="/dashboard">Dashboard</Link>
                         </li>
                         {DashmenuMap.map((section, index) => (
                             <React.Fragment key={index}>
                                 {section.items.map((item: { name?: string; icon?: React.ReactNode; title?: string }, index: number) => (
-                                    <li key={item.name} className={isActiveRoute(`/dashboard/${item.name?.toLowerCase()}`) ? 'active' : ''}>
+                                    <li key={item.name} className={`${isActiveRoute(`/dashboard/${item.name?.toLowerCase()}`) ? 'active flex items-cejnter' : ' flex items-center'}`}>
+                                        <span className='text-cream flex items-center justify-center px-3 py-2 -z-10 text-xs bg-green-alt bg-dash-alt-border rounded-lg w-max border'>
+                                            {item.icon}
+                                        </span>
                                         <LeftAsideLink name={item.name} hash={`/dashboard/${item.name?.toLowerCase()}`} />
+
                                     </li>
                                 ))}
                             </React.Fragment>
@@ -122,7 +129,7 @@ export default function LeftAside() {
                                         if (item.name) {
                                             return (
                                                 <li key={item.name} className={isActiveRoute(`/dashboard/${item.name?.toLowerCase()}`) ? 'active' : ''}>
-                                                    <LeftAsideLink name={item.name} hash={`/dashboard/${item.name?.toLowerCase()}`} />
+                                                    <LeftAsideLink name={item.name} hash={`/dashboard/${item.text?.toLowerCase()}`} />
                                                 </li>
                                             );
                                         } else {

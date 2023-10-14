@@ -6,10 +6,10 @@ import rmtdevImg from '@/public/rmtdev.png';
 import wordanalyticsImg from '@/public/wordanalytics.png';
 import { ExpensesIcon, IncomeIcon, InvestmentIcon, OverviewIcon, SettingsIcon, SubscriptionsIcon, SupportIcon } from '@/components/dashboard/icons';
 import shortcuts from '@/lib/shortcuts';
-import { title } from 'process';
 import { LogoutIcon } from '@heroicons/react/solid';
-import { Settings } from 'lucide-react';
-
+import { UilMoneyInsert } from '@iconscout/react-unicons'
+import { UilMoneyBillSlash } from '@iconscout/react-unicons'
+import { UilChatBubbleUser } from '@iconscout/react-unicons'
 function Icon1() {
     return (
         <svg
@@ -168,9 +168,9 @@ export const dashboardLinks = [
 export const DashmenuMap = [
     {
         items: [
-            { name: 'Expenses', icon: <ExpensesIcon className={''} /> },
-            { name: 'Income', icon: <IncomeIcon className={''} /> },
-            { name: 'My account', icon: <SettingsIcon className='' /> },
+            { name: 'Expenses', icon: <UilMoneyBillSlash /> },
+            { name: 'Income', icon: <UilMoneyInsert /> },
+            { name: 'My account', icon: <UilChatBubbleUser /> },
         ],
     },
 ];

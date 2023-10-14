@@ -16,6 +16,7 @@ import { toast } from '@/components/ui/use-toast';
 import { auth } from '@/utils/firebase';
 import { ReadMore } from '@/components/core/buttons/Buttons';
 import MiniSpinner from '@/components/effects/MiniSpinner';
+import Sprinkle from '@/components/effects/Sprinkle';
 
 export default function LoginPage() {
     const [email, setEmail] = useState('');
@@ -142,34 +143,31 @@ export default function LoginPage() {
                         />
                     </div>
 
-                    <ReadMore
-                        customClassName='flex justify-center w-full mx-auto text-center'
+                    <button
+                        className='cta-sprinkle flex justify-center  mx-auto text-center'
                         onClick={() => setIsLoading(true)}
                     >
-                        Sign In with Email
-                    </ReadMore>
+                        <Sprinkle className='py-2 w-16'>
+                            Sign in</Sprinkle>
+                    </button>
 
                     {isLoading ? <MiniSpinner /> : null}
                 </div>
-            </form>
+            </form >
             <div className='relative mt-8'>
-                <div className='absolute inset-0 flex items-center'>
-                    <div className='w-full border-t' />
-                </div>
                 <div className='relative flex justify-center text-xs uppercase'>
                     <span className='px-2 bg-background text-muted-foreground'>
                         Or continue with
                     </span>
                 </div>
             </div>
-            <ReadMore
-                text=' Google'
-                customClassName='flex justify-center w-full mx-auto scale-75 text-center'
+            <button
+                className='cta cta--semi-rounded animbtn flex justify-center w-full mx-auto scale-75 text-center sm:w-min'
                 onClick={signInWithGoogle}
-            />
+            >google</button>
             {isGoogleLoading ? <MiniSpinner /> : null}
-            <p className='px-8 mx-auto mt-8 text-sm text-center text-muted-foreground'>
-                <Link href='/register' className='underline hover:text-brand underline-offset-4'>
+            <p className='px-8 flex smx-auto mt-8 text-sm text-center text-muted-foreground'>
+                <Link href='/register' className='text-center  mx-auto underline hover:text-brand underline-offset-4'>
                     Don&apos;t have an account? Sign Up
                 </Link>
             </p>

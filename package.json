@@ -9,10 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@builder.io/dev-tools": "latest",
+    "@builder.io/react": "latest",
+    "@builder.io/sdk": "latest",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@heroicons/react": "v1",
     "@hookform/resolvers": "^3.2.0",
+    "@iconscout/react-unicons": "^2.0.2",
     "@monaco-editor/react": "^4.5.1",
     "@mui/icons-material": "^5.14.13",
     "@mui/material": "^5.14.13",
@@ -106,10 +110,7 @@
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7",
     "typed.js": "^2.0.16",
-    "vaul": "^0.1.2",
-    "@builder.io/dev-tools": "latest",
-    "@builder.io/react": "latest",
-    "@builder.io/sdk": "latest"
+    "vaul": "^0.1.2"
   },
   "devDependencies": {
     "@types/node": "latest",

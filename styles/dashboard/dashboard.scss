@@ -1,3 +1,5 @@
+@import './dashboard-buttons.scss';
+
 .bg-green-alt {
     background-color: $green-alt;
 }
@@ -309,38 +311,6 @@ aside {
         animation-delay: 250ms;
         animation: footerIn 1s 1200ms $fadeInEase forwards;
 
-        .cta {
-            background-color: #050D03;
-            border: 1px solid $green;
-            border-radius: 12px;
-            width: 100%;
-            padding: 6px 12px;
-            color: $white;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            transition: 222ms ease-in-out;
-
-            &:hover {
-                background-color: darken(#050D03, 10%);
-            }
-
-            a {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                align-items: center;
-                gap: 12px;
-                transform: translateY(10px);
-
-                svg {
-                    transform: translateY(2px) rotate(0);
-                }
-            }
-        }
-
         p {
             font-size: 12px;
         }
@@ -355,7 +325,7 @@ aside {
         padding-top: 0;
         width: 13% !important;
 
-         .logo-section {
+        .logo-section {
             padding-bottom: 40px;
             border-bottom: 1px solid $green-border;
             margin-bottom: $spacing-aside;
@@ -418,7 +388,7 @@ aside {
                     content: '';
                     display: block;
                     position: absolute;
-                    top: 20%;
+                    top: 32%;
                     left: 0;
                     transform: translateY(-102%) translateX(70%) rotate(0deg);
                     width: 15px;

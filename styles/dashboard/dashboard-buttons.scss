@@ -1,0 +1,31 @@
+        .cta-sprinkle {
+            background-color: #050D03;
+            border: 1px solid $green;
+            border-radius: 12px;
+            width: 100%;
+            padding: 6px 12px;
+            color: $white;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            transition: 222ms ease-in-out;
+
+            &:hover {
+                background-color: darken(#050D03, 10%);
+            }
+
+            a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                align-items: center;
+                gap: 12px;
+                transform: translateY(10px);
+
+                svg {
+                    transform: translateY(2px) rotate(0);
+                }
+            }
+        }
