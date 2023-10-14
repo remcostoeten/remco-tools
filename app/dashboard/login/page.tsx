@@ -11,7 +11,6 @@ import {
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import RemcoLogoIcon from '@/components/core/icons/remcostoeten-logo-icon';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { toast } from '@/components/ui/use-toast';
@@ -22,7 +21,6 @@ import MiniSpinner from '@/components/effects/MiniSpinner';
 export default function LoginPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [rememberEmail, setRememberEmail] = useState(false);
     const [user, setUser] = useState(null);
     const [isGoogleLoading, setIsGoogleLoading] = useState(false);
     const router = useRouter();
@@ -67,13 +65,13 @@ export default function LoginPage() {
             });
     };
 
-    const handleClick = async (e: { preventDefault: () => void }) => {
+    const handleClick = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         setIsGoogleLoading(false);
-        const [email, password] = e.target.elements;
-        const emailValue = email.value;
-        const passwordValue = password.value;
+        const [email, password] = (e.target as HTMLFormElement).elements;
+        const emailValue = (email as HTMLInputElement).value;
+        const passwordValue = (password as HTMLInputElement).value;
 
         setIsLoading(true);
 
@@ -106,12 +104,13 @@ export default function LoginPage() {
     };
 
     return (
-        <>   <div className='w-full p-8 mt-4 w-[1280px] p-8 grid place-items-center'>
-            <h1 className='text-2xl font-semibold tracking-tight'>Welcome back</h1>
-            <p className='text-sm text-muted-foreground'>
-                Enter your email and password to sign in to your account
-            </p>
-        </div>
+        <>
+            <div className='w-full p-8 mt-4 w-[1280px] p-8 grid place-items-center'>
+                <h1 className='text-2xl font-semibold tracking-tight'>Welcome back</h1>
+                <p className='text-sm text-muted-foreground'>
+                    Enter your email and password to sign in to your account
+                </p>
+            </div>
             <form onSubmit={handleClick} className='mt-8'>
                 <div className='grid gap-2'>
                     <div className='grid gap-1'>
