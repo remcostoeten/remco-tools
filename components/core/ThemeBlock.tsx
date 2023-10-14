@@ -11,6 +11,7 @@ import {
     MenubarSubTrigger,
     MenubarTrigger
 } from "@c/ui/menubar";
+import { useEffect, useState } from "react";
 export default function Block({
     children,
     flexDir = "col",
@@ -25,15 +26,19 @@ export default function Block({
     const iconFill = "#3eb557";
     const downFill = "#d6222e"
     const size = "48px"
-    const isMobile = document.body.clientWidth <= 768;
+    const [isMobile, setIsMobile] = useState(false);
 
+    useEffect(() => {
+        setIsMobile(document.body.clientWidth <= 768);
+    }, []);
+    
     const Icon = isIncome ? (
         <MoneyUpIcon className="glowIcon" size={isMobile ? '36px' : '48px'} fill={iconFill} />
     ) : (
         <MoneyDownIcon size={isMobile ? '36px' : '48px'} fill={downFill} />
     );
     return (
-        <div className={`dblock p-4 flex flex-col gap-4 ${borderRadius} flex flex-${flexDir} ${gap} ${width} ${className}`}>
+        <div className={`dblock p-6 flex flex-col gap-4 ${borderRadius} flex flex-${flexDir} ${gap} ${width} ${className}`}>
             {title && (
                 <div className="flex justify-between items-center">
                     <div className="flex gap-4 items-center">{Icon}

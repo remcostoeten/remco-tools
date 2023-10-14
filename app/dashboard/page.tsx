@@ -24,44 +24,30 @@ export default function Page() {
 
   return (
     <>
-
-
-      {!isAuthenticated ? (
+      {isAuthenticated ? (
         <>
           <DashboardUser />
-
-          <main className="min-h-full min-w-full container py-6">
-            <div className='flex items-center justify-between'>
-              <div className='flex space-x-6'>
-                <h1 className='scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl'>/Dashboard</h1>
-                <Menu className={`max-md:hidden`} />
-              </div>
-              <ThemeToggle />
-            </div>
-            <Cards />
-            <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-2'>
-              <Card>
-                <Overview />
-              </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle>
-                    Vendas recentes
-                  </CardTitle>
-                  <CardDescription>
-                    no total foram <b className='underline underline-offset-2'>15</b> vendas esse mês.
-                  </CardDescription>
-                </CardHeader>
-                <Recents />
-              </Card>
-            </div>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 my-4 items-center">
-              <CardWithGraph />
-              <CardWithGraph />
-              <CardWithGraph />
-              <CardWithGraph />
+          <main className='flex-col sm:flex-row    flex justify-between items-center'>
+            <div className="flex w-full gap-4">
+              <MoneyCard type='expense' />
+              <MoneyCard type='income' />
+              <MoneyCard small type='Saving' />
             </div>
           </main>
+          <div className="fade-seperator-b-l"></div>
+          <FetchIncomes />
+          {/* <Totals /> */}
+          <div className="flex gap-4 w-full">
+            {/* <MoneyCard hoverCard={true} type={'income'} />
+              <MoneyCard hoverCard={true} type={'expense'} /> */}
+            <Block>
+              <h2>dwa</h2>
+            </Block>
+          </div>
+          * <div className="flex gap-4">
+            {/* <CombinedExpenses /> */}
+            <Chart />
+          </div>
 
         </>
       ) : (

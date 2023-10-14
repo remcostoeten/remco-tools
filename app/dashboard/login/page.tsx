@@ -1,5 +1,4 @@
 'use client';
-
 import {
     browserLocalPersistence,
     GoogleAuthProvider,
@@ -28,7 +27,7 @@ export default function LoginPage() {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
-            setUser(user as any);
+            setUser(user);
         });
 
         return () => unsubscribe();
@@ -104,6 +103,13 @@ export default function LoginPage() {
     };
 
     return (
+        <>
+            <div className='w-full p-8 mt-4 w-[1280px] p-8 grid place-items-center'>
+                <h1 className='text-2xl font-semibold tracking-tight'>Welcome back</h1>
+                <p className='text-sm text-muted-foreground'>
+                    Enter your email and password to sign in to your account
+                </p>
+            </div>
         <>
             <div className='w-full p-8 mt-4 w-[1280px] p-8 grid place-items-center'>
                 <h1 className='text-2xl font-semibold tracking-tight'>Welcome back</h1>

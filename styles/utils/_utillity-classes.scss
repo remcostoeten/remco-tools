@@ -251,11 +251,11 @@ $border-color: #242e0e;
 }
 
 .clear-header-aside {
-    margin-top: 114px;
+    padding-top: 114px !important;
 }
 
 .clear-fixed-sidebar {
     @include above-mobile {
-        margin-left: 20%;
+        margin-left: 10%;
     }
 }

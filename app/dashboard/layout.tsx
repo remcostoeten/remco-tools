@@ -12,9 +12,7 @@ export default function layout({ children }: { children: React.ReactNode }) {
             </DashboardAsides>
             <div className={`${headerSpacing} clear-fixed-sidebar w-7/12  h-max mx-auto  dash-block--parent border-dash dash-border`}>
                 <Search />
-                <main className='flex '>
-                    <section>{children}</section>
-                </main>
+                <section>{children}</section>
             </div >
             <DashboardAsides variant='right'>
                 Some sidebar

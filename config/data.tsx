@@ -168,7 +168,6 @@ export const dashboardLinks = [
 export const DashmenuMap = [
     {
         items: [
-            { text: 'Dashboard', icon: <Icon4 /> },
             { text: 'Expenses', icon: <ExpensesIcon className={''} /> },
             { text: 'Income', icon: <IncomeIcon className={''} /> },
             { text: 'My account', icon: <SettingsIcon className='' /> },

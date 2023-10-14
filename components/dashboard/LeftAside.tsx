@@ -17,7 +17,9 @@ import { LuLogOut } from 'react-icons/lu';
 export default function LeftAside() {
     const currentRoute = usePathname().toLowerCase();
     const user = auth?.currentUser;
-
+    const isActiveRoute = (route) => {
+        return currentRoute === route.toLowerCase();
+    };
     const loginMenuItem = () => {
         return user ? (
             <button className='cta gap-6' onClick={() => signOut(auth)}>
@@ -44,18 +46,16 @@ export default function LeftAside() {
                 {DashmenuMap.map((section, index) => (
                     <div key={index} className='sub'>
                         <ul className='space-y-1 sub grandparent'>
+                            <li className={currentRoute === '/dashboard' ? 'active' : ''}>
+                                <Link href="/dashboard">Dashboard</Link>
+                            </li>
                             {section.items.map((item: { text?: string; icon?: React.ReactNode; title?: string; }, index: number) => {
-                                if (item.text) {
-                                    return (
-                                        <li key={item.text} className={currentRoute === `/${item.text.toLowerCase()}` ? 'active' : ''}>
-                                            <AltButtonTextOutside icon={item.icon}>
-                                                <Link href={`dashboard/${item.text.toLowerCase()}`}>{item.text}</Link>
-                                            </AltButtonTextOutside>
-                                        </li>
-                                    );
-                                } else {
-                                    return null;
-                                }
+                                const isCurrentRouteActive = item.text && currentRoute === `/dashboard/${item.text.toLowerCase()}`;
+                                return (
+                                    <li key={item.text} className={isCurrentRouteActive ? 'active' : ''}>
+                                        <Link href={`dashboard/${item.text.toLowerCase()}`}>{item.text}</Link>
+                                    </li>
+                                );
                             })}
                         </ul>
                     </div>
