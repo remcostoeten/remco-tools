@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import CardWithGraph from "./cardWithGraph";
-import MoneyCard from "@/components/dashboard/MoneyCard";
+import MoneyCard from "@/components/core/cards/MoneyCard";
 
 export default function Cards() {
     return (

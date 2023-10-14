@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import CombinedExpenses from './tables/page';
 import Chart from '@/components/dashboard/ExpensesChart';
 import Block from '@/components/core/ThemeBlock';
-import MoneyCard from '@/components/dashboard/MoneyCard';
+import MoneyCard from '@/components/core/cards/MoneyCard';
 import FetchIncomes from '@/components/dashboard/FetchIndividualIncome';
 import Cards from '@/components/misc/Cards';
 import { CardTitle, CardDescription } from '@/components/ui/card';

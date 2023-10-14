@@ -1,18 +1,19 @@
 'use client';
 import React from 'react';
-import LogoIcon from '../core/icons/remcostoeten-logo-icon';
+import LogoIcon from '../../core/icons/remcostoeten-logo-icon';
 import { DashmenuMap, DashmenuMapSub, DashmenuMapSubSub } from '@/config/data';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { auth } from '@/utils/firebase';
 import { signOut } from 'firebase/auth';
-import MagicStar from '../effects/MagicStar';
+import MagicStar from '../../effects/MagicStar';
 import { Pencil } from 'lucide-react';
 import { LuLogOut } from 'react-icons/lu';
 import { useActiveSectionContext } from '@/context/active-section-contex';
 import { motion } from 'framer-motion';
 import clsx from 'clsx';
 import { UilCreateDashboard } from '@iconscout/react-unicons'
+import { LinkProps } from '@/utils/types';
 
 
 const LeftAsideLink: React.FC<LinkProps> = ({ name, hash }) => {
@@ -54,7 +55,6 @@ const LeftAsideLink: React.FC<LinkProps> = ({ name, hash }) => {
 export default function LeftAside() {
     const currentRoute = usePathname().toLowerCase();
     const user = auth?.currentUser;
-    const { activeSection, setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
     const isActiveRoute = (route) => {
         return currentRoute === route.toLowerCase();
     };
@@ -129,7 +129,7 @@ export default function LeftAside() {
                                         if (item.name) {
                                             return (
                                                 <li key={item.name} className={isActiveRoute(`/dashboard/${item.name?.toLowerCase()}`) ? 'active' : ''}>
-                                                    <LeftAsideLink name={item.name} hash={`/dashboard/${item.text?.toLowerCase()}`} />
+                                                    <LeftAsideLink name={item.name} hash={`/dashboard/${item.name?.toLowerCase()}`} />
                                                 </li>
                                             );
                                         } else {

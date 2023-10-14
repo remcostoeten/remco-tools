@@ -5,7 +5,7 @@ import { db } from '@/utils/firebase';
 import { toast } from '../ui/use-toast';
 import { HiUserRemove } from 'react-icons/hi';
 import { Expense } from '@/utils/types';
-import MoneyCard from './MoneyCard';
+import MoneyCard from '../core/cards/MoneyCard';
 import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarRadioGroup, MenubarRadioItem, MenubarSeparator, MenubarTrigger } from '../ui/menubar';
 import { tr } from 'date-fns/locale';
 import Block from '../core/ThemeBlock';
@@ -62,7 +62,7 @@ export default function FetchExpenses() {
                 </div></>
             ) : (
                 <><h1>test</h1>{
-                  
+
                     expenses.map((expense) => (
                         <MoneyCard useChildren key={expense.id}>
                             dawdawd    <p>Name: {expense.name}</p>

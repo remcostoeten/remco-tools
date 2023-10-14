@@ -13,7 +13,6 @@ export default function Savings() {
     const [Savingss, setSavingss] = useState<Savings[]>([]);
 
     useEffect(() => {
-        // Initialize the subscription to real-time updates
         const unsubscribe = onSnapshot(collection(db, 'savings'), (querySnapshot) => {
             const SavingsData: Savings[] = [];
             querySnapshot.forEach((doc) => {

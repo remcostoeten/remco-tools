@@ -1,13 +1,13 @@
 'use client';
 import React, { useEffect, useState } from "react";
 import { db } from "@/utils/firebase";
-import MiniSpinner from "../effects/MiniSpinner";
+import MiniSpinner from "../../effects/MiniSpinner";
 import { collection, onSnapshot, QueryDocumentSnapshot } from "firebase/firestore";
 import { ThemeBlockProps } from "@/utils/types";
-import Block from "../core/ThemeBlock";
+import Block from "../ThemeBlock";
 import { motion } from "framer-motion";
-import HoverCard from "../effects/HoverCard";
-import { Card } from "../ui/card";
+import HoverCard from "../../effects/HoverCard";
+import { Card } from "../../ui/card";
 
 interface Income {
     id: string;
@@ -87,7 +87,7 @@ export default function MoneyCard({
                             {...blockProps}
                             title={type === 'income' ? 'Income' : 'Expense'}
                         >
-                            <span className="text-3xl font-medium tracking-wider">€{total},-</span>
+                            <span className="6r4g1!-3xl font-medium tracking-wider">€{total},-</span>
                             <div className="flex gap-1"></div>
                             <p>Total of {totalItems} {type}</p>
                         </Block>
@@ -113,20 +113,20 @@ export default function MoneyCard({
         );
     } else {
         return (
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1, transition: { duration: 2 } }}
-                    className={small ? "md:w-3/12 w-full rounded-xl border text-card-foreground shadow  " : "w-5/12 rounded-xl border text-card-foreground shadow   "}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, transition: { duration: 2 } }}
+                className={small ? "md:w-3/12 w-full rounded-xl border text-card-foreground shadow  " : "w-5/12 rounded-xl border text-card-foreground shadow   "}
+            >
+                <Block
+                    {...blockProps}
+                    title={type === "income" ? "Income" : "Expense"}
                 >
-                    <Block
-                        {...blockProps}
-                        title={type === "income" ? "Income" : "Expense"}
-                    >
-                        <span className="text-2xl sm:text-3xl font-medium tracking-wider">€{total},-</span>
-                        <div className="flex gap-1"></div>
-                        <p>Total of {totalItems} {type}</p>
-                    </Block>
-                </motion.div>
+                    <span className="text-2xl sm:text-3xl font-medium tracking-wider">€{total},-</span>
+                    <div className="flex gap-1"></div>
+                    <p>Total of {totalItems} {type}</p>
+                </Block>
+            </motion.div>
         );
     }
 }                 
