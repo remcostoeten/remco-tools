@@ -20,8 +20,7 @@ export default function Search() {
     return (
         <>
             <Command className="flex items-center">
-                <SearchIcon width='16' height='16' style={{ color: '#efefee' }} />
-                <CommandInput placeholder="Type a command or search..." />
+1                <CommandInput placeholder="Type a command or search..." />
             </Command>
             <CommandDialog open={open} onOpenChange={setOpen}>
                 <CommandInput placeholder="Type a command or search..." />

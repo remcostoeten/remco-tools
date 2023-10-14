@@ -180,7 +180,7 @@ body {
     opacity: 0;
     animation: fadeIn 500ms 50ms ease-in-out forwards;
     width: 0;
-    
+
     @keyframes fadeIn {
         0% {
             width: 0;
@@ -353,9 +353,9 @@ aside {
     &.dashboard-left {
         padding: 24px;
         padding-top: 0;
-        width: 10% !important;
+        width: 13% !important;
 
-        .logo-section {
+         .logo-section {
             padding-bottom: 40px;
             border-bottom: 1px solid $green-border;
             margin-bottom: $spacing-aside;
