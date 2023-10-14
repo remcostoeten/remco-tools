@@ -104,82 +104,82 @@ export default function LoginPage() {
 
     return (
         <>
-            <div className='w-full p-8 mt-4 w-[1280px] p-8 grid place-items-center'>
+            <div className='w-full p-8 mt-4 p-8 grid place-items-center'>
                 <h1 className='text-2xl font-semibold tracking-tight'>Welcome back</h1>
                 <p className='text-sm text-muted-foreground'>
                     Enter your email and password to sign in to your account
                 </p>
             </div>
-        <>
-            <div className='w-full p-8 mt-4 w-[1280px] p-8 grid place-items-center'>
-                <h1 className='text-2xl font-semibold tracking-tight'>Welcome back</h1>
-                <p className='text-sm text-muted-foreground'>
-                    Enter your email and password to sign in to your account
-                </p>
-            </div>
-            <form onSubmit={handleClick} className='mt-8'>
-                <div className='grid gap-2'>
-                    <div className='grid gap-1'>
-                        <Label className='sr-only' htmlFor='email'>
-                            Email
-                        </Label>
-                        <Input
-                            id='email'
-                            placeholder='name@example.com'
-                            type='email'
-                            autoCapitalize='none'
-                            autoComplete='email'
-                            autoCorrect='off'
-                            onChange={(e) => setEmail(e.target.value)}
-                            value={email}
-                        />
+            <>
+                <div className='w-full p-8 mt-4 w-[1280px] p-8 grid place-items-center'>
+                    <h1 className='text-2xl font-semibold tracking-tight'>Welcome back</h1>
+                    <p className='text-sm text-muted-foreground'>
+                        Enter your email and password to sign in to your account
+                    </p>
+                </div>
+                <form onSubmit={handleClick} className='mt-8'>
+                    <div className='grid gap-2'>
+                        <div className='grid gap-1'>
+                            <Label className='sr-only' htmlFor='email'>
+                                Email
+                            </Label>
+                            <Input
+                                id='email'
+                                placeholder='name@example.com'
+                                type='email'
+                                autoCapitalize='none'
+                                autoComplete='email'
+                                autoCorrect='off'
+                                onChange={(e) => setEmail(e.target.value)}
+                                value={email}
+                            />
 
-                        <Label className='sr-only' htmlFor='password'>
-                            Password
-                        </Label>
-                        <Input
-                            id='password'
-                            placeholder='Password'
-                            type='password'
-                            autoCapitalize='none'
-                            autoComplete='current-password'
-                            autoCorrect='off'
-                            onChange={(e) => setPassword(e.target.value)}
-                            value={password}
-                        />
+                            <Label className='sr-only' htmlFor='password'>
+                                Password
+                            </Label>
+                            <Input
+                                id='password'
+                                placeholder='Password'
+                                type='password'
+                                autoCapitalize='none'
+                                autoComplete='current-password'
+                                autoCorrect='off'
+                                onChange={(e) => setPassword(e.target.value)}
+                                value={password}
+                            />
+                        </div>
+
+                        <ReadMore
+                            customClassName='flex justify-center w-full mx-auto text-center'
+                            onClick={() => setIsLoading(true)}
+                        >
+                            Sign In with Email
+                        </ReadMore>
+
+                        {isLoading ? <MiniSpinner /> : null}
                     </div>
-
-                    <ReadMore
-                        customClassName='flex justify-center w-full mx-auto text-center'
-                        onClick={() => setIsLoading(true)}
-                    >
-                        Sign In with Email
-                    </ReadMore>
-
-                    {isLoading ? <MiniSpinner /> : null}
+                </form>
+                <div className='relative mt-8'>
+                    <div className='absolute inset-0 flex items-center'>
+                        <div className='w-full border-t' />
+                    </div>
+                    <div className='relative flex justify-center text-xs uppercase'>
+                        <span className='px-2 bg-background text-muted-foreground'>
+                            Or continue with
+                        </span>
+                    </div>
                 </div>
-            </form>
-            <div className='relative mt-8'>
-                <div className='absolute inset-0 flex items-center'>
-                    <div className='w-full border-t' />
-                </div>
-                <div className='relative flex justify-center text-xs uppercase'>
-                    <span className='px-2 bg-background text-muted-foreground'>
-                        Or continue with
-                    </span>
-                </div>
-            </div>
-            <ReadMore
-                text=' Google'
-                customClassName='flex justify-center w-full mx-auto scale-75 text-center'
-                onClick={signInWithGoogle}
-            />
-            {isGoogleLoading ? <MiniSpinner /> : null}
-            <p className='px-8 mx-auto mt-8 text-sm text-center text-muted-foreground'>
-                <Link href='/register' className='underline hover:text-brand underline-offset-4'>
-                    Don&apos;t have an account? Sign Up
-                </Link>
-            </p>
-        </>
-    );
+                <ReadMore
+                    text=' Google'
+                    customClassName='flex justify-center w-full mx-auto scale-75 text-center'
+                    onClick={signInWithGoogle}
+                />
+                {isGoogleLoading ? <MiniSpinner /> : null}
+                <p className='px-8 mx-auto mt-8 text-sm text-center text-muted-foreground'>
+                    <Link href='/register' className='underline hover:text-brand underline-offset-4'>
+                        Don&apos;t have an account? Sign Up
+                    </Link>
+                </p>
+            </>
+            );
 }

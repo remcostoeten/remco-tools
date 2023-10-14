@@ -11,7 +11,7 @@ export default function DashboardAsides({
     variant,
     className,
 }: DashboardAsideProps) {
-    const width = variant === 'left' ? 'dashboard-left clear-header-aside w-[15%]' : 'dashboard-right w-[30%]';
+    const width = variant === 'left' ? 'sm:block hidden dashboard-left clear-header-aside w-[15%]' : 'dashboard-right w-[30%]';
     const position = variant === 'left' ? 'left-0' : 'right-0';
 
     return (
