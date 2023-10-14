@@ -168,9 +168,9 @@ export const dashboardLinks = [
 export const DashmenuMap = [
     {
         items: [
-            { text: 'Expenses', icon: <ExpensesIcon className={''} /> },
-            { text: 'Income', icon: <IncomeIcon className={''} /> },
-            { text: 'My account', icon: <SettingsIcon className='' /> },
+            { name: 'Expenses', icon: <ExpensesIcon className={''} /> },
+            { name: 'Income', icon: <IncomeIcon className={''} /> },
+            { name: 'My account', icon: <SettingsIcon className='' /> },
         ],
     },
 ];
@@ -178,9 +178,9 @@ export const DashmenuMapSub = [
     {
         items: [
             { title: 'Dashboard' },
-            { text: 'Todos', icon: <Icon4 /> },
-            { text: 'Settings', icon: <SettingsIcon className={''} /> },
-            { text: 'Logout', icon: <LogoutIcon /> },
+            { name: 'Todos', icon: <Icon4 /> },
+            { name: 'Settings', icon: <SettingsIcon className={''} /> },
+            { name: 'Logout', icon: <LogoutIcon /> },
         ],
     },
 ];
@@ -189,10 +189,10 @@ export const DashmenuMapSubSub = [
     {
         items: [
             { title: 'Extras' },
-            { text: 'Github', icon: <Icon4 /> },
-            { text: 'Gitlab', icon: <Icon5 /> },
-            { text: 'LinkedIn', icon: <Icon6 /> },
-            { text: 'Docs', icon: <Icon6 /> },
+            { name: 'Github', icon: <Icon4 /> },
+            { name: 'Gitlab', icon: <Icon5 /> },
+            { name: 'LinkedIn', icon: <Icon6 /> },
+            { name: 'Docs', icon: <Icon6 /> },
         ],
     },
 ];

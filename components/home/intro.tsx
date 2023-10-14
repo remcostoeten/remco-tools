@@ -146,7 +146,7 @@ export default function Intro() {
 
                     </motion.div>
                 </motion.div>
-<Sprinkle t1="dawdawdaw" t2="Dwadawd"/>e            </section>
+            </section>
         </>
     );
 }

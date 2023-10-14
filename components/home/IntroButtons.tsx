@@ -13,7 +13,6 @@ export default function IntroButtons() {
                     showLeftArrow={false}
                     customClassName="btn--semi-rounded" // Updated to "btn--semi-rounded"
                     showRightArrow={false}
-                    hoverText="say hiiiiiiiii"
                 />
             </FramerMagnetic>
             <DownloadCV />

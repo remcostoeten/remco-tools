@@ -15,7 +15,7 @@ export default function DownloadCV() {
     return (
         <Drawer.Root shouldScaleBackground>
             <Drawer.Trigger asChild>
-                    <ReadMore showLeftArrow={false} showRightArrow={false} text="View CV" onClick={openPdf} hoverText="Or Download" />
+                <ReadMore showLeftArrow={false} showRightArrow={false} text="View CV" onClick={openPdf} />
             </Drawer.Trigger>
             <Drawer.Portal>
                 <Drawer.Overlay className="fixed inset-0 bg-black/40" />
