@@ -20,7 +20,7 @@ export default function MiniSpinner({
     return (
         <div
             style={style}
-            className={`spinner-container ${absolute ? "absolute winset-0" : ""
+            className={`spinner-container ${absolute ? "absolute inset-0" : ""
                 } grid place-items-center`}
         >
             <div className="spinner"></div>

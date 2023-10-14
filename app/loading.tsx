@@ -5,7 +5,6 @@ export default function Loading() {
     return (
         <>
             <MiniSpinner />
-            <PercentageLoader percentage={0}/>
         </>
     );
 }
