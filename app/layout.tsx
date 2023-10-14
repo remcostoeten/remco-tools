@@ -79,7 +79,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                             <ActiveSectionContextProvider>
                                 <ThemeSettings />
 
-                                <NavBar />
+                                {/* <NavBar /> */}
                                 <main className='clear-header flex justify-center '>
                                     {children}
                                 </main>
