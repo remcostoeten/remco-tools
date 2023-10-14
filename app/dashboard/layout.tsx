@@ -14,9 +14,6 @@ export default function layout({ children }: { children: React.ReactNode }) {
                 <Search />
                 <section>{children}</section>
             </div >
-            <DashboardAsides variant='right'>
-                Some sidebar
-            </DashboardAsides>
         </>
     );
 }
