@@ -1,5 +1,5 @@
-import { getDownloadURL, ref } from 'firebase/storage';
-import { getStorageInstance } from './firebase'; // assuming you have the getStorageInstance function
+import { getDownloadURL, ref } from "firebase/storage";
+import { getStorageInstance } from "./firebase";
 
 export const fetchChatData = async (filename: string) => {
     const storageInstance = getStorageInstance();
@@ -7,5 +7,8 @@ export const fetchChatData = async (filename: string) => {
     const url = await getDownloadURL(fileRef);
 
     const response = await fetch(url);
-    return response.json();
+    const data = await response.json();
+
+    console.log("Fetched data:", data);
+    return data;
 }

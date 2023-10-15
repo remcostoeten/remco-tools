@@ -13,10 +13,11 @@ export interface ChatSearchProps {
 
 export interface IMessage {
     id?: string;
-    timestamp: string;
     name: string;
-    message: string;
-    image: string;
+    message?: string;
+    image?: string;
+    timestamp: string;
+    chat: string;
 }
 
 

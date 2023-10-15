@@ -20,7 +20,7 @@ const MessageDisplay: React.FC<MessageDisplayProps> = ({ data, searchTerm }) => 
             </span>
         );
     }
-
+    https://raw.githubusercontent.com/remcostoeten/private-apis/bbbf6ebcfb21f463753e5c6611fe7f6f626d493f/i
     return (
         <div className="flex flex-col p-4 space-y-4">
             {data.map((msg) => (
@@ -28,13 +28,17 @@ const MessageDisplay: React.FC<MessageDisplayProps> = ({ data, searchTerm }) => 
                     <div className="flex-grow bg-gray-100 p-2 rounded-lg resize-none">
                         <div className="font-bold">{msg.name}</div>
                         {msg.message && <div>{highlightSearch(msg.message)}</div>}
-                        {msg.image && <img className="mt-2" src={msg.image} alt="message-related" />}
+                        {msg.image && <img style={{
+                            maxWidth: '100%',
+                            maxHeight: '100%',
+                            objectFit: 'contain'
+                        }} className="mt-2" src={`https://github.com/remcostoeten/private-apis/blob/bbbf6ebcfb21f463753e5c6611fe7f6f626d493f/img/y/${msg.image}`} alt="message-related" />}
                         <div className="dash-badge absolute right-0 top-0 flex-none mr-4 text-black">{msg.timestamp}</div>
                     </div>
                 </div>
             ))}
         </div>
     );
-}
+};
 
 export default MessageDisplay;
