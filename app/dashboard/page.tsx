@@ -8,6 +8,9 @@ import MoneyCard from '@/components/core/cards/MoneyCard';
 import FetchIncomes from '@/components/dashboard/FetchIndividualIncome';
 import LoginPage from './(auth)/login/page';
 import { auth } from '@/utils/firebase';
+import { LinesSkeleton } from '@/components/core/LoaderBlock';
+import Badge from '@/components/dashboard/ui-elements/Badge';
+const correctPassword = process.env.ADMIN_PASSWORD || '';
 
 export default function Page() {
     const isAuthenticated = auth.currentUser != null;
