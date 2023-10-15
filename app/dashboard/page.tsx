@@ -7,12 +7,10 @@ import Block from '@/components/core/ThemeBlock';
 import MoneyCard from '@/components/core/cards/MoneyCard';
 import FetchIncomes from '@/components/dashboard/FetchIndividualIncome';
 import LoginPage from './(auth)/login/page';
-const correctPassword = process.env.ADMIN_PASSWORD || '';
+import { auth } from '@/utils/firebase';
 
 export default function Page() {
-    const isLocal = process.env.NODE_ENV === 'development';
-    const router = useRouter();
-    const { isAuthenticated, password, setPassword, handlePasswordSubmit } = usePasswordProtection(isLocal ? '' : correctPassword);
+    const isAuthenticated = auth.currentUser != null;
 
     return (
         <>
