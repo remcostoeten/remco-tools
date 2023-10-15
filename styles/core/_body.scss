@@ -9,7 +9,7 @@ $dot-space: 22px;
 
 body {
     position: relative;
-
+    
     &::before {
         content: '';
         width: 100vw;
