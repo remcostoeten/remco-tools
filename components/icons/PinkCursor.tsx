@@ -6,7 +6,7 @@ interface PinkCursorProps extends IconProps {
     h?: number;
 }
 
-export default function PinkCursor({ w, h }: iconProps) {
+export default function PinkCursor({ w = 45, h = 90 }: PinkCursorProps) {
     return (<svg className='z-[999]' width={w} height={h} viewBox='0 0 48 55' fill='none' style={{
         zIndex: 9999
     }} xmlns='http://www.w3.org/2000/svg'>
@@ -27,8 +27,3 @@ export default function PinkCursor({ w, h }: iconProps) {
         </defs>
     </svg>);
 }
-
-PinkCursor.defaultProps = {
-    w: 45,
-    h: 90
-};

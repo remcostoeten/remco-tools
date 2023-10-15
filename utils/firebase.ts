@@ -6,7 +6,9 @@ import {
     updateProfile
 } from 'firebase/auth';
 import { collection, deleteDoc, doc, getFirestore } from 'firebase/firestore';
+import { getStorage } from 'firebase/storage';
 import { useRouter } from 'next/navigation';
+let storage: ReturnType<typeof getStorage> | undefined;
 
 const firebaseConfig = {
     apiKey: "AIzaSyC6eh7Lqnb-LYKVsuXJuStbMe08xZjxoQs",
@@ -15,11 +17,16 @@ const firebaseConfig = {
     storageBucket: "test-ce067.appspot.com",
     messagingSenderId: "8187414200",
     appId: "1:8187414200:web:8af3ba670436512f5c164d"
-  };
+};
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore(app);
-
+export const getStorageInstance = () => {
+    if (!storage) {
+        storage = getStorage(app);
+    }
+    return storage;
+};
 const SignInWithGoogle = () => {
     const router = useRouter();
 
@@ -93,4 +100,4 @@ export const deleteTodo = async (itemId: string) => {
     }
 };
 
-export { auth, db, createUserWithEmailAndPassword, signInWithEmailAndPassword };
+export { auth, db, storage, createUserWithEmailAndPassword, signInWithEmailAndPassword };
