@@ -6,6 +6,7 @@ interface BadgeProps {
     style?: React.CSSProperties;
     className?: string;
     variant?: 'default' | 'absolute';
+    optionalText?: string;
     position?: {
         top?: number | string;
         left?: number | string;
@@ -14,7 +15,7 @@ interface BadgeProps {
     };
 }
 
-const Badge: React.FC<BadgeProps> = ({ text, onClose, style, className, variant = 'default', position }) => {
+const Badge: React.FC<BadgeProps> = ({ text, onClose, style, className, variant = 'default', optionalText, position }) => {
     const badgeStyle: React.CSSProperties = {
         backgroundColor: '#0F170D',
         paddingTop: '8px',
@@ -46,7 +47,10 @@ const Badge: React.FC<BadgeProps> = ({ text, onClose, style, className, variant 
 
     return (
         <div onClick={onClose} className={`${className} dash-badge`} style={badgeStyle}>
-            <span style={textStyle}>{text}</span>
+            <div className="flex items-center gap-2">
+                <span style={textStyle}>{text}</span>
+                <span>{optionalText}</span>
+            </div>
             {onClose && (
                 <button onClick={onClose} style={closeButtonStyle}>
                     ×

@@ -26,7 +26,7 @@ export default function Search() {
     return (
         <>
             <Command className="flex items-center">
-                1                <CommandInput placeholder="Type a command or search..." />
+                <CommandInput placeholder="Type a command or search..." />
             </Command>
             <CommandDialog open={open} onOpenChange={setOpen}>
                 <CommandInput placeholder="Type a command or search..." />
@@ -39,7 +39,7 @@ export default function Search() {
                     </CommandGroup>
                 </CommandList>
             </CommandDialog>
-            <div className="fade-seperator-b-l"></div>
+            <div className="fade-seperator-b-l mt-2"></div>
         </>
     )
 }
