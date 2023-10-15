@@ -1,194 +1,48 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import ChatSearch from '@c/chat/ChatSearch';
-import Image from 'next/image';
-import moment from 'moment';
-import Head from 'next/head';
 
-import { ChatMessage } from '@/utils/types';
+import ChatSearch from "@/components/chat/ChatSearch";
+import MessageDisplay from "@/components/chat/MessageDisplay";
+import MiniSpinner from "@/components/effects/MiniSpinner";
+import { fetchChatData } from "@/utils/FetchData";
+import { useState, useEffect } from "react";
 
-const ChatHistory: React.FC = () => {
-  const [searchResults, setSearchResults] = useState<ChatMessage[]>([]);
-  const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
-  const [visibleMessages, setVisibleMessages] = useState<ChatMessage[]>([]);
+export default function Home() {
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [searchTerm, setSearchTerm] = useState('');  // State to hold current search term
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 0) {
-        document.body.classList.add('scrolled');
-      } else {
-        document.body.classList.remove('scrolled');
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    document.body.classList.add('chat-ui');
-    return () => {
-      document.body.classList.remove('chat-ui');
-    };
-  }, []);
-
-  useEffect(() => {
-    const chatHistoryRaw: any[] = require('../../data/chat1.json');
-    if (Array.isArray(chatHistoryRaw)) {
-      const messageHistory: ChatMessage[] = chatHistoryRaw.map((message: any) => {
-        return {
-          id: message.id,
-          message: message.text,
-          timestamp: new Date(message.timestamp),
-          user: {
-            id: message.user.id,
-            name: message.user.name,
-            image: message.user.avatar,
-          },
-          type: message.user.id === 'self' ? 'sent' : 'received',
-          name: '',
-          image: '',
-          sender: message.user.id,
-          isSelf: message.user.id === 'self',
+    useEffect(() => {
+        const loadData = async () => {
+            const chatData = await fetchChatData('znew.json');
+            setData(chatData);
+            setLoading(false);
         };
-      });
-      setChatHistory(messageHistory);
-    } else {
-      console.error('chatHistoryRaw is not an array:', chatHistoryRaw);
-    }
-  }, []);
 
-  const handleSearch = (term: string) => {
-    if (term.length > 0) {
-      const results = chatHistory.filter((message: ChatMessage) =>
-        message.message.toLowerCase().includes(term),
-      );
-      setSearchResults(results);
-    } else {
-      setSearchResults([]);
-    }
-  };
+        loadData();
+    }, []);
 
-  const handleJumpTo = (message?: ChatMessage) => {
-    const index =
-      message && message.timestamp
-        ? chatHistory.findIndex(
-          (m) => m.timestamp === message.timestamp,
-        )
-        : -1;
-    const messageElement = document.getElementById(`chat-message-${index}`);
-    if (messageElement) {
-      messageElement.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  useEffect(() => {
-    setVisibleMessages(chatHistory.slice(0, 20));
-  }, [chatHistory]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (
-        window.innerHeight + window.scrollY >=
-        document.body.scrollHeight - 500
-      ) {
-        setVisibleMessages((prevMessages: ChatMessage[]) => [
-          ...prevMessages,
-          ...chatHistory.slice(
-            prevMessages.length,
-            prevMessages.length + 20,
-          ),
-        ]);
-      }
+    const handleSearch = (term) => {
+        setSearchTerm(term);
     };
 
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
+    const handleJumpTo = (index) => {
+        const element = document.getElementById(data[index].id || data[index].timestamp);
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+        }
     };
-  }, [chatHistory]);
 
-  return (
-    <>
-      <Head>
-        <title>Chat export demo</title>
-        <meta
-          name='Remco stoeten - remcostoeten.com '
-          content='Demo of a chat export which i exported from whatsapp .txt and converte to json.'
-        />
-        <link
-          rel='canonical'
-          href='https://remcostoeten.com/chat-export'
-        />
-      </Head>
-      <div className='h-full flex flex-col m-auto w-2/4'>
-        <div className='p-4'>
-          <ChatSearch
-            onSearch={handleSearch}
-            onJumpTo={(index: number) =>
-              handleJumpTo(searchResults[index])
-            }
-            chatHistory={chatHistory}
-            searchResults={searchResults}
-          />
-        </div>
-        <div className='flex-grow overflow-y-auto p-4'>
-          {visibleMessages.map(
-            (message: ChatMessage, index: number) => (
-              <div
-                id={`chat-message-${index}`}
-                className={`flex flex-col mb-4 ${message.sender === 'Bob'
-                    ? 'items-end'
-                    : 'items-start'
-                  }`}
-                key={message.timestamp.getTime()}
-              >
-                <div
-                  className={`rounded-lg px-4 py-2 ${message.sender === 'Bob'
-                      ? 'bg-green-500 text-white'
-                      : 'bg-gray-200'
-                    } rounded-bl-none ${message.sender === 'me'
-                      ? 'rounded-tr-lg'
-                      : 'rounded-tl-lg'
-                    }`}
-                >
-                  {message.image && (
-                    <Image
-                      src={`/apiprivate/compressed/${message.image}`}
-                      fill
-                      alt={message.message}
-                      className='max-w-full h-auto rounded-lg mb-2'
-                    />
-                  )}
-                  <div className='text-sm'>
-                    <span
-                      className={`${message.sender === 'Bob'
-                          ? 'bg-green-500 text-white'
-                          : 'bg-gray-200'
-                        } rounded-bl-none ${message.sender === 'me'
-                          ? 'rounded-tr-lg'
-                          : 'rounded-tl-lg'
-                        }`}
-                    >
-                      {message.sender}:
-                    </span>
-                    {message.message}
-                  </div>
-                </div>
-                <div className='text-xs text-gray-400 mt-1'>
-                  {moment(message.timestamp).format('h:mm A')}
-                </div>
-              </div>
-            ),
-          )}
-        </div>
-      </div>
-    </>
-  );
-};
+    if (loading) {
+        return <div><MiniSpinner /></div>;
+    }
 
-export default ChatHistory;
+    return (
+        <div className="container mx-auto">
+            <ChatSearch
+                onSearch={handleSearch}
+                chatHistory={data}
+                onJumpTo={handleJumpTo} searchResults={[]} />
+            <MessageDisplay data={data} searchTerm={searchTerm} />
+        </div>
+    );
+}

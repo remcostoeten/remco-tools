@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Close, SearchOffOutlined } from '@mui/icons-material';
-import { motion } from 'framer-motion';
-import { ChatMessage } from '@/utils/types';
+
+interface ChatMessage {
+    id?: string;
+    timestamp: string;
+    name: string;
+    message: string;
+    image: string;
+}
 
 interface ChatSearchProps {
     onSearch: (searchTerm: string) => void;
@@ -28,16 +33,14 @@ const ChatSearch: React.FC<ChatSearchProps> = ({
                 index,
             }))
             .filter(({ message }) =>
-                message.message
-                    .toLowerCase()
-                    .includes(searchTerm.toLowerCase()),
+                message.message.toLowerCase().includes(searchTerm.toLowerCase())
             )
             .map(({ index }) => index)
         : [];
 
     const slicedResults = results.slice(
         0,
-        showAllResults ? results.length : maxResultsToShow,
+        showAllResults ? results.length : maxResultsToShow
     );
 
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -79,19 +82,15 @@ const ChatSearch: React.FC<ChatSearchProps> = ({
             <div className='sticky top-0 left-0 z-40 w-full'>
                 <div className='flex items-center justify-start'>
                     <span
-                        className='text-white cursor-pointer'
+                        className='text-black cursor-pointer'
                         onClick={() => setShowChatInput(!showChatInput)}
-                        style={{ color: '#fff' }}>
-                        <SearchOffOutlined />
+                        style={{ color: 'black' }}
+                    >
                         <span>
                             {showText && (
-                                <motion.span
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    transition={{ delay: 0.5 }}
-                                    className='ml-2'>
-                                    Click to toggle search functionality
-                                </motion.span>
+                                <span className='ml-2'>
+                                    Search
+                                </span>
                             )}
                         </span>
                     </span>
@@ -102,8 +101,9 @@ const ChatSearch: React.FC<ChatSearchProps> = ({
                             <span
                                 className='absolute top-10 right-0 z-50 text-gray-800 cursor-pointer'
                                 onClick={handleClose}
-                                style={{ color: '#003247' }}>
-                                <Close />
+                                style={{ color: '#003247' }}
+                            >
+                                x
                             </span>
                             <input
                                 type='text'
@@ -114,33 +114,30 @@ const ChatSearch: React.FC<ChatSearchProps> = ({
                             />
 
                             {searchTerm.length > 0 && results.length > 0 && (
-                                <div className='sticky top-0 left-0 z-40 p-2 bg-white border-t-4 border-primary font-semibold text-lg max-h-screen-50vh'>
+                                <div className='sticky top-0 left-0 z-40 p-2 bg-cream border-t-4 border-primary font-semibold text-lg max-h-screen-50vh'>
                                     <div className='mb-2 text-gray-500'>
                                         {results.length} results found
                                     </div>
                                     <div className='max-h-64 overflow-y-auto'>
                                         {results.map((index: number) => (
                                             <div
-                                                className='flex items-center w-full px-4 py-2 mb-[-0.25rem] text-gray-800 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:rounded-md'
+                                                className='text-black flex items-center w-full px-4 py-2 mb-[-0.25rem] border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:rounded-md'
                                                 key={index}
-                                                onClick={() =>
-                                                    handleJumpTo(index)
-                                                }>
+                                                onClick={() => handleJumpTo(index)}
+                                            >
                                                 <span className='mr-2'>
-                                                    {chatHistory[
-                                                        index
-                                                    ]?.timestamp?.toLocaleDateString()}{' '}
+                                                    {new Date(
+                                                        chatHistory[index]?.timestamp
+                                                    ).toLocaleDateString()}{' '}
                                                     -{' '}
-                                                    {chatHistory[
-                                                        index
-                                                    ]?.timestamp?.toLocaleTimeString()}
+                                                    {new Date(
+                                                        chatHistory[index]?.timestamp
+                                                    ).toLocaleTimeString()}
                                                 </span>
-                                                <span>
-                                                    {chatHistory[
-                                                        index
-                                                    ]?.message?.substring(
+                                                <span className='text-black'>
+                                                    {chatHistory[index]?.message?.substring(
                                                         0,
-                                                        50,
+                                                        50
                                                     )}
                                                 </span>
                                             </div>

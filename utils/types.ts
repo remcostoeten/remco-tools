@@ -5,22 +5,31 @@ export type SectionName = (typeof links)[number]["name"];
 
 export default Expense;
 export interface ChatSearchProps {
-  onSearch: (query: string) => void;
-  searchResults: string;
-  onJumpTo: (message: ChatMessage) => void;
-  chatHistory: ChatMessage[];
+    onSearch: (query: string) => void;
+    searchResults: string;
+    onJumpTo: (message: ChatMessage) => void;
+    chatHistory: ChatMessage[];
 }
 
+export interface IMessage {
+    id?: string;
+    timestamp: string;
+    name: string;
+    message: string;
+    image: string;
+}
+
+
 export interface ChatMessage {
-  name: string;
-  image: ReactNode;
-  id: string;
-  message: string;
-  type: 'sent' | 'received';
-  attachments?: any;
-  sender: string;
-  isSelf: boolean;
-  timestamp: Date;
+    name: string;
+    image: ReactNode;
+    id: string;
+    message: string;
+    type: 'sent' | 'received';
+    attachments?: any;
+    sender: string;
+    isSelf: boolean;
+    timestamp: Date;
 }
 
 export interface DashMenuItem {
