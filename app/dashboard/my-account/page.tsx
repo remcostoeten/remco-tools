@@ -1,7 +1,6 @@
 import * as React from "react";
 import Image from "next/image";
-import { Link } from "@/ui/";
-
+import Link from "next/link";
 export default function SignUpForm() {
     return (
         <div className="flex w-[462px] max-w-full flex-col mt-36">

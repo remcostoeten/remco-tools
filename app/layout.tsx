@@ -72,14 +72,14 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en" className="dark !scroll-smooth">
-            <body className={`${lexend.className} !bg-[#111111]`}>
+            <body className={`${lexend.className} !bg-black`}>
                 <TooltipProvider>
                     <Tooltip>
                         <ThemeContextProvider>
                             <ActiveSectionContextProvider>
                                 <ThemeSettings />
 
-                                {/* <NavBar /> */}
+                                <NavBar /> 
                                 <main className='clear-header flex justify-center '>
                                     {children}
                                 </main>

@@ -1,9 +1,9 @@
 'use client';
+import React, { useEffect, useState } from 'react';
 import { db } from '@/utils/firebase';
 import { Income } from '@/utils/types';
 import { ShoppingCartIcon, TrashIcon } from '@heroicons/react/solid';
 import { collection, deleteDoc, doc, onSnapshot } from 'firebase/firestore';
-import { useEffect, useState } from 'react';
 import { AltButton } from '../core/buttons/Buttons';
 import ExpenseIconWrapper from './ExpenseIconWrapper';
 import { toast } from 'sonner';
@@ -13,10 +13,12 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from "@/components/ui/tooltip"
+import { BarsSkeleton, LinesSkeleton, SingleSkeleton } from '../core/LoaderBlock';
 
 export default function FetchIncomes() {
     const [incomes, setIncomes] = useState<Income[]>([]);
     const [showAll, setShowAll] = useState(false);
+    const [loading, setLoading] = useState(true); // Add loading state variable
     const visibleIncomes = showAll ? incomes : incomes.slice(0, 6);
 
     const bar = (income: Income) => {
@@ -56,6 +58,7 @@ export default function FetchIncomes() {
                 });
             });
             setIncomes(incomeData);
+            setLoading(false);
         });
 
         return () => unsubscribe();
@@ -70,6 +73,10 @@ export default function FetchIncomes() {
             toast.error('Error deleting income');
         }
     };
+
+    if (loading) {
+        return <SingleSkeleton />;
+    }
 
     return (
         <div className='expense-individual'>

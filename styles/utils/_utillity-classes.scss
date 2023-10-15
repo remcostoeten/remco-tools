@@ -7,7 +7,7 @@
 }
 
 .bg-black {
-    background-color: #101010 !important;
+    background-color: #000000 !important;
 }
 
 .seperator-fade {
@@ -77,7 +77,10 @@ $border-color: #242e0e;
     }
 
     &--parent {
-        padding: 48px;
+        margin: 24px 0;
+        border-radius: 12px;
+        border: 1px solid #192109;
+        padding: 48px 48px 48px;
     }
 
     &--no-border {
@@ -249,6 +252,4 @@ $border-color: #242e0e;
     }
 }
 
-.clear-header {
-    margin-top: 50px;
-}
+.clear-header {}

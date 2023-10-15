@@ -9,7 +9,7 @@ import { headerSpacing } from '@/lib/utils';
 
 export default function Home() {
     return (
-        <><MiniSpinner /><main className={`flex mt-[150px] flex-col items-center px-4 sm:px-0`}>
+        <><main className={`flex mt-[150px] flex-col items-center px-4 sm:px-0`}>
             <Intro />
             <SectionSpacer variant="small" />
             <Skills />

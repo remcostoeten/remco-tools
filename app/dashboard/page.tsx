@@ -16,6 +16,7 @@ import ThemeToggle from '@/shad-dashboard-components/theme-toggle';
 import { Card, CardHeader } from '@mui/material';
 import { Menu } from 'lucide-react';
 import LoginPage from './(auth)/login/page';
+import { LinesSkeleton } from '@/components/core/LoaderBlock';
 const correctPassword = process.env.ADMIN_PASSWORD || '';
 
 export default function Page() {
