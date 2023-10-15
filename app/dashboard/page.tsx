@@ -2,21 +2,11 @@
 import { usePasswordProtection } from '@/hooks/usePasswordProtection';
 import DashboardUser from "@/components/dashboard/DashboardUser";
 import { useRouter } from 'next/navigation';
-import CombinedExpenses from './tables/page';
 import Chart from '@/components/dashboard/ExpensesChart';
 import Block from '@/components/core/ThemeBlock';
 import MoneyCard from '@/components/core/cards/MoneyCard';
 import FetchIncomes from '@/components/dashboard/FetchIndividualIncome';
-import Cards from '@/components/misc/Cards';
-import { CardTitle, CardDescription } from '@/components/ui/card';
-import CardWithGraph from '@/shad-dashboard-components/pages/home/cardWithGraph';
-import { Overview } from '@/shad-dashboard-components/pages/home/overview';
-import { Recents } from '@/shad-dashboard-components/pages/home/recents';
-import ThemeToggle from '@/shad-dashboard-components/theme-toggle';
-import { Card, CardHeader } from '@mui/material';
-import { Menu } from 'lucide-react';
 import LoginPage from './(auth)/login/page';
-import { LinesSkeleton } from '@/components/core/LoaderBlock';
 const correctPassword = process.env.ADMIN_PASSWORD || '';
 
 export default function Page() {
@@ -53,9 +43,7 @@ export default function Page() {
 
                 </>
             ) : (
-                isLocal && (
-                    <LoginPage />
-                )
+                <LoginPage />
             )}
         </>
     );
