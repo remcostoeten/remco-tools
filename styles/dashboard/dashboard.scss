@@ -122,7 +122,8 @@
 
     &:hover {
         cursor: pointer;
-        background-color: lighten(#0F170D, 5%);
+        background-color: lighten(#0F170D, 5%) !important;
+        display: none;
     }
 
     button {

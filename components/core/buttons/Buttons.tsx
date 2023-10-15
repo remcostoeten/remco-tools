@@ -12,15 +12,16 @@ type RoundedButtonProps = {
     text?: string;
     children?: any;
     borderRadius?: 'rounded' | 'semi-rounded' | 'none';
+    href?: string;
 };
 
 
-const ReadMore = ({ onClick, children, customClassName, showLeftArrow = true, showRightArrow = true, hoverText, text }: RoundedButtonProps) => {
+const ReadMore = ({ onClick, children, customClassName, showLeftArrow = true, showRightArrow = true, hoverText, text, href }: RoundedButtonProps) => {
     return (
         <button className={`cta cta--semi-rounded animbtn ${customClassName}`} onClick={onClick}>
             <span className="btn--animated btn__intro animated-arrow">
                 <span className="main text-center">
-                    {hoverText && <span className="btn__hover-text">{hoverText}</span>}
+                    {hoverText && <Link href={href} className="btn__hover-text">{hoverText}</Link>}
                     {children}{text}
                 </span>
             </span>

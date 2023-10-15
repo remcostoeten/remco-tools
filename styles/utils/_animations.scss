@@ -1,4 +1,6 @@
+@import './variables/_counting-number.scss';
 @import '../variables//colors';
+
 @keyframes footerIn {
     0% {
         opacity: 0;
@@ -6,8 +8,8 @@
     }
 
     100% {
-         opacity: 1;
-         transform: translate(0,0);
+        opacity: 1;
+        transform: translate(0, 0);
     }
 }
 

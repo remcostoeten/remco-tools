@@ -17,47 +17,26 @@ interface BadgeProps {
 
 const Badge: React.FC<BadgeProps> = ({ text, onClose, style, className, variant = 'default', optionalText, position }) => {
     const badgeStyle: React.CSSProperties = {
-        backgroundColor: '#0F170D',
-        paddingTop: '8px',
-        paddingLeft: '18px',
-        paddingRight: '18px',
-        paddingBottom: '8px',
-        borderRadius: 'rounded-xl',
-        display: 'inline-flex',
-        alignItems: 'center',
-        marginRight: '2px',
-        border: '1px solid',
-        borderColor: '#21301A',
         position: variant === 'absolute' ? 'absolute' : 'static',
         ...position,
         ...style,
     };
 
-    const textStyle: React.CSSProperties = {
-        color: '#BFC0BE',
-        fontSize: '0.875rem',
-    };
-
-    const closeButtonStyle: React.CSSProperties = {
-        color: '#BFC0BE',
-        fontSize: '0.75rem',
-        marginLeft: '0.5rem',
-        outline: 'none',
-    };
 
     return (
         <div onClick={onClose} className={`${className} dash-badge`} style={badgeStyle}>
             <div className="flex items-center gap-2">
-                <span style={textStyle}>{text}</span>
+                <span>{text}</span>
                 <span>{optionalText}</span>
+                {
+                    onClose && (
+                        <button onClick={onClose} />
+                    )
+                }
             </div>
-            {onClose && (
-                <button onClick={onClose} style={closeButtonStyle}>
-                    ×
-                </button>
-            )}
         </div>
     );
-};
+}
+
 
 export default Badge;

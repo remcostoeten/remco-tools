@@ -122,7 +122,7 @@ const InspirationTable: React.FC = () => {
     return (
         <div>
             {isLoading ? (
-              <MiniSpinner/>) : (
+                <MiniSpinner />) : (
                 <>
                     <div className="mb-4 black-block black-block--content">
                         <Label className="mr-2" htmlFor="filter">
@@ -140,9 +140,9 @@ const InspirationTable: React.FC = () => {
                         )}
                     </div>
 
-                    <div className="mb-4">
+                    <div className="mb-4 text-cream">
                         <Label className="mr-2" html
-                        For="sort">
+                            For="sort">
                             Sort by:
                         </Label>
                         <Select id="sort" value={sortColumn} onChange={(e) => setSortColumn(e.target.value)} className="border px-2 py-1">
@@ -193,7 +193,7 @@ const InspirationTable: React.FC = () => {
                         </div>
                     </div>
 
-                    <table className="inspiration-table bg-theme min-w-full border">
+                    <table className="inspiration-table bg-theme min-w-full border text-cream">
                         <thead>
                             <tr>
                                 {columnVisibility.projectType && <th>Project Type</th>}

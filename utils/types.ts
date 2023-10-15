@@ -38,6 +38,8 @@ export type iconProps = {
     fill?: string;
     size?: string;
     className?: string;
+    w?: string;
+    h?: string;
 }
 
 export interface Thought {

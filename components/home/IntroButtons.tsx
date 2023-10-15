@@ -9,9 +9,10 @@ export default function IntroButtons() {
         <>
             <FramerMagnetic>
                 <ReadMore
-                    text="Get in contact"
+                    href="/dashboard"
+                    text="Go to dashboard"
                     showLeftArrow={false}
-                    customClassName="btn--semi-rounded" // Updated to "btn--semi-rounded"
+                    customClassName="btn--semi-rounded"
                     showRightArrow={false}
                 />
             </FramerMagnetic>

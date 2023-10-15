@@ -1,29 +1,25 @@
-export function Spinner() {
-    return (
-        <div className="pswp__preloader__icn">
-            <div className="pswp__preloader__cut">
-                <div className="pswp__preloader__donut"></div>
-            </div>
-        </div>
-    );
-}
+'use client';
+import React from "react";
+import { CircularProgress } from "@nextui-org/react";
 
-type SpinnerProps = {
-    style?: React.CSSProperties;
-    absolute?: boolean; // Add absolute prop
-};
+export default function MiniSpinner() {
+    const [value, setValue] = React.useState(0);
 
-export default function MiniSpinner({
-    style,
-    absolute = false,
-}: SpinnerProps) {
+    React.useEffect(() => {
+        const interval = setInterval(() => {
+            setValue((v) => (v >= 100 ? 0 : v + 10));
+        }, 500);
+
+        return () => clearInterval(interval);
+    }, []);
+
     return (
-        <div
-            style={style}
-            className={`spinner-container ${absolute ? "absolute inset-0" : ""
-                } grid place-items-center`}
-        >
-            <div className="spinner"></div>
-        </div>
+        <CircularProgress
+            aria-label="Loading..."
+            size="lg"
+            value={value}
+            color="warning"
+            showValueLabel={true}
+        />
     );
 }

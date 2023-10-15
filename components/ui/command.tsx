@@ -19,15 +19,13 @@ const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
     return (
         <Dialog {...props}>
             <DialogContent className="overflow-hidden p-0 shadow-lg">
-                <Command className="overflow-hidden p-1 text-foreground [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]: bg-[#1111] text-cream">
+                <Command className="overflow-hidden p-1  [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]: bg-[#1111] text-cream">
                     {children}
                 </Command>
             </DialogContent>
         </Dialog>
     );
 };
-
-
 
 const CommandInput = React.forwardRef<React.ElementRef<typeof CommandPrimitive.Input>, React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input>>(({ className, ...props }, ref) => {
     const [isCloseBadgeVisible, setIsCloseBadgeVisible] = useState({
@@ -52,6 +50,7 @@ const CommandInput = React.forwardRef<React.ElementRef<typeof CommandPrimitive.I
                 />
 
                 <div className="flex gap-2">
+                    <Badge className='flex' text="⌘" optionalText='K' />
                     {isCloseBadgeVisible.beta && (
                         <Badge onClose={() => handleCloseBadge('beta')} text="Beta" />
                     )}
