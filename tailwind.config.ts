@@ -22,6 +22,7 @@ const config: Config = {
                 'dash-green': '#ff050d03',
                 'dash-border': '#192109',
                 'dash-green-alt': '#0f170d',
+                'dash-grey-card': '#282828',
                 'dash-grey': '#1c1c1c',
             },
             colors: {
@@ -32,9 +33,8 @@ const config: Config = {
                 'dash-green': '#ff050d03',
                 'dash-border': '#192109',
                 'dash-green-alt': '##0f170d',
-                'dash-  grey': '#1c1c1c',
-
-
+                'dash-grey': '#1c1c1c',
+                'dash-grey-card': '#282828',
             },
         },
     },
