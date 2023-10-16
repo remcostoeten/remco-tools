@@ -80,17 +80,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                                 <ThemeSettings />
 
                                 {/* <NavBar /> */}
-                                <main className='clear-header flex justify-center '>
-                                    {children}
-                                </main>
+                                {/* <main className='clear-header flex justify-center '> */}
+                                {children}
+                                {/* </main> */}
                                 {/* <Footer /> */}
                                 <Trailer />
-                                <Toaster richColors />
+                                <Toaster richColors position='top-right' />
                                 <Analytics />
                             </ActiveSectionContextProvider>
                         </ThemeContextProvider>
                     </Tooltip>
                 </TooltipProvider>      </body>
-        </html>
+        </html >
     );
 }

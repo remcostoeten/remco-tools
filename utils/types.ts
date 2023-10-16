@@ -1,5 +1,4 @@
 import { links } from "../config/data";
-import firebase from "./firebase";
 
 export type SectionName = (typeof links)[number]["name"];
 
@@ -12,14 +11,19 @@ export interface ChatSearchProps {
 }
 
 export interface IMessage {
-    id?: string;
+    id: string;
     name: string;
-    message?: string;
+    message: string;
     image?: string;
     timestamp: string;
-    chat: string;
+    sender: string;
 }
 
+export interface MessageDisplayProps {
+    data: IMessage[];
+    searchTerm: string;
+    currentUser?: string;
+}
 
 export interface ChatMessage {
     name: string;

@@ -6,11 +6,12 @@ import rmtdevImg from '@/public/rmtdev.png';
 import wordanalyticsImg from '@/public/wordanalytics.png';
 import { ExpensesIcon, IncomeIcon, InvestmentIcon, OverviewIcon, SettingsIcon, SubscriptionsIcon, SupportIcon } from '@/components/dashboard/icons';
 import shortcuts from '@/lib/shortcuts';
-import { LogoutIcon } from '@heroicons/react/solid';
+import { ChatAlt2Icon, LogoutIcon } from '@heroicons/react/solid';
 import { UilMoneyInsert } from '@iconscout/react-unicons'
 import { UilMoneyBillSlash } from '@iconscout/react-unicons'
 import { UilChatBubbleUser } from '@iconscout/react-unicons'
 import { m } from 'framer-motion';
+import { ChatBubbleIcon } from '@radix-ui/react-icons';
 
 export const graphData = [
     'Nov',
@@ -204,7 +205,8 @@ export const DashmenuMapSub = [
             { title: 'Dashboard' },
             { name: 'Todos', icon: <Icon4 /> },
             { name: 'Settings', icon: <SettingsIcon className={''} /> },
-            { name: 'Logout', icon: <LogoutIcon /> },
+            { name: 'Y', icon: <ChatBubbleIcon /> },
+            { name: 'Z', icon: <ChatAlt2Icon /> },
         ],
     },
 ];

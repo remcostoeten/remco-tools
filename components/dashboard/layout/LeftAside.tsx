@@ -111,7 +111,7 @@ export default function LeftAside() {
                                         if (item.name) {
                                             return (
                                                 <li key={item.name} className={isActiveRoute(`/${item.name?.toLowerCase()}`) ? 'active' : ''}>
-                                                    <LeftAsideLink name={item.name} hash={`/${item.name?.toLowerCase()}`} />
+                                                    <LeftAsideLink name={item.name} hash={`dashboard/${item.name?.toLowerCase()}`} />
                                                 </li>
                                             );
                                         } else {

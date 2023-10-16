@@ -11,6 +11,7 @@ import { auth } from '@/utils/firebase';
 import { LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Line, ResponsiveContainer } from 'recharts';
 import { Avatar, IconButton, Icon } from '@mui/material';
 import { graphData } from '@/config/data';
+import Table from '@/components/dashboard/Table';
 
 const CustomTooltip = () => {
     return (<div className="rounded-xl overflow-hidden tooltip-head">
@@ -103,6 +104,7 @@ export default function Page() {
                         </div>
                     </main>
                     <div className="fade-seperator-b-l"></div>
+                    <Table />
                     <FetchIncomes />
                     {/* <Totals /> */}
                     <div className="flex gap-4 w-full">

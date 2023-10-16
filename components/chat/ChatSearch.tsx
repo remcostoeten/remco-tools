@@ -96,7 +96,7 @@ const ChatSearch: React.FC<ChatSearchProps> = ({
                     </span>
                 </div>
                 {showChatInput && (
-                    <div className='fixed bottom-0 left-0 z-40 w-2/4 h-full h-auto p-4 bg-slate-200 shadow-2xl'>
+                    <div className='fixed bottom-0 left-0 z-40 w-2/4 h-full p-4 bg-slate-200 shadow-2xl'>
                         <div className='flex flex-col'>
                             <span
                                 className='absolute top-10 right-0 z-50 text-gray-800 cursor-pointer'

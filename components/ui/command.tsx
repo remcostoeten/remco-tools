@@ -49,7 +49,7 @@ const CommandInput = React.forwardRef<React.ElementRef<typeof CommandPrimitive.I
                     {...props}
                 />
 
-                <div className="flex gap-2">
+                {/* <div className="flex gap-2">
                     <Badge className='flex' text="⌘" optionalText='K' />
                     {isCloseBadgeVisible.beta && (
                         <Badge onClose={() => handleCloseBadge('beta')} text="Beta" />
@@ -60,7 +60,7 @@ const CommandInput = React.forwardRef<React.ElementRef<typeof CommandPrimitive.I
                     {isCloseBadgeVisible.income && (
                         <Badge onClose={() => handleCloseBadge('income')} text="Income" />
                     )}
-                </div>
+                </div> */}
             </div>
         </>
     );

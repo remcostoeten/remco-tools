@@ -6,7 +6,12 @@ import DashboardAsides from '@/components/dashboard/layout/DashboardAsides';
 import LeftAside from '@/components/dashboard/layout/LeftAside';
 import { NextUIProvider } from '@nextui-org/react';
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+interface LayoutProps {
+    children: React.ReactNode;
+    currentPage: string;
+}
+
+export default function Layout({ children, currentPage }: LayoutProps) {
     return (
         <>
             <DashboardAsides variant='left'>

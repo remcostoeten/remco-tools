@@ -42,6 +42,11 @@
     }
 }
 
+.flex-start {
+    display: flex;
+    justify-content: flex-start;
+}
+
 $border-color: #242e0e;
 
 .bg-dash {

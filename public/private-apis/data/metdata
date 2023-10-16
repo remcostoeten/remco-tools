@@ -1,0 +1,190 @@
+  import Tooltip from "@/components/Tooltip";
+  import Link from "next/link";
+
+  function renderBar(key, value, total, color) {
+    const percentage = (value / total) * 100;
+
+    return (
+      <Tooltip key={key} content={`${key}: ${value}`}>
+        <div
+          className={`h-6 mx-0.5 ${color}`}
+          style={{ width: `${percentage}%` }}
+        >
+          {value}
+        </div>
+      </Tooltip>
+    );
+  }
+
+  function renderRevisions(distribution, barColor) {
+    const { name, unique, revisions } = revisions;
+    return (
+      <div className="box-property">
+        <h4 className="flex content-center text-gray-400 text-sm mb-3">
+          {name}
+          <span className="px-1">({unique})</span>
+        </h4>
+        <div className="box flex">
+          {revisions.map((item, index) =>
+            renderBar(item.key, item.value, barColor[index % barColor.length])
+          )}
+        </div>
+      </div>
+    );
+  } 
+
+  import Tooltip from "@/components/Tooltip";
+  import Link from "next/link";
+
+  function renderBar(key, value, total, color) {
+    const percentage = (value / total) * 100;
+
+    return (
+      <Tooltip key={key} content={`${key}: ${value}`}>
+        <div
+          className={`h-6 mx-0.5 ${color}`}
+          style={{ width: `${percentage}%` }}
+        >
+          {value}
+        </div>
+      </Tooltip>
+    );
+  }
+  function renderDistribution(distribution, barColor, total) {
+    const { name, unique, distributions } = distribution;
+    return (
+      <div className="box-property">
+        <h4 className="flex content-center text-gray-400 text-sm mb-3">
+          {name}
+          <span className="px-1">({unique})</span>
+        </h4>
+        <div className="box flex">
+          {distributions.map((item, index) =>
+            renderBar(item.key, item.value, total, barColor[index % barColor.length])
+          )}
+        </div>
+      </div>
+    );
+  }
+
+    );
+  }
+  const hostnameBarColors = [
+    "bg-green-100",
+    "bg-green-200",
+    "bg-green-300",
+    "bg-green-400",
+    "bg-green-500",
+    "bg-green-600",
+    "bg-green-700",
+  ];
+  const revisionBarColors = [
+    "bg-blue-100",
+    "bg-blue-200",
+    "bg-blue-300",
+    "bg-blue-400",
+    "bg-blue-500",
+    "bg-blue-600",
+    "bg-blue-700",
+  ];
+  function renderDistribution(distribution, barColor) {
+    const { name, unique, distibutions } = distribution;
+    return (
+      <div className="box-property">
+        <h4 className="flex content-center text-gray-400 text-sm mb-3">
+          {name}
+          <span className="px-1">({unique})</span>
+        </h4>
+        <div className="box flex">
+          {distibutions.map((item, index) =>
+            renderBar(item.key, item.value, barColor[index % barColor.length])
+          )}
+        </div>
+      </div>
+    );
+  } 
+
+  export default function MetadataDistributions({ distributions }) {
+    const hostnameDistribution = distributions.find((dist) => dist.name === "hostname");
+    const revisionDistribution = distributions.find((dist) => dist.name === "revision");
+
+
+  
+
+    return (
+      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <div className="bg-white py-5 px-5 border-solid border-2 rounded-lg border-gray-200 shadow-lg">
+          <div className="box max-w-2xl">
+            <div className="heading flex justify-between items-center pb-8">
+              <h2 className="text-lg font-bold">Box Heading</h2>
+              <Link className="text-blue-500 underline" href="#">
+                Link
+              </Link>
+            </div>
+            {renderDistribution(
+              hostnameDistribution,
+              hostnameBarColors,
+              hostnameDistribution.total
+            )}
+            {renderDistribution(
+              revisionDistribution,
+              revisionBarColors,
+              revisionDistribution.total
+            )}
+          </div>
+          </div>
+          </div>
+
+  );
+  }
+
+
+  export default function MetadataDistributions({ distributions }) {
+    const hostnameDistribution = distributions.find((dist) => dist.name === "hostname");
+    const revisionDistribution = distributions.find((dist) => dist.name === "revision");
+
+    const hostnameBarColors = [
+      "bg-green-100",
+      "bg-green-200",
+      "bg-green-300",
+      "bg-green-400",
+      "bg-green-500",
+      "bg-green-600",
+      "bg-green-700",
+    ];
+
+    const revisionBarColors = [
+      "bg-blue-100",
+      "bg-blue-200",
+      "bg-blue-300",
+      "bg-blue-400",
+      "bg-blue-500",
+      "bg-blue-600",
+      "bg-blue-700",
+    ];
+
+    return (
+      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+        <div className="bg-white py-5 px-5 border-solid border-2 rounded-lg border-gray-200 shadow-lg">
+          <div className="box max-w-2xl">
+            <div className="heading flex justify-between items-center pb-8">
+              <h2 className="text-lg font-bold">Box Heading</h2>
+              <Link className="text-blue-500 underline" href="#">
+                Link
+              </Link>
+            </div>
+            {renderDistribution(
+              hostnameDistribution,
+              hostnameBarColors,
+              hostnameDistribution.total
+            )}
+            {renderDistribution(
+              revisionDistribution,
+              revisionBarColors,
+              revisionDistribution.total
+            )}
+          </div>
+        </div>
+      </div>
+  );
+  }
