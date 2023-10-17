@@ -72,6 +72,7 @@ export type iconProps = {
     className?: string;
     w?: string;
     h?: string;
+    style?: React.CSSProperties;
 }
 
 export interface Thought {

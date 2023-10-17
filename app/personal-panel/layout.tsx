@@ -1,10 +1,7 @@
 'use client';
 import { Command, CommandDialog, CommandEmpty, CommandInput, CommandItem, CommandGroup, CommandList } from "@/components/ui/command";
 import * as React from "react";
-import Blocks from "./components/Blocks";
-import Sidebar from "./components/Sidebar";
-import Blocksz from "./components/DashboardComponent";
-import RevenueGrowthComponent from "./components/DashboardComponent";
+import RevenueGrowth from "./components/RevenuGrowth";
 
 export default function DashboardComponent() {
     const [open, setOpen] = React.useState(false)
@@ -51,8 +48,7 @@ export default function DashboardComponent() {
                     </div>
                 </header>
                 <main className="flex">
-                    <Sidebar />
-                    <RevenueGrowthComponent />
+                    <RevenueGrowth />
                 </main >
             </body >
         </>
