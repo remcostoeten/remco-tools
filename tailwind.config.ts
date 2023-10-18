@@ -1,5 +1,6 @@
 
 
+
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
@@ -10,6 +11,12 @@ const config: Config = {
     ],
     theme: {
         extend: {
+            padding: {
+                default: '24px',
+            },
+            margin: {
+                default: '24px',
+            },
             backgroundImage: {
                 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
                 'gradient-conic':

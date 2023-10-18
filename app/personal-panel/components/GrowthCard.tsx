@@ -5,7 +5,7 @@ import { Percent } from "lucide-react";
 
 type GrowthCardProps = {
     title?: string;
-    variant?: "sky-100" | "sky-200" | "sky-300";
+    variant?: "sky-100" | "[#282828]" | "sky-300";
     value?: string;
     percentage?: string;
     directionIcon?: React.ReactNode;
@@ -20,23 +20,25 @@ export default function GrowthCard({
     directionIcon,
     rotate,
 }: GrowthCardProps) {
+    const textColor = variant === "[#282828]" ? "text-cerma" : "text-zinc-900";
+
     return (
         <div className="self-stretch max-md:max-w-full w-6/12">
             <div
-                className={`min-w-[200px] items-start bg-${variant} flex max-w-full grow flex-col mx-auto py-6 rounded-2xl max-md:mt-7 px-6`}
+                className={`min-w-[200px] bg-${variant} items-start flex max-w-full grow flex-col mx-auto py-6 rounded-2xl max-md:mt-7 px-6`}
             >
                 <div className="flex justify-between items-center w-full">
-                    <h2 className="text-zinc-900 text-sm font-semibold leading-[142.86%] max-w-full">
+                    <h2 className={`text-sm font-semibold leading-[142.86%] max-w-full ${textColor}`}>
                         {title}
                     </h2>
                     <FolderIcon />
                 </div>
                 <div className="justify-between items-start content-center gap-y-2 flex max-w-full gap-5 mt-2 rounded-lg w-full">
-                    <div className="self-stretch text-zinc-900 text-2xl font-semibold leading-[150%]">
+                    <div className={`text-2xl font-semibold leading-[150%] ${textColor}`}>
                         <CountingNumber start={0} end={Number(value)} duration={1} />
                     </div>
                     <div className="items-start content-center flex gap-1 my-auto rounded-lg">
-                        <div className="self-stretch text-zinc-900 text-xs leading-[150%]">
+                        <div className={`text-xs leading-[150%] ${textColor}`}>
                             <CountingNumber start={0} end={Number(percentage)} duration={1} />%
                         </div>
                         <span style={{ transform: `rotate(${rotate}deg)` }}>
@@ -48,6 +50,7 @@ export default function GrowthCard({
         </div>
     );
 }
+
 // export default function RevenueGrowthComponent() {
 //     return (
 //         <main className="w-full p-[28px] items-start content-start flex-wrap flex flex-col">

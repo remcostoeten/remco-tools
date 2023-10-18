@@ -1,6 +1,35 @@
 @import './dashboard-buttons.scss';
 @import './dashboard-codepen.scss';
 
+.dashboard-nav {
+    li {
+
+        &.active,
+        &:first-child {
+            color: #f4f4f4;
+            position: relative;
+            border: 2px solid #353535;
+            padding: 16px 48px;
+            border-radius: 9999px;
+            height: 100%;
+            font-weight: normal;
+
+            &::before {
+                content: '';
+                width: 8px;
+                height: 8px;
+                background-color: #EE815F;
+                border-radius: 50%;
+                position: absolute;
+                left: 24px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+    }
+}
+
+
 .bg-green-alt {
     background-color: $green-alt;
 }

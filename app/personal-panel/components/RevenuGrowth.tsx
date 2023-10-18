@@ -7,6 +7,7 @@ import { QueryDocumentSnapshot } from "firebase/firestore";
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "@/utils/firebase";
 import MiniSpinner from "@/components/effects/MiniSpinner";
+import Bar from "@/components/Bar";
 
 interface Income {
     id: string;
@@ -60,11 +61,8 @@ export default function RevenueGrowth() {
 
     return (
         <>
-            <main className="w-full p-[28px] items-start content-start flex-wrap flex flex-col">
-                <h1 className="self-stretch text-creamn text-sm font-semibold leading-[142.86%]">
-                    Dashboard
-                </h1>
-                <div className="flex gap-5 w-3/6 flex-wrap ">
+            <main className="w-full  items-start content-start flex-wrap flex flex-col">
+                <div className="flex gap-5 w-full flex-wrap ">
                     <section className="self-stretch   flex gap-4 max-md:max-w-full w-full">
                         <GrowthCard
                             title="Income"
@@ -76,7 +74,7 @@ export default function RevenueGrowth() {
                         />
                         <GrowthCard
                             title="Expense"
-                            variant="sky-100"
+                            variant="[#282828]"
                             percentage="12.11"
                             rotate={0}
                             directionIcon={<StonksUpIcon />}
@@ -94,7 +92,7 @@ export default function RevenueGrowth() {
                         />
                         <GrowthCard
                             title="Expense"
-                            variant="sky-100"
+                            variant="[#282828]"
                             percentage="12.11"
                             rotate={0}
                             directionIcon={<StonksUpIcon />}

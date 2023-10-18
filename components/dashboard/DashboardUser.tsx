@@ -21,8 +21,8 @@ export default function DashboardUser() {
 
     if (user) {
         return (
-            <div className='pt-[40px] pb-[40px]'>
-                <h2 className="pb-10 text-4xl font-normal">Welcome, {user.displayName}!</h2>
+            <div className='p-default '>
+                <h2 className="text-2xl font-normal">Welcome, {user.displayName}!</h2>
             </div>
         );
     } else {

@@ -189,6 +189,14 @@ export const dashboardLinks = [
     },
 ];
 
+export const dashboardNav = [
+    { name: 'Dashboard', href: '/dashboard' },
+    { name: 'Todos', href: '/todos' },
+    { name: 'Settings', href: '/settings' },
+    { name: 'Y', href: '/y' },
+    { name: 'Z', href: '/z' },
+]
+
 
 export const DashmenuMap = [
     {
