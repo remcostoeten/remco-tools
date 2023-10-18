@@ -50,26 +50,28 @@ export default function DashNav({ }: DashNavProps) {
     return (
         <>
 
-            <header className="flex items-center my-5  mx-auto m-w-[1280px] space-between justify-between">
+            <header className="flex items-center mt-5  mx-auto m-w-[1280px] space-between justify-end w-full pl-9 gap-60">
+                <div>
 
-                <LogoIcon />
-                <nav className="bg-[#1f1f1f] rounded-full top-0 black-box px-10 h-[69px]    pr-8 ">
-                    <ul className="dashboard-nav flex gap-12">
-                        {dashboardNav.map((item, index) => {
-                            return <li className="cursor-pointer font-light flex items-center text-[#c9c9c9" key={index}>{item.name}</li>;
-                        })}
-                    </ul>
-                </nav>
+
+                    <nav className="bg-grey-accent  rounded-full top-0 black-box px-10 h-[69px]    pr-8 ">
+                        <ul className="dashboard-nav flex gap-12">
+                            {dashboardNav.map((item, index) => {
+                                return <li className="header-btn cursor-pointer font-light flex items-center text-[#c9c9c9" key={index}>{item.name}</li>;
+                            })}
+                        </ul>
+                    </nav>
+                </div>
                 <div className="flex justify-end gap-2">
                     <div className="flex gap-1 items-center justify-center rounded-full border-[#2F2F2F] ">
-                        <span className="flex items-center justify-center rounded-full border-[#2F2F2F] w-12 h-12 border">
+                        <span className="search-s header-btn flex items-center justify-center rounded-full border-[#2F2F2F] w-12 h-12 border">
                             <SearchIcon width={30} />
                         </span>
-                        <span className="flex items-center justify-center rounded-full border-[#2F2F2F] w-12 h-12 border">
+                        <span className="flex items-center header-btn justify-center rounded-full border-[#2F2F2F] w-12 h-12 border">
                             <BellIcon width={30} />
                         </span>
                     </div>
-                    <nav className="pl-[90px] relative bg-[#1f1f1f] rounded-full top-0 black-box px-10 h-[69px]  flex items-center align-middle
+                    <nav className="pl-[90px] relative bg-grey-accent rounded-full top-0 black-box px-10 h-[69px]  flex items-center align-middle
                       pr-8 ">
                         <div className="flex items-center justify-center"><div className="absolute left-[13px]  w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
                             <svg className="absolute w-12 h-12 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>

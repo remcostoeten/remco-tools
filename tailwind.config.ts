@@ -31,6 +31,7 @@ const config: Config = {
                 'dash-green-alt': '#0f170d',
                 'dash-grey-card': '#282828',
                 'dash-grey': '#1c1c1c',
+                'grey-accent': '#1f1f1f',
             },
             colors: {
                 cream: '#efefee',
@@ -42,6 +43,7 @@ const config: Config = {
                 'dash-green-alt': '##0f170d',
                 'dash-grey': '#1c1c1c',
                 'dash-grey-card': '#282828',
+                'grey-accent': '#1f1f1f',
             },
         },
     },

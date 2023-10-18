@@ -4,7 +4,7 @@ import BezierEasing from 'bezier-easing';
 
 interface CountingNumberProps {
     start: number;
-    end: number;
+    end: number | string;
     duration: number;
     className?: string;
 }
