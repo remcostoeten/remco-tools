@@ -1,0 +1,7 @@
+.toolbar-cta {
+    transition: 250ms ease all;
+    &:hover {
+        background-color: lighten(#111, 5%);
+        scale: .98;
+    }
+}

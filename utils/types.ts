@@ -89,22 +89,6 @@ export interface Thought {
     userId?: string;
 }
 
-export interface Expense {
-    id?: string;
-    name?: string;
-    expenseAmount?: number;
-    category?: string;
-    // @ts-ignore
-    createdAt?: firebase.firestore.Timestamp;
-    userId?: string;
-}
-
-export interface Income {
-    createdAt: any;
-    id: string;
-    name: string;
-    incomeAmount: number;
-}
 
 export interface Savings {
     id: string;
