@@ -30,7 +30,7 @@ export default function CurrentBalance() {
             console.log("Total income:", totalIncome);
             setTotalIncome(totalIncome);
         }
-
+  
         async function fetchExpenses() {
             console.log("Fetching Expenses...");
             const expensesCollection = collection(db, 'expenses');

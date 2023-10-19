@@ -1,7 +1,9 @@
 "use client";
 import { ApexOptions } from "apexcharts";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import { db } from "@/lib/firebase";
+import { collection, getDocs } from "firebase/firestore";
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
@@ -124,15 +126,27 @@ const options: ApexOptions = {
   },
 };
 
-interface ChartOneState {
-  series: {
-    name: string;
-    data: number[];
-  }[];
+interface ChartDataItem {
+  name: string;
+  data: number[];
+  expensesAmount: number;
 }
 
 const ChartOne: React.FC = () => {
-  const [state, setState] = useState<ChartOneState>({
+  const [chartData, setChartData] = useState<ChartDataItem[]>([
+    {
+      name: "Product One",
+      data: [],
+      expensesAmount: 0,
+    },
+    {
+      name: "Product Two",
+      data: [],
+      expensesAmount: 0,
+    },
+  ]);
+
+  const [state, setState] = useState({
     series: [
       {
         name: "Product One",
@@ -146,6 +160,29 @@ const ChartOne: React.FC = () => {
     ],
   });
 
+  useEffect(() => {
+    async function fetchData() {
+      const dataCollection = collection(db, "expenses");
+      const snapshot = await getDocs(dataCollection);
+      const fetchedData = snapshot.docs.map(doc => doc.data());
+      console.log("Fetched Data:", fetchedData);
+      setChartData(transformData(fetchedData));
+    }
+
+    fetchData();
+  }, []);
+  console.log(chartData)
+  function transformData(data: any[]): ChartDataItem[] {
+    console.log("Transforming data:", data);
+    const transformedData = data.map(item => ({
+      name: item.name,
+      data: [], 
+      expensesAmount: item.expenseAmount 
+    }));
+    console.log("Transformed data:", transformedData);
+    return transformedData;
+}
+
   const handleReset = () => {
     setState((prevState) => ({
       ...prevState,
@@ -154,13 +191,12 @@ const ChartOne: React.FC = () => {
 
   handleReset;
 
-  // NextJS Requirement
   const isWindowAvailable = () => typeof window !== "undefined";
 
   if (!isWindowAvailable()) return <></>;
 
   return (
-    <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-8">
+    <div className="col-span-12 rounded-sm border  bg-white px-5 pt-7.5 pb-5 shadow-default dark:bg-card sm:px-7.5 xl:col-span-8">
       <div className="flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap">
         <div className="flex w-full flex-wrap gap-3 sm:gap-5">
           <div className="flex min-w-47.5">

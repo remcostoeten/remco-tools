@@ -10,16 +10,29 @@ import CardDataStats from "../CardDataStats";
 
 // without this the component renders on server and throws an error
 import dynamic from "next/dynamic";
+import useMoney from "@/hooks/useMoney";
+import Loader from "../common/Loader";
 const MapOne = dynamic(() => import("../Maps/MapOne"), {
   ssr: false,
 });
 
 const ECommerce: React.FC = () => {
-  return (
+  const { dataSum: totalIncome, isLoading: isLoadingIncome } = useMoney("incomes", "incomeAmount");
+  const { dataSum: totalExpense, isLoading: isLoadingExpense } = useMoney("expenses", "expenseAmount");
+
+  const isLoading = isLoadingIncome || isLoadingExpense;
+
+  if (isLoading) {
+    return <Loader />;
+  }
+  const totalIncomeNumber = Number(totalIncome);
+  const totalExpenseNumber = Number(totalExpense);
+  const balance = totalIncome - totalExpenseNumber;
+return (
     <>
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
-        <CardDataStats title="Total views" total="$3.456K" rate="0.43%" levelUp>
+        <CardDataStats title="Total balance" total={ `€${balance}`} rate="0.43%" levelUp>
           <svg
             className="fill-primary dark:fill-white"
             width="22"
@@ -38,7 +51,7 @@ const ECommerce: React.FC = () => {
             />
           </svg>
         </CardDataStats>
-        <CardDataStats title="Total Profit" total="$45,2K" rate="4.35%" levelUp>
+        <CardDataStats title="This monthly income" total={`€${totalIncomeNumber}`} rate="4.35%" levelUp>
           <svg
             className="fill-primary dark:fill-white"
             width="20"
@@ -61,7 +74,7 @@ const ECommerce: React.FC = () => {
             />
           </svg>
         </CardDataStats>
-        <CardDataStats title="Total Product" total="2.450" rate="2.59%" levelUp>
+        <CardDataStats title="This monthly expenses" total={`€${totalExpenseNumber}`} rate="4.35%" levelUp>
           <svg
             className="fill-primary dark:fill-white"
             width="22"

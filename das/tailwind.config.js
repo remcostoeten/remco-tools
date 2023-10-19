@@ -14,6 +14,7 @@ module.exports = {
     },
     colors: {
       body: "#1c1c1c",
+      card: "#282828",
       cream: "#efefef",
       current: "currentColor",
       transparent: "transparent",

@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import CountingNumber from '@/components/Effects/CountingNumbers';
 
 interface CardDataStatsProps {
   title: string;
@@ -17,6 +18,7 @@ const CardDataStats: React.FC<CardDataStatsProps> = ({
   levelDown,
   children,
 }) => {
+  console.log("Total: ", total)
   return (
     <div className="rounded-2xl border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-sky-100 ">
 
@@ -29,7 +31,7 @@ const CardDataStats: React.FC<CardDataStatsProps> = ({
       <div className="mt-4 flex items-end justify-between">
         <div>
           <h4 className="text-zinc-900 text-2xl font-semibold   text-black dark:text-[#1C1C1C">
-            {total}
+          <CountingNumber start={0} end={parseFloat(total.replace('€', '').trim())} duration={1} />
           </h4>
         </div>
 

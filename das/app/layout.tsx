@@ -7,6 +7,7 @@ import Loader from "@/components/common/Loader";
 
 import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
+import CurrentBalance from "@/components/DisplayMoney";
 
 export default function RootLayout({
   children,
@@ -40,6 +41,7 @@ export default function RootLayout({
                 />
                 <main>
                   <div className="p-4 md:p-6 2xl:p-10">
+                    <CurrentBalance/>
                     {children}
                   </div>
                 </main>
