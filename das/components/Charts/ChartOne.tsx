@@ -219,7 +219,7 @@ const ChartOne: React.FC = () => {
           </div>
         </div>
         <div className="flex w-full max-w-45 justify-end">
-          <div className="inline-flex items-center rounded-md bg-whiter p-1.5 dark:bg-meta-4">
+          <div className="inline-flex items-center rounded-md bg-whiter p-1.5 dark:bg-primary">
             <button className="rounded bg-white py-1 px-3 text-xs font-medium text-black shadow-card hover:bg-white hover:shadow-card dark:bg-boxdark dark:text-white dark:hover:bg-boxdark">
               Day
             </button>

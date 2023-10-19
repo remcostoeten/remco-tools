@@ -1,4 +1,5 @@
 "use client";
+import "./sass/styles.scss";
 import "./globals.css";
 import "./data-tables-css.css";
 import "./satoshi.css";
@@ -25,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body suppressHydrationWarning={true}>
-        <div className="dark:bg-[#1c1c1c] dark:text-cream">
+        <div className="dark:bg-body dark:text-cream">
           {loading ? (
             <Loader />
           ) : (
@@ -40,7 +41,7 @@ export default function RootLayout({
                   setSidebarOpen={setSidebarOpen}
                 />
                 <main>
-                  <div className="p-4 md:p-6 2xl:p-10">
+                  <div className="p-4 md:p-6 2xl:p-10 flex flex-col gap-10">
                     <CurrentBalance/>
                     {children}
                   </div>

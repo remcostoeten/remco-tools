@@ -1,7 +1,8 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
+const withMT = require("@material-tailwind/react/utils/withMT");
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+module.exports = withMT({
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -13,7 +14,7 @@ module.exports = {
       satoshi: ["Satoshi", "sans-serif"],
     },
     colors: {
-      body: "#1c1c1c",
+      body: "#111",
       card: "#282828",
       cream: "#efefef",
       current: "currentColor",
@@ -249,7 +250,7 @@ module.exports = {
         },
       },
       backgroundColor: {
-        body: "#1c1c1c",
+        body: "#111",
       },
       animation: {
         "ping-once": "ping 5s cubic-bezier(0, 0, 0.2, 1)",
@@ -261,4 +262,4 @@ module.exports = {
     },
   },
   plugins: [],
-};
+});

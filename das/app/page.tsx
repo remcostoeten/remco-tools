@@ -1,3 +1,4 @@
+import FetchCommits from "@/components/Github/FetchCommits";
 import ECommerce from "@/components/Dashboard/E-commerce";
 import { Metadata } from "next";
 
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
+    <FetchCommits/>
       <ECommerce />
     </>
   );

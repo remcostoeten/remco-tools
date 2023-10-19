@@ -7,6 +7,7 @@ import ChatCard from "../Chat/ChatCard";
 import TableOne from "../Tables/TableOne";
 import CardDataStats from "../CardDataStats";
 // import Map from "../Maps/TestMap";
+import  { TransactionsTable } from "@/components/Dashboard/TransactionsList";
 
 // without this the component renders on server and throws an error
 import dynamic from "next/dynamic";
@@ -30,7 +31,7 @@ const ECommerce: React.FC = () => {
   const balance = totalIncome - totalExpenseNumber;
 return (
     <>
-
+<TransactionsTable/>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
         <CardDataStats title="Total balance" total={ `€${balance}`} rate="0.43%" levelUp>
           <svg
@@ -51,7 +52,7 @@ return (
             />
           </svg>
         </CardDataStats>
-        <CardDataStats title="This monthly income" total={`€${totalIncomeNumber}`} rate="4.35%" levelUp>
+        <CardDataStats title="This monthly income" total={`${totalIncomeNumber}`} rate="4.35%" levelUp>
           <svg
             className="fill-primary dark:fill-white"
             width="20"

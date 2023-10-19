@@ -60,10 +60,10 @@
   @apply dark:!bg-boxdark dark:!border-strokedark;
 }
 .apexcharts-tooltip.apexcharts-theme-light .apexcharts-tooltip-title {
-  @apply dark:!bg-meta-4 dark:!border-strokedark;
+  @apply dark:!bg-primary dark:!border-strokedark;
 }
 .apexcharts-xaxistooltip, .apexcharts-yaxistooltip {
-  @apply dark:!bg-meta-4 dark:!border-meta-4 dark:!text-bodydark1;
+  @apply dark:!bg-primary dark:!border-meta-4 dark:!text-bodydark1;
 }
 .apexcharts-xaxistooltip-bottom:after {
   @apply dark:!border-b-meta-4;
@@ -106,7 +106,7 @@ span.flatpickr-weekday,
   @apply dark:!text-white dark:!fill-white;
 }
 .flatpickr-day.inRange {
-  @apply dark:!bg-meta-4 dark:!border-meta-4 dark:!shadow-7;
+  @apply dark:!bg-primary dark:!border-meta-4 dark:!shadow-7;
 }
 .flatpickr-day.selected, .flatpickr-day.startRange,
 .flatpickr-day.selected, .flatpickr-day.endRange {

@@ -59,7 +59,7 @@ const TableFour: React.FC = () => {
         </div>
 
         <div className="flex flex-col">
-          <div className="grid grid-cols-3 rounded-sm bg-gray-2 dark:bg-meta-4 sm:grid-cols-4">
+          <div className="grid grid-cols-3 rounded-sm bg-gray-2 dark:bg-primary sm:grid-cols-4">
             <div className="p-2.5 xl:p-4">
               <h5 className="text-sm font-medium uppercase xsm:text-base">
                 Source

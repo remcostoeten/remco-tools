@@ -24,7 +24,7 @@ const CardDataStats: React.FC<CardDataStatsProps> = ({
 
       <div className="flex justify-between">
         <span className="text-zinc-900 text-sm font-semibold   text-black dark:text-[#1C1C1C">{title}</span>
-        <div className="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
+        <div className="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-primary">
           {children}
         </div></div>
 
