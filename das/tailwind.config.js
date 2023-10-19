@@ -13,6 +13,8 @@ module.exports = {
       satoshi: ["Satoshi", "sans-serif"],
     },
     colors: {
+      body: "#1c1c1c",
+      cream: "#efefef",
       current: "currentColor",
       transparent: "transparent",
       white: "#FFFFFF",
@@ -244,6 +246,9 @@ module.exports = {
           "0%, 100%": { transform: "rotate(360deg)" },
           "50%": { transform: "rotate(0deg)" },
         },
+      },
+      backgroundColor: {
+        body: "#1c1c1c",
       },
       animation: {
         "ping-once": "ping 5s cubic-bezier(0, 0, 0.2, 1)",

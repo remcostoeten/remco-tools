@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body suppressHydrationWarning={true}>
-        <div className="dark:bg-[#1c1c1c] dark:text-bodydark">
+        <div className="dark:bg-[#1c1c1c] dark:text-cream">
           {loading ? (
             <Loader />
           ) : (
@@ -39,7 +39,7 @@ export default function RootLayout({
                   setSidebarOpen={setSidebarOpen}
                 />
                 <main>
-                  <div className="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+                  <div className="p-4 md:p-6 2xl:p-10">
                     {children}
                   </div>
                 </main>
