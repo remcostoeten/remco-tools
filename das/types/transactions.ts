@@ -1,3 +1,4 @@
+import { Transaction } from 'firebase/firestore';
 
 export interface Expense {
     id?: string;
@@ -13,4 +14,14 @@ export interface Income {
     id?: string;
     name?: string;
     expenseAmount?: any;
+}
+
+export interface Transaction {
+    id?: string;
+    name?: string;
+    expenseAmount?: any;
+    category?: string;
+    createdAt?: any;
+    userId?: string;
+    type?: string;
 }

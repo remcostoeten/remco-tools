@@ -37,7 +37,7 @@ export default function TransactionsList() {
 
   return (
     <Card>
-      <table className="w-full border-leftmin-w-max table-auto text-left bg-body">
+      <table className="w-full border-leftmin-w-max table-auto text-left text-cream bg-body">
         <thead className="bg-transparent">
           <tr>
             {TABLE_HEAD.map((head) => (
@@ -47,7 +47,7 @@ export default function TransactionsList() {
               >
                 <Typography
                   variant="small"
-                  color="blue-gray"
+                  color="text-cream"
                   className="font-normal leading-none opacity-70"
                 >
                   {head}
@@ -67,7 +67,7 @@ export default function TransactionsList() {
                   <td className={classes}>
                     <Typography
                       variant="small"
-                      color="blue-gray"
+                      color="text-cream"
                       className="font-bold"
                     >
                       {name}
@@ -76,7 +76,7 @@ export default function TransactionsList() {
                   <td className={classes}>
                     <Typography
                       variant="small"
-                      color="blue-gray"
+                      color="text-cream"
                       className={`font-normal ${amountClass}`}
                     >
                       {type === 'expense' ? '-' : '+'}€{expenseAmount}
