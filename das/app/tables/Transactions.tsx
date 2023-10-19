@@ -53,9 +53,7 @@ export function SortableTable() {
 
         <><div className="mb-8 flex items-center justify-between gap-8">
             <div>
-                <Typography variant="h5" color="blue-gray">
-                    Members list
-                </Typography>
+                <h5 className="text-cream font-bold">Members</h5>
                 <Typography color="gray" className="mt-1 font-normal">
                     See information about all members
                 </Typography>

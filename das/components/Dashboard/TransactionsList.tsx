@@ -1,6 +1,11 @@
 import { db } from "@/lib/firebase";
 import { Income } from "@/types/transactions";
-import { Card, CardBody, CardHeader, Typography } from "@material-tailwind/react";
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  Typography,
+} from "@material-tailwind/react";
 import { getDocs, collection, Transaction } from "firebase/firestore";
 import { useState, useEffect } from "react";
 
@@ -21,12 +26,12 @@ export default function TransactionsList() {
       const expensesQuerySnapshot = await getDocs(collection(db, "expenses"));
       const expenses = expensesQuerySnapshot.docs.map((doc: any) => ({
         ...doc.data(),
-        type: 'expense'
+        type: "expense",
       }));
       const incomesQuerySnapshot = await getDocs(collection(db, "incomes"));
       const incomes = incomesQuerySnapshot.docs.map((doc: any) => ({
         ...doc.data(),
-        type: 'income'
+        type: "income",
       }));
       const transactions = [...expenses, ...incomes];
       setTransactions(transactions);
@@ -37,21 +42,12 @@ export default function TransactionsList() {
 
   return (
     <Card>
-      <table className="w-full border-leftmin-w-max table-auto text-left text-cream bg-body">
+      <table className="w-full border-left min-w-max table-auto text-left text-cream bg-body">
         <thead className="bg-transparent">
           <tr>
             {TABLE_HEAD.map((head) => (
-              <th
-                key={head}
-                className="border-y border-[#1c1c1c]  p-4"
-              >
-                <Typography
-                  variant="small"
-                  color="text-cream"
-                  className="font-normal leading-none opacity-70"
-                >
-                  {head}
-                </Typography>
+              <th key={head} className="border-y border-[#1c1c1c] p-4">
+                <h5 className="font-normal leading-none text-cream">{head}</h5>
               </th>
             ))}
           </tr>
@@ -60,36 +56,30 @@ export default function TransactionsList() {
           {transactions.map(
             ({ name, expenseAmount, createdAt, type }, index) => {
               const isLast = index === transactions.length - 1;
-              const classes = isLast ? "p-4" : "p-4 border-b border-[#1c1c1c]";
-              const amountClass = type === 'expense' ? 'text-red-500' : 'text-green-500';
+              const classes = isLast
+                ? "p-4"
+                : "p-4 border-b border-[#1c1c1c]";
+              const amountClass =
+                type === "expense" ? "text-red-500" : "text-green-500";
               return (
                 <tr key={name}>
                   <td className={classes}>
-                    <Typography
-                      variant="small"
-                      color="text-cream"
-                      className="font-bold"
-                    >
-                      {name}
-                    </Typography>
+                    <h5 className="font-normal leading-none text-bold">{name}</h5>
                   </td>
                   <td className={classes}>
-                    <Typography
-                      variant="small"
-                      color="text-cream"
-                      className={`font-normal ${amountClass}`}
-                    >
-                      {type === 'expense' ? '-' : '+'}€{expenseAmount}
-                    </Typography>
+                    <h5 className={`font-normal ${amountClass}`}>
+                      {type === "expense" ? "-" : "+"}€{expenseAmount}
+                    </h5>
                   </td>
-                  {/* Continue with other columns here */}
+                  <td className={classes}>
+                    <h5 className="font-normal leading-none text-cream">
+                      {createdAt}
+                    </h5>
+                  </td>
                 </tr>
               );
             }
           )}
-    }
-)}
-
         </tbody>
       </table>
     </Card>
