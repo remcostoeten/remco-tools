@@ -15,6 +15,49 @@ $button-dark-background-hover: $blue-alternative;
 $button-light-background: #dfe2e5;
 $button-light-background-hover: #dfe2e5;
 
+$orange: #FFA500;
+$transparent: transparent;
+
+.dash-btn {
+    color: #FFA500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 50px;
+    outline: none;
+    font-weight: 500;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+
+    &:hover {
+        background-color: darken($orange, 10%);
+        color: black;
+    }
+
+    &.transparent {
+        background-color: $transparent;
+        color: transparent;
+
+        &:hover {
+            background-color: darken($transparent, 10%);
+            color: black;
+        }
+    }
+
+    &.orange {
+        background-color: $orange;
+        color: black;
+
+        &:hover {
+            background-color: darken($orange, 10%);
+            color: black;
+        }
+    }
+}
 
 .cta {
     display: flex;
@@ -41,7 +84,7 @@ $button-light-background-hover: #dfe2e5;
 
 
 .btn {
-    color:  #f1f1ef;
+    color: #f1f1ef;
 }
 
 
@@ -245,7 +288,7 @@ $pdf-transition: 333ms;
 
 $black: #666;
 $white: $white;
-$gray:#f1f1ef;
+$gray: #f1f1ef;
 
 $text-arrow-space: 16px;
 $shaft-width: 34px;

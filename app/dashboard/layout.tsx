@@ -1,12 +1,9 @@
 import React from 'react';
-import { NextUIProvider } from '@nextui-org/react';
-import { cn, headerSpacing } from '@/lib/utils';
-import DashboardAsides from '@/components/dashboard/layout/DashboardAsides';
 import DashNav from '@/components/dashboard/layout/DashNav';
-import LeftAside from '@/components/dashboard/layout/LeftAside';
-import Search from '@/components/dashboard/Search';
-import TSearch from '../personal-panel/components/Search';
 import Intro from '@/components/dashboard/layout/Intro';
+import Banner from '@/components/dashboard/Banner';
+import RevenueGrowth from '../personal-panel/components/RevenuGrowth';
+import YearlyBreakup from '@/components/dashboard/YearlyRevenue';
 
 interface LayoutProps {
     children: React.ReactNode;
@@ -24,6 +21,8 @@ export default function Layout({ children, currentPage }: LayoutProps) {
                     <div className='flex flex-col gap-[80px]'>
                         <DashNav />
                         <Intro />
+                        <RevenueGrowth />
+                        <YearlyBreakup />
                     </div>
                     {children}
                 </section>

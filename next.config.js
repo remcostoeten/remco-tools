@@ -5,6 +5,7 @@ const { withContentlayer } = require("next-contentlayer");
 const nextConfig = {
     images: {
         domains: ["cdn.builder.io"],
+        domains: ['lh3.googleusercontent.com'],
     },
 };
 

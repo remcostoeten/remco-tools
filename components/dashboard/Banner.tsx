@@ -1,13 +1,16 @@
 'use client';
-import { LocationMarkerIcon } from "@heroicons/react/solid";
+import { HiLocationMarker } from "react-icons/hi";
 import React from "react";
+import WarningIcon from "../core/icons/WarningIcon";
+import { ListBulletIcon } from "@radix-ui/react-icons";
+
 
 interface ButtonProps {
     label: string;
     backgroundColor: string;
     color: string;
     border?: string;
-    onClick: () => void;
+    onClick?: () => void;
 }
 
 const CustomButton: React.FC<ButtonProps> = ({
@@ -15,7 +18,7 @@ const CustomButton: React.FC<ButtonProps> = ({
     backgroundColor,
     color,
     border,
-    onClick, // Receive the onClick prop
+    onClick,
 }) => {
     return (
         <button
@@ -25,62 +28,47 @@ const CustomButton: React.FC<ButtonProps> = ({
                 color,
                 border,
             }}
-            onClick={onClick} // Use the onClick prop here
+            onClick={onClick}
         >
             {label}
         </button>
     );
 };
-const location = () => {
-    const todaysDate = new Date().toLocaleDateString();
-
+const Banner: React.FC = () => {
+    const currentDay = new Date().getDay();
     return (
-        <>
-            <div className="flex gap-1">
-                <div className="flex "></div>
-                <h3>Orders database</h3>
-                <span className="text-light text-[#a0a0a0] ">Today - {todaysDate}</span>
-                <div className="rounded-full h-[30p] w-p[30px] flex items-center justify-center bg-[#3333]">
-                    <LocationMarkerIcon width={20} height={20} />
+        <div className="rounded-full bg-dash-grey-card p-1 h-[75px] flex">
+            <div className="flex gap-4 p-1">
+                <div className="flex items-center justify-center border-[#414141] bg-[#333333] border-1 rounded-full border w-10 ">
+                    <HiLocationMarker />
                 </div>
-            </div>
-        </>
-    )
-}
-
-interface BannerProps {
-    todaysDate: string;
-}
-
-
-const Banner: React.FC<BannerProps> = ({ todaysDate }) => {
-    const handleClick = () => {
-        console.log("Button clicked");
-    };
-
-    return (
-        <div className="rounded-full bg-dash-grey-card p-2 h-[75px] flex">
-            <div className="flex gap-1">
-                <div className="flex "></div>
-                <h3>Orders database</h3>
-                <span className="text-light text-[#a0a0a0] ">Today - {todaysDate}</span>
-                <div className="rounded-full h-[30px] w-[30px] flex items-center justify-center bg-[#3333]">
-                    <LocationMarkerIcon width={20} height={20} />
+                <div className="flex flex-col w-max text-sm">
+                    <h3>Orders database</h3>
+                    <span className="text-light text-[#a0a0a0] text-[12px] ">
+                        {currentDay}
+                    </span>
                 </div>
             </div>
             <div className="flex w-full gap-1 justify-end">
+                <div className="flex items-center justify-between gap-1">
+                    <WarningIcon />
+                    <span className="text-white pr-8 text-[12px]">
+                        Some random text goes here
+                    </span>
+                </div>
+                <div className="flex items-center justify-center border-[#414141] border-1 rounded-full  w-[53px] ">
+                    <ListBulletIcon />
+                </div>
                 <CustomButton
                     label="Download report"
                     backgroundColor=" transparent"
-                    border="1px solid #404040"
+                    border="1px solid #414141"
                     color="white"
-                    onClick={handleClick}
                 />
                 <CustomButton
                     label="Create shipment"
-                    backgroundColor="#EE815F"
+                    backgroundColor="orange"
                     color="black"
-                    onClick={handleClick}
                 />
             </div>
         </div>

@@ -1,11 +1,10 @@
 'use client';
-
-import React, { ReactElement, ReactNode, useEffect, useState } from "react";
+import React, { ReactElement, ReactNode, Suspense, useEffect, useState } from "react";
 import { auth } from "@/utils/firebase";
 import { BanIcon, CodeIcon } from "@heroicons/react/solid";
 import { ArrowDownIcon, ArrowUpIcon, MixIcon } from "@radix-ui/react-icons";
 import CountingNumber from "@/components/effects/CountingNumber";
-
+import Image from "next/image";
 type IntroProps = {
     icon?: React.ReactNode;
     percentage?: string | number | any;
@@ -77,45 +76,36 @@ export default function Intro() {
         return () => unsubscribe();
     }, []);
 
+    const avatar = user?.photoURL;
+
     return (
         <>
-            <section className="intro">
-                <div className="intro__left">
-                    <h1 className="text-4xl font-bold">
-                        Welcome{" "}
-                        {loading ? (
-                            <span className="user-loading   ">user name</span>
-                        ) : (
-                            user?.displayName
-                        )}{" "}
-                        to <br /> your dashboard
-                    </h1>
-                </div>
-                <div className="w-3/4 flex space-between  items-center">
-                    <div className="flex space-between w-full gap-4 justify-between">
-                        <UspItem
-                            icon={<MixIcon width={40} height={40} />}
-                            title="Some titel"
-                            amount="1204"
-                            percentage="9.44"
+            <section className="intro pt-[44px]">
+                <div className="flex space-between gap-4 relative ">
+                    {avatar && (
+                        <Image
+                            src={avatar}
+                            alt="User avatar"
+                            width={48}
+                            height={48}
+                            className="w-12 h-12 rounded-full relative"
                         />
-                        <UspItem
-                            icon={<BanIcon width={40} height={40} />}
-                            percentageColor="red"
-                            title="Total Revenue"
-                            amount="1204"
-                            percentage="26.1"
-                        />
-                        <UspItem
-                            icon={<CodeIcon width={40} height={40} />}
-                            percentageColor="green"
-                            title="Latest discoverys"
-                            amount="34"
-                            percentage=" -2.4"
-                        />
+                    )}
+                    <span className="absolute text-4xl -top-2 translateX-4 -left-[35px] rotate-2 -z-10">
+                        <span className="tsext-[35px] wave">👋</span>
+                    </span>
+                    <div className="flex flex-col relative ">
+                        <span className="text-light text-[#444444] user-avatar  text-sm">Hi,    <Suspense fallback={<p className="user-loading">user name...</p>}>
+                            {user?.displayName}
+                        </Suspense>{" "}</span>
+                        <h1 className="text-xl ">
+                            Welcome back
+                        </h1>
+
                     </div>
-                </div>
-            </section>
+
+                </div >
+            </section >
             <style jsx>{`
                 .user-loading {
                     filter: blur(10px);
