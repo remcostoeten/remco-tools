@@ -1,11 +1,10 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useRouter } from 'next/navigation';
+import ReactApexChart from 'react-apexcharts';
 
 const FetchCommits: React.FC = () => {
   const [commits, setCommits] = useState([]);
-  const router = useRouter();
 
   useEffect(() => {
     const fetchCommits = async () => {
@@ -22,10 +21,29 @@ const FetchCommits: React.FC = () => {
     };
 
     fetchCommits();
-  }, [router]);
+  }, []);
+
+  const individualCommitDate = commits.map((commit: any) => {
+    return commit.commit.author.date;
+  });
+
+  const options = {
+    xaxis: {
+      categories: individualCommitDate
+    }
+  };
+  const series = [
+    {
+      name: "Commits",
+      data: commits.map((commit: any) => commit.stats?.total || 0)
+    }
+  ];
 
   return (
     <div>
+      <div id="chart">
+        <ReactApexChart options={options} series={series} type="area" />
+      </div>
       <h1>Last 20 Commits</h1>
       <ul>
         {commits.map((commit: any, index: number) => (
