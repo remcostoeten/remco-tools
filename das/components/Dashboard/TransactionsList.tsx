@@ -1,13 +1,13 @@
+'use client';
+
+
 import { db } from "@/lib/firebase";
 import { Income } from "@/types/transactions";
 import {
-  Card,
-  CardBody,
-  CardHeader,
-  Typography,
+  Card
 } from "@material-tailwind/react";
-import { getDocs, collection, Transaction } from "firebase/firestore";
-import { useState, useEffect } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { useEffect, useState } from "react";
 
 interface Expense {
   name: string;

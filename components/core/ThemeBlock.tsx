@@ -35,14 +35,14 @@ export default function Block({
     const Icon = isIncome ? (
         <MoneyUpIcon className="glowIcon" size={isMobile ? '36px' : '48px'} fill={iconFill} />
     ) : (
-        <MoneyDownIcon size={isMobile ? '36px' : '48px'} fill={downFill} />
+        <MoneyDownIcon className="rotate-180" size={isMobile ? '36px' : '48px'} fill={downFill} />
     );
     return (
-        <div className={`dblock p-6 flex flex-col gap-4 ${borderRadius} flex flex-${flexDir} ${gap} ${width} ${className}`}>
+        <div className={`custom-block ${borderRadius} flex flex-${flexDir} ${gap} ${width} ${className}`}>
             {title && (
                 <div className="flex justify-between items-center">
                     <div className="flex gap-4 items-center">{Icon}
-                        <h4 className="text-xl sm:text-3xl text-cream font-medium tracking-wider">{title}</h4>
+                        <h4 className="text-xl  text-cream font-normal tracking-wider">{title}</h4>
                     </div>
                     <Menubar>
                         <MenubarMenu>

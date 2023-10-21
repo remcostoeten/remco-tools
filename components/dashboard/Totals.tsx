@@ -260,31 +260,6 @@ export default function Totals() {
 
     return (
         <>
-            <div className="flex w-full gap-4 flex-wrap">
-                {isLoading ? (
-                    <div className="flex w-full gap-4">
-                        <Block className='w-5/12'>
-                            <MiniSpinner />
-                        </Block>
-                        <Block className='w-5/12'>
-                            <MiniSpinner />
-                        </Block>
-                        <Block className='w-2/12'>
-                            <MiniSpinner />
-                        </Block>
-                    </div>
-                ) : (
-                    <div className="flex w-full gap-4">
-                        {incomes.map((income) => (
-                            <MoneyCard key={income.id} type="income" />
-                        ))}
-                        {expenses.map((expense) => (
-                            <MoneyCard key={expense.id} type="expense" />
-                        ))}
-                    </div>
-                )}
-            </div>
-
             <div className="flex flex-col gap-4">
                 <div className="flex flex-col gap-4">
                     <div className="flex gap-4">

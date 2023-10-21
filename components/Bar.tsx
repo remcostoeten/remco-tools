@@ -50,5 +50,7 @@ export default function Bar({ gotdata }: { gotdata: (data: any) => void }) {
         });
     }
 
-    return <>{gotdata(handleData)}</>;
+    return (
+        <></>
+    )
 }

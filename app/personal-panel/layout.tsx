@@ -7,8 +7,9 @@ import LeftAside from "@/components/dashboard/layout/LeftAside";
 import DashboardAsides from "@/components/dashboard/layout/DashboardAsides";
 import { NavigationMenu } from "@/components/ui/navigation-menu";
 import Intro from '@/components/dashboard/layout/Intro';
+import Header from "./components/Header";
 
-export default function DashboardComponent() {
+export default function DashboardComponent({ children }) {
     return (
         <>
             <body className="bg-[#0D0D0D]">
@@ -17,8 +18,12 @@ export default function DashboardComponent() {
                     <DashboardAsides variant="left">
                         <LeftAside />
                     </DashboardAsides>
-                    <main className="p-[24px]"></main>
-                    <Intro />
+                    <main className="w-full p-[24px] flex flex-col">
+                        <Header sidebarOpen={false} setSidebarOpen={function (sidebarOpen: boolean): void {
+                            throw new Error("Function not implemented.");
+                        }} />
+                        {children}
+                    </main>
                 </main>
             </body>
         </>

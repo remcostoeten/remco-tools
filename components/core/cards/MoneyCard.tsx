@@ -23,8 +23,14 @@ interface Expense {
     expenseAmount: number;
 }
 
+interface Saving {
+    id: string;
+    name: string;
+    savingAmount: number;
+}
+
 type MoneyCardProps = {
-    type?: "income" | "expense" | "Saving" | "Totals";
+    type?: "income" | "expense" | "saving" | "totals";
     small?: boolean;
     blockClassName?: string;
     useChildren?: boolean;
@@ -36,16 +42,16 @@ export default function MoneyCard({
     type,
     small,
     hoverCard,
-    blockClassName,
     useChildren,
-    children
+    children,
 }: MoneyCardProps) {
     const [total, setTotal] = useState<number | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [totalItems, setTotalItems] = useState<number>(0);
 
     useEffect(() => {
-        const collectionName = type === "income" ? "incomes" : "expenses";
+        const collectionName =
+            type === "income" ? "incomes" : type === "expense" ? "expenses" : "savings";
         const dataCollection = collection(db, collectionName);
 
         const unsubscribe = onSnapshot(dataCollection, (snapshot) => {
@@ -53,13 +59,18 @@ export default function MoneyCard({
             snapshot.forEach((doc: QueryDocumentSnapshot<Income | Expense>) => {
                 const data = doc.data();
                 if (type === "income" && "incomeAmount" in data) {
-                    totalAmount += data.incomeAmount;
+                    totalAmount += data.incomeAmount as number;
                 } else if (type === "expense" && "expenseAmount" in data) {
-                    totalAmount += data.expenseAmount;
+                    totalAmount += data.expenseAmount as number;
+                } else if (type === "saving" && "savingAmount" in data) {
+                    totalAmount += data.savingAmount as number;
+                } else {
+                    console.error(`Invalid data type for ${type} card:`, data);
                 }
             });
             setTotal(totalAmount);
             setTotalItems(snapshot.size);
+
             setIsLoading(false);
         });
 
@@ -77,19 +88,23 @@ export default function MoneyCard({
         borderRadius: "rounded-lg",
         gap: "gap-2",
         width: "",
-        title: ""
+        title: "",
     };
 
     if (hoverCard) {
         return (
             <Card>
-                <HoverCard cardType={type === 'income' ? 'card--income' : 'card--expense'}>
+                <HoverCard
+                    cardType={type === "income" ? "card--income" : "card--expense"}
+                >
                     <Block {...blockProps}>
                         <Block
                             {...blockProps}
-                            title={type === 'income' ? 'Income' : 'Expense'}
+                            title={type === "income" ? "Income" : type === "expense" ? "Expense" : "Saving"}
                         >
-                            <span className="6r4g1!-3xl font-medium tracking-wider">€{total},-</span>
+                            <span className="6r4g1!-3xl font-medium tracking-wider">
+                                €{total},-
+                            </span>
                             <div className="flex gap-1"></div>
                             <p>Total of {totalItems} {type}</p>
                         </Block>
@@ -104,13 +119,13 @@ export default function MoneyCard({
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, transition: { duration: 2 } }}
-                className={small ? "sm:w-2/12 w-full rounded-xl border text-card-foreground shadow " : "rounded-xl border text-card-foreground shadow sm:w-5/12 w-full"}
+                className={
+                    small
+                        ? "w-full rounded-xl border text-card-foreground shadow "
+                        : "rounded-xl border text-card-foreground shadow  w-full"
+                }
             >
-                <Block
-                    {...blockProps}
-                >
-                    {children}
-                </Block>
+                <Block {...blockProps}>{children}</Block>
             </motion.div>
         );
     } else {
@@ -118,18 +133,25 @@ export default function MoneyCard({
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, transition: { duration: 2 } }}
-                className={small ? "bg-[#0F170D] md:w-3/12 w-full rounded-xl border text-card-foreground shadow  " : " bg-[#0F170D] w-5/12 rounded-xl border text-card-foreground shadow   "}
             >
                 <Block
                     {...blockProps}
-                    title={type === "income" ? "Income" : "Expense"}
+                    title={
+                        type === "income"
+                            ? "Income"
+                            : type === "expense"
+                                ? "Expense"
+                                : "Saving"
+                    }
                 >
-                    <span className="text-2xl sm:text-3xl font-medium tracking-wider">€                    <CountingNumber start={0} end={total} duration={1} className="6r4g1!-3xl font-medium tracking-wider" />
-                        ,-</span>
+                    <span className="text- sm:text-xl font-medium tracking-wider">
+                        €<CountingNumber start={0} end={total} duration={1} className="6r4g1!-3xl font-medium tracking-wider" />
+                        ,-
+                    </span>
                     <div className="flex gap-1"></div>
                     <p>Total of {totalItems} {type}</p>
                 </Block>
             </motion.div>
         );
     }
-}                 
+}

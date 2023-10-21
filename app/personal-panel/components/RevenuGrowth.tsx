@@ -9,6 +9,7 @@ import { db } from "@/utils/firebase";
 import MiniSpinner from "@/components/effects/MiniSpinner";
 import Bar from "@/components/Bar";
 import MonthlyEarnings from "@/components/dashboard/MonthlyhEarnings";
+import FetchCommits from "@/components/dashboard/FetchCommits";
 
 interface Income {
     id: string;
@@ -102,7 +103,7 @@ export default function RevenueGrowth() {
                     </section>
                 </div>
                 <div className="flex gap-5 w-3/6 flex-wrap ">
-                    <MonthlyEarnings />
+                    <FetchCommits />
                 </div>
             </main>
         </>

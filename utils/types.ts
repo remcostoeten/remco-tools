@@ -92,8 +92,8 @@ export interface Thought {
 
 export interface Savings {
     id: string;
-    name: string; createdAt: any;
-
+    name: string;
+    createdAt: any;
     savingsAmount: number;
 }
 
@@ -103,8 +103,9 @@ export interface IncomeProps {
     isLoading: boolean;
     expenseAmount: number;
     incomeAmount: number;
+    createdAt: any;
+    type: 'income' | 'expense';
 }
-
 
 export interface Task {
     id: string;

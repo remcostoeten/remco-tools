@@ -15,27 +15,38 @@ const FetchCommits: React.FC = () => {
         setCommits(response.data);
       } catch (error) {
         console.error('Error fetching commits:', error);
-        // Optionally redirect to an error page
-        // router.push('/error');
       }
     };
 
     fetchCommits();
   }, []);
 
-  const individualCommitDate = commits.map((commit: any) => {
-    return commit.commit.author.date;
-  });
+  // Group by date and count commits
+  const countCommitsByDate = () => {
+    const counts = {};
+
+    commits.forEach((commit: any) => {
+      const date = new Date(commit.commit.author.date).toISOString().split('T')[0];
+      counts[date] = (counts[date] || 0) + 1;
+    });
+
+    return counts;
+  };
+
+  const commitCounts = countCommitsByDate();
+  const dates = Object.keys(commitCounts);
+  const counts = Object.values(commitCounts);
 
   const options = {
     xaxis: {
-      categories: individualCommitDate
+      categories: dates
     }
   };
+
   const series = [
     {
       name: "Commits",
-      data: commits.map((commit: any) => commit.stats?.total || 0)
+      data: counts
     }
   ];
 

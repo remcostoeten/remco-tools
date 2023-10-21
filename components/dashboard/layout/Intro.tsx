@@ -91,20 +91,7 @@ export default function Intro() {
                             className="w-12 h-12 rounded-full relative"
                         />
                     )}
-                    <span className="absolute text-4xl -top-2 translateX-4 -left-[35px] rotate-2 -z-10">
-                        <span className="tsext-[35px] wave">👋</span>
-                    </span>
-                    <div className="flex flex-col relative ">
-                        <span className="text-light text-[#444444] user-avatar  text-sm">Hi,    <Suspense fallback={<p className="user-loading">user name...</p>}>
-                            {user?.displayName}
-                        </Suspense>{" "}</span>
-                        <h1 className="text-xl ">
-                            Welcome back
-                        </h1>
-
-                    </div>
-
-                </div >
+                </div>
             </section >
             <style jsx>{`
                 .user-loading {

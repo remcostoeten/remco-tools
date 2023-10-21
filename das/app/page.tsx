@@ -1,18 +1,14 @@
 import FetchCommits from "@/components/Github/FetchCommits";
 import ECommerce from "@/components/Dashboard/E-commerce";
 import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "TailAdmin | Next.js E-commerce Dashboard Template",
-  description: "This is Home Blog page for TailAdmin Next.js",
-  // other metadata
-};
+import TransactionsList from "@/components/Dashboard/TransactionsList";
 
 export default function Home() {
-  return (
-    <>
-    <FetchCommits/>
-      <ECommerce />
-    </>
-  );
+    return (
+        <>
+            {/* <FetchCommits /> */}
+            <ECommerce />
+            <TransactionsList />
+        </>
+    );
 }
