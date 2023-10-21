@@ -12,11 +12,20 @@ const config: Config = {
     theme: {
         extend: {
             padding: {
+                'card-outer': '16px',
+                'card-inner': '14px',
                 default: '24px',
             },
             margin: {
                 default: '24px',
             },
+            gap: {
+                xs: '8px',
+                s: '12px',
+                m: '16px',
+                l: '24px',
+            },
+
             backgroundImage: {
                 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
                 'gradient-conic':
@@ -32,6 +41,14 @@ const config: Config = {
                 'dash-grey-card': '#282828',
                 'dash-grey': '#1c1c1c',
                 'grey-accent': '#1f1f1f',
+                'grid': '#E4E5E4',
+                'card-inner': '#E4E5E4',
+            },
+            borderRadius: {
+                'card': '16px',
+            },
+            borderColor: {
+                'card': '#c5ac8c',
             },
             colors: {
                 cream: '#efefee',
