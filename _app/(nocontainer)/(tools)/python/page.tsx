@@ -29,7 +29,7 @@ export default function pythonScriptPlayground() {
     return (
         <>
             <div className="h-full flex-col md:flex">
-               <Toolbar/>
+                <Toolbar />
                 <Tabs defaultValue="insert" className="flex-1">
                     <div className="my-8 container h-full pt-8 pb-8 mt-8 py-6">
                         <div className="grid h-full items-stretch gap-6 md:grid-cols-[1fr_200px]">
@@ -37,7 +37,7 @@ export default function pythonScriptPlayground() {
                                 <div className="grid gap-2">
                                     <HoverCard openDelay={200}>
                                         <HoverCardTrigger asChild>
-                                            <span className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Mode</span>
+                                            <span className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-white">Mode</span>
                                         </HoverCardTrigger>
                                         <HoverCardContent className="w-[320px] text-sm" side="left">
                                             Choose the interface that best suits your task. You can provide: a simple prompt to complete, starting and ending text to insert a completion within, or some text with instructions to edit it.

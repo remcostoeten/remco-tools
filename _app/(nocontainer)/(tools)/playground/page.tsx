@@ -40,7 +40,7 @@ export default function PlaygroundPage() {
             <div className="hidden h-full flex-col md:flex">
                 <div className="     flex flex-col items-start justify-between space-y-2 py-4 sm:flex-row sm:items-center sm:space-y-0 md:h-16">
                     <h2 className="text-lg font-semibold">Playground</h2>
-           <Toolbar/>
+                    <Toolbar />
                 </div>
                 <Separator />
                 <Tabs defaultValue="complete" className="flex-1">
@@ -50,7 +50,7 @@ export default function PlaygroundPage() {
                                 <div className="grid gap-2">
                                     <HoverCard openDelay={200}>
                                         <HoverCardTrigger asChild>
-                                            <span className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Mode</span>
+                                            <span className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-white">Mode</span>
                                         </HoverCardTrigger>
                                         <HoverCardContent className="w-[320px] text-sm" side="left">
                                             Choose the interface that best suits your task. You can provide: a simple prompt to complete, starting and ending text to insert a completion within, or some text with instructions to edit it.
@@ -72,7 +72,7 @@ export default function PlaygroundPage() {
                                     </TabsList>
                                 </div>
                                 <ModelSelector types={types} models={models} />
-                                <DummyAlert text="Thes sliders are UI dummys"/>
+                                <DummyAlert text="Thes sliders are UI dummys" />
                                 <TemperatureSelector defaultValue={[0.56]} />
                                 <MaxLengthSelector defaultValue={[256]} />
                                 <TopPSelector defaultValue={[0.9]} />

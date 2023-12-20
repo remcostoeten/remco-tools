@@ -14,7 +14,7 @@ function ModelSelector({ models, types }) {
     const [selectedModel, setSelectedModel] = useState(models[0]);
     const [peekedModel, setPeekedModel] = useState(models[0]);
     const {
-   
+
         isTypescript,
         setIsTypescript,
         isClientComponent,
@@ -38,7 +38,7 @@ function ModelSelector({ models, types }) {
                 >
                     <div className='flex items-center justify-between space-x-2'>
                         <Label htmlFor='fc' className='flex flex-col space-y-1'>
-                            <span className='flex flex-col space-y-1 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 '>
+                            <span className='flex flex-col space-y-1 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-white '>
                                 Functional component
                             </span>
                         </Label>
@@ -108,7 +108,7 @@ function ModelSelector({ models, types }) {
                                                 htmlFor='typescript'
                                                 className='flex flex-col space-y-1'
                                             >
-                                                <span className='flex flex-col space-y-1 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 '>
+                                                <span className='flex flex-col space-y-1 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-white '>
                                                     Typescript
                                                 </span>
                                             </Label>
@@ -138,7 +138,7 @@ function ModelSelector({ models, types }) {
                                                 htmlFor='typeOrInterface'
                                                 className='flex flex-col space-y-1'
                                             >
-                                                <span className='flex flex-col space-y-1 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 '>
+                                                <span className='flex flex-col space-y-1 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-white '>
                                                     Type or Interface?
                                                 </span>
                                             </Label>
