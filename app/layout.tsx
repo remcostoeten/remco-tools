@@ -93,13 +93,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                                 <NavBar />
                                 {children}
                                 {/* <Footer /> */}
-                                <Trailer />
                                 <Analytics />
-
                             </ActiveSectionContextProvider>
                         </ThemeContextProvider>
                     </Tooltip>
-                </TooltipProvider>      </body>
+                </TooltipProvider>
+                     </body>
         </html>
     );
 }
