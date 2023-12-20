@@ -32,10 +32,13 @@ const AddressConverter: React.FC = () => {
 		e.preventDefault();
 		if (password === process.env.NEXT_PUBLIC_ADMIN_PASSSWORD) {
 			setAuth(true);
+			toast({ title: 'Correct password' });
 		} else {
+			console.error('Incorrect password');
 			toast({ title: 'Incorrect password' });
 		}
 	};
+
 
 	const convertToLatLong = () => {
 		const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY_NEW;
@@ -193,7 +196,7 @@ const AddressConverter: React.FC = () => {
 								<p>
 									You need to enter the correct password to access this feature.
 								</p>
-								<form className='flex flex-col gap-1 onSubmit={handlePasswordSubmit}'>
+								<form className='flex flex-col gap-1' onSubmit={handlePasswordSubmit}>
 									<Input
 										type='password'
 										value={password}
@@ -229,7 +232,7 @@ const AddressConverter: React.FC = () => {
 				)}
 				{latitude && longitude && <DistanceCalculator />}
 			</Suspense>
-		</div>
+		</div >
 	);
 };
 
