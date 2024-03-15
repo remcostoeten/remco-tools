@@ -5,9 +5,13 @@
 
 <p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=remcostoeten" alt="remcostoeten" /></a> </p>
 
-- 🔭 I’m currently employed at Pleio (@gitlab, open source), besides that I do some hobby coding invarious projects like [A Hacksaw gaming minesweeper clone](https://github.com/remcostoeten/minesweeper)
+- 🔭 I’m currently employed at [Pleio](https://gitlab.com/pleio/frontend) (@gitlab, fully open source), besides that I do a lot of hobby coding. Currently working on a
+- [Minesweeper](https://github.com/remcostoeten/minesweeper) game, hacksaw gaming casino clone with extra practice featuress.
+- A NextJS [portfolio/blog](https://github.com/remcostoeten/blog-remcostoetn)
+- Tooling such as [visualize debugger]([https://github.com/remcostoeten/blog-remcostoetn](https://github.com/remcostoeten/Visualize-react-components-debugger)) and [svg to component generator](https://github.com/remcostoeten/svg-to-react-component-icon-generator).
+- And experimental python apps such as this [tracker](https://github.com/remcostoeten?tab=repositories)
 
-- 🌱 I’m currently learning **Anything JS related, GraphQL, multiple BaaS's, python**
+- 🌱 I’m currently learning **Anything JS/TS related, GraphQL, multiple BaaS's, python**
 
 - Or a snipppet/blog site with a personal dashboard panel [https://github.com/remcostoeten/blog-remcostoetn](https://github.com/remcostoeten/blog-remcostoetn)
 
