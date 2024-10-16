@@ -3,9 +3,8 @@ I am a recovering ex-Magento developer and currently building open source softwa
 
 ### Active Development
 
-- **All-in-One Dashboard**: A comprehensive productivity suite (A lot of seperate repo's being merged sooner or later)
 - [Notevault](https://github.com/remcostoeten/nextjs-lucia-neon-postgresql-drizzle-dashboard) Dashboard which is going to be a compilation of all projects below
-  - [Productivity Dashboard](https://productivity.remcostoeten.com/) - lovely /design-system tools!
+  - [Productivity Dashboard](https://productivity.remcostoeten.com/) All in one dashboard - lovely /design-system tools!
   - [Admin Panel](https://panel.remcostoeten.com/) SQlite PoC
   - [Storage Solution](https://storage.remcostoeten.com/) Vercel Blob + Postgress PoC
 - **[Shell Setup](https://github.com/remcostoeten/my-shell-setup)**: Customized shell configuration
